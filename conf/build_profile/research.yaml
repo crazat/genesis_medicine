@@ -1,0 +1,27 @@
+name: research
+description: "내부 탐색 빌드 — 모든 오픈 라이선스 허용 (비상업 포함)"
+
+allowed_license_tags:
+  - commercial-safe
+  - commercial-share-alike
+  - commercial-conditional
+  - research-only
+
+denied_license_tags:
+  - blocked
+
+conditional_allowlist:
+  - txgemma
+  - esm3_cambrian
+
+denied_components:
+  models: []
+  data: []
+
+required_substitutions: {}
+
+audit:
+  mlflow_required: true
+  dvc_required: true
+  provenance_tagging: true
+  ip_timestamp: false   # 내부 탐색은 IP 타임스탬프 생략 가능

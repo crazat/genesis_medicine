@@ -1,0 +1,82 @@
+import pandas as pd
+import ast
+import seaborn as sns
+import matplotlib.pyplot as plt
+from collections import Counter
+
+# --- 한글 폰트 설정 ---
+# 이전에 설치하고 캐시를 삭제했으므로, 이제 정상적으로 작동할 것입니다.
+plt.rc('font', family='NanumGothic')
+plt.rcParams['axes.unicode_minus'] = False
+
+
+# --- 1. 데이터 불러오기 및 기본 전처리 ---
+print("결과 파일 로딩 중...")
+df = pd.read_csv("/workspace/scripts/ner_results_alz.csv") # 가장 마지막에 생성한 깨끗한 파일을 사용
+df['entities'] = df['entities'].apply(ast.literal_eval)
+entities_df = df.explode('entities').reset_index(drop=True)
+entities_df = pd.concat([entities_df.drop(['entities'], axis=1), entities_df['entities'].apply(pd.Series)], axis=1)
+entities_df.dropna(subset=['word'], inplace=True)
+entities_df['word'] = entities_df['word'].str.lower()
+print("기본 데이터 전처리 완료.")
+
+
+# --- 2. 데이터 정제 (Cleaning) ---
+# V-- 이 부분이 이번 단계의 핵심입니다 --V
+print("데이터 정제 시작...")
+
+# 2-1. 불용어(의미 없는 단어) 목록 정의
+# 분석에 불필요하거나 노이즈가 되는 단어들을 지정합니다.
+stopwords = {'ad', 'cn', 'cs', 'mit', 'ne', 'ce', '##us', '##al', '##po', '##campus'}
+
+# 2-2. 동의어/파생어 통합을 위한 맵핑(mapping) 규칙 정의
+# 여러 표현을 하나의 대표 단어로 통일합니다.
+word_map = {
+    'brains': 'brain',
+    'hip': 'hippocampus',
+    'hippo': 'hippocampus',
+    'neurons': 'neuron',
+    'cerebral cortex': 'cortex'
+}
+
+# 2-3. 정제 작업 적용
+# (1) 맵핑 규칙을 적용하여 단어를 통일합니다.
+cleaned_entities_df = entities_df.copy()
+cleaned_entities_df['word'] = cleaned_entities_df['word'].replace(word_map)
+
+# (2) 불용어 목록에 포함된 단어들을 데이터에서 제거합니다.
+cleaned_entities_df = cleaned_entities_df[~cleaned_entities_df['word'].isin(stopwords)]
+print("데이터 정제 완료.")
+# ^-- 여기까지가 핵심 정제 과정입니다 --^
+
+
+# --- 3. 정제된 데이터로 핵심 개체 재분석 ---
+print("\n--- 정제된 데이터 분석 결과 ---")
+# 상위 20개 생물학적 구조 찾기 (정제된 데이터프레임 사용)
+top_20_bio = cleaned_entities_df[cleaned_entities_df['entity_group'] == 'Biological_structure']['word'].value_counts().head(20)
+print("\n[정제 후 상위 20개 생물학적 구조]")
+print(top_20_bio)
+
+
+# --- 4. 정제된 데이터로 관계 분석 및 시각화 ---
+# 'alzheimer'가 포함된 초록만 필터링
+alz_df = cleaned_entities_df[cleaned_entities_df['abstract'].str.contains("alzheimer", case=False)]
+
+# 해당 초록들에서 가장 자주 나타나는 생물학적 구조 찾기
+co_occurring_bio = alz_df[alz_df['entity_group'] == 'Biological_structure']['word'].value_counts().head(20)
+print("\n[정제 후 'Alzheimer'와 함께 가장 자주 나타나는 생물학적 구조 Top 20]")
+print(co_occurring_bio)
+
+
+# 시각화
+print("\n정제된 결과로 시각화 그래프 생성 중...")
+plt.figure(figsize=(12, 10))
+sns.barplot(x=co_occurring_bio.values, y=co_occurring_bio.index, palette='plasma') # 색상 변경
+plt.title("'Alzheimer's Disease'와 동시 출현 빈도가 높은 생물학적 구조 Top 20 (정제 후)", fontsize=16)
+plt.xlabel("언급 횟수", fontsize=12)
+plt.ylabel("생물학적 구조", fontsize=12)
+plt.tight_layout()
+
+# 그래프를 새로운 이름으로 저장
+plt.savefig("/workspace/co_occurring_genes_cleaned.png")
+print("정제된 분석 그래프가 /workspace/co_occurring_genes_cleaned.png 파일로 저장되었습니다.")

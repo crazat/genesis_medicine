@@ -1,0 +1,29 @@
+# 생성 모델 설정 (v2 고도화)
+# FlowMol3 / DecompDiff seed → REINVENT 4 RL → SATURN 합성 필터
+
+enabled: true
+
+seed_generators:
+  - engine: flowmol3
+    num_molecules: 200
+    enabled: true
+
+  - engine: decompdiff
+    num_molecules: 200
+    enabled: true
+
+  - engine: diffsbdd
+    num_molecules: 100
+    enabled: false           # FlowMol3가 대체
+
+rl_optimizer:
+  engine: reinvent4
+  learning_strategy: DAP     # Direct Advantage Policy
+  num_iterations: 100
+  batch_size: 128
+
+synthesizability:
+  enabled: true
+  sa_threshold: 5.0
+  use_saturn: true
+  use_aizynthfinder: true

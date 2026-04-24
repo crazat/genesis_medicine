@@ -1,0 +1,11 @@
+# 구조 예측 엔진 전용 이미지 (Boltz-2 + Protenix)
+FROM genesis_medicine/base:latest
+
+USER root
+RUN python -m pip install boltz==2.0.*
+# Protenix는 PyPI 공개 상태 가정; 여부에 따라 GitHub HEAD 설치
+RUN python -m pip install "git+https://github.com/bytedance/Protenix.git@main" \
+    || echo "Protenix PyPI/GitHub 설치 실패 시 docs/INSTALL_WINDOWS.md 참고"
+
+USER gen
+CMD ["/bin/bash"]

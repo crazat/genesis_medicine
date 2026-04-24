@@ -1,0 +1,36 @@
+sources:
+  chembl:
+    enabled: true
+    min_activity_pchembl: 5.0
+  coconut:
+    enabled: true
+    version: "2.0"
+    license: CC0
+  lotus:
+    enabled: true
+  herb:
+    enabled: true
+    note: "CC-BY-NC — 내부 연구용만. 상용화 시 제외"
+  tcmsp:
+    enabled: true
+    ob_min: 30        # Oral Bioavailability ≥ 30
+    dl_min: 0.18      # Drug-Likeness ≥ 0.18
+  ktkp:
+    enabled: true
+    source: "koreantk.com"
+    note: "API 부재, 분기별 수동 스냅샷"
+
+filters:
+  lipinski: soft       # soft = 경고만, strict = 제거
+  pains: strict
+  np_likeness_min: -2.0
+  mw_range: [150, 700]
+  logp_range: [-2.0, 6.0]
+
+dedup:
+  key: inchikey
+  standardize: true    # RDKit standardizer
+
+output:
+  format: parquet
+  partition_by: source

@@ -1,0 +1,13 @@
+engine: boltz2
+model_version: "2.0"
+# MIT 라이선스 · 웨이트 포함 · 상용 허용
+# https://github.com/jwohlwend/boltz
+msa_server: colabfold      # 또는 "none"으로 single-sequence
+num_recycles: 10
+num_samples: 5
+num_diffn_samples: 25
+use_msa: true
+predict_affinity: true      # Boltz-2 고유: FEP 근사 친화도 출력
+crop_size: 384              # VRAM 24GB 기준
+output_format: mmcif
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/boltz2

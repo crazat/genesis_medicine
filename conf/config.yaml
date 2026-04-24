@@ -1,0 +1,40 @@
+# Genesis_Medicine — Hydra 기본 설정
+# 실행: python -m genesis_medicine run disease=alzheimer structure=boltz2
+
+defaults:
+  - disease: alzheimer
+  - target_discovery: default
+  - structure: boltz2
+  - library: default
+  - screening: staged
+  - generation: reinvent4
+  - admet: admet_ai
+  - herbal: default
+  - md: openmm_short
+  - reporting: default
+  - _self_
+
+project:
+  name: genesis_medicine
+  version: "2.0.0a0"
+  output_dir: ${oc.env:GENESIS_OUT,./runs}/${now:%Y-%m-%d_%H-%M-%S}
+  seed: 42
+
+compute:
+  device: cuda:0
+  num_workers: 8
+  mixed_precision: bf16
+
+logging:
+  level: INFO
+  file: ${project.output_dir}/genesis.log
+
+mlflow:
+  tracking_uri: ${oc.env:MLFLOW_URI,file:./mlruns}
+  experiment_name: ${project.name}_${disease.key}
+
+hydra:
+  run:
+    dir: ${project.output_dir}/hydra
+  job:
+    chdir: false

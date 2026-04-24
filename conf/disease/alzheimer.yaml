@@ -1,0 +1,16 @@
+key: alzheimer
+display_name: "Alzheimer's disease"
+mesh_id: D000544
+efo_id: MONDO_0004975       # Open Targets expects EFO/MONDO
+icd10: G30
+pubmed_query: '"Alzheimer disease"[Mesh] AND ("target"[All Fields] OR "pathway"[All Fields])'
+priority_regions:
+  - hippocampus
+  - entorhinal_cortex
+  - amygdala
+known_targets_seed:        # 검증용 시드 (최종 랭킹과 교차검증)
+  - { uniprot: P56817, gene: BACE1, name: "Beta-secretase 1" }
+  - { uniprot: P05067, gene: APP,   name: "Amyloid precursor protein" }
+  - { uniprot: P49841, gene: GSK3B, name: "Glycogen synthase kinase-3 beta" }
+  - { uniprot: P10636, gene: MAPT,  name: "Microtubule-associated protein tau" }
+  - { uniprot: P22303, gene: ACHE,  name: "Acetylcholinesterase" }

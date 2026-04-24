@@ -1,0 +1,61 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual env
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment / secrets
+.env
+.env.*
+*.key
+credentials.json
+
+# Data & cache (large files)
+.cache/
+mlruns/
+runs/
+*.csv
+*.tsv
+*.sdf
+*.mol2
+*.a3m
+*.npz
+*.tar.gz
+*.ckpt
+*.pt
+*.safetensors
+
+# Boltz cache
+pilot/bace1_boltz2/output*/
+pilot/bace1_boltz2/inputs/
+
+# NER results (46MB)
+ner_results.csv
+
+# Jupyter
+.ipynb_checkpoints/
+
+# pytest
+.pytest_cache/
+
+# mypy
+.mypy_cache/
+
+# DVC
+/dvc.lock

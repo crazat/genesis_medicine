@@ -1,0 +1,44 @@
+name: commercial
+description: "외부 출시 빌드 — commercial-safe 라이선스만 허용"
+
+allowed_license_tags:
+  - commercial-safe
+  - commercial-share-alike     # ChEMBL 파생 공개 정책 수립 전제
+  - commercial-conditional      # Gemma/Cambrian 등, 조건 검토 후 개별 허용
+
+denied_license_tags:
+  - research-only
+  - blocked
+
+# 조건부 라이선스는 개별 화이트리스트로 풀어줌
+conditional_allowlist:
+  - txgemma                     # Gemma 라이선스 — 법무 OK 후 활성
+  - esm3_cambrian               # Cambrian — 매출 임계 이하 OK
+
+# 상업 빌드에서 금지되는 의존성 (하드 블록)
+denied_components:
+  models:
+    - alphafold3_weights
+    - chai1_weights
+    - chai2_weights
+  data:
+    - herb_2_0
+    - tcmsp
+    - tcmid
+    - batman_tcm_2
+    - symmap_v2
+    - etcm_v2
+    - ktkp_raw                  # KTKP 원본 데이터 금지. 허가 시 해제
+    - kegg_pathways             # Reactome/WikiPathways로 대체
+
+# 필수 대체
+required_substitutions:
+  pathway_db: reactome_wikipathways   # KEGG 대체
+  msa_server: self_hosted_mmseqs2     # ColabFold 공용 서버 대체
+
+# 감사·IP 보호
+audit:
+  mlflow_required: true
+  dvc_required: true
+  provenance_tagging: true
+  ip_timestamp: true

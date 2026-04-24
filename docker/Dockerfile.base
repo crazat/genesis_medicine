@@ -1,0 +1,35 @@
+# Genesis_Medicine — 공통 베이스 (CUDA 12.6 + Python 3.11)
+FROM nvidia/cuda:12.6.3-cudnn-devel-ubuntu22.04
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        software-properties-common curl ca-certificates git build-essential \
+        && add-apt-repository ppa:deadsnakes/ppa \
+        && apt-get update \
+        && apt-get install -y --no-install-recommends \
+            python3.11 python3.11-dev python3.11-venv python3.11-distutils \
+        && curl -sS https://bootstrap.pypa.io/get-pip.py | python3.11 \
+        && ln -sf /usr/bin/python3.11 /usr/local/bin/python \
+        && ln -sf /usr/bin/python3.11 /usr/local/bin/python3 \
+        && rm -rf /var/lib/apt/lists/*
+
+# CUDA 휠 명시 (torch는 CUDA 12.4/12.6 인덱스에서)
+RUN python -m pip install --upgrade pip setuptools wheel \
+    && python -m pip install \
+        --index-url https://download.pytorch.org/whl/cu124 \
+        torch==2.5.1 torchvision==0.20.1
+
+WORKDIR /workspace
+COPY pyproject.toml ./
+RUN python -m pip install hatchling \
+    && python -m pip install -e .[dev]
+
+RUN useradd -m -u 1000 gen && chown -R gen:gen /workspace
+USER gen
+
+CMD ["/bin/bash"]

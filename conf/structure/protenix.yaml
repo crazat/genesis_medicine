@@ -1,0 +1,12 @@
+engine: protenix
+model_version: "v2"           # 2026-04-08 릴리스, AF3 능가
+# Apache-2.0 · 웨이트 포함 · 상용 허용
+# https://github.com/bytedance/Protenix
+num_recycles: 10
+num_samples: 5
+diffusion_samples: 25
+use_msa: true
+msa_server: colabfold
+confidence_threshold_plddt: 70
+output_format: mmcif
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/protenix

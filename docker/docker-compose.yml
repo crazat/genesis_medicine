@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+  base:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.base
+    image: genesis_medicine/base:latest
+
+  structure:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.structure
+    image: genesis_medicine/structure:latest
+    depends_on: [base]
+    runtime: nvidia
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ../:/workspace
+      - genesis_cache:/workspace/.cache
+
+  mlflow:
+    image: ghcr.io/mlflow/mlflow:v2.17.0
+    ports: ["5000:5000"]
+    command: >
+      mlflow server --host 0.0.0.0 --port 5000
+      --backend-store-uri sqlite:////mlruns/mlflow.db
+      --artifacts-destination /mlruns
+    volumes:
+      - mlruns:/mlruns
+
+volumes:
+  genesis_cache:
+  mlruns:
