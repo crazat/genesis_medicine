@@ -1,0 +1,13 @@
+target,uniprot,disease,gtex_skin_tpm_max,gtex_interpretation,bindingdb_n_ligands,string_top_partners,interpro_domains
+TGFB1,P01137,scar,0.0,❌ 발현 없음 — 피부 타겟으로 부적합,0,"DCN, TGFBR1, LTBP1, TGFBR2, ENG","transforming growth factor bet, TGF-beta, propeptide, Cystine-knot cytokines"
+MMP1,P03956,scar+photoaging,0.0,❌ 발현 없음 — 피부 타겟으로 부적합,0,"TIMP1, MMP9, MMP3, BSG, TIMP2","HX, ZnMc_MMP, Hemopexin-like domain"
+CTGF,P29279,scar,0.0,❌ 발현 없음 — 피부 타겟으로 부적합,0,"TGFB1, FN1, NTRK1, DCN, CCN2","Thrombospondin type-1 (TSP1) r, Growth factor receptor cystein, Insulin-like growth factor-bin"
+TYR,P14679,pigment,0.0,❌ 발현 없음 — 피부 타겟으로 부적합,0,"PMEL, OCA2, MLANA, MITF, SLC45A2","Di-copper center containing do, Di-copper centre-containing do, Tyrosinase copper-binding doma"
+TYRP1,P17643,pigment,0.0,❌ 발현 없음 — 피부 타겟으로 부적합,0,"OCA2, MITF, CDK1, SLC45A2, MC1R","Di-copper center containing do, Di-copper centre-containing do, Tyrosinase copper-binding doma"
+DCT,P40126,pigment,0.0,❌ 발현 없음 — 피부 타겟으로 부적합,0,"PMEL, MLANA, MITF, TYR, SOX10","Di-copper center containing do, Di-copper centre-containing do, Tyrosinase copper-binding doma"
+SRD5A2,P31213,alopecia+acne,0.0,❌ 발현 없음 — 피부 타겟으로 부적합,0,"HSD3B2, HSD17B3, CYP17A1, AKR1C3, AKR1C2","?, 3-oxo-5-alpha-steroid 4-dehydr, Steroid 5-alpha reductase C-te"
+AR,P10275,alopecia+acne,0.0,❌ 발현 없음 — 피부 타겟으로 부적합,0,"NCOA2, NCOA4, HSP90AA1, MDM2, HSP90AB1","Ligand binding domain of the n, DNA-binding domain of androgen, Retinoid X Receptor"
+CTNNB1,P35222,alopecia,0.0,❌ 발현 없음 — 피부 타겟으로 부적합,0,"BCL9, POU5F1, SKP1, CDH17, APC","alpha-catenin binding domain f, Armadillo/plakoglobin ARM repe, Leucine-rich Repeat Variant"
+PTGS2,P35354,acne,0.0,❌ 발현 없음 — 피부 타겟으로 부적합,0,"CXCL8, PTGIS, PTGES, IL1B, TP53","EGF_CA, Animal prostaglandin endoperox, Haem peroxidase domain superfa"
+SIRT1,Q96EB6,photoaging,0.0,❌ 발현 없음 — 피부 타겟으로 부적합,0,"FOXO3, PPARGC1A, SUV39H1, CCAR2, TP53","SIRT1, Sirtuin family, catalytic core, SIR2/SIRT2 'Small Domain'"
+JUN,P05412,photoaging,0.0,❌ 발현 없음 — 피부 타겟으로 부적합,0,"JUND, FOSL2, ATF2, FOSB, EP300","Basic leucine zipper (bZIP) do, Basic-leucine zipper domain, ?"
