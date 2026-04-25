@@ -68,6 +68,12 @@ structure = [
     "boltz>=2.0",
     # protenix installed via its own installer (see docs/INSTALL_WINDOWS.md)
 ]
+# 가속 커널 (S2 — RTX 5090 / Blackwell)
+accel = [
+    "cuequivariance-torch>=0.7",
+    "cuequivariance-ops-torch-cu12>=0.7",
+    # boltz-blackwell은 PyPI prerelease — 설치 시 별도 명령
+]
 screening = [
     # DiffDock-L and GNINA are installed from source; see docker/ images
 ]
@@ -77,7 +83,28 @@ admet = [
 ]
 md = [
     "openmm>=8.1",
+    "openmm-ml>=1.2",          # ANI / MACE potential 인터페이스
     "openff-toolkit>=0.16",
+    "mace-torch>=0.3.13",      # MACE-OFF24(M) 추론
+]
+# 절대 결합자유에너지 (A4)
+abfe = [
+    "openmmforcefields>=0.13",
+    "openmmtools>=0.24",
+    "alchemlyb>=2.3",
+]
+# 약물 재창출 / KG (A1)
+repurposing = [
+    "torch-geometric>=2.5",
+    "dgl>=2.4",
+]
+# 컨포메이셔널 앙상블 (A2)
+ensemble = [
+    "torch-geometric>=2.5",    # AlphaFlow / BioEmu 모두 PyG 의존
+]
+# MSA 자체 호스팅 (S4)
+msa = [
+    # MMseqs2 바이너리는 conda/apt 설치, Python 래퍼 없음
 ]
 
 [project.scripts]

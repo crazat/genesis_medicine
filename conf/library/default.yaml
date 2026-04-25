@@ -1,3 +1,7 @@
+# 통합 ligand library — build_profile에 따라 자동 분기
+# commercial: chembl/coconut/lotus/npass/npatlas/drduke/pubchem/zinc22
+# research:  + herb/tcmsp/ktkp
+
 sources:
   chembl:
     enabled: true
@@ -8,20 +12,31 @@ sources:
     license: CC0
   lotus:
     enabled: true
+  npass:
+    enabled: true
+    version: "3"
+    note: "NAR 2026 update — quantitative ADME-Tox 포함"
+  npatlas:
+    enabled: true
+    version: "3"
+  drduke:
+    enabled: true
+    note: "USDA public domain"
+  # 상업 빌드에서는 자동으로 비활성화됨 (LicenseGate)
   herb:
     enabled: true
     note: "CC-BY-NC — 내부 연구용만. 상용화 시 제외"
   tcmsp:
     enabled: true
-    ob_min: 30        # Oral Bioavailability ≥ 30
-    dl_min: 0.18      # Drug-Likeness ≥ 0.18
+    ob_min: 30
+    dl_min: 0.18
   ktkp:
     enabled: true
     source: "koreantk.com"
     note: "API 부재, 분기별 수동 스냅샷"
 
 filters:
-  lipinski: soft       # soft = 경고만, strict = 제거
+  lipinski: soft
   pains: strict
   np_likeness_min: -2.0
   mw_range: [150, 700]
@@ -29,7 +44,7 @@ filters:
 
 dedup:
   key: inchikey
-  standardize: true    # RDKit standardizer
+  standardize: true
 
 output:
   format: parquet

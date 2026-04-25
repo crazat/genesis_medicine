@@ -32,6 +32,12 @@ def research_gate() -> LicenseGate:
         # v2 고도화 추가
         "openfold3", "flowdock", "drugclip", "flowmol3", "decompdiff",
         "saturn", "posebusters", "aizynthfinder", "npatlas_3",
+        # v2.1 ultrathink 추가
+        "txgnn", "alphaflow", "bioemu",
+        "mace_off24", "openmm_ml", "aceff", "fep_spell_abfe",
+        "bindcraft", "protac_jt_vae",
+        "cuequivariance_torch", "boltz_blackwell",
+        "deep_docking", "posebench_v2",
     ],
 )
 def test_commercial_allows_safe(commercial_gate: LicenseGate, key: str) -> None:
@@ -49,6 +55,9 @@ def test_commercial_allows_safe(commercial_gate: LicenseGate, key: str) -> None:
         "rfaa",  # mixed license → research only
         "neuralplex3_weights",  # CC-BY-NC-SA → research only
         "enamine_real",  # blocked
+        # v2.1 추가
+        "pmx",  # GPL-3 → research only (서브프로세스 격리 시 별도 조치)
+        "molglue_jtvae",  # 학습 데이터 NC 가능성 → 안전 기본 research
     ],
 )
 def test_commercial_blocks_denied(commercial_gate: LicenseGate, key: str) -> None:

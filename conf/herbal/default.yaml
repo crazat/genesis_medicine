@@ -1,0 +1,29 @@
+# 한약 / 천연물 네트워크 약리학 — Stage 7
+# build_profile에 따라 사용 데이터 자동 분기
+
+enabled: true
+
+# commercial-safe 인덱스 (CC0 / CC-BY)
+coconut_index: ${oc.env:GENESIS_DATA,./data}/coconut/coconut_inchikey_index.parquet
+lotus_index: ${oc.env:GENESIS_DATA,./data}/lotus/lotus_index.parquet
+npass_index: ${oc.env:GENESIS_DATA,./data}/npass3/index.parquet
+drduke_index: ${oc.env:GENESIS_DATA,./data}/drduke/index.parquet
+
+# 한국 규제 — KHP/KP
+khp_index: ${oc.env:GENESIS_DATA,./data}/khp/herb_compound_index.csv
+kp_index: ${oc.env:GENESIS_DATA,./data}/kp/herb_compound_index.csv
+
+# research-only — HERB/TCMSP/KTKP
+herb_index: ${oc.env:GENESIS_DATA,./data}/herb_v2/index.parquet
+tcmsp_index: ${oc.env:GENESIS_DATA,./data}/tcmsp/index.parquet
+ktkp_index: ${oc.env:GENESIS_DATA,./data}/ktkp/index.parquet
+
+# pathway sources (commercial-safe)
+reactome_index: ${oc.env:GENESIS_DATA,./data}/reactome/gene_pathway.parquet
+wikipathways_index: ${oc.env:GENESIS_DATA,./data}/wikipathways/gene_pathway.parquet
+kegg_index: ${oc.env:GENESIS_DATA,./data}/kegg/gene_pathway.parquet  # research only
+
+# 분석 파라미터
+fdr_threshold: 0.05
+min_pathway_size: 5
+max_pathway_size: 500

@@ -21,13 +21,19 @@ from .base import (
     StructurePredictor,
 )
 from .boltz2_adapter import Boltz2Adapter
+from .consensus import ConsensusPredictor, ConsensusRequest, ConsensusResult
+from .neuralplexer3_adapter import NeuralPLexer3Adapter
 from .openfold3_adapter import OpenFold3Adapter
 from .protenix_adapter import ProtenixAdapter
 
 __all__ = [
     "AlphaFoldDBAdapter",
     "Boltz2Adapter",
+    "ConsensusPredictor",
+    "ConsensusRequest",
+    "ConsensusResult",
     "LigandSpec",
+    "NeuralPLexer3Adapter",
     "OpenFold3Adapter",
     "ProtenixAdapter",
     "StructurePredictionRequest",
@@ -48,6 +54,10 @@ def get_predictor(cfg: Any) -> StructurePredictor:
             num_samples=cfg.get("num_samples", 5),
             num_diffn_samples=cfg.get("num_diffn_samples", 25),
             predict_affinity=cfg.get("predict_affinity", True),
+            sampling_steps_affinity=cfg.get("sampling_steps_affinity", 200),
+            diffusion_samples_affinity=cfg.get("diffusion_samples_affinity", 5),
+            affinity_mw_correction=cfg.get("affinity_mw_correction", True),
+            no_kernels=cfg.get("no_kernels", False),
         )
     if engine == "protenix":
         return ProtenixAdapter(
@@ -64,5 +74,19 @@ def get_predictor(cfg: Any) -> StructurePredictor:
             num_recycles=cfg.get("num_recycles", 10),
             num_samples=cfg.get("num_samples", 5),
             use_msa=cfg.get("use_msa", True),
+        )
+    if engine == "neuralplexer3":
+        # research-only — LicenseGate가 commercial 빌드에서 차단해야 함
+        from ..licensing import LicenseGate
+        from ..licensing.gate import BuildProfile
+
+        profile_name = cfg.get("build_profile", "commercial")
+        gate = LicenseGate(BuildProfile.from_name(profile_name))
+        gate.require("neuralplex3_weights")  # commercial → LicenseViolation
+        return NeuralPLexer3Adapter(
+            cache_dir=cache_dir,
+            weights_dir=cfg.get("weights_dir"),
+            device=cfg.get("device", "cuda:0"),
+            covalent=cfg.get("covalent", False),
         )
     raise ValueError(f"Unknown structure engine: {engine}")

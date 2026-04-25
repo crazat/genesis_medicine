@@ -9,7 +9,19 @@ from .base import (
     ScreeningResult,
     Screener,
 )
+from .active_learning import (
+    ActiveLearningConfig,
+    ActiveLearningResult,
+    ActiveLearningScreener,
+    report_active_learning,
+)
 from .consensus import exponential_consensus_ranking
+from .posebench_validator import (
+    PoseBenchMetrics,
+    PoseBenchValidator,
+    compare_engines,
+    report_metrics,
+)
 
 __all__ = [
     "DockingPose",
@@ -17,4 +29,12 @@ __all__ = [
     "ScreeningResult",
     "Screener",
     "exponential_consensus_ranking",
+    "PoseBenchMetrics",
+    "PoseBenchValidator",
+    "compare_engines",
+    "report_metrics",
+    "ActiveLearningConfig",
+    "ActiveLearningResult",
+    "ActiveLearningScreener",
+    "report_active_learning",
 ]

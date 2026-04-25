@@ -1,0 +1,19 @@
+# Stage 1 — 타겟 발굴 기본 설정
+# Open Targets + BERN2 NER + PrimeKG multi-hop
+
+size: 200                          # Open Targets 상위 N개
+min_score: 0.3                     # Overall Association Score
+ner:
+  engine: gliner_biomed             # bern2 | gliner_biomed
+  threshold: 0.7
+
+druggability:
+  enabled: true
+  min_tractability: 3              # IDG bucket
+  prefer_clinical_phase: true
+
+primekg:
+  enabled: true
+  multi_hop_depth: 2
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/target_discovery

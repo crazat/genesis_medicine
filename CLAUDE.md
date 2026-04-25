@@ -5,39 +5,53 @@
 
 ---
 
-## 🎯 NEXT ACTIONS — 다음 세션에서 바로 할 일 (2026-04-25 업데이트)
+## 🎯 NEXT ACTIONS — 다음 세션에서 바로 할 일 (2026-04-25 v2.1 ultrathink 갱신)
 
 > 이 섹션은 작업이 한 단계 진전될 때마다 업데이트한다.
 > 사용자가 새 세션을 열면 이 목록부터 확인하고, **제일 위 항목을 먼저 제안**할 것.
 
-### ✅ 완료 (2026-04-25)
-- ~~Windows 원본 삭제~~ — 사용자가 직접 삭제 완료.
-- ~~환경 부트스트랩~~ — `.venv` Python 3.11.15, 293 패키지, 8 unit tests 통과.
-- ~~라이선스 게이트~~ — `licensing/gate.py` + `registry.py` + 44개 테스트 전부 통과.
-- ~~Open Targets 호출~~ — 알츠하이머 상위 50 타겟 중 49개 UniProt ID 확인 (APP, PSEN1, PSEN2, APOE, GRIN1 등).
-- ~~Boltz-2 설치~~ — v2.2.1, RTX 5090 32GB VRAM 확인.
-- ~~BACE1 파일럿~~ — 9/10 화합물 Boltz-2 공동접힘 성공. 평균 confidence=0.873, ligand_iptm=0.988.
+### ✅ 완료 (2026-04-25 세션까지)
+- ~~Windows 원본 삭제, 환경 부트스트랩~~ — `.venv` Python 3.11.15.
+- ~~라이선스 게이트~~ — **83개 컴포넌트** 등록, **118개 테스트** 전부 통과.
+- ~~Open Targets 호출~~ — 알츠하이머 상위 50 타겟 중 49개 UniProt ID 확인.
+- ~~Boltz-2 BACE1 파일럿~~ — 9/10 화합물 공동접힘 성공. confidence=0.873.
+- ~~v2.1 고도화 ultrathink 구현~~ — 11단계 아키텍처 뼈대 + 15개 새 컴포넌트:
+  - **Stage 1.5** TxGNN 약물 재창출 (A1)
+  - **Stage 2.5** AlphaFlow + BioEmu cryptic pocket 앙상블 (A2)
+  - **Stage 4 보강** PoseBench v2 검증, DrugCLIP 설정, Active Learning (B4)
+  - **Stage 5 보강** NeuralPLexer3 어댑터 (research only, A5), ConsensusPredictor (B5)
+  - **Stage 5.5** BindCraft 단백질 바인더 (B1), PROTAC/분자글루 (B2)
+  - **Stage 6** ADMET-AI v2 어댑터
+  - **Stage 7** 한약 reverse_mapping + network_pharmacology
+  - **Stage 8'** OpenMM-ML + MACE-OFF24(M) refine (A3)
+  - **Stage 8.5** FEP-SPell-ABFE / pmx ABFE (A4)
+  - **자체 MMseqs2-GPU MSA 모듈** (S4 — 상업 빌드 블로커 해소)
+  - Boltz-2 affinity head 설정 완전 노출 (S1), cuEquivariance 가속 지원 (S2)
 
-### 🟡 즉시 실행 (순서대로)
-1. **Boltz-2 affinity 예측** — 현재 구조 예측만 완료. `--affinity_mw_correction` + `--diffusion_samples_affinity 5` 로 affinity head 추론 추가.
-2. **M1 타겟 발굴 end-to-end** — Open Targets → BACE1 선정 → AlphaFold DB 구조 → Boltz-2 검증 연결.
-3. **`cuequivariance_torch` 설치** — Boltz-2 커스텀 커널 활성화로 추론 속도 향상 (현재 `--no_kernels`).
-4. **M3 리간드 라이브러리 ETL** — COCONUT 2.0 CC0 먼저 (상업 빌드).
-5. **M4 4단계 스크리닝** — Uni-Mol2 → DiffDock-L → Boltz-2 → GNINA.
+### 🟡 즉시 실행 (의존성 설치 + 실 추론 런)
+1. **가속 스택 설치** — `pip install -e '.[accel]'` + (선택) `pip install boltz-blackwell` → `no_kernels: false`로 30~50% 가속.
+2. **자체 MMseqs2-GPU 빌드** — `bash scripts/setup/install_mmseqs2_gpu.sh` (1TB 디스크, 24~48h). 이후 commercial 빌드 진짜 가능.
+3. **Boltz-2 affinity head 실런** — BACE1 9개 compound로 `sampling_steps_affinity=200, diffusion_samples_affinity=5, affinity_mw_correction=true` 추론.
+4. **TxGNN 가중치 다운로드 + 알츠하이머 re-purposing 실런** — `https://github.com/mims-harvard/TxGNN` 에서 체크포인트 받아 `MONDO_0004975` 기준 zero-shot top 20 후보 생성.
+5. **AlphaFlow로 BACE1 cryptic pocket 탐색** — 50 컨포머 샘플 → P2Rank → apo에 없던 포켓 검출.
+6. **DrugCLIP Stage A 실런** — COCONUT 2.0 700k → 1k 프리필터 검증.
+7. **ADMET-AI v2 + OpenMM-ML 10 ns** — 상위 20 후보에 대해 BBB/hERG/DILI 게이트 + MACE-OFF24 안정성.
 
-### 🟢 상위 마일스톤 (참고만)
-- M5: 한약 레이어 (research 프로파일만)
-- M6: 생성 모델 (DiffSBDD + REINVENT 4)
-- M7: ADMET + MD + 리포트
-- M8: 2번째 질병(NSCLC 또는 파킨슨) 재현
+### 🟢 상위 로드맵 (참고)
+- 다음 질병 적용: **NSCLC 또는 파킨슨 권고** (BACE1은 임상적으로 막혀있음).
+- ABFE (Stage 8.5) 본격 검증 — FEP-SPell-ABFE로 top 10에 대해 160 ns/replica × 3 replicas.
+- IP 타임스탬프 + DVC 추적 본격 활성 (commercial 빌드 감사).
 
-### 기술 노트 (Boltz-2 파일럿에서 확인)
-- `--no_kernels` 필수 (cuequivariance_torch 미설치).
-- `--use_msa_server` 사용 시 ColabFold 공용 서버 이용 → **상업 빌드에서는 자체 MMseqs2 인스턴스 필요**.
-- CHEMBL250295 SMILES가 RDKit 파싱 실패 → 큰 매크로사이클 구조 때문. 향후 화합물 전처리 단계에서 필터링.
+### 기술 노트 (v2.1 ultrathink 추가분)
+- **`no_kernels: false`가 기본** — `cuequivariance-torch>=0.7` 필요. 미설치 환경은 yaml override로 `no_kernels=true`.
+- **MSA factory** — commercial 빌드에서는 `colabfold_public` 요청해도 `mmseqs2_local`로 강제 전환.
+- **NeuralPLexer3 웨이트 CC-BY-NC-SA** → `conf/structure/neuralplexer3.yaml`이 `build_profile: research` 자동 — commercial에서 호출 시 LicenseViolation.
+- **분자글루** (`molglue_jtvae`)은 학습 데이터 NC 가능성 때문에 안전 기본 research-only.
+- **pmx**는 GPL-3 — 서브프로세스 격리 + research 한정. `fep_spell_abfe` (MIT)를 commercial 기본으로.
 
 ### 새 대화를 시작하는 Claude에게
 사용자에게 어느 단계부터 갈지 먼저 확인하고 진행할 것.
+**우선순위 권고**: 1 (가속 설치) → 3 (affinity 실런) → 4 (TxGNN 신가치) → 2 (MMseqs2 상업화).
 
 ---
 
@@ -132,13 +146,18 @@ python -m genesis_medicine.cli run build_profile=research disease=alzheimer libr
     └── LICENSING.md                # ★ 상업화 라이선스 매트릭스
 ```
 
-## 기술 스택 요약
-- **구조 예측**: Boltz-2 (MIT) + Protenix v2 (Apache-2.0) + **OpenFold3 (Apache-2.0)** 앙상블. AF3 웨이트 배제.
-- **타겟 발굴**: Open Targets + BERN2 + PrimeKG (HGNC 어휘매칭 폐기).
-- **스크리닝 6단계**: **DrugCLIP** 프리필터 → Uni-Mol2 임베딩 → **FlowDock** (flow matching 도킹+affinity) → Boltz-2 공동접힘+친화도 → **GNINA 1.3** (CNN rescore) → **PoseBusters** (포즈 검증). **ECR 합의 스코어링**.
-- **생성**: **FlowMol3** (flow matching) + **DecompDiff** (scaffold+arm) 시드 → REINVENT 4 RL → **SATURN** 합성 필터 + **AiZynthFinder** 역합성 검증.
-- **경로 DB**: KEGG 대신 Reactome + WikiPathways.
-- **천연물 DB**: COCONUT 2.0 (CC0) + LOTUS (CC0) + **NPASS 3.0** + **NPAtlas 3.0** (CC-BY).
+## 기술 스택 요약 (v2.1)
+- **구조 예측**: Boltz-2 (MIT) + Protenix v2 (Apache-2.0) + **OpenFold3 (Apache-2.0)** + **ConsensusPredictor** 앙상블. + **NeuralPLexer3** (research 한정, covalent ligand). AF3 웨이트 배제.
+- **앙상블 (Stage 2.5)**: **AlphaFlow** + **BioEmu** conformational → cryptic pocket 검출.
+- **타겟 발굴 + 재창출 (Stage 1 + 1.5)**: Open Targets + BERN2 + PrimeKG + **TxGNN zero-shot 약물 재창출** (17,080 질병).
+- **스크리닝 6단계**: **DrugCLIP** 프리필터 → Uni-Mol2 임베딩 → **FlowDock** → Boltz-2 affinity head (MW 보정) → **GNINA 1.3** → **PoseBusters**. **ECR** 합의 + **PoseBench v2** 벤치마크 + **Active Learning Deep Docking**.
+- **생성**: **FlowMol3** + **DecompDiff** + REINVENT 4 + **SATURN** + **AiZynthFinder**. **BindCraft** (단백질 바인더) + **PROTAC/분자글루** (Stage 5.5).
+- **ADMET (Stage 6)**: **ADMET-AI v2** (Chemprop 2.0 기반, 41 endpoints). BBB/hERG/DILI/QED 게이트.
+- **MD + ABFE (Stage 8' + 8.5)**: **OpenMM-ML + MACE-OFF24(M)** ML-MM refine → **FEP-SPell-ABFE** (MIT) 절대 결합자유에너지.
+- **경로 DB**: KEGG 대신 **Reactome + WikiPathways**.
+- **천연물 DB**: COCONUT 2.0 (CC0) + LOTUS (CC0) + **NPASS 3.0** + **NPAtlas 3.0** + **Dr. Duke** (USDA).
+- **MSA 인프라**: 자체 호스팅 **MMseqs2-GPU** (1.65× 가속, 상업 OK). ColabFold 공용 서버는 research 한정.
+- **가속**: **cuEquivariance v0.7** + **boltz-blackwell** (RTX 5090 Blackwell 전용).
 - **오케스트레이션**: Hydra + Prefect 3 + MLflow + DVC.
 
 ## 파일럿
@@ -161,7 +180,18 @@ python -m genesis_medicine.cli run build_profile=research disease=alzheimer libr
 
 ## 현재 상태 (2026-04-25)
 - M0 부트스트랩 완료. `.venv` Python 3.11.15, Boltz-2 v2.2.1, RTX 5090 32GB.
-- M0.5 **라이선스 게이트** 완료 — 76개 테스트 전부 통과 (새 도구 12개 등록 포함).
+- M0.5 **라이선스 게이트** 완료 — **83개 컴포넌트** 등록, **118개 테스트** 전부 통과.
 - M1 **Open Targets + BACE1 파일럿** 완료 — 9/10 화합물 공동접힘 성공 (confidence=0.873).
-- **v2 고도화** 완료 — 6단계 스크리닝 캐스케이드 + ECR + FlowMol3/DecompDiff 생성 + SATURN 합성 검증 모듈 구현.
-- M2~M8 어댑터 뼈대 + 설정 갖춤. 실제 실행 단계 진입 준비 완료.
+- **v2 고도화** 완료 — 6단계 스크리닝 캐스케이드 + ECR + FlowMol3/DecompDiff 생성 + SATURN 합성 검증.
+- **v2.1 ultrathink 고도화** 완료 (2026-04-25) — **11단계 아키텍처** + 15개 새 어댑터:
+  - TxGNN 약물 재창출 (Stage 1.5)
+  - AlphaFlow/BioEmu conformational ensemble (Stage 2.5)
+  - BindCraft 단백질 바인더 / PROTAC·분자글루 (Stage 5.5)
+  - ADMET-AI v2 (Stage 6)
+  - OpenMM-ML + MACE-OFF24 (Stage 8')
+  - FEP-SPell-ABFE (Stage 8.5)
+  - 자체 MMseqs2-GPU MSA (상업 빌드 블로커 해소)
+  - PoseBench v2 검증 + Active Learning Deep Docking
+  - Protenix/OpenFold3/Boltz-2 ConsensusPredictor
+  - NeuralPLexer3 (research only, covalent ligand)
+- M2~M9 어댑터 뼈대 + 설정 + 테스트 완비. 실 추론 런 단계만 남음.

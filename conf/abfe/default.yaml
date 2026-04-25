@@ -1,0 +1,22 @@
+# Stage 8.5 — Absolute Binding Free Energy (A4)
+# FEP-SPell-ABFE (MIT, JCIM 2025) — OpenMM 기반 자동화
+
+enabled: false                    # 기본 비활성 — 임상 후보 결정 직전에만 켬
+backend: fep_spell                # fep_spell | pmx (pmx는 research only)
+device: cuda:0
+threads: 8
+
+# 통계 신뢰
+n_replicas: 3
+n_lambda_windows: 16
+
+# 시뮬 길이
+timestep_fs: 2.0
+eq_ns: 5.0
+prod_ns: 10.0                     # 후보당 ~16 windows × 10 ns = 160 ns / replica
+
+# 후보 선별
+top_n: 20                         # 상위 20개 ligand만 ABFE
+filter:
+  min_boltz2_pkd: 6.0             # Boltz-2 pKd ≥ 6 (1 μM)
+  max_sa: 5.0                     # 합성가능성 SA ≤ 5

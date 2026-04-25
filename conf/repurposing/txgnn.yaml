@@ -1,0 +1,17 @@
+# TxGNN 약물 재창출 설정 (Stage 1.5 — A1)
+# https://github.com/mims-harvard/TxGNN (MIT)
+
+enabled: true
+engine: txgnn
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/txgnn
+model_path: ${oc.env:GENESIS_CACHE,./.cache}/txgnn/checkpoint.pt
+kg_version: primekg_2023_12       # PrimeKG 2023-12 OMIM 확장판
+device: cuda:0
+explain: true                     # multi-hop 경로 설명 활성
+
+# 재창출 후보 임계
+top_k: 100                        # 상위 100개 약물 후보
+relation: indication              # indication | contraindication
+include_off_label: true           # off-label 처방 매칭 표시
+min_score: 0.3                    # cutoff

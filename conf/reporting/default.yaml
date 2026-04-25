@@ -1,0 +1,22 @@
+# Stage 9 — 리포팅 기본 설정
+
+panel_dashboard:
+  enabled: true
+  port: 5006
+
+pdf_report:
+  enabled: true
+  template: default
+  include_3d_poses: true
+  top_n_compounds: 10
+  top_n_herbs: 5
+
+mlflow:
+  log_artifacts: true
+
+# IP 타임스탬프 (commercial 빌드 필수)
+ip_timestamp:
+  enabled: ${oc.select:build_profile.audit.ip_timestamp,true}
+  algorithm: sha256
+  include_seed: true
+  include_model_hash: true

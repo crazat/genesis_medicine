@@ -101,6 +101,63 @@ _MODELS = [
               LicenseTag.COMMERCIAL_CONDITIONAL,
               "https://www.evolutionaryscale.ai/blog/esm-cambrian",
               note="상업 OK, 매출 임계 확인 필요"),
+    # --- v2.1 고도화 추가 (2026-04-25, ultrathink 검토 후) ---------------------
+    # 약물 재창출 — Stage 1.5
+    Component("txgnn", ComponentKind.MODEL, "MIT", LicenseTag.COMMERCIAL_SAFE,
+              "https://github.com/mims-harvard/TxGNN",
+              note="Nature Med 2024, zero-shot 약물 재창출 GNN. 17,080 질병 × 7,957 후보."),
+    # 컨포메이셔널 앙상블 — Stage 2.5
+    Component("alphaflow", ComponentKind.MODEL, "MIT", LicenseTag.COMMERCIAL_SAFE,
+              "https://github.com/bjing2016/alphaflow",
+              note="apo→holo conformational ensemble, cryptic pocket 발굴."),
+    Component("bioemu", ComponentKind.MODEL, "MIT", LicenseTag.COMMERCIAL_SAFE,
+              "https://github.com/microsoft/bioemu",
+              note="Microsoft BioEmu — Boltzmann emulator, 2026-01."),
+    # ML potential MD — Stage 8'
+    Component("mace_off24", ComponentKind.MODEL, "MIT", LicenseTag.COMMERCIAL_SAFE,
+              "https://github.com/ACEsuit/mace-off",
+              note="MACE-OFF24(M) — protein-ligand binding free energy 가능."),
+    Component("openmm_ml", ComponentKind.TOOL, "MIT", LicenseTag.COMMERCIAL_SAFE,
+              "https://github.com/openmm/openmm-ml",
+              note="OpenMM ML potential 인터페이스 (ANI, MACE 지원)."),
+    Component("aceff", ComponentKind.MODEL, "MIT", LicenseTag.COMMERCIAL_SAFE,
+              "https://github.com/ACEsuit/aceff",
+              note="AceFF 1.0/1.1/2.0 foundation potential."),
+    # 절대 결합자유에너지 — Stage 8.5
+    Component("fep_spell_abfe", ComponentKind.TOOL, "MIT", LicenseTag.COMMERCIAL_SAFE,
+              "https://github.com/jackalbright/FEP-SPell-ABFE",
+              note="JCIM 2025 — 자동화 ABFE 워크플로, FEP+ 오픈 대체."),
+    Component("pmx", ComponentKind.TOOL, "GPL-3", LicenseTag.RESEARCH_ONLY,
+              "https://github.com/deGrootLab/pmx",
+              note="GROMACS 기반 alchemical, GPL-3 → research 또는 서브프로세스 격리."),
+    # 단백질 바인더 모달리티
+    Component("bindcraft", ComponentKind.MODEL, "MIT", LicenseTag.COMMERCIAL_SAFE,
+              "https://github.com/martinpacesa/BindCraft",
+              note="Nature 2025, AlphaProteo 오픈 대체. 10-100% 실험 성공률."),
+    # PROTAC/분자글루 (research only — 학습 데이터 출처 모호)
+    Component("protac_jt_vae", ComponentKind.MODEL, "MIT", LicenseTag.COMMERCIAL_SAFE,
+              "https://github.com/divelab/PROTAC",
+              note="JT-VAE 기반 PROTAC 생성. 학습 데이터 검증 필요."),
+    Component("molglue_jtvae", ComponentKind.MODEL, "MIT", LicenseTag.RESEARCH_ONLY,
+              "https://github.com/molecule-glue/glue-design",
+              note="CRBN/VHL 조건부 분자글루. 학습 데이터에 NC 출처 포함 가능 → 안전 기본 research."),
+    # 가속 커널 — NVIDIA EULA, 상업 사용 가능
+    Component("cuequivariance_torch", ComponentKind.TOOL, "NVIDIA EULA",
+              LicenseTag.COMMERCIAL_SAFE,
+              "https://pypi.org/project/cuequivariance-torch/",
+              note="NVIDIA cuEquivariance v0.7+, Boltz-2/Protenix 가속, 상업 OK."),
+    Component("boltz_blackwell", ComponentKind.TOOL, "MIT",
+              LicenseTag.COMMERCIAL_SAFE,
+              "https://pypi.org/project/boltz-blackwell/",
+              note="RTX 5090 (Blackwell)용 Boltz-2 휠. PreRelease."),
+    # 활성 학습 / 점진적 도킹
+    Component("deep_docking", ComponentKind.TOOL, "MIT", LicenseTag.COMMERCIAL_SAFE,
+              "https://github.com/jamesgleave/Deep-Docking-NonAutomated",
+              note="Cherkasov lab Deep Docking — 1.4B 화합물 활성학습."),
+    # PoseBench 검증
+    Component("posebench_v2", ComponentKind.TOOL, "MIT", LicenseTag.COMMERCIAL_SAFE,
+              "https://github.com/BioinfoMachineLearning/PoseBench",
+              note="PoseBench v2 — 308 복합체 apo-to-holo 벤치마크 (Nat Mach Intell 2025)."),
 ]
 
 # --- 데이터 ------------------------------------------------------------------

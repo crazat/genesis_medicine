@@ -1,0 +1,8 @@
+# Stage 8 — 클래식 MM-only short MD (개발/검증용)
+# A3 ML potential은 conf/md/openmm_ml.yaml 사용
+
+enabled: false                    # 기본 비활성. ML potential을 우선.
+engine: openmm
+ns: 5.0
+temperature_k: 310.0
+top_n: 20

@@ -1,0 +1,24 @@
+# Stage 5.5 — BindCraft 단백질 바인더 (B1, MIT)
+# Nature 2025, AlphaProteo 오픈 대체
+
+enabled: false                     # 기본 비활성, 저분자 우선
+engine: bindcraft
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/bindcraft
+weights_dir: ${oc.env:GENESIS_CACHE,./.cache}/bindcraft/weights
+device: cuda:0
+
+# 디자인 파라미터
+binder_length_min: 60
+binder_length_max: 120
+n_designs: 50
+
+# BindCraft가 자동 핫스팟 검출도 가능하지만,
+# 알려진 활성부 잔기 (BACE1 catalytic Asp) 지정 시 더 정확
+target_hotspot_residues: []        # 비워두면 BindCraft 자동 검출
+
+# 후처리
+filter:
+  min_iptm: 0.7                    # 인터페이스 신뢰
+  max_pae: 10.0
+  min_plddt: 80.0

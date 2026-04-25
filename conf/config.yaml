@@ -1,22 +1,27 @@
-# Genesis_Medicine — Hydra 기본 설정
-# 실행: python -m genesis_medicine run disease=alzheimer structure=boltz2
+# Genesis_Medicine v2.1 — 11단계 통합 설정 (ultrathink 2026-04-25)
+# 실행: python -m genesis_medicine run disease=alzheimer build_profile=commercial
 
 defaults:
+  - build_profile: commercial      # commercial | research
   - disease: alzheimer
   - target_discovery: default
-  - structure: boltz2
+  - repurposing: txgnn             # ★ Stage 1.5 — 약물 재창출 (A1)
+  - structure: boltz2              # boltz2 | protenix | openfold3 | consensus | neuralplexer3
+  - ensemble: default              # ★ Stage 2.5 — cryptic pocket (A2)
+  - msa: default                   # ★ S4 — MSA 인프라 (commercial → self_hosted 강제)
   - library: default
   - screening: staged
   - generation: reinvent4
   - admet: admet_ai
   - herbal: default
-  - md: openmm_short
+  - md: openmm_ml                  # ★ Stage 8' — ML potential MD (A3)
+  - abfe: default                  # ★ Stage 8.5 — 절대 결합자유에너지 (A4)
   - reporting: default
   - _self_
 
 project:
   name: genesis_medicine
-  version: "2.0.0a0"
+  version: "2.1.0a0"
   output_dir: ${oc.env:GENESIS_OUT,./runs}/${now:%Y-%m-%d_%H-%M-%S}
   seed: 42
 

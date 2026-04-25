@@ -1,0 +1,19 @@
+# Stage 8' — OpenMM 8.x + MACE-OFF24(M) ML potential refinement (A3)
+
+enabled: true
+engine: openmm_ml
+
+# ML potential
+ml_potential: mace-off24-medium    # mace-off24-small | medium | large | ani-2x | aceff-2.0
+ml_region: ligand_and_pocket       # ligand_only | ligand_and_pocket | full
+pocket_radius: 5.0                 # Å — ML 영역 정의
+
+# 시뮬레이션 파라미터
+ns: 10.0                           # 10 ns 기본. 후보 검증은 50~100 ns
+temperature_k: 310.0
+timestep_fs: 1.0                   # MACE는 1 fs 권장 (stiffness)
+save_interval_ps: 10.0
+device: cuda:0
+
+# Top-N 후보만 정제
+top_n: 50

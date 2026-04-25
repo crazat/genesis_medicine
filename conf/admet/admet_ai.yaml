@@ -1,0 +1,17 @@
+# ADMET-AI v2 — Stage 6 (Stanford, MIT)
+# https://github.com/swansonk14/admet_ai
+
+engine: admet_ai_v2
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/admet_ai
+models_dir: null                  # null이면 admet_ai 패키지 기본 위치
+num_workers: 4
+device: cuda:0
+
+# 안전 임계 (filter_by_admet 사용)
+filter:
+  enabled: true
+  require_bbb: true               # 알츠하이머 — 혈뇌장벽 통과 필요
+  require_herg_safe: true
+  require_dili_safe: true
+  min_qed: 0.4
+  min_solubility_logs: -5.0       # solubility >= -5 (μM 단위 적정)

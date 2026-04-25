@@ -24,7 +24,10 @@ stages:
     engine: boltz2
     top_n: 100
     predict_affinity: true
-    no_kernels: true         # cuequivariance_torch 안정화 전까지
+    sampling_steps_affinity: 200
+    diffusion_samples_affinity: 5
+    affinity_mw_correction: true
+    no_kernels: false        # cuequivariance v0.7+ 설치 환경 기본
 
   - name: gnina_rescore
     engine: gnina_1_3
@@ -47,3 +50,14 @@ consensus:
 parallelism:
   max_gpu_jobs: 1
   use_ray: false
+
+# Active Learning — Deep Docking 점진 (B4)
+# 1.4B+ 라이브러리에서 0.1~0.5%만 도킹하고 99% 회수
+active_learning:
+  enabled: false                  # 라이브러리 ≥ 1M일 때만 켬
+  initial_fraction: 0.01
+  rounds: 4
+  batch_fraction: 0.01
+  exploration_weight: 0.3
+  surrogate: chemprop2            # chemprop2 | random_forest
+  target_score_threshold: null    # 절대 임계 (조기 종료용)

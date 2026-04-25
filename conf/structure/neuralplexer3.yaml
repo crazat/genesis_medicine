@@ -1,0 +1,12 @@
+# NeuralPLexer3 — research only (Iambic Therapeutics 2025-09)
+# 코드 BSD-3 / 웨이트 CC-BY-NC-SA → commercial 빌드 불가
+# 강점: covalent ligand, 15× 빠름
+
+engine: neuralplexer3
+build_profile: research            # commercial → LicenseViolation
+device: cuda:0
+weights_dir: ${oc.env:GENESIS_CACHE,./.cache}/neuralplexer3
+num_samples: 5
+num_recycles: 4                    # NP3는 적은 recycle 권장
+covalent: false                    # 공유결합 ligand이면 true
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/neuralplexer3

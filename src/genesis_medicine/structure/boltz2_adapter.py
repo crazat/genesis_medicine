@@ -38,6 +38,12 @@ class Boltz2Adapter(StructurePredictor):
         num_diffn_samples: int = 25,
         predict_affinity: bool = True,
         device: str = "cuda:0",
+        # affinity head 세부 설정 (2026-04 ultrathink 추가)
+        sampling_steps_affinity: int = 200,
+        diffusion_samples_affinity: int = 5,
+        affinity_mw_correction: bool = True,
+        # 가속 커널 (cuequivariance v0.7+, RTX 5090 boltz-blackwell 호환)
+        no_kernels: bool = False,
     ) -> None:
         self.cache_dir = cache_dir
         self.cache_dir.mkdir(parents=True, exist_ok=True)
@@ -47,6 +53,10 @@ class Boltz2Adapter(StructurePredictor):
         self.num_diffn_samples = num_diffn_samples
         self.predict_affinity = predict_affinity
         self.device = device
+        self.sampling_steps_affinity = sampling_steps_affinity
+        self.diffusion_samples_affinity = diffusion_samples_affinity
+        self.affinity_mw_correction = affinity_mw_correction
+        self.no_kernels = no_kernels
 
     def supports_ligands(self) -> bool:
         return True
@@ -72,9 +82,16 @@ class Boltz2Adapter(StructurePredictor):
                 "--devices", "1",
             ]
             if self.predict_affinity and req.ligands:
-                cmd.append("--predict_affinity")
+                cmd += [
+                    "--sampling_steps_affinity", str(self.sampling_steps_affinity),
+                    "--diffusion_samples_affinity", str(self.diffusion_samples_affinity),
+                ]
+                if self.affinity_mw_correction:
+                    cmd.append("--affinity_mw_correction")
             if req.use_msa and self.msa_server == "colabfold":
                 cmd += ["--use_msa_server"]
+            if self.no_kernels:
+                cmd.append("--no_kernels")
 
             logger.info("Boltz-2 실행: {}", " ".join(cmd))
             subprocess.run(cmd, check=True)

@@ -1,0 +1,24 @@
+# Stage 5.5 — PROTAC + 분자글루 생성 (B2)
+# Multi-target degradation 옵션. AD에서 tau filament, APP 분해 등.
+
+enabled: false                    # 기본 비활성, 멀티타겟 시나리오에서만 켬
+
+protac:
+  enabled: true
+  engine: protac_jt_vae
+  cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/protac
+  weights_path: null
+  device: cuda:0
+  e3_ligase: CRBN                 # CRBN | VHL | MDM2 | IAP
+  linker_length_range: [3, 12]
+  n_molecules: 200
+
+molecular_glue:
+  enabled: false                  # research 빌드 한정
+  engine: molglue_jtvae
+  build_profile: research         # commercial → LicenseViolation
+  cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/glue
+  weights_path: null
+  device: cuda:0
+  rotational_features: true
+  n_molecules: 100

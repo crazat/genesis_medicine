@@ -1,0 +1,26 @@
+# 컨포메이셔널 앙상블 — Stage 2.5 (A2)
+# AlphaFlow + BioEmu — cryptic / allosteric pocket 발굴
+
+enabled: true
+engines:
+  - name: alphaflow
+    enabled: true
+    n_samples: 50
+    weights_dir: ${oc.env:GENESIS_CACHE,./.cache}/alphaflow/weights
+    cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/alphaflow
+
+  - name: bioemu
+    enabled: false                 # AlphaFlow가 안정될 때까지 비활성. 기본은 직교 엔진 1개.
+    n_samples: 50
+    weights_dir: ${oc.env:GENESIS_CACHE,./.cache}/bioemu/weights
+    cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/bioemu
+
+clustering:
+  enabled: true
+  n_clusters: 5                    # 대표 컨포머 수
+
+cryptic_detection:
+  enabled: true
+  distance_threshold: 6.0          # 포켓 매칭 (Å)
+  novelty_min: 0.5                 # cryptic 임계 (apo와 ≥ 50% 거리)
+  min_conformers_with_pocket: 3    # 통계적 일관성 임계

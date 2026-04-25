@@ -2,12 +2,24 @@ engine: boltz2
 model_version: "2.0"
 # MIT 라이선스 · 웨이트 포함 · 상용 허용
 # https://github.com/jwohlwend/boltz
-msa_server: colabfold      # 또는 "none"으로 single-sequence
+
+# MSA — commercial 빌드는 자체 MMseqs2-GPU 호스팅 (S4 모듈),
+#       research 빌드는 colabfold 공용 서버 사용 가능
+msa_server: colabfold        # commercial 빌드에서 "self_hosted"로 자동 전환
 num_recycles: 10
 num_samples: 5
 num_diffn_samples: 25
 use_msa: true
-predict_affinity: true      # Boltz-2 고유: FEP 근사 친화도 출력
-crop_size: 384              # VRAM 24GB 기준
+
+# Boltz-2 affinity head — FEP 근사 친화도 출력 (S1 활성화 2026-04-25)
+predict_affinity: true
+sampling_steps_affinity: 200       # 기본 200 (1~200)
+diffusion_samples_affinity: 5      # 기본 5 (1~50, 클수록 정확/느림)
+affinity_mw_correction: true       # MW 보정 (논문 권고)
+
+# 가속 커널 (S2) — cuequivariance v0.7+ + boltz-blackwell (RTX 5090) 설치 후 false
+no_kernels: false                  # 설치 환경 기본. 미설치 시 true로 fallback.
+
+crop_size: 384                     # VRAM 기준 — 24GB → 384, 32GB → 512
 output_format: mmcif
 cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/boltz2

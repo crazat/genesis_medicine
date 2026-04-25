@@ -1,0 +1,18 @@
+# MSA 설정 (S4 — ultrathink 2026-04-25)
+# commercial 빌드: mmseqs2_local 강제
+# research 빌드: colabfold_public 허용
+
+provider: mmseqs2_local        # mmseqs2_local | colabfold_public
+
+# 자체 호스팅 MMseqs2-GPU
+db_dir: ${oc.env:MMSEQS2_DB,./.cache/mmseqs2_db}
+binary: mmseqs
+threads: 16
+gpu: true                       # NVIDIA Nature Methods 2025 — 1.65× 가속
+
+# 캐시
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/msa
+
+# 검색 파라미터
+max_seqs: 4096
+mode: paired
