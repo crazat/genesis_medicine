@@ -1,0 +1,43 @@
+name,source_botanical,source_korean,cid,category,target_hint,evidence_level,khp_listed,notes
+Asiaticoside,Centella asiatica,병풀,73412,scar+wound,"TGF-β1, MMP, COL1A1",clinical,no,Madecassol active
+Madecassoside,Centella asiatica,병풀,131801373,scar+wound,"TGF-β1, fibroblast",pre-clinical,no,
+Asiatic acid,Centella asiatica,병풀,119034,scar+wound,"COL1A1 induction",pre-clinical,no,saponin aglycone
+Madecassic acid,Centella asiatica,병풀,73412,scar+wound,"COL1A1",pre-clinical,no,
+Shikonin,Lithospermum erythrorhizon,자초,479503,scar+wound+anti-inflam,"NFκB, anti-bact",traditional+pre-clinical,yes,자운고 핵심
+Acetylshikonin,Lithospermum erythrorhizon,자초,5281657,scar+wound,"-",pre-clinical,yes,
+Paeoniflorin,Paeonia lactiflora,작약,442534,scar+atopic,"TGF-β,COX-2",pre-clinical,yes,사물탕/온청음
+Ferulic acid,Angelica sinensis / Cnidium,당귀/천궁,445858,scar+photoaging,"antioxidant, COL1A1",clinical+OTC,yes,SkinCeuticals CEF
+Glycyrrhizin,Glycyrrhiza,감초,14982,acne+anti-inflam,"COX-2, antibact",clinical,yes,
+Licochalcone A,Glycyrrhiza inflata,감초,5318998,acne+pigmentation,"AR, MITF",clinical(Eucerin),no,
+Glabridin,Glycyrrhiza glabra,감초,124052,pigmentation,"Tyrosinase",pre-clinical,no,
+Liquiritin,Glycyrrhiza,감초,503737,pigmentation,"Tyrosinase",clinical(Korean),yes,
+Berberine,Coptis chinensis,황련,2353,acne+atopic,"TLR2, antibact",clinical,yes,황련해독탕
+Baicalin,Scutellaria baicalensis,황금,64982,acne+atopic+anti-inflam,"COX-2, JAK1",clinical(K-Med),yes,황련해독탕
+Baicalein,Scutellaria baicalensis,황금,5281605,acne+anti-inflam,"-",pre-clinical,yes,
+Kojic acid,Aspergillus oryzae fermented,누룩,3840,pigmentation,"Tyrosinase",FDA approved,no,2% topical
+Arbutin,Morus alba,상백피/닥나무,440936,pigmentation,"Tyrosinase",clinical,no,
+alpha-Arbutin,synthetic,-,16215,pigmentation,"Tyrosinase",clinical,no,
+EGCG,Camellia sinensis,녹차,65064,multi(scar+aging+pigment),"MMP-1, JAK, MITF",clinical,no,
+Resveratrol,Vitis vinifera,포도/뽕나무 등,445154,photoaging+pigment,"SIRT1, MITF",clinical,no,
+Quercetin,Multiple,-,5280343,photoaging+atopic,"SIRT1, JAK",pre-clinical,no,
+Niacinamide,synthetic vitamin B3,-,936,multi,"barrier, MMP",clinical,no,
+Ellagic acid,Punica granatum,석류,5281855,pigmentation,"Tyrosinase",pre-clinical,no,
+4-n-butylresorcinol,synthetic,-,68110,pigmentation,"Tyrosinase",clinical,no,
+Bakuchiol,Psoralea corylifolia,보골지,5468522,photoaging,"retinol-like",clinical,no,
+Tetrahydroxystilbene glucoside,Polygonum multiflorum,하수오,5316931,alopecia,"Wnt",pre-clinical,yes,
+Ginsenoside Rg3,Panax ginseng,인삼,9918693,alopecia+photoaging,"-",pre-clinical,yes,
+Ginsenoside Rb1,Panax ginseng,인삼,9898279,alopecia+photoaging,"-",pre-clinical,yes,
+Procyanidin B2,Malus domestica/사과,-,122738,alopecia,"hair growth",pre-clinical,no,
+Apigenin,Multiple,-,5280443,acne+pigment,"AR, anti-inflam",pre-clinical,no,
+Madecassoside,Centella asiatica,병풀,131801373,scar+atopic,"-",clinical,no,duplicate variant note
+Imperatorin,Angelica dahurica,백지,10212,pigment+anti-inflam,"-",pre-clinical,yes,
+Byakangelicin,Angelica dahurica,백지,5281193,pigment,"-",pre-clinical,yes,
+Magnolol,Magnolia officinalis,후박,10170,atopic+anti-inflam,"-",pre-clinical,yes,소풍산
+Honokiol,Magnolia officinalis,후박,72303,atopic+anti-inflam,"-",pre-clinical,yes,
+Curcumin,Curcuma longa,울금,969516,scar+anti-inflam,"NFκB, COX-2",clinical(many),no,
+Salicylic acid,Salix,버드나무,338,acne,"keratolytic",FDA OTC,no,
+Tea tree oil terpinen-4-ol,Melaleuca,-,11230,acne,"antibact",clinical 5%,no,
+Azelaic acid,Wheat fermented,밀,2266,acne+pigment,"PPAR, antibact",FDA approved,no,
+Retinol,synthetic vitamin A,-,445354,photoaging+acne,"RAR",FDA gold,no,
+Bisabolol,Matricaria chamomilla,카모마일,442343,sensitive+anti-inflam,"-",clinical,no,
+Allantoin,Symphytum,컴프리,204,sensitive+wound,"-",FDA OTC,no,

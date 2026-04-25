@@ -1,0 +1,61 @@
+# 여드름 — Genesis_Medicine v3
+# 대상: 염증성 여드름, 면포성 여드름, 호르몬성 여드름
+# 전략: 4축 — 피지 감소 + 각화 정상화 + C. acnes 억제 + 염증 억제
+
+key: acne_vulgaris
+display_name: "Acne vulgaris"
+efo_id: EFO_0003894
+mesh_id: D000152
+icd10: L70
+pubmed_query: '"Acne Vulgaris"[Mesh] AND ("sebum"[All Fields] OR "Cutibacterium acnes"[All Fields])'
+
+priority_regions:
+  - pilosebaceous_unit
+  - sebaceous_gland
+
+known_targets_seed:
+  # === 피지 합성 · 안드로겐 ===
+  - { uniprot: P10275, gene: AR,      name: "Androgen receptor" }
+  - { uniprot: P31213, gene: SRD5A2,  name: "5α-reductase type 2" }
+  - { uniprot: P36956, gene: SREBF1,  name: "Sterol regulatory element-binding protein 1" }
+  - { uniprot: Q15831, gene: STK11,   name: "LKB1 (sebocyte metabolism)" }
+  # === 염증 축 ===
+  - { uniprot: O60603, gene: TLR2,    name: "Toll-like receptor 2 (C. acnes 감지)" }
+  - { uniprot: P35354, gene: PTGS2,   name: "COX-2 (PGE2)" }
+  - { uniprot: Q9H4B4, gene: PLK3,    name: "Serine/threonine-protein kinase PLK3" }
+  # === IL-1β / NLRP3 inflammasome ===
+  - { uniprot: Q9Y5X4, gene: NR2E3,   name: "Nuclear receptor (sebocyte)" }
+  - { uniprot: Q96P20, gene: NLRP3,   name: "NLRP3 inflammasome" }
+
+herbal_prescriptions:
+  - name: "방풍통성산 (Bang-poong-tong-seong-san, 防風通聖散)"
+    role: "발열성 여드름 · 체질 개선"
+    key_compounds: ["baicalin", "ephedrine", "rhein"]
+  - name: "황련해독탕 (Hwang-ryeon-hae-dok-tang, 黃連解毒湯)"
+    role: "급성 염증성 여드름"
+    key_compounds: ["berberine", "baicalein", "palmatine"]
+  - name: "청상방풍탕 (Cheong-sang-bang-poong-tang, 淸上防風湯)"
+    role: "두면부 여드름"
+    key_compounds: ["baicalin", "liquiritin"]
+
+priority_natural_products:
+  - { name: "Licochalcone A", source: "Glycyrrhiza",       cid: 5318998, evidence: "clinical (Eucerin acne)" }
+  - { name: "Berberine",      source: "Coptis/황련",       cid: 2353,    evidence: "antimicrobial + anti-inflam" }
+  - { name: "Baicalin",       source: "Scutellaria",       cid: 64982,   evidence: "anti-inflammatory" }
+  - { name: "Baicalein",      source: "Scutellaria",       cid: 5281605, evidence: "anti-inflammatory" }
+  - { name: "Tea tree oil (Terpinen-4-ol)", source: "Melaleuca", cid: 11230, evidence: "clinical 5% topical" }
+  - { name: "Salicylic acid", source: "Willow",            cid: 338,     evidence: "FDA OTC" }
+  - { name: "Azelaic acid",   source: "Wheat/rye",         cid: 2266,    evidence: "FDA approved" }
+  - { name: "Resveratrol",    source: "Vitis",             cid: 445154,  evidence: "pre-clinical" }
+
+druglike_filter:
+  mw_range: [100, 500]
+  logp_range: [1.0, 4.0]
+  hbd_max: 4
+  hba_max: 7
+  tpsa_range: [20, 120]
+
+evaluation_metrics:
+  - "피지선 타겟 선택성 (AR LBD, SRD5A2)"
+  - "C. acnes growth 저해 예측 (별도 검증 필요)"
+  - "COX-2 선택성 (NSAID 대비 위장 부작용 없음)"

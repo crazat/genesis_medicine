@@ -1,0 +1,56 @@
+# 탈모 (AGA) 타겟 프로파일
+
+category: androgenetic_alopecia
+priority_tier: 3
+
+targets:
+  - key: SRD5A2
+    uniprot: P31213
+    display: "5α-reductase type 2"
+    mode: inhibitor
+    rationale: "finasteride 타겟. 두피 모낭 고발현. Testosterone → DHT 전환 억제."
+    pocket_hint: "NADPH-binding + steroid pocket (membrane-bound)"
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P31213-F1-model_v6.cif"
+    known_inhibitors: ["finasteride", "dutasteride", "gallic acid (mild)"]
+
+  - key: SRD5A1
+    uniprot: P18405
+    display: "5α-reductase type 1"
+    mode: inhibitor
+    rationale: "dutasteride는 dual. type 1 억제로 피지 감소 부가 효과."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P18405-F1-model_v6.cif"
+
+  - key: AR
+    uniprot: P10275
+    display: "Androgen receptor"
+    mode: antagonist           # 두피에서만 선택적 길항 원함 (SARM 방향)
+    rationale: "DHT의 AR 결합 차단으로 모낭 축소 방지. 전신 영향 최소화 필요."
+    pocket_hint: "LBD (ligand binding domain), helix 12 conformation"
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P10275-F1-model_v6.cif"
+
+  - key: WNT10B
+    uniprot: O00744
+    display: "Wnt-10b"
+    mode: agonist_pathway      # Wnt 경로 활성화 (모낭 재생)
+    rationale: "모낭 stem cell 활성. 직접 agonist 어려움, GSK3β 억제로 우회."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-O00744-F1-model_v6.cif"
+
+  - key: CTNNB1
+    uniprot: P35222
+    display: "β-catenin"
+    mode: stabilizer_preserve
+    rationale: "Wnt 하류. stabilize하는 분자가 모낭 재생에 유리."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P35222-F1-model_v6.cif"
+
+  - key: PTGDR2
+    uniprot: Q9Y5Y4
+    display: "PTGDR2 (CRTH2) — PGD2 수용체"
+    mode: antagonist
+    rationale: "탈모에서 PGD2 상승 → DP2 길항 시 모발 성장 (setipiprant 임상 실패 but scalp topical 재검토)."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-Q9Y5Y4-F1-model_v6.cif"
+
+evaluation:
+  selectivity_required:
+    - "SRD5A2 vs SRD5A1 (finasteride selectivity)"
+    - "topical scalp vs systemic AR"
+  bonus_for_topical_only: 0.3

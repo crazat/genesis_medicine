@@ -1,0 +1,62 @@
+# 아토피 피부염 — Genesis_Medicine v3
+# 대상: 소아/성인 아토피 (Th2 축)
+# 전략: JAK/STAT + IL-4/13 + TSLP 억제 + 피부장벽 복원 (filaggrin)
+
+key: atopic_dermatitis
+display_name: "Atopic dermatitis (atopic eczema)"
+efo_id: EFO_0000274              # atopic eczema
+mesh_id: D003876
+icd10: L20
+pubmed_query: '"Dermatitis, Atopic"[Mesh] AND ("JAK"[All Fields] OR "IL-4"[All Fields] OR "TSLP"[All Fields])'
+
+priority_regions:
+  - epidermis_stratum_corneum
+  - skin_immune_infiltrate
+
+known_targets_seed:
+  # === JAK/STAT ===
+  - { uniprot: P23458, gene: JAK1,    name: "Tyrosine-protein kinase JAK1" }
+  - { uniprot: P52333, gene: JAK3,    name: "Tyrosine-protein kinase JAK3" }
+  - { uniprot: O60674, gene: JAK2,    name: "Tyrosine-protein kinase JAK2" }
+  # === IL-4/13 축 ===
+  - { uniprot: P24394, gene: IL4R,    name: "Interleukin-4 receptor alpha (dupilumab target)" }
+  - { uniprot: P35225, gene: IL13,    name: "Interleukin-13" }
+  # === TSLP ===
+  - { uniprot: Q969D9, gene: TSLP,    name: "Thymic stromal lymphopoietin (tezepelumab target)" }
+  # === 피부장벽 ===
+  - { uniprot: P20930, gene: FLG,     name: "Filaggrin" }
+  - { uniprot: P22301, gene: IL10,    name: "Interleukin-10" }
+  # === 가려움 ===
+  - { uniprot: Q15822, gene: CHRNA2,  name: "nAChR alpha-2" }
+  - { uniprot: Q8TDU6, gene: GPBAR1,  name: "GPBAR1 (bile acid, itch)" }
+
+herbal_prescriptions:
+  - name: "온청음 (On-cheong-eum, 溫淸飮)"
+    role: "혈허열 아토피 · 소양"
+    key_compounds: ["paeoniflorin", "berberine", "baicalin"]
+  - name: "당귀음자"
+    role: "만성 소양증 · 건조 피부"
+    key_compounds: ["ferulic acid", "paeoniflorin"]
+  - name: "소풍산 (So-pung-san, 消風散)"
+    role: "풍열 소양"
+    key_compounds: ["tokinolide", "magnolol"]
+
+priority_natural_products:
+  - { name: "Baicalin",        source: "Scutellaria",    cid: 64982,   evidence: "anti-inflammatory clinical" }
+  - { name: "Berberine",       source: "Coptis",         cid: 2353,    evidence: "anti-itch" }
+  - { name: "Paeoniflorin",    source: "Paeonia",        cid: 442534,  evidence: "immunomodulatory" }
+  - { name: "Quercetin",       source: "Multiple",       cid: 5280343, evidence: "JAK inhibitor (pre-clinical)" }
+  - { name: "EGCG",            source: "Green tea",      cid: 65064,   evidence: "Th2 suppression" }
+  - { name: "Centella (madecassoside)", source: "Centella", cid: 73412, evidence: "anti-inflammatory" }
+
+druglike_filter:
+  mw_range: [150, 550]
+  logp_range: [1.0, 4.0]
+  hbd_max: 4
+  hba_max: 8
+  tpsa_range: [40, 140]
+
+evaluation_metrics:
+  - "JAK1/3 ATP binding pocket docking"
+  - "IL-4Rα PPI (어려움, 허들 인지)"
+  - "피부장벽 회복 간접 지표 (FLG 발현 관련 문헌 매칭)"

@@ -1,0 +1,61 @@
+# 색소 / 기미 — Genesis_Medicine v3 2순위
+# 대상: 기미 (melasma), 주근깨, 염증 후 색소침착(PIH), 태양 흑점
+# 전략: 멜라닌 합성 억제 (tyrosinase + MITF 축)
+
+key: pigmentation_melasma
+display_name: "Melasma and hyperpigmentation"
+efo_id: EFO_0003963              # freckles (OT 최근접)
+mesh_id: D008548                 # Melanosis
+icd10: L81                       # Other disorders of pigmentation
+pubmed_query: '("melasma"[All Fields] OR "hyperpigmentation"[All Fields]) AND ("tyrosinase"[All Fields] OR "MITF"[All Fields])'
+
+priority_regions:
+  - epidermis_basal
+  - melanocyte
+
+known_targets_seed:
+  # === 멜라닌 합성 핵심 ===
+  - { uniprot: P14679, gene: TYR,     name: "Tyrosinase (멜라닌 rate-limiting)" }
+  - { uniprot: O75030, gene: MITF,    name: "Microphthalmia-associated transcription factor" }
+  - { uniprot: P17643, gene: TYRP1,   name: "Tyrosinase-related protein 1 (TRP-1)" }
+  - { uniprot: P40126, gene: DCT,     name: "Dopachrome tautomerase (TRP-2)" }
+  # === α-MSH 축 ===
+  - { uniprot: P01189, gene: POMC,    name: "Pro-opiomelanocortin (α-MSH 전구체)" }
+  - { uniprot: Q01726, gene: MC1R,    name: "Melanocortin-1 receptor" }
+  # === 염증 유발 PIH ===
+  - { uniprot: P35354, gene: PTGS2,   name: "Prostaglandin G/H synthase 2 (COX-2)" }
+  # === 각화 / 박리 촉진 (보조) ===
+  - { uniprot: P07477, gene: PRSS1,   name: "Cationic trypsin (박리 관련)" }
+
+herbal_prescriptions:
+  - name: "옥용산 (Ok-yong-san, 玉容散)"
+    role: "미백·기미 외용"
+    key_compounds: ["kojic acid", "arbutin", "glabridin"]
+  - name: "백지(白芷) 복합"
+    role: "미백·흉터 회복"
+    key_compounds: ["byakangelicin", "imperatorin"]
+
+priority_natural_products:
+  - { name: "Licochalcone A",  source: "Glycyrrhiza inflata", cid: 5318998,  evidence: "clinical (Eucerin)" }
+  - { name: "Glabridin",       source: "Glycyrrhiza glabra",  cid: 124052,   evidence: "tyrosinase inhibitor" }
+  - { name: "Kojic acid",      source: "Aspergillus fermented",cid: 3840,    evidence: "FDA approved (2% topical)" }
+  - { name: "Arbutin",         source: "Morus alba / 닥나무",  cid: 440936,   evidence: "clinical" }
+  - { name: "α-arbutin",       source: "synthetic",           cid: 16215,    evidence: "clinical" }
+  - { name: "EGCG",            source: "Green tea",           cid: 65064,    evidence: "pre-clinical" }
+  - { name: "Resveratrol",     source: "Vitis vinifera",      cid: 445154,   evidence: "MITF suppression" }
+  - { name: "Niacinamide",     source: "synthetic",           cid: 936,      evidence: "clinical" }
+  - { name: "Ellagic acid",    source: "Punica",              cid: 5281855,  evidence: "pre-clinical" }
+  - { name: "4-n-butylresorcinol", source: "synthetic",       cid: 11440,    evidence: "clinical" }
+  - { name: "Byakangelicin",   source: "Angelica dahurica",   cid: 5281193,  evidence: "pre-clinical" }
+
+druglike_filter:
+  mw_range: [150, 500]
+  logp_range: [0.5, 3.0]           # 색소 외용은 더 친수성 OK
+  hbd_max: 4
+  hba_max: 7
+  tpsa_range: [30, 120]
+
+evaluation_metrics:
+  - "Tyrosinase 활성부위 docking (monophenolase activity)"
+  - "MITF 전사 활성 간접 억제 (ligand pocket 존재 시)"
+  - "피부 자극 ≤ 0.3 (민감성 피부 고려)"

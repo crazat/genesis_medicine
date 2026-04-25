@@ -1,0 +1,82 @@
+# 흉터 재생 — Genesis_Medicine v3 최우선 파일럿
+# 대상: 여드름 흉터 (박스형/아이스픽/롤링), 위축성 흉터, 비후성 흉터, 켈로이드
+# 전략: 섬유화 억제 + 재생 촉진 + 콜라겐 리모델링
+
+key: scar_regeneration
+display_name: "Skin scar regeneration (composite)"
+efo_id: EFO_0004212              # Keloid (가장 가까운 OT ID) — 보조
+mesh_id: D017439                 # Cicatrix, Hypertrophic
+icd10: L91.0                     # Hypertrophic disorders of skin (L91.0)
+pubmed_query: '("hypertrophic scar"[All Fields] OR "keloid"[All Fields] OR "atrophic scar"[All Fields]) AND ("pathway"[All Fields] OR "target"[All Fields])'
+
+# OT 데이터가 빈약하므로 known_targets_seed를 기본 타겟 집합으로 사용
+# (TGF-β1, MMP, CTGF, COL 등 흉터 재생 핵심 타겟)
+priority_regions:
+  - skin_dermis
+  - papillary_dermis
+  - reticular_dermis
+
+known_targets_seed:
+  # === 섬유화 축 (흉터 형성 억제) ===
+  - { uniprot: P01137, gene: TGFB1,   name: "Transforming growth factor beta-1" }
+  - { uniprot: P84022, gene: SMAD3,   name: "Mothers against decapentaplegic homolog 3" }
+  - { uniprot: P29279, gene: CTGF,    name: "Connective tissue growth factor (CCN2)" }
+  - { uniprot: P28300, gene: LOX,     name: "Lysyl oxidase" }
+  # === 콜라겐 리모델링 (분해·재형성) ===
+  - { uniprot: P03956, gene: MMP1,    name: "Interstitial collagenase (MMP-1)" }
+  - { uniprot: P08254, gene: MMP3,    name: "Stromelysin-1 (MMP-3)" }
+  - { uniprot: P14780, gene: MMP9,    name: "Matrix metalloproteinase-9 (gelatinase B)" }
+  - { uniprot: P02452, gene: COL1A1,  name: "Collagen alpha-1(I) chain" }
+  - { uniprot: P02458, gene: COL2A1,  name: "Collagen alpha-1(II) chain" }
+  - { uniprot: P02461, gene: COL3A1,  name: "Collagen alpha-1(III) chain" }
+  # === 재생 촉진 (atrophic scar, 위축성 흉터) ===
+  - { uniprot: P15692, gene: VEGFA,   name: "Vascular endothelial growth factor A" }
+  - { uniprot: P04085, gene: PDGFA,   name: "Platelet-derived growth factor A" }
+  - { uniprot: P09038, gene: FGF2,    name: "Fibroblast growth factor 2 (basic FGF)" }
+  - { uniprot: P01133, gene: EGF,     name: "Epidermal growth factor" }
+  # === 모낭 재생 / Wnt 축 ===
+  - { uniprot: O00744, gene: WNT10B,  name: "Protein Wnt-10b" }
+  - { uniprot: P35222, gene: CTNNB1,  name: "Catenin beta-1" }
+
+# 한방 처방 · 외용제 관련성 (research 빌드에서 네트워크 매핑)
+herbal_prescriptions:
+  - name: "자운고 (Jawoon-go, 紫雲膏)"
+    role: "외용 흉터·창상·화상 고약"
+    key_compounds: ["shikonin", "acetylshikonin", "ferulic acid"]
+  - name: "당귀음자 (Danggui-eumja, 當歸飮子)"
+    role: "혈허성 피부 소양 · 흉터"
+    key_compounds: ["ferulic acid", "ligustilide"]
+  - name: "생기산 (Saeng-gi-san, 生肌散)"
+    role: "육아 형성 · 새살 촉진"
+    key_compounds: ["shikonin", "calendula extract"]
+  - name: "활혈거어탕 (Huohxuequyutang, 活血祛瘀湯)"
+    role: "비후성 흉터 · 켈로이드"
+    key_compounds: ["paeoniflorin", "ferulic acid"]
+
+# 핵심 천연물 (최우선 검증 대상)
+priority_natural_products:
+  - { name: "Asiaticoside",   source: "Centella asiatica",  cid: 73412,    evidence: "clinical (Madecassol)" }
+  - { name: "Madecassoside",  source: "Centella asiatica",  cid: 73412,    evidence: "pre-clinical" }
+  - { name: "Asiatic acid",   source: "Centella asiatica",  cid: 119034,   evidence: "pre-clinical" }
+  - { name: "Madecassic acid",source: "Centella asiatica",  cid: 73412,    evidence: "pre-clinical" }
+  - { name: "Shikonin",       source: "Lithospermum",       cid: 479503,   evidence: "외용제 자운고" }
+  - { name: "Acetylshikonin", source: "Lithospermum",       cid: 5281657,  evidence: "외용제" }
+  - { name: "Paeoniflorin",   source: "Paeonia",            cid: 442534,   evidence: "anti-fibrotic" }
+  - { name: "Ferulic acid",   source: "Angelica/Cnidium",   cid: 445858,   evidence: "콜라겐 합성 지원" }
+  - { name: "Glycyrrhizin",   source: "Licorice",           cid: 14982,    evidence: "항염" }
+
+# 물성 가이드 (경피 흡수 + 외용제 친화)
+druglike_filter:
+  mw_range: [150, 500]             # Lipinski + 피부 침투
+  logp_range: [1.5, 3.5]           # 경피 흡수 최적
+  hbd_max: 3                       # 수소결합 공여체
+  hba_max: 6                       # 수소결합 수용체
+  tpsa_range: [20, 100]            # 극성 표면적
+  logkp_min: -8.0                  # 경피 투과 계수 (cm/h, log)
+
+# 평가 지표
+evaluation_metrics:
+  - "affinity_probability_binary ≥ 0.6 (Boltz-2)"
+  - "TGF-β1 억제 + VEGF/FGF 유지 (dual action)"
+  - "합성 가능성 SA ≤ 5"
+  - "피부 자극 ADMET endpoint ≤ 0.5"

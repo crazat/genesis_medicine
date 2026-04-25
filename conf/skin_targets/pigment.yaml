@@ -1,0 +1,47 @@
+# 색소 / 기미 타겟 프로파일
+
+category: pigmentation_melasma
+priority_tier: 2
+
+targets:
+  - key: TYR
+    uniprot: P14679
+    display: "Tyrosinase"
+    mode: inhibitor
+    rationale: "Tyrosine → DOPA 율속 단계. copper-binding 활성부 명확."
+    pocket_hint: "binuclear copper active site"
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P14679-F1-model_v6.cif"
+    known_inhibitors: ["kojic acid", "arbutin", "ellagic acid", "licochalcone A"]
+
+  - key: TYRP1
+    uniprot: P17643
+    display: "TRP-1"
+    mode: inhibitor
+    rationale: "DHI-2-carboxylic acid 산화. TYR 계열 선택성 필요."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P17643-F1-model_v6.cif"
+
+  - key: DCT
+    uniprot: P40126
+    display: "TRP-2 (DCT)"
+    mode: inhibitor
+    rationale: "dopachrome 이성질체화."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P40126-F1-model_v6.cif"
+
+  - key: MITF
+    uniprot: O75030
+    display: "MITF (Microphthalmia TF)"
+    mode: transcription_suppressor
+    rationale: "멜라닌 세포 master TF. DNA-binding domain + IDR. small-molecule hard but IPN 가능."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-O75030-F1-model_v6.cif"
+
+  - key: MC1R
+    uniprot: Q01726
+    display: "MC1R"
+    mode: antagonist_possible
+    rationale: "α-MSH 수용체. GPCR. 선택적 길항제로 멜라닌 합성 감소."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-Q01726-F1-model_v6.cif"
+
+evaluation:
+  dual_action_bonus: 0.25     # TYR + MITF 동시 타겟
+  selectivity_required:
+    - "tyrosinase isoforms (human vs fungal)"

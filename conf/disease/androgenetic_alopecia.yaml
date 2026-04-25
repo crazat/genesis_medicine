@@ -1,0 +1,61 @@
+# 탈모 (AGA) — Genesis_Medicine v3 3순위
+# 대상: 남성형/여성형 안드로겐성 탈모 (androgenetic alopecia)
+# 전략: 5α-reductase 억제 + 안드로겐 수용체 대응 + Wnt/β-catenin 모낭 재활성
+
+key: androgenetic_alopecia
+display_name: "Androgenetic alopecia (male/female pattern)"
+efo_id: EFO_0004191
+mesh_id: D000505
+icd10: L64
+pubmed_query: '"Alopecia, Androgenetic"[Mesh] AND ("5-alpha-reductase"[All Fields] OR "Wnt"[All Fields])'
+
+priority_regions:
+  - hair_follicle_bulb
+  - dermal_papilla
+  - scalp
+
+known_targets_seed:
+  # === 5α-reductase / 안드로겐 축 ===
+  - { uniprot: P18405, gene: SRD5A1,  name: "3-oxo-5-alpha-steroid 4-dehydrogenase 1" }
+  - { uniprot: P31213, gene: SRD5A2,  name: "3-oxo-5-alpha-steroid 4-dehydrogenase 2 (finasteride target)" }
+  - { uniprot: P10275, gene: AR,      name: "Androgen receptor" }
+  # === 모낭 재생 / Wnt 축 ===
+  - { uniprot: O00744, gene: WNT10B,  name: "Protein Wnt-10b" }
+  - { uniprot: P35222, gene: CTNNB1,  name: "Catenin beta-1 (β-catenin)" }
+  - { uniprot: Q9UJU2, gene: LEF1,    name: "Lymphoid enhancer-binding factor 1" }
+  - { uniprot: Q9H461, gene: FZD8,    name: "Frizzled-8 (Wnt receptor)" }
+  # === PGD2 — 탈모 억제 phosphatase ===
+  - { uniprot: O00418, gene: EEF2K,   name: "eEF-2 kinase (stress)" }
+  - { uniprot: Q13258, gene: PTGDR,   name: "Prostaglandin D2 receptor" }
+  # === VEGF — 혈관 공급 ===
+  - { uniprot: P15692, gene: VEGFA,   name: "Vascular endothelial growth factor A" }
+
+herbal_prescriptions:
+  - name: "하수오 복합 (何首烏)"
+    role: "신허성 탈모, Wnt 경로 간접 자극"
+    key_compounds: ["THSG", "emodin"]
+  - name: "측백엽 외용"
+    role: "두피 혈행 + 5αR 완화"
+    key_compounds: ["cedrol", "totarol"]
+
+priority_natural_products:
+  - { name: "Tetrahydroxystilbene glucoside (THSG)", source: "Polygonum multiflorum", cid: 5316931, evidence: "pre-clinical" }
+  - { name: "Ginsenoside Rg3", source: "Panax ginseng",     cid: 9918693,   evidence: "pre-clinical hair growth" }
+  - { name: "Ginsenoside Rb1", source: "Panax ginseng",     cid: 9898279,   evidence: "pre-clinical" }
+  - { name: "Totarol",         source: "Podocarpus/측백",   cid: 442466,    evidence: "dermal papilla" }
+  - { name: "Gallic acid",     source: "Multiple herbs",    cid: 370,       evidence: "mild 5αR inhibitor" }
+  - { name: "Procyanidin B2",  source: "Apple peel",        cid: 122738,    evidence: "hair growth" }
+  - { name: "EGCG",            source: "Green tea",         cid: 65064,     evidence: "5αR inhibitor" }
+  - { name: "Apigenin",        source: "Multiple",          cid: 5280443,   evidence: "anti-androgen" }
+
+druglike_filter:
+  mw_range: [150, 500]
+  logp_range: [2.0, 4.5]           # 두피·모낭 침투
+  hbd_max: 3
+  hba_max: 6
+  tpsa_range: [20, 90]
+
+evaluation_metrics:
+  - "5α-reductase 활성부 docking (SRD5A2 우선)"
+  - "안드로겐 수용체 길항 (AR LBD) 가능성"
+  - "Wnt/β-catenin 활성화 약물 (우호적)"

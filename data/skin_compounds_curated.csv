@@ -1,0 +1,43 @@
+name,source_botanical,source_korean,cid,smiles,mw,logp,hbd,hba,tpsa,rotbonds,category,target_hint,evidence_level,khp_listed,notes
+Asiaticoside,Centella asiatica,병풀,73412,C[C@@H]1CC[C@@]2(CC[C@@]3(C(=CC[C@H]4[C@]3(C[C@H]([C@@H]5[C@@]4(C[C@H]([C@@H]([C@@]5(C)CO)O)O)C)O)C)[C@@H]2[C@H]1C)C)C(=O)O,504.7,4.4,5,6,118.0,2,scar+wound,"TGF-β1, MMP, COL1A1",clinical,no,Madecassol active
+Madecassoside,Centella asiatica,병풀,131801373,C[C@@H]1CC[C@@]2(CC[C@]3(C(=CC[C@H]4[C@]3(C[C@H]([C@H]5[C@@]4(C[C@H]([C@@H]([C@@]5(C)CO)O)O)C)O)C)[C@@H]2[C@H]1C)C)C(=O)O[C@H]6[C@@H]([C@H]([C@@H]([C@H](O6)CO[C@H]7[C@@H]([C@H]([C@@H]([C@H](O7)CO)O[C@H]8[C@@H]([C@@H]([C@H]([C@@H](O8)C)O)O)O)O)O)O)O)O,975.1,-1.2,13,20,335.0,10,scar+wound,"TGF-β1, fibroblast",pre-clinical,no,
+Asiatic acid,Centella asiatica,병풀,119034,C[C@@H]1CC[C@@]2(CC[C@@]3(C(=CC[C@H]4[C@]3(CC[C@@H]5[C@@]4(C[C@H]([C@@H]([C@@]5(C)CO)O)O)C)C)[C@@H]2[C@H]1C)C)C(=O)O,488.7,5.7,4,5,98.0,2,scar+wound,COL1A1 induction,pre-clinical,no,saponin aglycone
+Madecassic acid,Centella asiatica,병풀,73412,C[C@@H]1CC[C@@]2(CC[C@@]3(C(=CC[C@H]4[C@]3(C[C@H]([C@@H]5[C@@]4(C[C@H]([C@@H]([C@@]5(C)CO)O)O)C)O)C)[C@@H]2[C@H]1C)C)C(=O)O,504.7,4.4,5,6,118.0,2,scar+wound,COL1A1,pre-clinical,no,
+Shikonin,Lithospermum erythrorhizon,자초,479503,CC(=CC[C@H](C1=CC(=O)C2=C(C=CC(=C2C1=O)O)O)O)C,288.29,3.0,3,5,94.8,3,scar+wound+anti-inflam,"NFκB, anti-bact",traditional+pre-clinical,yes,자운고 핵심
+Acetylshikonin,Lithospermum erythrorhizon,자초,5281657,CC1=CC(=CC2=C1C(=O)C3=C(C=C(C=C3O2)O)O)O,258.23,2.8,3,5,87.0,0,scar+wound,-,pre-clinical,yes,
+Paeoniflorin,Paeonia lactiflora,작약,442534,C[C@]12C[C@@]3([C@@H]4C[C@]1([C@@]4([C@H](O2)O3)COC(=O)C5=CC=CC=C5)O[C@H]6[C@@H]([C@H]([C@@H]([C@H](O6)CO)O)O)O)O,480.5,-1.0,5,11,164.0,7,scar+atopic,"TGF-β,COX-2",pre-clinical,yes,사물탕/온청음
+Ferulic acid,Angelica sinensis / Cnidium,당귀/천궁,445858,COC1=C(C=CC(=C1)/C=C/C(=O)O)O,194.18,1.5,2,4,66.8,3,scar+photoaging,"antioxidant, COL1A1",clinical+OTC,yes,SkinCeuticals CEF
+Glycyrrhizin,Glycyrrhiza,감초,14982,C[C@]12CC[C@](C[C@H]1C3=CC(=O)[C@@H]4[C@]5(CC[C@@H](C([C@@H]5CC[C@]4([C@@]3(CC2)C)C)(C)C)O[C@@H]6[C@@H]([C@H]([C@@H]([C@H](O6)C(=O)O)O)O)O[C@H]7[C@@H]([C@H]([C@@H]([C@H](O7)C(=O)O)O)O)O)C)(C)C(=O)O,822.9,3.7,8,16,267.0,7,acne+anti-inflam,"COX-2, antibact",clinical,yes,
+Licochalcone A,Glycyrrhiza inflata,감초,5318998,CC(C)(C=C)C1=C(C=C(C(=C1)/C=C/C(=O)C2=CC=C(C=C2)O)OC)O,338.4,4.9,2,4,66.8,6,acne+pigmentation,"AR, MITF",clinical(Eucerin),no,
+Glabridin,Glycyrrhiza glabra,감초,124052,CC1(C=CC2=C(O1)C=CC3=C2OC[C@H](C3)C4=C(C=C(C=C4)O)O)C,324.4,3.9,2,4,58.9,1,pigmentation,Tyrosinase,pre-clinical,no,
+Liquiritin,Glycyrrhiza,감초,503737,C1[C@H](OC2=C(C1=O)C=CC(=C2)O)C3=CC=C(C=C3)O[C@H]4[C@@H]([C@H]([C@@H]([C@H](O4)CO)O)O)O,418.4,0.4,5,9,146.0,4,pigmentation,Tyrosinase,clinical(Korean),yes,
+Berberine,Coptis chinensis,황련,2353,COC1=C(C2=C[N+]3=C(C=C2C=C1)C4=CC5=C(C=C4CC3)OCO5)OC,336.4,3.6,0,4,40.8,2,acne+atopic,"TLR2, antibact",clinical,yes,황련해독탕
+Baicalin,Scutellaria baicalensis,황금,64982,C1=CC=C(C=C1)C2=CC(=O)C3=C(C(=C(C=C3O2)O[C@H]4[C@@H]([C@H]([C@@H]([C@H](O4)C(=O)O)O)O)O)O)O,446.4,1.1,6,11,183.0,4,acne+atopic+anti-inflam,"COX-2, JAK1",clinical(K-Med),yes,황련해독탕
+Baicalein,Scutellaria baicalensis,황금,5281605,C1=CC=C(C=C1)C2=CC(=O)C3=C(O2)C=C(C(=C3O)O)O,270.24,1.7,3,5,87.0,1,acne+anti-inflam,-,pre-clinical,yes,
+Kojic acid,Aspergillus oryzae fermented,누룩,3840,C1=C(OC=C(C1=O)O)CO,142.11,-0.9,2,4,66.8,1,pigmentation,Tyrosinase,FDA approved,no,2% topical
+Arbutin,Morus alba,상백피/닥나무,440936,C1=CC(=CC=C1O)O[C@H]2[C@@H]([C@H]([C@@H]([C@H](O2)CO)O)O)O,272.25,-0.7,5,7,120.0,3,pigmentation,Tyrosinase,clinical,no,
+alpha-Arbutin,synthetic,-,16215,CCCCCCCCCN,143.27,3.7,1,1,26.0,7,pigmentation,Tyrosinase,clinical,no,
+EGCG,Camellia sinensis,녹차,65064,C1[C@H]([C@H](OC2=CC(=CC(=C21)O)O)C3=CC(=C(C(=C3)O)O)O)OC(=O)C4=CC(=C(C(=C4)O)O)O,458.4,1.2,8,11,197.0,4,multi(scar+aging+pigment),"MMP-1, JAK, MITF",clinical,no,
+Resveratrol,Vitis vinifera,포도/뽕나무 등,445154,C1=CC(=CC=C1/C=C/C2=CC(=CC(=C2)O)O)O,228.24,3.1,3,3,60.7,2,photoaging+pigment,"SIRT1, MITF",clinical,no,
+Quercetin,Multiple,-,5280343,C1=CC(=C(C=C1C2=C(C(=O)C3=C(C=C(C=C3O2)O)O)O)O)O,302.23,1.5,5,7,127.0,1,photoaging+atopic,"SIRT1, JAK",pre-clinical,no,
+Niacinamide,synthetic vitamin B3,-,936,C1=CC(=CN=C1)C(=O)N,122.12,-0.4,1,2,56.0,1,multi,"barrier, MMP",clinical,no,
+Ellagic acid,Punica granatum,석류,5281855,C1=C2C3=C(C(=C1O)O)OC(=O)C4=CC(=C(C(=C43)OC2=O)O)O,302.19,1.1,4,8,134.0,0,pigmentation,Tyrosinase,pre-clinical,no,
+4-n-butylresorcinol,synthetic,-,68110,C1COC2=CC=CC=C2C1=O,148.16,1.4,0,2,26.3,0,pigmentation,Tyrosinase,clinical,no,
+Bakuchiol,Psoralea corylifolia,보골지,5468522,CC(=CCC[C@@](C)(C=C)/C=C/C1=CC=C(C=C1)O)C,256.4,6.1,1,1,20.2,6,photoaging,retinol-like,clinical,no,
+Tetrahydroxystilbene glucoside,Polygonum multiflorum,하수오,5316931,C1=CC=C(C=C1)CCC(CC/C=C/C2=CC=CC=C2)O,266.4,4.9,1,1,20.2,7,alopecia,Wnt,pre-clinical,yes,
+Ginsenoside Rg3,Panax ginseng,인삼,9918693,CC(=CCC[C@@](C)([C@H]1CC[C@@]2([C@@H]1[C@@H](C[C@H]3[C@]2(CC[C@@H]4[C@@]3(CC[C@@H](C4(C)C)O[C@H]5[C@@H]([C@H]([C@@H]([C@H](O5)CO)O)O)O[C@H]6[C@@H]([C@H]([C@@H]([C@H](O6)CO)O)O)O)C)C)O)C)O)C,785.0,4.0,9,13,219.0,10,alopecia+photoaging,-,pre-clinical,yes,
+Ginsenoside Rb1,Panax ginseng,인삼,9898279,CC(=CCC[C@@](C)([C@H]1CC[C@@]2([C@@H]1[C@@H](C[C@H]3[C@]2(CC[C@@H]4[C@@]3(CC[C@@H](C4(C)C)O[C@H]5[C@@H]([C@H]([C@@H]([C@H](O5)CO)O)O)O[C@H]6[C@@H]([C@H]([C@@H]([C@H](O6)CO)O)O)O)C)C)O)C)O[C@H]7[C@@H]([C@H]([C@@H]([C@H](O7)CO[C@H]8[C@@H]([C@H]([C@@H]([C@H](O8)CO)O)O)O)O)O)O)C,1109.3,0.3,15,23,377.0,16,alopecia+photoaging,-,pre-clinical,yes,
+Procyanidin B2,Malus domestica/사과,-,122738,C1[C@H]([C@H](OC2=C1C(=CC(=C2[C@@H]3[C@H]([C@H](OC4=CC(=CC(=C34)O)O)C5=CC(=C(C=C5)O)O)O)O)O)C6=CC(=C(C=C6)O)O)O,578.5,2.4,10,12,221.0,3,alopecia,hair growth,pre-clinical,no,
+Apigenin,Multiple,-,5280443,C1=CC(=CC=C1C2=CC(=O)C3=C(C=C(C=C3O2)O)O)O,270.24,1.7,3,5,87.0,1,acne+pigment,"AR, anti-inflam",pre-clinical,no,
+Madecassoside,Centella asiatica,병풀,131801373,C[C@@H]1CC[C@@]2(CC[C@]3(C(=CC[C@H]4[C@]3(C[C@H]([C@H]5[C@@]4(C[C@H]([C@@H]([C@@]5(C)CO)O)O)C)O)C)[C@@H]2[C@H]1C)C)C(=O)O[C@H]6[C@@H]([C@H]([C@@H]([C@H](O6)CO[C@H]7[C@@H]([C@H]([C@@H]([C@H](O7)CO)O[C@H]8[C@@H]([C@@H]([C@H]([C@@H](O8)C)O)O)O)O)O)O)O)O,975.1,-1.2,13,20,335.0,10,scar+atopic,-,clinical,no,duplicate variant note
+Imperatorin,Angelica dahurica,백지,10212,CC(=CCOC1=C2C(=CC3=C1OC=C3)C=CC(=O)O2)C,270.28,3.4,0,4,48.7,3,pigment+anti-inflam,-,pre-clinical,yes,
+Byakangelicin,Angelica dahurica,백지,5281193,C1C[C@H](/[N+](=C\C=C\2/C[C@H](NC(=C2)C(=O)O)C(=O)O)/C1)C(=O)O,309.29,-0.3,4,7,127.0,4,pigment,-,pre-clinical,yes,
+Magnolol,Magnolia officinalis,후박,10170,CN1CCC2=CC(=C3C=C2C1CC4=CC=C(C=C4)OC5=C(C=CC(=C5)CC6C7=C(O3)C(=C(C=C7CCN6C)OC)OC)O)OC,608.7,6.1,1,8,72.9,3,atopic+anti-inflam,-,pre-clinical,yes,소풍산
+Honokiol,Magnolia officinalis,후박,72303,C=CCC1=CC(=C(C=C1)O)C2=CC(=C(C=C2)O)CC=C,266.3,5.0,2,2,40.5,5,atopic+anti-inflam,-,pre-clinical,yes,
+Curcumin,Curcuma longa,울금,969516,COC1=C(C=CC(=C1)/C=C/C(=O)CC(=O)/C=C/C2=CC(=C(C=C2)O)OC)O,368.4,3.2,2,6,93.1,8,scar+anti-inflam,"NFκB, COX-2",clinical(many),no,
+Salicylic acid,Salix,버드나무,338,C1=CC=C(C(=C1)C(=O)O)O,138.12,2.3,2,3,57.5,1,acne,keratolytic,FDA OTC,no,
+Tea tree oil terpinen-4-ol,Melaleuca,-,11230,CC1=CCC(CC1)(C(C)C)O,154.25,2.2,1,1,20.2,1,acne,antibact,clinical 5%,no,
+Azelaic acid,Wheat fermented,밀,2266,C(CCCC(=O)O)CCCC(=O)O,188.22,1.6,2,4,74.6,8,acne+pigment,"PPAR, antibact",FDA approved,no,
+Retinol,synthetic vitamin A,-,445354,CC1=C(C(CCC1)(C)C)/C=C/C(=C/C=C/C(=C/CO)/C)/C,286.5,5.7,1,1,20.2,5,photoaging+acne,RAR,FDA gold,no,
+Bisabolol,Matricaria chamomilla,카모마일,442343,CC1=CC[C@H](CC1)[C@](C)(CCC=C(C)C)O,222.37,3.8,1,1,20.2,4,sensitive+anti-inflam,-,clinical,no,
+Allantoin,Symphytum,컴프리,204,C1(C(=O)NC(=O)N1)NC(=O)N,158.12,-2.2,4,3,113.0,1,sensitive+wound,-,FDA OTC,no,

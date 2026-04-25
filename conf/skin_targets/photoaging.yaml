@@ -1,0 +1,54 @@
+# 광노화 / 안티에이징 타겟 프로파일
+
+category: photoaging
+priority_tier: 5
+
+targets:
+  # === MMP 억제 (UV-유발 콜라겐 분해) ===
+  - key: MMP1
+    uniprot: P03956
+    display: "MMP-1"
+    mode: inhibitor
+    rationale: "UV 유도 type I 콜라겐 분해."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P03956-F1-model_v6.cif"
+
+  - key: MMP3
+    uniprot: P08254
+    display: "MMP-3"
+    mode: inhibitor
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P08254-F1-model_v6.cif"
+
+  - key: MMP9
+    uniprot: P14780
+    display: "MMP-9"
+    mode: inhibitor
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P14780-F1-model_v6.cif"
+
+  # === SIRT1 활성화 (수명·콜라겐 보존) ===
+  - key: SIRT1
+    uniprot: Q96EB6
+    display: "SIRT1"
+    mode: allosteric_activator
+    rationale: "resveratrol 계열. NAD-dependent deacetylase. allosteric 활성화 입증."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-Q96EB6-F1-model_v6.cif"
+    known_activators: ["resveratrol", "SRT1720", "SRT2104"]
+
+  # === 콜라겐 합성 보존 ===
+  - key: COL1A1
+    uniprot: P02452
+    display: "COL1A1"
+    mode: support_expression
+    rationale: "직접 결합 대상이라기보다 발현 증가시키는 간접 타겟."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P02452-F1-model_v6.cif"
+
+  # === AP-1 (UV 시그널 조절) ===
+  - key: JUN
+    uniprot: P05412
+    display: "c-Jun (AP-1)"
+    mode: suppressor
+    rationale: "UV → c-Jun → MMP 발현. c-Jun 안정화 억제."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P05412-F1-model_v6.cif"
+
+evaluation:
+  antioxidant_bonus: 0.2         # 별도 DPPH/ORAC 유사 지표 가점
+  pref_dual_action: "MMP inhibitor + SIRT1 activator"

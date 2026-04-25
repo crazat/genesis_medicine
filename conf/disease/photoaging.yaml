@@ -1,0 +1,62 @@
+# 광노화 / 안티에이징 — Genesis_Medicine v3
+# 대상: UV 손상에 의한 주름, 탄력 저하, 색소 불균일
+# 전략: MMP 억제 + 콜라겐/엘라스틴 합성 유지 + SIRT1 활성화
+
+key: photoaging
+display_name: "Photoaging (extrinsic skin aging)"
+efo_id: null                      # Open Targets에 미수록 → 타겟 기반으로만
+mesh_id: D000375                  # Aging / Skin Aging
+icd10: L57                        # 광노화성 피부 변화
+pubmed_query: '"skin aging"[Mesh] AND ("MMP"[All Fields] OR "collagen"[All Fields] OR "SIRT"[All Fields])'
+
+priority_regions:
+  - epidermis
+  - papillary_dermis
+  - basement_membrane
+
+known_targets_seed:
+  # === MMP — UVR 유도 콜라겐 분해 ===
+  - { uniprot: P03956, gene: MMP1,    name: "Interstitial collagenase" }
+  - { uniprot: P08254, gene: MMP3,    name: "Stromelysin-1" }
+  - { uniprot: P14780, gene: MMP9,    name: "Gelatinase B" }
+  # === 콜라겐/엘라스틴 합성 축 ===
+  - { uniprot: P02452, gene: COL1A1,  name: "Collagen α-1(I)" }
+  - { uniprot: P15502, gene: ELN,     name: "Elastin" }
+  - { uniprot: P35555, gene: FBN1,    name: "Fibrillin-1" }
+  # === sirtuin / 수명 경로 ===
+  - { uniprot: Q96EB6, gene: SIRT1,   name: "NAD-dependent protein deacetylase sirtuin-1" }
+  - { uniprot: Q9NXA8, gene: SIRT5,   name: "NAD-dependent protein deacetylase sirtuin-5" }
+  # === AP-1 / NF-kB UV 시그널 ===
+  - { uniprot: P15336, gene: ATF2,    name: "Cyclic AMP-dependent transcription factor ATF-2" }
+  - { uniprot: P05412, gene: JUN,     name: "Transcription factor AP-1 (c-Jun)" }
+
+herbal_prescriptions:
+  - name: "사물탕 (Sa-mul-tang, 四物湯)"
+    role: "혈허 개선 · 콜라겐 합성 보조"
+    key_compounds: ["paeoniflorin", "ferulic acid", "ligustilide"]
+  - name: "옥용산"
+    role: "광노화 · 미백 외용"
+    key_compounds: ["arbutin", "niacinamide (유도체)"]
+
+priority_natural_products:
+  - { name: "Resveratrol",        source: "Vitis",         cid: 445154,  evidence: "SIRT1 activator" }
+  - { name: "EGCG",               source: "Green tea",     cid: 65064,   evidence: "MMP-1 inhibitor (clinical)" }
+  - { name: "Ferulic acid",       source: "Angelica",      cid: 445858,  evidence: "antioxidant, SkinCeuticals CEF" }
+  - { name: "Pycnogenol / OPC",   source: "Pinus pinaster",cid: 65064,   evidence: "clinical" }
+  - { name: "Niacinamide",        source: "synthetic",     cid: 936,     evidence: "FDA" }
+  - { name: "Retinol",            source: "synthetic",     cid: 445354,  evidence: "FDA gold standard" }
+  - { name: "Quercetin",          source: "Multiple",      cid: 5280343, evidence: "SIRT1 activator" }
+  - { name: "Ginsenoside Rb1",    source: "Panax",         cid: 9898279, evidence: "pre-clinical" }
+  - { name: "Bakuchiol",          source: "Psoralea",      cid: 5468522, evidence: "retinol-like (clinical)" }
+
+druglike_filter:
+  mw_range: [150, 600]
+  logp_range: [1.5, 5.0]
+  hbd_max: 5
+  hba_max: 8
+  tpsa_range: [20, 130]
+
+evaluation_metrics:
+  - "MMP-1 active-site docking"
+  - "SIRT1 activator 가능성 (allosteric)"
+  - "항산화 지표 (별도 DPPH/ORAC 근사)"

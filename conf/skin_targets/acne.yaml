@@ -1,0 +1,63 @@
+# 여드름 타겟 프로파일 (4축 공략)
+
+category: acne_vulgaris
+priority_tier: 4
+
+targets:
+  # === 축 1: 피지 감소 (안드로겐) ===
+  - key: SRD5A2
+    uniprot: P31213
+    display: "5α-reductase type 2"
+    mode: inhibitor
+    rationale: "피지선 DHT 억제."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P31213-F1-model_v6.cif"
+
+  - key: AR
+    uniprot: P10275
+    display: "Androgen receptor"
+    mode: antagonist
+    rationale: "clascoterone(topical AR 길항) 2020 FDA 승인. 선택적 topical 선호."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P10275-F1-model_v6.cif"
+
+  # === 축 2: 각화 정상화 ===
+  - key: RARG
+    uniprot: P13631
+    display: "Retinoic acid receptor gamma"
+    mode: agonist
+    rationale: "tretinoin/adapalene 계열. 모낭각화 정상화."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P13631-F1-model_v6.cif"
+
+  # === 축 3: C. acnes 염증 반응 ===
+  - key: TLR2
+    uniprot: O60603
+    display: "TLR2"
+    mode: antagonist_modulator
+    rationale: "C. acnes 펩티도글리칸 → TLR2 → NFκB. 과도 활성 억제."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-O60603-F1-model_v6.cif"
+
+  - key: NLRP3
+    uniprot: Q96P20
+    display: "NLRP3 inflammasome"
+    mode: inhibitor
+    rationale: "IL-1β 성숙. 여드름 염증 핵심."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-Q96P20-F1-model_v6.cif"
+
+  # === 축 4: 피지 생합성 ===
+  - key: SREBF1
+    uniprot: P36956
+    display: "SREBP1"
+    mode: suppressor
+    rationale: "피지 생합성 master TF."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P36956-F1-model_v6.cif"
+
+  - key: PTGS2
+    uniprot: P35354
+    display: "COX-2"
+    mode: selective_inhibitor
+    rationale: "염증성 lesion PGE2. 위장관 부작용 없는 local 억제."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P35354-F1-model_v6.cif"
+
+evaluation:
+  multi_axis_bonus:
+    - "2개 축 이상 동시 hit 시 +0.3"
+    - "선호: AR 길항 + TLR2/NLRP3 (Licochalcone A 프로파일)"

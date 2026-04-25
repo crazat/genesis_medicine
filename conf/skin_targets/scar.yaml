@@ -1,0 +1,68 @@
+# 흉터 재생 타겟 프로파일
+# 섬유화(TGF-β, CTGF) → 억제, 재생(VEGF, FGF) → 보존 이중 작용 우선
+
+category: scar_regeneration
+priority_tier: 1
+
+targets:
+  # === Tier A: 1차 검증 대상 (anti-fibrotic, 위축성/비후성/켈로이드 공통) ===
+  - key: TGFB1
+    uniprot: P01137
+    display: "TGF-β1"
+    mode: antagonist           # 억제제 원함
+    rationale: "섬유화 master regulator. 활성 peptide 형태 역학 + LAP·LTBP 복합체."
+    pocket_hint: "TGFBR receptor binding interface (dimer) or latent-active ligand pocket"
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P01137-F1-model_v6.cif"
+
+  - key: MMP1
+    uniprot: P03956
+    display: "MMP-1 (콜라게나제)"
+    mode: inhibitor            # 억제 (과도한 콜라겐 분해 방지, 비후성 흉터는 반대로 선호)
+    rationale: "콜라겐 I/III 분해. 위축성 흉터에서는 억제, 비후성은 적정 수준 유지."
+    pocket_hint: "zinc-binding catalytic domain (HEXXHXXGXXH)"
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P03956-F1-model_v6.cif"
+
+  - key: CTGF
+    uniprot: P29279
+    display: "CTGF / CCN2"
+    mode: antagonist
+    rationale: "TGF-β 하류 섬유화 메디에이터. 항체(pamrevlumab) 존재."
+    pocket_hint: "IGFBP/VWC 도메인. small-molecule hard target — ligand pocket 탐색 필요."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P29279-F1-model_v6.cif"
+
+  - key: LOX
+    uniprot: P28300
+    display: "LOX (Lysyl oxidase)"
+    mode: inhibitor
+    rationale: "콜라겐 가교 효소. BAPN 계열 억제 가능."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P28300-F1-model_v6.cif"
+
+  # === Tier B: 재생 보존 (atrophic scar 특화) ===
+  - key: VEGFA
+    uniprot: P15692
+    display: "VEGF-A"
+    mode: agonist_or_preserve  # 억제하지 않음. 혈관 신생 유지.
+    rationale: "위축성 흉터는 혈관 부족 → VEGF 신호 억제하지 않는 것이 중요."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P15692-F1-model_v6.cif"
+
+  - key: FGF2
+    uniprot: P09038
+    display: "FGF2 (bFGF)"
+    mode: agonist_or_preserve
+    rationale: "섬유아세포 증식 촉진. 외용 FGF2 임상 예."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P09038-F1-model_v6.cif"
+
+  # === Tier C: 모낭 재생 (Wnt) ===
+  - key: CTNNB1
+    uniprot: P35222
+    display: "β-catenin"
+    mode: stabilizer_preserve
+    rationale: "모낭 재형성에 긍정적. 억제하면 안 됨."
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P35222-F1-model_v6.cif"
+
+# 평가 규칙
+evaluation:
+  dual_action_bonus: 0.3       # anti-fibrotic + pro-regeneration 동시 화합물 +α
+  selectivity_penalty:
+    VEGFA: -0.5                # VEGF 억제는 감점
+    FGF2: -0.4
