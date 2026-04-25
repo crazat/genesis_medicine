@@ -23,15 +23,19 @@
 - ~~TxGNN clone~~ — `external/TxGNN` 설치됐으나 DGL 0.5.2 레거시 의존 → 메인 venv 호환 안 됨 → `external/TxGNN/INSTALL_NOTES.md` 기록, 별도 conda env 필요.
 - ~~AlphaFlow clone~~ — `external/alphaflow` 설치됐으나 torch 1.12+CUDA 11.8 요구 → `external/alphaflow/INSTALL_NOTES.md` 기록, py3.9 conda env 필요.
 - ~~MMseqs2 설치~~ — `mmseqs 18.8cc5c` (conda-forge base env). DB 빌드는 1TB 여유 필요(현재 553GB 여유) → 보조 디스크 필요.
+- ~~NSCLC/Parkinson 확장~~ — Open Targets 100+100 타겟 발굴, 시드 10/14 hit, **AFDB 10/10 구조 확보** → 인프라 generality 증명.
+- ~~genesis-md conda env 구성~~ — openmm 8.5.1 + openmmforcefields 0.15.1 + openff-toolkit 0.18 + pdbfixer + mace-torch.
+- ~~CHEMBL230245-BACE1 10 ns MD~~ — 9.7분 (1484 ns/day), **ligand RMSD 2.57 Å mean (drift 없음)** → Boltz-2 포즈가 MD scale에서 검증됨. `pilot/bace1_boltz2/md_chembl230245_10ns/`.
+- ~~TxGNN v2 알츠하이머 재창출 성공~~ — **36초 만에 1801 약물 × 6 AD subtype zero-shot 랭킹**. Physostigmine·Aceclidine·Cenegermin·Miglustat 등 약리학적 의미 있는 후보들. `pilot/alzheimer_repurposing/results/`.
 
-### 🟡 다음 즉시 실행 (우선순위)
-1. **TxGNN 별도 conda env 구성 + 알츠하이머 재창출 실런** — `conda create -n txgnn python=3.9` + torch 2.3 + DGL 2.4 + Google Drive checkpoint. → MONDO_0004975 top 100 후보 생성. **BACE1 막혔으므로 이게 가장 임상 임팩트 큰 경로.**
-2. **AlphaFlow 12l-distilled 설치 + BACE1 cryptic pocket 50 conformers** — py3.9 conda env. P2Rank로 apo에 없던 포켓 검출 → Boltz-2로 재도킹.
-3. **DrugCLIP Stage A 실런** — COCONUT 2.0 700k CC0 다운로드 → 1k 프리필터 (Science 2026 코드).
-4. **NSCLC 또는 파킨슨으로 질병 확장** — BACE1 파일럿이 보여줬듯 AD 단일 타겟은 한계. 다른 질병으로 인프라 generality 검증.
-5. **MMseqs2 DB 빌드** — 1TB 외장 디스크 확보 후 `scripts/setup/install_mmseqs2_gpu.sh`. 24~48h.
-6. **CHEMBL230245 확장** — 유일하게 게이트 통과한 화합물. scaffold hopping / REINVENT 4 RL로 hERG 회피 유사체 생성.
-7. **OpenMM-ML + MACE-OFF24 MD 10 ns** — CHEMBL230245의 BACE1 결합 안정성 검증.
+### 🟡 다음 즉시 실행 (우선순위, BACE1+TxGNN 성과 기반)
+1. **TxGNN Top 50 → DrugBank SMILES → Boltz-2 cofolding** — 메인 Alzheimer TxGNN 상위 50개 약물의 DrugBank ID를 PubChem/DrugBank API로 SMILES 변환, BACE1/AChE/APP 등 주요 AD 타겟에 cofolding. **재창출 후보 우선순위 검증.**
+2. **CHEMBL230245 scaffold hopping (REINVENT 4 RL)** — hERG=0.98 위험 회피하는 유사체 100~1000개 생성. `pip install reinvent4` + ADMET 보상 함수.
+3. **NSCLC EGFR Boltz-2 cofolding 파일럿** — AFDB 구조 확보 완료됐으므로 알려진 EGFR inhibitor (gefitinib, osimertinib 등) 10개로 BACE1와 동일 end-to-end 재현.
+4. **AlphaFlow BACE1 cryptic pocket** — py3.9 conda env 필요. 기존 P56817 AFDB 구조 + 50 conformers → P2Rank로 apo에 없던 포켓 검출.
+5. **DrugCLIP + COCONUT 2.0 프리필터** — COCONUT CC0 700k → DrugCLIP top 1k → Boltz-2 BACE1 affinity.
+6. **MACE-OFF24 ML potential MD 비교** — run_mace_md_v3.py에 ml_atoms=ligand overlay 추가 → classical AMBER vs MACE ML-MM RMSD 비교.
+7. **MMseqs2 DB 빌드** — 1TB 외장 디스크 확보 후 `scripts/setup/install_mmseqs2_gpu.sh` (24~48h).
 
 ### 🟢 상위 로드맵 (참고)
 - 다음 질병 적용: **NSCLC 또는 파킨슨 권고** (BACE1은 임상적으로 막혀있음).
