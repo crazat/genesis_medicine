@@ -1,0 +1,10 @@
+herb_kr,herb_sci,compound,khp,tradition_use,rationale
+자단 (紫檀),Pterocarpus santalinus,"santalin (1,4-benzoquinone family)",False,"활혈거어, 외용 흉터, 적색 안료","santalin은 1,4-benzoquinone backbone. anti-fibrotic 한방 외용 컨텍스트"
+선학초 (仙鶴草),Agrimonia pilosa,"agrimol (1,4-benzoquinone glycoside)",True,"지혈, 외용 창상",★KHP 수록. agrimol은 Embelin 유사 scaffold
+진피 (陳皮),Citrus reticulata,"tangeretin (flavonoid, not benzoquinone)",True,이기 (氣를 다스림),"scaffold 다름, 비교 음성 대조"
+"비능 (毗陵, Vidanga)",Embelia ribes,embelin (parent),False,이슈람·중의: 살충·외용 농양,Embelin 직접 함유 — primary source
+춘근피 (椿根皮),Ailanthus altissima,ailanthone (quassinoid + benzoquinone moiety),True,지혈·항기생충·외용,★KHP. quinone moiety 보유
+호장근 (虎杖),Reynoutria japonica (Polygonum cuspidatum),"emodin (anthraquinone + 1,4-benzoquinone subunit)",True,"활혈거어, 어혈·종창","★KHP. emodin은 anthraquinone, 부분적 scaffold"
+단삼 (丹參),Salvia miltiorrhiza,"tanshinone IIA (orthoquinone, 유사 redox)",True,활혈거어·심혈관,"★KHP. ortho-quinone, redox 유사 활성"
+자초 (紫草),Lithospermum erythrorhizon,"shikonin (1,4-naphthoquinone)",True,외용 화상·창상·자운고 주성분,★KHP. shikonin은 Embelin과 같은 quinone family. **자운고 핵심**
+관중 (貫衆),Dryopteris crassirhizoma,filicin (acylphloroglucinol),True,구충·외용,★KHP. phloroglucinol-quinone hybrid

@@ -1,0 +1,21 @@
+{
+  "receptor": "/home/crazat/genesis_medicine/pilot/scaffold_hop/abfe_emb3_mmp1/receptor.pdb",
+  "ligand": "/home/crazat/genesis_medicine/pilot/scaffold_hop/abfe_emb3_mmp1/ligand.sdf",
+  "system_name": "EMB3_MMP1",
+  "n_replicas": 3,
+  "n_lambda_windows": 16,
+  "timestep_fs": 2.0,
+  "eq_ns": 5.0,
+  "prod_ns": 10.0,
+  "seed": 42,
+  "protein_ff": "amber/ff14SB.xml",
+  "water_model": "tip3p",
+  "ligand_ff": "gaff-2.11",
+  "charge_method": "am1bcc",
+  "temperature_K": 310,
+  "ionic_strength_M": 0.15,
+  "device": "cuda:0",
+  "output_dir": "/home/crazat/genesis_medicine/pilot/scaffold_hop/abfe_emb3_mmp1",
+  "_estimated_total_ns": 720,
+  "_estimated_gpu_hours": 12
+}

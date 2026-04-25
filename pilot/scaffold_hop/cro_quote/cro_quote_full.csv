@@ -1,0 +1,11 @@
+tier,assay,target,type,cost_per_compound_krw,compounds,weeks,rationale,total_krw
+1,TGF-β1 SMAD2/3 phosphorylation reporter (HEK293),TGFB1,cell-based,850000,3,4,EMB-3 affinity 0.749 → IC50 정량 검증. paper Table 4.,2550000
+1,MMP-1 enzymatic FRET inhibition,MMP1,biochemical,450000,3,3,MD 0.79 Å + affinity 0.674 → IC50 검증. paper Table 3.,1350000
+1,"hERG patch clamp (manual, IonOptix)",hERG,biophysical,2500000,3,6,ADMET 예측 0.16 ↔ wet 검증. 외용제·시스템 노출 안전성 핵심.,7500000
+1,Skin irritation (in vitro EpiDerm reconstructed skin),skin,imaging+biochemical,1400000,3,5,외용제 OECD TG 439 — Recover 한의원 임상 준비.,4200000
+2,SMAD3 phosphorylation (TGFβ-induced fibroblast),SMAD3,cell-based,1100000,2,5,multi-tier downstream — paper network section 입증.,2200000
+2,PDGFRB kinase activity (HTRF),PDGFRB,biochemical,750000,2,4,Myofibroblast axis — IPF 적용성 강화.,1500000
+2,Pulmonary fibroblast TGFβ-induced collagen (IMR-90),COL1A1+IPF model,cell-based,2400000,2,8,★ IPF cross-disease — paper 핵심 translational hook.,4800000
+3,Hypertrophic fibroblast keloid model,scar,cell-based,1800000,2,8,Recover 한의원 임상 1상 entry.,3600000
+3,Human IPF lung fibroblast (BEAS-2B + CCL18),IPF,cell-based,3500000,2,10,IPF 임상 entry 자료 (orphan drug 신청 근거).,7000000
+3,"Acute oral tox (rat, OECD TG 423)",systemic_safety,in vivo,8000000,1,6,내복약·systemic IPF 적용 시 필수.,8000000

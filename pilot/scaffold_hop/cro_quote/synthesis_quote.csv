@@ -1,0 +1,4 @@
+item,vendor,cost_krw,weeks,rationale
+"EMB-3 합성 (mg scale, 95% pure)",ChemBridge / Korean CRO,4500000,6,EMB-3는 신규 — 5-step synthesis 필요
+Embelin 조달,Sigma-Aldrich (≥98%),350000,1,"Cat. E0250, 100mg ≈ ₩350k"
+Pirfenidone 조달,Sigma-Aldrich,200000,1,"P2118, 100mg ≈ ₩200k. IPF SoC 양성 대조군"
