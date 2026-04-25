@@ -1,0 +1,4 @@
+compound,canonical_affinity,cryptic_pocket2_affinity,delta_cryptic_canonical,interpretation
+egcg,0.697,0.7100576162338257,0.01305761623382573,🟡 dual-site (둘 다 결합)
+emb3,0.749,0.6924480199813843,-0.05655198001861572,canonical 우세
+embelin,0.675,0.7589976787567139,0.08399767875671382,🚀 cryptic > canonical (allosteric binder)

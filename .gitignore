@@ -107,3 +107,27 @@ pilot/scaffold_hop/network_validation/msa_bootstrap/
 pilot/scaffold_hop/tgfb1_latent/output/
 pilot/scaffold_hop/tgfb1_latent/inputs/
 pilot/scaffold_hop/tgfb1_latent/msa_bootstrap/
+
+# ABFE 큰 출력 (재생성 가능)
+pilot/scaffold_hop/abfe_emb3_mmp1/openmmtools_run/replica_exchange*.nc
+pilot/scaffold_hop/abfe_emb3_mmp1/openmmtools_full/replica_exchange*.nc
+pilot/scaffold_hop/abfe_emb3_mmp1/openmmtools_full_embelin/replica_exchange*.nc
+
+# Round 2 logs / outputs
+pilot/scaffold_hop_round2/boltz_output/
+pilot/scaffold_hop_round2/reinvent_outputs/
+pilot/scaffold_hop_round2/*.log
+
+# Cryptic scan/cofold large outputs
+pilot/scaffold_hop/cryptic_scan/*/TGFB1_apo_out/
+pilot/scaffold_hop/cryptic_scan/*/MMP1_apo_out/
+pilot/scaffold_hop/cryptic_scan/*/CTGF_apo_out/
+pilot/scaffold_hop/cryptic_cofold/output/
+pilot/scaffold_hop/cryptic_cofold/inputs/
+
+# CSV backup (gitignored auto-cleanup)
+data/skin_compounds_curated.csv.bak
+data/npass_2026/
+
+# Tier 0 install logs (regen)
+pilot/scaffold_hop/abfe_emb3_mmp1/*.log

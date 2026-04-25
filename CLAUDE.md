@@ -47,17 +47,49 @@
   - NSCLC EGFR TKI (5개 TKI pIC50 7.5-8.7, 인프라 범용성)
   - NSCLC/Parkinson Open Targets (시드 10/14 hit, AFDB 10/10)
 
-### 🟡 다음 즉시 실행 (피부 재생 파일럿, 우선순위 순서)
-1. **흉터 3대 타겟 AFDB 구조** — TGF-β1 (P01137), MMP-1 (P03956), CTGF (P29279). Open Targets에서 "hypertrophic scar / keloid" 조회 + 추가 타겟 발굴.
-2. **피부 천연물 핵심 라이브러리** — 센텔라 4종(아시아티코사이드/마데카소사이드/아시아틱산/마데카식산) + 자근(시코닌) + 감초(licochalcone A/glabridin) + 당귀(ferulic acid) + 황금(바이칼린) + 녹차(EGCG) 등 30-50개 SMILES를 PubChem에서 수집해 `data/skin_compounds_curated.csv`로 저장.
-3. **흉터 파일럿 Boltz-2 cofolding** — 각 천연물 × TGF-β1/MMP-1/CTGF 3타겟 (= 약 90-150 run). affinity head로 pIC50/prob_binary. 가속 커널 활성.
-4. **ADMET-AI + 경피 흡수 게이트** — BBB 대신 **logKp (경피 투과)**, **피부 자극(irritation)**, Lipinski, solubility, logP 최적 범위(1.5~3.5) 필터.
-5. **한약 처방 네트워크 매핑** — 위 천연물이 속한 대표 한방 처방(자운고·당귀음자·온청음·황련해독탕) → 성분 → 타겟 그래프. HERB/TCMSP (research 빌드).
-6. **색소/기미 파일럿 (2순위 질환)** — TYR/MITF에 대한 천연물 동일 프로토콜.
-7. **탈모 파일럿 (3순위 질환)** — SRD5A1/2 + AR.
-8. **TxGNN 피부 질환 재창출** — MONDO 피부 질환 인덱스별 zero-shot (hypertrophic scar, melasma, AGA, acne).
-9. **De novo scaffold 생성** — FlowMol3/DecompDiff + REINVENT 4로 센텔라 코어를 경피 흡수 개선 방향으로 최적화.
-10. **임상 진입 가중치** — KHP/KP 수록 약재 +α, 한국 내 기존 외용제 데이터 crosscheck.
+### ✅ 완료 (2026-04-25 ~ 2026-04-26)
+- 피부 5질환 파일럿 (흉터/색소/탈모/여드름/광노화) — 102 화합물 × 14 타겟
+- EGCG 단독 paper (5/5 disease + MD 1.45 Å, 외용 universal compound 가설)
+- Embelin scaffold-hop → **EMB-3** (hERG 0.40→0.16, MD 0.79 Å, MMP1 affinity 유지)
+- Network 27 cofold + cross-disease 18 fibrosis indication (IPF 6/7, scleroderma 7/7)
+- ABFE EMB-3 × MMP-1 정량화 (openmmtools 16 windows × 5 ns × 17 replicas, 진행 중)
+- Embelin baseline ABFE 병렬 실행 (ΔΔG 정량 비교)
+- 한약 매핑 (자운고 + EMB-3 강화 1순위 권장)
+- CRO 견적 (Tier 1 ₩1,560만 / 6-10주, 전체 ₩4,775만)
+
+### 🔥 Tier 0 — 즉시 통합 (SOTA audit 2026-04-26 결과)
+> 광범위 SOTA 조사 결과 **즉각 통합하면 ROI 매우 큰** 7개 도구. 모두 MIT/Apache.
+1. **CellAwareGNN** (bioRxiv 2026-02) — TxGNN 직접 후속, scPrimeKG 기반, 자가면역 피부질환 +6% AUPRC. 자가면역(아토피·건선·원형탈모) 재창출 정확도 직격.
+2. **PocketXMol** (Cell 2026, MIT, 205★) — 단일 모델로 11/13 SBDD SOTA + cyclic peptide 동시 (약침 후보).
+3. **PocketMiner + CryptoBank** — TGF-β1/MMP-1/CTGF allosteric site 1초 스캔 (B 가설 음성을 cryptic site 재탐색으로 강화).
+4. **logKp + Skin_Irritation 자체 ML 헤드** (FDA 2326 + LGBM) — 우리 stack 가장 큰 약점 (피부 외용 정량) 직접 보완.
+5. **f-RAG** (NeurIPS 2024, NVIDIA) — 센텔라/시코닌/EGCG fragment 강제 포함, 한약 영감 분자 디자인 핵심.
+6. **NPASS 2026 update** — quantitative ADME-Tox **+206%** 확장 (외용 logKp ground truth).
+7. **BAT2** (OpenMM 호환) — 자체 ABFE 구현을 paper-tier 검증/대체.
+
+### 🟡 Tier 1 — 8주 내 (Nature-tier 강화)
+8. **Protenix-v2** (Apache, 2026-04) + **OpenFold3** ensemble — Boltz-2 consensus 강화.
+9. **AlphaFlow-Lit** — 기존 AlphaFlow drop-in 47× 가속.
+10. **CarsiDock-Cov** — 시코닌/EGCG quinone 공유결합 평가 (현 stack에 unique).
+11. **Boltz-ABFE** — cryptic site 결정구조 없이 ABFE.
+12. **DeepRetro** (Sci Rep 2026) — 센텔라 사포닌 변형 합성 (AiZynthFinder 보강).
+13. **AIMNet2** — charged 천연물 MD (MACE-OFF24 한계 극복).
+
+### 🏥 Recover 한의원 직결 (2026-08 오픈 전)
+- **임상 reference**: ECa 233 (51:38 madecassoside:asiaticoside) + Lapatinib 외용 reposition + Pirfenidone keloid 데이터 + OliX OLX104C 한국 IND 모델
+- **흉터↔IPF cross-disease 분자 근거**: skin/lung fibroblast atlas (Nat Immunol/Cancer Cell 2025)에서 TGF-β signaling fibroblast subtype 공유 입증
+- **Rentosertib (TNIK)**: 첫 generative AI lead → IPF Phase 2 진입 (FVC +98.4 mL) — 우리와 동일 파이프라인 = 벤치마크
+- **NIPA 2025 "AI 의료 디지털 전환"** 사업 응모 자격 검토 (Recover + Genesis_Medicine + AI 안면분석 패키지)
+- **국내 비임상 CRO**: KIT/켐온/바이오톡스텍/DT&CRO RFQ 3개사 견적 비교
+- **MFDS 2025 천연물 외용제 가이드라인** 직접 컨택 (검색 미노출, 법무 컨택 필요)
+- **BOKP DNA barcode** (KP/KHP 514종) — `skin_compounds_curated.csv` 가중치 정량화
+
+### 🟢 중기 로드맵
+- M1: 흉터 **lead 화합물 3-5개** 확정 (EMB-3 + EGCG + Embelin baseline + 추가 2개)
+- M2: ABFE 정량 ΔG → IC50 nM 추정 → CRO Tier 1 (₩1,560만) 진입
+- M3: Tier 0 SOTA 7개 모두 통합 + 한약 복합 처방 시너지 스코어링
+- M4: 외용 크림 포뮬레이션 (자운고 + EMB-3 강화 1순위) — Recover 1차 시제품
+- M5: IPF cross-disease 후속 paper (EMB-3 + IPF lung fibroblast 모델)
 
 ### 🟢 중기 로드맵
 - M1: 흉터 **lead 화합물 3-5개** 확정 → 약침 적용 시뮬레이션 (용해도·안정성)

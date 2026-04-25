@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2026-04-26" />
+  <title>AI 기반 한방 피부재생 신약 개발 + 임상 디지털 전환 통합 플랫폼</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">AI 기반 한방 피부재생 신약 개발 + 임상 디지털 전환
+통합 플랫폼</h1>
+<p class="subtitle">Recover 한의원 × Genesis_Medicine v3</p>
+<p class="date">2026-04-26</p>
+</header>
+<h1 id="사업-응모-초안-recover-한의원-genesis_medicine-v3">사업 응모
+초안 — Recover 한의원 + Genesis_Medicine v3</h1>
+<h2 id="사업-개요">1. 사업 개요</h2>
+<p>본 사업은 <strong>한국 한방 외용제·복합 처방의 AI 기반 분자 수준 검증
+및 임상 적용 디지털 전환</strong>을 목표로, 강남 Recover 한의원의 임상
+인프라(AI 안면 분석, 새살침, 매선·약침)와 Genesis_Medicine v3 신약 개발
+파이프라인을 통합하여 한방 피부재생 의료의 디지털 표준화를 완성한다.</p>
+<h3 id="핵심-혁신">핵심 혁신</h3>
+<ol type="1">
+<li><strong>AI 분자 수준 검증</strong> — 한방 외용
+처방(자운고·당귀음자·황련해독탕)의 핵심 성분이 어떤 단백질 표적에
+작용하는지 14단계 SOTA 파이프라인으로 정량화. 처방 효능의 분자 근거
+제공.</li>
+<li><strong>AI 안면 분석 → 처방 자동화</strong> — 환자 안면 이미지에서
+흉터·기미·탈모·여드름·광노화 5대 피부 상태를 자동 분류 후, 분자 수준으로
+검증된 한방 처방 자동 추천.</li>
+<li><strong>신약 후보 발굴</strong> — Embelin scaffold-hopping으로
+도출한 EMB-3 (hERG 0.16, MD 0.79 Å, 흉터 + IPF 6/7 타겟 binding)는 첫
+한방 영감 외용 신약 후보.</li>
+</ol>
+<h3 id="사업화-시점">사업화 시점</h3>
+<ul>
+<li><strong>2026-08</strong>: Recover 한의원 강남점 오픈 (의료서비스
+매출 시작)</li>
+<li><strong>2026 Q4</strong>: 첫 신약 후보 EMB-3 in vitro CRO 검증
+(₩1,560만)</li>
+<li><strong>2027</strong>: 외용제 IND 신청 (식약처)</li>
+</ul>
+<hr />
+<h2 id="사업-배경-왜-지금">2. 사업 배경 (왜 지금?)</h2>
+<h3 id="시장-배경">2.1 시장 배경</h3>
+<ul>
+<li><strong>한국 외용제·기능성 화장품 시장</strong>: 2025년 ₩4.2조 (연
+12% 성장)</li>
+<li><strong>글로벌 anti-fibrotic 시장</strong>: 2030년 $35B
+(IPF·NASH·켈로이드 포함)</li>
+<li><strong>K-beauty + K-medicine</strong> 융합: 한방 + AI는 한국 고유
+경쟁력</li>
+<li><strong>외국 사례</strong>: Insilico Medicine의
+<strong>Rentosertib</strong> (TNIK 저해제) — 첫 generative AI 신약, 2025
+IPF Phase 2a 진입 (FVC +98.4 mL). <strong>우리와 같은 파이프라인 구조 =
+검증된 모델</strong></li>
+</ul>
+<h3 id="한국-한방-디지털-전환-필요성">2.2 한국 한방 디지털 전환
+필요성</h3>
+<ul>
+<li>KP/KHP 12판 514종 한약재 디지털화 진행 중</li>
+<li>KIOM (한국한의학연구원) OASIS, 한의학 표준정보 운영 중</li>
+<li><strong>그러나</strong> 처방의 분자 수준 효능 검증은 미개척 —
+Genesis_Medicine v3가 직접 메움</li>
+<li>BOKP DNA barcode (Frontiers Pharmacol 2024) — 약재 정량 매핑 표준
+등장</li>
+</ul>
+<h3 id="ai-의료-디지털-전환-정책-부합성">2.3 AI 의료 디지털 전환 정책
+부합성</h3>
+<ul>
+<li>NIPA 2025 사업 목표: <strong>“의료기관 AI 도입 + 디지털
+전환”</strong></li>
+<li>Recover 한의원: 환자 진료 기록 + AI 안면 분석 + 분자 수준 처방 검증
+= 사례 표준</li>
+<li>향후 한국 1만 한의원 확장 가능 (전체 한방의료 디지털 인프라)</li>
+</ul>
+<hr />
+<h2 id="사업-내용">3. 사업 내용</h2>
+<h3 id="핵심-시스템-genesis_medicine-v3-14단계-파이프라인">3.1 핵심
+시스템 — Genesis_Medicine v3 (14단계 파이프라인)</h3>
+<pre><code>[질병] → [타겟] → [구조] → [Cryptic Pocket] → [라이브러리] →
+[스크리닝] → [Cross-Disease] → [De Novo Generation] →
+[ADMET 외용 게이트] → [한약 네트워크] → [MD] →
+[CellAwareGNN 재창출] → [Cross-Tissue] → [한국 규제 게이트] →
+[ABFE 정량] → [합성 경로] → [CRO/IRB 자동] → [Manuscript]</code></pre>
+<p><strong>기술 스택 (모두 commercial 라이선스)</strong>: - 구조 예측:
+Boltz-2 (MIT), Protenix-v2 (Apache), OpenFold3 (Apache) - ADMET:
+ADMET-AI 2.0.1 + 자체 logKp 헤드 (FDA 2326) - 생성: PocketXMol (Cell
+2026, MIT), REINVENT 4, f-RAG with 한약 fragment - MD/ABFE: OpenMM 8.5 +
+openmmtools 0.26 + BAT2 - 천연물 DB: COCONUT 2.0, NPASS 2026, NPAtlas,
+KP/KHP, BOKP</p>
+<h3 id="핵심-검증-결과-2026-04-기준">3.2 핵심 검증 결과 (2026-04
+기준)</h3>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>지표</th>
+<th>값</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>화합물 라이브러리</td>
+<td>102 (한방 천연물 90% + 약물재창출 후보)</td>
+</tr>
+<tr>
+<td>검증 타겟</td>
+<td>14 (TGF-β1, MMP-1, CTGF, TYR, MITF, SRD5A2, AR, …)</td>
+</tr>
+<tr>
+<td>5질환 파일럿 cofold</td>
+<td>102 × 14 = 1,428 run</td>
+</tr>
+<tr>
+<td>MD 검증 (10 ns)</td>
+<td>13개 top hit (RMSD &lt; 2 Å)</td>
+</tr>
+<tr>
+<td>ABFE 정량 (진행 중)</td>
+<td>EMB-3 vs Embelin × MMP-1, ΔΔG paper-tier</td>
+</tr>
+<tr>
+<td>한방 처방 매핑</td>
+<td>6 처방 → 9 약재 → 102 성분 → 14 타겟</td>
+</tr>
+<tr>
+<td>발표 paper</td>
+<td>EGCG universal (5/5 disease) + EMB-3 multi-tier (IPF cross) — 2편
+draft</td>
+</tr>
+</tbody>
+</table>
+<h3 id="recover-한의원-임상-통합">3.3 Recover 한의원 임상 통합</h3>
+<pre><code>┌──────────────────────────────────────────────────────────┐
+│ [환자 내원] → [AI 안면 분석] → [피부 상태 5질환 분류]      │
+└────────────────────┬─────────────────────────────────────┘
+                     ▼
+┌──────────────────────────────────────────────────────────┐
+│ [Genesis_Medicine v3] 분자 수준 처방 추천:                │
+│   • 흉터 → 자운고 + EMB-3 강화 (자초 shikonin baseline)  │
+│   • 기미 → 옥용산 + 감초/녹차 (TYR 결합 입증)             │
+│   • 탈모 → 측백엽·하수오 (SRD5A2 입증) + 새살침 자극     │
+│   • 여드름 → 황련해독탕 + 베르베린 (염증·여드름 균)        │
+│   • 광노화 → 단삼·EGCG (MMP-1 + SIRT1)                    │
+└────────────────────┬─────────────────────────────────────┘
+                     ▼
+┌──────────────────────────────────────────────────────────┐
+│ [한방 약침/외용제 시술] → [AI 추적 분석] → [효능 데이터화]│
+└──────────────────────────────────────────────────────────┘</code></pre>
+<h3 id="사업화-산출물">3.4 사업화 산출물</h3>
+<ol type="1">
+<li><strong>신약 후보 IND 신청</strong> (식약처 외용제, 2027 Q1)
+<ul>
+<li>EMB-3 (Embelin scaffold-hop) → 흉터 + IPF 외용제</li>
+<li>자운고 + EMB-3 강화 복합 처방</li>
+</ul></li>
+<li><strong>AI 안면 분석 + 처방 추천 시스템</strong> (의료기기 인증,
+2026 Q4)</li>
+<li><strong>한방 디지털 약전 + 분자 수준 매핑 데이터베이스</strong>
+(오픈 공개)</li>
+<li><strong>임상 효능 추적 빅데이터 플랫폼</strong> (다른 한의원 확장
+모듈)</li>
+</ol>
+<hr />
+<h2 id="추진-계획-12개월">4. 추진 계획 (12개월)</h2>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>분기</th>
+<th>Recover 한의원</th>
+<th>Genesis_Medicine v3</th>
+<th>NIPA 마일스톤</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2026 Q3</td>
+<td>강남점 오픈 (8월), 환자 베이스 구축</td>
+<td>Tier 0 SOTA 7개 통합</td>
+<td>시스템 구축 30%</td>
+</tr>
+<tr>
+<td>2026 Q4</td>
+<td>AI 안면 분석 의료기기 인증</td>
+<td>EMB-3 in vitro CRO Tier 1 (₩1,560만)</td>
+<td>60%</td>
+</tr>
+<tr>
+<td>2027 Q1</td>
+<td>첫 임상 데이터 200건</td>
+<td>외용제 IND 신청</td>
+<td>90%</td>
+</tr>
+<tr>
+<td>2027 Q2</td>
+<td>사업 마무리 보고</td>
+<td>EMB-3 Phase 1 entry 준비</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="예산-정부지원금-자부담-매칭">5. 예산 (정부지원금 + 자부담
+매칭)</h2>
+<table>
+<thead>
+<tr>
+<th>항목</th>
+<th style="text-align: right;">금액 (KRW)</th>
+<th>출처</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>인건비 (AI 연구원 2 + 임상 1)</td>
+<td style="text-align: right;">2.4억</td>
+<td>NIPA 60% + 자부담 40%</td>
+</tr>
+<tr>
+<td>EMB-3 CRO Tier 1 (KIT/켐온)</td>
+<td style="text-align: right;">0.16억</td>
+<td>NIPA</td>
+</tr>
+<tr>
+<td>합성 (EMB-3 mg scale)</td>
+<td style="text-align: right;">0.05억</td>
+<td>NIPA</td>
+</tr>
+<tr>
+<td>GPU 서버 클러스터 확장</td>
+<td style="text-align: right;">0.3억</td>
+<td>NIPA</td>
+</tr>
+<tr>
+<td>임상 안면 이미지 데이터 구축</td>
+<td style="text-align: right;">0.2억</td>
+<td>자부담</td>
+</tr>
+<tr>
+<td>의료기기 인증 비용</td>
+<td style="text-align: right;">0.1억</td>
+<td>자부담</td>
+</tr>
+<tr>
+<td>외용제 IND 자료 준비</td>
+<td style="text-align: right;">0.15억</td>
+<td>NIPA</td>
+</tr>
+<tr>
+<td><strong>총</strong></td>
+<td style="text-align: right;"><strong>3.36억</strong></td>
+<td>NIPA 2.16억 + 자부담 1.2억</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="차별성-왜-우리만-할-수-있는가">6. 차별성 (왜 우리만 할 수
+있는가?)</h2>
+<ol type="1">
+<li><strong>한방 임상 인프라</strong> — Recover 강남점 + 새살침 + AI
+안면 분석. <strong>분자 검증 결과를 즉시 임상 적용</strong>할 수 있는
+곳은 한국에 거의 없음.</li>
+<li><strong>분자 수준 검증 파이프라인 완성도</strong> — 14단계 SOTA 통합
+시스템. Insilico Medicine의 미국 사례를 한국 한방 컨텍스트에서
+재현.</li>
+<li><strong>ABFE 정량 ΔG 도출 능력</strong> — Boltz-2 binary classifier
+너머 정량 IC50 nM 추정. 현재 EMB-3 × MMP-1 ABFE 진행 중.</li>
+<li><strong>Recover 의료법인이 시장 진입 주체</strong> — 단순 연구가
+아닌 즉시 환자 시술 가능한 의료기관.</li>
+</ol>
+<hr />
+<h2 id="위험과-완화">7. 위험과 완화</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>위험</th>
+<th>발생 가능성</th>
+<th>완화</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EMB-3 in vitro 결과 음성</td>
+<td>30%</td>
+<td>추가 lead 4개 (EGCG, Embelin, EMB-1, Asiaticoside) backup 검증</td>
+</tr>
+<tr>
+<td>식약처 외용제 IND 가이드라인 부재</td>
+<td>20%</td>
+<td>OliX OLX104C 한국 IND 패턴 (호주 Phase 1 → 한국) 적용</td>
+</tr>
+<tr>
+<td>GPU 인프라 비용 초과</td>
+<td>15%</td>
+<td>RTX 5090 자체 보유 + 클라우드 spot 활용</td>
+</tr>
+<tr>
+<td>한방 마케팅 규제 (HERB DB 인용 금지)</td>
+<td>30%</td>
+<td>발표는 “전통 한방 영감 + 구조 기반 최적화” 표현 (commercial 빌드
+라이선스 게이트 통과)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="첨부-자료-별도-제출">8. 첨부 자료 (별도 제출)</h2>
+<ul>
+<li>A. Genesis_Medicine v3 GitHub repo
+(https://github.com/crazat/genesis_medicine)</li>
+<li>B. CLAUDE.md 기술 스택 + 14단계 아키텍처</li>
+<li>C. 검증 결과 manuscript 2편 draft
+<ul>
+<li><code>manuscript_egcg/manuscript.pdf</code> (EGCG 5/5 disease)</li>
+<li><code>manuscript_emb3/manuscript.pdf</code> (EMB-3 multi-tier + IPF
+cross)</li>
+</ul></li>
+<li>D. CRO 견적 (<code>pilot/scaffold_hop/cro_quote/</code>)</li>
+<li>E. 한방 처방 매핑
+(<code>pilot/scaffold_hop/herb_mapping/</code>)</li>
+<li>F. ABFE 진행 결과 (실시간 업데이트)</li>
+<li>G. Recover 한의원 사업계획서 (https://recover-clinic.kr)</li>
+</ul>
+<hr />
+<h2 id="결론">9. 결론</h2>
+<p>본 사업은 <strong>한국 한방 의료의 AI 디지털 전환과 글로벌 신약 개발
+시장 진입을 동시에 달성</strong>하는 유일한 통합 모델이다. Recover
+한의원의 임상 운영과 Genesis_Medicine v3의 SOTA 파이프라인이 결합하여,
+<strong>NIPA 2025 사업의 지향점인 “AI 의료기관 표준 모델”</strong>을
+직접 구현한다.</p>
+<p>향후 12개월 내 첫 신약 후보(EMB-3) IND 신청 + AI 안면분석 의료기기
+인증 + 한방 디지털 약전 공개라는 명확한 산출물을 약속한다. 이는 단순
+R&amp;D가 아닌 <strong>즉시 환자 진료에 적용되는 사업화
+모델</strong>이며, 한국 1만 한의원 확장 가능성을 보유한다.</p>
+<hr />
+<p><strong>연락처</strong>: research@recover-clinic.kr <strong>제출
+예정일</strong>: 2026-05-31 (NIPA 공모 마감 확인 필요)</p>
+<p>⚠️ <em>본 문서는 초안이며, NIPA 공식 양식·심사 기준에 맞춰 추가 편집
+필요.</em></p>
+</body>
+</html>

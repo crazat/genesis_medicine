@@ -54,7 +54,9 @@
 | 워크플로 | **Prefect 3** | Apache-2.0 | Python 네이티브 DAG |
 | 대시보드 | **Panel** / **Streamlit** + **py3Dmol** | BSD / Apache | 3D 시각화 |
 
-## 3. 전체 파이프라인 (9단계)
+## 3. 전체 파이프라인 (14단계, v3 SOTA-aware)
+
+> 2026-04 SOTA audit 결과 9단계 → **14단계** 확장. 새 단계: [2.5] Cryptic Pocket Scan, [4.5] Cross-Disease Gating, [9.5] Cross-Tissue Repurposing, [10] Korean Regulatory Layer, [11] ABFE Quantitative Gate. 각 단계는 라이선스 게이트 통과 컴포넌트만 사용.
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
@@ -73,10 +75,20 @@
 ┌──────────────────────────────────────────────────────────────────┐
 │  [2] Structure Preparation                                       │
 │    • AlphaFold DB lookup (214M pre-computed)                     │
-│    • 미제공 → Protenix v2 (local GPU, Apache-2.0)                │
-│    • 부족하면 Boltz-2 apo                                         │
+│    • Boltz-2 cofold (MIT) + Protenix-v2 (Apache 2026-04) ensemble│
+│    • OpenFold3 (Apache, 가중치 공개) consensus 옵션               │
 │    • P2Rank/FPocket → top-K 포켓 + residue list                  │
 │  → structures/{uniprot}.cif + pockets.json                       │
+└────────────────────────────────┬─────────────────────────────────┘
+                                 ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  [2.5] Cryptic Pocket Scan ★ NEW                                 │
+│    • PocketMiner GVP-GNN (ROC 0.87, 1초/단백질)                  │
+│    • CryptoBank web API (PDB-wide cross-ref, 16.3% 단백질에 존재)│
+│    • AlphaFlow-Lit (47× 가속) — conformational ensemble          │
+│    • BioEmu-1 (Microsoft, MIT) — equilibrium ensemble            │
+│  → cryptic_pockets.json (allosteric site 좌표 + 점수)            │
+│  → 흉터 TGF-β1, MMP-1 cryptic site 자동 탐색                     │
 └────────────────────────────────┬─────────────────────────────────┘
                                  ▼
 ┌──────────────────────────────────────────────────────────────────┐
@@ -93,25 +105,41 @@
 ┌──────────────────────────────────────────────────────────────────┐
 │  [4] Multi-Stage Virtual Screening                               │
 │    Stage A: Uni-Mol2 embedding 유사도 → top 1-5%                 │
-│    Stage B: DiffDock-L blind pose → top 1-5k                     │
+│    Stage B: DiffDock-L / FlowDock blind pose → top 1-5k          │
 │    Stage C: Boltz-2 co-folding + affinity → top 100              │
 │    Stage D: GNINA CNN rescoring → ranked                         │
+│    Stage E: CarsiDock-Cov (시코닌·EGCG quinone covalent) — NEW   │
 │  → screening_results.parquet (pose, score, affinity, rank)       │
 └────────────────────────────────┬─────────────────────────────────┘
                                  ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  [5] De Novo Generation (선택)                                    │
-│    • DiffSBDD/TargetDiff 포켓 조건부 시드 (500~5k 생성)            │
-│    • REINVENT 4 멀티 오브젝티브 RL (affinity + QED + SA + SAS)    │
-│    • TxGemma prompt-based 후보 제안                               │
-│  → novel_ligands.parquet + same 스크리닝 파이프로 반환             │
+│  [4.5] Cross-Disease Gating ★ NEW                                │
+│    • Open Targets target → diseases (size 300)                   │
+│    • Fibrosis non-skin filter (IPF/NASH/CKD/scleroderma)         │
+│    • Affinity-weighted scoring (Σ OT_score × Boltz-2_aff)        │
+│    • EMB-3 case: IPF 6/7 targets, weighted 0.90                  │
+│  → cross_disease.parquet (skin lead → systemic fibrosis 매핑)    │
 └────────────────────────────────┬─────────────────────────────────┘
                                  ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  [6] ADMET & Safety Filtering                                    │
-│    • ADMET-AI (41 endpoints, Chemprop 기반)                      │
-│    • Lipinski/BBB/hERG/DILI flags                                │
-│    • Structural alerts (Brenk, NIH)                              │
+│  [5] De Novo Generation                                          │
+│    • PocketXMol (Cell 2026, MIT, 11/13 SBDD SOTA) — primary      │
+│    • DiffSBDD inpainting (partial scaffold)                      │
+│    • REINVENT 4 mol2mol scaffold-hop (round 1+2 검증됨)          │
+│    • f-RAG (NVIDIA NeurIPS 2024) — 한약 fragment 강제 포함        │
+│       센텔라/시코닌/EGCG/glabridin/baicalin substructure         │
+│    • SATURN (Mamba+RL) 합성 제약 만족                            │
+│  → novel_ligands.parquet + 스크리닝 파이프로 반환                  │
+└────────────────────────────────┬─────────────────────────────────┘
+                                 ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  [6] ADMET & Skin-Topical Safety Filtering                       │
+│    • ADMET-AI 2.0.1 (41 endpoints, Chemprop 2.2.3)               │
+│    • logKp (경피 투과) 자체 ML 헤드 — FDA 2326 + LGBM ★ NEW      │
+│    • Skin_Reaction (ADMET-AI) + 자체 irritation 모델             │
+│    • hERG / AMES / ClinTox (외용제 적합)                          │
+│    • Lipinski/MW≤500/logP 1.5-3.5/HBD≤5/HBA≤10/TPSA≤140          │
+│    • PAINS, Brenk, NIH structural alerts                         │
 │  → admet_filtered.parquet                                        │
 └────────────────────────────────┬─────────────────────────────────┘
                                  ▼
@@ -125,17 +153,74 @@
 └────────────────────────────────┬─────────────────────────────────┘
                                  ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  [8] MD Refinement (상위 10~50개, 선택)                           │
-│    • OpenMM 8 GPU, 10~50 ns NPT                                  │
-│    • MM-GBSA 재평가 · 포즈 안정성 RMSF                            │
+│  [8] MD Refinement (상위 10~50개)                                │
+│    • OpenMM 8.5 GPU, 10 ns NPT (MMP-1 등 small system)            │
+│    • AMBER ff14SB + GAFF-2.11 + OpenFF AM1-BCC                   │
+│    • MACE-OFF24 (drug-like), AIMNet2 (charged 천연물) — 보조      │
+│    • Ligand RMSD (mean < 2 Å 합격, EMB-3 0.79 Å 검증됨)           │
 │  → md_results.parquet                                            │
 └────────────────────────────────┬─────────────────────────────────┘
                                  ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  [9] Reporting                                                   │
+│  [9] TxGNN/CellAwareGNN Disease Repurposing ★ UPGRADED           │
+│    • CellAwareGNN (bioRxiv 2026-02, scPrimeKG 기반) — primary    │
+│       자가면역 피부질환 +6.0% AUPRC vs TxGNN                      │
+│    • TxGNN (Nature Med 2024) — fallback                          │
+│    • PrimeKG multi-hop disease ↔ drug                            │
+│  → repurposing_ranks.parquet                                     │
+└────────────────────────────────┬─────────────────────────────────┘
+                                 ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  [9.5] Cross-Tissue Repurposing ★ NEW                            │
+│    • Skin/Lung fibroblast atlas (Nat Immunol 2025) cross-ref     │
+│    • TGF-β signaling fibroblast subtype 공통 lead 우선            │
+│    • Rentosertib (TNIK, IPF Phase 2) 같은 reference 매핑         │
+│  → cross_tissue_leads.parquet                                    │
+└────────────────────────────────┬─────────────────────────────────┘
+                                 ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  [10] Korean Regulatory Layer ★ NEW                              │
+│    • KP/KHP 12판 (514종 한약재) 매칭                              │
+│    • BOKP DNA barcode reference library                          │
+│    • MFDS 시판 외용제 데이터 cross-check                          │
+│    • OliX OLX104C 한국 IND 패턴 (Phase 1 호주 → 한국 후속)       │
+│  → regulatory_score.parquet (한국 임상 entry 가중치)             │
+└────────────────────────────────┬─────────────────────────────────┘
+                                 ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  [11] ABFE Quantitative Gate (top 3-5 lead) ★ NEW                │
+│    • openmmtools alchemical replica exchange (16 windows × 5 ns) │
+│    • BAT2 (OpenMM 호환, paper-tier, JCTC 2024) — 검증            │
+│    • Boltz-ABFE (결정구조 없을 때) — cryptic site                 │
+│    • ΔG (kcal/mol) → IC50 nM 추정                                │
+│    • EMB-3 × MMP-1 ABFE 진행 중 (2026-04-26)                      │
+│  → abfe_quantitative.parquet (IC50 nM, ΔG ± uncertainty)         │
+└────────────────────────────────┬─────────────────────────────────┘
+                                 ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  [12] Synthesis Route Prediction ★ NEW                           │
+│    • AiZynthFinder 4.4.1 (primary)                               │
+│    • DeepRetro (Sci Rep 2026, LLM 반복 추론) — 천연물 변형       │
+│    • Syntheseus (Microsoft) — 알고리즘 벤치/검증 wrapper         │
+│    • DECIMER 3 — 한약 고문헌·특허 화학 그림 OCR                   │
+│  → synthesis_routes.parquet (cost estimate + KR CRO 견적 link)   │
+└────────────────────────────────┬─────────────────────────────────┘
+                                 ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  [13] CRO Quote + IRB Auto-Generation ★ NEW                      │
+│    • Tier 1 (paper 공개 전): TGFB1/MMP1 IC50 + hERG + skin       │
+│       ₩1,560만 / 6-10주 (KIT/켐온/바이오톡스텍)                   │
+│    • IRB protocol 자동 생성 (Korean Medical Clinic)              │
+│    • 자운고 + EMB-3 강화 1순위 처방 권장                          │
+│  → cro_quote.csv + irb_protocol.docx                             │
+└────────────────────────────────┬─────────────────────────────────┘
+                                 ▼
+┌──────────────────────────────────────────────────────────────────┐
+│  [14] Reporting + Manuscript Auto                                │
 │    • MLflow 실험 로그 (parameters, metrics, artifacts)            │
-│    • Panel 대시보드 (3D 포즈, 랭킹 테이블, 한약 네트워크 그래프)     │
-│    • PDF 요약 (질병·Top10 화합물·Top5 한약)                        │
+│    • Pandoc + CSL → HTML/DOCX/PDF (Phytomedicine/J Cheminform)   │
+│    • Daily monitor cron (bioRxiv/S2/PubMed) + conflict detector  │
+│    • Recover 한의원 사업화 보고서 (한방 + 분자 정당화)             │
 └──────────────────────────────────────────────────────────────────┘
 ```
 

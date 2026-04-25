@@ -1,0 +1,4 @@
+target,canonical_site,n_pockets,top_pocket_score,second_pocket_score,n_high_scoring
+TGFB1,TGFBR binding,28,0.362,0.338,0
+MMP1,Zn-binding HEXXHXXGXXH,29,0.464,0.223,0
+CTGF,IGFBP/VWC domain,20,0.115,0.096,0
