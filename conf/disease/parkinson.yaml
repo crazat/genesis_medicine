@@ -1,0 +1,18 @@
+key: parkinson
+display_name: "Parkinson disease"
+mesh_id: D010300
+efo_id: MONDO_0005180            # Parkinson disease
+icd10: G20
+pubmed_query: '"Parkinson Disease"[Mesh] AND ("target"[All Fields] OR "pathway"[All Fields])'
+priority_regions:
+  - substantia_nigra
+  - striatum
+  - basal_ganglia
+known_targets_seed:              # Parkinson 주요 타겟
+  - { uniprot: P37840, gene: SNCA,    name: "Alpha-synuclein" }
+  - { uniprot: Q5S007, gene: LRRK2,   name: "Leucine-rich repeat serine/threonine-protein kinase 2" }
+  - { uniprot: O60260, gene: PRKN,    name: "E3 ubiquitin-protein ligase parkin" }
+  - { uniprot: Q9BXM7, gene: PINK1,   name: "Serine/threonine-protein kinase PINK1, mitochondrial" }
+  - { uniprot: Q99497, gene: DJ1,     name: "Protein/nucleic acid deglycase DJ-1" }
+  - { uniprot: P20366, gene: TAC1,    name: "Protachykinin-1" }
+  - { uniprot: P42858, gene: HTT,     name: "Huntingtin (related)" }

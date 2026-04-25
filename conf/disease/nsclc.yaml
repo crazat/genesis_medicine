@@ -1,0 +1,17 @@
+key: nsclc
+display_name: "Non-small cell lung cancer"
+mesh_id: D002289
+efo_id: EFO_0003060              # Non-small cell lung carcinoma (Open Targets ID)
+icd10: C34
+pubmed_query: '"Carcinoma, Non-Small-Cell Lung"[Mesh] AND ("target"[All Fields] OR "pathway"[All Fields])'
+priority_regions:
+  - lung
+  - bronchus
+known_targets_seed:              # NSCLC 임상 검증 타겟
+  - { uniprot: P00533, gene: EGFR,    name: "Epidermal growth factor receptor" }
+  - { uniprot: P04637, gene: TP53,    name: "Cellular tumor antigen p53" }
+  - { uniprot: P01116, gene: KRAS,    name: "GTPase KRas" }
+  - { uniprot: Q9UM73, gene: ALK,     name: "ALK tyrosine kinase receptor" }
+  - { uniprot: P08581, gene: MET,     name: "Hepatocyte growth factor receptor" }
+  - { uniprot: P11362, gene: FGFR1,   name: "FGFR1" }
+  - { uniprot: Q9Y243, gene: AKT3,    name: "RAC-gamma serine/threonine-protein kinase" }
