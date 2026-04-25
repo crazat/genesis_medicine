@@ -1,0 +1,38 @@
+[
+  {
+    "target": "tgfb1",
+    "compound": "embelin_emb1",
+    "status": "ok",
+    "wall_min": 6.67,
+    "rmsd_mean_A": 1.17,
+    "rmsd_max_A": 2.26,
+    "rmsd_final_A": 1.44
+  },
+  {
+    "target": "mmp1",
+    "compound": "embelin_emb1",
+    "status": "ok",
+    "wall_min": 6.64,
+    "rmsd_mean_A": 2.12,
+    "rmsd_max_A": 3.13,
+    "rmsd_final_A": 2.43
+  },
+  {
+    "target": "tgfb1",
+    "compound": "embelin_emb3",
+    "status": "ok",
+    "wall_min": 6.8,
+    "rmsd_mean_A": 1.31,
+    "rmsd_max_A": 2.2,
+    "rmsd_final_A": 1.89
+  },
+  {
+    "target": "mmp1",
+    "compound": "embelin_emb3",
+    "status": "ok",
+    "wall_min": 6.69,
+    "rmsd_mean_A": 0.79,
+    "rmsd_max_A": 1.38,
+    "rmsd_final_A": 0.81
+  }
+]

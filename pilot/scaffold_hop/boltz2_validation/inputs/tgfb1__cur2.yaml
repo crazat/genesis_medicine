@@ -1,0 +1,12 @@
+version: 1
+sequences:
+- protein:
+    id: A
+    sequence: ALDTNYCFSSTEKNCCVRQLYIDFRKDLGWKWIHEPKGYHANFCLGPCPYIWSLDTQYSKVLALYNQHNPGASAAPCCVPQALEPLPIVYYVGRKPKVEQLSNMIVRSCKCS
+    msa: /home/crazat/genesis_medicine/data/msa/tgfb1.a3m
+- ligand:
+    id: B
+    smiles: COc1cc(/C=C/C(=O)CC(=O)/C=C/c2ccc(O)cc2)cc(OC)c1OCCO
+properties:
+- affinity:
+    binder: B

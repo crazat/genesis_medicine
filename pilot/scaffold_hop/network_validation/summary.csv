@@ -1,0 +1,4 @@
+compound,anti_fibrotic_mean,pro_regen_mean,network_coverage,selectivity,dual_score
+embelin,0.701,0.563,1.0,0.138,0.837
+emb3,0.638,0.524,0.86,0.114,0.751
+egcg,0.605,0.541,1.0,0.063,0.859

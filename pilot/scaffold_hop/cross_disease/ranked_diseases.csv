@@ -1,0 +1,19 @@
+disease_id,disease_name,n_targets_hit,targets,weighted_score,max_ot_score,therapeutic_areas
+EFO_0000768,idiopathic pulmonary fibrosis,6,"TGFB1,MMP1,CTGF,JUN,LOX,PDGFRB",0.899,0.594,"cancer or benign tumor, respiratory or thoracic disease"
+EFO_0000717,systemic scleroderma,7,"TGFB1,MMP1,CTGF,JUN,LOX,SMAD3,PDGFRB",0.676,0.551,"disorder of visual system, genetic, familial or congenital disease, immune system disease, integumentary system disease, musculoskeletal or connective tissue disease, phenotype, respiratory or thoracic disease, urinary system disease"
+EFO_0009448,pulmonary fibrosis,7,"TGFB1,MMP1,CTGF,JUN,LOX,SMAD3,PDGFRB",0.586,0.555,"cancer or benign tumor, respiratory or thoracic disease"
+MONDO_0009061,cystic fibrosis,3,"TGFB1,MMP1,JUN",0.402,0.444,"genetic, familial or congenital disease, respiratory or thoracic disease"
+EFO_0000384,Crohn's disease,2,"MMP1,SMAD3",0.335,0.441,"gastrointestinal disease, genetic, familial or congenital disease, immune system disease"
+EFO_1001517,renal fibrosis,5,"TGFB1,CTGF,JUN,LOX,SMAD3",0.246,0.105,"cancer or benign tumor, urinary system disease"
+EFO_0003884,chronic kidney disease,5,"TGFB1,MMP1,CTGF,LOX,SMAD3",0.207,0.113,urinary system disease
+HP_0001395,Hepatic fibrosis,5,"TGFB1,MMP1,CTGF,JUN,LOX",0.201,0.114,phenotype
+EFO_1001249,non-alcoholic steatohepatitis,4,"MMP1,CTGF,JUN,LOX",0.175,0.095,"endocrine system disease, gastrointestinal disease"
+EFO_1001993,scleroderma,5,"TGFB1,MMP1,CTGF,JUN,LOX",0.145,0.071,"disorder of visual system, genetic, familial or congenital disease, immune system disease, musculoskeletal or connective tissue disease, phenotype"
+EFO_0003095,non-alcoholic fatty liver disease,3,"TGFB1,CTGF,JUN",0.116,0.077,"endocrine system disease, gastrointestinal disease"
+MONDO_0044903,myelofibrosis,2,"TGFB1,LOX",0.084,0.101,"cancer or benign tumor, hematologic disease, immune system disease, musculoskeletal or connective tissue disease, phenotype"
+EFO_1001394,Peritoneal Fibrosis,2,"CTGF,LOX",0.067,0.085,"cancer or benign tumor, gastrointestinal disease"
+HP_0001685,Myocardial fibrosis,2,"CTGF,LOX",0.044,0.043,phenotype
+EFO_1001818,oral submucous fibrosis,1,LOX,0.038,0.065,"gastrointestinal disease, musculoskeletal or connective tissue disease"
+EFO_0006890,fibrosis,2,"MMP1,LOX",0.024,0.02,cancer or benign tumor
+EFO_1001248,non-alcoholic fatty liver,1,JUN,0.016,0.032,phenotype
+MONDO_0001999,idiopathic pulmonary arterial hypertension,1,LOX,0.01,0.017,"cardiovascular disease, phenotype, respiratory or thoracic disease"

@@ -94,3 +94,16 @@ pilot/disease_expansion/egfr_inputs/
 
 # Scaffold-hop logs (재생성 가능)
 pilot/scaffold_hop/*/outputs/*.log
+pilot/scaffold_hop/*.log
+
+# Scaffold-hop large intermediates (재생성 가능)
+pilot/scaffold_hop/md_validation/*/traj.dcd
+pilot/scaffold_hop/md_validation/*/log.csv
+pilot/scaffold_hop/md_validation/*/final.pdb
+pilot/scaffold_hop/boltz2_validation/output/
+pilot/scaffold_hop/network_validation/output/
+pilot/scaffold_hop/network_validation/inputs/
+pilot/scaffold_hop/network_validation/msa_bootstrap/
+pilot/scaffold_hop/tgfb1_latent/output/
+pilot/scaffold_hop/tgfb1_latent/inputs/
+pilot/scaffold_hop/tgfb1_latent/msa_bootstrap/

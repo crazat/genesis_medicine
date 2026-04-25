@@ -1,0 +1,5 @@
+target,compound,status,wall_min,rmsd_mean_A,rmsd_max_A,rmsd_final_A
+tgfb1,embelin_emb1,ok,6.67,1.17,2.26,1.44
+mmp1,embelin_emb1,ok,6.64,2.12,3.13,2.43
+tgfb1,embelin_emb3,ok,6.8,1.31,2.2,1.89
+mmp1,embelin_emb3,ok,6.69,0.79,1.38,0.81
