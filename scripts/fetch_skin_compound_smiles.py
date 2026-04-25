@@ -39,8 +39,11 @@ def fetch_by_cid(cid: int, timeout: float = 20.0) -> dict | None:
 
 
 def main() -> int:
-    seed = pd.read_csv(DATA / "skin_compounds_seed.csv")
-    print(f"=== {len(seed)}개 천연물 PubChem SMILES 채우기 ===")
+    seed_path = DATA / "skin_compounds_seed_v2.csv"
+    if not seed_path.exists():
+        seed_path = DATA / "skin_compounds_seed.csv"
+    seed = pd.read_csv(seed_path)
+    print(f"=== {len(seed)}개 천연물 PubChem SMILES 채우기 ({seed_path.name}) ===")
 
     rows = []
     for _, r in seed.iterrows():
