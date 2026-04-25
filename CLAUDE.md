@@ -26,16 +26,19 @@
 - ~~NSCLC/Parkinson 확장~~ — Open Targets 100+100 타겟 발굴, 시드 10/14 hit, **AFDB 10/10 구조 확보** → 인프라 generality 증명.
 - ~~genesis-md conda env 구성~~ — openmm 8.5.1 + openmmforcefields 0.15.1 + openff-toolkit 0.18 + pdbfixer + mace-torch.
 - ~~CHEMBL230245-BACE1 10 ns MD~~ — 9.7분 (1484 ns/day), **ligand RMSD 2.57 Å mean (drift 없음)** → Boltz-2 포즈가 MD scale에서 검증됨. `pilot/bace1_boltz2/md_chembl230245_10ns/`.
-- ~~TxGNN v2 알츠하이머 재창출 성공~~ — **36초 만에 1801 약물 × 6 AD subtype zero-shot 랭킹**. Physostigmine·Aceclidine·Cenegermin·Miglustat 등 약리학적 의미 있는 후보들. `pilot/alzheimer_repurposing/results/`.
+- ~~TxGNN v2 알츠하이머 재창출 성공~~ — **36초 만에 1801 약물 × 6 AD subtype zero-shot 랭킹**. Physostigmine·Aceclidine·Cenegermin·Miglustat 등 약리학적 의미 있는 후보들.
+- ~~재창출 후보 Boltz-2 + ADMET 통합 검증~~ — PubChem SMILES 16/20 매핑 → BACE1 cofolding 15개 (1211s) → ADMET 41 endpoints → **Aceclidine이 유일하게 safety gate 통과** (BBB 0.98 + hERG 0.12 + DILI 0.03 + QED 0.54). TxGNN의 BACE1 직결합은 약함 → multi-hop KG 경로 예측 확증.
+- ~~NSCLC EGFR 파일럿 — 인프라 generality 증명~~ — 5개 approved TKI Boltz-2 cofolding 466s. Erlotinib/Dacomitinib/Afatinib/Gefitinib pIC50 7.5-8.7 + prob 0.72-0.78 (nM급 일치). Osimertinib outlier는 T790M 특화 (biology 정상). BACE1 → EGFR 전환시 품질 동일.
 
-### 🟡 다음 즉시 실행 (우선순위, BACE1+TxGNN 성과 기반)
-1. **TxGNN Top 50 → DrugBank SMILES → Boltz-2 cofolding** — 메인 Alzheimer TxGNN 상위 50개 약물의 DrugBank ID를 PubChem/DrugBank API로 SMILES 변환, BACE1/AChE/APP 등 주요 AD 타겟에 cofolding. **재창출 후보 우선순위 검증.**
-2. **CHEMBL230245 scaffold hopping (REINVENT 4 RL)** — hERG=0.98 위험 회피하는 유사체 100~1000개 생성. `pip install reinvent4` + ADMET 보상 함수.
-3. **NSCLC EGFR Boltz-2 cofolding 파일럿** — AFDB 구조 확보 완료됐으므로 알려진 EGFR inhibitor (gefitinib, osimertinib 등) 10개로 BACE1와 동일 end-to-end 재현.
-4. **AlphaFlow BACE1 cryptic pocket** — py3.9 conda env 필요. 기존 P56817 AFDB 구조 + 50 conformers → P2Rank로 apo에 없던 포켓 검출.
-5. **DrugCLIP + COCONUT 2.0 프리필터** — COCONUT CC0 700k → DrugCLIP top 1k → Boltz-2 BACE1 affinity.
-6. **MACE-OFF24 ML potential MD 비교** — run_mace_md_v3.py에 ml_atoms=ligand overlay 추가 → classical AMBER vs MACE ML-MM RMSD 비교.
-7. **MMseqs2 DB 빌드** — 1TB 외장 디스크 확보 후 `scripts/setup/install_mmseqs2_gpu.sh` (24~48h).
+### 🟡 다음 즉시 실행 (우선순위, Aceclidine 후보 + EGFR generality 증명 이후)
+1. **Aceclidine AChE 타겟 cofolding** — Aceclidine이 BACE1 직결합은 약하지만 콜린성 경로로 AD 치료 합리. AChE(UniProt P22303) AFDB 구조 + Aceclidine SMILES로 Boltz-2 affinity. 예상 pIC50 ≥ 7.
+2. **NSCLC EGFR TxGNN 재창출** — TxGNN env로 NSCLC(EFO_0003060) top 50 → SMILES → EGFR cofolding. 알츠하이머 재창출과 동일 프로토콜.
+3. **TxGNN 재창출 Top 50로 확대 + 다중 타겟 cofolding** — BACE1 외 AChE/GSK3B/APP 4개 타겟에 모두 cofolding해 multi-target 친화도 profile 작성.
+4. **CHEMBL230245 scaffold hopping (REINVENT 4 RL)** — hERG=0.98 회피 유사체 100~1000개 생성.
+5. **AlphaFlow BACE1 cryptic pocket** — py3.9 conda env 필요. cryptic pocket 발굴해 Boltz-2 재도킹.
+6. **MACE-OFF24 ML-MM MD** — CHEMBL230245와 Aceclidine 비교. ml_atoms=ligand overlay로 classical vs ML RMSD.
+7. **DrugCLIP + COCONUT 프리필터** — 천연물 700k에서 AD 후보 탐색.
+8. **MMseqs2 DB 빌드** — 1TB 디스크 확보 후 (장기 과제).
 
 ### 🟢 상위 로드맵 (참고)
 - 다음 질병 적용: **NSCLC 또는 파킨슨 권고** (BACE1은 임상적으로 막혀있음).
