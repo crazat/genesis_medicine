@@ -127,6 +127,39 @@ def build_manuscript(ctx: StudyContext) -> ManuscriptResult:
     stats_csv = out_dir / "statistics.json"
     stats_csv.write_text(json.dumps(stats_summary, indent=2, default=float))
 
+    # ---- 4.5 Novelty 분석 (선택) ------------------------------------------
+    novelty_md = ""
+    if ctx.enable_novelty and not consensus_df.empty:
+        try:
+            from ..novelty import NoveltyContext, batch_novelty_analysis
+            from ..novelty.novelty_score import to_dataframe as novelty_df
+            from ..novelty.prior_art_table import render_novelty_section
+
+            top_compounds = consensus_df.head(ctx.novelty_top_n).index.tolist()
+            print(f"  [novelty] Top {len(top_compounds)} 후보 분석 중...")
+            contexts = [
+                NoveltyContext(
+                    compound_name=name,
+                    disease=ctx.disease,
+                    disease_synonyms=ctx.disease_synonyms,
+                    target_uniprot=ctx.targets[0]["uniprot"] if ctx.targets else None,
+                    target_gene=ctx.targets[0]["key"] if ctx.targets else None,
+                )
+                for name in top_compounds
+            ]
+            scores = batch_novelty_analysis(contexts)
+            novelty_md = render_novelty_section(scores, disease=ctx.disease)
+
+            # 별도 파일 저장
+            novelty_path = out_dir / "novelty_assessment.md"
+            novelty_path.write_text(novelty_md, encoding="utf-8")
+            novelty_csv = tab_dir / "table_novelty.csv"
+            novelty_df(scores).to_csv(novelty_csv, index=False)
+            tables.append(novelty_csv)
+            print(f"  ✅ novelty 평가 완료: {novelty_path}")
+        except Exception as e:
+            print(f"  ⚠️  novelty 분석 실패: {e}")
+
     # ---- 5. Methods section -----------------------------------------------
     methods_md = generate_methods_section(ctx)
     methods_path = out_dir / "methods_section.md"
@@ -149,7 +182,7 @@ def build_manuscript(ctx: StudyContext) -> ManuscriptResult:
     manuscript_path = out_dir / "manuscript.md"
     manuscript_path.write_text(
         _compose_manuscript(ctx, consensus_df, full_df, stats_summary,
-                           figures, tables, methods_md),
+                           figures, tables, methods_md, novelty_md=novelty_md),
         encoding="utf-8",
     )
 
@@ -179,6 +212,7 @@ def _compose_manuscript(
     figures: list[Path],
     tables: list[Path],
     methods_md: str,
+    novelty_md: str = "",
 ) -> str:
     """단일 manuscript.md 구성. Pandoc 호환 ([@cite] / ![](path) 형태)."""
 
@@ -309,7 +343,8 @@ Boltz-2, AI drug discovery, multi-target.
 {chr(10).join(table_refs)}
 """
 
-    # === Discussion (placeholder) ===
+    # === Discussion (placeholder + auto novelty) ===
+    novelty_block = ("\n\n" + novelty_md + "\n") if novelty_md else ""
     discussion = """## 4. Discussion
 
 > ⚠️ *placeholder — 다음을 작성:*
@@ -318,7 +353,7 @@ Boltz-2, AI drug discovery, multi-target.
 > - In silico의 한계 (in vitro 검증 필요, IC50의 절대값 신뢰도)
 > - Recover 한의원 임상 적용 가능성 (외용제·약침·체질처방)
 > - 후속 연구 방향 (in vitro → in vivo → IRB 임상)
-"""
+""" + novelty_block
 
     conclusion = f"""## 5. Conclusion
 

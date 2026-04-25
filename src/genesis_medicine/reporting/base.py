@@ -54,6 +54,11 @@ class StudyContext:
     funding: str = "Self-funded R&D, Recover Clinic."
     conflicts: str = "The authors declare no conflicts of interest."
 
+    # Novelty 검증 (선택)
+    enable_novelty: bool = False
+    novelty_top_n: int = 10                # 상위 몇 개 화합물에 대해 분석할지
+    disease_synonyms: list[str] = field(default_factory=list)
+
     def __post_init__(self) -> None:
         if not isinstance(self.results_dir, Path):
             self.results_dir = Path(self.results_dir)
