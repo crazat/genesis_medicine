@@ -39,10 +39,16 @@ def test_admet_ai_adapter_constructs(tmp_path: Path) -> None:
     assert adapter.engine_name == "admet_ai_v2"
 
 
-def test_admet_ai_adapter_uninstalled_returns_empty(tmp_path: Path) -> None:
+def test_admet_ai_adapter_predict_smoke(tmp_path: Path) -> None:
+    """admet_ai 설치되어 있으면 실 예측, 없으면 error metadata 반환."""
     adapter = ADMETAIAdapter(cache_dir=tmp_path)
     result = adapter.predict(ADMETRequest(smiles_list=["CCO"]))
     assert isinstance(result, ADMETResult)
+    assert result.engine == "admet_ai_v2"
+    # 설치되어 있으면 predictions가 있고, 없으면 비어있고 error metadata
+    installed = len(result.predictions) > 0
+    if not installed:
+        assert "error" in result.metadata
 
 
 def test_filter_by_admet_filters() -> None:

@@ -15,34 +15,34 @@
 - ~~라이선스 게이트~~ — **83개 컴포넌트** 등록, **118개 테스트** 전부 통과.
 - ~~Open Targets 호출~~ — 알츠하이머 상위 50 타겟 중 49개 UniProt ID 확인.
 - ~~Boltz-2 BACE1 파일럿~~ — 9/10 화합물 공동접힘 성공. confidence=0.873.
-- ~~v2.1 고도화 ultrathink 구현~~ — 11단계 아키텍처 뼈대 + 15개 새 컴포넌트:
-  - **Stage 1.5** TxGNN 약물 재창출 (A1)
-  - **Stage 2.5** AlphaFlow + BioEmu cryptic pocket 앙상블 (A2)
-  - **Stage 4 보강** PoseBench v2 검증, DrugCLIP 설정, Active Learning (B4)
-  - **Stage 5 보강** NeuralPLexer3 어댑터 (research only, A5), ConsensusPredictor (B5)
-  - **Stage 5.5** BindCraft 단백질 바인더 (B1), PROTAC/분자글루 (B2)
-  - **Stage 6** ADMET-AI v2 어댑터
-  - **Stage 7** 한약 reverse_mapping + network_pharmacology
-  - **Stage 8'** OpenMM-ML + MACE-OFF24(M) refine (A3)
-  - **Stage 8.5** FEP-SPell-ABFE / pmx ABFE (A4)
-  - **자체 MMseqs2-GPU MSA 모듈** (S4 — 상업 빌드 블로커 해소)
-  - Boltz-2 affinity head 설정 완전 노출 (S1), cuEquivariance 가속 지원 (S2)
+- ~~v2.1 고도화 ultrathink 구현~~ — 11단계 아키텍처 + 15개 새 컴포넌트 (TxGNN·AlphaFlow·BioEmu·MACE-OFF24·OpenMM-ML·FEP-SPell-ABFE·BindCraft·PROTAC/Glue·ConsensusPredictor·NeuralPLexer3·PoseBench v2·ActiveLearning·MMseqs2-GPU).
+- ~~실 런 1: 가속 스택 설치~~ — cuequivariance 0.10.0 + cuequivariance-ops-torch-cu12 + boltz-blackwell 0.1.2 설치.
+- ~~실 런 2: Boltz-2 affinity head~~ — BACE1 9개 화합물, `sampling_steps_affinity=200 + diffusion_samples_affinity=5 + affinity_mw_correction` + cuEquivariance 가속. **241초 완료**. pIC50 6.8~8.5, binder 확률 0.70~0.99. 결과: `pilot/bace1_boltz2/affinity_results.csv`.
+- ~~실 런 3: ADMET-AI v2~~ — 9개 화합물 41 endpoint. **CHEMBL230245만** Lipinski+QED≥0.4+BBB≥0.5 통과. 전원 hERG blocker 위험. 결과: `pilot/bace1_boltz2/admet_ai_results.csv`.
+- ~~실 런 4: BACE1 통합 리포트~~ — Boltz-2 pIC50 + ADMET 41 endpoint 합쳐 combined_score. `pilot/bace1_boltz2/bace1_full_report.csv`. **임상적 해석: BACE1 단일 타겟은 막혔음** (lanabecestat 등 임상 실패와 데이터 부합) → 다음 방향은 multi-target 또는 재창출.
+- ~~TxGNN clone~~ — `external/TxGNN` 설치됐으나 DGL 0.5.2 레거시 의존 → 메인 venv 호환 안 됨 → `external/TxGNN/INSTALL_NOTES.md` 기록, 별도 conda env 필요.
+- ~~AlphaFlow clone~~ — `external/alphaflow` 설치됐으나 torch 1.12+CUDA 11.8 요구 → `external/alphaflow/INSTALL_NOTES.md` 기록, py3.9 conda env 필요.
+- ~~MMseqs2 설치~~ — `mmseqs 18.8cc5c` (conda-forge base env). DB 빌드는 1TB 여유 필요(현재 553GB 여유) → 보조 디스크 필요.
 
-### 🟡 즉시 실행 (의존성 설치 + 실 추론 런)
-1. **가속 스택 설치** — `pip install -e '.[accel]'` + (선택) `pip install boltz-blackwell` → `no_kernels: false`로 30~50% 가속.
-2. **자체 MMseqs2-GPU 빌드** — `bash scripts/setup/install_mmseqs2_gpu.sh` (1TB 디스크, 24~48h). 이후 commercial 빌드 진짜 가능.
-3. **Boltz-2 affinity head 실런** — BACE1 9개 compound로 `sampling_steps_affinity=200, diffusion_samples_affinity=5, affinity_mw_correction=true` 추론.
-4. **TxGNN 가중치 다운로드 + 알츠하이머 re-purposing 실런** — `https://github.com/mims-harvard/TxGNN` 에서 체크포인트 받아 `MONDO_0004975` 기준 zero-shot top 20 후보 생성.
-5. **AlphaFlow로 BACE1 cryptic pocket 탐색** — 50 컨포머 샘플 → P2Rank → apo에 없던 포켓 검출.
-6. **DrugCLIP Stage A 실런** — COCONUT 2.0 700k → 1k 프리필터 검증.
-7. **ADMET-AI v2 + OpenMM-ML 10 ns** — 상위 20 후보에 대해 BBB/hERG/DILI 게이트 + MACE-OFF24 안정성.
+### 🟡 다음 즉시 실행 (우선순위)
+1. **TxGNN 별도 conda env 구성 + 알츠하이머 재창출 실런** — `conda create -n txgnn python=3.9` + torch 2.3 + DGL 2.4 + Google Drive checkpoint. → MONDO_0004975 top 100 후보 생성. **BACE1 막혔으므로 이게 가장 임상 임팩트 큰 경로.**
+2. **AlphaFlow 12l-distilled 설치 + BACE1 cryptic pocket 50 conformers** — py3.9 conda env. P2Rank로 apo에 없던 포켓 검출 → Boltz-2로 재도킹.
+3. **DrugCLIP Stage A 실런** — COCONUT 2.0 700k CC0 다운로드 → 1k 프리필터 (Science 2026 코드).
+4. **NSCLC 또는 파킨슨으로 질병 확장** — BACE1 파일럿이 보여줬듯 AD 단일 타겟은 한계. 다른 질병으로 인프라 generality 검증.
+5. **MMseqs2 DB 빌드** — 1TB 외장 디스크 확보 후 `scripts/setup/install_mmseqs2_gpu.sh`. 24~48h.
+6. **CHEMBL230245 확장** — 유일하게 게이트 통과한 화합물. scaffold hopping / REINVENT 4 RL로 hERG 회피 유사체 생성.
+7. **OpenMM-ML + MACE-OFF24 MD 10 ns** — CHEMBL230245의 BACE1 결합 안정성 검증.
 
 ### 🟢 상위 로드맵 (참고)
 - 다음 질병 적용: **NSCLC 또는 파킨슨 권고** (BACE1은 임상적으로 막혀있음).
 - ABFE (Stage 8.5) 본격 검증 — FEP-SPell-ABFE로 top 10에 대해 160 ns/replica × 3 replicas.
 - IP 타임스탬프 + DVC 추적 본격 활성 (commercial 빌드 감사).
 
-### 기술 노트 (v2.1 ultrathink 추가분)
+### 기술 노트 (v2.1 ultrathink + 실 런에서 확인한 것)
+- **cuEquivariance 0.10 + boltz-blackwell 0.1.2 설치 OK** (RTX 5090 SM 12.0). Boltz-2 9개 ligand affinity 추론 241초. Triangle attention 커널이 pynvml에서 "RTX A6000" default fallback 경고를 띄우지만 실제 계산은 정상.
+- **TxGNN + AlphaFlow는 레거시 의존**으로 메인 venv와 비호환 — 별도 conda env 필요 (각각 py3.9 + torch 1.12 / torch 2.3 + DGL 2.4).
+- **Boltz-2 YAML에 `properties: - affinity: binder: <id>` 블록 필수** — 이거 없으면 affinity head 안 돎. `pilot/bace1_boltz2/run_affinity.py`가 자동 주입.
+- **admet_ai v2**는 DataFrame index가 SMILES. invalid SMILES는 자동 드랍됨.
 - **`no_kernels: false`가 기본** — `cuequivariance-torch>=0.7` 필요. 미설치 환경은 yaml override로 `no_kernels=true`.
 - **MSA factory** — commercial 빌드에서는 `colabfold_public` 요청해도 `mmseqs2_local`로 강제 전환.
 - **NeuralPLexer3 웨이트 CC-BY-NC-SA** → `conf/structure/neuralplexer3.yaml`이 `build_profile: research` 자동 — commercial에서 호출 시 LicenseViolation.

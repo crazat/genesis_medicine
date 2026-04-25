@@ -85,10 +85,10 @@ class ADMETAIAdapter:
         from admet_ai import ADMETModel
 
         if self._predictor is None:
-            self._predictor = ADMETModel(
-                models_dir=str(self.models_dir) if self.models_dir else None,
-                num_workers=self.num_workers,
-            )
+            kwargs: dict = {"num_workers": self.num_workers}
+            if self.models_dir:
+                kwargs["models_dir"] = str(self.models_dir)
+            self._predictor = ADMETModel(**kwargs)
         return self._predictor.predict(smiles=req.smiles_list)
 
 

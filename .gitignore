@@ -44,6 +44,12 @@ runs/
 # Boltz cache
 pilot/bace1_boltz2/output*/
 pilot/bace1_boltz2/inputs/
+pilot/bace1_boltz2/inputs_affinity/
+pilot/bace1_boltz2/admet_ai_results.csv
+pilot/bace1_boltz2/affinity_results.csv
+
+# External repos (large, third-party)
+external/
 
 # NER results (46MB)
 ner_results.csv
