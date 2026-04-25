@@ -1,0 +1,11 @@
+prescription,indication_traditional,n_components_evaluated,score_scar,score_pigment,score_alopecia,score_acne,score_photoaging,best_disease_predicted,best_score
+"자운고 (Jaungo, 紫雲膏)",외용 흉터·창상·화상,3,0.534,,0.424,0.36,0.463,scar,0.534
+"옥용산 (Ok-yong-san, 玉容散)",미백·기미 외용,4,,0.461,,,,pigment,0.461
+"당귀음자 (Danggui-eumja, 當歸飮子)",혈허성 피부 소양·만성 건조,2,0.301,,,,0.391,photoaging,0.391
+"온청음 (On-cheong-eum, 溫淸飮)",혈허열·아토피·소양,3,0.372,,0.409,0.449,0.476,photoaging,0.476
+"황련해독탕 (Hwang-ryeon-hae-dok-tang, 黃連解毒湯)",급성 염증 여드름·열독 피부,3,0.55,,0.454,0.461,0.567,photoaging,0.567
+"방풍통성산 (Bang-poong-tong-seong-san, 防風通聖散)",발열성 여드름·체질 개선,2,0.54,,0.457,0.447,0.543,photoaging,0.543
+"사물탕 (Sa-mul-tang, 四物湯)",혈허·콜라겐·안티에이징,2,0.301,,,,0.391,photoaging,0.391
+활혈거어탕 (活血祛瘀湯),비후성 흉터·켈로이드,2,0.301,,,,0.391,photoaging,0.391
+센텔라 외용 (Madecassol),흉터 (clinical),3,0.228,,,,,scar,0.228
+녹차 외용 (Polyphenon E),광노화·항산화,1,0.623,0.617,0.591,0.57,0.549,scar,0.623

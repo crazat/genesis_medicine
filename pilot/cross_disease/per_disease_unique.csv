@@ -1,0 +1,7 @@
+disease,compound,this_disease_aff,other_avg_aff,specialty_score
+scar,Shikonin,0.631,0.439,0.191
+scar,Emodin,0.6,0.49,0.11
+scar,Aloe-emodin,0.649,0.546,0.103
+acne,Honokiol,0.545,0.425,0.121
+photoaging,Chlorogenic acid,0.507,0.376,0.13
+photoaging,Baicalein,0.657,0.539,0.118
