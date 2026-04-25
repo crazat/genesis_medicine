@@ -70,3 +70,4 @@ pilot/disease_expansion/results/*.parquet
 pilot/disease_expansion/structures/
 pilot/bace1_boltz2/md_chembl230245*/
 pilot/alzheimer_repurposing/results/
+pilot/bace1_boltz2/md_chembl230245_*
