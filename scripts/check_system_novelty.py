@@ -10,6 +10,8 @@ import sys
 
 import requests
 
+from genesis_medicine.novelty._ncbi_auth import ncbi_params
+
 QUERIES = {
     # ---- 한방 + 흉터 + AI 컨셉 자체 ----
     "1. 한방 + 흉터 + virtual screening": (
@@ -72,14 +74,16 @@ QUERIES = {
 def pubmed_search(query: str, fetch_titles: int = 3) -> dict:
     url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
     r = requests.get(url, params={"db": "pubmed", "term": query, "retmax": fetch_titles,
-                                   "retmode": "json", "sort": "relevance"}, timeout=30)
+                                   "retmode": "json", "sort": "relevance",
+                                   **ncbi_params()}, timeout=30)
     es = r.json().get("esearchresult", {})
     pmids = es.get("idlist", [])
     titles = []
     if pmids:
         s = requests.get(
             "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
-            params={"db": "pubmed", "id": ",".join(pmids), "retmode": "json"},
+            params={"db": "pubmed", "id": ",".join(pmids), "retmode": "json",
+                    **ncbi_params()},
             timeout=30,
         ).json().get("result", {})
         for pid in pmids:

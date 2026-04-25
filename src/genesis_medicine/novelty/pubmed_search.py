@@ -14,6 +14,7 @@ from typing import Iterable
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
+from ._ncbi_auth import ncbi_params, ncbi_sleep_seconds
 from .base import NoveltyContext, PriorArtRecord
 
 CACHE_DIR = Path.home() / "genesis_medicine" / ".cache" / "novelty"
@@ -53,6 +54,7 @@ def _esearch(query: str, retmax: int = 20) -> dict:
     params = {
         "db": "pubmed", "term": query, "retmax": retmax,
         "retmode": "json", "sort": "relevance",
+        **ncbi_params(),
     }
     r = requests.get(url, params=params, timeout=30)
     r.raise_for_status()
@@ -64,7 +66,8 @@ def _efetch_titles(pmids: list[str]) -> list[str]:
     if not pmids:
         return []
     url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi"
-    params = {"db": "pubmed", "id": ",".join(pmids), "retmode": "json"}
+    params = {"db": "pubmed", "id": ",".join(pmids), "retmode": "json",
+              **ncbi_params()}
     r = requests.get(url, params=params, timeout=30)
     r.raise_for_status()
     data = r.json().get("result", {})
@@ -94,7 +97,7 @@ def pubmed_count(ctx: NoveltyContext, mode: str = "compound_disease",
         n_hits = int(es.get("count", 0))
         pmids = es.get("idlist", [])
         titles = _efetch_titles(pmids[:5]) if fetch_titles and pmids else []
-        time.sleep(0.34)  # NCBI rate limit (3 req/s)
+        time.sleep(ncbi_sleep_seconds())  # 키 있으면 10/s, 없으면 3/s
     except Exception as e:
         return PriorArtRecord(source="pubmed", n_hits=-1,
                               notable_finding=f"error: {e}",

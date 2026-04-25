@@ -86,3 +86,11 @@ manuscript_system/
 clinical_outputs/
 pilot/skin_scar/md_top_hits/
 pilot/external_validation/
+
+# Boltz-2 큰 출력 + MSA 캐시
+pilot/skin_scar/results/
+pilot/disease_expansion/egfr_output/
+pilot/disease_expansion/egfr_inputs/
+
+# Scaffold-hop logs (재생성 가능)
+pilot/scaffold_hop/*/outputs/*.log

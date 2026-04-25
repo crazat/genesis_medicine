@@ -1,0 +1,3 @@
+seed,raw,valid,topical_pass,tox_pass,best_score,best_smiles,best_hERG,best_skin
+embelin,83,83,52,34,0.8558730761999648,CCCCCCCCC1=C(O)C(O)C(C(=O)O)=C(O)C1=O,0.2235778272151947,0.5233882665634155
+curcumin,71,71,15,6,0.7164762378464091,CCOC(=O)CC/C(=C/c1ccc(O)c(OC)c1)C(C)=O,0.2945941388607025,0.6659379005432129

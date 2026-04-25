@@ -22,6 +22,8 @@ from pathlib import Path
 import requests
 from tenacity import retry, stop_after_attempt, wait_exponential
 
+from ._ncbi_auth import ncbi_params
+
 CACHE_DIR = Path.home() / "genesis_medicine" / ".cache" / "novelty" / "system"
 CACHE_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -130,7 +132,8 @@ def _build_topic_queries(d: SystemDescriptor) -> list[tuple[str, str, str]]:
 def _pubmed(query: str) -> tuple[int, list[str], list[str]]:
     url = "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi"
     r = requests.get(url, params={"db": "pubmed", "term": query, "retmax": 5,
-                                   "retmode": "json", "sort": "relevance"},
+                                   "retmode": "json", "sort": "relevance",
+                                   **ncbi_params()},
                      timeout=30)
     r.raise_for_status()
     es = r.json().get("esearchresult", {})
@@ -140,7 +143,8 @@ def _pubmed(query: str) -> tuple[int, list[str], list[str]]:
     if pmids:
         s = requests.get(
             "https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi",
-            params={"db": "pubmed", "id": ",".join(pmids), "retmode": "json"},
+            params={"db": "pubmed", "id": ",".join(pmids), "retmode": "json",
+                    **ncbi_params()},
             timeout=30,
         ).json().get("result", {})
         for pid in pmids:
