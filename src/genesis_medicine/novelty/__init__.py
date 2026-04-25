@@ -33,6 +33,12 @@ from .clinicaltrials_search import clinicaltrials_count
 from .patents_search import lens_patent_count
 from .novelty_score import compute_novelty_score, batch_novelty_analysis
 from .prior_art_table import render_prior_art_table
+from .system_novelty import (
+    SystemDescriptor,
+    SystemNoveltyReport,
+    evaluate_system_novelty,
+    render_system_novelty_section,
+)
 
 __all__ = [
     "NoveltyContext",
@@ -44,4 +50,6 @@ __all__ = [
     "lens_patent_count",
     "compute_novelty_score", "batch_novelty_analysis",
     "render_prior_art_table",
+    "SystemDescriptor", "SystemNoveltyReport",
+    "evaluate_system_novelty", "render_system_novelty_section",
 ]

@@ -59,6 +59,22 @@ class StudyContext:
     novelty_top_n: int = 10                # 상위 몇 개 화합물에 대해 분석할지
     disease_synonyms: list[str] = field(default_factory=list)
 
+    # 시스템 단위 novelty (선택)
+    enable_system_novelty: bool = False
+    system_methods: list[str] = field(default_factory=lambda: [
+        "structure-based virtual screening",
+        "molecular docking",
+        "AI drug discovery",
+    ])
+    system_data_sources: list[str] = field(default_factory=lambda: [
+        "Korean traditional medicine",
+        "natural products",
+    ])
+    system_unique_tools: list[str] = field(default_factory=lambda: [
+        "Boltz-2", "AlphaFold", "ADMET-AI",
+    ])
+    system_differentiators: list[str] = field(default_factory=list)
+
     def __post_init__(self) -> None:
         if not isinstance(self.results_dir, Path):
             self.results_dir = Path(self.results_dir)

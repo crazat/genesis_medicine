@@ -160,6 +160,30 @@ def build_manuscript(ctx: StudyContext) -> ManuscriptResult:
         except Exception as e:
             print(f"  ⚠️  novelty 분석 실패: {e}")
 
+    # ---- 4.6 시스템 단위 novelty (Introduction 보강) -------------------------
+    system_novelty_md = ""
+    if ctx.enable_system_novelty:
+        try:
+            from ..novelty import (SystemDescriptor, evaluate_system_novelty,
+                                    render_system_novelty_section)
+            sd = SystemDescriptor(
+                disease=ctx.disease,
+                disease_synonyms=ctx.disease_synonyms,
+                methods=ctx.system_methods,
+                data_sources=ctx.system_data_sources,
+                unique_tools=ctx.system_unique_tools,
+                differentiators=ctx.system_differentiators,
+            )
+            print(f"  [system_novelty] 시스템 단위 prior-art 검색...")
+            sys_report = evaluate_system_novelty(sd)
+            system_novelty_md = render_system_novelty_section(sys_report)
+            sys_path = out_dir / "system_novelty.md"
+            sys_path.write_text(system_novelty_md, encoding="utf-8")
+            print(f"  ✅ system novelty: composite={sys_report.composite_score:.2f}, "
+                  f"closest={len(sys_report.closest_prior_art)}건")
+        except Exception as e:
+            print(f"  ⚠️  system novelty 실패: {e}")
+
     # ---- 5. Methods section -----------------------------------------------
     methods_md = generate_methods_section(ctx)
     methods_path = out_dir / "methods_section.md"
@@ -182,7 +206,9 @@ def build_manuscript(ctx: StudyContext) -> ManuscriptResult:
     manuscript_path = out_dir / "manuscript.md"
     manuscript_path.write_text(
         _compose_manuscript(ctx, consensus_df, full_df, stats_summary,
-                           figures, tables, methods_md, novelty_md=novelty_md),
+                           figures, tables, methods_md,
+                           novelty_md=novelty_md,
+                           system_novelty_md=system_novelty_md),
         encoding="utf-8",
     )
 
@@ -213,6 +239,7 @@ def _compose_manuscript(
     tables: list[Path],
     methods_md: str,
     novelty_md: str = "",
+    system_novelty_md: str = "",
 ) -> str:
     """단일 manuscript.md 구성. Pandoc 호환 ([@cite] / ![](path) 형태)."""
 
@@ -285,7 +312,8 @@ Boltz-2, AI drug discovery, multi-target.
 **Keywords:** {ctx.disease}, traditional Korean medicine, virtual screening, AI.
 """
 
-    # === Introduction (placeholder) ===
+    # === Introduction (placeholder + 자동 시스템 novelty 보강) ===
+    sys_block = ("\n\n" + system_novelty_md + "\n") if system_novelty_md else ""
     introduction = f"""## 1. Introduction
 
 > ⚠️ *이 섹션은 사용자가 작성. 다음 요소를 포함해야 함:*
@@ -294,7 +322,7 @@ Boltz-2, AI drug discovery, multi-target.
 > - 한국 한방 처방의 역사적 사용 및 임상 경험
 > - 기존 in silico 시도와의 차별점 (다중 타겟 + ECR + ADMET 게이트 + 한약 처방 매핑)
 > - 본 연구의 가설 및 기여
-"""
+""" + sys_block
 
     # === Methods (auto) ===
     # methods_md는 이미 ## Methods 헤더 포함
