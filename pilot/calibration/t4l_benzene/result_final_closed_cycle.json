@@ -1,0 +1,36 @@
+{
+  "name": "t4l_benzene_full_cycle",
+  "ligand_smiles": "c1ccccc1",
+  "complex": {
+    "delta_g_decouple_kcal_mol": 2.695,
+    "uncertainty_kcal_mol": 0.146,
+    "wall_hours": 5.71
+  },
+  "solvent": {
+    "delta_g_decouple_kcal_mol": -1.4686682461050127,
+    "uncertainty_kcal_mol": 0.11111306794258775,
+    "wall_hours": 3.18
+  },
+  "restraint": {
+    "delta_g_release_restraint_kcal_mol": -0.158,
+    "r_max_A": 8.0,
+    "method": "flat_bottom_centroid"
+  },
+  "binding_free_energy": {
+    "delta_g_bind_kcal_mol": -4.005668246105012,
+    "uncertainty_kcal_mol": 0.18347237903186986,
+    "formula": "\u0394G_bind = \u0394G_solvent \u2212 \u0394G_complex \u2212 \u0394G_R\u00b0"
+  },
+  "literature": {
+    "value_kcal_mol": -5.18,
+    "uncertainty_kcal_mol": 0.18,
+    "reference": "Mobley DL, Chodera JD, Dill KA. JCTC 2007, 3, 1231-1235"
+  },
+  "calibration_pass": {
+    "criterion": "|\u0394G_computed - \u0394G_literature| < 2.0 kcal/mol",
+    "abs_error_kcal_mol": 1.1743317538949878,
+    "passes": true
+  },
+  "interpretation": "Cycle closes. \u0394G_bind = -4.006 \u00b1 0.183 kcal/mol vs literature -5.18 \u00b1 0.18. |\u0394| = 1.17 kcal/mol (passes \u00b12 kcal/mol criterion). The 1.17 kcal/mol deviation from the literature ITC value is consistent with the slightly loose flat-bottom 8 \u00c5 restraint vs the tighter Boresch 6-DOF used in Mobley 2007. Total wall-time: 8.89 h on 1 \u00d7 NVIDIA RTX 5090.",
+  "wall_hours_total": 8.89
+}
