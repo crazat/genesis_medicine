@@ -236,103 +236,76 @@ def measure_restraint_geometry(positions: np.ndarray,
     }
 
 
-def add_boresch_restraint_to_system(system, receptor_anchors: list[int],
-                                       ligand_anchors: list[int],
-                                       geom: dict,
-                                       k_r: float = K_R_KCAL_MOL_A2,
-                                       k_theta: float = K_THETA_KCAL_MOL_RAD2,
-                                       k_phi: float = K_PHI_KCAL_MOL_RAD2) -> None:
-    """Add 6-DOF Boresch restraint as a CustomCompoundBondForce.
+def add_flat_bottom_restraint_to_system(system, ligand_atoms: list[int],
+                                            receptor_atoms: list[int],
+                                            r_max_A: float = 8.0,
+                                            k_kcal_mol_A2: float = 10.0) -> dict:
+    """Flat-bottom harmonic distance restraint between ligand COM and
+    receptor binding-pocket reference atoms COM.
 
-    OpenMM units: distance nm, angle rad, force constants kJ/mol/(nm² or rad²)
+    Energy:  U(r) = 0.5 k (r - r_max)² if r > r_max else 0
+    Confines ligand to a sphere of radius r_max around binding site.
+
+    More robust than 6-DOF Boresch for diverse ligands; trades
+    rotational/translational restraint for simpler analytical correction.
+
+    References:
+      - Hamelberg & McCammon, JACS 2004, 126, 7683 (volume correction)
+      - Mobley et al., JCP 2007, 127, 084108
+
+    Returns: {n_lig_atoms, n_rec_atoms, r_max_A, k_kcal_mol_A2, expr}
     """
-    from openmm import CustomCompoundBondForce, unit
-
-    # Convert force constants kcal/mol → kJ/mol; Å → nm
-    k_r_kj_nm2 = k_r * 4.184 * 100      # kcal/Å² → kJ/nm² (×100 for Å²→nm²)
-    k_theta_kj = k_theta * 4.184
-    k_phi_kj = k_phi * 4.184
-
-    # equilibrium values
-    r0_nm = geom["r0_A"] / 10.0    # Å → nm
+    from openmm import CustomCentroidBondForce
+    # convert kcal/mol/Å² → kJ/mol/nm²
+    k_kj_nm2 = k_kcal_mol_A2 * 4.184 * 100
+    r_max_nm = r_max_A / 10.0
 
     expr = (
-        "0.5*kr*(distance(p1,p4) - r0)^2"
-        " + 0.5*kthA*(angle(p2,p1,p4) - thA0)^2"
-        " + 0.5*kthB*(angle(p1,p4,p5) - thB0)^2"
-        " + 0.5*kphA*(dihedral(p3,p2,p1,p4) - phA0)^2"
-        " + 0.5*kphB*(dihedral(p2,p1,p4,p5) - phB0)^2"
-        " + 0.5*kphC*(dihedral(p1,p4,p5,p6) - phC0)^2"
+        "step(r - r_max) * 0.5 * k * (r - r_max)^2; "
+        "r = distance(g1, g2)"
     )
+    force = CustomCentroidBondForce(2, expr)
+    force.addGlobalParameter("k", k_kj_nm2)
+    force.addGlobalParameter("r_max", r_max_nm)
 
-    force = CustomCompoundBondForce(6, expr)
-    force.addGlobalParameter("kr",   k_r_kj_nm2)
-    force.addGlobalParameter("kthA", k_theta_kj)
-    force.addGlobalParameter("kthB", k_theta_kj)
-    force.addGlobalParameter("kphA", k_phi_kj)
-    force.addGlobalParameter("kphB", k_phi_kj)
-    force.addGlobalParameter("kphC", k_phi_kj)
-    force.addGlobalParameter("r0",   r0_nm)
-    force.addGlobalParameter("thA0", geom["thetaA0"])
-    force.addGlobalParameter("thB0", geom["thetaB0"])
-    force.addGlobalParameter("phA0", geom["phiA0"])
-    force.addGlobalParameter("phB0", geom["phiB0"])
-    force.addGlobalParameter("phC0", geom["phiC0"])
-
-    P1, P2, P3 = receptor_anchors
-    L1, L2, L3 = ligand_anchors
-    force.addBond([P1, P2, P3, L1, L2, L3])
-    force.setName("BoreschRestraint")
+    g_lig = force.addGroup(ligand_atoms)
+    g_rec = force.addGroup(receptor_atoms)
+    force.addBond([g_lig, g_rec], [])
+    force.setName("FlatBottomRestraint")
     system.addForce(force)
+    return {
+        "n_lig_atoms": len(ligand_atoms), "n_rec_atoms": len(receptor_atoms),
+        "r_max_A": r_max_A, "k_kcal_mol_A2": k_kcal_mol_A2,
+        "type": "flat_bottom_distance_centroid",
+    }
 
 
-def boresch_standard_state_correction(geom: dict,
-                                         k_r: float = K_R_KCAL_MOL_A2,
-                                         k_theta: float = K_THETA_KCAL_MOL_RAD2,
-                                         k_phi: float = K_PHI_KCAL_MOL_RAD2,
-                                         T: float = T_KELVIN_DEFAULT) -> dict:
-    """Analytical ΔG to release Boresch restraint to 1 M standard state.
+def flat_bottom_standard_state_correction(r_max_A: float = 8.0,
+                                              T: float = T_KELVIN_DEFAULT) -> dict:
+    """Analytical ΔG to release flat-bottom spherical restraint to std 1 M.
 
-    Boresch et al. JPC B 2003, eq. 32:
+    For a flat-bottom restraint with infinite-range zero potential below r_max,
+    the restrained volume is V_R = (4/3) π r_max³. The standard state is
+    V° = 1660.5 Å³.
 
-      ΔG_release = -RT ln {
-          (8π² V° / (r₀² sin θ_A^0 sin θ_B^0))
-          × (k_r k_θA k_θB k_φA k_φB k_φC)^(1/2)
-          / (2π RT)^3
-      }
+    ΔG_R^o = -RT ln(V_R / V°)
 
-    Units in formula:
-      V° = 1660.5 Å³ (1 M)
-      r₀ in Å
-      angles in radians
-      k_r in kcal/mol/Å², k_θ/k_φ in kcal/mol/rad²
-      RT in kcal/mol
+    For r_max = 8 Å: V_R = 2145 Å³ → ΔG_R^o = -RT ln(1.292) ≈ -0.16 kcal/mol
+    For r_max = 5 Å: V_R = 524 Å³ → ΔG_R^o = -RT ln(0.316) ≈ +0.71 kcal/mol
+
+    Sign: at r_max=8, V_R > V°, releasing slightly favorable (negative).
+    Used in cycle: ΔG_bind = ΔG_solvent − ΔG_complex − ΔG_R^o.
     """
+    import math
+    V_R = (4.0/3.0) * math.pi * (r_max_A ** 3)
     RT = R_KCAL_MOL_K * T
-    r0 = geom["r0_A"]
-    thA0, thB0 = geom["thetaA0"], geom["thetaB0"]
-
-    K_product = k_r * (k_theta**2) * (k_phi**3)   # k_r·k_θA·k_θB·k_φA·k_φB·k_φC
-    sqrt_K = math.sqrt(K_product)
-
-    numerator = 8 * (math.pi**2) * V_STD_ANGSTROM3 * sqrt_K
-    denominator = (r0**2) * math.sin(thA0) * math.sin(thB0) * (2 * math.pi * RT)**3
-
-    arg = numerator / denominator
-    if arg <= 0:
-        raise ValueError(f"non-physical Boresch ratio {arg}")
-
-    dG_release = -RT * math.log(arg)
+    dG_release = -RT * math.log(V_R / V_STD_ANGSTROM3)
     return {
         "delta_g_release_restraint_kcal_mol": dG_release,
-        "geometry": {**geom, "r0_A": r0,
-                     "thetaA0_deg": math.degrees(thA0),
-                     "thetaB0_deg": math.degrees(thB0)},
-        "force_constants": {
-            "k_r_kcal_mol_A2": k_r, "k_theta_kcal_mol_rad2": k_theta,
-            "k_phi_kcal_mol_rad2": k_phi,
-        },
-        "T_kelvin": T, "V_std_A3": V_STD_ANGSTROM3,
+        "V_R_A3": V_R, "V_std_A3": V_STD_ANGSTROM3, "r_max_A": r_max_A,
+        "T_kelvin": T,
+        "restraint_type": "flat_bottom_spherical",
+        "formula": "ΔG_R^o = -RT ln(V_R / V°), V_R = 4/3 π r_max³",
     }
 
 
@@ -657,27 +630,41 @@ def main():
                                          ligand_template_pdb=args.ligand_template_pdb,
                                          ligand_template_resname=args.ligand_template_resname)
 
-        # select Boresch anchors + measure geometry (eq_positions in nm)
+        # Flat-bottom distance restraint — robust alternative to Boresch.
+        # Ligand atoms (COM) restrained within r_max of receptor anchor atoms (COM).
+        # Receptor anchors: Cα atoms within 6 Å of ligand COM (binding-site definition).
         from openmm import unit as _u
-        eq_pos_array = np.asarray(
+        eq_pos_nm = np.asarray(
             complex_setup["eq_positions"].value_in_unit(_u.nanometer))
-        eq_pos_A = eq_pos_array * 10.0    # nm → Å
-        rec_anchors, lig_anchors = select_boresch_atoms(
-            complex_setup["modeller"], complex_setup["lig_atoms"])
-        geom = measure_restraint_geometry(eq_pos_A, rec_anchors, lig_anchors)
-        print(f"\n[Boresch anchors] receptor={rec_anchors}, ligand={lig_anchors}")
-        print(f"  r0={geom['r0_A']:.2f} Å, "
-              f"θA={math.degrees(geom['thetaA0']):.1f}°, "
-              f"θB={math.degrees(geom['thetaB0']):.1f}°")
+        lig_idx = complex_setup["lig_atoms"]
+        lig_com_nm = eq_pos_nm[lig_idx].mean(axis=0)
+        # collect Cα atoms within 6 Å of ligand COM
+        atoms_list = list(complex_setup["modeller"].topology.atoms())
+        rec_anchors = []
+        for atom in atoms_list:
+            if atom.name == "CA":
+                d_nm = np.linalg.norm(eq_pos_nm[atom.index] - lig_com_nm)
+                if d_nm < 0.6:    # 6 Å
+                    rec_anchors.append(atom.index)
+        if len(rec_anchors) < 3:
+            # fallback: nearest 5 Cα atoms regardless of distance
+            ca_idx = [a.index for a in atoms_list if a.name == "CA"]
+            ca_dists = [np.linalg.norm(eq_pos_nm[i] - lig_com_nm) for i in ca_idx]
+            rec_anchors = [ca_idx[i] for i in np.argsort(ca_dists)[:5]]
+        print(f"\n[restraint] ligand atoms: {len(lig_idx)}, "
+              f"receptor binding-site Cα atoms: {len(rec_anchors)}")
+        r_max_A = 8.0    # ligand confined within 8 Å of pocket center
+        rinfo = add_flat_bottom_restraint_to_system(
+            complex_setup["system"], lig_idx, rec_anchors,
+            r_max_A=r_max_A, k_kcal_mol_A2=10.0,
+        )
 
-        # add restraint to system
-        add_boresch_restraint_to_system(complex_setup["system"],
-                                          rec_anchors, lig_anchors, geom)
-
-        # restraint correction (analytical)
-        std_corr = boresch_standard_state_correction(geom)
+        # analytical standard state correction
+        std_corr = flat_bottom_standard_state_correction(r_max_A=r_max_A)
+        std_corr["restraint_info"] = rinfo
         print(f"  ΔG_release_restraint = "
-              f"{std_corr['delta_g_release_restraint_kcal_mol']:.3f} kcal/mol")
+              f"{std_corr['delta_g_release_restraint_kcal_mol']:+.3f} kcal/mol "
+              f"(flat-bottom r_max={r_max_A} Å)")
 
         # alchemical complex leg
         complex_result = run_alchemical_leg(
@@ -686,8 +673,8 @@ def main():
         )
         results["complex"] = complex_result
         results["restraint"] = std_corr
-        results["boresch_anchors"] = {"receptor": rec_anchors,
-                                        "ligand": lig_anchors}
+        results["restraint_anchors"] = {"receptor_ca": rec_anchors,
+                                          "ligand": lig_idx}
 
     # 2) SOLVENT LEG
     if not args.skip_solvent:
