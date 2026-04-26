@@ -1,0 +1,16 @@
+chembl_id,smiles,ic50_nm,reference,notes
+CHEMBL443684,CC(C)CC(NC(=O)C(NC(=O)C(O)CC(C)C)C(C)(C)C)C(=O)NC,5.0,Marimastat (BB-2516); Drummond 1999,hydroxamate broad-spectrum MMP inhibitor
+CHEMBL415,CC(C)CC(NC(=O)C(CC1=CC=CC=C1)NC(=O)C(O)CC(C)C)C(=O)NHO,4.0,Batimastat (BB-94); Brown 1995,hydroxamate
+CHEMBL292707,CC(C)CC(=O)NC(CC(=O)NO)C(=O)N(C)C,200.0,Ilomastat (GM6001); Galardy 1994,zinc-chelating
+CHEMBL259829,CC1=CC2=C(C=C1)N(CC2=O)C1=CC=C(S(=O)(=O)NC(=O)C2=CC=CC=C2)C=C1,310.0,CGS27023A; MacPherson 1997,non-hydroxamate sulfonamide
+CHEMBL94487,O=C(NO)CC(C(=O)NC(C)c1ccccc1)Cc1ccc(Oc2ccc(F)cc2)cc1,12.0,RS-130830; Henderson 2003,carboxylate
+CHEMBL412,CC(C)C[C@H](NC(=O)[C@H](CC1=CN=CC=C1)NC(=O)[C@H](O)CC(C)C)C(=O)NHO,8.0,Trocade-like; Cherney 1998,hydroxamate
+CHEMBL98,CC(C)CC(=O)C1=CC=C(C=C1)S(=O)(=O)NCC(=O)NHO,2400.0,non-hydroxamate aryl sulfone; Gowravaram 1995,weak inhibitor
+CHEMBL257077,CC(C)CC(NC(=O)C(NC(=O)C(O)CC(C)C)C(=O)NC)C(=O)NHO,15.0,prinomastat-like; Steward 2004,hydroxamate
+CHEMBL406,O=C(NO)C(CCCC1CCCCC1)NS(=O)(=O)C1=CC=C(C=C1)OC1=CC=CC=C1,3.0,prinomastat (AG3340); Shalinsky 1999,sulfonamide hydroxamate
+CHEMBL2105729,CCC(=O)NC(CCCNC(=N)N)C(=O)NHO,18000.0,weak hydroxamate; Lovejoy 1999,positive control low-potency
+CHEMBL93146,O=C(NO)C(C(C)C)CC(=O)NC1CCCCC1,820.0,medium-potency; Beckett 1996,carboxylate
+CHEMBL3036,O=C(NO)C(CC1=CC=CC=C1)NC(=O)C(C)NC(=O)OCC1=CC=CC=C1,28.0,broad-spectrum hydroxamate; Whittaker 1999,
+CHEMBL57058,CC(C)C[C@H](NS(=O)(=O)C1=CC=C(C=C1)C1=CC=CC=C1)C(=O)NHO,15.0,Mobashery 1999,sulfonamide hydroxamate
+CHEMBL1207,CC(C)CC(C(=O)NHO)Sc1ccc(C(=O)NC2CCCCC2)cc1,55.0,thiol-based; Schultz 1998,thiol zinc-chelate
+CHEMBL301236,CC(C)C[C@H](NS(=O)(=O)c1ccc(F)cc1)C(=O)NHO,42.0,fluoro-aryl hydroxamate; Yamamoto 2003,

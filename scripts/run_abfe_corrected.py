@@ -1,0 +1,713 @@
+"""ABFE corrected — Boresch restraints + dual leg + standard state correction.
+
+Publishable-grade protocol (J Cheminform / RSC Med Chem tier).
+
+References
+----------
+- Boresch, Tettinger, Leitgeb, Karplus. JPC B 2003, 107, 9535. (eq. 32)
+- Mobley & Klimovich. JCP 2012, 137, 230901.
+- Wang et al. JACS 2015, 137, 2695-2703. (FEP+ benchmark)
+- openmmtools 0.24 alchemical replica exchange
+
+Thermodynamic Cycle (sign convention: ΔG_decouple = G_decoupled - G_coupled,
+typically positive for tight binders):
+
+  Coupled state P+L bound (restraint on, λ_complex=1)
+       │
+       │  ΔG_complex (alchemical decoupling in complex, restraint active)
+       v
+  Decoupled P + L_ghost in pocket (restraint on, λ_complex=0)
+       │
+       │  ΔG_release_restraint = analytical Boresch correction
+       v          (releases ligand from restrained volume to 1 M std state)
+  Decoupled P + L_ghost free (no restraint, std state)
+       │
+       │  -ΔG_solvent (re-coupling L in pure solvent at 1 M)
+       v
+  Coupled L in pure solvent at 1 M
+
+Final binding free energy:
+  ΔG_bind = ΔG_solvent - ΔG_complex - ΔG_release_restraint
+
+For binders: ΔG_bind < 0.
+ΔG_complex typically dominates: ~20-40 kcal/mol for tight binders.
+ΔG_solvent typically: 5-25 kcal/mol (smaller magnitude).
+ΔG_release_restraint typically: 5-10 kcal/mol with k_r=10 kcal/mol/Å², k_θ=k_φ=100 kcal/mol/rad².
+
+Usage
+-----
+  python run_abfe_corrected.py \\
+      --receptor pilot/.../receptor.pdb \\
+      --ligand-smiles "CCCCCC1=C(O)..." \\
+      --name EMB3_MMP1 \\
+      --out pilot/.../abfe_corrected/
+
+Calibration check
+-----------------
+T4 lysozyme L99A + benzene benchmark:
+  Expected ΔG_bind = -5.2 ± 0.2 kcal/mol (Mobley et al. JCP 2007)
+  Run via: scripts/abfe_calibrate_t4l.py
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import math
+import os
+import sys
+import time
+import warnings
+from pathlib import Path
+
+import numpy as np
+
+warnings.filterwarnings("ignore")
+
+# Force genesis-md env binaries on PATH (am1bcc, antechamber)
+os.environ["PATH"] = (
+    "/home/crazat/miniforge3/envs/genesis-md/bin:"
+    + os.environ.get("PATH", "")
+)
+
+
+# ─── Physical constants (CODATA 2022) ──────────────────────────────────────
+R_KCAL_MOL_K = 1.987204258e-3    # kcal mol⁻¹ K⁻¹
+N_AVO = 6.02214076e23
+T_KELVIN_DEFAULT = 310.0
+
+# 1 M standard state volume per molecule
+V_STD_ANGSTROM3 = 1.0 / (N_AVO * 1e-27)    # = 1660.539 Å³
+
+
+# ─── Default protocol parameters ───────────────────────────────────────────
+N_LAMBDA_WINDOWS_DEFAULT = 16
+N_ITERATIONS_DEFAULT = 500          # 5 ns per window @ 10 ps/iteration
+STEPS_PER_ITERATION_DEFAULT = 5000  # 10 ps @ 2 fs
+EQ_NS_DEFAULT = 0.5
+PADDING_NM_DEFAULT = 1.2
+
+# Boresch restraint force constants (Boresch 2003 standard)
+K_R_KCAL_MOL_A2 = 10.0
+K_THETA_KCAL_MOL_RAD2 = 100.0
+K_PHI_KCAL_MOL_RAD2 = 100.0
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Boresch restraint — 6-DOF orientational restraint between P+L
+# ═══════════════════════════════════════════════════════════════════════════
+
+def select_boresch_atoms(modeller, lig_atom_indices: list[int],
+                          rng_seed: int = 42) -> tuple[list[int], list[int]]:
+    """Select 3 receptor + 3 ligand anchor atoms for Boresch restraint.
+
+    Heuristic (following Boresch 2003 best practice):
+      - Ligand: pick L1 = ligand heavy atom closest to ligand COM
+                pick L2, L3 = bonded heavy atoms forming non-collinear triangle
+      - Receptor: pick R1 = Cα closest to L1
+                  pick R2, R3 = adjacent Cα atoms forming non-collinear triangle
+
+    Returns: (receptor_atoms, ligand_atoms) — each list of 3 atom indices.
+    """
+    import openmm
+    from openmm import unit
+
+    pos = np.array([[p.x, p.y, p.z] for p in modeller.positions])
+
+    # ligand heavy atoms (no H)
+    lig_heavy = []
+    for i in lig_atom_indices:
+        a = list(modeller.topology.atoms())[i]
+        if a.element is not None and a.element.symbol != "H":
+            lig_heavy.append(i)
+    if len(lig_heavy) < 3:
+        raise ValueError("ligand has < 3 heavy atoms — Boresch restraint impossible")
+
+    lig_pos = pos[lig_heavy]
+    lig_com = lig_pos.mean(axis=0)
+    dists = np.linalg.norm(lig_pos - lig_com, axis=1)
+    L1 = lig_heavy[int(np.argmin(dists))]
+
+    # find L2: bonded heavy atom to L1
+    bond_partners = []
+    for bond in modeller.topology.bonds():
+        a1, a2 = bond.atom1.index, bond.atom2.index
+        if a1 == L1 and a2 in lig_heavy: bond_partners.append(a2)
+        if a2 == L1 and a1 in lig_heavy: bond_partners.append(a1)
+    if not bond_partners:
+        raise ValueError(f"L1={L1} has no bonded heavy ligand neighbor")
+    L2 = bond_partners[0]
+
+    # find L3: bonded to L2, distinct from L1, non-collinear
+    L3 = None
+    for bond in modeller.topology.bonds():
+        a1, a2 = bond.atom1.index, bond.atom2.index
+        cand = None
+        if a1 == L2 and a2 in lig_heavy and a2 != L1: cand = a2
+        if a2 == L2 and a1 in lig_heavy and a1 != L1: cand = a1
+        if cand is None: continue
+        v1 = pos[L2] - pos[L1]
+        v2 = pos[cand] - pos[L2]
+        cos_angle = np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2) + 1e-9)
+        if abs(cos_angle) < 0.95:
+            L3 = cand
+            break
+    if L3 is None:
+        # fallback: nearest heavy atom to L2 not L1
+        cands = [i for i in lig_heavy if i not in (L1, L2)]
+        if not cands:
+            raise ValueError("ligand too small for Boresch")
+        d = [np.linalg.norm(pos[c] - pos[L2]) for c in cands]
+        L3 = cands[int(np.argmin(d))]
+
+    # Receptor anchors: pick Cα atoms closest to L1
+    ca_indices = []
+    for atom in modeller.topology.atoms():
+        if atom.name == "CA" and atom.residue.chain.id == "A":
+            ca_indices.append(atom.index)
+    if len(ca_indices) < 3:
+        # fallback any backbone
+        ca_indices = [a.index for a in modeller.topology.atoms()
+                       if a.name in ("CA", "C", "N")]
+    ca_pos = pos[ca_indices]
+    ca_dists = np.linalg.norm(ca_pos - pos[L1], axis=1)
+    sorted_ca = np.argsort(ca_dists)
+
+    R1 = ca_indices[sorted_ca[0]]
+    # R2, R3 sequential along chain — get residue indices
+    atoms_list = list(modeller.topology.atoms())
+    R1_res = atoms_list[R1].residue.index
+
+    # nearest CA on different residue
+    R2, R3 = None, None
+    for idx in sorted_ca[1:]:
+        cand_idx = ca_indices[idx]
+        cand_res = atoms_list[cand_idx].residue.index
+        if cand_res != R1_res:
+            if R2 is None:
+                R2 = cand_idx
+                R2_res = cand_res
+            elif cand_res != R2_res:
+                R3 = cand_idx
+                # check non-collinearity
+                v1 = pos[R2] - pos[R1]
+                v2 = pos[R3] - pos[R2]
+                cos_angle = np.dot(v1, v2) / (np.linalg.norm(v1)*np.linalg.norm(v2)+1e-9)
+                if abs(cos_angle) < 0.95:
+                    break
+    if R3 is None:
+        raise ValueError("could not find non-collinear receptor anchors")
+
+    return [R1, R2, R3], [L1, L2, L3]
+
+
+def measure_restraint_geometry(positions: np.ndarray,
+                                  receptor_anchors: list[int],
+                                  ligand_anchors: list[int]) -> dict:
+    """Measure equilibrium values of 6 Boresch coordinates from given frame.
+
+    Positions in nanometers; output distances in Å, angles in radians.
+    """
+    p_a = positions   # Å expected
+    P1, P2, P3 = receptor_anchors
+    L1, L2, L3 = ligand_anchors
+
+    def _vec(a, b): return p_a[b] - p_a[a]
+    def _dist(a, b): return float(np.linalg.norm(_vec(a, b)))
+    def _angle(a, b, c):
+        v1 = _vec(b, a); v2 = _vec(b, c)
+        cos_th = np.dot(v1, v2) / (np.linalg.norm(v1)*np.linalg.norm(v2)+1e-9)
+        return float(np.arccos(np.clip(cos_th, -1, 1)))
+    def _dihedral(a, b, c, d):
+        b1 = _vec(a, b); b2 = _vec(b, c); b3 = _vec(c, d)
+        n1 = np.cross(b1, b2); n2 = np.cross(b2, b3)
+        m1 = np.cross(n1, b2 / (np.linalg.norm(b2)+1e-9))
+        x = np.dot(n1, n2); y = np.dot(m1, n2)
+        return float(np.arctan2(y, x))
+
+    return {
+        "r0_A":      _dist(P1, L1),
+        "thetaA0":   _angle(P2, P1, L1),
+        "thetaB0":   _angle(P1, L1, L2),
+        "phiA0":     _dihedral(P3, P2, P1, L1),
+        "phiB0":     _dihedral(P2, P1, L1, L2),
+        "phiC0":     _dihedral(P1, L1, L2, L3),
+    }
+
+
+def add_boresch_restraint_to_system(system, receptor_anchors: list[int],
+                                       ligand_anchors: list[int],
+                                       geom: dict,
+                                       k_r: float = K_R_KCAL_MOL_A2,
+                                       k_theta: float = K_THETA_KCAL_MOL_RAD2,
+                                       k_phi: float = K_PHI_KCAL_MOL_RAD2) -> None:
+    """Add 6-DOF Boresch restraint as a CustomCompoundBondForce.
+
+    OpenMM units: distance nm, angle rad, force constants kJ/mol/(nm² or rad²)
+    """
+    from openmm import CustomCompoundBondForce, unit
+
+    # Convert force constants kcal/mol → kJ/mol; Å → nm
+    k_r_kj_nm2 = k_r * 4.184 * 100      # kcal/Å² → kJ/nm² (×100 for Å²→nm²)
+    k_theta_kj = k_theta * 4.184
+    k_phi_kj = k_phi * 4.184
+
+    # equilibrium values
+    r0_nm = geom["r0_A"] / 10.0    # Å → nm
+
+    expr = (
+        "0.5*kr*(distance(p1,p4) - r0)^2"
+        " + 0.5*kthA*(angle(p2,p1,p4) - thA0)^2"
+        " + 0.5*kthB*(angle(p1,p4,p5) - thB0)^2"
+        " + 0.5*kphA*(dihedral(p3,p2,p1,p4) - phA0)^2"
+        " + 0.5*kphB*(dihedral(p2,p1,p4,p5) - phB0)^2"
+        " + 0.5*kphC*(dihedral(p1,p4,p5,p6) - phC0)^2"
+    )
+
+    force = CustomCompoundBondForce(6, expr)
+    force.addGlobalParameter("kr",   k_r_kj_nm2)
+    force.addGlobalParameter("kthA", k_theta_kj)
+    force.addGlobalParameter("kthB", k_theta_kj)
+    force.addGlobalParameter("kphA", k_phi_kj)
+    force.addGlobalParameter("kphB", k_phi_kj)
+    force.addGlobalParameter("kphC", k_phi_kj)
+    force.addGlobalParameter("r0",   r0_nm)
+    force.addGlobalParameter("thA0", geom["thetaA0"])
+    force.addGlobalParameter("thB0", geom["thetaB0"])
+    force.addGlobalParameter("phA0", geom["phiA0"])
+    force.addGlobalParameter("phB0", geom["phiB0"])
+    force.addGlobalParameter("phC0", geom["phiC0"])
+
+    P1, P2, P3 = receptor_anchors
+    L1, L2, L3 = ligand_anchors
+    force.addBond([P1, P2, P3, L1, L2, L3])
+    force.setName("BoreschRestraint")
+    system.addForce(force)
+
+
+def boresch_standard_state_correction(geom: dict,
+                                         k_r: float = K_R_KCAL_MOL_A2,
+                                         k_theta: float = K_THETA_KCAL_MOL_RAD2,
+                                         k_phi: float = K_PHI_KCAL_MOL_RAD2,
+                                         T: float = T_KELVIN_DEFAULT) -> dict:
+    """Analytical ΔG to release Boresch restraint to 1 M standard state.
+
+    Boresch et al. JPC B 2003, eq. 32:
+
+      ΔG_release = -RT ln {
+          (8π² V° / (r₀² sin θ_A^0 sin θ_B^0))
+          × (k_r k_θA k_θB k_φA k_φB k_φC)^(1/2)
+          / (2π RT)^3
+      }
+
+    Units in formula:
+      V° = 1660.5 Å³ (1 M)
+      r₀ in Å
+      angles in radians
+      k_r in kcal/mol/Å², k_θ/k_φ in kcal/mol/rad²
+      RT in kcal/mol
+    """
+    RT = R_KCAL_MOL_K * T
+    r0 = geom["r0_A"]
+    thA0, thB0 = geom["thetaA0"], geom["thetaB0"]
+
+    K_product = k_r * (k_theta**2) * (k_phi**3)   # k_r·k_θA·k_θB·k_φA·k_φB·k_φC
+    sqrt_K = math.sqrt(K_product)
+
+    numerator = 8 * (math.pi**2) * V_STD_ANGSTROM3 * sqrt_K
+    denominator = (r0**2) * math.sin(thA0) * math.sin(thB0) * (2 * math.pi * RT)**3
+
+    arg = numerator / denominator
+    if arg <= 0:
+        raise ValueError(f"non-physical Boresch ratio {arg}")
+
+    dG_release = -RT * math.log(arg)
+    return {
+        "delta_g_release_restraint_kcal_mol": dG_release,
+        "geometry": {**geom, "r0_A": r0,
+                     "thetaA0_deg": math.degrees(thA0),
+                     "thetaB0_deg": math.degrees(thB0)},
+        "force_constants": {
+            "k_r_kcal_mol_A2": k_r, "k_theta_kcal_mol_rad2": k_theta,
+            "k_phi_kcal_mol_rad2": k_phi,
+        },
+        "T_kelvin": T, "V_std_A3": V_STD_ANGSTROM3,
+    }
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# System setup — complex (P+L) and solvent (L only)
+# ═══════════════════════════════════════════════════════════════════════════
+
+def setup_complex(receptor_pdb: Path, ligand_smiles: str,
+                    padding_nm: float = PADDING_NM_DEFAULT,
+                    eq_ns: float = EQ_NS_DEFAULT) -> dict:
+    """Build complex P+L system, equilibrate, return simulation state."""
+    from openff.toolkit import Molecule
+    from openff.units import unit as off_unit
+    from openmmforcefields.generators import SystemGenerator
+    from pdbfixer import PDBFixer
+    import openmm as mm
+    import openmm.app as app
+    from openmm import unit
+
+    print(f"\n[setup_complex] receptor={receptor_pdb}, ligand={ligand_smiles[:40]}...")
+
+    fixer = PDBFixer(filename=str(receptor_pdb))
+    fixer.findMissingResidues()
+    fixer.findNonstandardResidues()
+    fixer.replaceNonstandardResidues()
+    fixer.removeHeterogens(False)
+    fixer.findMissingAtoms()
+    fixer.addMissingAtoms()
+    modeller = app.Modeller(fixer.topology, fixer.positions)
+
+    lig = Molecule.from_smiles(ligand_smiles, allow_undefined_stereo=True)
+    lig.generate_conformers(n_conformers=1)
+    lig.assign_partial_charges("am1bcc")
+
+    sg = SystemGenerator(
+        forcefields=["amber/ff14SB.xml", "amber/tip3p_standard.xml"],
+        small_molecule_forcefield="gaff-2.11",
+        molecules=[lig],
+        forcefield_kwargs={"constraints": app.HBonds},
+    )
+
+    # add ligand to modeller — center at receptor binding site COM (heuristic)
+    rec_pos = np.array([[p.x, p.y, p.z] for p in modeller.positions])
+    rec_com = rec_pos.mean(axis=0)
+    coords = lig.conformers[0].m_as("nanometer")
+    coords += rec_com - coords.mean(axis=0)
+    lig._conformers = [coords * off_unit.nanometer]
+    modeller.addHydrogens(sg.forcefield, pH=7.4)
+    modeller.add(lig.to_topology().to_openmm(),
+                 lig.conformers[0].to_openmm())
+
+    modeller.addSolvent(sg.forcefield, padding=padding_nm*unit.nanometer,
+                         ionicStrength=0.15*unit.molar)
+
+    system = sg.create_system(modeller.topology)
+    system.addForce(mm.MonteCarloBarostat(1*unit.atmosphere,
+                                            310*unit.kelvin, 25))
+
+    # ligand atom indices
+    lig_atoms = []
+    for atom in modeller.topology.atoms():
+        if atom.residue.name in ("LIG", "LIG1", "UNL", "UNK"):
+            lig_atoms.append(atom.index)
+    if not lig_atoms:
+        raise ValueError("ligand atoms not found in topology")
+
+    print(f"  system size: {system.getNumParticles()}, ligand: {len(lig_atoms)} atoms")
+
+    # equilibrate
+    integ = mm.LangevinMiddleIntegrator(310*unit.kelvin, 1.0/unit.picosecond,
+                                          2.0*unit.femtosecond)
+    sim = app.Simulation(modeller.topology, system, integ,
+                          mm.Platform.getPlatformByName("CUDA"))
+    sim.context.setPositions(modeller.positions)
+    sim.minimizeEnergy(maxIterations=5000)
+    sim.context.setVelocitiesToTemperature(310*unit.kelvin)
+    print(f"  equilibrating {eq_ns} ns NPT…")
+    sim.step(int(eq_ns * 500_000))
+    eq_state = sim.context.getState(getPositions=True, getVelocities=True,
+                                      enforcePeriodicBox=True)
+    return {
+        "modeller": modeller, "system": system, "lig_atoms": lig_atoms,
+        "eq_positions": eq_state.getPositions(),
+        "eq_box": eq_state.getPeriodicBoxVectors(),
+    }
+
+
+def setup_solvent_only(ligand_smiles: str, padding_nm: float = 1.0,
+                         eq_ns: float = 0.5) -> dict:
+    """Ligand-only solvent system — for ΔG_solvent_decouple leg."""
+    from openff.toolkit import Molecule
+    from openmmforcefields.generators import SystemGenerator
+    import openmm as mm
+    import openmm.app as app
+    from openmm import unit
+
+    print(f"\n[setup_solvent] ligand-only, {padding_nm} nm padding")
+
+    lig = Molecule.from_smiles(ligand_smiles, allow_undefined_stereo=True)
+    lig.generate_conformers(n_conformers=1)
+    lig.assign_partial_charges("am1bcc")
+
+    sg = SystemGenerator(
+        forcefields=["amber/tip3p_standard.xml"],
+        small_molecule_forcefield="gaff-2.11",
+        molecules=[lig],
+        forcefield_kwargs={"constraints": app.HBonds},
+    )
+
+    modeller = app.Modeller(lig.to_topology().to_openmm(),
+                             lig.conformers[0].to_openmm())
+    modeller.addSolvent(sg.forcefield, padding=padding_nm*unit.nanometer,
+                         model="tip3p")
+
+    system = sg.create_system(modeller.topology)
+    system.addForce(mm.MonteCarloBarostat(1*unit.atmosphere,
+                                            310*unit.kelvin, 25))
+
+    lig_atoms = []
+    for atom in modeller.topology.atoms():
+        if atom.residue.name in ("LIG", "LIG1", "UNL", "UNK"):
+            lig_atoms.append(atom.index)
+
+    integ = mm.LangevinMiddleIntegrator(310*unit.kelvin, 1.0/unit.picosecond,
+                                          2.0*unit.femtosecond)
+    sim = app.Simulation(modeller.topology, system, integ,
+                          mm.Platform.getPlatformByName("CUDA"))
+    sim.context.setPositions(modeller.positions)
+    sim.minimizeEnergy(maxIterations=5000)
+    sim.context.setVelocitiesToTemperature(310*unit.kelvin)
+    sim.step(int(eq_ns * 500_000))
+    eq_state = sim.context.getState(getPositions=True, getVelocities=True,
+                                      enforcePeriodicBox=True)
+    print(f"  solvent system: {system.getNumParticles()}, ligand: {len(lig_atoms)}")
+    return {
+        "modeller": modeller, "system": system, "lig_atoms": lig_atoms,
+        "eq_positions": eq_state.getPositions(),
+        "eq_box": eq_state.getPeriodicBoxVectors(),
+    }
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Alchemical leg — replica exchange ABFE
+# ═══════════════════════════════════════════════════════════════════════════
+
+def run_alchemical_leg(setup: dict, *, leg_name: str, store_dir: Path,
+                         n_windows: int = N_LAMBDA_WINDOWS_DEFAULT,
+                         n_iterations: int = N_ITERATIONS_DEFAULT,
+                         steps_per_iter: int = STEPS_PER_ITERATION_DEFAULT) -> dict:
+    """Run alchemical decoupling leg (electrostatics → sterics)."""
+    from openmmtools import alchemy, multistate, mcmc, states
+    from openmm import unit
+
+    store_dir.mkdir(parents=True, exist_ok=True)
+    storage_path = store_dir / f"replica_exchange_{leg_name}.nc"
+    if storage_path.exists():
+        print(f"  [warn] removing existing {storage_path}")
+        storage_path.unlink()
+
+    print(f"\n[alchemical leg: {leg_name}] {n_windows} windows × "
+          f"{n_iterations} iter × {steps_per_iter*0.002:.0f} ps")
+
+    factory = alchemy.AbsoluteAlchemicalFactory(
+        consistent_exceptions=False, switch_width=1.0*unit.angstrom,
+        alchemical_pme_treatment="exact",
+    )
+    region = alchemy.AlchemicalRegion(alchemical_atoms=setup["lig_atoms"])
+    alch_system = factory.create_alchemical_system(setup["system"], region)
+
+    # lambda schedule: electrostatics first (1→0), then sterics (1→0)
+    n_elec = n_windows // 2 + 1
+    n_steric = n_windows - n_elec + 1
+    lambdas_elec = np.linspace(1.0, 0.0, n_elec)
+    lambdas_steric = np.linspace(1.0, 0.0, n_steric)
+    schedule = []
+    for le in lambdas_elec:
+        schedule.append({"lambda_electrostatics": float(le),
+                         "lambda_sterics": 1.0})
+    for ls in lambdas_steric[1:]:
+        schedule.append({"lambda_electrostatics": 0.0,
+                         "lambda_sterics": float(ls)})
+
+    thermo_states = []
+    for s in schedule:
+        ts = states.ThermodynamicState(system=alch_system,
+                                        temperature=310*unit.kelvin,
+                                        pressure=1*unit.atmosphere)
+        css = states.CompoundThermodynamicState(
+            thermodynamic_state=ts,
+            composable_states=[alchemy.AlchemicalState.from_system(alch_system)]
+        )
+        css.lambda_electrostatics = s["lambda_electrostatics"]
+        css.lambda_sterics = s["lambda_sterics"]
+        thermo_states.append(css)
+
+    sampler_state = states.SamplerState(positions=setup["eq_positions"],
+                                          box_vectors=setup["eq_box"])
+    sampler_states = [sampler_state] * len(thermo_states)
+
+    move = mcmc.LangevinDynamicsMove(
+        timestep=2.0*unit.femtosecond, collision_rate=1.0/unit.picosecond,
+        n_steps=steps_per_iter, reassign_velocities=False,
+    )
+    sampler = multistate.ReplicaExchangeSampler(
+        mcmc_moves=move, number_of_iterations=n_iterations,
+        online_analysis_interval=20,
+    )
+    reporter = multistate.MultiStateReporter(str(storage_path),
+                                               checkpoint_interval=20)
+    sampler.create(thermodynamic_states=thermo_states,
+                    sampler_states=sampler_states, storage=reporter)
+
+    t0 = time.time()
+    sampler.run(n_iterations)
+    wall = time.time() - t0
+    print(f"  ✅ {leg_name} done in {wall/3600:.2f}h")
+
+    # MBAR analysis
+    analyzer = multistate.MultiStateSamplerAnalyzer(reporter)
+    Deltaf_ij, dDeltaf_ij = analyzer.get_free_energy()
+    df_kT = Deltaf_ij[0, -1]
+    ddf_kT = dDeltaf_ij[0, -1]
+    kT_kcal = R_KCAL_MOL_K * 310.0
+    df_kcal = df_kT * kT_kcal
+    ddf_kcal = ddf_kT * kT_kcal
+
+    # Convergence diagnostic — replica swap acceptance
+    try:
+        n_accepted = analyzer.reporter.read_mcmc_moves_acceptance_rate()
+    except Exception:
+        n_accepted = None
+
+    print(f"  ΔG_{leg_name}_decouple = {df_kcal:.3f} ± {ddf_kcal:.3f} kcal/mol")
+    return {
+        "leg": leg_name,
+        "delta_g_decouple_kcal_mol": float(df_kcal),
+        "uncertainty_kcal_mol": float(ddf_kcal),
+        "n_windows": n_windows,
+        "n_iterations": n_iterations,
+        "ps_per_iteration": steps_per_iter * 0.002,
+        "total_simulation_ns": (n_windows * n_iterations
+                                  * steps_per_iter * 0.002 / 1000),
+        "wall_hours": wall / 3600,
+        "storage": str(storage_path),
+    }
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Main orchestration
+# ═══════════════════════════════════════════════════════════════════════════
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--receptor", required=True, type=Path,
+                         help="receptor PDB (already prepped)")
+    parser.add_argument("--ligand-smiles", required=True, type=str)
+    parser.add_argument("--name", required=True, type=str,
+                         help="run name (e.g., 'EMB3_MMP1')")
+    parser.add_argument("--out", required=True, type=Path,
+                         help="output directory")
+    parser.add_argument("--n-windows", type=int, default=N_LAMBDA_WINDOWS_DEFAULT)
+    parser.add_argument("--n-iterations", type=int, default=N_ITERATIONS_DEFAULT)
+    parser.add_argument("--eq-ns", type=float, default=EQ_NS_DEFAULT)
+    parser.add_argument("--padding-nm", type=float, default=PADDING_NM_DEFAULT)
+    parser.add_argument("--skip-complex", action="store_true",
+                         help="skip complex leg (debugging)")
+    parser.add_argument("--skip-solvent", action="store_true",
+                         help="skip solvent leg (debugging)")
+    args = parser.parse_args()
+
+    out = args.out.resolve()
+    out.mkdir(parents=True, exist_ok=True)
+
+    print("=" * 72)
+    print(f"ABFE corrected — {args.name}")
+    print(f"  receptor: {args.receptor}")
+    print(f"  ligand:   {args.ligand_smiles[:60]}")
+    print(f"  output:   {out}")
+    print(f"  protocol: {args.n_windows} windows × {args.n_iterations} iter "
+          f"× {STEPS_PER_ITERATION_DEFAULT*0.002:.0f} ps "
+          f"= {args.n_windows*args.n_iterations*STEPS_PER_ITERATION_DEFAULT*0.002/1000:.1f} ns")
+    print("=" * 72)
+    t_start = time.time()
+
+    results = {"name": args.name, "ligand_smiles": args.ligand_smiles,
+                "receptor": str(args.receptor), "n_windows": args.n_windows,
+                "n_iterations": args.n_iterations,
+                "ps_per_iteration": STEPS_PER_ITERATION_DEFAULT*0.002}
+
+    # 1) COMPLEX LEG
+    if not args.skip_complex:
+        complex_setup = setup_complex(args.receptor, args.ligand_smiles,
+                                         padding_nm=args.padding_nm,
+                                         eq_ns=args.eq_ns)
+
+        # select Boresch anchors + measure geometry
+        eq_pos_array = np.array([[p.x, p.y, p.z]
+                                  for p in complex_setup["eq_positions"].value_in_unit(
+                                      __import__("openmm.unit", fromlist=["nanometer"]).nanometer)])
+        eq_pos_A = eq_pos_array * 10.0    # nm → Å
+        rec_anchors, lig_anchors = select_boresch_atoms(
+            complex_setup["modeller"], complex_setup["lig_atoms"])
+        geom = measure_restraint_geometry(eq_pos_A, rec_anchors, lig_anchors)
+        print(f"\n[Boresch anchors] receptor={rec_anchors}, ligand={lig_anchors}")
+        print(f"  r0={geom['r0_A']:.2f} Å, "
+              f"θA={math.degrees(geom['thetaA0']):.1f}°, "
+              f"θB={math.degrees(geom['thetaB0']):.1f}°")
+
+        # add restraint to system
+        add_boresch_restraint_to_system(complex_setup["system"],
+                                          rec_anchors, lig_anchors, geom)
+
+        # restraint correction (analytical)
+        std_corr = boresch_standard_state_correction(geom)
+        print(f"  ΔG_release_restraint = "
+              f"{std_corr['delta_g_release_restraint_kcal_mol']:.3f} kcal/mol")
+
+        # alchemical complex leg
+        complex_result = run_alchemical_leg(
+            complex_setup, leg_name="complex", store_dir=out,
+            n_windows=args.n_windows, n_iterations=args.n_iterations,
+        )
+        results["complex"] = complex_result
+        results["restraint"] = std_corr
+        results["boresch_anchors"] = {"receptor": rec_anchors,
+                                        "ligand": lig_anchors}
+
+    # 2) SOLVENT LEG
+    if not args.skip_solvent:
+        solvent_setup = setup_solvent_only(args.ligand_smiles)
+        solvent_result = run_alchemical_leg(
+            solvent_setup, leg_name="solvent", store_dir=out,
+            n_windows=args.n_windows, n_iterations=args.n_iterations,
+        )
+        results["solvent"] = solvent_result
+
+    # 3) FINAL ASSEMBLY
+    if "complex" in results and "solvent" in results:
+        dG_c = results["complex"]["delta_g_decouple_kcal_mol"]
+        dG_s = results["solvent"]["delta_g_decouple_kcal_mol"]
+        dG_r = results["restraint"]["delta_g_release_restraint_kcal_mol"]
+        # ΔG_bind = ΔG_solvent - ΔG_complex - ΔG_release_restraint
+        dG_bind = dG_s - dG_c - dG_r
+        # propagate uncertainty (independent legs)
+        unc_c = results["complex"]["uncertainty_kcal_mol"]
+        unc_s = results["solvent"]["uncertainty_kcal_mol"]
+        unc_total = math.sqrt(unc_c**2 + unc_s**2)
+        results["binding_free_energy"] = {
+            "delta_g_bind_kcal_mol": dG_bind,
+            "uncertainty_kcal_mol": unc_total,
+            "components": {
+                "delta_g_complex_decouple_kcal_mol": dG_c,
+                "delta_g_solvent_decouple_kcal_mol": dG_s,
+                "delta_g_release_restraint_kcal_mol": dG_r,
+            },
+            "formula": "ΔG_bind = ΔG_solvent - ΔG_complex - ΔG_release",
+            "interpretation": (
+                "binder" if dG_bind < -2 else
+                ("weak/non-binder" if dG_bind > 0 else "borderline")
+            ),
+            "implied_K_d_M": math.exp(dG_bind / (R_KCAL_MOL_K * 310.0)),
+        }
+        print("\n" + "=" * 72)
+        print(f"FINAL ΔG_bind = {dG_bind:.2f} ± {unc_total:.2f} kcal/mol")
+        print(f"  ΔG_complex     = {dG_c:8.2f} ± {unc_c:.2f}")
+        print(f"  ΔG_solvent     = {dG_s:8.2f} ± {unc_s:.2f}")
+        print(f"  ΔG_release_R   = {dG_r:8.2f}  (analytical)")
+        print(f"  implied K_d    = {results['binding_free_energy']['implied_K_d_M']:.2e} M")
+        print("=" * 72)
+
+    results["wall_hours_total"] = (time.time() - t_start) / 3600
+    (out / "result_corrected.json").write_text(
+        json.dumps(results, indent=2, default=str))
+    print(f"\n✅ {out}/result_corrected.json")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

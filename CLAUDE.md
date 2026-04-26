@@ -37,6 +37,28 @@
 
 > 피부 중심으로 재설계. 사용자가 새 세션을 열면 이 목록부터 확인하고 **제일 위 항목을 먼저 제안**.
 
+### 🔥 PUBLICATION TRACK (2026-04-26 결정 — 12주 J Cheminform target)
+
+**상세 plan**: `docs/PAPER_PLAN.md`
+
+Phase 1 — Foundation (W1-3, 진행 중)
+1. **T4L99A·benzene ABFE calibration** (literature ΔG = -5.18 kcal/mol)
+   - `python scripts/abfe_calibrate_t4l.py --out pilot/calibration/t4l_benzene/`
+   - 예상 wall: 8-10h GPU
+   - **PASS criterion**: |ΔG_computed - (-5.18)| < 2 kcal/mol
+2. **Boltz-2 MMP-1 calibration** (n=15 ChEMBL inhibitors)
+   - `python scripts/boltz2_calibration_mmp1.py`
+   - 예상 wall: 3h GPU
+3. **EMB-3 + Embelin corrected ABFE 재실행** (T4L PASS 후)
+
+Phase 2 — SAR (W4-7): 5-8 ligand × corrected ABFE + selectivity panel
+Phase 3 — Manuscript (W8-10): J Cheminform 1순위
+Phase 4 — Submission (W11-12): 2026-07-15 target
+
+**1차 ABFE 결과 (2026-04-26)**: protocol 부적합 — Boresch + solvent leg 누락. 재실행 필수. 자세한 정정: `docs/EMBELIN_LITERATURE_REVIEW.md` (자운고 narrative 철회).
+
+---
+
 ### ✅ 완료 (2026-04-25, 피부 재편 이전)
 - 인프라 구축: 라이선스 게이트(83 컴포넌트, 118 테스트), 11단계 아키텍처, 가속 스택(cuEq 0.10 + boltz-blackwell), genesis-md conda env(openmm+openff+mace), TxGNN env(py3.9+DGL2.4).
 - **방법론 검증 완료** — 아래는 인프라 validation 용도로 가치는 있으나 **사업 방향과 무관**:
