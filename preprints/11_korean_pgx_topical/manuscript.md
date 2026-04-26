@@ -177,6 +177,18 @@ Same standard text. Code: <https://github.com/crazat/genesis_medicine>.
 
 ---
 
+
+## Figures
+
+**Figure 1.** Korean-population PGx variant frequencies vs Caucasian (CEU)
+and Han Chinese references (literature-cited, summary). Note the Korean-
+specific high frequencies of CYP2D6\*10 (~50%) and CYP3A5\*3 (~75%
+homozygote) and the substantially lower HLA-B\*15:02 vs Han Chinese.
+These are the variants that motivate the proposed 23-variant Korean topical-
+herb-medicine PGx panel.
+
+![Figure 1: PGx variant frequencies](figures/fig1_pgx_frequencies.png)
+
 ## References
 
 [1] Sim SC, et al. The Korean cytochrome P450 polymorphism: SNP allele frequencies. *Pharmacogenet Genomics* 2010, 20, 489–498.

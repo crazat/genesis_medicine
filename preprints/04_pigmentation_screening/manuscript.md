@@ -158,6 +158,27 @@ Same standard text. Data: `pilot/screen/pigmentation/screen_results.csv` at <htt
 
 ---
 
+
+## Figures
+
+**Figure 1.** Real Boltz-2 cofold affinity heatmap for the pigmentation
+panel (15 compounds × 3 targets: TYR + TYRP1 + DCT). Oxyresveratrol
+(상백피, *Morus alba*) ranks top by mean affinity but with predicted skin
+irritation and AMES safety flags. Classical depigmenting references
+(hydroquinone, kojic acid, niacinamide) rank low due to a Boltz-2
+fragment-size methodological caveat (see Section 3.3), not due to absence
+of clinical activity.
+
+![Figure 1: Pigmentation affinity heatmap](figures/fig1_affinity_heatmap.png)
+
+**Figure 2.** Mean affinity × ADMET hERG safety quadrant for the
+pigmentation panel. Marker size = molecular weight; color = logP. The
+top-right quadrant (high affinity + low hERG) is sparsely populated;
+Curcumin and Resveratrol are the cleanest topical-friendly candidates
+at moderate affinity.
+
+![Figure 2: Safety × affinity](figures/fig2_safety_affinity_quadrant.png)
+
 ## References
 
 [1] del Marmol V, Beermann F. Tyrosinase and related proteins. *FEBS Lett* 1996, 381, 165–168.

@@ -126,6 +126,27 @@ Same standard text. Data: `pilot/screen/photoaging/screen_results.csv` at <https
 
 ---
 
+
+## Figures
+
+**Figure 1.** Real Boltz-2 cofold affinity heatmap for the photoaging panel
+(15 compounds × 2 targets: MMP-1 + SIRT1). EMB-3 leads the panel (mean 0.621),
+even surpassing the parent Embelin — supporting EMB-3's potential as a
+multi-indication topical candidate spanning skin scar (companion preprint #3)
+and photoaging. Resveratrol leads the SIRT1 axis (0.588), consistent with
+established resveratrol–SIRT1 pharmacology. EGCG is moderate (mean 0.520),
+not exceptional as v0.1 fabricated.
+
+![Figure 1: Photoaging affinity heatmap](figures/fig1_affinity_heatmap.png)
+
+**Figure 2.** Affinity × hERG safety quadrant for the photoaging panel.
+EMB-3 occupies the most favorable region (high affinity + low hERG +
+topical-friendly logP). Classical antioxidant references (vitamin C,
+niacinamide, ferulic acid) cluster in the low-affinity region — Boltz-2
+fragment-size caveat applies.
+
+![Figure 2: Photoaging safety × affinity](figures/fig2_safety_affinity_quadrant.png)
+
 ## References
 
 [1] Fisher GJ, et al. Photoaging mechanisms. *Arch Dermatol* 2002, 138, 1462–1470.

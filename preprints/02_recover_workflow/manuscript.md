@@ -246,6 +246,27 @@ The author is the founder and a representative of HAN PREDICT, Inc. (a privately
 
 ---
 
+
+## Figures
+
+**Figure 1.** Three-pillar institutional integration: HAN PREDICT, Inc.
+(AI healthcare technology), Genesis_Medicine Lab (in silico drug discovery),
+and Recover Korean Medicine Clinic (clinical practice). Patient data flows
+from Recover via HAN PREDICT (Smart Charts) to Genesis_Medicine for
+molecular-level reasoning, and molecular hypotheses return to inform the
+prescribing 한의사's decision.
+
+![Figure 1: Three-pillar integration](figures/fig1_three_pillar.png)
+
+**Figure 2.** Patient workflow across Layer A (3D facial diagnostics),
+Layer B (Smart Charts AI EMR with RAG over 114+ documents),
+and Layer C (Genesis_Medicine molecular prescription engine). All AI
+recommendations are advisory; the licensed 한의사 retains full clinical
+authority. Outcome data feeds back to Layer C for compound-library
+re-prioritization.
+
+![Figure 2: Patient workflow](figures/fig2_patient_workflow.png)
+
 ## References
 
 [1] Korea Health Industry Development Institute (KHIDI). Korean medicine workforce statistics, 2024. <https://www.khidi.or.kr/>

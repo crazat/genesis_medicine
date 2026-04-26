@@ -244,6 +244,35 @@ All scripts, configuration files, and result JSON outputs supporting this manusc
 
 ---
 
+
+## Figures
+
+**Figure 1.** Chemical structures of Embelin and EMB-3 along with chain-length
+analogs (Rapanone C13, 5-O-methyl-Embelin) and reference compounds (Marimastat
+hydroxamate; Lawsone non-benzoquinone scaffold control). The scaffold-hop
+transition Embelin C11 → EMB-3 C6+methyl reduces molecular volume and
+lipophilicity into the topical sweet spot while preserving the
+1,4-benzoquinone-2,5-diol pharmacophore.
+
+![Figure 1: Embelin scaffold-hop SAR structures](figures/fig1_emb3_structures.png)
+
+**Figure 2.** SAR panel scatter plots (real ADMET-AI data, 2026-04-26):
+**(A)** logP × hERG with topical sweet spot (logP 1.5–3.5) and hERG concern
+threshold (>0.30) marked. EMB-3 is uniquely positioned in the safe quadrant.
+**(B)** Skin Reaction × AMES — illustrates that classical Embelin analogs
+share elevated skin-irritation and AMES flags despite chain-length variation.
+
+![Figure 2: SAR scatter](figures/fig2_sar_scatter.png)
+
+**Figure 3.** Generative scaffold-hop round progression. Round 1 produced
+EMB-3 (mean affinity 0.711, used as the reference baseline); Round 2 (T=1.0,
+100 samples) and Round 3 (T=0.6, 300 samples + BRICS herbal grafting) failed
+to surpass EMB-3, with the best Round-3 candidate (r3_6) being a
+re-rediscovery of EMB-3 itself. This is interpreted as evidence that EMB-3
+sits at a local optimum of the REINVENT 4 mol2mol prior space.
+
+![Figure 3: Round progression](figures/fig3_round_progression.png)
+
 ## References
 
 [1] Sidgwick GP, Bayat A. Extracellular matrix molecules implicated in hypertrophic and keloid scarring. *J Eur Acad Dermatol Venereol* 2012, 26, 141–152.

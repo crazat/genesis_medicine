@@ -167,6 +167,29 @@ Same standard text. Open Targets queries: `scripts/query_open_targets.py`, `scri
 
 ---
 
+
+## Figures
+
+**Figure 1.** EMB-3 multi-target predicted affinity profile from real
+Round-1 Boltz-2 cofold (companion preprint #3 [3]). Bars at or above
+the moderate-engagement threshold (0.55, red dashed) are highlighted;
+PDGFRB at 0.640 (the only canonical anti-fibrotic target with consistent
+Open Targets fibrotic-disease association — see Figure 2) is anchored
+within the multi-target profile.
+
+![Figure 1: EMB-3 target profile](figures/fig1_emb3_target_profile.png)
+
+**Figure 2.** Real Open Targets v4 GraphQL query: 9 canonical anti-fibrotic
+master-switch targets × fibrotic-spectrum diseases (associations at
+score ≥ 0.4). PDGFRB shows consistent association across IPF, systemic
+scleroderma, ILD, pulmonary fibrosis, dermatofibrosarcoma, and acroosteolysis-
+keloid syndrome. Other canonical targets (TGFB1, MMP1, CTGF, SMAD3, MMP3/9,
+LOX, COL1A1) have ≤ 1 fibrotic disease above the threshold — illustrating
+the disjoint between medicinal-chemistry literature framing and Open Targets
+genetic-evidence-weighted scoring.
+
+![Figure 2: Target × disease overlap](figures/fig2_target_disease_overlap.png)
+
 ## References
 
 [1] Tabib T, et al. Single-cell transcriptomics of skin: dermal fibroblast atlas. *Nat Immunol* 2024.

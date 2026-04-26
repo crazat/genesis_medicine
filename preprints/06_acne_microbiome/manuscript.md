@@ -145,6 +145,26 @@ Same standard text. Data: `pilot/screen/acne/screen_results.csv` at <https://git
 
 ---
 
+
+## Figures
+
+**Figure 1.** Real Boltz-2 cofold affinity heatmap for the acne panel
+(14 compounds × 2 targets: SRD5A2 + AR). Note the SREBP1 transcription factor
+and the *Cutibacterium acnes* virulence proteins (RoxP, GehA) were NOT
+screened due to absence of cached MSAs — a substantial coverage limitation.
+Baicalein (황금) leads the panel.
+
+![Figure 1: Acne affinity heatmap](figures/fig1_affinity_heatmap.png)
+
+**Figure 2.** Affinity × hERG safety quadrant for the acne panel.
+**Critical safety finding**: Berberine (황련) shows hERG probability **0.977**
+— the highest in our entire 4-disease pipeline — combined with AMES 0.911.
+Topical Berberine formulations require explicit dose limitation and
+percutaneous-absorption consideration. Wogonin (황금) emerges as the
+cleanest combined-profile candidate.
+
+![Figure 2: Acne safety × affinity](figures/fig2_safety_affinity_quadrant.png)
+
 ## References
 
 [1] Williams HC, Dellavalle RP, Garner S. Acne vulgaris. *Lancet* 2012, 379, 361–372.

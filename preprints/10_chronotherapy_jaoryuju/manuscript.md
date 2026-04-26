@@ -161,6 +161,19 @@ Same standard text. Module: `src/genesis_medicine/chronotherapy/jaoryuju.py` at 
 
 ---
 
+
+## Figures
+
+**Figure 1.** 자오류주(子午流注) 12-meridian × modern skin circadian rhythm
+clock. Outer ring: 12 meridian time-windows in the classical 자오류주
+framework (담 → 간 → 폐 → 대장 → 위 → 비 → 심 → 소장 → 방광 → 신 → 심포 → 삼초).
+Inner radial markers: documented modern skin-rhythm peaks (keratinocyte
+proliferation morning, sebum peak midday, MMP rising late afternoon, barrier
+permeability evening, DNA-repair / stem-cell rest overnight). The framework-
+integration mapping is hypothesis-level, not validated.
+
+![Figure 1: Jaoryuju 24-hour clock](figures/fig1_jaoryuju_clock.png)
+
 ## References
 
 [1] Lingshu Jing 영추경 (canonical text). Modern annotated edition: 윤창열, 영추경 강해, 1997.

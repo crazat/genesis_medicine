@@ -156,6 +156,28 @@ Same standard text. Data: `pilot/screen/alopecia/screen_results.csv` at <https:/
 
 ---
 
+
+## Figures
+
+**Figure 1.** Real Boltz-2 cofold affinity heatmap for the alopecia panel
+(13 compounds × 3 targets: SRD5A2 + AR + CTNNB1). Top hits Saponin Re
+(인삼) and Emodin (하수오) are jointly tied at mean affinity 0.675, with
+Emodin leading the AR axis (0.768) and Saponin Re leading the SRD5A2 axis
+(0.746). Finasteride (reference SRD5A2 inhibitor) ranks at 0.202 — a
+methodological observation reflecting Boltz-2's coverage limitation for
+covalent / mechanism-based inhibitors.
+
+![Figure 1: Alopecia affinity heatmap](figures/fig1_affinity_heatmap.png)
+
+**Figure 2.** Affinity × hERG safety quadrant for the alopecia panel.
+Note the Emodin and Physcion (하수오 anthraquinones) safety flags
+(Skin > 0.92, AMES > 0.71) — these compounds engage the AR axis well
+but require careful topical-formulation work to address irritation /
+mutagenicity concerns. Biochanin A (콩 / 황기) emerges as the cleanest
+combined-criterion candidate (annotated lower right area).
+
+![Figure 2: Alopecia safety × affinity](figures/fig2_safety_affinity_quadrant.png)
+
 ## References
 
 [1] Russell DW, Wilson JD. Steroid 5α-reductase. *Annu Rev Biochem* 1994, 63, 25–61.

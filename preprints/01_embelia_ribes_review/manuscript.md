@@ -242,6 +242,17 @@ All scripts, configuration files, and result JSONs supporting this manuscript ar
 
 ---
 
+
+## Figures
+
+**Figure 1.** Chemical structures of Embelin (parent natural product from
+*Embelia ribes* / 자단), EMB-3 (this work, AI-derived scaffold-hop product),
+and Shikonin (the principal pigment of 자초 / *Lithospermum erythrorhizon* —
+a structurally distinct 1,4-naphthoquinone scaffold, included to clarify
+the chemistry-based distinction between *E. ribes* and 자운고).
+
+![Figure 1: Embelin / EMB-3 / Shikonin structures](figures/fig1_embelin_structure.png)
+
 ## References
 
 [1] World Flora Online. *Embelia ribes* Burm.f. <http://www.worldfloraonline.org/taxon/wfo-0000635019>

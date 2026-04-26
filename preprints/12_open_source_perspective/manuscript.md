@@ -188,6 +188,18 @@ Same standard text. Code: <https://github.com/crazat/genesis_medicine>.
 
 ---
 
+
+## Figures
+
+**Figure 1.** Genesis_Medicine 12-tier pipeline architecture overview.
+Approximately 50+ modules organized into 12 functional tiers from
+Tier 0 (Foundation: Boltz-2, REINVENT4, ADMET-AI, OpenMM, openmmtools,
+MACE-OFF24, RDKit) through Tier 11 (Frontier: NaFM, Bayesian trial design,
+patent prior-art, SkinAge clock, Chai-1, JUMP-CP, MFDS K-bio landscape).
+Apache-2.0 open-source.
+
+![Figure 1: 12-tier pipeline](figures/fig1_12tier_overview.png)
+
 ## References
 
 [1] M. Bran A, et al. ChemCrow: augmenting large-language models with chemistry tools. *Nat Mach Intell* 2024, 6, 525–535.
