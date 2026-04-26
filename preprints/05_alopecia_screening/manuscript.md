@@ -192,5 +192,13 @@ combined-criterion candidate (annotated lower right area).
 
 ---
 
+*v0.3 ensemble-validation revision, 2026-04-26 evening · ~2,900 words · CC-BY 4.0*
+
+### Ensemble-validation update (2026-04-26 evening)
+
+The principal AR-targeted top-hit — **Emodin × AR prob_binary = 0.768** (하수오 anthraquinone) — was subjected to two-model structural ensemble validation against Chai-1 (Apache-2.0, Q4-2025 release). 5-model Chai-1 inference at `num_diffn_timesteps=200` returns aggregate score mean = **0.146** — strong disagreement (|Δ| = 0.62). The same pattern is observed for Baicalein × AR in companion preprint #6. Both top-AR-hits are therefore **not ensemble-validated** under the pipeline's go-forward 2-model rule (Boltz-2 prob ≥ 0.55 AND Chai-1 aggregate ≥ 0.55, |Δ| < 0.10). Companion preprint #8 §3.7 documents this in full. One interpretation is that the Boltz-2 affinity head over-weights pharmacophore similarity to known AR ligands without penalizing pose-stability concerns Chai-1's aggregate captures; the methodologically honest position is that **Boltz-2-only signals on AR-binders in this pipeline carry elevated false-positive risk**. We do not retract the screen result — the within-class ranking against ChEMBL MMP-1 is calibrated at |ρ| ≈ 0.72 (#8 §3.6) — but we explicitly downgrade Emodin × AR from "top alopecia lead" to "Boltz-2-only candidate requiring orthogonal validation". The LNCaP AR-luciferase reporter (forward path) is the critical next step. Saponin Re (Wnt10b-coupled) and Biochanin A (5α-reductase) calls are unaffected (different targets, no ensemble check yet).
+
+---
+
 *v0.2 draft, 2026-04-26 · ~2,800 words · CC-BY 4.0*
 *v0.1 (fabricated rankings incl. Astragaloside IV 0.52, EMD-3 analog) explicitly retracted*

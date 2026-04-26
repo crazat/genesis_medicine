@@ -178,5 +178,13 @@ cleanest combined-profile candidate.
 
 ---
 
+*v0.3 ensemble-validation revision, 2026-04-26 evening · ~2,900 words · CC-BY 4.0*
+
+### Ensemble-validation update (2026-04-26 evening)
+
+The principal Boltz-2-only finding of this preprint — **Baicalein × AR prob_binary = 0.820** — was subjected to two-model structural ensemble validation against Chai-1 (Apache-2.0, fully-released Q4-2025, ~AlphaFold-3 quality). 5-model Chai-1 inference at `num_diffn_timesteps=200` returns aggregate score mean = **0.145** (max = 0.146) — strong disagreement (|Δ| = 0.67). Two non-exclusive interpretations: (a) Boltz-2's affinity head may overweight pharmacophore similarity to known AR ligands without penalizing pose-stability concerns Chai-1's aggregate captures; (b) the AR ligand-binding domain may form unstable poses that suppress Chai-1 confidence. **Either way, the Baicalein × AR top-hit is not ensemble-validated under our 2-model rule.** Companion preprint #8 §3.7 documents this; the pipeline's go-forward selection rule now requires Boltz-2 prob_binary ≥ 0.55 *and* Chai-1 aggregate ≥ 0.55 with |Δ| < 0.10. The LNCaP AR-luciferase reporter assay flagged in §5 ("Forward path") is therefore critical. Berberine hERG 0.977 disclosure is unaffected.
+
+---
+
 *v0.2 draft, 2026-04-26 · ~2,800 words · CC-BY 4.0*
 *v0.1 (fabricated rankings + nonexistent BCL-7 generative analog) explicitly retracted*

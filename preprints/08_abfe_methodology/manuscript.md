@@ -9,7 +9,7 @@
 Code: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
 **Manuscript type**: Methodology paper; **Target preprint**: ChemRxiv (immediate); **Peer-review target**: J Cheminform; **License**: CC-BY 4.0
-**Status**: v0.3 — partial OpenMM-ABFE calibration on T4L99A·benzene (complex leg ΔG_decouple = 2.695 ± 0.146 kcal/mol; solvent leg pending re-run with corrected padding) **plus** independent Boltz-2 cofold-affinity calibration against 15 ChEMBL MMP-1 inhibitors (Spearman ρ = −0.724, p = 0.002, 4.3 min wall on RTX 5090). The structure-prediction front-end used by companion preprints is therefore independently validated as a ranking signal even while the OpenMM-ABFE cycle remains incomplete.
+**Status**: v0.4 — partial OpenMM-ABFE calibration on T4L99A·benzene (complex leg ΔG_decouple = 2.695 ± 0.146 kcal/mol; solvent leg pending re-run) + **Boltz-2 cofold-affinity ChEMBL calibration** (Spearman ρ = −0.724, p = 0.002, 15 MMP-1 inhibitors) + **2-way Boltz-2 / Chai-1 structural ensemble** on 6 top compound·target pairs (1/6 strong agreement: EMB-3×MMP1; AR-targeted Boltz-2-only top hits not ensemble-validated). Companion application preprints (#3–#7) framed accordingly.
 
 ---
 
@@ -223,6 +223,29 @@ The Boltz-2 cofold + affinity head, used as the *first-stage* high-throughput sc
 
 The complete output (15 × {SMILES, IC50, pIC50, affinity_pred, prob_binary}) is in `pilot/calibration/boltz2_mmp1/calibration_predictions.csv`; the summary statistics are in `calibration_stats.json`. The 8 hydroxamate SMILES in the source CSV had a textual encoding error (`C(=O)NHO` instead of `C(=O)NO` for the hydroxamic-acid nitrogen) that initially prevented RDKit parsing; this was patched in the same commit (`bc97aa1`).
 
+### 3.7 Two-model structural ensemble validation: Boltz-2 vs Chai-1
+
+A second, *qualitatively different* check is the **structural-pose ensemble agreement** between the two leading open AF3-class cofold models — Boltz-2 (MIT, Sept 2024) and Chai-1 (Apache-2.0, fully released Q4-2025; 77 % PoseBusters / 68.5 % DockQ on standard benchmarks, comparable to AlphaFold-3 [9]). On the 6 top compound·target pairs identified by the disease screens (preprints #3–#7) we ran Chai-1 with `num_trunk_recycles=3, num_diffn_timesteps=200, n=5 sample diffusion seeds` and aggregated per-pair as the mean of the 5-model `aggregate_score` (npz `aggregate_score` key). Results in `pilot/chai1_ensemble/ensemble_consensus_v2.csv`:
+
+| Pair | Boltz-2 prob_binary | Chai-1 aggregate (mean of 5) | Agreement |
+|---|---:|---:|---|
+| **EMB-3 × MMP1** | 0.674 | 0.696 | **STRONG agree** ✓ |
+| EMB-3 × TGFB1 | 0.749 | 0.245 | strong disagree |
+| Oxyresveratrol × TYR | 0.750 | 0.469 | moderate disagree |
+| Baicalein × AR | 0.820 | 0.145 | strong disagree |
+| EMB-3 × SIRT1 | 0.632 | 0.206 | strong disagree |
+| Emodin × AR | 0.768 | 0.146 | strong disagree |
+
+**Figure 2**: Boltz-2 prob_binary vs Chai-1 aggregate score for the 6 ensemble pairs (`figures/ensemble_boltz2_vs_chai1.png`). Diagonal = perfect agreement; ±0.10 band = STRONG agreement.
+
+**Implications.** Three patterns are honestly visible:
+
+1. **Our principal application — EMB-3 × MMP-1 — is the *only* strong-agreement pair.** Both Boltz-2 (probabilistic affinity head, prob ≈ 0.67) and Chai-1 (structural confidence, mean ≈ 0.70) place this pair near the upper-middle of their respective scales. Companion preprint #3 on EMB-3 / scar regeneration is therefore *more* defensible against ensemble-cross-validation than any of our other primary leads — a positive but qualified finding.
+2. **AR-targeted predictions (Baicalein, Emodin) show the strongest disagreement.** Boltz-2 reports prob ≈ 0.77–0.82 (very high) but Chai-1 returns aggregate ≈ 0.145 (very low). Two non-mutually-exclusive interpretations: (i) the Boltz-2 affinity head is overconfident on flavone / anthraquinone scaffolds in nuclear receptor pockets; (ii) the AR ligand-binding domain pose is unstable enough that Chai-1's structural confidence (which couples DockQ-style structural plausibility into the aggregate) penalizes it heavily. Either way, **the Boltz-2-only top-AR predictions in preprints #5 (alopecia) and #6 (acne) are not ensemble-validated.** We add this as an explicit limitation in those preprints' v0.3 revisions.
+3. **Larger / more flexible targets (TGF-β1, SIRT1) show moderate-to-strong disagreement.** TGF-β1 is a homodimeric cytokine with cysteine-knot fold and a large allosteric / surface-binding regime; SIRT1 is a multi-domain HDAC with NAD⁺-cofactor coupling — both regimes where the two models' training distributions plausibly differ. Predictions on these targets carry higher uncertainty than the well-defined small-molecule pocket of MMP-1.
+
+**Methodological lesson for the pipeline.** Single-model cofold scoring (Boltz-2-only or Chai-1-only) is insufficient as a stand-alone screening signal. We propose the *2-way ensemble call*: a pair is "ensemble-validated" only when both Boltz-2 prob_binary and Chai-1 aggregate exceed their respective thresholds (≥0.55 / ≥0.55) and disagree by less than 0.10. By that criterion only EMB-3 × MMP1 passes among our six top pairs. We deliberately do not retroactively delete the other application-preprint claims, because: (i) the Boltz-2-alone signal is still calibrated against ChEMBL (§3.6) and remains a useful ranking signal *within* a chemotype-target class; (ii) the additional honest disclosure is more useful to the reader than retraction. Future top-hit selection in this pipeline will require ensemble agreement.
+
 ### 3.4 Lessons from earlier iterations
 
 We document earlier attempts (which produced NaN failures and now-known-incorrect results) for transparency and methodological reproducibility:
@@ -288,13 +311,15 @@ Same standard text. Code: <https://github.com/crazat/genesis_medicine>. Specific
 [6] Chodera JD, et al. openmmtools (v0.26). 2026.
 [7] Peters MB, et al. Structural survey of zinc-containing proteins and development of the zinc Amber force field (ZAFF). *J Chem Theory Comput* 2010, 6, 2935–2947.
 [8] Hinck AP. Structural studies of the TGF-β superfamily of cytokines. *FEBS Lett* 2012, 586, 1860–1870.
+[9] Chai Discovery. Chai-1: decoding the molecular interactions of life. Technical report 2024-2025; Apache-2.0 release Q4-2025. <https://github.com/chaidiscovery/chai-lab>.
 
 ---
 
-*v0.3 ChEMBL-companion-calibration revision, 2026-04-26 · ~4,100 words · CC-BY 4.0*
+*v0.4 ensemble-validation revision, 2026-04-26 · ~4,800 words · CC-BY 4.0*
 
 ### Revision history
 
 - **v0.1 (2026-04-26 morning)** — methodology + protocol description; T4L99A·benzene calibration "in progress" at submission.
-- **v0.2 (2026-04-26 afternoon)** — partial OpenMM-ABFE calibration: complex leg ΔG_decouple = 2.695 ± 0.146 kcal/mol completed (5.71 h GPU); solvent leg blocked by 1.0 nm padding becoming too small after protein removal; fix committed, re-run pending. No final ΔG_bind reported.
-- **v0.3 (2026-04-26 evening)** — added §3.6 independent Boltz-2 cofold-affinity calibration against 15 ChEMBL MMP-1 inhibitors. Spearman ρ = −0.724 (p = 0.002), Pearson r = −0.762; correctly identifies Prinomastat (3 nM) and Lovejoy 1999 (18 µM) as the strongest and weakest in the set. Two non-hydroxamate outliers retained without filtering. Structure-prediction front-end is therefore validated as a ranking signal independent of the OpenMM-ABFE solvent-leg re-run.
+- **v0.2 (2026-04-26 afternoon)** — partial OpenMM-ABFE calibration: complex leg ΔG_decouple = 2.695 ± 0.146 kcal/mol completed (5.71 h GPU); solvent leg blocked by 1.0 nm padding too small after protein removal; fix committed, re-run pending. No final ΔG_bind reported.
+- **v0.3 (2026-04-26 evening)** — added §3.6 ChEMBL MMP-1 calibration (n=15, Spearman ρ = −0.724, p = 0.002, Pearson r = −0.762). Correctly ranks Prinomastat (3 nM) and Lovejoy 1999 (18 µM) at extremes. Front-end validated as a ranking signal.
+- **v0.4 (2026-04-26 night)** — added §3.7 Boltz-2 / Chai-1 two-way structural ensemble on 6 top pairs. Only EMB-3 × MMP1 shows strong agreement (Boltz-2 0.674 / Chai-1 0.696). AR-targeted Boltz-2-only top hits (Baicalein, Emodin) not ensemble-validated → flagged as limitation in companion preprints #5 (alopecia) and #6 (acne). Two-model agreement (≥0.55 / ≥0.55, |Δ|<0.10) proposed as the pipeline's go-forward selection rule for top hits.

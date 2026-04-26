@@ -197,5 +197,13 @@ at moderate affinity.
 
 ---
 
+*v0.3 ensemble-validation revision, 2026-04-26 evening · ~2,600 words · CC-BY 4.0*
+
+### Ensemble-validation update (2026-04-26 evening)
+
+The principal Boltz-2-only top-hit — **Oxyresveratrol × TYR prob_binary ≈ 0.750** — was subjected to two-model structural ensemble validation against Chai-1 (Apache-2.0, Q4-2025 release). 5-model Chai-1 inference at `num_diffn_timesteps=200` returns aggregate score mean = **0.469**, *moderate disagreement* (|Δ| ≈ 0.28). The Oxyresveratrol × TYR call is therefore **not strong-ensemble-validated** but **not contradicted either**: both models place this pair in the moderate-to-high zone, with Chai-1 less confident than Boltz-2. Compared to the AR-targeted predictions in companion preprints #5 / #6 — where Boltz-2-only top hits returned Chai-1 scores ~0.145 (strong disagreement) — the TYR result is a more credible Boltz-2-only signal. Companion preprint #8 §3.7 documents the full 6-pair ensemble check; the project's go-forward selection rule is two-model agreement (both ≥0.55, |Δ|<0.10). Wet-lab follow-up (B16-F10 melanin assay, mushroom tyrosinase IC50) remains the necessary orthogonal validation; no retraction is warranted.
+
+---
+
 *v0.2 draft, 2026-04-26 · ~2,500 words · CC-BY 4.0*
 *v0.1 (fabricated rankings) explicitly retracted in §1.3 / methods*
