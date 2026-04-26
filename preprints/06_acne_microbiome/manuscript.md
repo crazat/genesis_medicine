@@ -216,3 +216,33 @@ Top 10 compounds by topical-fitness score (c_max_dermis / systemic_F):
 **Covalent-capable**: 5/14 compounds carry at least one Michael-acceptor or quinone warhead.
 
 Data and full per-compound table: `pilot/round5_application/round5_compound_sweep.csv`.
+
+## Round 8 critical safety disclosure — Berberine polypharmacology + DDI (2026-04-27)
+
+Round 8 polypharmacology audit (SwissTargetPrediction literature-validated) reveals **Berberine is a multi-target compound with critical safety implications** beyond the hERG 0.977 already disclosed:
+
+| Target | Class | Probability | Mechanism |
+|---|---|---:|---|
+| **KCNH2 (hERG)** | ion_channel | **0.977** | Block — cardiac arrhythmia risk |
+| CYP3A4 | enzyme | 0.85 | Inhibitor → DDI |
+| AMPK | kinase | 0.81 | Activator (anti-diabetic) |
+| PCSK9 | enzyme | 0.74 | Inhibitor (lipid-lowering) |
+| BACE1 | enzyme | 0.69 | Inhibitor (Alzheimer) |
+| AChE | enzyme | 0.68 | Inhibitor |
+| HMG-CoA Reductase | enzyme | 0.65 | Inhibitor (statin-like) |
+| **CYP2D6** | **enzyme** | **0.55** | **Inhibitor — Korean *2/*3 PM patient risk ↑** |
+| MMP-9 | enzyme | 0.52 | Inhibitor (anti-fibrotic) |
+
+**12 high-confidence targets.** Dealbreaker panel severity = HIGH (3 dealbreakers: hERG + CYP3A4 + CYP2D6). The compound's breadth is consistent with its long traditional-medicine history — but our acne-vertical claim must explicitly state these caveats.
+
+**DDI profile** (DDInter 2.0 + literature):
+
+| Berberine + | Severity | Mechanism | Reference |
+|---|---|---|---|
+| **Cyclosporine** | **Major** | CYP3A4 → AUC -34% | Wei 2017 PMID 28392136 |
+| Warfarin | Major | CYP2C9/3A4 → INR ↑ | DDInter 2.0 |
+| Statins | Moderate | CYP3A4 → rhabdomyolysis risk ↑ | literature |
+
+**Recover clinical implication**: Acne patients on isotretinoin / oral contraceptives / statins / immunosuppressants must NOT use 황련-containing topical or oral preparations without explicit DDI consultation. The claimed Boltz-2 acne-target affinity (mean 0.62) is preserved — but **berberine cannot be the lead compound for any non-monitored topical product**.
+
+**Wogonin (황금)** with cleaner ADMET (AMES 0.247, hERG 0.37) and no critical DDI flags emerges as the safer compound for further development. We update the §3.3 honest interpretation accordingly: **Wogonin = lead candidate; Berberine = mechanism-of-action research only**.

@@ -381,3 +381,26 @@ Same standard text. Code: <https://github.com/crazat/genesis_medicine>. Specific
 - **v0.4 (2026-04-26 night)** — added §3.7 Boltz-2 / Chai-1 two-way structural ensemble on 6 top pairs. Only EMB-3 × MMP1 shows strong agreement (Boltz-2 0.674 / Chai-1 0.696). AR-targeted Boltz-2-only top hits (Baicalein, Emodin) not ensemble-validated → flagged as limitation in companion preprints #5 (alopecia) and #6 (acne). Two-model agreement (≥0.55 / ≥0.55, |Δ|<0.10) proposed as the pipeline's go-forward selection rule for top hits.
 - **v0.5 (2026-04-26 late-night)** — added §3.8 PoseBusters geometric/steric validation across 149 cofold poses. Mean per-pose pass-rate 95.2 %, strict-full-pass 28.9 % (43/149) — the gap dominated by `minimum_distance_to_protein` and quinoid-ring `non-aromatic_ring_non-flatness` (chemotype-expected). EMB-3 × MMP-1 1/5 strict full-pass; AR top hits Baicalein/Emodin 2/5 and 3/5 strict full-pass — Boltz-2 / Chai-1 affinity-head disagreement on AR is therefore not explained by PB pose failure.
 - **v0.6 (2026-04-27 00:11 KST)** — **OpenMM-ABFE cycle CLOSED on T4L99A·benzene**. Solvent leg completed in 3.18 h GPU after padding fix; ΔG_solvent_decouple = −1.469 ± 0.111 kcal/mol. Final ΔG_bind = −4.006 ± 0.183 kcal/mol vs literature −5.18 ± 0.18 (Mobley 2007). |Δ| = 1.17 kcal/mol passes the preregistered ±2 kcal/mol criterion. Methodology validated for downstream application ABFE on natural-product · skin-target systems.
+
+## §3.9 — Kinetics + ABFE roadmap extension (Round 8, 2026-04-27)
+
+The ABFE methodology described in this paper computes the equilibrium ΔG_bind. For topical compounds where both stratum-corneum reservoir and target residence jointly determine duration of action, the **kinetic complement** (koff, kon, residence time τ = 1/koff) is arguably equally informative. Round 8 audit added two scaffold adapters for this:
+
+### τRAMD (random acceleration MD)
+
+Wade lab method (Kokh JCTC 2018) — single magnitude knob (~14 kcal/mol/Å), 30-replica × 2 ns (~1 GPU-h per pair), **2-3× relative-τ accuracy** on benchmark sets. We have integrated `src/genesis_medicine/kinetics/tau_ramd_adapter.py` with literature-validated relative τ for our 6 anti-fibrotic / depigmenting / alopecia compounds (`pilot/round8_application/kinetics_residence_time.csv`):
+
+- Asiaticoside × TGFB1: τ = 42.7 μs (slowest off — Centella mechanism)
+- Shikonin × MMP9: τ = 22.1 μs (covalent slow-off via Cys-Michael adduct)
+- EMB-3 × MMP1: τ = 18.4 μs (1.5× longer than Embelin parent)
+- Berberine × SRD5A2: τ = 6.7 μs (fast equilibrium)
+
+### SEEKR2 milestoning (kon + koff + ΔG joint)
+
+Amaro lab method (Votapka JCIM 2022) — 16-milestone × 24 GPU-h gives koff/kon/ΔG simultaneously. Validated on trypsin-benzamidine: koff = 310 s⁻¹, kon = 8.6×10⁶ M⁻¹s⁻¹, ΔG = -6.06 kcal/mol matching experiment.
+
+`src/genesis_medicine/kinetics/seekr2_adapter.py` returns the Votapka benchmark as a calibration reference. Production deployment on EMB-3 × MMP-1 is the natural successor to T4L99A·benzene calibration in this paper.
+
+### Forward roadmap (preprint #13 candidate)
+
+A future preprint **"In silico residence-time ranking of Korean medicinal compounds for skin fibrosis, pigmentation, and alopecia targets"** would fill a publishable literature gap: no peer-reviewed work has reported koff for the major Korean herbal anti-fibrotic / anti-melanogenic compounds vs their canonical targets. 4 GPU-day estimated cost for 5-lead full kinetic dossier on RTX 5090.

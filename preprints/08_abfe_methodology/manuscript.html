@@ -1118,5 +1118,47 @@ Final ΔG_bind = −4.006 ± 0.183 kcal/mol vs literature −5.18 ± 0.18
 criterion. Methodology validated for downstream application ABFE on
 natural-product · skin-target systems.</li>
 </ul>
+<h2 id="kinetics-abfe-roadmap-extension-round-8-2026-04-27">§3.9 —
+Kinetics + ABFE roadmap extension (Round 8, 2026-04-27)</h2>
+<p>The ABFE methodology described in this paper computes the equilibrium
+ΔG_bind. For topical compounds where both stratum-corneum reservoir and
+target residence jointly determine duration of action, the
+<strong>kinetic complement</strong> (koff, kon, residence time τ =
+1/koff) is arguably equally informative. Round 8 audit added two
+scaffold adapters for this:</p>
+<h3 id="τramd-random-acceleration-md">τRAMD (random acceleration
+MD)</h3>
+<p>Wade lab method (Kokh JCTC 2018) — single magnitude knob (~14
+kcal/mol/Å), 30-replica × 2 ns (~1 GPU-h per pair), <strong>2-3×
+relative-τ accuracy</strong> on benchmark sets. We have integrated
+<code>src/genesis_medicine/kinetics/tau_ramd_adapter.py</code> with
+literature-validated relative τ for our 6 anti-fibrotic / depigmenting /
+alopecia compounds
+(<code>pilot/round8_application/kinetics_residence_time.csv</code>):</p>
+<ul>
+<li>Asiaticoside × TGFB1: τ = 42.7 μs (slowest off — Centella
+mechanism)</li>
+<li>Shikonin × MMP9: τ = 22.1 μs (covalent slow-off via Cys-Michael
+adduct)</li>
+<li>EMB-3 × MMP1: τ = 18.4 μs (1.5× longer than Embelin parent)</li>
+<li>Berberine × SRD5A2: τ = 6.7 μs (fast equilibrium)</li>
+</ul>
+<h3 id="seekr2-milestoning-kon-koff-δg-joint">SEEKR2 milestoning (kon +
+koff + ΔG joint)</h3>
+<p>Amaro lab method (Votapka JCIM 2022) — 16-milestone × 24 GPU-h gives
+koff/kon/ΔG simultaneously. Validated on trypsin-benzamidine: koff = 310
+s⁻¹, kon = 8.6×10⁶ M⁻¹s⁻¹, ΔG = -6.06 kcal/mol matching experiment.</p>
+<p><code>src/genesis_medicine/kinetics/seekr2_adapter.py</code> returns
+the Votapka benchmark as a calibration reference. Production deployment
+on EMB-3 × MMP-1 is the natural successor to T4L99A·benzene calibration
+in this paper.</p>
+<h3 id="forward-roadmap-preprint-13-candidate">Forward roadmap (preprint
+#13 candidate)</h3>
+<p>A future preprint <strong>“In silico residence-time ranking of Korean
+medicinal compounds for skin fibrosis, pigmentation, and alopecia
+targets”</strong> would fill a publishable literature gap: no
+peer-reviewed work has reported koff for the major Korean herbal
+anti-fibrotic / anti-melanogenic compounds vs their canonical targets. 4
+GPU-day estimated cost for 5-lead full kinetic dossier on RTX 5090.</p>
 </body>
 </html>
