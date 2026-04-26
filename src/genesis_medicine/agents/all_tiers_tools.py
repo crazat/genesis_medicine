@@ -332,4 +332,40 @@ ALL_TIERS_TOOLS: list[Tool] = [
                           "drug_a": {"type": "string"},
                           "drug_b": {"type": "string"}}},
           _t8_hira_qaly),
+    # ★ facial_dx integration (별도 프로젝트 C:\Projects\facial_dx)
+    Tool("facial_dx_status",
+          "facial_dx 진단 엔진 (3D Morpheus + iPhone TrueDepth) 가용성 확인",
+          {"type": "object", "properties": {}},
+          lambda **kw: __import__(
+              "genesis_medicine.integration.facial_dx_bridge",
+              fromlist=["is_facial_dx_available"]).is_facial_dx_available()),
+    Tool("facial_dx_fetch_analysis",
+          "facial_dx에서 환자 3D 분석 결과 가져오기 (asymmetry/landmarks/zones)",
+          {"type": "object",
+           "properties": {"patient_id": {"type": "string"},
+                          "test_sprint": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.integration.facial_dx_bridge",
+              fromlist=["fetch_facial_dx_analysis"]
+              ).fetch_facial_dx_analysis(**kw).__dict__),
+    Tool("integrated_treatment_plan",
+          "facial_dx 결과 + Genesis_Medicine 분자 처방 통합 시술 plan (Recover 환자 동선)",
+          {"type": "object",
+           "properties": {"facial_dx_result": {"type": "object"},
+                          "scar_diagnosis": {"type": "string"},
+                          "patient_skin_type": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.integration.facial_dx_bridge",
+              fromlist=["integrated_treatment_plan"]
+              ).integrated_treatment_plan(**kw).__dict__),
+    Tool("recover_patient_workflow",
+          "Recover 한의원 환자 end-to-end 동선 (facial_dx 분석 → 분자 처방 → 시술 순서)",
+          {"type": "object",
+           "properties": {"test_sprint": {"type": "string"},
+                          "scar_diagnosis": {"type": "string"},
+                          "patient_id": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.integration.facial_dx_bridge",
+              fromlist=["call_facial_dx_then_prescribe"]
+              ).call_facial_dx_then_prescribe(**kw)),
 ]
