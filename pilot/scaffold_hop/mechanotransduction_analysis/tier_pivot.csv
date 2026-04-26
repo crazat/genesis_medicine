@@ -1,0 +1,9 @@
+tier,egcg,emb3,embelin
+Selectivity (avoid),0.541,0.524,0.563
+Tier 1 (receptor),0.697,0.749,0.675
+Tier 2 (signaling),0.628,0.649,0.733
+Tier 4 (myofib activation),0.666,0.640,0.638
+Tier 5 (effector),0.539,0.678,0.716
+Tier 6 (ECM),0.600,0.627,0.754
+Tier 7 (transcription),0.505,0.497,0.641
+Selectivity score,0.064,0.116,0.129
