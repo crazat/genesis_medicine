@@ -1,0 +1,49 @@
+{
+  "title": "Genesis_Medicine: AI-driven Korean herbal natural-product drug discovery pipeline for skin disease",
+  "description": "Open-source computational pipeline integrating Boltz-2 / Chai-1 cofold + ADMET-AI + OpenMM 8 ABFE + Round-5 SOTA adapters (Boltz-ABFE, MolDAIS BoTorch SAASBO, AToM-OpenMM, AIMNet2, CarsiDock-Cov, PBK Dermal HT, SARA-ICE OECD TG 497-III, Skin Fibroblast Atlas, CellAwareGNN). Targets skin scar regeneration, hyperpigmentation, alopecia, acne, photoaging across 13 Korean medicinal herbs and 102+ phytochemicals. Methodology paper-tier T4L99A·benzene calibration to 1.17 kcal/mol of literature ITC. EMB-3 lead from Embelia ribes scaffold-hop with hERG 0.40→0.16 improvement.",
+  "creators": [
+    {
+      "name": "HanCheongWoo",
+      "affiliation": "Genesis_Medicine Lab, Seoul; HAN PREDICT, Inc.; Recover Korean Medicine Clinic",
+      "orcid": "0009-0000-0000-0000"
+    }
+  ],
+  "keywords": [
+    "drug discovery",
+    "natural products",
+    "Korean traditional medicine",
+    "Boltz-2",
+    "AlphaFold-3",
+    "ABFE",
+    "OpenMM",
+    "MMP-1",
+    "TGF-β1",
+    "skin fibrosis",
+    "scar regeneration",
+    "hyperpigmentation",
+    "androgenetic alopecia",
+    "photoaging",
+    "ADMET-AI",
+    "PoseBusters",
+    "in silico screening"
+  ],
+  "license": "Apache-2.0",
+  "upload_type": "software",
+  "access_right": "open",
+  "communities": [
+    {"identifier": "drug-discovery"},
+    {"identifier": "open-science"}
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/crazat/genesis_medicine",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "subjects": [
+    {"term": "Cheminformatics", "identifier": "https://www.wikidata.org/wiki/Q193995"},
+    {"term": "Computational Biology", "identifier": "https://www.wikidata.org/wiki/Q177005"},
+    {"term": "Korean traditional medicine", "identifier": "https://www.wikidata.org/wiki/Q1133134"}
+  ]
+}

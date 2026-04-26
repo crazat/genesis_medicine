@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+title: "Genesis_Medicine: AI-driven Korean herbal drug discovery pipeline"
+message: "If you use this software, please cite our preprints (DOI list at https://github.com/crazat/genesis_medicine#preprints)."
+type: software
+authors:
+  - given-names: HanCheongWoo
+    affiliation: "Genesis_Medicine Lab, Seoul; HAN PREDICT, Inc.; Recover Korean Medicine Clinic"
+    orcid: https://orcid.org/0009-0000-0000-0000
+license: Apache-2.0
+repository-code: "https://github.com/crazat/genesis_medicine"
+url: "https://hanpredict.com"
+keywords:
+  - drug discovery
+  - Korean traditional medicine
+  - AlphaFold-3
+  - Boltz-2
+  - ABFE
+  - skin fibrosis
+  - natural products
+  - ADMET-AI
+preferred-citation:
+  type: software
+  title: "Genesis_Medicine v0.4 (Round 5 + 6)"
+  authors:
+    - given-names: HanCheongWoo
+  year: 2026
+  url: "https://github.com/crazat/genesis_medicine"

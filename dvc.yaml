@@ -1,0 +1,45 @@
+# DVC pipeline graph (Apache-2.0)
+# Run: dvc repro
+# Visualize: dvc dag
+#
+# Mirrors the Snakefile but tracks data artifacts via DVC for FAIR
+# data versioning. Commit the auto-generated dvc.lock to git.
+
+stages:
+
+  round5_compound_sweep:
+    cmd: python scripts/round5_sweep.py
+    deps:
+      - scripts/round5_sweep.py
+      - src/genesis_medicine/dermatology
+      - src/genesis_medicine/md/carsidock_cov_adapter.py
+      - data/skin_compounds_curated.csv
+      - data/sar_panel_phase2.csv
+      - data/screen_libraries/pigmentation_compounds.csv
+      - data/screen_libraries/alopecia_compounds.csv
+      - data/screen_libraries/acne_compounds.csv
+      - data/screen_libraries/photoaging_compounds.csv
+    outs:
+      - pilot/round5_application/full_compound_sweep.csv
+
+  posebusters_v2:
+    cmd: python scripts/run_posebusters_v2.py
+    deps:
+      - scripts/run_posebusters_v2.py
+    outs:
+      - pilot/posebusters/posebusters_results_v2.csv
+      - pilot/posebusters/posebusters_v2_summary.json
+
+  chembl_calibration:
+    cmd: python scripts/boltz2_calibration_mmp1.py
+    deps:
+      - scripts/boltz2_calibration_mmp1.py
+      - data/chembl_mmp1_calibration.csv
+    outs:
+      - pilot/calibration/boltz2_mmp1/calibration_predictions.csv
+      - pilot/calibration/boltz2_mmp1/calibration_stats.json
+
+metrics:
+  - pilot/calibration/boltz2_mmp1/calibration_stats.json
+  - pilot/posebusters/posebusters_v2_summary.json
+  - pilot/calibration/t4l_benzene/result_final_closed_cycle.json
