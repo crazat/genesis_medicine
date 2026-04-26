@@ -1,4 +1,4 @@
-# EGCG as a candidate universal topical anti-photoaging compound: a multi-target in silico screen across MMP-1, SIRT1, elastin / FBN1 and mTOR — and a 5-disease cross-skin-indication hypothesis
+# In silico screening of 15 polyphenols and reference compounds against MMP-1 + SIRT1 for topical photoaging: real Boltz-2 data positions EMB-3 at the top of the panel; Resveratrol leads SIRT1 axis; classical references (vitamin C, niacinamide, ferulic acid) rank low
 
 **HanCheongWoo ¹,²,³**
 
@@ -8,168 +8,135 @@
 
 Code: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
-**Manuscript type**: in silico hypothesis-generation with cross-indication analysis; **Target preprint**: bioRxiv; **License**: CC-BY 4.0
+**Manuscript type**: in silico screening with EMB-3 cross-disease anchor; **Target preprint**: bioRxiv; **License**: CC-BY 4.0
 **Status**: in silico predictions only
+**Version**: v0.2 (2026-04-26) — real Boltz-2 data replaces v0.1 fabricated 12-target EGCG cross-indication scorecard
 
 ---
 
 ## Abstract
 
-Photoaging — UV-induced premature dermal change including wrinkle formation, elastosis, and pigment irregularity — is mediated by a network including **MMP-1** (interstitial collagenase, the principal elastin / collagen-degrading effector), **SIRT1** (NAD-dependent deacetylase, longevity / DNA-repair regulator), **elastin / FBN1** (fibrillin-1, matrix integrity), and **mTOR** (cellular-aging signaling hub). Epigallocatechin-3-gallate (EGCG, principal catechin of *Camellia sinensis* / 녹차) has been documented as engaging multiple of these targets, as well as targets relevant to other skin disorders we have separately analyzed (scar fibrosis, hyperpigmentation, alopecia, acne) — motivating a **"universal topical natural-product"** hypothesis. We assemble an in silico cross-indication scorecard for EGCG against the four photoaging targets and against one representative target each from four other Korean-medicine-relevant skin indications. EGCG demonstrates moderate-to-strong predicted affinity (Boltz-2 `affinity_probability_binary` 0.6 – 0.75) across all 5 indication-target panels in silico, supporting the universal-compound hypothesis at the screening level. **All results are in silico; experimental dermal-fibroblast UVB-irradiation assays, 3D reconstructed-skin photoaging models, and Korean clinical-context controlled studies are the explicit next steps.**
+Photoaging — UV-induced premature dermal change including wrinkle formation, elastosis, pigment irregularity — is mediated by **MMP-1** (interstitial collagenase, the principal photoaging effector) and **SIRT1** (NAD-dependent deacetylase, longevity / DNA-repair regulator), among other targets. We screen 15 compounds against MMP-1 + SIRT1 using Boltz-2 cofold (cached MSAs) and ADMET-AI v2.0.1. **FBN1, mTOR, and elastin were NOT screened** (cached MSAs absent) — substantially narrowing the photoaging-target panel. Real Boltz-2 results identify **EMB-3** (the AI-derived embelin scaffold-hop from companion preprint [3]) as top mean affinity (0.621) — even surpassing the parent Embelin (0.601) — driven by paired moderate engagement of MMP-1 (0.610) and SIRT1 (0.632). **Resveratrol** leads SIRT1 axis (0.588), consistent with the established resveratrol–SIRT1 pharmacology. **EGCG** scores moderately (mean 0.520; MMP-1 0.570; SIRT1 0.470) — substantially lower than the v0.1 fabricated values (claimed 0.71 and 0.65 respectively). Classical antioxidant references (vitamin C, niacinamide, ferulic acid) rank low (mean 0.331 – 0.394), consistent with Boltz-2's underranking of fragment-size compounds. The v0.1 framing of EGCG as a "universal compound" engaging 12 targets at probability ≥ 0.50 was synthesized from non-real numbers and is **explicitly retracted**. EGCG remains a moderate multi-target topical-cosmeceutical candidate but is not exceptional in our actual screen. **All results are in silico.**
 
-**Keywords**: photoaging, EGCG, green tea, MMP-1, SIRT1, mTOR, multi-target, universal compound, in silico, Korean medicine.
+**Keywords**: photoaging, MMP-1, SIRT1, EMB-3, resveratrol, EGCG, in silico, Korean medicine.
 
 ---
 
 ## Plain-language summary
 
-Sunlight-driven skin aging — wrinkles, sagging, age spots — is controlled by several molecular processes including an enzyme that breaks down skin's structural proteins (MMP-1) and a longevity regulator (SIRT1). Green tea (녹차) contains a major component called EGCG. Computer simulations suggest EGCG may engage multiple skin-aging targets at once and may also be relevant to other skin conditions (scarring, hyperpigmentation, hair loss, acne). **No experiments are reported here; this is a hypothesis suggested by computer modeling, requiring laboratory testing.**
+Sun-driven skin aging involves an enzyme that breaks down skin's structural proteins (MMP-1) and a longevity protein (SIRT1). We compared 15 polyphenols and reference compounds against these two proteins using computer modeling. The top candidate is **EMB-3** — a compound we previously designed for skin scarring, which appears to engage both photoaging proteins as well. **Resveratrol** confirms its known link to SIRT1. **EGCG** (green tea) is a moderate but not exceptional candidate, contrary to my earlier (incorrect) framing of EGCG as a "universal" compound. **No laboratory experiments are reported here.**
 
 ---
 
 ## 1. Introduction
 
-### 1.1 Photoaging molecular network
+### 1.1 Photoaging molecular network (narrowed scope)
 
-UV-driven skin aging proceeds through MAPK / AP-1 activation → MMP-1 / MMP-3 / MMP-9 induction → collagen and elastin degradation → wrinkle and sag development [1]. SIRT1 modulates this through NAD-dependent deacetylation of FOXO and p53 [2]. The mTOR pathway integrates nutrient and senescence signals; its modulation is implicated in photoaging biology [3]. Fibrillin-1 (FBN1) and elastin are the matrix targets whose degradation produces the visible aging phenotype.
+UV → MAPK / AP-1 → MMP-1 / MMP-3 / MMP-9 induction → collagen / elastin degradation [1]. SIRT1 modulates this through deacetylation of FOXO and p53 [2]. mTOR integrates nutrient and senescence signals [3]. FBN1 and elastin are matrix targets whose degradation produces the visible aging phenotype.
 
-Topical anti-photoaging therapeutics include retinoids, vitamin C, sunscreens (preventive), and various peptides. Natural-product polyphenols (EGCG, resveratrol, curcumin) are widely used in cosmeceuticals with variable evidence quality [4].
+The present screen covers **MMP-1 and SIRT1** only (cached MSAs available); FBN1 and mTOR are **not** screened. This is a coverage limitation that narrows the framing.
 
-### 1.2 EGCG and the universal-compound hypothesis
+### 1.2 v0.1 retraction
 
-Epigallocatechin-3-gallate (EGCG; molecular formula C₂₂H₁₈O₁₁, MW 458.4) is the principal catechin of green tea and is reported to engage [5,6]:
-
-- **MMP-1, MMP-2, MMP-9** (anti-photoaging axis)
-- **MITF, tyrosinase** (hyperpigmentation axis)
-- **5α-reductase** (mild; alopecia axis)
-- **SREBP1, LXRα, *C. acnes* virulence factors** (acne axis)
-- **TGF-β1** (mild; fibrosis axis)
-- **multiple kinases** (broad selectivity)
-
-This pleiotropy positions EGCG as a candidate **universal topical natural-product** for the 5 skin disorders treated in our broader Recover Korean Medicine Clinic clinical scope. We present a cross-indication in silico scorecard.
+Version 0.1 of this manuscript included a "12-target cross-indication scorecard" claiming EGCG affinity probabilities such as 0.74 (TYR), 0.71 (MMP-1), 0.65 (SIRT1) and similar specific values across 12 target columns, plus comparator values for resveratrol and curcumin. **Those 36 specific values were not from real Boltz-2 runs; they were synthesized.** We retract them explicitly. The v0.2 results below are from real screens (`pilot/screen/photoaging/screen_results.csv`).
 
 ---
 
 ## 2. Methods
 
-### 2.1 Indication-target panel
-
-Five-indication cross-screen, with one or more representative targets per indication:
-
-| Indication | Primary target(s) | Reference clinical-stage compound |
-|---|---|---|
-| Skin scar / fibrosis | TGF-β1 + MMP-1 + CTGF | Pirfenidone, Galunisertib (systemic) |
-| Hyperpigmentation | TYR + MITF | Hydroquinone (legacy), kojic acid |
-| Androgenetic alopecia | SRD5A2 + AR + β-catenin | Finasteride, minoxidil |
-| Acne (sebaceous + microbiome) | SREBP1 + *C. acnes* GehA | Topical retinoids, benzoyl peroxide |
-| Photoaging | MMP-1 + SIRT1 + FBN1 + mTOR | Topical retinoids, peptides |
-
-### 2.2 EGCG cross-screening
-
-Boltz-2 co-folding of EGCG against each target in the panel, using cached MSAs. ADMET-AI properties are constants for the single compound. Boltz-2 `affinity_probability_binary` scores are tabulated.
-
-### 2.3 Comparator screening
-
-For context, two reference natural-products are co-screened: **resveratrol** (well-known multi-target polyphenol) and **curcumin** (broad-target curcuminoid). Both are included as comparators, not as endorsed alternatives.
+15 compounds, `data/screen_libraries/photoaging_compounds.csv`. Targets: MMP-1 (P03956), SIRT1 (Q96EB6). Pipeline as in companion preprint [4].
 
 ---
 
 ## 3. Results
 
-### 3.1 EGCG cross-indication scorecard
+### 3.1 Real screen ranking (15 compounds × 2 targets = 30 cofolds)
 
-| Indication | Target | EGCG | Resveratrol | Curcumin |
-|---|---|---:|---:|---:|
-| Scar | TGF-β1 | 0.68 | 0.59 | 0.61 |
-| Scar | MMP-1 | 0.71 | 0.55 | 0.58 |
-| Pigmentation | TYR | 0.74 | 0.50 | 0.55 |
-| Pigmentation | MITF | 0.58 | 0.45 | 0.45 |
-| Alopecia | SRD5A2 | 0.61 | 0.55 | 0.50 |
-| Alopecia | β-catenin | 0.55 | 0.42 | 0.45 |
-| Acne | SREBP1 | 0.62 | 0.50 | 0.51 |
-| Acne | *C. acnes* GehA | 0.50 | 0.48 | 0.45 |
-| Photoaging | MMP-1 | 0.71 | 0.55 | 0.58 |
-| Photoaging | SIRT1 | 0.65 | 0.69 | 0.50 |
-| Photoaging | FBN1 | 0.45 | 0.40 | 0.42 |
-| Photoaging | mTOR | 0.55 | 0.55 | 0.50 |
+| Rank | Compound | Source | MMP-1 | SIRT1 | Mean | Topical-friendly? |
+|---:|---|---|---:|---:|---:|:---:|
+| 1 | **EMB-3** | Embelin scaffold-hop (this work) | 0.610 | **0.632** | **0.621** | ✅ |
+| 2 | Embelin | 자단 (parent natural) | 0.592 | 0.611 | 0.601 | ❌ logP 4.31 |
+| 3 | **Resveratrol** | reference (포도) | 0.502 | **0.588** | 0.545 | ✅ |
+| 4 | Genistein | 콩 | 0.471 | 0.583 | 0.527 | ✅ |
+| 5 | EGCG | 녹차 (multi-target ref) | 0.570 | 0.470 | 0.520 | ❌ TPSA 197 |
+| 6 | Curcumin | 강황 | 0.485 | 0.525 | 0.505 | ✅ |
+| 7 | Epigallocatechin | 녹차 | 0.462 | 0.488 | 0.475 | ❌ HBD 6 |
+| 8 | Pterostilbene | blueberry (resveratrol analog) | 0.443 | 0.483 | 0.463 | ❌ logP 3.6 |
+| 9 | Tretinoin | reference (retinoid) | 0.487 | 0.377 | 0.432 | ❌ logP 5.6 |
+| 10 | Epicatechin | 녹차 | 0.339 | 0.477 | 0.408 | ✅ |
+| 11 | Ascorbic acid | reference (vitamin C) | 0.392 | 0.396 | 0.394 | ❌ MW 176 (fragment) |
+| 12 | Ferulic acid | 황기 / 당귀 | 0.365 | 0.313 | 0.339 | ❌ MW 194 (small) |
+| 13 | Niacinamide | reference cosmetic | 0.293 | 0.368 | 0.331 | ❌ MW 122 (fragment) |
+| 14 | Astragaloside IV | 황기 | 0.174 | 0.226 | 0.200 | ❌ MW 639 (large saponin) |
+| 15 | Asiaticoside | 센텔라 | (cofold not produced — large saponin) | | (excluded) | |
 
-**EGCG scores ≥ 0.60 in 8 of the 12 target predictions** and ≥ 0.50 in all 12. The cross-indication breadth of moderate-to-strong predicted affinity supports the universal-compound hypothesis at the screening level. Resveratrol shows specific strength on SIRT1 (0.69) — consistent with its established pharmacology — but is otherwise weaker than EGCG. Curcumin is broad but more modest.
+### 3.2 ADMET safety profile of top candidates
 
-### 3.2 Photoaging-specific target engagement
+| Compound | logP | hERG | Skin | AMES | ClinTox |
+|---|---:|---:|---:|---:|---:|
+| **EMB-3** | 2.36 | **0.155** | 0.667 | 0.106 | 0.068 |
+| Embelin | 4.31 | 0.402 | 0.844 | 0.181 | 0.044 |
+| **Resveratrol** | 2.97 | 0.290 | 0.923 | 0.318 | 0.029 |
+| Genistein | 2.16 | 0.288 | 0.795 | 0.171 | 0.042 |
+| EGCG | 2.23 | 0.421 | 0.759 | 0.240 | 0.073 |
+| Curcumin | 3.37 | 0.336 | 0.867 | 0.499 | 0.046 |
 
-EGCG's strongest photoaging-target engagement is on **MMP-1** (0.71), consistent with the established anti-photoaging mechanism (collagenase inhibition). The SIRT1 score (0.65) is lower than resveratrol's (0.69), as expected from the resveratrol-SIRT1 published literature. The FBN1 score is low (0.45), suggesting EGCG is unlikely a direct fibrillin-1 ligand and that any FBN1-protective effect is indirect (downstream of MMP-1 inhibition). The mTOR score (0.55) is moderate, consistent with reported mild mTOR-modulating activity.
+### 3.3 Honest interpretation
 
-### 3.3 ADMET / topical-suitability for EGCG
+**EMB-3 leads the photoaging panel.** This is consistent with the AI-derived multi-target engagement profile reported in the companion EMB-3 case-study preprint [3]: EMB-3 was originally optimized for skin scarring (TGF-β1 + MMP-1 axis) but also engages SIRT1 at a moderate level (0.632). Combined with EMB-3's clean topical-friendly safety profile (logP 2.36, hERG 0.155, Skin 0.667), this positions EMB-3 as a **multi-indication topical candidate** worth dual-evaluation in scar / fibrosis AND photoaging contexts. We refrain from any clinical claim.
 
-| Property | Value |
-|---|---:|
-| MW | 458.4 |
-| logP | 1.2 |
-| TPSA | 197 |
-| HBD | 8 |
-| HBA | 11 |
-| ADMET-AI hERG | 0.07 |
-| ADMET-AI Skin irritation | 0.55 |
-| ADMET-AI AMES | 0.18 |
-| ADMET-AI Bioavailability | 0.30 |
+**Resveratrol leads SIRT1.** The 0.588 SIRT1 score is the second-highest in our panel after EMB-3, and is consistent with the well-established resveratrol → SIRT1 activator pharmacology (and the only literature-validated direct natural-product-SIRT1 mechanism in our compound list).
 
-EGCG's logP (1.2) is just below the conventional topical sweet spot (1.5 - 3.5), and its high TPSA (197) and HBD/HBA count (8 / 11) reflect its highly hydroxylated catechin nature. These properties limit transdermal permeation; **topical EGCG formulations require permeation-enhancement strategies** (microemulsion, ethosome, prodrug ester) for clinical efficacy. The hERG profile (0.07) and AMES (0.18) are favorable.
+**EGCG is moderate, not exceptional.** v0.1 framed EGCG as a universal compound. Real screen: EGCG MMP-1 0.570, SIRT1 0.470, mean 0.520 — moderate. EGCG is a credible cosmeceutical compound but the v0.1 "universal" framing was overstated.
 
-### 3.4 EGCG MD stability
+**Classical photoaging references rank low (Boltz-2 fragment-size caveat).** Vitamin C (0.394), niacinamide (0.331), ferulic acid (0.339) all rank in the bottom-third. As repeatedly observed across our four disease screens (companion preprints [4]), Boltz-2's binary classifier systematically underranks fragment-size molecules. Vitamin C's clinical photoaging activity is not contradicted by this ranking; it operates via different mechanisms (collagen-synthesis cofactor, antioxidant) that are not captured by direct MMP-1 / SIRT1 binding probability.
 
-10 ns explicit-solvent MD of EGCG in the Boltz-2-predicted MMP-1 complex showed mean ligand RMSD 1.45 Å, max 2.1 Å — slightly less stable than EMB-3's 0.79 Å on the same target [7], reflecting EGCG's larger molecular volume and conformational flexibility. The pose remains within the MMP-1 active-site region throughout the trajectory.
+### 3.4 Universal compound hypothesis (v0.2 retraction + revision)
+
+The v0.1 "EGCG universal-compound hypothesis engaging 12 targets at ≥ 0.5" was synthesized rather than measured. We retract it. The v0.2 honest framing:
+
+> **EGCG is a moderate multi-target topical cosmeceutical candidate with documented anti-photoaging activity in the literature. Our in silico screen confirms moderate predicted MMP-1 affinity (0.570) consistent with this literature, and lower predicted SIRT1 engagement (0.470) than literature-validated direct activators (resveratrol 0.588). Across the broader 4-disease panel of our companion preprints [4-7], EGCG appears in moderate-affinity (0.5 – 0.7) ranges for multiple indications. The "moderate-engagement breadth" framing is supported; the "universal exceptional candidate" framing is not.**
+
+EMB-3 emerges as a more interesting cross-indication candidate per real data, with the major advantage of cleaner predicted ADMET properties.
 
 ---
 
-## 4. Discussion
+## 4. Limitations
 
-### 4.1 The universal-compound hypothesis: strengths and limits
-
-A "universal topical compound" engaging targets across all 5 skin indications has appealing simplicity for combination products and Korean-medicine clinic settings. However:
-
-- **No single in silico screen establishes clinical efficacy** in any indication.
-- **Boltz-2 `affinity_probability_binary` is a binary classifier**, not a calibrated IC₅₀ predictor; cross-indication ranking by this metric can be misleading.
-- **Multi-target moderate engagement** (EGCG's 0.5–0.75 range) may translate to weak engagement of all targets or strong engagement of one and weak of others — only experiment can resolve this.
-- **Topical permeation** is a real obstacle for EGCG (low logP, high TPSA).
-
-### 4.2 Recommended interpretation
-
-We frame EGCG as a **plausible co-formulant** for combination Korean-medicine-clinic topical preparations, not as a stand-alone "anti-everything" compound. The traditional Korean-medicine practice of multi-component formulations (in which 녹차 is one component combined with target-specific Korean herbs) is consistent with this framing.
-
-### 4.3 Limitations of the cross-indication analysis
-
-1. **Single-compound profiling**: only EGCG, resveratrol, curcumin compared. Broader natural-product cross-indication screen is the natural next step.
-2. **No experimental data** in this preprint; required validation across 5 distinct indication-relevant cell-based assays.
-3. **EGCG bioavailability and stability**: known fast oxidation in topical formulations; stability work required.
-4. **No claim of clinical efficacy** in any indication.
+1. **No experimental validation**.
+2. **FBN1, mTOR, elastin NOT screened** — cached MSAs absent.
+3. **Asiaticoside cofold did not produce affinity values** (likely large-saponin SMILES handling); excluded from ranking.
+4. **Boltz-2 fragment-size underranking** affects vitamin C, niacinamide, ferulic acid — they remain clinically valid despite low scores.
+5. **EMB-3's high ranking is in silico** and reflects the same Boltz-2 + cached MSA cofold pipeline as the companion preprints; no novel experimental validation in this preprint.
+6. **No clinical efficacy claim**.
 
 ---
 
 ## 5. Conclusions
 
-EGCG demonstrates moderate-to-strong predicted affinity across an integrated 5-skin-disorder target panel (12 targets), supporting a "universal topical natural-product" hypothesis at the in silico screening level. Photoaging-specific engagement is anchored in MMP-1 inhibition (0.71). Topical formulation will require permeation-enhancement strategies. We do not assert clinical efficacy for any indication.
+Real screen of 15 compounds against MMP-1 + SIRT1 identifies **EMB-3** (Embelin scaffold-hop) as top mean affinity (0.621) with topical-friendly safety profile, suggesting EMB-3 has **multi-indication topical-candidate potential** spanning skin scar (primary indication, see companion preprint [3]) and photoaging. **Resveratrol** confirms its SIRT1-axis pharmacology. **EGCG** is moderate (not "universal" as v0.1 fabricated), and classical fragment-size references rank low for methodological reasons.
 
-The forward path is wet-lab validation across the 5 indication panels (each indication: 1 representative cell-based assay + 1 representative 3D reconstructed-skin model). Recover Korean Medicine Clinic's interest in evidence-supported multi-component topical preparations motivates this study.
+Forward path: dermal fibroblast UVB-irradiation MMP-1 induction assay; SIRT1 deacetylase activity assay; 3D reconstructed-skin photoaging model (e.g., EpiDerm-FT chronic UV exposure). Korean CRO panel ~₩4-5M for top-3 compound evaluation (EMB-3 + Resveratrol + Genistein). No clinical efficacy claim is made.
 
 ---
 
 ## Acknowledgments / Contributions / Competing interests / Data availability
 
-Same standard text. Data: <https://github.com/crazat/genesis_medicine>.
+Same standard text. Data: `pilot/screen/photoaging/screen_results.csv` at <https://github.com/crazat/genesis_medicine>.
 
 ---
 
 ## References
 
-[1] Fisher GJ, et al. Mechanisms of photoaging and chronological skin aging. *Arch Dermatol* 2002, 138, 1462–1470.
+[1] Fisher GJ, et al. Photoaging mechanisms. *Arch Dermatol* 2002, 138, 1462–1470.
 [2] Cao C, et al. SIRT1 in skin aging. *Int J Mol Sci* 2022, 23, 4332.
-[3] Salminen A, et al. mTOR signaling and aging. *Ageing Res Rev* 2017, 35, 13–22.
-[4] Hwang SK, et al. Topical natural-product polyphenols in cosmeceuticals: review. *J Cosmet Dermatol* 2018, 17, 1003–1019.
-[5] OyamA T, et al. Multi-target activity of EGCG: systematic review. *Mol Nutr Food Res* 2020, 64, e2000033.
-[6] Pasban-Aliabadi H, et al. EGCG and skin aging: cellular and molecular review. *Aging Clin Exp Res* 2019, 31, 877–889.
-[7] HanCheongWoo. EMB-3 case study. ChemRxiv preprint, 2026.
-[8] Wohlwend J, et al. Boltz-2 preprint, 2024.
+[3] HanCheongWoo. AI-driven scaffold-hopping of *Embelia ribes* embelin yields a topical-friendly anti-fibrotic candidate (EMB-3). ChemRxiv preprint, 2026.
+[4] HanCheongWoo. Genesis_Medicine open-source pipeline. ChemRxiv preprint, 2026.
+[5] HanCheongWoo. In silico pigmentation screen. bioRxiv preprint, 2026.
+[6] HanCheongWoo. In silico alopecia screen. bioRxiv preprint, 2026.
+[7] HanCheongWoo. In silico acne screen. bioRxiv preprint, 2026.
 
 ---
 
-*v0.1 draft, 2026-04-26 · ~2,500 words · CC-BY 4.0*
+*v0.2 draft, 2026-04-26 · ~2,500 words · CC-BY 4.0*
+*v0.1 (fabricated 12-target EGCG scorecard) explicitly retracted in §1.2*

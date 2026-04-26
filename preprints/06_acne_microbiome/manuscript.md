@@ -1,4 +1,4 @@
-# Multi-target in silico screening for inflammatory acne: 5α-reductase, sebaceous SREBP1, the androgen receptor, and *Cutibacterium acnes* — a Korean-herbal-compound hypothesis with skin-microbiome consideration
+# In silico screening of Korean herbal compounds against the SRD5A2 / AR sebaceous-androgen axis for inflammatory acne: real Boltz-2 data identifies Baicalein as top topical-friendly candidate; Berberine carries a critical hERG safety flag
 
 **HanCheongWoo ¹,²,³**
 
@@ -8,147 +8,155 @@
 
 Code: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
-**Manuscript type**: in silico hypothesis-generation with skin-microbiome consideration; **Target preprint**: bioRxiv; **License**: CC-BY 4.0
-**Status**: in silico predictions only
+**Manuscript type**: in silico screening with explicit microbiome-axis limitation; **Target preprint**: bioRxiv; **License**: CC-BY 4.0
+**Status**: in silico predictions only; sebaceous cell + *C. acnes* assay validation are the explicit next step
+**Version**: v0.2 (2026-04-26) — real screen data + retraction of fabricated v0.1 *C. acnes*-axis claims
 
 ---
 
 ## Abstract
 
-Inflammatory acne vulgaris is driven by a four-node molecular pathology: (i) androgen-driven sebaceous-gland hyperactivity (SRD5A1 / SRD5A2 + AR + SREBP1 sebaceous lipogenesis), (ii) hyperkeratinization of the pilosebaceous duct, (iii) colonization and biofilm formation by **Cutibacterium acnes** (formerly *Propionibacterium acnes*), and (iv) downstream NF-κB-mediated and TLR2-mediated inflammatory cascades. Korean traditional medicine documents several anti-acne preparations centered on **황련 (*Coptis chinensis*; berberine)**, **황금 (*Scutellaria baicalensis*; baicalein, baicalin)**, **감초 (licochalcone A)**, and others. We screen approximately 25 Korean herbal phytochemicals against (a) the human 5α-reductase / AR / SREBP1 sebaceous panel and (b) representative *C. acnes* protein targets (RoxP, sortase, lipase / GehA), with explicit consideration of **skin-microbiome ecological balance** (preserving the broader commensal community while modulating *C. acnes* virulence factors rather than indiscriminate antibiosis). Top candidates exhibit topical-friendly safety profiles. **All results are in silico; experimental sebaceous-cell assays, *C. acnes* growth/biofilm assays, and skin-microbiome 16S sequencing-based ecological-impact studies are the explicit next steps.**
+Inflammatory acne pathogenesis includes androgen-driven sebaceous activity (SRD5A1/2 + AR + SREBP1), ductal hyperkeratinization, *Cutibacterium acnes* colonization with virulence factor expression (RoxP, GehA, sortase), and inflammatory cascades. Korean traditional medicine documents anti-acne preparations centered on **황련** (*Coptis chinensis*; berberine, palmatine), **황금** (*Scutellaria baicalensis*; baicalein, baicalin, wogonin), **감초** (licochalcone A), **목단피** (paeonol), and others. We screen 14 Korean herbal phytochemicals against the **human SRD5A2 + AR sebaceous-androgen axis** using Boltz-2 cofold (cached MSAs) and ADMET-AI v2.0.1. **SREBP1, *C. acnes* virulence proteins, and SRD5A1 are NOT screened** (cached MSAs absent for all four) — a substantial limitation that narrows the present screen to the androgen axis only. Real Boltz-2 results identify **Baicalein** (황금) as top mean affinity (0.744) with AR engagement 0.820 (highest in panel) and topical-friendly properties; **Berberine** (황련) shows a **critical hERG flag (0.977)** disqualifying it from systemic topical formulation without dose limitation, despite reasonable acne-axis engagement. **Wogonin** (황금) has the cleanest ADMET safety profile (AMES 0.247) at moderate affinity. The Korean traditional formulary's combinatorial pattern of 황련 + 황금 + 감초 finds partial structural support but with the safety caveats above. **All results are in silico; sebaceous cell + *C. acnes* assay validation remain the explicit next step.**
 
-**Keywords**: acne, *Cutibacterium acnes*, skin microbiome, 5α-reductase, SREBP1, Korean medicine, in silico screening, ecological-balance pharmacology.
+**Keywords**: acne, *Cutibacterium acnes*, SRD5A2, androgen receptor, Korean medicine, baicalein, hERG safety, in silico screening.
 
 ---
 
 ## Plain-language summary
 
-Acne is caused by a combination of hormone-driven oily-skin production, clogged pores, a specific skin bacterium (*Cutibacterium acnes*), and inflammation. Korean traditional medicine has long used herbs like 황련 and 황금 for skin inflammation and acne. We use computer simulations to identify which molecular components of these herbs may best engage the relevant pathways — both human enzymes and bacterial proteins — while preserving the overall skin bacterial community (avoiding the harm done by broad antibiotics). **No experiments are reported here; this is a hypothesis for laboratory follow-up.**
+Inflammatory acne involves androgen signals, oily-skin overproduction, a specific bacterium (*Cutibacterium acnes*), and inflammation. Korean herbs like 황련 (Coptis), 황금 (Scutellaria), and 감초 (licorice) are traditionally used. We used computer modeling to compare 14 compounds from these herbs against two human androgen-related proteins. Top candidate: **Baicalein** from 황금 (Scutellaria). Important safety finding: **Berberine** (황련) has very high predicted heart-channel risk (hERG 0.98), so any topical formulation needs dose limitations or alternative compound. **No laboratory experiments are reported.** Important caveat: the bacterial proteins of *C. acnes* and the master sebaceous regulator SREBP1 were NOT screened — so this report covers only part of the acne molecular pathology.
 
 ---
 
 ## 1. Introduction
 
-### 1.1 The four-node pathology of acne and the microbiome consideration
+### 1.1 Acne molecular pathology + microbiome consideration
 
-Acne pathogenesis involves the convergence of [1,2]:
-- androgen-driven sebaceous activity (SRD5A1, SRD5A2, AR, SREBP1)
-- ductal hyperkeratinization (transglutaminase, integrin signaling)
-- *Cutibacterium acnes* colonization (with virulence factors RoxP, lipase / GehA, sortase, hyaluronidase)
-- innate-immune inflammation (TLR2-driven, NF-κB / IL-1β / IL-8)
+Acne involves androgen-driven sebaceous activity (SRD5A1/2 → DHT → AR + SREBP1 lipogenesis), ductal hyperkeratinization, *C. acnes* colonization, and TLR2-driven NF-κB inflammation [1,2]. The skin microbiome literature [3,4] frames *C. acnes* as ecologically complex (multiple phylotypes; not all virulent), motivating a **virulence-modulating + microbiome-sparing** therapeutic approach over indiscriminate antibacterial action.
 
-Modern guideline therapy uses topical retinoids, benzoyl peroxide, topical / oral antibiotics (tetracyclines, macrolides), and oral isotretinoin. Each has limitations including resistance emergence (antibiotics) and teratogenicity (isotretinoin) [3].
+### 1.2 Korean traditional anti-acne herbs
 
-A growing body of skin-microbiome literature [4,5] recognizes that *C. acnes* itself comprises multiple phylotypes (IA-1, IA-2, IB, IC, II, III), and the disease-associated picture is not simply "more *C. acnes*" but a shift toward virulence phylotypes (IA-1 in inflammatory acne) and loss of commensal-microbiome diversity. Indiscriminate antibiosis disrupts this ecology and contributes to recurrence and resistance.
+Korean traditional [5,6]: 황련 (berberine, palmatine), 황금 (baicalein, baicalin, wogonin), 감초 (licochalcone A), 목단피 (paeonol), 자초 (shikonin, acetylshikonin), 후박 (magnolol, honokiol), 녹차 (EGCG).
 
-A topical anti-acne candidate that **modulates virulence factors of disease-associated *C. acnes* phylotypes while sparing commensal microbiome** is therapeutically attractive. This shifts the design target from "antibacterial" to **"virulence-modulating + ecologically sparing."**
+### 1.3 What this work does and does NOT do
 
-### 1.2 Korean herbal compounds with documented anti-acne activity
+We screen 14 phytochemicals against **SRD5A2 + AR** only. We do **not** screen:
+- **SRD5A1** — cached MSA absent
+- **SREBP1** (master sebaceous lipogenesis regulator) — cached MSA absent
+- ***C. acnes* virulence proteins** (RoxP, GehA, sortase, hyaluronidase) — homology models / MSAs absent
 
-Korean traditional and modern literature [6,7]:
-- **황련 (*Coptis chinensis*)**: berberine, palmatine; reported anti-*C. acnes* + anti-inflammatory
-- **황금 (*Scutellaria baicalensis*)**: baicalein, baicalin, wogonin; anti-inflammatory + anti-*C. acnes*
-- **감초**: licochalcone A; anti-inflammatory + sebaceous SREBP1 modulation reported
-- **녹차**: EGCG; multi-mechanism
-- **자초 (*Lithospermum erythrorhizon*)**: shikonin / acetyl-shikonin; anti-microbial
-- **황백 (*Phellodendron amurense*)**: berberine + palmatine; similar to 황련
-- **목단피 (*Paeonia suffruticosa*)**: paeonol; anti-inflammatory
-
-This study screens approximately 25 phytochemicals against the integrated four-node panel.
+This is a substantial coverage limitation. The present screen captures the **androgen-axis component only** of the four-node acne pathology. The microbiome ecological-balance design principle remains qualitative-conceptual; no microbiome-protein in silico evidence is presented.
 
 ---
 
 ## 2. Methods
 
-### 2.1 Targets
+### 2.1 Compound library
 
-**Human (sebaceous / inflammation)**: SRD5A1, SRD5A2, AR (P10275), SREBP1 (P36956, regulatory domain).
-***C. acnes* virulence factors**: RoxP (uniprot Q6A6X5; reactive-oxygen-species-protective protein), GehA / lipase (Q6A8R5), sortase A (homology-modeled from staphylococcal SrtA template), CAMP factor co-hemolysin.
+15 compounds in `data/screen_libraries/acne_compounds.csv`; Honokiol SMILES failed RDKit sanitization (`/C=C/Cc4ccccc4` — sanitization issue), so 14 compounds entered the screen.
 
-### 2.2 Pipeline + microbiome filter
+### 2.2 Targets, pipeline
 
-Standard Genesis_Medicine pipeline (REINVENT 4 + ADMET-AI + Boltz-2) with three additions:
-
-1. **Multi-domain ranking**: composite score weighted SRD5A1+2+AR+SREBP1 (50%) and *C. acnes* virulence factors (50%). Topical-friendly filter as before.
-2. **Microbiome ecological filter** (qualitative): candidates with broad-spectrum antibacterial signal (significant predicted affinity against many bacterial protein domains) are flagged for ecological caution. Preferred: candidates with *C. acnes*-relatively-selective virulence-factor engagement.
-3. **No direct ecological experiment** is performed in this in silico work. The ecological consideration is a design principle, not a measurement.
+**SRD5A2** (UniProt P31213), **AR** (P10275 LBD). Cached MSAs. Boltz-2 v0.6.1 + ADMET-AI v2.0.1 pipeline (companion preprint [7]).
 
 ---
 
 ## 3. Results
 
-### 3.1 Top candidates — human sebaceous + C. acnes virulence joint screen
+### 3.1 Real screen ranking (14 compounds × 2 targets = 28 cofolds)
 
-| Rank | Compound | Source | Sebaceous mean | *C. acnes* mean | Joint mean |
-|---:|---|---|---:|---:|---:|
-| 1 | Berberine | 황련 / 황백 | 0.55 | 0.74 (RoxP, GehA) | 0.65 |
-| 2 | Baicalein | 황금 | 0.62 | 0.65 (sortase, GehA) | 0.64 |
-| 3 | Licochalcone A | 감초 | 0.71 (SREBP1) | 0.51 | 0.61 |
-| 4 | Wogonin | 황금 | 0.55 | 0.60 | 0.58 |
-| 5 | Baicalin | 황금 | 0.50 | 0.62 | 0.56 |
-| 6 | Paeonol | 목단피 | 0.55 | 0.55 | 0.55 |
-| 7 | EGCG | 녹차 | 0.58 | 0.50 | 0.54 |
-| 8 | Acetyl-shikonin | 자초 | 0.45 | 0.65 | 0.55 |
+| Rank | Compound | Source | AR | SRD5A2 | Mean | Topical-friendly? |
+|---:|---|---|---:|---:|---:|:---:|
+| 1 | **Baicalein** | 황금 | **0.820** | 0.669 | **0.744** | ✅ |
+| 2 | Tretinoin | reference (retinoid) | 0.711 | 0.718 | 0.715 | ❌ logP 5.6 |
+| 3 | Acetylshikonin | 자초 | 0.641 | 0.668 | 0.655 | ✅ |
+| 4 | Licochalcone A | 감초 | 0.688 | 0.575 | 0.631 | ❌ logP 4.46 |
+| 5 | **Berberine** | 황련 | 0.627 | 0.619 | 0.623 | ✅ |
+| 6 | Shikonin | 자초 | 0.605 | 0.636 | 0.620 | ✅ |
+| 7 | Curcumin | 강황 | 0.698 | 0.525 | 0.611 | ✅ |
+| 8 | Resveratrol | reference | 0.690 | 0.519 | 0.604 | ✅ |
+| 9 | Wogonin | 황금 | 0.673 | 0.437 | 0.555 | ✅ |
+| 10 | Palmatine | 황련 | 0.584 | 0.521 | 0.552 | ✅ |
+| 11 | Magnolol | 후박 | 0.572 | 0.518 | 0.545 | ❌ logP 7.2 |
+| 12 | Baicalin | 황금 | 0.676 | 0.398 | 0.537 | ❌ TPSA 187 |
+| 13 | EGCG | 녹차 | 0.663 | 0.320 | 0.492 | ❌ TPSA 197 |
+| 14 | Paeonol | 목단피 | 0.272 | 0.290 | 0.281 | ❌ MW 166 (small) |
 
-The top entries reflect the empirical Korean traditional patterns: 황련 (berberine) + 황금 (baicalein, wogonin) + 감초 (licochalcone A) form the backbone of multiple traditional anti-acne formulations [6,7].
+### 3.2 ADMET safety profile of top candidates
 
-### 3.2 Topical-friendly + microbiome-considerate candidates
+| Compound | logP | hERG | Skin | AMES | ClinTox | Verdict |
+|---|---:|---:|---:|---:|---:|---|
+| **Baicalein** | 2.58 | 0.426 | 0.821 | 0.564 | 0.101 | ⚠️ AMES + Skin moderate |
+| Acetylshikonin | 2.87 | 0.441 | **0.881** | **0.803** | 0.120 | ⛔ Skin + AMES significant |
+| **Berberine** | 2.64 | **0.977** | 0.684 | **0.911** | **0.417** | ⛔ **Critical hERG + AMES** |
+| Shikonin | 2.30 | 0.360 | 0.808 | 0.555 | 0.101 | ⚠️ Skin moderate |
+| Curcumin | 3.37 | 0.336 | 0.867 | 0.499 | 0.046 | ⚠️ Skin + AMES moderate |
+| **Wogonin** | 2.71 | 0.369 | **0.717** | **0.247** | 0.050 | ✅ **cleanest profile** |
+| Palmatine | 3.18 | **0.706** | 0.902 | 0.191 | 0.000 | ⚠️ hERG concerning |
 
-Filtering for topical sweet spot + low ADMET liabilities + relatively *C. acnes*-selective virulence-factor engagement:
+### 3.3 Honest interpretation
 
-- **Licochalcone A** — strongest SREBP1 (sebaceous lipogenesis) signal in the panel; logP 5.0 (formulation challenge); excellent anti-inflammatory profile
-- **Baicalein** — balanced SREBP1 + *C. acnes* sortase / GehA; logP 2.6 (topical-friendly); hERG 0.20
-- **Berberine** — strong *C. acnes* RoxP + GehA; logP 4.5 (slightly out of sweet spot); broad antimicrobial concern (microbiome ecological flag)
-- **Paeonol** — balanced sebaceous + virulence; logP 1.8 (topical-friendly); cleanest ADMET profile
+**Top by predicted target engagement**: Baicalein (황금) leads with AR engagement 0.820 — the strongest AR predicted-binding signal in our 14-compound panel — and is topical-friendly. Skin-irritation 0.821 and AMES 0.564 are moderate flags but acceptable for a topical-formulation candidate with appropriate vehicle and concentration.
 
-**Baicalein** and **paeonol** are the most topical-friendly candidates with a virulence-factor-modulatory rather than broad-antibacterial profile, making them attractive starting points for an ecologically-considerate topical formulation.
+**Critical safety finding — Berberine (황련)**: Predicted hERG inhibition probability 0.977 is the highest in our entire screening pipeline across all four disease panels. Combined with AMES 0.911 and ClinTox 0.417, Berberine's **systemic exposure must be avoided** in any topical formulation. Localized topical use at low concentrations (typical of traditional herbal preparations) may remain feasible, but the safety profile disqualifies Berberine from any modern topical-pharmaceutical formulation with a substantial percutaneous absorption profile. This is a meaningful finding because berberine is widely advertised in cosmetic / cosmeceutical contexts; the predicted hERG liability deserves explicit disclosure.
 
-### 3.3 Microbiome ecological caution
+**Cleanest ADMET profile**: **Wogonin** (황금) emerges as the cleanest combined-criterion candidate (AMES 0.247, hERG 0.369, Skin 0.717, topical-friendly, mean affinity 0.555). For Recover Korean Medicine Clinic's planned topical anti-acne formulations, Wogonin is the single-compound candidate most aligned with safety + topical-friendliness, despite lower predicted target engagement than Baicalein.
 
-Berberine, while strongly engaging *C. acnes* RoxP and GehA, also shows significant predicted affinity against multiple gram-positive and gram-negative bacterial protein homologs (broad-spectrum signal). For an ecologically-considerate topical strategy, berberine is best used in combination with virulence-factor-selective compounds (baicalein, paeonol) to reduce broad-spectrum exposure while preserving *C. acnes*-selective activity. This is a design principle, not a tested combination.
+**황련 + 황금 + 감초 traditional combination**: Partial structural support. 황금 components (Baicalein top, Wogonin clean) cover the AR axis well. 황련 components (Berberine, Palmatine) carry safety concerns. 감초 licochalcone A is high-affinity but logP-out-of-window. The traditional multi-component formulation is consistent with simultaneous engagement of multiple compounds at multiple structural scales, but **the safety profile of berberine is a contemporary contraindication** that classical pharmacology did not have access to.
 
-### 3.4 Generative scaffold-hop on baicalein
+### 3.4 What this screen does NOT establish
 
-REINVENT 4 mol2mol on baicalein (T = 0.7, 200 samples) produced 8 ADMET-passing analogs with marginal mean-affinity improvements. The most promising (BCL-7, internal designation) shows logP 3.0, mean joint affinity 0.65 — modest improvement over the parent. Detailed analog SMILES in supplementary table.
+- **SREBP1** (sebaceous lipogenesis transcription factor): not screened.
+- ***C. acnes*** virulence factors: not screened. The "virulence-modulating + microbiome-sparing" design principle remains qualitative.
+- **SRD5A1** (sebaceous-axis 5α-reductase): not screened; SRD5A2 (more scalp-axis) screened only.
+- **Anti-inflammatory**: NF-κB / COX-2 pathway not screened (companion screens may include PTGS2 in future work).
+- **Skin-permeation**: experimental log K_p not measured.
+- **No experimental** *C. acnes* MIC, biofilm-inhibition, or 16S microbiome data.
+
+### 3.5 Methodological observation: small-molecule reference low ranking
+
+**Paeonol** (mean 0.281) — fragment-size molecule (MW 166) — ranks at the bottom. As discussed in companion preprint [8], Boltz-2 binary classifier underranks fragment-size compounds even when they are real binders. Paeonol's clinical use as anti-inflammatory anti-acne herb is not contradicted by the screen ranking.
 
 ---
 
 ## 4. Limitations
 
-1. **No experimental validation**. Required: SRD5A1 / SRD5A2 enzymatic inhibition; LNCaP AR-luciferase; SEB-1 sebaceous-cell SREBP1 / lipid-accumulation assay; *C. acnes* MIC + biofilm-inhibition (CDC reactor model); 16S rRNA microbiome impact study.
-2. **C. acnes phylotype specificity not modeled**: in silico screening uses one representative protein structure per virulence factor. Phylotype-specific (IA-1 vs commensals) targeting requires structural-level discrimination not available at this protein-modeling resolution.
-3. **The "ecological consideration" is qualitative**: no in silico microbiome model is presented; the design principle relies on broad-spectrum-vs-narrow-spectrum heuristic.
-4. **Berberine systemic concerns**: while topical, berberine has been associated with hepatic exposure in oral use; topical safety should not be assumed.
-5. **No human clinical data**.
+1. **No experimental validation**.
+2. **Coverage limitation**: SREBP1, SRD5A1, *C. acnes* proteins NOT screened. The screen reports the androgen-axis (SRD5A2 + AR) component only.
+3. **Berberine hERG** prediction (0.977) — clinical confirmation required, but the prediction is sufficient warning.
+4. **Microbiome ecological design principle is qualitative**.
+5. **Honokiol SMILES sanitization failure** excluded one compound (14/15 screened).
+6. **No clinical efficacy claim**.
+7. **Anti-inflammatory NF-κB / COX-2 pathway not directly screened**.
 
 ---
 
 ## 5. Conclusions
 
-Multi-target in silico screening of Korean herbal compounds against the human-sebaceous + *C. acnes*-virulence integrated panel identifies **baicalein** (황금) and **paeonol** (목단피) as the most topical-friendly + microbiome-considerate candidates, with **licochalcone A** (감초) as the strongest sebaceous-axis lead (with formulation challenges) and **berberine** (황련) as the strongest *C. acnes*-axis lead (with ecological-impact considerations). The ranking is consistent with empirical Korean traditional anti-acne formulary structure.
+A real Boltz-2 + ADMET-AI screen of 14 Korean herbal compounds against the SRD5A2 + AR sebaceous-androgen axis identifies **Baicalein** (황금) as the top mean-affinity candidate (0.744) with strong AR engagement (0.820) and topical-friendly properties; **Wogonin** (황금) as the cleanest ADMET profile candidate; and **Berberine** (황련) as a candidate with significant predicted hERG liability (0.977) requiring explicit safety disclosure for any topical formulation. The screen partially supports the Korean traditional multi-component formulary structure but identifies modern safety considerations that classical pharmacology did not have access to. **SREBP1, *C. acnes* virulence factors, and SRD5A1** are NOT screened in the present version — substantial limitations.
 
-Forward path: wet-lab validation in a SEB-1 sebaceous-cell + *C. acnes* model + 16S microbiome ecological study (Macrogen partnership, ~₩3-4M for 3-compound panel). Recover Korean Medicine Clinic's interest in topical anti-acne formulations motivates this study; no clinical efficacy claim is made.
+Forward path: SEB-1 sebaceous-cell lipid-accumulation assay; LNCaP AR-luciferase reporter; *C. acnes* MIC + biofilm inhibition (with explicit phylotype consideration); 16S microbiome ecological-impact study. Korean CRO panel + Macrogen 16S partnership ~₩4-5M for top-3 compound evaluation. No clinical efficacy claim is made.
 
 ---
 
 ## Acknowledgments / Contributions / Competing interests / Data availability
 
-Same standard text. Data: <https://github.com/crazat/genesis_medicine>.
+Same standard text. Data: `pilot/screen/acne/screen_results.csv` at <https://github.com/crazat/genesis_medicine>.
 
 ---
 
 ## References
 
 [1] Williams HC, Dellavalle RP, Garner S. Acne vulgaris. *Lancet* 2012, 379, 361–372.
-[2] Zouboulis CC, et al. Frontiers in sebaceous gland biology and pathology. *Exp Dermatol* 2008, 17, 542–551.
-[3] Walsh TR, et al. Systematic review of antibiotics in acne. *Lancet Infect Dis* 2016, 16, e23–e33.
-[4] Dréno B, et al. Cutibacterium acnes and the skin microbiome in acne. *J Eur Acad Dermatol Venereol* 2018, 32 (Suppl 2), 5–14.
-[5] Mayslich C, et al. Cutibacterium acnes phylotype structure in skin microbiome. *Microorganisms* 2021, 9, 303.
-[6] Sun H, et al. Korean herbal medicine in acne: review. *J Ethnopharmacol* 2019, 236, 247–256.
-[7] Park J, et al. Anti-acne activity of *Coptis chinensis*, *Scutellaria baicalensis*, *Glycyrrhiza uralensis*: review. *Microorganisms* 2020, 8, 1011.
-[8] Wohlwend J, et al. Boltz-2 preprint, 2024.
-[9] HanCheongWoo. EMB-3 case study. ChemRxiv preprint, 2026.
+[2] Zouboulis CC, et al. Sebaceous gland biology. *Exp Dermatol* 2008, 17, 542–551.
+[3] Dréno B, et al. *C. acnes* and skin microbiome in acne. *J Eur Acad Dermatol Venereol* 2018, 32 (Suppl 2), 5–14.
+[4] Mayslich C, et al. *C. acnes* phylotype structure. *Microorganisms* 2021, 9, 303.
+[5] Sun H, et al. Korean herbal medicine in acne. *J Ethnopharmacol* 2019, 236, 247–256.
+[6] Park J, et al. Anti-acne activity of *Coptis*, *Scutellaria*, *Glycyrrhiza*. *Microorganisms* 2020, 8, 1011.
+[7] HanCheongWoo. Genesis_Medicine open-source pipeline. ChemRxiv preprint, 2026.
+[8] HanCheongWoo. Calibrated ABFE pipeline (small-molecule classifier caveats). ChemRxiv preprint, 2026.
 
 ---
 
-*v0.1 draft, 2026-04-26 · ~2,800 words · CC-BY 4.0*
+*v0.2 draft, 2026-04-26 · ~2,800 words · CC-BY 4.0*
+*v0.1 (fabricated rankings + nonexistent BCL-7 generative analog) explicitly retracted*
