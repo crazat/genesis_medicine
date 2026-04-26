@@ -178,6 +178,82 @@ INTENT_TEMPLATES: dict[str, dict] = {
         "slots": [],
         "description": "ESG 평가 + 펀딩 매칭",
     },
+    # Tier 10 — Safety / MLOps / KG / Continual / Multi-omics
+    "hallucination_check": {
+        "keywords": ["환각", "hallucination", "검증", "안전 검사",
+                      "jailbreak", "audit"],
+        "slots": [],
+        "description": "LLM output 환각/jailbreak 검증",
+    },
+    "model_registry": {
+        "keywords": ["model registry", "모델 버전", "drift", "PCCP",
+                      "audit trail", "model version"],
+        "slots": [],
+        "description": "Model registry + drift 감지 (FDA PCCP)",
+    },
+    "kg_query": {
+        "keywords": ["knowledge graph", "kg", "경로 추론", "공유 타겟",
+                      "shared target", "재창출 예측", "path 추론"],
+        "slots": [],
+        "description": "Knowledge Graph 경로/공유 타겟/재창출 추론",
+    },
+    "continual_learning": {
+        "keywords": ["continual", "forgetting", "catastrophic", "ewc",
+                      "task 추가"],
+        "slots": [],
+        "description": "PA-EWC continual learning forgetting 평가",
+    },
+    "multiomics_fusion": {
+        "keywords": ["옴믹스", "multi-omics", "omics", "proteomics",
+                      "transcriptomics", "metabolomics", "통합"],
+        "slots": [],
+        "description": "환자 multi-omics fusion → fibroblast subtype",
+    },
+    # Tier 11 — NaFM / Bayesian / IP / SkinAge / Chai-1 / JUMP-CP
+    "nafm_screen": {
+        "keywords": ["nafm", "natural product foundation",
+                      "천연물 임베딩", "한약 임베딩"],
+        "slots": [],
+        "description": "NaFM NP foundation model 임베딩/screening",
+    },
+    "bayesian_trial": {
+        "keywords": ["bayesian trial", "bayesian", "adaptive trial",
+                      "임상 디자인", "n-of-1", "irb 자료", "thompson",
+                      "임상 설계", "trial design"],
+        "slots": [],
+        "description": "Bayesian adaptive trial / n-of-1 design",
+    },
+    "mfds_dtx": {
+        "keywords": ["mfds dtx", "혁신의료기기", "유사 의약품", "dtx pathway",
+                      "기능성 화장품"],
+        "slots": [],
+        "description": "MFDS DTx pathway 적합성",
+    },
+    "patent_search": {
+        "keywords": ["특허", "patent", "prior art", "prior-art",
+                      "kipris", "uspto", "출원", "freedom to operate",
+                      "freedom-to-operate", "fto"],
+        "slots": [],
+        "description": "Patent prior-art + FTO 평가",
+    },
+    "skin_age": {
+        "keywords": ["피부 노화", "skin age", "biological age",
+                      "회춘 점수", "anti-aging", "dnam clock"],
+        "slots": [],
+        "description": "Skin biological age 예측",
+    },
+    "chai1_ensemble": {
+        "keywords": ["chai-1", "chai1", "ensemble cofold", "consensus affinity",
+                      "3-way"],
+        "slots": [],
+        "description": "Chai-1 + Boltz-2 + Protenix ensemble consensus",
+    },
+    "morphology_screen": {
+        "keywords": ["morphology", "cell painting", "jump-cp", "phenotypic",
+                      "off-target detection"],
+        "slots": [],
+        "description": "JUMP-CP morphology profile + off-target",
+    },
 }
 
 

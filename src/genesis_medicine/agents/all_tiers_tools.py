@@ -422,4 +422,254 @@ ALL_TIERS_TOOLS: list[Tool] = [
               "genesis_medicine.sustainability.esg_analyzer",
               fromlist=["evaluate_esg_friendliness"]
               ).evaluate_esg_friendliness().__dict__),
+    # ═══════════════════════════════════════════════════════════════════════
+    # Tier 10 — Safety / MLOps / Knowledge Graph / Continual / Multi-omics
+    # ═══════════════════════════════════════════════════════════════════════
+    Tool("hallucination_check",
+          "LLM output 환각/jailbreak 검증 (의료 fact citation 강제)",
+          {"type": "object",
+           "properties": {"text": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.safety.hallucination_guard",
+              fromlist=["hallucination_check_natural"]
+              ).hallucination_check_natural(**kw)),
+    Tool("model_registry_list",
+          "등록된 모델 버전 + baseline metric 조회 (FDA PCCP)",
+          {"type": "object", "properties": {}},
+          lambda **kw: __import__(
+              "genesis_medicine.mlops.model_registry",
+              fromlist=["list_models"]
+              ).list_models()),
+    Tool("model_registry_init",
+          "Genesis_Medicine 핵심 모델 baseline 자동 등록 (Boltz-2/ADMET-AI/Chemprop 등)",
+          {"type": "object", "properties": {}},
+          lambda **kw: __import__(
+              "genesis_medicine.mlops.model_registry",
+              fromlist=["initialize_genesis_baseline"]
+              ).initialize_genesis_baseline()),
+    Tool("model_drift_detect",
+          "model baseline 대비 drift 감지 (PCCP modification 트리거)",
+          {"type": "object",
+           "properties": {"model_name": {"type": "string"},
+                          "new_metric_dict": {"type": "object"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.mlops.model_registry",
+              fromlist=["detect_drift"]
+              ).detect_drift(**kw).__dict__),
+    Tool("kg_path_query",
+          "Knowledge Graph 경로 추론 (compound→target→disease)",
+          {"type": "object",
+           "properties": {"start": {"type": "string"},
+                          "end": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.knowledge_graph.kg_completion",
+              fromlist=["kg_path_query"]
+              ).kg_path_query(**kw).__dict__),
+    Tool("kg_shared_targets",
+          "두 질환 공유 타겟 — cross-disease 분자 기반",
+          {"type": "object",
+           "properties": {"disease_a": {"type": "string"},
+                          "disease_b": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.knowledge_graph.kg_completion",
+              fromlist=["shared_targets"]
+              ).shared_targets(**kw)),
+    Tool("kg_repurposing_predict",
+          "질환 → 화합물 재창출 ranking (sub-KG 기반)",
+          {"type": "object",
+           "properties": {"disease": {"type": "string"},
+                          "top_k": {"type": "integer"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.knowledge_graph.kg_completion",
+              fromlist=["predict_repurposing_candidates"]
+              ).predict_repurposing_candidates(**kw)),
+    Tool("continual_forgetting_risk",
+          "PA-EWC continual learning — 새 task 추가 시 forgetting 평가",
+          {"type": "object",
+           "properties": {"new_task": {"type": "string"},
+                          "new_domain": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.continual.pa_ewc",
+              fromlist=["estimate_forgetting_risk"]
+              ).estimate_forgetting_risk(**kw).__dict__),
+    Tool("continual_init_baseline",
+          "현재 5 질환 task PA-EWC baseline 등록",
+          {"type": "object", "properties": {}},
+          lambda **kw: __import__(
+              "genesis_medicine.continual.pa_ewc",
+              fromlist=["initialize_genesis_baseline_tasks"]
+              ).initialize_genesis_baseline_tasks()),
+    Tool("multiomics_fuse",
+          "환자 multi-omics (proteo+transcripto+metabolo+microbiome) 통합 → fibroblast subtype + EMB-3 반응 예측",
+          {"type": "object",
+           "properties": {"patient_id": {"type": "string"},
+                          "proteomics": {"type": "object"},
+                          "transcriptomics": {"type": "object"},
+                          "metabolomics": {"type": "object"},
+                          "skin_microbiome": {"type": "object"},
+                          "strategy": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.omics.multiomics_fusion",
+              fromlist=["fuse_patient_omics"]
+              ).fuse_patient_omics(**kw).__dict__),
+    Tool("multiomics_required_assays",
+          "multi-omics fusion에 필요한 CRO assay 패키지 (₩645만/환자)",
+          {"type": "object", "properties": {}},
+          lambda **kw: __import__(
+              "genesis_medicine.omics.multiomics_fusion",
+              fromlist=["required_assays_for_fusion"]
+              ).required_assays_for_fusion()),
+    # ═══════════════════════════════════════════════════════════════════════
+    # Tier 11 — NaFM / Bayesian Trial / Patent / SkinAge / Chai-1 / JUMP-CP
+    # ═══════════════════════════════════════════════════════════════════════
+    Tool("nafm_embedding",
+          "NaFM (NP foundation model) 임베딩 추출 — 한약 천연물 정밀도 +14%",
+          {"type": "object",
+           "properties": {"smiles": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.foundation.nafm_loader",
+              fromlist=["get_np_embedding"]
+              ).get_np_embedding(**kw).__dict__),
+    Tool("nafm_finetune_guide",
+          "NaFM fine-tune 가이드 (target별 +14% AUROC 추정)",
+          {"type": "object",
+           "properties": {"target": {"type": "string"},
+                          "training_csv": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.foundation.nafm_loader",
+              fromlist=["fine_tune_for_skin_targets"]
+              ).fine_tune_for_skin_targets(**kw)),
+    Tool("nafm_screen_nps",
+          "한약 NP library NaFM 임베딩 스크리닝",
+          {"type": "object",
+           "properties": {"target": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.foundation.nafm_loader",
+              fromlist=["screen_natural_products"]
+              ).screen_natural_products(**kw)),
+    Tool("bayesian_trial_design",
+          "외용제 Bayesian adaptive trial 설계 (Recover IRB 자료)",
+          {"type": "object",
+           "properties": {"drug_name": {"type": "string"},
+                          "n_total": {"type": "integer"},
+                          "primary_endpoint": {"type": "string"},
+                          "success_threshold": {"type": "number"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.trial_design.bayesian_adaptive",
+              fromlist=["design_adaptive_topical_trial"]
+              ).design_adaptive_topical_trial(**kw).__dict__),
+    Tool("n_of_1_design",
+          "n-of-1 trial 한약 personalization (ABA-BAB cross-over)",
+          {"type": "object",
+           "properties": {"patient_id": {"type": "string"},
+                          "primary_endpoint": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.trial_design.bayesian_adaptive",
+              fromlist=["design_n_of_1_herbal"]
+              ).design_n_of_1_herbal(**kw).__dict__),
+    Tool("mfds_dtx_check",
+          "MFDS 2025 DTx pathway 적합성 점검",
+          {"type": "object",
+           "properties": {"product_class": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.trial_design.bayesian_adaptive",
+              fromlist=["mfds_dtx_pathway_check"]
+              ).mfds_dtx_pathway_check(**kw)),
+    Tool("prior_art_search",
+          "EMB-3 prior-art 자동 검색 (KIPRIS + USPTO)",
+          {"type": "object",
+           "properties": {"compound_name": {"type": "string"},
+                          "smiles": {"type": "string"},
+                          "scaffold_class": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.ip.prior_art",
+              fromlist=["search_prior_art"]
+              ).search_prior_art(**kw)),
+    Tool("freedom_to_operate",
+          "Freedom-to-Operate 평가 (출원 전 필수)",
+          {"type": "object",
+           "properties": {"compound_name": {"type": "string"},
+                          "smiles": {"type": "string"},
+                          "scaffold_class": {"type": "string"},
+                          "intended_indication": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.ip.prior_art",
+              fromlist=["freedom_to_operate"]
+              ).freedom_to_operate(**kw).__dict__),
+    Tool("patent_drafting_suggestions",
+          "EMB-3 청구항 layered strategy + PCT 진입 가이드",
+          {"type": "object",
+           "properties": {"compound_name": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.ip.prior_art",
+              fromlist=["patent_drafting_suggestions"]
+              ).patent_drafting_suggestions(**kw)),
+    Tool("skin_age_predict",
+          "안면 RGB → biological skin age (Recover 회춘 점수 KPI)",
+          {"type": "object",
+           "properties": {"chronological_age": {"type": "number"},
+                          "fitzpatrick_type": {"type": "integer"},
+                          "pore_density_per_cm2": {"type": "number"},
+                          "pigment_lesion_area_pct": {"type": "number"},
+                          "wrinkle_depth_mm": {"type": "number"},
+                          "wrinkle_count": {"type": "integer"},
+                          "spf_lifetime_use_pct": {"type": "number"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.aging.skin_age_clock",
+              fromlist=["predict_skin_age"]
+              ).predict_skin_age(**kw).__dict__),
+    Tool("dnam_panel_design",
+          "DNAm 391-CpG skin clock 패널 설계 (Recover 시술 정량)",
+          {"type": "object", "properties": {}},
+          lambda **kw: __import__(
+              "genesis_medicine.aging.skin_age_clock",
+              fromlist=["design_dnam_panel"]
+              ).design_dnam_panel()),
+    Tool("emb3_anti_aging",
+          "EMB-3 anti-aging 효과 정량 예측 (회춘 점수 마케팅 자료)",
+          {"type": "object",
+           "properties": {"emb3_baseline_response": {"type": "number"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.aging.skin_age_clock",
+              fromlist=["emb3_anti_aging_prediction"]
+              ).emb3_anti_aging_prediction(**kw)),
+    Tool("chai1_cofold",
+          "Chai-1 cofold (Apache-2.0) — Boltz-2 ensemble 3rd member",
+          {"type": "object",
+           "properties": {"target_sequence": {"type": "string"},
+                          "ligand_smiles": {"type": "string"},
+                          "msa_path": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.structure.chai1_ensemble",
+              fromlist=["chai1_cofold"]
+              ).chai1_cofold(**kw).__dict__),
+    Tool("ensemble_consensus",
+          "Boltz-2 + Protenix + Chai-1 3-way consensus affinity (+6% accuracy)",
+          {"type": "object",
+           "properties": {"target": {"type": "string"},
+                          "compound": {"type": "string"},
+                          "boltz2_affinity": {"type": "number"},
+                          "protenix_affinity": {"type": "number"},
+                          "chai1_affinity": {"type": "number"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.structure.chai1_ensemble",
+              fromlist=["ensemble_consensus"]
+              ).ensemble_consensus(**kw).__dict__),
+    Tool("morphology_predict",
+          "JUMP-CP morphology profile 예측 (off-target detection)",
+          {"type": "object",
+           "properties": {"compound": {"type": "string"},
+                          "smiles": {"type": "string"},
+                          "target_class": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.phenotypic.jump_cp",
+              fromlist=["predict_morphology"]
+              ).predict_morphology(**kw).__dict__),
+    Tool("morphology_screen_nps",
+          "한약 NP 30종 cell painting 스크리닝",
+          {"type": "object", "properties": {}},
+          lambda **kw: __import__(
+              "genesis_medicine.phenotypic.jump_cp",
+              fromlist=["screen_natural_products_morphology"]
+              ).screen_natural_products_morphology()),
 ]

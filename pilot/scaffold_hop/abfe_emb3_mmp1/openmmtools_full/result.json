@@ -1,0 +1,14 @@
+{
+  "system": "EMB-3_MMP1",
+  "method": "openmmtools_alchemical_replica_exchange_full",
+  "n_lambda_windows": 16,
+  "n_iterations": 500,
+  "ps_per_iteration": 10.0,
+  "total_simulation_ns": 80.0,
+  "padding_nm": 1.2,
+  "eq_ns": 0.5,
+  "delta_g_decoupling_kcal_mol": -32.896930532116244,
+  "delta_g_uncertainty_kcal_mol": 0.30388534184283544,
+  "wall_hours": 11.61,
+  "wall_simulation_hours": 11.58
+}
