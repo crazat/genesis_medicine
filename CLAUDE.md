@@ -37,25 +37,59 @@
 
 > 피부 중심으로 재설계. 사용자가 새 세션을 열면 이 목록부터 확인하고 **제일 위 항목을 먼저 제안**.
 
-### 🔥 PUBLICATION TRACK (2026-04-26 결정 — 12주 J Cheminform target)
+### 🔥 16-WEEK PREPRINT MASS-PRODUCTION + 의료법 방어 전략 (2026-04-26 확정)
 
-**상세 plan**: `docs/PAPER_PLAN.md`
+**상세 plan**: `~/.claude/projects/-home-crazat-genesis-medicine/memory/project_preprint_strategy.md`
 
-Phase 1 — Foundation (W1-3, 진행 중)
-1. **T4L99A·benzene ABFE calibration** (literature ΔG = -5.18 kcal/mol)
-   - `python scripts/abfe_calibrate_t4l.py --out pilot/calibration/t4l_benzene/`
-   - 예상 wall: 8-10h GPU
-   - **PASS criterion**: |ΔG_computed - (-5.18)| < 2 kcal/mol
-2. **Boltz-2 MMP-1 calibration** (n=15 ChEMBL inhibitors)
-   - `python scripts/boltz2_calibration_mmp1.py`
-   - 예상 wall: 3h GPU
-3. **EMB-3 + Embelin corrected ABFE 재실행** (T4L PASS 후)
+**전략적 의도 (사용자 명시 2026-04-26)**:
+- **단기 4개월 (Recover 한의원 D-110 → 개원)**: preprint 8-12편 + peer-review 1-2편 in-review
+- **중기 6-12개월**: peer-review 게재 + CRO Tier 1 wet-lab 결합
+- **장기 1-3년**: 진짜 in silico 신약 개발지로 자리잡음 (preprint은 raw material)
 
-Phase 2 — SAR (W4-7): 5-8 ligand × corrected ABFE + selectivity panel
-Phase 3 — Manuscript (W8-10): J Cheminform 1순위
-Phase 4 — Submission (W11-12): 2026-07-15 target
+**의료법 §56 + 화장품법 4중 방어**:
+- L1: 모든 marketing claim에 DOI 인용
+- L2: "in silico, IRB pending" disclaimer 표준화
+- L3: GitHub Apache-2.0 + 모든 데이터 공개 (transparency shield)
+- L4: 광고 카피 "효능 표시" → "연구 활동" 전환
 
-**1차 ABFE 결과 (2026-04-26)**: protocol 부적합 — Boresch + solvent leg 누락. 재실행 필수. 자세한 정정: `docs/EMBELIN_LITERATURE_REVIEW.md` (자운고 narrative 철회).
+**Marketing copy template (legal-safe)**:
+- ❌ "AI가 발굴한 흉터 치료제 EMB-3"
+- ✅ "Recover는 AI 신약 발굴 연구 N편 (DOI list)을 자체 수행하는 한의원입니다"
+
+**16주 Preprint 일정 (12편 target)**:
+| Wave | 주차 | 편수 | 내용 |
+|---|---|:-:|---|
+| 1 | W1-3 | 2편 | Embelia ribes review + Recover workflow |
+| 2 | W4-7 | 5편 | 5 질환 case study (흉터/색소/탈모/여드름/광노화) |
+| 3 | W8-11 | 4편 | ABFE methodology + IPF cross-disease + 자오류주 + Korean PGx |
+| 4 | W12-14 | 1편 | Open-source 50도구 통합 perspective |
+| 5 | W15-16 | — | 2편 peer-review submission (Phytomedicine + J Cheminform) |
+
+**플랫폼 분배**: ChemRxiv (methodology), bioRxiv (생물·한약), medRxiv (임상 workflow)
+
+**Quality 안전선**:
+- TRIPOD-AI 27 항목 supplementary 첨부
+- "in silico only, wet-lab pending" abstract 마지막 문장
+- 자운고 narrative 철회 + Embelia ribes 정직 (`docs/EMBELIN_LITERATURE_REVIEW.md`)
+- ADMET·Boltz-2·ABFE 한계 모두 명시
+- 외부 인용 70%+ (자기 인용 회피)
+
+**현재 진행**:
+1. T4L99A·benzene calibration v4 (flat-bottom restraint, PID 112376) — paper #8 ABFE methodology의 기반
+2. **Preprint #1 (Embelia ribes review) 작성 시작** ← C안 첫 액션
+3. **Preprint #2 (Recover workflow) 작성 동시 시작**
+
+**주요 산출 시점**:
+- W4 (D-84): 첫 2 preprints 등재 → Recover 홈페이지 RESEARCH 페이지 신설
+- W8 (D-56): 7편 누적 → 5 질환 풀 라인업 노출
+- W14 (D-14): 12편 + 2 peer-review in-review → 보도자료
+- W16 (D-Day): 한의원 최초 "AI 신약 12 preprints" 마케팅
+
+**확률 (정직)**:
+- 8편 이상 등재: 80%
+- 12편 등재: 55%
+- Peer-review 1편 게재: 35% (12개월)
+- 의료법 민원 방어 가능: 85% (disclaimer 유지 시)
 
 ---
 
