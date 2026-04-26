@@ -13,7 +13,7 @@
 
 | Entity | 유형 | 역할 |
 |---|---|---|
-| **HAN PREDICT** | 테크 스타트업 (사용자 운영) | AI 의료 디지털 제품 + B2B SaaS (Station Kit, iOS 앱, facial_dx 상업화) |
+| **HAN PREDICT, Inc.** ([hanpredict.com](https://hanpredict.com)) | AI 헬스케어 플랫폼 (founder: HanCheongWoo) | Clinic CRM, Smart Charts AI EHR, Marketing AI, NutriDocH, AI Studio + facial_dx Station Kit (개발 중) |
 | **Recover 한의원** | 한방 의료기관 (강남, 2026-08-15 개원) | 한의 피부재생 임상 vertical, <https://recover-clinic.kr> |
 | **Genesis_Medicine** | R&D Lab (이 코드베이스) | AI in silico 신약 발굴 + 한약 분자 메커니즘 |
 
@@ -21,7 +21,10 @@
 - 기존 무기: 새살침, 체질 한약 처방, 약침, 매선, 고주파/프락셔널, AI 안면 분석 (HAN PREDICT facial_dx)
 - 본 파이프라인의 역할: **임상 경험칙 → 분자 수준 메커니즘 규명 → 신약/외용제 후보 도출** (Genesis_Medicine)
 - **3-pillar 시너지**: 임상(Recover) → 진단(HAN PREDICT) → 분자(Genesis_Medicine) 통합 데이터 루프
-- **Affiliation 표준** (모든 preprint·peer-review): "Genesis_Medicine Lab, HAN PREDICT, Inc., and Recover Korean Medicine Clinic, Seoul, Republic of Korea"
+- **Affiliation 표준** (모든 preprint·peer-review): byline = "HanCheongWoo ¹,²,³"
+  - ¹ Genesis_Medicine Lab, Seoul, Republic of Korea
+  - ² HAN PREDICT, Inc. (hanpredict.com)
+  - ³ Recover Korean Medicine Clinic (recover-clinic.kr)
 
 ### 타겟 질환 (우선순위)
 | 순위 | 질환 | 핵심 분자 타겟 | 대표 한약/천연물 |

@@ -1,13 +1,12 @@
 # *Embelia ribes* (Vidanga, 자단) revisited: from Ayurvedic-East Asian traditional use to AI-augmented scaffold-hopping for skin fibrosis
 
-**Genesis_Medicine Lab ¹, HAN PREDICT, Inc. ², and Recover Korean Medicine Clinic ³**
-*Seoul, Republic of Korea*
+**HanCheongWoo ¹,²,³**
 
-¹ AI-driven natural product drug discovery R&D division
-² AI medical-technology startup; facial 3D diagnostics + B2B SaaS platform
-³ Affiliated Korean medicine clinic specializing in skin regeneration (강남, opening 2026-08-15)
+¹ Genesis_Medicine Lab — AI-driven natural product drug discovery R&D division, Seoul, Republic of Korea
+² HAN PREDICT, Inc. — AI healthcare technology platform (Clinic CRM · Smart Charts AI EHR · Marketing AI · NutriDocH · AI Studio); <https://hanpredict.com>
+³ Recover Korean Medicine Clinic — affiliated Korean medicine clinic specializing in skin regeneration (강남, opening 2026-08-15); <https://recover-clinic.kr>
 
-Corresponding affiliation: <https://recover-clinic.kr> · code repository: <https://github.com/crazat/genesis_medicine>
+Code repository: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
 **Manuscript type**: Narrative review with computational case study
 **Target preprint server**: bioRxiv (primary), Phytomedicine (peer-review submission)
@@ -36,9 +35,9 @@ The Korean herbal materia medica records the dried fruit of *Embelia ribes* (자
 
 *Embelia ribes* Burm.f. (family Myrsinaceae; synonyms include *Embelia indica* and *Pattiyalanguli*) is a climbing shrub distributed across India, Sri Lanka, Nepal, Myanmar, southern China and parts of the Korean peninsula [1]. The dried, ripe fruit (*phala*) is the medicinal article. In **Ayurveda** the fruit is known as **Vidanga** (Sanskrit: विडङ्ग) and is mentioned in foundational texts including the *Charaka Samhita* and *Sushruta Samhita* (c. 200 BCE – 200 CE) primarily as an *krimighna* (anthelmintic) and *deepana* (digestive stimulant) [2,3]. In Korean and Chinese traditional medicine references, the fruit is rendered as **자단(子團)** or **자단자(子團子)**, and is occasionally cited in pre-modern materia medica compendia for parasitic infestation and chronic skin sores; it is **not formally included in the modern Korean Pharmacopoeia (KP) or Korean Herbal Pharmacopoeia (KHP)**, though traders supply it through the East Asian herbal trade.
 
-### 1.2 Correction of a common misattribution: 자단 ≠ 자운고
+### 1.2 Clarification: distinguishing *E. ribes* from 자운고
 
-A subset of computational and review literature, including earlier internal documentation of our own group, has incorrectly conflated *Embelia ribes* with the Korean topical formulation **자운고(紫雲膏, Jaun-go)**. We address this directly: 자운고 is a sesame-oil-based ointment whose active herbal constituent is the root of ***Lithospermum erythrorhizon*** (자초/紫草), which contains 1,4-naphthoquinone derivatives (shikonin, acetyl-shikonin) — chemically distinct from the **1,4-benzoquinone-2,5-diol** scaffold of embelin [4,5]. We have not identified any peer-reviewed report of embelin in 자운고 or in *L. erythrorhizon* extracts. Subsequent sections therefore frame embelin's traditional context exclusively in the *E. ribes* (Vidanga / 자단) lineage.
+For chemical clarity, we note that *Embelia ribes* and embelin are distinct from the well-known Korean topical formulation **자운고(紫雲膏, Jaun-go)**. 자운고 is a sesame-oil-based ointment whose principal herbal constituent is the root of ***Lithospermum erythrorhizon*** (자초/紫草), which produces 1,4-naphthoquinone derivatives (shikonin, acetyl-shikonin) [4,5]. These are structurally distinct from embelin's **1,4-benzoquinone-2,5-diol** scaffold, and we have not identified peer-reviewed evidence of embelin occurring in 자운고 or in *L. erythrorhizon* extracts. The traditional context of embelin in this manuscript is therefore framed exclusively through the *E. ribes* (Vidanga / 자단) lineage.
 
 ### 1.3 Embelin: chemistry and known molecular pharmacology
 
@@ -55,15 +54,15 @@ Modern pharmacology has documented:
 
 **Critically: no prior peer-reviewed work, to our knowledge, has examined embelin or *E. ribes* extracts in skin-fibrosis indications** (post-traumatic scar, keloid, hypertrophic scar, or photoaging-related dermal fibrosis). This is the gap we begin to address computationally in section 3.
 
-### 1.4 Three-pillar institutional context
+### 1.4 Institutional context
 
-The present work is conducted across three affiliated entities operating as a vertically-integrated Korean medicine technology consortium:
+This work is carried out across three affiliated entities:
 
-- **Genesis_Medicine Lab** — AI in silico drug-discovery R&D division (this work's primary research host); responsible for the computational pipeline (REINVENT4 + ADMET-AI + Boltz-2 + corrected ABFE) described in Section 4
-- **HAN PREDICT, Inc.** — AI medical-technology startup; developer of a 3D facial-diagnostic Station Kit and iOS / B2B SaaS platform (PIPA §23-2 compliant; AI Basic Act 2026 compliant); IRB-approved 2026-04-27 — provides the digital-imaging and patient-data infrastructure that motivates downstream molecular-prescription needs
-- **Recover Korean Medicine Clinic** — affiliated 한방 clinic specializing in skin regeneration (강남, scheduled opening 2026-08-15); clinical mandate (scar revision, keloid management, post-procedural healing) motivates the search for under-investigated natural-product starting points compatible with topical formulation
+- **Genesis_Medicine Lab** — the AI in silico drug-discovery R&D group hosting this study; responsible for the computational pipeline (REINVENT4 + ADMET-AI + Boltz-2 + corrected absolute binding free energy) described in Section 4.
+- **HAN PREDICT, Inc.** ([hanpredict.com](https://hanpredict.com)) — an AI healthcare technology company (founder: HanCheongWoo) whose core products span clinic CRM, RAG-based AI electronic health records (Smart Charts), marketing automation, mobile nutrition (NutriDocH) and an AI-assisted media production platform. HAN PREDICT also develops a 3D facial-diagnostic Station Kit (PIPA §23-2 / AI Basic Act 2026 / HIPAA-aligned) supporting clinic workflows.
+- **Recover Korean Medicine Clinic** — a 한방 clinic specializing in skin regeneration (강남, scheduled opening 2026-08-15) whose clinical practice in scar revision, keloid management and post-procedural healing motivates the search for tractable natural-product starting points for topical formulation.
 
-Embelin's combination of (i) documented anti-fibrotic activity in non-skin tissues, (ii) accessible East Asian traditional-medicine provenance, and (iii) a chemically tractable benzoquinone scaffold made it an attractive candidate for in silico re-evaluation in this 3-pillar context.
+Embelin's combination of (i) documented anti-fibrotic activity in non-skin tissues, (ii) accessible East Asian traditional-medicine provenance and (iii) a chemically tractable benzoquinone scaffold made it an attractive candidate for in silico re-evaluation in this institutional context.
 
 ---
 
@@ -222,15 +221,15 @@ We close by reiterating the most important point: this preprint reports computat
 
 ## Acknowledgments
 
-We thank the Recover Korean Medicine Clinic clinical team for clinical-context discussion and the HAN PREDICT engineering team for digital-imaging infrastructure that enabled the 3-pillar workflow. Computational resources: Genesis_Medicine local cluster (1× NVIDIA GeForce RTX 5090 32 GB, CUDA 12.8). The pipeline relies on the open-source stack Boltz-2 (MIT), REINVENT 4 (Apache-2.0), ADMET-AI (MIT), OpenMM 8 (MIT), openmmtools (MIT), RDKit (BSD-3), MACE-OFF24 (MIT). Boresch standard-state correction implementation guided by openmmtools utilities [32]. We acknowledge the open-data resources COCONUT 2.0 (CC0), NPASS 3.0 (CC-BY), and ChEMBL (CC-BY-SA).
+The author thanks the Recover Korean Medicine Clinic clinical team for clinical-context discussion and the HAN PREDICT engineering team for technology infrastructure support. Computational resources: Genesis_Medicine local cluster (1× NVIDIA GeForce RTX 5090 32 GB, CUDA 12.8). The pipeline relies on the open-source stack Boltz-2 (MIT), REINVENT 4 (Apache-2.0), ADMET-AI (MIT), OpenMM 8 (MIT), openmmtools (MIT), RDKit (BSD-3), MACE-OFF24 (MIT). Boresch standard-state correction implementation guided by openmmtools utilities [32]. We acknowledge the open-data resources COCONUT 2.0 (CC0), NPASS 3.0 (CC-BY), and ChEMBL (CC-BY-SA).
 
 ## Author contributions
 
-Genesis_Medicine Lab (computational design and analysis, manuscript drafting). HAN PREDICT, Inc. (technology infrastructure, digital-imaging platform integration). Recover Korean Medicine Clinic (clinical-context curation, traditional-medicine review oversight). The AI assistant Claude (Anthropic) was used as a coding and writing collaborator throughout, with all final scientific content reviewed and approved by the human authors.
+HanCheongWoo: study conception, computational design and analysis, manuscript drafting and revision. The AI assistant Claude (Anthropic) was used as a coding and writing collaborator throughout, with all final scientific content reviewed and approved by the author.
 
 ## Competing interests
 
-The authors are co-affiliated with HAN PREDICT, Inc. (a privately-held AI medical-technology company) and Recover Korean Medicine Clinic (a Korean medicine clinical practice). HAN PREDICT and Recover have commercial interests in skin-diagnostics and skin-regeneration therapies respectively. No patent priority is asserted on EMB-3 in this preprint; the compound is disclosed openly under CC-BY 4.0.
+The author is the founder of HAN PREDICT, Inc. (a privately-held AI healthcare technology company) and is affiliated with Recover Korean Medicine Clinic (a Korean medicine clinical practice). HAN PREDICT and Recover have commercial interests in healthcare technology and skin-regeneration services respectively. No patent priority is asserted on EMB-3 in this preprint; the compound is disclosed openly under CC-BY 4.0.
 
 ## Data and code availability
 
