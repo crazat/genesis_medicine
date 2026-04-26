@@ -37,7 +37,7 @@ jobs:
 
       - name: Install dependencies (CPU only, lite)
         run: |
-          uv venv .venv --python ${{ matrix.python-version }}
+          uv venv --clear .venv --python ${{ matrix.python-version }}
           source .venv/bin/activate
           uv pip install --no-deps "rdkit>=2024.3" pandas numpy pyyaml requests matplotlib scipy
           uv pip install --no-deps ruff mypy pytest pytest-cov
