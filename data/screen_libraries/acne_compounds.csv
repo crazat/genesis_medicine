@@ -1,0 +1,16 @@
+compound,smiles,source_herb,traditional_use
+Berberine,CN1Cc2c(c3OCOc3cc2OC)C2=Nc3cc4OCOc4cc3CC12,황련 / 황백,anti-acne + antibacterial
+Palmatine,COc1ccc2c(c1OC)CC1=Nc3cc4OCOc4cc3C[N+]1(C)C2,황련,anti-acne
+Baicalein,Oc1cc2oc(-c3ccccc3)cc(=O)c2c(O)c1O,황금 (S. baicalensis),anti-inflammatory acne
+Baicalin,O=C1c2c(O)c(O)c(OC3OC(C(=O)O)C(O)C(O)C3O)cc2OC(c2ccccc2)=C1,황금 (S. baicalensis),anti-inflammatory acne
+Wogonin,COc1ccc(O)cc1Oc1cc(=O)c2c(O)cc(O)cc2o1,황금 (S. baicalensis),anti-inflammatory
+Licochalcone A,O=C(/C=C/c1ccc(O)cc1)c1ccc(O)c(C(C)(C)C=C)c1,감초 (G. uralensis),sebaceous SREBP1 modulator
+Paeonol,COc1cc(O)c(C(C)=O)cc1,목단피 (P. suffruticosa),anti-inflammatory
+Magnolol,c1ccc(/C=C/c2cc(-c3cc(/C=C/Cc4ccccc4)ccc3O)ccc2O)cc1,후박 (M. officinalis),anti-inflammatory
+Honokiol,Oc1ccc(/C=C/Cc2cc(O)ccc2-c2cc(/C=C/)ccc2O)cc1,후박,anti-inflammatory
+EGCG,Oc1cc(O)c2c(c1)OC(c1cc(O)c(O)c(O)c1)C(OC(=O)c1cc(O)c(O)c(O)c1)C2,녹차,multi-target
+Acetylshikonin,CC(=O)O[C@@H](CC=C(C)C)c1c(O)c(=O)c2cccc(O)c2c1=O,자초 (L. erythrorhizon),antimicrobial
+Shikonin,CC(=CCC(O)c1c(O)c(=O)c2cccc(O)c2c1=O)C,자초,antimicrobial
+Resveratrol,Oc1ccc(/C=C/c2cc(O)cc(O)c2)cc1,reference,multi-target
+Curcumin,COc1cc(/C=C/C(=O)CC(=O)/C=C/c2ccc(O)c(OC)c2)ccc1O,강황,anti-inflammatory
+Tretinoin,CC1=C(/C=C/C(C)=C/C=C/C(C)=C/C(=O)O)C(C)(C)CCC1,reference drug,topical retinoid

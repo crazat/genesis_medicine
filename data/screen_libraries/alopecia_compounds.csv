@@ -1,0 +1,16 @@
+compound,smiles,source_herb,traditional_use
+Emodin,Cc1cc(O)c2C(=O)c3cc(O)cc(O)c3C(=O)c2c1,하수오 (P. multiflorum),hair vitalization
+Physcion,COc1cc(O)c2C(=O)c3cc(O)cc(C)c3C(=O)c2c1,하수오 (P. multiflorum),hair vitalization
+Astragaloside IV,CC1(C)CCC2(CC1OC1OC(CO)C(O)C(O)C1OC1OCC(O)C1O)C1CC=C3C4(C)C(O)CCC4(CO)CCC3(C)C12,황기 (A. membranaceus),qi-tonifying + Wnt
+Ferulic acid,COc1cc(/C=C/C(=O)O)ccc1O,황기 / 당귀 / 천궁,antioxidant + Wnt support
+Ginsenoside Rg1,CC(=CCCC(C)(O[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O)C1CCC2(C)C1C(O)CC1C2(C)CCC2C(C)(C)C(O[C@@H]3O[C@H](CO)[C@@H](O)[C@H](O)[C@H]3O)CC[C@@]12C)C,인삼 (P. ginseng),β-catenin activation
+Ginsenoside Rb1,CC(=CCCC(C)(O[C@@H]1O[C@H](CO[C@@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@@H](O)[C@H](O)[C@H]1O)C1CCC2(C)C1C(O)CC1C2(C)CCC2C(C)(C)C(O[C@@H]3O[C@H](CO[C@@H]4O[C@H](CO)[C@@H](O)[C@H](O)[C@H]4O)[C@@H](O)[C@H](O)[C@H]3O)CC[C@@]12C)C,인삼 (P. ginseng),β-catenin activation
+Procyanidin B2,Oc1cc(O)c2C(c3c(O)cc(O)c4c3OC(c3ccc(O)c(O)c3)C(O)C4)C(O)C(c3ccc(O)c(O)c3)Oc2c1,사과 / 호로파,Wnt + 5α-R inhibition
+Biochanin A,COc1ccc(C2COc3cc(O)cc(O)c3C2=O)cc1,콩 / 황기,phytoestrogen + 5α-R inhibition
+Genistein,Oc1ccc(C2COc3cc(O)cc(O)c3C2=O)cc1,콩,phytoestrogen
+Saponin Re,CC(=CCC[C@@](C)(O[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O)C1CCC2(C)C1C(O)CC1C2(C)CC[C@@H]2C(C)(C)[C@H](OC3OC(CO)C(O)C(O)C3OC3OC(CO)C(O)C(O)C3O)CC[C@@]12C)C,인삼 (P. ginseng),hair-cycle modulator
+Finasteride,O=C1NC(C(=O)NC(C)(C)C)C2CCC3(C)C2C1CCC1C3CCC1=O,reference drug,SRD5A2 inhibitor (oral)
+Minoxidil,Nc1cc(N(=O)O)c(N2CCCCC2)nc1N,reference drug,topical hair tonic
+Thujin,COc1cc2C(=O)C=CC(=O)c2c(OC)c1OC,측백엽 (P. orientalis),hair tonic
+Tanshinone IIA,CC1=Cc2c(C)cc3OC=C(C)C(=O)c3c2C(=O)c2cccc1c2,단삼 (S. miltiorrhiza),vasoactive
+EGCG,Oc1cc(O)c2c(c1)OC(c1cc(O)c(O)c(O)c1)C(OC(=O)c1cc(O)c(O)c(O)c1)C2,녹차,multi-target reference
