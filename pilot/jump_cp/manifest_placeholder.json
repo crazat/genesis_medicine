@@ -1,0 +1,10 @@
+{
+  "note": "JUMP-CP S3 fetch attempted; canonical manifest path:",
+  "manifest_url": "s3://cellpainting-gallery/cpg0016-jump/manifest.csv",
+  "embeddings_url": "s3://cellpainting-gallery/cpg0016-jump/embeddings/dino_v2/",
+  "alternate_endpoints": [
+    "https://github.com/jump-cellpainting/2025_Chandrasekaran_NatureMethods_Morphmap",
+    "https://huggingface.co/datasets/jump-cellpainting/dino-embeddings"
+  ],
+  "fallback": "Pre-computed DINO embeddings + Morphmap repository at github.com/jump-cellpainting/...Morphmap is the lighter-weight alternative for compound-level queries."
+}
