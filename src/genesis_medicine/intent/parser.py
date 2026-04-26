@@ -72,6 +72,77 @@ INTENT_TEMPLATES: dict[str, dict] = {
         "slots": [],
         "description": "전체 진행 상황 + 결과 종합 리포트",
     },
+    # Tier 2-8 추가 intent 패턴
+    "panderm_diagnose": {
+        "keywords": ["사진", "이미지", "안면", "분석", "진단", "diagnose"],
+        "slots": ["image_path"],
+        "description": "PanDerm 피부 사진 분류 + 처방 추천",
+    },
+    "logkp_predict": {
+        "keywords": ["logkp", "경피", "외용 흡수", "permeability", "skin perm"],
+        "slots": ["smiles"],
+        "description": "logKp 외용제 흡수 예측",
+    },
+    "synergy_chou_talalay": {
+        "keywords": ["synergy", "시너지", "조합", "combination", "ci",
+                      "chou-talalay"],
+        "slots": [],
+        "description": "Chou-Talalay 약물 조합 synergy",
+    },
+    "residence_time": {
+        "keywords": ["residence time", "k_off", "결합 시간", "kinetics",
+                      "동역학"],
+        "slots": [],
+        "description": "Residence time / k_off 측정",
+    },
+    "causal_inference": {
+        "keywords": ["causal", "인과", "ate", "rwe", "real-world",
+                      "환자 데이터"],
+        "slots": [],
+        "description": "Causal inference (PS matching, AIPW)",
+    },
+    "fibroblast_subtype": {
+        "keywords": ["fibroblast", "subtype", "papillary", "reticular",
+                      "위축", "비후"],
+        "slots": ["patient_id"],
+        "description": "환자 fibroblast subtype → 자동 처방",
+    },
+    "microbiome_analysis": {
+        "keywords": ["microbiome", "마이크로바이옴", "16s", "미생물"],
+        "slots": ["patient_id"],
+        "description": "16S 결과 → 한약 처방",
+    },
+    "korean_pgx": {
+        "keywords": ["pgx", "약물유전체", "cyp", "hla", "한국인"],
+        "slots": [],
+        "description": "Korean PGx panel + 외용제 metabolism",
+    },
+    "donguibogam_search": {
+        "keywords": ["동의보감", "고전", "한방서", "donguibogam", "본초"],
+        "slots": ["disease"],
+        "description": "동의보감 약재 검색",
+    },
+    "dq_senolytic": {
+        "keywords": ["senolytic", "세놀리틱", "모낭", "탈모 회복",
+                      "dasatinib", "quercetin"],
+        "slots": [],
+        "description": "D+Q senolytic + EMB-3 모낭",
+    },
+    "tripod_check": {
+        "keywords": ["tripod", "checklist", "보고 표준", "publishing"],
+        "slots": ["manuscript_path"],
+        "description": "TRIPOD-AI 27 항목 점검",
+    },
+    "xai_explain": {
+        "keywords": ["왜", "why", "explain", "이유", "shap", "설명"],
+        "slots": [],
+        "description": "결정 이유 자연어 설명",
+    },
+    "hira_qaly": {
+        "keywords": ["hira", "보험 수가", "qaly", "icer", "reimbursement"],
+        "slots": [],
+        "description": "한국 보험 수가 + QALY ICER",
+    },
 }
 
 

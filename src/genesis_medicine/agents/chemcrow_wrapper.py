@@ -153,7 +153,7 @@ def _tool_manuscript_build(template: str = "j-cheminformatics") -> dict:
 
 
 # 도구 카탈로그 — Anthropic tools 형식
-TOOLS: list[Tool] = [
+TOOLS_BASE: list[Tool] = [
     Tool(
         name="target_discovery",
         description="질환명을 받아서 Open Targets로 단백질 표적 후보 발굴.",
@@ -257,6 +257,21 @@ TOOLS: list[Tool] = [
         func=_tool_manuscript_build,
     ),
 ]
+
+
+# 모든 Tier 0-8 통합 도구 카탈로그
+def _build_full_tools() -> list[Tool]:
+    """기본 11 + Tier 2-8 추가 도구 통합."""
+    full = list(TOOLS_BASE)
+    try:
+        from .all_tiers_tools import ALL_TIERS_TOOLS
+        full.extend(ALL_TIERS_TOOLS)
+    except ImportError:
+        pass
+    return full
+
+
+TOOLS: list[Tool] = _build_full_tools()
 
 
 def to_anthropic_tools() -> list[dict]:
