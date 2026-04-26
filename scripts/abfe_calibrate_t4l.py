@@ -110,6 +110,9 @@ def main():
         "--n-iterations", str(args.n_iterations),
         "--eq-ns", str(args.eq_ns),
         "--padding-nm", "1.0",
+        # Use BNZ coords from 181L for proper pocket placement (avoids NaN)
+        "--ligand-template-pdb", str(raw),
+        "--ligand-template-resname", "BNZ",
     ]
     print(f"\n[2/2] running corrected ABFE…\n  {' '.join(cmd)}")
     rc = subprocess.run(cmd).returncode

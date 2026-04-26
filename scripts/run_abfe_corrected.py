@@ -342,8 +342,16 @@ def boresch_standard_state_correction(geom: dict,
 
 def setup_complex(receptor_pdb: Path, ligand_smiles: str,
                     padding_nm: float = PADDING_NM_DEFAULT,
-                    eq_ns: float = EQ_NS_DEFAULT) -> dict:
-    """Build complex P+L system, equilibrate, return simulation state."""
+                    eq_ns: float = EQ_NS_DEFAULT,
+                    ligand_template_pdb: Path | None = None,
+                    ligand_template_resname: str = "") -> dict:
+    """Build complex P+L system, equilibrate, return simulation state.
+
+    Initial ligand placement priority:
+      1. If `ligand_template_pdb` + `ligand_template_resname` given: extract
+         heavy-atom centroid of that residue, place ligand there.
+      2. Else: place at receptor COM (heuristic, may clash for buried pockets).
+    """
     from openff.toolkit import Molecule
     from openff.units import unit as off_unit
     from openmmforcefields.generators import SystemGenerator
@@ -374,11 +382,26 @@ def setup_complex(receptor_pdb: Path, ligand_smiles: str,
         forcefield_kwargs={"constraints": app.HBonds},
     )
 
-    # add ligand to modeller — center at receptor binding site COM (heuristic)
-    rec_pos = np.array([[p.x, p.y, p.z] for p in modeller.positions])
-    rec_com = rec_pos.mean(axis=0)
+    # Determine binding site center (nm)
+    binding_center_nm = None
+    if ligand_template_pdb is not None and ligand_template_resname:
+        tmpl = app.PDBFile(str(ligand_template_pdb))
+        tmpl_pos = []
+        for atom, p in zip(tmpl.topology.atoms(), tmpl.positions):
+            if atom.residue.name == ligand_template_resname:
+                tmpl_pos.append([p.x, p.y, p.z])
+        if tmpl_pos:
+            binding_center_nm = np.array(tmpl_pos).mean(axis=0)
+            print(f"  binding site from template ({ligand_template_resname}): "
+                  f"{binding_center_nm} nm ({len(tmpl_pos)} atoms)")
+    if binding_center_nm is None:
+        rec_pos = np.asarray(modeller.positions.value_in_unit(unit.nanometer))
+        binding_center_nm = rec_pos.mean(axis=0)
+        print(f"  fallback binding site = receptor COM: {binding_center_nm} nm")
+
+    # add ligand at binding site center
     coords = lig.conformers[0].m_as("nanometer")
-    coords += rec_com - coords.mean(axis=0)
+    coords += binding_center_nm - coords.mean(axis=0)
     lig._conformers = [coords * off_unit.nanometer]
     modeller.addHydrogens(sg.forcefield, pH=7.4)
     modeller.add(lig.to_topology().to_openmm(),
@@ -593,6 +616,10 @@ def main():
                          help="run name (e.g., 'EMB3_MMP1')")
     parser.add_argument("--out", required=True, type=Path,
                          help="output directory")
+    parser.add_argument("--ligand-template-pdb", type=Path,
+                         help="PDB containing reference ligand (for initial coords)")
+    parser.add_argument("--ligand-template-resname", type=str, default="",
+                         help="residue name of reference ligand in template PDB")
     parser.add_argument("--n-windows", type=int, default=N_LAMBDA_WINDOWS_DEFAULT)
     parser.add_argument("--n-iterations", type=int, default=N_ITERATIONS_DEFAULT)
     parser.add_argument("--eq-ns", type=float, default=EQ_NS_DEFAULT)
@@ -626,7 +653,9 @@ def main():
     if not args.skip_complex:
         complex_setup = setup_complex(args.receptor, args.ligand_smiles,
                                          padding_nm=args.padding_nm,
-                                         eq_ns=args.eq_ns)
+                                         eq_ns=args.eq_ns,
+                                         ligand_template_pdb=args.ligand_template_pdb,
+                                         ligand_template_resname=args.ligand_template_resname)
 
         # select Boresch anchors + measure geometry (eq_positions in nm)
         from openmm import unit as _u
