@@ -109,10 +109,11 @@ def select_boresch_atoms(modeller, lig_atom_indices: list[int],
 
     Returns: (receptor_atoms, ligand_atoms) — each list of 3 atom indices.
     """
-    import openmm
     from openmm import unit
 
-    pos = np.array([[p.x, p.y, p.z] for p in modeller.positions])
+    # modeller.positions is Quantity (could wrap list[Vec3] or ndarray)
+    pos_q = modeller.positions
+    pos = np.asarray(pos_q.value_in_unit(unit.nanometer))    # (N, 3) nm
 
     # ligand heavy atoms (no H)
     lig_heavy = []
@@ -627,10 +628,10 @@ def main():
                                          padding_nm=args.padding_nm,
                                          eq_ns=args.eq_ns)
 
-        # select Boresch anchors + measure geometry
-        eq_pos_array = np.array([[p.x, p.y, p.z]
-                                  for p in complex_setup["eq_positions"].value_in_unit(
-                                      __import__("openmm.unit", fromlist=["nanometer"]).nanometer)])
+        # select Boresch anchors + measure geometry (eq_positions in nm)
+        from openmm import unit as _u
+        eq_pos_array = np.asarray(
+            complex_setup["eq_positions"].value_in_unit(_u.nanometer))
         eq_pos_A = eq_pos_array * 10.0    # nm → Å
         rec_anchors, lig_anchors = select_boresch_atoms(
             complex_setup["modeller"], complex_setup["lig_atoms"])

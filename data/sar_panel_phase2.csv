@@ -1,0 +1,8 @@
+compound,smiles,scaffold_class,role,literature_source,literature_ic50_target,notes
+Embelin,CCCCCCCCCCCC1=C(C(=O)C=C(C1=O)O)O,benzoquinone-2-5-diol,parent natural product (Embelia ribes),Joshi 2010 PharmacognRev,XIAP IC50 4.1 µM (Nikolovska-Coleska 2004),paper-tier baseline n-undecyl C11
+EMB-3,CCCCCC1=C(O)C(=O)C(O)=C(C)C1=O,benzoquinone-2-5-diol,REINVENT4 scaffold-hop lead (this work),Genesis_Medicine 2026,not measured (in silico hERG 0.16),hexyl plus methyl truncate
+Rapanone,CCCCCCCCCCCCCC1=C(O)C(=O)C(=O)C=C1O,benzoquinone-2-5-diol,Embelia ribes co-extract,Wang 2014 J Nat Prod,not directly measured for MMP-1,n-tridecyl C13 longer chain analog
+5-O-methyl-Embelin,CCCCCCCCCCCC1=C(C(=O)C=C(C1=O)OC)O,benzoquinone-methyl-ether,semi-synthetic Embelin analog,Chitra 1994 Chemotherapy,not measured for MMP-1,one OH masked solubility test
+2-hydroxy-naphthoquinone,O=C1C=CC(=O)c2c1cccc2O,naphthoquinone (Lawsone),scaffold control different ring system,Padhye 2010 Mini Rev Med Chem,weak MMP inhibitor literature,negative-control scaffold class
+Marimastat,CC(C)CC(NC(=O)C(NC(=O)C(O)CC(C)C)C(C)(C)C)C(=O)NC,hydroxamate (zinc binder),positive control literature MMP-1 IC50 5 nM,Drummond 1999,IC50 5 nM (MMP-1),zinc-binder Boltz-2 calib only
+3-decyl-2-5-dihydroxy-benzoquinone,CCCCCCCCCCC1=C(O)C(=O)C=C(O)C1=O,benzoquinone-2-5-diol,Embelin C10 analog,literature analog,not measured,n-decyl C10 chain length vs Embelin
