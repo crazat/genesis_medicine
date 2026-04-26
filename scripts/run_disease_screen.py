@@ -250,7 +250,12 @@ def main():
     cols_to_show = ["compound", "source_herb", "MW", "logP",
                      "admet_hERG", "admet_Skin_Reaction"] + targets + ["mean_affinity", "topical_friendly"]
     show = [c for c in cols_to_show if c in final.columns]
-    print(final[show].head(8).to_string(index=False, float_format=lambda v: f"{v:.3f}" if isinstance(v, float) else v))
+    # Coerce all numeric columns to Python float for stable formatting
+    final_show = final[show].head(8).copy()
+    for c in final_show.columns:
+        if final_show[c].dtype.kind in "fiu":
+            final_show[c] = final_show[c].astype(float)
+    print(final_show.to_string(index=False, float_format=lambda v: f"{v:.3f}"))
     print("=" * 72)
 
     print(f"\n✅ {args.out}/screen_results.csv")
