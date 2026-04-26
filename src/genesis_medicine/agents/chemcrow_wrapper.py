@@ -59,18 +59,37 @@ class AgentSession:
 
 
 def _tool_target_discovery(disease: str, n_targets: int = 5) -> dict:
-    """Stage 1: 질환 → Open Targets로 타겟 후보 발굴."""
+    """Stage 1: 질환 → Open Targets v4 GraphQL로 타겟 후보 발굴 (REAL).
+
+    Replaced 2026-04-26 stub with production open_targets_pipeline.
+    Disease key supports: skin_keloid, IPF, scleroderma_systemic,
+    renal_fibrosis, hepatic_fibrosis, atopic_dermatitis, psoriasis,
+    alopecia_areata, androgenetic_alopecia, acne_vulgaris, melasma,
+    or raw EFO ID (EFO_xxxxxxx).
+    """
     try:
-        from ..external_apis.open_targets import OT_ENDPOINT
-        # 간소화 — 실제 구현은 io/open_targets.py
+        from ..integration.open_targets_pipeline import disease_associated_targets
+        result = disease_associated_targets(disease, score_min=0.4,
+                                              size=max(50, n_targets * 5))
+        if result.error:
+            return {"stage": 1, "disease": disease,
+                    "error": result.error,
+                    "fallback_canonical": ["TGFB1", "MMP1", "CTGF"][:n_targets]}
         return {
-            "stage": 1,
-            "disease": disease,
-            "targets": ["TGFB1", "MMP1", "CTGF"][:n_targets],
-            "note": "stub — 실제 호출 시 io/open_targets.fetch_associated_targets()",
+            "stage": 1, "disease": disease, "query_id": result.query_id,
+            "n_targets_total": result.n_associations,
+            "targets": [{"symbol": a.name,
+                          "ot_score": round(a.score, 3),
+                          "id": a.target_or_disease_id}
+                         for a in result.associations[:n_targets]],
+            "natural_summary": (
+                f"{disease} → {result.n_associations} OT-associated targets "
+                f"(score≥0.4). Top {min(n_targets, result.n_associations)}: "
+                f"{', '.join(a.name for a in result.associations[:n_targets])}"
+            ),
         }
-    except ImportError:
-        return {"error": "open_targets 모듈 미로드"}
+    except ImportError as e:
+        return {"error": f"open_targets_pipeline import 실패: {e}"}
 
 
 def _tool_cryptic_scan(target_uniprot: str) -> dict:
