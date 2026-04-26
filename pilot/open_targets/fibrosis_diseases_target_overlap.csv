@@ -1,0 +1,9 @@
+disease_id,disease_name,n_targets_hitting,mean_score,target_list
+EFO_0000717,systemic scleroderma,1,0.5506614307841519,PDGFRB
+EFO_0000768,idiopathic pulmonary fibrosis,1,0.5939707944793398,PDGFRB
+EFO_0004244,interstitial lung disease,1,0.5748909522586836,PDGFRB
+EFO_0009448,pulmonary fibrosis,1,0.5553290689574614,PDGFRB
+MONDO_0009061,cystic fibrosis,1,0.4442613760438404,TGFB1
+MONDO_0011150,acroosteolysis-keloid-like lesions-premature aging syndrome,1,0.7435228646172211,PDGFRB
+MONDO_0011934,dermatofibrosarcoma protuberans,1,0.5653449501210744,PDGFRB
+MONDO_0021661,coronary atherosclerosis,1,0.4124944605967124,SMAD3

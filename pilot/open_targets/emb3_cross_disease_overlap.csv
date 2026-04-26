@@ -1,0 +1,6 @@
+indication,label,n_targets_ot,n_emb3_overlap,fraction,emb3_engaged_targets,note
+skin_fibrosis_keloid,Hypertrophic / keloid scar,31,0,0.0,[],
+IPF,Idiopathic pulmonary fibrosis (IPF),26,1,0.038461538461538464,['PDGFRB'],
+systemic_sclerosis,Systemic sclerosis (scleroderma),0,0,0.0,,no OT data
+renal_fibrosis,Renal interstitial fibrosis,50,0,0.0,[],
+hepatic_fibrosis,Hepatic fibrosis,0,0,0.0,[],

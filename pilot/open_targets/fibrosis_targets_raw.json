@@ -1,0 +1,1036 @@
+{
+  "skin_fibrosis_keloid": {
+    "efo": "EFO_0009551",
+    "label": "Hypertrophic / keloid scar",
+    "n_targets": 2379,
+    "targets": [
+      {
+        "symbol": "SMAD6",
+        "name": "SMAD family member 6",
+        "score": 0.7808364403091642
+      },
+      {
+        "symbol": "ELN",
+        "name": "elastin",
+        "score": 0.7801603747601472
+      },
+      {
+        "symbol": "ROBO4",
+        "name": "roundabout guidance receptor 4",
+        "score": 0.7753529829243394
+      },
+      {
+        "symbol": "FLNA",
+        "name": "filamin A",
+        "score": 0.7685296554091587
+      },
+      {
+        "symbol": "NOTCH1",
+        "name": "notch receptor 1",
+        "score": 0.7483914996672884
+      },
+      {
+        "symbol": "DCHS1",
+        "name": "dachsous cadherin-related 1",
+        "score": 0.7246358917083309
+      },
+      {
+        "symbol": "TBX5",
+        "name": "T-box transcription factor 5",
+        "score": 0.6471218706422613
+      },
+      {
+        "symbol": "FBN1",
+        "name": "fibrillin 1",
+        "score": 0.6374474975577183
+      },
+      {
+        "symbol": "IL6",
+        "name": "interleukin 6",
+        "score": 0.5585163185799906
+      },
+      {
+        "symbol": "LPA",
+        "name": "lipoprotein(a)",
+        "score": 0.5567525475892877
+      },
+      {
+        "symbol": "DZIP1",
+        "name": "DAZ interacting zinc finger protein 1",
+        "score": 0.5535178394088219
+      },
+      {
+        "symbol": "SORT1",
+        "name": "sortilin 1",
+        "score": 0.5078629330129996
+      },
+      {
+        "symbol": "PRRX1",
+        "name": "paired related homeobox 1",
+        "score": 0.5010194820249891
+      },
+      {
+        "symbol": "ADAMTS19",
+        "name": "ADAM metallopeptidase with thrombospondin type 1 motif 19",
+        "score": 0.4825334082737715
+      },
+      {
+        "symbol": "CELSR2",
+        "name": "cadherin EGF LAG seven-pass G-type receptor 2",
+        "score": 0.47570355455357427
+      },
+      {
+        "symbol": "MECOM",
+        "name": "MDS1 and EVI1 complex locus",
+        "score": 0.46202301639582616
+      },
+      {
+        "symbol": "TTN",
+        "name": "titin",
+        "score": 0.45148324527840933
+      },
+      {
+        "symbol": "ZEB2",
+        "name": "zinc finger E-box binding homeobox 2",
+        "score": 0.4508020038972954
+      },
+      {
+        "symbol": "FLNB",
+        "name": "filamin B",
+        "score": 0.4375903429197265
+      },
+      {
+        "symbol": "LTBP2",
+        "name": "latent transforming growth factor beta binding protein 2",
+        "score": 0.4309060187243554
+      },
+      {
+        "symbol": "FOXP1",
+        "name": "forkhead box P1",
+        "score": 0.4308749097046222
+      },
+      {
+        "symbol": "ALPL",
+        "name": "alkaline phosphatase, biomineralization associated",
+        "score": 0.42274446725714815
+      },
+      {
+        "symbol": "C8orf74",
+        "name": "chromosome 8 open reading frame 74",
+        "score": 0.4113720804530671
+      },
+      {
+        "symbol": "PALMD",
+        "name": "palmdelphin",
+        "score": 0.41133961383087675
+      },
+      {
+        "symbol": "FTO",
+        "name": "FTO alpha-ketoglutarate dependent dioxygenase",
+        "score": 0.41113168420843943
+      },
+      {
+        "symbol": "SLC22A3",
+        "name": "solute carrier family 22 member 3",
+        "score": 0.40902871733397744
+      },
+      {
+        "symbol": "MYH7",
+        "name": "myosin heavy chain 7",
+        "score": 0.4072726564910002
+      },
+      {
+        "symbol": "ACTR2",
+        "name": "actin related protein 2",
+        "score": 0.406375194744472
+      },
+      {
+        "symbol": "GATA5",
+        "name": "GATA binding protein 5",
+        "score": 0.4057265460749207
+      },
+      {
+        "symbol": "MAP3K4",
+        "name": "mitogen-activated protein kinase kinase kinase 4",
+        "score": 0.40519345539263874
+      },
+      {
+        "symbol": "AFAP1",
+        "name": "actin filament associated protein 1",
+        "score": 0.40372298708212484
+      },
+      {
+        "symbol": "NKX2-5",
+        "name": "NK2 homeobox 5",
+        "score": 0.39332174785155904
+      },
+      {
+        "symbol": "FGF23",
+        "name": "fibroblast growth factor 23",
+        "score": 0.38969297149439797
+      },
+      {
+        "symbol": "ALDH1A2",
+        "name": "aldehyde dehydrogenase 1 family member A2",
+        "score": 0.38905737791546846
+      },
+      {
+        "symbol": "LPL",
+        "name": "lipoprotein lipase",
+        "score": 0.3885113976011633
+      },
+      {
+        "symbol": "LMCD1",
+        "name": "LIM and cysteine rich domains 1",
+        "score": 0.38497296739701
+      },
+      {
+        "symbol": "KDR",
+        "name": "kinase insert domain receptor",
+        "score": 0.38280058963260594
+      },
+      {
+        "symbol": "TBXAS1",
+        "name": "thromboxane A synthase 1",
+        "score": 0.3826109117556005
+      },
+      {
+        "symbol": "F10",
+        "name": "coagulation factor X",
+        "score": 0.381159013673304
+      },
+      {
+        "symbol": "MKLN1",
+        "name": "muskelin 1",
+        "score": 0.3788091594848889
+      },
+      {
+        "symbol": "CDAN1",
+        "name": "codanin 1",
+        "score": 0.3761280991284381
+      },
+      {
+        "symbol": "PSRC1",
+        "name": "proline and serine rich coiled-coil 1",
+        "score": 0.37582434998375575
+      },
+      {
+        "symbol": "SIPA1L1",
+        "name": "signal induced proliferation associated 1 like 1",
+        "score": 0.3704579519750823
+      },
+      {
+        "symbol": "SH2B3",
+        "name": "SH2B adaptor protein 3",
+        "score": 0.36796564654671393
+      },
+      {
+        "symbol": "HSPG2",
+        "name": "heparan sulfate proteoglycan 2",
+        "score": 0.36663608292902133
+      },
+      {
+        "symbol": "PCDH20",
+        "name": "protocadherin 20",
+        "score": 0.36597765399940513
+      },
+      {
+        "symbol": "TBX20",
+        "name": "T-box transcription factor 20",
+        "score": 0.3656203216144927
+      },
+      {
+        "symbol": "SCARB1",
+        "name": "scavenger receptor class B member 1",
+        "score": 0.3652892408339608
+      },
+      {
+        "symbol": "ARHGEF26",
+        "name": "Rho guanine nucleotide exchange factor 26",
+        "score": 0.3631841775279685
+      },
+      {
+        "symbol": "LRATD2",
+        "name": "LRAT domain containing 2",
+        "score": 0.3623910220808394
+      }
+    ]
+  },
+  "IPF": {
+    "efo": "EFO_0000768",
+    "label": "Idiopathic pulmonary fibrosis (IPF)",
+    "n_targets": 3261,
+    "targets": [
+      {
+        "symbol": "PARN",
+        "name": "poly(A)-specific ribonuclease",
+        "score": 0.7901795648477856
+      },
+      {
+        "symbol": "RTEL1",
+        "name": "regulator of telomere elongation helicase 1",
+        "score": 0.732608102831634
+      },
+      {
+        "symbol": "TERT",
+        "name": "telomerase reverse transcriptase",
+        "score": 0.724182597107911
+      },
+      {
+        "symbol": "SFTPA2",
+        "name": "surfactant protein A2",
+        "score": 0.7147605504081332
+      },
+      {
+        "symbol": "MUC5B",
+        "name": "mucin 5B, oligomeric mucus/gel-forming",
+        "score": 0.6486514046729224
+      },
+      {
+        "symbol": "DSP",
+        "name": "desmoplakin",
+        "score": 0.6263631552759812
+      },
+      {
+        "symbol": "PDGFRB",
+        "name": "platelet derived growth factor receptor beta",
+        "score": 0.5939707944793398
+      },
+      {
+        "symbol": "FGFR1",
+        "name": "fibroblast growth factor receptor 1",
+        "score": 0.5929891312023431
+      },
+      {
+        "symbol": "FLT1",
+        "name": "fms related receptor tyrosine kinase 1",
+        "score": 0.5924039630990924
+      },
+      {
+        "symbol": "FGFR2",
+        "name": "fibroblast growth factor receptor 2",
+        "score": 0.5917417991927822
+      },
+      {
+        "symbol": "PDGFRA",
+        "name": "platelet derived growth factor receptor alpha",
+        "score": 0.5905494076752594
+      },
+      {
+        "symbol": "FGFR4",
+        "name": "fibroblast growth factor receptor 4",
+        "score": 0.5897982711319592
+      },
+      {
+        "symbol": "KDR",
+        "name": "kinase insert domain receptor",
+        "score": 0.5887546681286331
+      },
+      {
+        "symbol": "NR3C1",
+        "name": "nuclear receptor subfamily 3 group C member 1",
+        "score": 0.5872810497521164
+      },
+      {
+        "symbol": "FGFR3",
+        "name": "fibroblast growth factor receptor 3",
+        "score": 0.586102472585112
+      },
+      {
+        "symbol": "FLT4",
+        "name": "fms related receptor tyrosine kinase 4",
+        "score": 0.5851785229484003
+      },
+      {
+        "symbol": "FAM13A",
+        "name": "family with sequence similarity 13 member A",
+        "score": 0.5646060861967218
+      },
+      {
+        "symbol": "MUC5AC",
+        "name": "mucin 5AC, oligomeric mucus/gel-forming",
+        "score": 0.51077231440644
+      },
+      {
+        "symbol": "SPDL1",
+        "name": "spindle apparatus coiled-coil protein 1",
+        "score": 0.5058559959195272
+      },
+      {
+        "symbol": "IFNGR2",
+        "name": "interferon gamma receptor 2",
+        "score": 0.4436241519600743
+      },
+      {
+        "symbol": "IFNGR1",
+        "name": "interferon gamma receptor 1",
+        "score": 0.44283879476886934
+      },
+      {
+        "symbol": "ACTRT3",
+        "name": "actin related protein T3",
+        "score": 0.43247013818828367
+      },
+      {
+        "symbol": "DPP9",
+        "name": "dipeptidyl peptidase 9",
+        "score": 0.41514207477529885
+      },
+      {
+        "symbol": "AKAP13",
+        "name": "A-kinase anchoring protein 13",
+        "score": 0.40429105319257
+      },
+      {
+        "symbol": "ABCA3",
+        "name": "ATP binding cassette subfamily A member 3",
+        "score": 0.4036147156724545
+      },
+      {
+        "symbol": "TNFRSF6B",
+        "name": "TNF receptor superfamily member 6b",
+        "score": 0.401710325053845
+      },
+      {
+        "symbol": "SFTPC",
+        "name": "surfactant protein C",
+        "score": 0.3804920332973415
+      },
+      {
+        "symbol": "EDNRB",
+        "name": "endothelin receptor type B",
+        "score": 0.3775717047736745
+      },
+      {
+        "symbol": "EDNRA",
+        "name": "endothelin receptor type A",
+        "score": 0.3738404850147344
+      },
+      {
+        "symbol": "TOLLIP",
+        "name": "toll interacting protein",
+        "score": 0.3736085107849951
+      },
+      {
+        "symbol": "PTGIR",
+        "name": "prostaglandin I2 receptor",
+        "score": 0.35970385967896057
+      },
+      {
+        "symbol": "DEPTOR",
+        "name": "DEP domain containing MTOR interacting protein",
+        "score": 0.35394415858007844
+      },
+      {
+        "symbol": "FUT3",
+        "name": "fucosyltransferase 3 (Lewis blood group)",
+        "score": 0.3520827105254517
+      },
+      {
+        "symbol": "FSIP2",
+        "name": "fibrous sheath interacting protein 2",
+        "score": 0.34969842391875644
+      },
+      {
+        "symbol": "ENPP2",
+        "name": "ectonucleotide pyrophosphatase/phosphodiesterase 2",
+        "score": 0.34730235881119437
+      },
+      {
+        "symbol": "TSPYL6",
+        "name": "TSPY like 6",
+        "score": 0.3447786716031069
+      },
+      {
+        "symbol": "CCDC127",
+        "name": "coiled-coil domain containing 127",
+        "score": 0.33650787855105724
+      },
+      {
+        "symbol": "HS3ST4",
+        "name": "heparan sulfate-glucosamine 3-sulfotransferase 4",
+        "score": 0.33418880418276536
+      },
+      {
+        "symbol": "ADAMTS8",
+        "name": "ADAM metallopeptidase with thrombospondin type 1 motif 8",
+        "score": 0.33069780976085666
+      },
+      {
+        "symbol": "ACSL5",
+        "name": "acyl-CoA synthetase long chain family member 5",
+        "score": 0.3304836628696691
+      },
+      {
+        "symbol": "CCN2",
+        "name": "cellular communication network factor 2",
+        "score": 0.3288229186517219
+      },
+      {
+        "symbol": "C1orf141",
+        "name": "chromosome 1 open reading frame 141",
+        "score": 0.326083440979966
+      },
+      {
+        "symbol": "MYNN",
+        "name": "myoneurin",
+        "score": 0.3243961828676802
+      },
+      {
+        "symbol": "FMN1",
+        "name": "formin 1",
+        "score": 0.32248298606723874
+      },
+      {
+        "symbol": "TRIO",
+        "name": "trio Rho guanine nucleotide exchange factor",
+        "score": 0.3219772748107249
+      },
+      {
+        "symbol": "ZC3H12C",
+        "name": "zinc finger CCCH-type containing 12C",
+        "score": 0.3165396052373298
+      },
+      {
+        "symbol": "MTMR9",
+        "name": "myotubularin related protein 9",
+        "score": 0.31563764110036774
+      },
+      {
+        "symbol": "IL17B",
+        "name": "interleukin 17B",
+        "score": 0.3152018478039575
+      },
+      {
+        "symbol": "GPR157",
+        "name": "G protein-coupled receptor 157",
+        "score": 0.31034119842589414
+      },
+      {
+        "symbol": "LMNB1",
+        "name": "lamin B1",
+        "score": 0.3078131214873139
+      }
+    ]
+  },
+  "systemic_sclerosis": {
+    "efo": "EFO_0000270",
+    "label": "Systemic sclerosis (scleroderma)",
+    "targets": [],
+    "error": "disease_not_found"
+  },
+  "renal_fibrosis": {
+    "efo": "EFO_0009566",
+    "label": "Renal interstitial fibrosis",
+    "n_targets": 2914,
+    "targets": [
+      {
+        "symbol": "OCRL",
+        "name": "OCRL inositol polyphosphate-5-phosphatase",
+        "score": 0.8835290390993484
+      },
+      {
+        "symbol": "GNAS",
+        "name": "GNAS complex locus",
+        "score": 0.8742347537777838
+      },
+      {
+        "symbol": "DYNC2H1",
+        "name": "dynein cytoplasmic 2 heavy chain 1",
+        "score": 0.8715985591974731
+      },
+      {
+        "symbol": "WDR19",
+        "name": "WD repeat domain 19",
+        "score": 0.8705502876849068
+      },
+      {
+        "symbol": "NPHP4",
+        "name": "nephrocystin 4",
+        "score": 0.8703522950232854
+      },
+      {
+        "symbol": "NPHP3",
+        "name": "nephrocystin 3",
+        "score": 0.8651312662876566
+      },
+      {
+        "symbol": "TMEM67",
+        "name": "transmembrane protein 67",
+        "score": 0.8590103595747351
+      },
+      {
+        "symbol": "IFT140",
+        "name": "intraflagellar transport 140",
+        "score": 0.8590046824213828
+      },
+      {
+        "symbol": "SLC3A1",
+        "name": "solute carrier family 3 member 1",
+        "score": 0.8587985453747372
+      },
+      {
+        "symbol": "SLC12A3",
+        "name": "solute carrier family 12 member 3",
+        "score": 0.8578714342906714
+      },
+      {
+        "symbol": "CLCN5",
+        "name": "Cl-/H+ antiporter 5",
+        "score": 0.8558254658221576
+      },
+      {
+        "symbol": "SLC7A9",
+        "name": "solute carrier family 7 member 9",
+        "score": 0.8557276132474566
+      },
+      {
+        "symbol": "NPHP1",
+        "name": "nephrocystin 1",
+        "score": 0.8540085734079517
+      },
+      {
+        "symbol": "IFT172",
+        "name": "intraflagellar transport 172",
+        "score": 0.850274936092722
+      },
+      {
+        "symbol": "TTC21B",
+        "name": "tetratricopeptide repeat domain 21B",
+        "score": 0.8485718076963821
+      },
+      {
+        "symbol": "BSND",
+        "name": "barttin CLCNK type accessory subunit beta",
+        "score": 0.8468478256438455
+      },
+      {
+        "symbol": "CLDN16",
+        "name": "claudin 16",
+        "score": 0.8409967341380028
+      },
+      {
+        "symbol": "AQP2",
+        "name": "aquaporin 2",
+        "score": 0.840320653752766
+      },
+      {
+        "symbol": "IFT122",
+        "name": "intraflagellar transport 122",
+        "score": 0.8402311892919537
+      },
+      {
+        "symbol": "KCNJ10",
+        "name": "potassium inwardly rectifying channel subfamily J member 10",
+        "score": 0.8367414265252804
+      },
+      {
+        "symbol": "CLCNKB",
+        "name": "chloride voltage-gated channel Kb",
+        "score": 0.8321332479342843
+      },
+      {
+        "symbol": "CEP290",
+        "name": "centrosomal protein 290",
+        "score": 0.8285307714639546
+      },
+      {
+        "symbol": "WDR35",
+        "name": "WD repeat domain 35",
+        "score": 0.8270041301413823
+      },
+      {
+        "symbol": "CEP164",
+        "name": "centrosomal protein 164",
+        "score": 0.8234334631355307
+      },
+      {
+        "symbol": "INVS",
+        "name": "inversin",
+        "score": 0.8220464678668695
+      },
+      {
+        "symbol": "SDCCAG8",
+        "name": "SHH signaling and ciliogenesis regulator SDCCAG8",
+        "score": 0.816972083437949
+      },
+      {
+        "symbol": "EVC",
+        "name": "EvC ciliary complex subunit 1",
+        "score": 0.8151359890345057
+      },
+      {
+        "symbol": "SLC4A4",
+        "name": "solute carrier family 4 member 4",
+        "score": 0.8130682874646458
+      },
+      {
+        "symbol": "CLDN19",
+        "name": "claudin 19",
+        "score": 0.8128111023824496
+      },
+      {
+        "symbol": "NEK1",
+        "name": "NIMA related kinase 1",
+        "score": 0.809512189434217
+      },
+      {
+        "symbol": "EVC2",
+        "name": "EvC ciliary complex subunit 2",
+        "score": 0.8088057531194479
+      },
+      {
+        "symbol": "AVPR2",
+        "name": "arginine vasopressin receptor 2",
+        "score": 0.8086619940931516
+      },
+      {
+        "symbol": "ANKS6",
+        "name": "ankyrin repeat and sterile alpha motif domain containing 6",
+        "score": 0.8070187615651194
+      },
+      {
+        "symbol": "XPNPEP3",
+        "name": "X-prolyl aminopeptidase 3",
+        "score": 0.8055536083988318
+      },
+      {
+        "symbol": "SLC12A1",
+        "name": "solute carrier family 12 member 1",
+        "score": 0.8049163045350276
+      },
+      {
+        "symbol": "CEP83",
+        "name": "centrosomal protein 83",
+        "score": 0.801608859571903
+      },
+      {
+        "symbol": "SLC2A9",
+        "name": "solute carrier family 2 member 9",
+        "score": 0.7965584488149992
+      },
+      {
+        "symbol": "TRAF3IP1",
+        "name": "TRAF3 interacting protein 1",
+        "score": 0.7951444046422194
+      },
+      {
+        "symbol": "SCNN1A",
+        "name": "sodium channel epithelial 1 subunit alpha",
+        "score": 0.7942362674322005
+      },
+      {
+        "symbol": "CA2",
+        "name": "carbonic anhydrase 2",
+        "score": 0.7941555517847957
+      },
+      {
+        "symbol": "CEP120",
+        "name": "centrosomal protein 120",
+        "score": 0.7929808466528729
+      },
+      {
+        "symbol": "IFT80",
+        "name": "intraflagellar transport 80",
+        "score": 0.7916427043148574
+      },
+      {
+        "symbol": "NEK8",
+        "name": "NIMA related kinase 8",
+        "score": 0.7913840695342212
+      },
+      {
+        "symbol": "ATP6V0A4",
+        "name": "ATPase H+ transporting V0 subunit a4",
+        "score": 0.7871551999171227
+      },
+      {
+        "symbol": "TRPM6",
+        "name": "transient receptor potential cation channel subfamily M member 6",
+        "score": 0.7841849363171645
+      },
+      {
+        "symbol": "IFT43",
+        "name": "intraflagellar transport 43",
+        "score": 0.7824170272786019
+      },
+      {
+        "symbol": "SARS2",
+        "name": "seryl-tRNA synthetase 2, mitochondrial",
+        "score": 0.7805632256445381
+      },
+      {
+        "symbol": "IQCB1",
+        "name": "IQ motif containing B1",
+        "score": 0.7800351527291045
+      },
+      {
+        "symbol": "SCNN1B",
+        "name": "sodium channel epithelial 1 subunit beta",
+        "score": 0.7789587595224129
+      },
+      {
+        "symbol": "NR3C2",
+        "name": "nuclear receptor subfamily 3 group C member 2",
+        "score": 0.7775820586887028
+      }
+    ]
+  },
+  "hepatic_fibrosis": {
+    "efo": "EFO_0008502",
+    "label": "Hepatic fibrosis",
+    "n_targets": 285,
+    "targets": [
+      {
+        "symbol": "ATP4B",
+        "name": "ATPase H+/K+ transporting subunit beta",
+        "score": 0.04656706169027242
+      },
+      {
+        "symbol": "CBLIF",
+        "name": "cobalamin binding intrinsic factor",
+        "score": 0.043174318624266864
+      },
+      {
+        "symbol": "GKN1",
+        "name": "gastrokine 1",
+        "score": 0.04244255051199115
+      },
+      {
+        "symbol": "ATP4A",
+        "name": "ATPase H+/K+ transporting subunit alpha",
+        "score": 0.03951547806288832
+      },
+      {
+        "symbol": "LIPF",
+        "name": "lipase F, gastric type",
+        "score": 0.035856637501509775
+      },
+      {
+        "symbol": "PGC",
+        "name": "progastricsin",
+        "score": 0.03000249260330409
+      },
+      {
+        "symbol": "FUT9",
+        "name": "fucosyltransferase 9",
+        "score": 0.029270724491028383
+      },
+      {
+        "symbol": "AKR1B10",
+        "name": "aldo-keto reductase family 1 member B10",
+        "score": 0.027807188266476962
+      },
+      {
+        "symbol": "TFF1",
+        "name": "trefoil factor 1",
+        "score": 0.027075420154201255
+      },
+      {
+        "symbol": "TFF2",
+        "name": "trefoil factor 2",
+        "score": 0.026343652041925545
+      },
+      {
+        "symbol": "KCNE2",
+        "name": "potassium voltage-gated channel subfamily E regulatory subunit 2",
+        "score": 0.02561188392964983
+      },
+      {
+        "symbol": "CHIA",
+        "name": "chitinase acidic",
+        "score": 0.02561188392964983
+      },
+      {
+        "symbol": "ANXA10",
+        "name": "annexin A10",
+        "score": 0.02488011581737412
+      },
+      {
+        "symbol": "MUC5AC",
+        "name": "mucin 5AC, oligomeric mucus/gel-forming",
+        "score": 0.024148347705098414
+      },
+      {
+        "symbol": "KCNJ16",
+        "name": "potassium inwardly rectifying channel subfamily J member 16",
+        "score": 0.022684811480546997
+      },
+      {
+        "symbol": "CA2",
+        "name": "carbonic anhydrase 2",
+        "score": 0.022684811480546997
+      },
+      {
+        "symbol": "REG1A",
+        "name": "regenerating family member 1 alpha",
+        "score": 0.022684811480546997
+      },
+      {
+        "symbol": "LTF",
+        "name": "lactotransferrin",
+        "score": 0.021953043368271283
+      },
+      {
+        "symbol": "ESRRG",
+        "name": "estrogen related receptor gamma",
+        "score": 0.021953043368271283
+      },
+      {
+        "symbol": "SST",
+        "name": "somatostatin",
+        "score": 0.021221275255995577
+      },
+      {
+        "symbol": "MT1M",
+        "name": "metallothionein 1M",
+        "score": 0.020489507143719863
+      },
+      {
+        "symbol": "AZGP1",
+        "name": "alpha-2-glycoprotein 1, zinc-binding",
+        "score": 0.020489507143719863
+      },
+      {
+        "symbol": "CPA2",
+        "name": "carboxypeptidase A2",
+        "score": 0.01975773903144416
+      },
+      {
+        "symbol": "SULF1",
+        "name": "sulfatase 1",
+        "score": 0.01975773903144416
+      },
+      {
+        "symbol": "REG3A",
+        "name": "regenerating family member 3 alpha",
+        "score": 0.01975773903144416
+      },
+      {
+        "symbol": "SULT1C2",
+        "name": "sulfotransferase family 1C member 2",
+        "score": 0.01975773903144416
+      },
+      {
+        "symbol": "SPP1",
+        "name": "secreted phosphoprotein 1",
+        "score": 0.01902597091916845
+      },
+      {
+        "symbol": "COL1A1",
+        "name": "collagen type I alpha 1 chain",
+        "score": 0.01829420280689274
+      },
+      {
+        "symbol": "ASPN",
+        "name": "asporin",
+        "score": 0.01829420280689274
+      },
+      {
+        "symbol": "CA9",
+        "name": "carbonic anhydrase 9",
+        "score": 0.01756243469461703
+      },
+      {
+        "symbol": "ALDH3A1",
+        "name": "aldehyde dehydrogenase 3 family member A1",
+        "score": 0.01756243469461703
+      },
+      {
+        "symbol": "SOSTDC1",
+        "name": "sclerostin domain containing 1",
+        "score": 0.01756243469461703
+      },
+      {
+        "symbol": "KRT20",
+        "name": "keratin 20",
+        "score": 0.01683066658234132
+      },
+      {
+        "symbol": "CLDN18",
+        "name": "claudin 18",
+        "score": 0.01683066658234132
+      },
+      {
+        "symbol": "ALDH1A1",
+        "name": "aldehyde dehydrogenase 1 family member A1",
+        "score": 0.01683066658234132
+      },
+      {
+        "symbol": "INHBA",
+        "name": "inhibin subunit beta A",
+        "score": 0.01683066658234132
+      },
+      {
+        "symbol": "THBS2",
+        "name": "thrombospondin 2",
+        "score": 0.016098898470065612
+      },
+      {
+        "symbol": "TMPRSS2",
+        "name": "transmembrane serine protease 2",
+        "score": 0.016098898470065612
+      },
+      {
+        "symbol": "TCN1",
+        "name": "transcobalamin 1",
+        "score": 0.016098898470065612
+      },
+      {
+        "symbol": "MUC6",
+        "name": "mucin 6, oligomeric mucus/gel-forming (gene/pseudogene)",
+        "score": 0.016098898470065612
+      },
+      {
+        "symbol": "SFRP4",
+        "name": "secreted frizzled related protein 4",
+        "score": 0.016098898470065612
+      },
+      {
+        "symbol": "JCHAIN",
+        "name": "joining chain of multimeric IgA and IgM",
+        "score": 0.015367130357789903
+      },
+      {
+        "symbol": "TIMP1",
+        "name": "TIMP metallopeptidase inhibitor 1",
+        "score": 0.015367130357789903
+      },
+      {
+        "symbol": "CAPN9",
+        "name": "calpain 9",
+        "score": 0.015367130357789903
+      },
+      {
+        "symbol": "RARRES1",
+        "name": "retinoic acid receptor responder 1",
+        "score": 0.015367130357789903
+      },
+      {
+        "symbol": "CTSE",
+        "name": "cathepsin E",
+        "score": 0.015367130357789903
+      },
+      {
+        "symbol": "MT1G",
+        "name": "metallothionein 1G",
+        "score": 0.015367130357789903
+      },
+      {
+        "symbol": "MT1F",
+        "name": "metallothionein 1F",
+        "score": 0.014635362245514191
+      },
+      {
+        "symbol": "PDIA2",
+        "name": "protein disulfide isomerase family A member 2",
+        "score": 0.014635362245514191
+      },
+      {
+        "symbol": "DUOX1",
+        "name": "dual oxidase 1",
+        "score": 0.014635362245514191
+      }
+    ]
+  }
+}
