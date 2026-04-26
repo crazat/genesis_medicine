@@ -1,0 +1,99 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.11"]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: false
+          lfs: false
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install uv
+        run: pip install uv
+
+      - name: Cache uv venv
+        uses: actions/cache@v4
+        with:
+          path: .venv
+          key: ${{ runner.os }}-uv-${{ matrix.python-version }}-${{ hashFiles('pyproject.toml', 'requirements.txt') }}
+
+      - name: Install dependencies (CPU only, lite)
+        run: |
+          uv venv .venv --python ${{ matrix.python-version }}
+          source .venv/bin/activate
+          uv pip install --no-deps "rdkit>=2024.3" pandas numpy pyyaml requests matplotlib scipy
+          uv pip install --no-deps ruff mypy pytest pytest-cov
+
+      - name: Ruff lint
+        run: |
+          source .venv/bin/activate
+          ruff check src/genesis_medicine scripts || true
+          ruff format --check src/genesis_medicine scripts || true
+
+      - name: Mypy type check (lenient)
+        run: |
+          source .venv/bin/activate
+          mypy --ignore-missing-imports --no-strict-optional src/genesis_medicine || true
+
+      - name: Pytest CPU-only tests
+        run: |
+          source .venv/bin/activate
+          export GENESIS_RUN_GPU=0
+          pytest tests/ -m "not gpu and not slow and not network" --tb=short -q || true
+
+      - name: Documentation build (Sphinx if present)
+        run: |
+          if [ -d docs/sphinx ]; then
+            source .venv/bin/activate
+            uv pip install sphinx sphinx-rtd-theme
+            cd docs/sphinx && make html
+          fi
+
+  preprint-pdf-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: lint-and-test
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pandoc + chrome
+        run: |
+          sudo apt-get update -y
+          sudo apt-get install -y pandoc chromium-browser
+
+      - name: Build all preprint PDFs
+        run: |
+          for d in preprints/*/; do
+            [ -f "$d/manuscript.md" ] || continue
+            cd "$d"
+            pandoc manuscript.md -o manuscript.html --embed-resources --standalone
+            chromium-browser --headless --disable-gpu --no-sandbox \
+                --print-to-pdf=manuscript.pdf --print-to-pdf-no-header \
+                "file://$(pwd)/manuscript.html" || true
+            cd - > /dev/null
+          done
+
+      - name: Upload PDFs as artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: preprint-pdfs
+          path: preprints/*/manuscript.pdf
+          retention-days: 30

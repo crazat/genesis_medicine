@@ -1,0 +1,26 @@
+{
+  "emb3_single_point": {
+    "compound": "EMB-3",
+    "smiles": "CCCCCC1=C(O)C(=O)C(O)=C(C)C1=O",
+    "method": "GFN2-xTB single-point",
+    "n_atoms": 32,
+    "energy_hartree": -50.08861359846685,
+    "energy_kcal_mol": -31431.055830560334,
+    "interpretation": "GFN2-xTB single-point energy: -50.088614 Hartree (-31431.06 kcal/mol). For ABFE QM correction, this would be averaged over an ensemble of bound + solvent frames and combined with corresponding classical FF energies. Single-point demonstration: full ABFE QM correction is a planned methodology paper extension."
+  },
+  "comparison": {
+    "EMB-3": {
+      "smiles": "CCCCCC1=C(O)C(=O)C(O)=C(C)C1=O",
+      "n_atoms": 32,
+      "energy_hartree": -50.08861359846685,
+      "energy_kcal_mol": -31431.055830560334
+    },
+    "Embelin": {
+      "smiles": "CCCCCCCCCCCC1=C(C(=O)C=C(C1=O)O)O",
+      "n_atoms": 47,
+      "energy_hartree": -65.90146175138555,
+      "energy_kcal_mol": -41353.7603621502
+    }
+  },
+  "method_note": "GFN2-xTB single-point in gas phase. For full ABFE QM correction, ensemble of frames + thermodynamic-cycle averaging needed. This run demonstrates: (i) xtb-python infrastructure is integrated and operational, (ii) EMB-3 and Embelin can be computed semi-empirically in seconds (vs hours for DFT). Forward path: ensemble-averaged QM/MM-style correction layer for preprint #8 v0.4."
+}

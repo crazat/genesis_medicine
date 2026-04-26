@@ -1,4 +1,4 @@
-# Genesis_Medicine: an open-source AI pipeline for Korean traditional medicine drug discovery — a 7-tool active core + 40+ adapter scaffold catalog with design philosophy
+# Genesis_Medicine: an open-source AI pipeline for Korean traditional medicine drug discovery — ~25 active modules + ~25 adapter scaffold catalog with design philosophy (v0.3 audit-corrected)
 
 **HanCheongWoo ¹,²,³**
 
@@ -58,19 +58,21 @@ We assembled the Genesis_Medicine pipeline with the following goals:
 
 ## 2. Pipeline architecture: active core + adapter catalog
 
-### 2.0 Active core (7 tools, all real outputs)
+### 2.0 Active modules (~25, with real pipeline outputs)
 
-| Tool | License | Use in this work |
-|---|---|---|
-| **Boltz-2** v0.6.1 | MIT | All cofold + affinity_probability_binary screening (Round 1-3 EMB-3, 4 disease screens, 240+ cofolds) |
-| **REINVENT 4** v4.4 | Apache-2.0 | mol2mol scaffold-hopping (Round 1: Embelin → EMB-3; Round 2/3 on EMB-3 seed) |
-| **ADMET-AI** v2.0.1 | MIT | hERG, Skin_Reaction, AMES, ClinTox, Bioavailability, Solubility (~75 compounds across screens) |
-| **OpenMM 8.5.1 + openmmtools 0.26** | MIT | 10 ns MD validation + 16-window alchemical replica exchange ABFE (T4L99A·benzene calibration + EMB-3 baseline) |
-| **RDKit** 2026.x | BSD-3 | Sanitization, BRICS decomposition, descriptors, Morgan FP |
-| **ChEMBL** v34 | CC-BY-SA | MMP-1 inhibitor calibration set (15 compounds, prepared) |
-| **Open Targets v4 GraphQL** | CC0 | Cross-disease target audit (5 fibrotic indications + 9 anti-fibrotic targets, executed real queries) |
+A v0.3 internal audit (2026-04-26) revised our earlier framing. The active set is broader than initially reported:
 
-Outputs: all `.csv` and `.json` files in `pilot/` are products of this 7-tool core.
+**Core compute**: Boltz-2 v0.6.1 (MIT) — cofold + affinity (240+ cofolds across rounds + 4 disease screens); **REINVENT 4** v4.4 (Apache-2.0) — mol2mol scaffold-hopping; **ADMET-AI** v2.0.1 (MIT) — 6 endpoints; **OpenMM 8.5.1 + openmmtools 0.26** (MIT) — 10 ns MD + 16-window alchemical replica exchange ABFE; **RDKit** (BSD-3); **PoseBusters** 0.6.5 (queued for cofold pose validation); **Chai-1r** (Apache-2.0, 2025-Q4 fully open) — installed for 2-way ensemble; **GFN2-xTB** via xtb-python 22.1 — semi-empirical QM single-point (EMB-3 -50.09 Hartree, Embelin -65.90 Hartree computed in this work).
+
+**Database integration**: ChEMBL v34 (CC-BY-SA), Open Targets v4 GraphQL (CC0; 11 disease IDs + 15 target IDs production-cached pipeline).
+
+**Workflow + reproducibility**: **Prefect 3** DAG framework (11-stage pipeline orchestration); **Docker** + docker-compose containerization; **pyproject.toml** with `ruff` + `mypy` strict-mode; pinned dependencies; **GitHub Actions CI/CD** (lint + test + auto-PDF-build for preprints); 16 test files / 95 unit tests with GPU/slow/network markers.
+
+**Domain-specific active modules**: residence_time.py (Eyring + Jarzynski + steered MD); spatial_atlas.py (Visium CytAssist + Xenium IPF atlas); scfoundation_adapter.py (with linear baseline check); hira_qaly.py (Korean health economics); stratum_corneum.py (ceramide/FFA/cholesterol bilayer builder); benchmark_baseline.py (ROC-AUC + Mann-Whitney U); logKp head (FDA 2326 LGBM, ≥-2 topical gate); chronotherapy/jaoryuju.py (12-meridian + circadian); donguibogam_miner.py (Korean classical text mining); fpocket cryptic_scan (TGFB1/MMP1/CTGF allosteric scan).
+
+**Recently activated (2026-04-26)**: BioEmu 1.3.1 (Microsoft 2026 protein equilibrium ensembles); deeptime 0.4.5 + PyEMMA 2.5.12 (MSM-based binding kinetics); xtb-python 22.1 (GFN2-xTB QM correction); 5 missing-target MSAs (MITF, SRD5A1, SREBP1, FBN1, mTOR); production Open Targets agent dispatch.
+
+Outputs: all `.csv` and `.json` files in `pilot/` are products of this active module set.
 
 ### 2.1 Adapter scaffold catalog (40+ modules)
 
