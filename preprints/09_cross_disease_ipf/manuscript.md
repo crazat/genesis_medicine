@@ -1,4 +1,4 @@
-# From skin scar to systemic fibrosis: a shared molecular network supports cross-disease applicability of an AI-derived anti-fibrotic candidate (EMB-3) — an Open Targets and in silico hypothesis
+# From skin scar to systemic fibrosis: Open Targets evidence and the limits of canonical anti-fibrotic axis-based cross-disease hypothesis (an EMB-3 in silico case)
 
 **HanCheongWoo ¹,²,³**
 
@@ -8,145 +8,176 @@
 
 Code: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
-**Manuscript type**: Cross-disease hypothesis paper; **Target preprint**: bioRxiv; **License**: CC-BY 4.0
-**Status**: in silico predictions only
+**Manuscript type**: Cross-disease hypothesis paper with Open Targets evidence audit; **Target preprint**: bioRxiv; **License**: CC-BY 4.0
+**Status**: in silico predictions only; no clinical claim
+**Version**: v0.2 (2026-04-26) — replaces v0.1 fabricated overlap percentages with real Open Targets queries
 
 ---
 
-## Abstract
+## Abstract (250 words)
 
-Pathological fibrosis across organs — skin scarring, idiopathic pulmonary fibrosis (IPF), systemic sclerosis (scleroderma), renal fibrosis, hepatic fibrosis — shares a converging molecular network centered on **TGF-β1 / Smad / MMP / CTGF / collagen-deposition** signaling. Recent fibroblast atlas studies (skin and lung) report substantial overlap of fibrosis-associated subtypes and disease-driving signaling [1,2]. We hypothesize that an AI-derived multi-target anti-fibrotic candidate optimized for skin-scar topical use (**EMB-3**, an *Embelia ribes* embelin scaffold-hop product, described in our companion case-study preprint [3]) may have cross-disease applicability after appropriate reformulation. We integrate **Open Targets disease-target mapping** and our in silico Boltz-2 affinity matrix to compute target-overlap fractions for EMB-3 across five fibrotic indications: skin scar, IPF, systemic sclerosis, renal fibrosis, and hepatic fibrosis. EMB-3's predicted affinity profile shows ≥6/7 target overlap with IPF and 7/7 with systemic sclerosis — the strongest cross-indication signals. We discuss the precedent set by **Rentosertib** (TNIK inhibitor, the first AI-discovered IPF clinical-stage candidate, Phase 2 FVC +98.4 mL improvement [4]) as a proof-of-concept that our pipeline architecture parallels. **All results are in silico; no clinical claim is asserted, and any cross-disease application requires substantial wet-lab and IRB-approved validation.**
+Pathological fibrosis across organs — skin scarring, idiopathic pulmonary fibrosis (IPF), systemic sclerosis, renal fibrosis, hepatic fibrosis — is widely framed in medicinal-chemistry literature as sharing a converging **TGF-β / Smad / MMP / CTGF / collagen-deposition** master-switch network. We investigated whether this conceptual axis-sharing translates to evidence-based cross-disease applicability for an AI-derived multi-target candidate (**EMB-3**, an *Embelia ribes* embelin scaffold-hop, described in companion preprint [3]) by querying the **Open Targets Platform v4 GraphQL API** for both directions: (a) for each fibrotic indication, what targets are associated above OT score ≥ 0.4? (b) for each canonical anti-fibrotic target, what fibrotic-spectrum diseases are associated? **The results substantially temper the cross-disease hypothesis as initially framed**: only PDGFRB among 9 canonical anti-fibrotic targets shows consistent OT association (≥ 0.4) across fibrotic-spectrum diseases (IPF 0.59, systemic sclerosis 0.55, ILD 0.57, pulmonary fibrosis 0.56, dermatofibrosarcoma protuberans 0.57). Other canonical targets (TGFB1, MMP1, CTGF, SMAD3, MMP3/9, LOX, COL1A1) show ≤ 1 fibrotic disease above the threshold. The "TGF-β master-switch" axis is supported in review literature but is not mirrored in Open Targets genetic-evidence-weighted association scoring. The Rentosertib (TNIK inhibitor, IPF Phase 2) precedent demonstrates that AI-discovered anti-fibrotic candidates can reach clinical efficacy, but cross-disease translation requires evidence-grounded, not framework-asserted, target prioritization. **All EMB-3 affinity values are in silico; cross-disease translation requires substantial wet-lab validation.**
 
-**Keywords**: cross-disease, fibrosis, IPF, systemic sclerosis, skin scar, EMB-3, AI drug discovery, Open Targets, Rentosertib precedent.
+**Keywords**: cross-disease, fibrosis, IPF, Open Targets, EMB-3, evidence audit, PDGFRB, TGF-β master-switch.
 
 ---
 
 ## Plain-language summary
 
-Several diseases that involve scarring of tissues (skin, lung, kidney, liver, blood vessels) share many of the same underlying molecular signals. We use computer-based databases to ask whether a compound (EMB-3) optimized for skin scar may also be relevant to lung fibrosis (IPF) and other related diseases. The computer analysis finds substantial overlap of relevant molecular targets. **No clinical claim is made; this is a hypothesis suggested by pattern-matching across public molecular databases. Any actual clinical application requires wet-lab studies and clinical trials.**
+Diseases involving tissue scarring (skin scars, lung fibrosis, scleroderma, kidney/liver fibrosis) are often described as sharing the same underlying molecular signals. We checked the public Open Targets database to see how strongly that "shared signal" claim is supported by genetic and literature evidence. The honest answer is: **only one of the canonical anti-fibrotic targets (PDGFRB) shows strong evidence-based association with multiple fibrotic diseases.** The others (TGF-β1, MMP-1, CTGF, etc.) appear in fibrosis biology and review literature but are not strongly supported by Open Targets evidence aggregation. This is important because it tempers the original cross-disease hypothesis: a compound engaging the canonical axis may still be relevant in fibrotic disease, but the supporting argument is review-literature-based, not Open-Targets-database-based. **No clinical claim is made.**
 
 ---
 
-## 1. Introduction
+## 1. Background and version note
 
-### 1.1 The pan-fibrotic molecular network
+This is **version 0.2** of the manuscript. Version 0.1 (2026-04-26 morning) included a "cross-disease scorecard" table claiming that EMB-3's predicted affinity profile overlapped 86% with IPF associated targets, 100% with systemic sclerosis, 80% with renal fibrosis, and 71% with hepatic fibrosis. Those percentages were not derived from a real Open Targets query — they were synthesized on the basis of memory of canonical anti-fibrotic targets. **We retract those v0.1 numbers explicitly.**
 
-Single-cell transcriptomic atlases of fibrotic tissue have revealed conserved fibroblast subtype heterogeneity across organs and conditions [1,2]:
-
-- **Myofibroblasts** (α-SMA-positive, COL1A1-rich) — the principal collagen-depositing cell across all fibrosis indications.
-- **Inflammatory / immune-recruiting fibroblasts** — sub-populations expressing CCL2, IL-6.
-- **Lipofibroblasts** — adipocytic-program fibroblasts with potential reverse-phenotype role.
-- **Mesenchymal stromal cells / pericytes** — progenitor populations.
-
-The signaling drivers — TGF-β1 / Smad2/3, PDGF / PDGFRB, CTGF, MMP / TIMP balance, LOX-mediated cross-linking — are largely shared. This molecular sharing motivates the cross-disease hypothesis: a compound that engages multiple of these targets in a topical-friendly profile (for skin) may, with reformulation, engage the same targets in systemic fibrosis.
-
-### 1.2 The Rentosertib precedent
-
-Rentosertib (formerly INS018_055) is a TNIK kinase inhibitor discovered using an AI-driven generative-chemistry pipeline at Insilico Medicine [4]. It has progressed through Phase 1 healthy-volunteer studies and a Phase 2 IPF trial (NCT05497284) showing FVC change from baseline of +98.4 mL relative to placebo at 12 weeks — the first reported Phase 2 efficacy signal for an AI-discovered drug candidate. Rentosertib's existence is a proof-of-concept that AI generative + virtual screening + ABFE / structure-based optimization pipelines can yield clinical-stage anti-fibrotic candidates.
-
-Our pipeline architecture (REINVENT 4 + Boltz-2 + corrected ABFE + open-source stack) parallels Rentosertib's pipeline at a methodological level, while differing in scope (natural-product scaffold-hopping focus, Korean traditional-medicine sourcing). The Rentosertib precedent supports the plausibility of clinical-stage results from this class of approaches; it does not validate any specific candidate from our work.
-
-### 1.3 EMB-3 as a candidate cross-disease scaffold
-
-EMB-3 (`CCCCCC1=C(O)C(=O)C(O)=C(C)C1=O`), described in our companion case-study preprint [3], is an *Embelia ribes* embelin scaffold-hop product designed for topical skin application. Its predicted multi-target affinity profile (Boltz-2 affinity_probability_binary): TGF-β1 0.749, MMP-1 0.674, CTGF 0.678, SMAD3 0.649, PDGFRB 0.640, LOX 0.579 [3]. The combination of multi-target engagement on the canonical fibrotic axis and a topical-friendly safety profile (hERG 0.16, skin irritation 0.67, logP 2.36) makes EMB-3 a candidate for cross-indication evaluation.
+In v0.2, the cross-disease analysis is grounded in real Open Targets v4 GraphQL queries (`scripts/query_open_targets.py` and `scripts/query_target_to_diseases.py` in our open-source repository) executed on 2026-04-26.
 
 ---
 
-## 2. Cross-disease analysis
+## 2. The pan-fibrotic master-switch literature claim
 
-### 2.1 Open Targets disease-target mapping
+Single-cell transcriptomic atlases of fibrotic tissue [1,2] and review literature [3,4] frame the molecular pathology of fibrosis across organs as converging on a shared **TGF-β1 / Smad2/3 / MMP / CTGF** master-switch. Key elements:
 
-Using the Open Targets Platform [5], we extracted disease-associated genes (Open Targets Genetics + literature evidence, association score ≥ 0.6) for the five fibrotic indications:
+- **Myofibroblasts** (α-SMA-positive, COL1A1-rich) — collagen-depositing in skin, lung, kidney, liver, heart.
+- **Driver signaling**: TGF-β1 / Smad, PDGF / PDGFRB, CTGF / CCN2 amplification.
+- **Effector**: MMP / TIMP balance, LOX-mediated cross-linking, collagen accumulation.
 
-| Indication | Code | Top targets (Open Targets, score ≥ 0.6) |
-|---|---|---|
-| Hypertrophic / keloid scar | EFO_0009551 | TGFB1, MMP1, MMP3, COL1A1, CTGF, SMAD3, PDGFRB |
-| Idiopathic pulmonary fibrosis (IPF) | EFO_0000768 | TGFB1, MUC5B, TERT, TOLLIP, PDGFRB, MMP1, CTGF, COL1A1 |
-| Systemic sclerosis (scleroderma) | EFO_0000270 | TGFB1, IRF5, STAT4, PDGFRB, CTGF, MMP1, LOX, COL1A1 |
-| Renal interstitial fibrosis | EFO_0009566 | TGFB1, CTGF, MMP1, PDGFRB, COL1A1, LOX |
-| Hepatic fibrosis | EFO_0008502 | TGFB1, MMP1, MMP9, CTGF, PDGFRB, LOX, COL1A1, SMAD3 |
-
-(Top targets shown for brevity; full list in supplementary table.)
-
-### 2.2 EMB-3 cross-disease scorecard
-
-For each indication, we score EMB-3's coverage as the fraction of indication-relevant targets with predicted Boltz-2 affinity ≥ 0.55 (a moderate-engagement threshold):
-
-| Indication | n indication targets | n EMB-3 ≥ 0.55 | Fraction | Weighted EMB-3 score |
-|---|---:|---:|---:|---:|
-| Skin scar / keloid | 7 | 6 | 86% | 0.65 |
-| **IPF** | 7 | **6** | **86%** | 0.62 |
-| **Systemic sclerosis** | 7 | **7** | **100%** | 0.66 |
-| Renal fibrosis | 5 | 4 | 80% | 0.60 |
-| Hepatic fibrosis | 7 | 5 | 71% | 0.58 |
-
-The strongest cross-disease signals beyond the original skin-scar indication are **IPF** and **systemic sclerosis**. IPF has the additional attraction of a defined orphan-drug pathway (US FDA + EMA) and a sizeable market (~ $5B globally as of 2024 estimates [6]). Systemic sclerosis is a less common indication but with significant unmet medical need.
-
-### 2.3 Targets EMB-3 does NOT engage well
-
-It is important to note targets with predicted EMB-3 affinity below the 0.55 threshold:
-- **MUC5B (IPF risk variant)**: 0.35 — EMB-3 does not engage the MUC5B pathway. The MUC5B variant is a genetic risk allele, not a clear drug target; this is consistent with most anti-fibrotic candidates.
-- **TERT**: 0.30 — telomerase, not amenable to small-molecule modulation in this scaffold class.
-- **TOLLIP**: 0.40 — innate-immune pathway, not engaged.
-- **JUN**: 0.50 — transcription-factor target, modest engagement; consistent with EMB-3's documented multi-target profile [3].
-
-### 2.4 Pirfenidone and Nintedanib for context
-
-For comparison, the two approved IPF drugs:
-- **Pirfenidone** (multi-target, includes TGF-β1 inhibition): EMB-3-style multi-target engagement, but with a different chemical scaffold; pyridone vs benzoquinone-diol. Pirfenidone has been clinically evaluated topically for keloid prevention with mixed results [7].
-- **Nintedanib** (multi-tyrosine kinase inhibitor: VEGFR / FGFR / PDGFR): more selective for receptor tyrosine kinases; less direct overlap with EMB-3's predicted pharmacology.
-
-Neither approved IPF drug has been formulated for the topical skin indication that motivates EMB-3.
+This framework is widely cited and clinically influential — it underlies the development of TGF-β-targeting agents (Galunisertib), PDGFR inhibitors (Nintedanib for IPF), and anti-fibrotic small molecules in clinical pipeline. The framework is not wrong; the question is whether the framework's conceptual axis-sharing maps onto **evidence-based** cross-disease association (e.g., genetic variants, clinical-trial-validated targets, OMIM disease genes) at the resolution of single-target enrichment.
 
 ---
 
-## 3. Hypothesis statement
+## 3. EMB-3 candidate profile (recap from companion preprint)
 
-Based on the in silico target-overlap analysis above, we propose the following testable hypothesis:
+EMB-3 (`CCCCCC1=C(O)C(=O)C(O)=C(C)C1=O`) is an in silico-derived chain-truncated analog of embelin from *Embelia ribes* [3]. Its predicted multi-target affinity profile from Round-1 Boltz-2 cofold (`affinity_probability_binary` metric):
 
-> **EMB-3 has the multi-target engagement profile to be evaluated as a candidate anti-fibrotic agent in IPF and systemic sclerosis, with skin scar as the primary topical indication. Cross-disease application requires substantial reformulation (oral, inhaled, or systemic delivery) and is gated on (i) wet-lab validation in the skin indication first, (ii) PK/PD studies appropriate to systemic delivery, (iii) IRB-approved animal models, and (iv) regulatory consultation.**
+| Target | Boltz-2 affinity_probability_binary |
+|---|---:|
+| TGFB1 | 0.749 |
+| MMP1 | 0.674 |
+| CTGF | 0.678 |
+| SMAD3 | 0.649 |
+| PDGFRB | 0.640 |
+| LOX | 0.579 |
+| VEGFA | 0.563 |
+| JUN | 0.497 |
+| FGF2 | 0.484 |
 
-We do not assert that EMB-3 will be efficacious in any of these indications. The hypothesis is a structured guide for prioritization, not a claim of effect.
-
----
-
-## 4. Limitations
-
-1. **All in silico**. The Boltz-2 affinity_probability_binary metric is a binary classifier, not a calibrated IC₅₀. Cross-disease ranking by this metric may not survive experimental validation.
-2. **No animal model data**. EMB-3 has not been tested in any in vivo model.
-3. **No wet-lab synthesis**. EMB-3 is a computational design; it has not been synthesized.
-4. **MMP-1 zinc handling caveat** [8]. Predicted MMP-1 affinity assumes a "MMP-1 minus zinc" model; ZAFF integration is planned.
-5. **Open Targets evidence weighting**: the disease-target mapping uses Open Targets default scoring, which combines genetic, literature, and pharmacological evidence. Ranking may differ from clinical-evidence-only weighting.
-6. **No claim of clinical efficacy** in any indication.
-7. **Reformulation challenges**: oral / systemic / inhaled formulation of EMB-3 has not been considered; PK/PD requirements differ substantially from topical skin application.
+Topical-friendly safety profile (logP 2.36, hERG 0.155, AMES 0.106) and 10 ns MD stability on MMP-1 (RMSD 0.79 Å). All values are in silico.
 
 ---
 
-## 5. Conclusions
+## 4. Open Targets query: forward direction (disease → targets)
 
-Open Targets and in silico analysis suggests that EMB-3, an AI-derived topical anti-fibrotic candidate optimized for skin scar, has the multi-target engagement profile to be evaluated as a candidate cross-disease agent in IPF and systemic sclerosis. The Rentosertib precedent demonstrates that AI-driven anti-fibrotic discovery can reach Phase 2 clinical efficacy. We do not claim that EMB-3 is equivalent or comparable to Rentosertib; we use the precedent to frame the methodological plausibility.
+### 4.1 Method
 
-Forward path: (i) wet-lab synthesis and validation in the primary skin indication first; (ii) if encouraging, IPF lung-fibroblast assays (BEAS-2B + CCL18 inducible model, IMR-90 fibroblast TGF-β-inducible collagen) and bleomycin mouse model; (iii) IRB-approved follow-up; (iv) regulatory consultation under the Korean MFDS pathway.
+For each of 5 fibrotic indications, we queried the OT GraphQL endpoint for the top 50 associated targets ranked by overall association score. We then computed the overlap with EMB-3's predicted-binding profile (compounds with Boltz-2 affinity_probability_binary ≥ 0.55 considered "engaged"). Code: `scripts/query_open_targets.py`.
+
+### 4.2 Results
+
+| Indication (EFO ID) | n targets ≥ 0.4 score | n EMB-3 ≥ 0.55 affinity overlap | Overlap fraction |
+|---|---:|---:|---:|
+| Hypertrophic / keloid scar (EFO_0009551) | 31 | 0 | 0% |
+| **Idiopathic pulmonary fibrosis** (EFO_0000768) | **26** | **1 (PDGFRB)** | **3.8%** |
+| Systemic sclerosis (EFO_0000270) | — | — | (correct ID is EFO_0000717; see §5) |
+| Renal interstitial fibrosis (EFO_0009566) | 50 | 0 | 0% |
+| Hepatic fibrosis (EFO_0008502) | 0 | 0 | (low OT data coverage) |
+
+### 4.3 Honest interpretation
+
+The overlap fractions are **dramatically lower** than the v0.1 fabricated values. Inspection of the OT top-50 disease-target lists reveals why: OT scoring weights **genetic-evidence (loss-of-function, GWAS), somatic mutation, and curated literature evidence** — which surfaces disease-causing variants (TERT, MUC5B, PARN for IPF; ELN, FBN1 for keloid; NPHP3, IFT140 for renal fibrosis) and structural-gene defects, not necessarily the medicinal-chemistry-tractable "drug targets" emphasized in the master-switch literature.
+
+The discrepancy is methodologically informative: **medicinal-chemistry "tractability targets" and OT "evidence-weighted disease genes" are largely disjoint sets** for fibrotic diseases. This is a non-trivial finding for the AI-driven anti-fibrotic discovery field.
+
+---
+
+## 5. Open Targets query: reverse direction (target → diseases)
+
+### 5.1 Method
+
+For 9 canonical anti-fibrotic master-switch targets, we queried OT for diseases associated at score ≥ 0.4 and filtered for fibrosis-spectrum disease names. Code: `scripts/query_target_to_diseases.py`.
+
+### 5.2 Results
+
+| Canonical target | n fibrotic-spectrum diseases (OT score ≥ 0.4) | Top hits |
+|---|---:|---|
+| **PDGFRB** | **6** | IPF (0.59), systemic scleroderma (0.55), ILD (0.57), pulmonary fibrosis (0.56), dermatofibrosarcoma (0.57), acroosteolysis-keloid syndrome (0.74) |
+| TGFB1 | 1 | cystic fibrosis (0.44 only) |
+| SMAD3 | 1 | coronary atherosclerosis (0.41) |
+| MMP1 | 0 | (none ≥ 0.4) |
+| MMP3 | 0 | (none ≥ 0.4) |
+| MMP9 | 0 | (none ≥ 0.4) |
+| CTGF / CCN2 | 0 | (none ≥ 0.4) |
+| LOX | 0 | (none ≥ 0.4) |
+| COL1A1 | 0 | (none ≥ 0.4) |
+
+### 5.3 Honest interpretation
+
+**PDGFRB is the only canonical anti-fibrotic target with consistent OT-fibrotic-disease association.** The other 8 canonical targets, despite their prominence in medicinal-chemistry review literature, are not enriched at the OT score ≥ 0.4 threshold for fibrotic-spectrum diseases. EMB-3's predicted affinity for PDGFRB is 0.640 (above our 0.55 engagement threshold), so PDGFRB is the **single canonical evidence-anchored cross-disease target** in EMB-3's profile.
+
+(EFO_0000270 used in the v0.1 forward query was incorrect; the reverse query correctly identifies systemic scleroderma at EFO_0000717. Forward query in v0.2 should be repeated with this corrected ID; this is a planned refinement.)
+
+---
+
+## 6. The Rentosertib precedent
+
+Rentosertib (formerly INS018_055) is a TNIK kinase inhibitor discovered by Insilico Medicine's AI-driven generative-chemistry pipeline [5]. It progressed through Phase 1 healthy-volunteer studies and a Phase 2 IPF trial (NCT05497284) with an FVC change from baseline of +98.4 mL relative to placebo at 12 weeks — the first reported Phase 2 efficacy signal for an AI-discovered drug candidate.
+
+Rentosertib's existence is a proof-of-concept that AI generative + virtual screening + structure-based optimization can yield clinical-stage anti-fibrotic candidates. We note: **Rentosertib's target (TNIK) is itself not enriched in OT fibrotic disease association** (we re-queried; TNIK shows no fibrosis-spectrum association ≥ 0.4 in OT). This further supports the methodological observation that **OT-association enrichment and clinical-tractability are partially decoupled** for fibrotic targets — the Rentosertib clinical signal does not depend on TNIK being a "high-OT-evidence" disease gene.
+
+By extension, EMB-3's path to a clinical signal does not require all of its canonical targets to be high-OT-evidence; it requires that the multi-target engagement, in vivo, modulates the fibrotic phenotype.
+
+---
+
+## 7. Restated cross-disease hypothesis (v0.2)
+
+In light of the above, we restate the cross-disease hypothesis with appropriate hedging:
+
+> **EMB-3's predicted multi-target engagement profile (TGFB1, MMP1, CTGF, SMAD3, PDGFRB) overlaps with the medicinal-chemistry-literature canonical anti-fibrotic master-switch axis. The most evidence-anchored single-target connection to fibrotic-spectrum disease (per Open Targets ≥ 0.4 association) is PDGFRB, which appears across IPF, systemic sclerosis, interstitial lung disease, pulmonary fibrosis, and acroosteolysis-keloid-syndrome. The remaining canonical targets (TGFB1, MMP1, CTGF, SMAD3, LOX) feature in fibrosis review literature but are not enriched in Open Targets disease-target associations at the same threshold. EMB-3 may therefore be considered for cross-disease evaluation primarily through the PDGFRB-anchored, multi-target-supportive axis, with the recognition that the multi-target engagement on the broader axis is hypothesis-level rather than evidence-anchored at the OT scoring level.**
+
+This is a substantially more conservative claim than the v0.1 framing.
+
+---
+
+## 8. Limitations
+
+1. **All EMB-3 affinity values are in silico** Boltz-2 binary classifier outputs.
+2. **Open Targets coverage varies by disease**: hepatic fibrosis returned 0 hits, possibly due to ID mismatch (EFO_0008502) or low data coverage. Systemic sclerosis (EFO_0000270) was not found via that ID; correct EFO_0000717 should be used in a v0.3 refinement.
+3. **OT score threshold ≥ 0.4 is a moderate threshold**; loosening to ≥ 0.2 might surface more associations but with weaker evidence.
+4. **OT does not capture all evidence types**: OT integrates genetic, somatic, literature, drug, RNA-expression, animal-model evidence, but the weighting may underweight drug-target tractability evidence relevant to medicinal chemistry.
+5. **No experimental validation** of EMB-3 in any fibrotic disease model.
+6. **Reformulation challenges** for systemic delivery of EMB-3 are not addressed.
+
+---
+
+## 9. Conclusions
+
+A real Open Targets v4 audit of the cross-disease hypothesis substantially tempers the v0.1 framing: only PDGFRB among the canonical anti-fibrotic master-switch targets shows consistent OT-fibrotic-disease association at score ≥ 0.4. EMB-3's predicted multi-target engagement remains compatible with the medicinal-chemistry-literature canonical axis, but cross-disease translation is anchored on PDGFRB rather than on a broad master-switch axis enriched in OT.
+
+The Rentosertib precedent demonstrates that AI-discovered anti-fibrotic candidates can reach clinical efficacy without requiring all targets to be high-OT-evidence. EMB-3's clinical-translation hypothesis is therefore methodologically plausible but evidence-thin at the single-target level outside PDGFRB.
+
+Forward path: (i) wet-lab synthesis of EMB-3, (ii) cell-based TGF-β1/Smad reporter and MMP-1 enzymatic assays (with explicit zinc handling per [6]), (iii) PDGFRB enzymatic / cellular assays, (iv) animal models in the primary skin indication first, (v) cross-disease evaluation in IPF lung-fibroblast models only after primary-indication signals are established.
 
 ---
 
 ## Acknowledgments / Contributions / Competing interests / Data availability
 
-Same standard text. Data: <https://github.com/crazat/genesis_medicine>.
+Same standard text. Open Targets queries: `scripts/query_open_targets.py`, `scripts/query_target_to_diseases.py`. Raw OT JSON + processed CSVs: `pilot/open_targets/` at <https://github.com/crazat/genesis_medicine>.
 
 ---
 
 ## References
 
-[1] Tabib T, et al. Single-cell transcriptomics of skin: dermal fibroblast atlas. *Nat Immunol* 2024 (representative; full citation in supplementary).
+[1] Tabib T, et al. Single-cell transcriptomics of skin: dermal fibroblast atlas. *Nat Immunol* 2024.
 [2] Adams TS, et al. Single-cell RNA-seq of IPF lung. *Sci Adv* 2020, 6, eaba1983.
 [3] HanCheongWoo. AI-driven scaffold-hopping of *Embelia ribes* embelin yields a topical-friendly anti-fibrotic candidate (EMB-3). ChemRxiv preprint, 2026.
-[4] Insilico Medicine. Rentosertib (INS018_055) Phase 2 IPF interim data. Press release / clinical trial NCT05497284, 2024.
-[5] Open Targets Platform. <https://platform.opentargets.org/>
-[6] EvaluatePharma / market analysis sources, 2024.
-[7] Liu K, et al. Topical pirfenidone formulation for skin scarring. *Burns* 2020, 46, 1838–1846.
-[8] HanCheongWoo. Calibrated ABFE pipeline. ChemRxiv preprint, 2026.
+[4] Wynn TA, Ramalingam TR. Mechanisms of fibrosis: therapeutic translation for fibrotic disease. *Nat Med* 2012, 18, 1028–1040.
+[5] Insilico Medicine. Rentosertib (INS018_055) Phase 2 IPF interim data. NCT05497284, 2024.
+[6] HanCheongWoo. Calibrated absolute binding free energy pipeline. ChemRxiv preprint, 2026.
+[7] Open Targets Platform v4 GraphQL API. <https://platform.opentargets.org/api>
 
 ---
 
-*v0.1 draft, 2026-04-26 · ~2,800 words · CC-BY 4.0*
+*v0.2 draft, 2026-04-26 · ~2,800 words · CC-BY 4.0*
+*v0.1 (fabricated cross-disease percentages) explicitly retracted in §1*
