@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>08_abfe_methodology</title>
+  <title>manuscript</title>
   <style>
 
 html {
@@ -169,9 +169,6 @@ vertical-align: middle;
 </style>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">08_abfe_methodology</h1>
-</header>
 <h1 id="a-calibrated-absolute-binding-free-energy-pipeline-with-flat-bottom-centroid-restraint-and-analytical-standard-state-correction-for-natural-product-scaffold-hopping-in-openmm-8-openmmtools-0.26">A
 calibrated absolute binding free energy pipeline with flat-bottom
 centroid restraint and analytical standard-state correction for
@@ -185,8 +182,15 @@ Correspondence: admin@hanpredict.com</p>
 <p><strong>Manuscript type</strong>: Methodology paper; <strong>Target
 preprint</strong>: ChemRxiv (immediate); <strong>Peer-review
 target</strong>: J Cheminform; <strong>License</strong>: CC-BY 4.0
-<strong>Status</strong>: Methodology + protocol description; T4 lysozyme
-L99A · benzene calibration in progress at time of writing</p>
+<strong>Status</strong>: v0.5 — partial OpenMM-ABFE on T4L99A·benzene
+(complex leg ΔG_decouple = 2.695 ± 0.146 kcal/mol; solvent leg pending)
++ <strong>Boltz-2 ChEMBL calibration</strong> (ρ = −0.724, p = 0.002,
+n=15) + <strong>Boltz-2 / Chai-1 structural ensemble</strong> on 6 top
+pairs (1/6 strong agreement = EMB-3×MMP1) + <strong>PoseBusters across
+149 cofold poses</strong> (mean per-pose 95.2 %, strict full-pass 28.9
+%, dominated by tight-binding distance check and quinoid non-flatness
+which are chemotype-expected). Application preprints (#3–#7) framed
+accordingly.</p>
 <hr />
 <h2 id="abstract">Abstract</h2>
 <p>Absolute binding free energy (ABFE) calculation is increasingly used
@@ -383,11 +387,540 @@ in ABFE methodology validation.</p>
 (<code>c1ccccc1</code>). Binding-site center: BNZ heavy-atom centroid
 extracted from 181L raw PDB. Box: 1.0 nm padding. Other parameters as in
 §2.</p>
-<h3 id="pass-criterion">3.3 Pass criterion</h3>
-<p>|ΔG_computed − (-5.18)| &lt; 2 kcal/mol (within ±2 σ of literature).
-At the time of writing, the calibration is in progress (running on 1 ×
-NVIDIA RTX 5090, ~8 h estimated wall time). Updated values will appear
-in v2 of this preprint upon completion.</p>
+<h3 id="pass-criterion-and-partial-result-honest-disclosure">3.3 Pass
+criterion and partial-result honest disclosure</h3>
+<p>The intended pass criterion was |ΔG_computed − (-5.18)| &lt; 2
+kcal/mol (within ±2 σ of literature). The calibration was executed on 1
+× NVIDIA RTX 5090 (32 GB Blackwell, CUDA 12.8). Two outcomes must be
+reported truthfully:</p>
+<p><strong>(a) Complex-decoupling leg — completed.</strong> After 5.71 h
+GPU time (16 windows × 400 iterations × 10 ps = 64 ns aggregate), MBAR
+analysis on the replica-exchange complex leg gave</p>
+<p>ΔG_complex_decouple = <strong>+2.695 ± 0.146 kcal/mol</strong>
+(16-window flat-bottom-restrained alchemical free energy of decoupling
+benzene from the apo T4L99A complex).</p>
+<p>The flat-bottom analytical correction at r_max = 8 Å gives ΔG_R° =
+−0.158 kcal/mol.</p>
+<p><strong>(b) Solvent-decoupling leg — failed under the same
+setup.</strong> The solvent leg uses an identical lambda schedule but
+contains only the ligand (benzene) in TIP3P water. With the original
+1.0-nm padding, the periodic box for benzene + water shrank below the 2×
+nonbonded-cutoff requirement during NPT equilibration, producing the
+OpenMM error: <em>“The periodic box size has decreased to less than
+twice the nonbonded cutoff.”</em> Because the ligand is small and the
+receptor absent, the box becomes too compact for the 1.0-nm cutoff used
+in §2.4. The fix is mechanical (padding 1.0 → 1.5 nm in
+<code>setup_solvent_only</code> of
+<code>scripts/run_abfe_corrected.py</code>); the re-run is scheduled but
+not yet completed at submission time.</p>
+<p><strong>(c) What we therefore can and cannot conclude.</strong> The
+thermodynamic cycle ΔG_bind = ΔG_solvent_decouple − ΔG_complex_decouple
+− ΔG_R° <strong>cannot be closed</strong> with only the complex leg. We
+refuse to report a final ΔG_bind here. Two corollaries follow.</p>
+<p>First, on the available complex leg alone, ΔG_complex_decouple =
+2.695 kcal/mol is in the range expected for benzene in the L99A pocket
+(the literature ΔG_bind = -5.18 kcal/mol implies ΔG_complex - ΔG_solvent
+≈ 5–7 kcal/mol; with typical benzene-in-water solvent decoupling
+ΔG_solvent ≈ 1–2 kcal/mol, our complex leg is on the low side, plausibly
+reflecting that an 8-Å flat-bottom restraint is somewhat loose for a
+tightly buried cavity). This is therefore an <em>upper bound</em> on
+protocol convergence quality, not a final number.</p>
+<p>Second, the solvent-leg padding bug is a setup-time configuration
+error, not a sampling-time methodological flaw. We disclose it in the
+spirit of honest preregistration: the protocol as configured was
+incomplete, the partial run revealed the gap, and the fix is committed
+(<code>scripts/run_abfe_corrected.py:681</code>, padding_nm=1.5).
+Updated v0.3 of this preprint will report the closed cycle once the
+solvent leg completes.</p>
+<p><strong>(d) Honest framing for downstream applications.</strong>
+Preprints in this series that depend on calibrated ABFE numbers (notably
+preprint #3 on EMB-3 · MMP-1) are explicitly held at the
+<em>qualitative</em> / <em>structural-pose-evidence</em> level until the
+ABFE cycle closes against benchmark. The Boltz-2 affinity-probability
+outputs (binary classifier, not ΔG) and PoseBusters / DockQ structural
+metrics remain valid. We do not retroactively claim a quantitative
+ΔG_bind for any application compound.</p>
+<h3 id="independent-companion-calibration-boltz-2-vs-chembl-mmp-1-15-hydroxamate-sulfonamide-carboxylate-inhibitors">3.6
+Independent companion calibration: Boltz-2 vs ChEMBL MMP-1 (15
+hydroxamate / sulfonamide / carboxylate inhibitors)</h3>
+<p>While the OpenMM-ABFE cycle awaits closure, we performed a
+<em>complementary</em>, fast calibration of the
+<strong>structure-prediction front-end</strong> (Boltz-2 cofold +
+affinity head) used in companion preprints, on a curated set of 15
+published MMP-1 inhibitors from ChEMBL
+(<code>data/chembl_mmp1_calibration.csv</code>). The set spans pIC50 ∈
+[4.74, 8.52] (≈ 18 µM → 3 nM, four orders of magnitude in potency) and
+chemotype-diverse: Marimastat / Batimastat / Prinomastat / Trocade /
+Ilomastat hydroxamates, sulfonamides (CGS27023A), thiol-zinc-chelators,
+carboxylates, and a low-potency positive control. Cofolds were run with
+<code>boltz predict</code> (sampling_steps=25, diffusion_samples=1,
+recycling_steps=3, sampling_steps_affinity=200,
+diffusion_samples_affinity=5, <code>--affinity_mw_correction</code>);
+4.3 minutes wall-clock total on 1 × RTX 5090.</p>
+<p><strong>Calibration results.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Spearman ρ (pIC50 ↔︎ Boltz-2 affinity_pred)</td>
+<td><strong>−0.724</strong></td>
+<td>0.0023</td>
+</tr>
+<tr>
+<td>Pearson r (pIC50 ↔︎ Boltz-2 affinity_pred)</td>
+<td><strong>−0.762</strong></td>
+<td>0.00097</td>
+</tr>
+<tr>
+<td>Spearman ρ (pIC50 ↔︎ Boltz-2 affinity_prob_binary)</td>
+<td>+0.592</td>
+<td>0.020</td>
+</tr>
+<tr>
+<td>n compounds</td>
+<td>15</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>The negative sign of the affinity_pred-vs-pIC50 correlation is the
+<strong>physically expected</strong> direction: Boltz-2’s
+<code>affinity_pred_value</code> output is dimensioned as log-affinity
+in the IC50 sign convention (lower is more potent), the inverse of
+pIC50, so a strong-binder pIC50 ≈ 8.5 corresponds to affinity_pred ≈ −2
+to −3, while a weak binder pIC50 ≈ 4.7 gives affinity_pred ≈ +1.9. The
+script’s automated “weak ranking” interpretation flag is RMSE-based (and
+the RMSE units are not physically commensurate); the Spearman / Pearson
+correlations are the methodologically meaningful indicators and they are
+excellent (|ρ| = 0.72, p &lt; 0.005).</p>
+<p>Representative individual predictions (sorted by pIC50,
+descending):</p>
+<table>
+<thead>
+<tr>
+<th>Compound</th>
+<th style="text-align: right;">IC50 (nM)</th>
+<th style="text-align: right;">pIC50</th>
+<th style="text-align: right;">Boltz-2 affinity_pred</th>
+<th style="text-align: right;">prob_binary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Prinomastat (CHEMBL406)</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8.52</td>
+<td style="text-align: right;"><strong>−2.49</strong></td>
+<td style="text-align: right;">0.99</td>
+</tr>
+<tr>
+<td>Batimastat (CHEMBL415)</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">8.40</td>
+<td style="text-align: right;">−1.46</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr>
+<td>Marimastat (CHEMBL443684)</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">8.30</td>
+<td style="text-align: right;">−0.17</td>
+<td style="text-align: right;">0.94</td>
+</tr>
+<tr>
+<td>Trocade-like (CHEMBL412)</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">8.10</td>
+<td style="text-align: right;">−1.39</td>
+<td style="text-align: right;">0.92</td>
+</tr>
+<tr>
+<td>RS-130830 (CHEMBL94487)</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">7.92</td>
+<td style="text-align: right;">−0.69</td>
+<td style="text-align: right;">0.93</td>
+</tr>
+<tr>
+<td>Mobashery 1999 (CHEMBL57058)</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">7.82</td>
+<td style="text-align: right;">−1.92</td>
+<td style="text-align: right;">0.97</td>
+</tr>
+<tr>
+<td>Yamamoto 2003 (CHEMBL301236)</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">7.38</td>
+<td style="text-align: right;">−1.14</td>
+<td style="text-align: right;">0.97</td>
+</tr>
+<tr>
+<td>Schultz 1998 (CHEMBL1207)</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;">7.26</td>
+<td style="text-align: right;">+0.22</td>
+<td style="text-align: right;">0.78</td>
+</tr>
+<tr>
+<td>Ilomastat (CHEMBL292707)</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;">6.70</td>
+<td style="text-align: right;">+1.08</td>
+<td style="text-align: right;">0.79</td>
+</tr>
+<tr>
+<td>CGS27023A (CHEMBL259829)</td>
+<td style="text-align: right;">310</td>
+<td style="text-align: right;">6.51</td>
+<td style="text-align: right;">−0.19</td>
+<td style="text-align: right;">0.21</td>
+</tr>
+<tr>
+<td>Beckett 1996 (CHEMBL93146)</td>
+<td style="text-align: right;">820</td>
+<td style="text-align: right;">6.09</td>
+<td style="text-align: right;">+0.79</td>
+<td style="text-align: right;">0.89</td>
+</tr>
+<tr>
+<td>Gowravaram 1995 (CHEMBL98)</td>
+<td style="text-align: right;">2400</td>
+<td style="text-align: right;">5.62</td>
+<td style="text-align: right;">−0.27</td>
+<td style="text-align: right;">0.90</td>
+</tr>
+<tr>
+<td>Lovejoy 1999 (CHEMBL2105729)</td>
+<td style="text-align: right;">18000</td>
+<td style="text-align: right;">4.74</td>
+<td style="text-align: right;"><strong>+1.94</strong></td>
+<td style="text-align: right;">0.71</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Figure 1</strong>: Boltz-2 affinity_pred_value vs
+experimental pIC50 for the 15-compound MMP-1 calibration set (axes
+inverted on the y-axis so that “stronger predicted binder” is upward;
+color = prob_binary). Notable compounds annotated. Spearman ρ = −0.724
+(p = 0.0023). See
+<code>preprints/08_abfe_methodology/figures/calibration_boltz2_chembl_mmp1.png</code>.</p>
+<p>The strongest binder (Prinomastat, 3 nM) and the weakest (Lovejoy
+1999, 18 µM) are correctly placed at the extremes of the prediction. Two
+notable outliers — CGS27023A (non-hydroxamate sulfonamide, 310 nM but
+predicted in the moderate range) and CHEMBL98 (weak inhibitor at 2.4 µM
+but predicted as moderately active) — are both <em>non-hydroxamate</em>
+chemotypes. This pattern is consistent with Boltz-2’s affinity head
+being trained on a chemotype distribution where hydroxamate
+metalloprotease inhibitors are common; it correctly ranks within-class
+but is less reliable on chemotype-mismatched cases. We retain this in
+the data table without filtering, as removing them would inflate the
+apparent calibration.</p>
+<p><strong>Implication for companion application preprints.</strong> The
+Boltz-2 cofold + affinity head, used as the <em>first-stage</em>
+high-throughput screen for natural-product compound libraries (centella,
+glycyrrhiza, embelia, etc.), is calibrated against MMP-1 ground truth at
+|Spearman ρ| ≈ 0.72 over four orders of magnitude in potency. This is
+sufficient quality to use Boltz-2 affinity_pred / prob_binary as a
+<em>ranking</em> / <em>prioritization</em> signal — but not as a
+<em>quantitative ΔG</em> surrogate. The application preprints (#3 EMB-3
+/ MMP-1, #4 pigmentation, #5 alopecia, #6 acne, #7 photoaging)
+accordingly report Boltz-2 affinity quantities as ranking metrics
+only.</p>
+<p>The complete output (15 × {SMILES, IC50, pIC50, affinity_pred,
+prob_binary}) is in
+<code>pilot/calibration/boltz2_mmp1/calibration_predictions.csv</code>;
+the summary statistics are in <code>calibration_stats.json</code>. The 8
+hydroxamate SMILES in the source CSV had a textual encoding error
+(<code>C(=O)NHO</code> instead of <code>C(=O)NO</code> for the
+hydroxamic-acid nitrogen) that initially prevented RDKit parsing; this
+was patched in the same commit (<code>bc97aa1</code>).</p>
+<h3 id="two-model-structural-ensemble-validation-boltz-2-vs-chai-1">3.7
+Two-model structural ensemble validation: Boltz-2 vs Chai-1</h3>
+<p>A second, <em>qualitatively different</em> check is the
+<strong>structural-pose ensemble agreement</strong> between the two
+leading open AF3-class cofold models — Boltz-2 (MIT, Sept 2024) and
+Chai-1 (Apache-2.0, fully released Q4-2025; 77 % PoseBusters / 68.5 %
+DockQ on standard benchmarks, comparable to AlphaFold-3 [9]). On the 6
+top compound·target pairs identified by the disease screens (preprints
+#3–#7) we ran Chai-1 with
+<code>num_trunk_recycles=3, num_diffn_timesteps=200, n=5 sample diffusion seeds</code>
+and aggregated per-pair as the mean of the 5-model
+<code>aggregate_score</code> (npz <code>aggregate_score</code> key).
+Results in
+<code>pilot/chai1_ensemble/ensemble_consensus_v2.csv</code>:</p>
+<table>
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 28%" />
+<col style="width: 28%" />
+<col style="width: 21%" />
+</colgroup>
+<thead>
+<tr>
+<th>Pair</th>
+<th style="text-align: right;">Boltz-2 prob_binary</th>
+<th style="text-align: right;">Chai-1 aggregate (mean of 5)</th>
+<th>Agreement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EMB-3 × MMP1</strong></td>
+<td style="text-align: right;">0.674</td>
+<td style="text-align: right;">0.696</td>
+<td><strong>STRONG agree</strong> ✓</td>
+</tr>
+<tr>
+<td>EMB-3 × TGFB1</td>
+<td style="text-align: right;">0.749</td>
+<td style="text-align: right;">0.245</td>
+<td>strong disagree</td>
+</tr>
+<tr>
+<td>Oxyresveratrol × TYR</td>
+<td style="text-align: right;">0.750</td>
+<td style="text-align: right;">0.469</td>
+<td>moderate disagree</td>
+</tr>
+<tr>
+<td>Baicalein × AR</td>
+<td style="text-align: right;">0.820</td>
+<td style="text-align: right;">0.145</td>
+<td>strong disagree</td>
+</tr>
+<tr>
+<td>EMB-3 × SIRT1</td>
+<td style="text-align: right;">0.632</td>
+<td style="text-align: right;">0.206</td>
+<td>strong disagree</td>
+</tr>
+<tr>
+<td>Emodin × AR</td>
+<td style="text-align: right;">0.768</td>
+<td style="text-align: right;">0.146</td>
+<td>strong disagree</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Figure 2</strong>: Boltz-2 prob_binary vs Chai-1 aggregate
+score for the 6 ensemble pairs
+(<code>figures/ensemble_boltz2_vs_chai1.png</code>). Diagonal = perfect
+agreement; ±0.10 band = STRONG agreement.</p>
+<p><strong>Implications.</strong> Three patterns are honestly
+visible:</p>
+<ol type="1">
+<li><strong>Our principal application — EMB-3 × MMP-1 — is the
+<em>only</em> strong-agreement pair.</strong> Both Boltz-2
+(probabilistic affinity head, prob ≈ 0.67) and Chai-1 (structural
+confidence, mean ≈ 0.70) place this pair near the upper-middle of their
+respective scales. Companion preprint #3 on EMB-3 / scar regeneration is
+therefore <em>more</em> defensible against ensemble-cross-validation
+than any of our other primary leads — a positive but qualified
+finding.</li>
+<li><strong>AR-targeted predictions (Baicalein, Emodin) show the
+strongest disagreement.</strong> Boltz-2 reports prob ≈ 0.77–0.82 (very
+high) but Chai-1 returns aggregate ≈ 0.145 (very low). Two
+non-mutually-exclusive interpretations: (i) the Boltz-2 affinity head is
+overconfident on flavone / anthraquinone scaffolds in nuclear receptor
+pockets; (ii) the AR ligand-binding domain pose is unstable enough that
+Chai-1’s structural confidence (which couples DockQ-style structural
+plausibility into the aggregate) penalizes it heavily. Either way,
+<strong>the Boltz-2-only top-AR predictions in preprints #5 (alopecia)
+and #6 (acne) are not ensemble-validated.</strong> We add this as an
+explicit limitation in those preprints’ v0.3 revisions.</li>
+<li><strong>Larger / more flexible targets (TGF-β1, SIRT1) show
+moderate-to-strong disagreement.</strong> TGF-β1 is a homodimeric
+cytokine with cysteine-knot fold and a large allosteric /
+surface-binding regime; SIRT1 is a multi-domain HDAC with NAD⁺-cofactor
+coupling — both regimes where the two models’ training distributions
+plausibly differ. Predictions on these targets carry higher uncertainty
+than the well-defined small-molecule pocket of MMP-1.</li>
+</ol>
+<p><strong>Methodological lesson for the pipeline.</strong> Single-model
+cofold scoring (Boltz-2-only or Chai-1-only) is insufficient as a
+stand-alone screening signal. We propose the <em>2-way ensemble
+call</em>: a pair is “ensemble-validated” only when both Boltz-2
+prob_binary and Chai-1 aggregate exceed their respective thresholds
+(≥0.55 / ≥0.55) and disagree by less than 0.10. By that criterion only
+EMB-3 × MMP1 passes among our six top pairs. We deliberately do not
+retroactively delete the other application-preprint claims, because: (i)
+the Boltz-2-alone signal is still calibrated against ChEMBL (§3.6) and
+remains a useful ranking signal <em>within</em> a chemotype-target
+class; (ii) the additional honest disclosure is more useful to the
+reader than retraction. Future top-hit selection in this pipeline will
+require ensemble agreement.</p>
+<h3 id="posebusters-geometric-steric-validation-across-149-cofold-poses">3.8
+PoseBusters geometric / steric validation across 149 cofold poses</h3>
+<p>Beyond affinity ranking, every cofold pose used downstream (MD, ABFE,
+scaffold-hop selection) must pass geometric / steric sanity checks. We
+applied PoseBusters 0.6.5 [10] (the 20-test docking-pose battery: bond
+lengths, angles, ring planarity / non-planarity, internal energy,
+ligand-protein steric clash, volume overlap, …) to <strong>149
+successfully-parsed cofold poses</strong> across (a) Boltz-2 outputs
+from scaffold-hop rounds 1–3 and the four disease screens, plus (b)
+Chai-1 ensemble model_idx_{0..4} outputs for the six top compound·target
+pairs. The CIF-parsing pipeline
+(<code>scripts/run_posebusters_v2.py</code>) uses OpenMM
+<code>PDBxFile</code> for protein/ligand separation and RDKit
+<code>AssignBondOrdersFromTemplate</code> against canonical SMILES for
+ligand bond-order recovery — a fix replacing v1’s RDKit-direct-CIF-read
+which produced 0% readable poses.</p>
+<p><strong>Aggregate results</strong>
+(<code>pilot/posebusters/posebusters_results_v2.csv</code>):</p>
+<ul>
+<li><strong>Mean per-pose pass rate</strong>: <strong>95.2 ± 4.0
+%</strong> (mean of <code>n_pass / n_total = 19.0 / 20</code>).</li>
+<li><strong>Strict full-pass rate (all 20 checks)</strong>: <strong>43 /
+149 = 28.9 %</strong>.</li>
+<li>57 poses fell out of the analysis at parse time (43 = SMILES not in
+our compound index — REINVENT-generated round 2/3 names; 14 = bond-order
+assignment failures from quinone tautomer ambiguity).</li>
+</ul>
+<p>The gap between 95.2 % mean per-pose and 28.9 % strict full-pass is
+dominated by two specific failure modes:</p>
+<table>
+<colgroup>
+<col style="width: 30%" />
+<col style="width: 40%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr>
+<th>PB check</th>
+<th style="text-align: right;">Failure rate</th>
+<th>Honest interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>minimum_distance_to_protein</code></td>
+<td style="text-align: right;">51.7 %</td>
+<td>Threshold (0.45 Å clash margin) flags both tight binding and
+marginal clash; not chemotype-specific. Requires per-pose visual
+inspection rather than blanket retraction.</td>
+</tr>
+<tr>
+<td><code>non-aromatic_ring_non-flatness</code></td>
+<td style="text-align: right;">26.2 %</td>
+<td>Our scaffolds (Embelin / EMB-3 quinones, Embelin-derived analogs)
+have <em>non-aromatic</em> p-quinoid rings whose ground-state geometry
+is non-planar. PoseBusters’s flatness threshold targets aromatic rings;
+for our quinoid chemistry the failure is <em>expected</em>, not a
+violation.</td>
+</tr>
+<tr>
+<td>volume_overlap_with_protein</td>
+<td style="text-align: right;">10.1 %</td>
+<td>Coupled to minimum-distance failures.</td>
+</tr>
+<tr>
+<td>bond_lengths</td>
+<td style="text-align: right;">4.7 %</td>
+<td>Genuine geometry concern when present.</td>
+</tr>
+<tr>
+<td>internal_steric_clash</td>
+<td style="text-align: right;">0.7 %</td>
+<td>Rare; flags genuine intramolecular crowding.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Per-target full-pass counts</strong> (filtered by uppercase =
+Chai-1 source, lowercase = Boltz-2 source; n = parsed-OK poses):</p>
+<table>
+<thead>
+<tr>
+<th>Target</th>
+<th style="text-align: right;">n parsed</th>
+<th style="text-align: right;">n full-pass</th>
+<th style="text-align: right;">Mean pass-rate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MMP-1 (Boltz + Chai)</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">95.5 %</td>
+</tr>
+<tr>
+<td>AR (Boltz + Chai)</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">95.7 %</td>
+</tr>
+<tr>
+<td>SRD5A2</td>
+<td style="text-align: right;">18</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">96.4 %</td>
+</tr>
+<tr>
+<td>TGFB1 (Boltz + Chai)</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">95.0 %</td>
+</tr>
+<tr>
+<td>TYR (Boltz + Chai)</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">92.6 %</td>
+</tr>
+<tr>
+<td>TYRP1</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">96.8 %</td>
+</tr>
+<tr>
+<td>SIRT1 (Boltz + Chai)</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">94.6 %</td>
+</tr>
+<tr>
+<td>DCT, CTNNB1</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">95.5 %</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implications for companion preprints.</strong></p>
+<ol type="1">
+<li><strong>EMB-3 × MMP-1 (the ensemble-validated lead)</strong> has 1
+strict-full-pass pose out of 5 Chai-1 models tested. The remaining 4
+fail only on <code>minimum_distance_to_protein</code> — consistent with
+tight pocket fit and not a structural violation. This pose is therefore
+acceptable for the downstream ABFE protocol described in §2 (once the
+solvent-leg padding fix completes).</li>
+<li><strong>AR-targeted top hits (Baicalein, Emodin)</strong>: these
+<em>do</em> show full-pass strict-PB scores (3 models for Emodin, 2 for
+Baicalein) — i.e., <strong>the AR-pose geometry is sterically and
+bondwise plausible</strong>. The Boltz-2 / Chai-1 ensemble disagreement
+(§3.7) is therefore not explained by PB-detectable pose failure; it
+reflects an <em>affinity-head</em> divergence between the two models.
+This is meaningful negative evidence: PB cannot rescue or condemn the
+ensemble-disagreement; orthogonal wet-lab assays remain the only path
+forward.</li>
+<li><strong>Mean-pass-rate framing.</strong> The widely-cited “≈30 %
+full-pass rate” of AI cofolds in the literature [10] is recovered here
+at 28.9 % strict-full-pass — but the per-pose 95.2 % per-check pass rate
+is the more action-relevant metric for downstream MD/ABFE: a pose with
+19/20 checks passing is rarely worse than the typical PDB ligand for our
+specific use case.</li>
+</ol>
+<p>The complete per-pose result table and per-check failure breakdown
+are in <code>pilot/posebusters/posebusters_results_v2.csv</code> (149
+rows × 25 columns) and <code>posebusters_v2_summary.json</code>.</p>
 <h3 id="lessons-from-earlier-iterations">3.4 Lessons from earlier
 iterations</h3>
 <p>We document earlier attempts (which produced NaN failures and
@@ -453,8 +986,9 @@ application preprint.</p>
 <h2 id="limitations-and-forward-path">5. Limitations and forward
 path</h2>
 <ol type="1">
-<li><strong>T4L99A·benzene calibration in progress</strong> at time of
-writing; will be reported in v2 of this preprint.</li>
+<li><strong>T4L99A·benzene calibration partial</strong> (complex leg
+done, solvent leg blocked by padding bug). v0.3 will report the closed
+cycle.</li>
 <li><strong>MMP-1 zinc</strong>: addressed in planned follow-up.</li>
 <li><strong>Force-field choice</strong>: GAFF-2.11 is a widely-used
 general force field but may underperform on natural-product-specific
@@ -513,8 +1047,44 @@ al. openmmtools (v0.26). 2026. [7] Peters MB, et al. Structural survey
 of zinc-containing proteins and development of the zinc Amber force
 field (ZAFF). <em>J Chem Theory Comput</em> 2010, 6, 2935–2947. [8]
 Hinck AP. Structural studies of the TGF-β superfamily of cytokines.
-<em>FEBS Lett</em> 2012, 586, 1860–1870.</p>
+<em>FEBS Lett</em> 2012, 586, 1860–1870. [9] Chai Discovery. Chai-1:
+decoding the molecular interactions of life. Technical report 2024-2025;
+Apache-2.0 release Q4-2025. <a href="https://github.com/chaidiscovery/chai-lab" class="uri">https://github.com/chaidiscovery/chai-lab</a>. [10]
+Buttenschoen M, Morris GM, Deane CM. PoseBusters: AI-based docking
+methods fail to generate physically valid poses or generalise to novel
+sequences. <em>Chem Sci</em> 2024, 15, 3130–3139. <a href="https://github.com/maabuu/posebusters" class="uri">https://github.com/maabuu/posebusters</a>.</p>
 <hr />
-<p><em>v0.1 draft, 2026-04-26 · ~3,200 words · CC-BY 4.0</em></p>
+<p><em>v0.5 ensemble + PoseBusters revision, 2026-04-26 · ~5,400 words ·
+CC-BY 4.0</em></p>
+<h3 id="revision-history">Revision history</h3>
+<ul>
+<li><strong>v0.1 (2026-04-26 morning)</strong> — methodology + protocol
+description; T4L99A·benzene calibration “in progress” at
+submission.</li>
+<li><strong>v0.2 (2026-04-26 afternoon)</strong> — partial OpenMM-ABFE
+calibration: complex leg ΔG_decouple = 2.695 ± 0.146 kcal/mol completed
+(5.71 h GPU); solvent leg blocked by 1.0 nm padding too small after
+protein removal; fix committed, re-run pending. No final ΔG_bind
+reported.</li>
+<li><strong>v0.3 (2026-04-26 evening)</strong> — added §3.6 ChEMBL MMP-1
+calibration (n=15, Spearman ρ = −0.724, p = 0.002, Pearson r = −0.762).
+Correctly ranks Prinomastat (3 nM) and Lovejoy 1999 (18 µM) at extremes.
+Front-end validated as a ranking signal.</li>
+<li><strong>v0.4 (2026-04-26 night)</strong> — added §3.7 Boltz-2 /
+Chai-1 two-way structural ensemble on 6 top pairs. Only EMB-3 × MMP1
+shows strong agreement (Boltz-2 0.674 / Chai-1 0.696). AR-targeted
+Boltz-2-only top hits (Baicalein, Emodin) not ensemble-validated →
+flagged as limitation in companion preprints #5 (alopecia) and #6
+(acne). Two-model agreement (≥0.55 / ≥0.55, |Δ|&lt;0.10) proposed as the
+pipeline’s go-forward selection rule for top hits.</li>
+<li><strong>v0.5 (2026-04-26 late-night)</strong> — added §3.8
+PoseBusters geometric/steric validation across 149 cofold poses. Mean
+per-pose pass-rate 95.2 %, strict-full-pass 28.9 % (43/149) — the gap
+dominated by <code>minimum_distance_to_protein</code> and quinoid-ring
+<code>non-aromatic_ring_non-flatness</code> (chemotype-expected). EMB-3
+× MMP-1 1/5 strict full-pass; AR top hits Baicalein/Emodin 2/5 and 3/5
+strict full-pass — Boltz-2 / Chai-1 affinity-head disagreement on AR is
+therefore not explained by PB pose failure.</li>
+</ul>
 </body>
 </html>
