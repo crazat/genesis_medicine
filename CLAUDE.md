@@ -9,11 +9,19 @@
 
 **한약·생약·신물질로 피부 건강과 피부-연계 건강을 개선하는 신약 개발 파이프라인.**
 
-### 포지셔닝
-- 운영 주체: **Recover 한의원** (강남 2026-08 오픈 예정, <https://recover-clinic.kr>) — 한의 피부재생 전문.
-- 핵심 슬로건: "만드는 미용이 아닌, 되돌리는 미용".
-- 기존 무기: 새살침, 체질 한약 처방, 약침, 매선, 고주파/프락셔널, AI 안면 분석.
-- 본 파이프라인의 역할: **임상 경험칙 → 분자 수준 메커니즘 규명 → 신약/외용제 후보 도출**.
+### 포지셔닝 — 3-Pillar 통합 사업 구조 (2026-04-26 확정)
+
+| Entity | 유형 | 역할 |
+|---|---|---|
+| **HAN PREDICT** | 테크 스타트업 (사용자 운영) | AI 의료 디지털 제품 + B2B SaaS (Station Kit, iOS 앱, facial_dx 상업화) |
+| **Recover 한의원** | 한방 의료기관 (강남, 2026-08-15 개원) | 한의 피부재생 임상 vertical, <https://recover-clinic.kr> |
+| **Genesis_Medicine** | R&D Lab (이 코드베이스) | AI in silico 신약 발굴 + 한약 분자 메커니즘 |
+
+- 핵심 슬로건: "만드는 미용이 아닌, 되돌리는 미용" (Recover)
+- 기존 무기: 새살침, 체질 한약 처방, 약침, 매선, 고주파/프락셔널, AI 안면 분석 (HAN PREDICT facial_dx)
+- 본 파이프라인의 역할: **임상 경험칙 → 분자 수준 메커니즘 규명 → 신약/외용제 후보 도출** (Genesis_Medicine)
+- **3-pillar 시너지**: 임상(Recover) → 진단(HAN PREDICT) → 분자(Genesis_Medicine) 통합 데이터 루프
+- **Affiliation 표준** (모든 preprint·peer-review): "Genesis_Medicine Lab, HAN PREDICT, Inc., and Recover Korean Medicine Clinic, Seoul, Republic of Korea"
 
 ### 타겟 질환 (우선순위)
 | 순위 | 질환 | 핵심 분자 타겟 | 대표 한약/천연물 |

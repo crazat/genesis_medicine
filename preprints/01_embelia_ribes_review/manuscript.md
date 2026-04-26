@@ -1,6 +1,13 @@
 # *Embelia ribes* (Vidanga, 자단) revisited: from Ayurvedic-East Asian traditional use to AI-augmented scaffold-hopping for skin fibrosis
 
-**Genesis_Medicine Lab, Recover Korean Medicine Clinic, Seoul, Republic of Korea**
+**Genesis_Medicine Lab ¹, HAN PREDICT, Inc. ², and Recover Korean Medicine Clinic ³**
+*Seoul, Republic of Korea*
+
+¹ AI-driven natural product drug discovery R&D division
+² AI medical-technology startup; facial 3D diagnostics + B2B SaaS platform
+³ Affiliated Korean medicine clinic specializing in skin regeneration (강남, opening 2026-08-15)
+
+Corresponding affiliation: <https://recover-clinic.kr> · code repository: <https://github.com/crazat/genesis_medicine>
 
 **Manuscript type**: Narrative review with computational case study
 **Target preprint server**: bioRxiv (primary), Phytomedicine (peer-review submission)
@@ -48,9 +55,15 @@ Modern pharmacology has documented:
 
 **Critically: no prior peer-reviewed work, to our knowledge, has examined embelin or *E. ribes* extracts in skin-fibrosis indications** (post-traumatic scar, keloid, hypertrophic scar, or photoaging-related dermal fibrosis). This is the gap we begin to address computationally in section 3.
 
-### 1.4 The Recover Korean Medicine Clinic context
+### 1.4 Three-pillar institutional context
 
-The present work is conducted by the **Genesis_Medicine** computational research group affiliated with Recover Korean Medicine Clinic (강남, scheduled opening 2026-08-15), a 한방 clinic specializing in skin regeneration. Recover's clinical mandate (scar revision, keloid management, post-procedural healing) motivated the search for under-investigated natural-product starting points compatible with topical formulation. Embelin's combination of (i) documented anti-fibrotic activity in non-skin tissues, (ii) accessible East Asian traditional-medicine provenance, and (iii) a chemically tractable benzoquinone scaffold made it an attractive candidate for in silico re-evaluation.
+The present work is conducted across three affiliated entities operating as a vertically-integrated Korean medicine technology consortium:
+
+- **Genesis_Medicine Lab** — AI in silico drug-discovery R&D division (this work's primary research host); responsible for the computational pipeline (REINVENT4 + ADMET-AI + Boltz-2 + corrected ABFE) described in Section 4
+- **HAN PREDICT, Inc.** — AI medical-technology startup; developer of a 3D facial-diagnostic Station Kit and iOS / B2B SaaS platform (PIPA §23-2 compliant; AI Basic Act 2026 compliant); IRB-approved 2026-04-27 — provides the digital-imaging and patient-data infrastructure that motivates downstream molecular-prescription needs
+- **Recover Korean Medicine Clinic** — affiliated 한방 clinic specializing in skin regeneration (강남, scheduled opening 2026-08-15); clinical mandate (scar revision, keloid management, post-procedural healing) motivates the search for under-investigated natural-product starting points compatible with topical formulation
+
+Embelin's combination of (i) documented anti-fibrotic activity in non-skin tissues, (ii) accessible East Asian traditional-medicine provenance, and (iii) a chemically tractable benzoquinone scaffold made it an attractive candidate for in silico re-evaluation in this 3-pillar context.
 
 ---
 
@@ -209,15 +222,15 @@ We close by reiterating the most important point: this preprint reports computat
 
 ## Acknowledgments
 
-We thank the Recover Korean Medicine Clinic team for clinical-context discussion. Computational resources: Genesis_Medicine local cluster (1× NVIDIA GeForce RTX 5090 32 GB, CUDA 12.8). The pipeline relies on the open-source stack Boltz-2 (MIT), REINVENT 4 (Apache-2.0), ADMET-AI (MIT), OpenMM 8 (MIT), openmmtools (MIT), RDKit (BSD-3), MACE-OFF24 (MIT). Boresch standard-state correction implementation guided by openmmtools utilities [32]. We acknowledge the open-data resources COCONUT 2.0 (CC0), NPASS 3.0 (CC-BY), and ChEMBL (CC-BY-SA).
+We thank the Recover Korean Medicine Clinic clinical team for clinical-context discussion and the HAN PREDICT engineering team for digital-imaging infrastructure that enabled the 3-pillar workflow. Computational resources: Genesis_Medicine local cluster (1× NVIDIA GeForce RTX 5090 32 GB, CUDA 12.8). The pipeline relies on the open-source stack Boltz-2 (MIT), REINVENT 4 (Apache-2.0), ADMET-AI (MIT), OpenMM 8 (MIT), openmmtools (MIT), RDKit (BSD-3), MACE-OFF24 (MIT). Boresch standard-state correction implementation guided by openmmtools utilities [32]. We acknowledge the open-data resources COCONUT 2.0 (CC0), NPASS 3.0 (CC-BY), and ChEMBL (CC-BY-SA).
 
 ## Author contributions
 
-Genesis_Medicine Lab (computational design and analysis, manuscript drafting). Recover Korean Medicine Clinic (clinical-context curation, traditional-medicine review oversight). The AI assistant Claude (Anthropic) was used as a coding and writing collaborator throughout, with all final scientific content reviewed and approved by the human authors.
+Genesis_Medicine Lab (computational design and analysis, manuscript drafting). HAN PREDICT, Inc. (technology infrastructure, digital-imaging platform integration). Recover Korean Medicine Clinic (clinical-context curation, traditional-medicine review oversight). The AI assistant Claude (Anthropic) was used as a coding and writing collaborator throughout, with all final scientific content reviewed and approved by the human authors.
 
 ## Competing interests
 
-The authors declare no competing financial interests. The Recover Korean Medicine Clinic has commercial interests in skin-regeneration therapies but no IP claim is asserted in this preprint; EMB-3 is disclosed openly without patent priority.
+The authors are co-affiliated with HAN PREDICT, Inc. (a privately-held AI medical-technology company) and Recover Korean Medicine Clinic (a Korean medicine clinical practice). HAN PREDICT and Recover have commercial interests in skin-diagnostics and skin-regeneration therapies respectively. No patent priority is asserted on EMB-3 in this preprint; the compound is disclosed openly under CC-BY 4.0.
 
 ## Data and code availability
 
