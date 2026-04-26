@@ -1,4 +1,4 @@
-# Genesis_Medicine: an open-source AI pipeline for Korean traditional medicine drug discovery — a 50+ tool integrated stack and design philosophy
+# Genesis_Medicine: an open-source AI pipeline for Korean traditional medicine drug discovery — a 7-tool active core + 40+ adapter scaffold catalog with design philosophy
 
 **HanCheongWoo ¹,²,³**
 
@@ -15,7 +15,7 @@ Code: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanp
 
 ## Abstract
 
-Modern AI-driven drug discovery is increasingly built on a heterogeneous stack of open-source tools — generative chemistry (REINVENT, fragment-based), property prediction (ADMET-AI, Chemprop), structure prediction (AlphaFold-3, Boltz-2, Protenix), molecular dynamics (OpenMM, openmmtools), and absolute / relative binding free energy estimation. Specialized application domains require tool selection, integration, and adaptation specific to that domain's data and constraints. We describe **Genesis_Medicine**, an integrated open-source pipeline for **AI-driven Korean traditional medicine (한약·생약) drug discovery**, comprising approximately 50+ tools / modules organized into **12 functional tiers** and exposed through a unified natural-language agent interface. The pipeline supports the complete workflow from natural-product compound curation, generative scaffold-hopping, ADMET filtering, and structure-based virtual screening, through molecular-dynamics validation and corrected absolute binding free energy estimation, to TRIPOD-AI-compliant manuscript reporting. We discuss the design philosophy — including 3-pillar institutional integration with HAN PREDICT, Inc. (AI healthcare platform) and Recover Korean Medicine Clinic; commitment to honest in silico reporting; explicit acknowledgment of method limitations including MMP-1 zinc handling and Boltz-2 binary-classifier vs IC₅₀ distinction. The pipeline is open-source under Apache-2.0 at <https://github.com/crazat/genesis_medicine>.
+Modern AI-driven drug discovery is built on a heterogeneous stack of open-source tools. Specialized application domains require tool selection, integration, and adaptation. We describe **Genesis_Medicine**, an open-source pipeline for **AI-driven Korean traditional medicine (한약·생약) drug discovery**. We honestly distinguish: (i) a **7-tool active core** that produces all real pipeline outputs in this work (Boltz-2 cofold, REINVENT 4 generative, ADMET-AI v2 property prediction, OpenMM 8 + openmmtools alchemical sampling, RDKit chemistry, ChEMBL read-only, Open Targets v4 GraphQL); and (ii) a **40+ adapter scaffold catalog** organized into 12 functional tiers, written as Python modules and exposed through a natural-language agent interface but **not yet actively used in primary pipeline runs** — including AlphaFold-3-class cofold ensemble (Chai-1, Protenix-v2, OpenFold-3), generative SOTA (PocketXMol, FlowMol3, DiffSBDD, TurboHopp), ML potentials (MACE-OFF24, AIMNet2), pose validation (PoseBusters), and specialized adapters (PROTAC designer, chronotherapy, TxGNN repurposing). The active core supports the complete workflow from natural-product curation through corrected ABFE; the adapter scaffold provides ready integration points for prioritized future expansion. We discuss the design philosophy — 3-pillar institutional integration (HAN PREDICT, Inc. AI healthcare platform; Recover Korean Medicine Clinic), commitment to honest in silico reporting, and explicit method limitations including MMP-1 zinc handling and Boltz-2 binary-classifier vs IC₅₀ distinction. The pipeline is open-source under Apache-2.0 at <https://github.com/crazat/genesis_medicine>.
 
 **Keywords**: open-source pipeline, Korean traditional medicine, AI drug discovery, REINVENT4, Boltz-2, ADMET-AI, ABFE, OpenMM, natural products, integrated stack.
 
@@ -56,9 +56,25 @@ We assembled the Genesis_Medicine pipeline with the following goals:
 
 ---
 
-## 2. Pipeline architecture: 12 functional tiers
+## 2. Pipeline architecture: active core + adapter catalog
 
-The Genesis_Medicine codebase organizes approximately 50+ tools / modules into 12 functional tiers. Each tier is exposed as a natural-language tool callable through a ChemCrow-style agent wrapper [1].
+### 2.0 Active core (7 tools, all real outputs)
+
+| Tool | License | Use in this work |
+|---|---|---|
+| **Boltz-2** v0.6.1 | MIT | All cofold + affinity_probability_binary screening (Round 1-3 EMB-3, 4 disease screens, 240+ cofolds) |
+| **REINVENT 4** v4.4 | Apache-2.0 | mol2mol scaffold-hopping (Round 1: Embelin → EMB-3; Round 2/3 on EMB-3 seed) |
+| **ADMET-AI** v2.0.1 | MIT | hERG, Skin_Reaction, AMES, ClinTox, Bioavailability, Solubility (~75 compounds across screens) |
+| **OpenMM 8.5.1 + openmmtools 0.26** | MIT | 10 ns MD validation + 16-window alchemical replica exchange ABFE (T4L99A·benzene calibration + EMB-3 baseline) |
+| **RDKit** 2026.x | BSD-3 | Sanitization, BRICS decomposition, descriptors, Morgan FP |
+| **ChEMBL** v34 | CC-BY-SA | MMP-1 inhibitor calibration set (15 compounds, prepared) |
+| **Open Targets v4 GraphQL** | CC0 | Cross-disease target audit (5 fibrotic indications + 9 anti-fibrotic targets, executed real queries) |
+
+Outputs: all `.csv` and `.json` files in `pilot/` are products of this 7-tool core.
+
+### 2.1 Adapter scaffold catalog (40+ modules)
+
+Tier 0-11 below describe Python modules registered in `agents/all_tiers_tools.py` exposing 70+ natural-language tool dispatches. **These are integration scaffolds**, mostly subprocess/Python wrappers over external open-source tools that have not yet been run in the present pipeline. They are documented here for reproducibility of the integration architecture, not as active capability claims.
 
 ### Tier 0 — Foundation (~7 modules)
 Open-source SOTA stack: Boltz-2 cofold, REINVENT 4 generative, ADMET-AI predictions, RDKit chemistry, OpenMM 8 MD, openmmtools alchemical sampling, MACE-OFF24 ML potential. Standard conda / pip / uv installation under Korean GPU stack (CUDA 12.8, RTX 5090 Blackwell).
