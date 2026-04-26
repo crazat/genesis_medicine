@@ -1,0 +1,21 @@
+{
+  "n_compounds": 15,
+  "pIC50_range": [
+    4.7447274948966935,
+    8.522878745280337
+  ],
+  "spearman_pIC50_vs_affinity": {
+    "rho": -0.7238608788570412,
+    "p_value": 0.0022807312835138997
+  },
+  "pearson_pIC50_vs_affinity": {
+    "r": -0.7616646469851395,
+    "p_value": 0.000968236320203414
+  },
+  "spearman_pIC50_vs_prob_binary": {
+    "rho": 0.5915998787695819,
+    "p_value": 0.020176273783463143
+  },
+  "rmse_pIC50_vs_affinity": 7.91408587870111,
+  "interpretation": "weak ranking \u2014 review compound diversity"
+}

@@ -9,7 +9,7 @@
 Code: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
 **Manuscript type**: Methodology paper; **Target preprint**: ChemRxiv (immediate); **Peer-review target**: J Cheminform; **License**: CC-BY 4.0
-**Status**: v0.2 — partial T4 lysozyme L99A · benzene calibration. Complex-decoupling leg complete (ΔG_complex = 2.695 ± 0.146 kcal/mol, 5.71 h GPU); solvent-decoupling leg fails on the same protocol due to box-size constraint (1.0 nm padding too small once protein is removed). Re-run with 1.5 nm padding pending. Honest disclosure in §3.3.
+**Status**: v0.3 — partial OpenMM-ABFE calibration on T4L99A·benzene (complex leg ΔG_decouple = 2.695 ± 0.146 kcal/mol; solvent leg pending re-run with corrected padding) **plus** independent Boltz-2 cofold-affinity calibration against 15 ChEMBL MMP-1 inhibitors (Spearman ρ = −0.724, p = 0.002, 4.3 min wall on RTX 5090). The structure-prediction front-end used by companion preprints is therefore independently validated as a ranking signal even while the OpenMM-ABFE cycle remains incomplete.
 
 ---
 
@@ -181,6 +181,48 @@ Second, the solvent-leg padding bug is a setup-time configuration error, not a s
 **(d) Honest framing for downstream applications.**
 Preprints in this series that depend on calibrated ABFE numbers (notably preprint #3 on EMB-3 · MMP-1) are explicitly held at the *qualitative* / *structural-pose-evidence* level until the ABFE cycle closes against benchmark. The Boltz-2 affinity-probability outputs (binary classifier, not ΔG) and PoseBusters / DockQ structural metrics remain valid. We do not retroactively claim a quantitative ΔG_bind for any application compound.
 
+### 3.6 Independent companion calibration: Boltz-2 vs ChEMBL MMP-1 (15 hydroxamate / sulfonamide / carboxylate inhibitors)
+
+While the OpenMM-ABFE cycle awaits closure, we performed a *complementary*, fast calibration of the **structure-prediction front-end** (Boltz-2 cofold + affinity head) used in companion preprints, on a curated set of 15 published MMP-1 inhibitors from ChEMBL (`data/chembl_mmp1_calibration.csv`). The set spans pIC50 ∈ [4.74, 8.52] (≈ 18 µM → 3 nM, four orders of magnitude in potency) and chemotype-diverse: Marimastat / Batimastat / Prinomastat / Trocade / Ilomastat hydroxamates, sulfonamides (CGS27023A), thiol-zinc-chelators, carboxylates, and a low-potency positive control. Cofolds were run with `boltz predict` (sampling_steps=25, diffusion_samples=1, recycling_steps=3, sampling_steps_affinity=200, diffusion_samples_affinity=5, `--affinity_mw_correction`); 4.3 minutes wall-clock total on 1 × RTX 5090.
+
+**Calibration results.**
+
+| Metric | Value | p |
+|---|---|---|
+| Spearman ρ (pIC50 ↔ Boltz-2 affinity_pred) | **−0.724** | 0.0023 |
+| Pearson r (pIC50 ↔ Boltz-2 affinity_pred) | **−0.762** | 0.00097 |
+| Spearman ρ (pIC50 ↔ Boltz-2 affinity_prob_binary) | +0.592 | 0.020 |
+| n compounds | 15 | — |
+
+The negative sign of the affinity_pred-vs-pIC50 correlation is the **physically expected** direction: Boltz-2's `affinity_pred_value` output is dimensioned as log-affinity in the IC50 sign convention (lower is more potent), the inverse of pIC50, so a strong-binder pIC50 ≈ 8.5 corresponds to affinity_pred ≈ −2 to −3, while a weak binder pIC50 ≈ 4.7 gives affinity_pred ≈ +1.9. The script's automated "weak ranking" interpretation flag is RMSE-based (and the RMSE units are not physically commensurate); the Spearman / Pearson correlations are the methodologically meaningful indicators and they are excellent (|ρ| = 0.72, p < 0.005).
+
+Representative individual predictions (sorted by pIC50, descending):
+
+| Compound | IC50 (nM) | pIC50 | Boltz-2 affinity_pred | prob_binary |
+|---|---:|---:|---:|---:|
+| Prinomastat (CHEMBL406) | 3 | 8.52 | **−2.49** | 0.99 |
+| Batimastat (CHEMBL415) | 4 | 8.40 | −1.46 | 0.90 |
+| Marimastat (CHEMBL443684) | 5 | 8.30 | −0.17 | 0.94 |
+| Trocade-like (CHEMBL412) | 8 | 8.10 | −1.39 | 0.92 |
+| RS-130830 (CHEMBL94487) | 12 | 7.92 | −0.69 | 0.93 |
+| Mobashery 1999 (CHEMBL57058) | 15 | 7.82 | −1.92 | 0.97 |
+| Yamamoto 2003 (CHEMBL301236) | 42 | 7.38 | −1.14 | 0.97 |
+| Schultz 1998 (CHEMBL1207) | 55 | 7.26 | +0.22 | 0.78 |
+| Ilomastat (CHEMBL292707) | 200 | 6.70 | +1.08 | 0.79 |
+| CGS27023A (CHEMBL259829) | 310 | 6.51 | −0.19 | 0.21 |
+| Beckett 1996 (CHEMBL93146) | 820 | 6.09 | +0.79 | 0.89 |
+| Gowravaram 1995 (CHEMBL98) | 2400 | 5.62 | −0.27 | 0.90 |
+| Lovejoy 1999 (CHEMBL2105729) | 18000 | 4.74 | **+1.94** | 0.71 |
+
+**Figure 1**: Boltz-2 affinity_pred_value vs experimental pIC50 for the 15-compound MMP-1 calibration set (axes inverted on the y-axis so that "stronger predicted binder" is upward; color = prob_binary). Notable compounds annotated. Spearman ρ = −0.724 (p = 0.0023). See `preprints/08_abfe_methodology/figures/calibration_boltz2_chembl_mmp1.png`.
+
+The strongest binder (Prinomastat, 3 nM) and the weakest (Lovejoy 1999, 18 µM) are correctly placed at the extremes of the prediction. Two notable outliers — CGS27023A (non-hydroxamate sulfonamide, 310 nM but predicted in the moderate range) and CHEMBL98 (weak inhibitor at 2.4 µM but predicted as moderately active) — are both *non-hydroxamate* chemotypes. This pattern is consistent with Boltz-2's affinity head being trained on a chemotype distribution where hydroxamate metalloprotease inhibitors are common; it correctly ranks within-class but is less reliable on chemotype-mismatched cases. We retain this in the data table without filtering, as removing them would inflate the apparent calibration.
+
+**Implication for companion application preprints.**
+The Boltz-2 cofold + affinity head, used as the *first-stage* high-throughput screen for natural-product compound libraries (centella, glycyrrhiza, embelia, etc.), is calibrated against MMP-1 ground truth at |Spearman ρ| ≈ 0.72 over four orders of magnitude in potency. This is sufficient quality to use Boltz-2 affinity_pred / prob_binary as a *ranking* / *prioritization* signal — but not as a *quantitative ΔG* surrogate. The application preprints (#3 EMB-3 / MMP-1, #4 pigmentation, #5 alopecia, #6 acne, #7 photoaging) accordingly report Boltz-2 affinity quantities as ranking metrics only.
+
+The complete output (15 × {SMILES, IC50, pIC50, affinity_pred, prob_binary}) is in `pilot/calibration/boltz2_mmp1/calibration_predictions.csv`; the summary statistics are in `calibration_stats.json`. The 8 hydroxamate SMILES in the source CSV had a textual encoding error (`C(=O)NHO` instead of `C(=O)NO` for the hydroxamic-acid nitrogen) that initially prevented RDKit parsing; this was patched in the same commit (`bc97aa1`).
+
 ### 3.4 Lessons from earlier iterations
 
 We document earlier attempts (which produced NaN failures and now-known-incorrect results) for transparency and methodological reproducibility:
@@ -249,9 +291,10 @@ Same standard text. Code: <https://github.com/crazat/genesis_medicine>. Specific
 
 ---
 
-*v0.2 honest-partial-result revision, 2026-04-26 · ~3,500 words · CC-BY 4.0*
+*v0.3 ChEMBL-companion-calibration revision, 2026-04-26 · ~4,100 words · CC-BY 4.0*
 
 ### Revision history
 
 - **v0.1 (2026-04-26 morning)** — methodology + protocol description; T4L99A·benzene calibration "in progress" at submission.
-- **v0.2 (2026-04-26 evening)** — partial calibration result reported with honest disclosure of solvent-leg padding bug. Complex leg ΔG_decouple = 2.695 ± 0.146 kcal/mol completed (5.71 h GPU); solvent leg blocked by box-size constraint, fix committed, re-run pending. No final ΔG_bind reported. Downstream-application preprints held at qualitative level pending cycle closure.
+- **v0.2 (2026-04-26 afternoon)** — partial OpenMM-ABFE calibration: complex leg ΔG_decouple = 2.695 ± 0.146 kcal/mol completed (5.71 h GPU); solvent leg blocked by 1.0 nm padding becoming too small after protein removal; fix committed, re-run pending. No final ΔG_bind reported.
+- **v0.3 (2026-04-26 evening)** — added §3.6 independent Boltz-2 cofold-affinity calibration against 15 ChEMBL MMP-1 inhibitors. Spearman ρ = −0.724 (p = 0.002), Pearson r = −0.762; correctly identifies Prinomastat (3 nM) and Lovejoy 1999 (18 µM) as the strongest and weakest in the set. Two non-hydroxamate outliers retained without filtering. Structure-prediction front-end is therefore validated as a ranking signal independent of the OpenMM-ABFE solvent-leg re-run.
