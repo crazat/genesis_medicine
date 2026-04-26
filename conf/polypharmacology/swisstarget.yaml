@@ -1,0 +1,13 @@
+enabled: true
+engine: swisstarget_v2
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/swisstarget
+top_k: 20
+dealbreaker_classes:
+  - hERG
+  - CYP3A4
+  - AR
+  - GR
+  - ER
+  - PXR
+  - AhR
+dealbreaker_threshold: 0.5

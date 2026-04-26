@@ -1,0 +1,6 @@
+compound,inci_name,kcid_listed,kfda_status,eu_status,annex_restriction,note
+EMB-3,,False,not_listed,not_listed,,NEW chemical entity (in silico-derived). Requires Cosmetic Ingredient Pre-Notification (성분명 공시) under KFDA Article 8 before product launch. Estimated 6-12 month process.
+EGCG,Epigallocatechin Gallate,True,approved,approved,,Camellia Sinensis Leaf Extract is the typical INCI source
+Asiaticoside,Asiaticoside,True,approved,approved,,Established cosmetic active; no concentration limit in standard products
+Berberine,Berberine HCl,True,restricted,approved,,KFDA: cosmetic dose-limited due to staining + hERG flag (our 0.977)
+Curcumin,Curcuma Longa (Turmeric) Root Extract,True,approved,approved,,

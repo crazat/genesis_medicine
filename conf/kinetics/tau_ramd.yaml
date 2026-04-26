@@ -1,0 +1,11 @@
+enabled: true
+engine: tau_ramd
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/tau_ramd
+repo_root: ${oc.env:GENESIS_HOME,${oc.env:HOME}}/tau_ramd
+n_replicas: 30
+force_kcal_mol_A: 14.0
+default_pairs:
+  - [EMB-3, MMP1]
+  - [Asiaticoside, TGFB1]
+  - [EGCG, MMP1]
+  - [Berberine, SRD5A2]

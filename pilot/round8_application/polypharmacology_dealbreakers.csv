@@ -1,0 +1,8 @@
+compound,n_dealbreakers,severity,flags
+berberine,3,high,"{""ER_class"": 0.977, ""hERG_class"": 0.977, ""CYP3A4_class"": 0.85}"
+EGCG,1,moderate,"{""ER_class"": 0.85}"
+curcumin,0,low,{}
+embelin,0,low,{}
+EMB-3,0,low,{}
+asiaticoside,0,low,{}
+baicalein,1,moderate,"{""AR_offtarget"": 0.82}"

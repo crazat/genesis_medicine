@@ -1,0 +1,25 @@
+queried,drug_a,drug_b,severity,mechanism,cyp_or_transporter,description
+berberine|warfarin,berberine,cyclosporine,Major,PK,CYP3A4,Berberine inhibits CYP3A4 → cyclosporine AUC -34% (Wei 2017)
+berberine|warfarin,berberine,warfarin,Major,PK,CYP2C9/3A4,Berberine increases warfarin INR via CYP inhibition
+berberine|warfarin,berberine,statins,Moderate,PK+PD,CYP3A4,Berberine + atorvastatin synergistic LDL ↓ but rhabdomyolysis risk ↑
+berberine|warfarin,EGCG,warfarin,Moderate,PK,vitamin_K,EGCG vitamin K antagonism — warfarin INR variation
+berberine|warfarin,ginsenoside_Rb1,warfarin,Moderate,PK+PD,variable,Ginsenoside variable warfarin INR (Korean 인삼 + 와파린 alert)
+berberine|warfarin,emodin,warfarin,Moderate,PK,CYP2C9,Emodin (하수오) CYP2C9 inhibition → warfarin INR ↑
+EGCG|warfarin,berberine,warfarin,Major,PK,CYP2C9/3A4,Berberine increases warfarin INR via CYP inhibition
+EGCG|warfarin,EGCG,nadolol,Major,PK,OATP1A2,EGCG inhibits OATP1A2 → nadolol AUC -85%
+EGCG|warfarin,EGCG,irinotecan,Major,PK,UGT1A1,EGCG strong UGT1A1 inhibitor → irinotecan toxicity ↑
+EGCG|warfarin,EGCG,warfarin,Moderate,PK,vitamin_K,EGCG vitamin K antagonism — warfarin INR variation
+EGCG|warfarin,ginsenoside_Rb1,warfarin,Moderate,PK+PD,variable,Ginsenoside variable warfarin INR (Korean 인삼 + 와파린 alert)
+EGCG|warfarin,emodin,warfarin,Moderate,PK,CYP2C9,Emodin (하수오) CYP2C9 inhibition → warfarin INR ↑
+EGCG|irinotecan,EGCG,nadolol,Major,PK,OATP1A2,EGCG inhibits OATP1A2 → nadolol AUC -85%
+EGCG|irinotecan,EGCG,irinotecan,Major,PK,UGT1A1,EGCG strong UGT1A1 inhibitor → irinotecan toxicity ↑
+EGCG|irinotecan,EGCG,warfarin,Moderate,PK,vitamin_K,EGCG vitamin K antagonism — warfarin INR variation
+baicalein|rosuvastatin|methotrexate,baicalein,rosuvastatin,Moderate,PK,OATP1B1,Baicalein inhibits OATP1B1 → rosuvastatin AUC ↓
+baicalein|rosuvastatin|methotrexate,baicalein,methotrexate,Major,PK,BCRP,Baicalein BCRP inhibition → methotrexate clearance ↓
+curcumin|tacrolimus,curcumin,tacrolimus,Moderate,PK,CYP3A4/P-gp,Curcumin P-gp + CYP3A4 inhibition → tacrolimus AUC ↑
+curcumin|tacrolimus,curcumin,anticoagulants,Moderate,PD,platelet,Curcumin antiplatelet effect — bleeding risk +
+ginsenoside_Rb1|warfarin,berberine,warfarin,Major,PK,CYP2C9/3A4,Berberine increases warfarin INR via CYP inhibition
+ginsenoside_Rb1|warfarin,EGCG,warfarin,Moderate,PK,vitamin_K,EGCG vitamin K antagonism — warfarin INR variation
+ginsenoside_Rb1|warfarin,ginsenoside_Rb1,warfarin,Moderate,PK+PD,variable,Ginsenoside variable warfarin INR (Korean 인삼 + 와파린 alert)
+ginsenoside_Rb1|warfarin,emodin,warfarin,Moderate,PK,CYP2C9,Emodin (하수오) CYP2C9 inhibition → warfarin INR ↑
+EMB-3|MMP_inhibitors,EMB-3,MMP_inhibitors,Minor,PD,additive,EMB-3 + Marimastat-class additive MMP-1 inhibition (in silico)

@@ -1,0 +1,12 @@
+enabled: true
+engine: topical_formulation_v1
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/formulation
+penetration_enhancer:
+  k: 5
+  exclude_high_irritation: true
+hsp_vehicle:
+  k: 5
+  korean_market_only: true
+kcid_kfda:
+  block_unlisted: true
+  block_banned: true

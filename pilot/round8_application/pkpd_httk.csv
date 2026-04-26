@@ -1,0 +1,6 @@
+compound,dose_mg,cmax_uM,auc_uM_h,half_life_h,clearance_l_h_kg,available,note
+EGCG,200,4.4,21.0,4.5,8.5,True,Chow 2003 + Lee 2002 healthy volunteer PK
+Curcumin,8000,0.05,0.3,2.0,2000.0,True,Notoriously low oral bioavailability (Anand 2007)
+Resveratrol,25,2.0,8.5,9.2,1.2,True,Walle 2004 — extensive sulfation
+Berberine,500,0.1,2.0,27.0,120.0,True,Hua 2007 + low oral F due to P-gp efflux
+EMB-3,50,,,,,False,"EMB-3 in silico-derived; no PK data; Embelin precedent suggests F~0.10, t1/2 ~6h"

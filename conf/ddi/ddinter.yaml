@@ -1,0 +1,15 @@
+enabled: true
+engine: ddinter_2
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/ddinter
+sqlite_path: ${oc.env:GENESIS_CACHE,./.cache}/ddinter/ddinter_2_dump.sqlite
+severity_filter:
+  - Major
+  - Contraindicated
+  - Moderate
+recover_high_concern_drugs:
+  - warfarin
+  - statins
+  - tacrolimus
+  - cyclosporine
+  - methotrexate
+  - isotretinoin

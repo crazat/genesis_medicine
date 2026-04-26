@@ -1,0 +1,9 @@
+enabled: true
+engine: httk_v2
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/httk
+species: human
+default_dose_mg: 50
+hill_dose_response:
+  enabled: true
+  min_points: 4
+  ed50_species_scaling: 0.7

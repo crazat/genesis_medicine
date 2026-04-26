@@ -1,0 +1,61 @@
+compound,target_name,target_class,probability,uniprot
+berberine,KCNH2 (hERG),ion_channel,0.977,Q12809
+berberine,CYP3A4,enzyme,0.85,P08684
+berberine,AMPK,kinase,0.81,Q13131
+berberine,PCSK9,enzyme,0.74,Q8NBP7
+berberine,BACE1,enzyme,0.69,P56817
+berberine,AChE,enzyme,0.68,P22303
+berberine,HMG-CoA Reductase,enzyme,0.65,P04035
+berberine,DNA topoisomerase II,enzyme,0.62,P11388
+berberine,COX-2,enzyme,0.6,P35354
+berberine,MAO-A,enzyme,0.58,P21397
+berberine,CYP2D6,enzyme,0.55,P10635
+berberine,MMP-9,enzyme,0.52,P14780
+EGCG,MMP-9,enzyme,0.91,P14780
+EGCG,MMP-2,enzyme,0.89,P08253
+EGCG,Telomerase (TERT),enzyme,0.85,O14746
+EGCG,Dihydrofolate reductase,enzyme,0.82,P00374
+EGCG,UGT1A1,enzyme,0.78,P22309
+EGCG,EGFR,kinase,0.74,P00533
+EGCG,HER2,kinase,0.71,P04626
+EGCG,GSK-3β,kinase,0.68,P49841
+EGCG,PDK1,kinase,0.65,O15530
+EGCG,OATP1A2,transporter,0.63,P46721
+EGCG,Proteasome 20S,enzyme,0.61,P25786
+EGCG,Tyrosinase (TYR),enzyme,0.58,P14679
+curcumin,NF-κB,transcription_factor,0.88,P19838
+curcumin,COX-2,enzyme,0.86,P35354
+curcumin,STAT3,transcription_factor,0.83,P40763
+curcumin,p300/CBP,epigenetic,0.79,Q09472
+curcumin,HDAC1,epigenetic,0.74,Q13547
+curcumin,VEGF,growth_factor,0.72,P15692
+curcumin,TNF-α,cytokine,0.7,P01375
+curcumin,IL-6,cytokine,0.68,P05231
+curcumin,Cyclin D1,cell_cycle,0.65,P24385
+curcumin,BCL-2,apoptosis,0.62,P10415
+embelin,XIAP,apoptosis,0.94,P98170
+embelin,NF-κB,transcription_factor,0.78,P19838
+embelin,MMP-1,enzyme,0.74,P03956
+embelin,MMP-9,enzyme,0.69,P14780
+embelin,TGF-β1 (Smad),cytokine,0.66,P01137
+embelin,STAT3,transcription_factor,0.62,P40763
+embelin,CTGF,growth_factor,0.58,P29279
+EMB-3,XIAP,apoptosis,0.86,P98170
+EMB-3,MMP-1,enzyme,0.79,P03956
+EMB-3,MMP-9,enzyme,0.71,P14780
+EMB-3,TGF-β1 (Smad),cytokine,0.69,P01137
+EMB-3,CTGF,growth_factor,0.63,P29279
+EMB-3,KCNH2 (hERG),ion_channel,0.16,Q12809
+asiaticoside,TGF-β1,cytokine,0.82,P01137
+asiaticoside,Smad2/3,transcription_factor,0.78,Q15796
+asiaticoside,MMP-1,enzyme,0.71,P03956
+asiaticoside,MMP-9,enzyme,0.69,P14780
+asiaticoside,Collagen I (COL1A1),structural,0.68,P02452
+asiaticoside,Hyaluronidase,enzyme,0.62,Q12794
+baicalein,AR,nuclear_receptor,0.82,P10275
+baicalein,12-Lipoxygenase,enzyme,0.79,P18054
+baicalein,OATP1B1,transporter,0.75,Q9Y6L6
+baicalein,BCRP,transporter,0.72,Q9UNQ0
+baicalein,CYP1A2,enzyme,0.69,P05177
+baicalein,UGT1A1,enzyme,0.66,P22309
+baicalein,MMP-2,enzyme,0.62,P08253

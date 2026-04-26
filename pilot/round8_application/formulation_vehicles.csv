@@ -1,0 +1,16 @@
+compound,vehicle,vehicle_inci,type,RED_distance
+EMB-3,PEG-400,PEG-8,amphiphilic,2.9
+EMB-3,Polysorbate 80,Polysorbate 80,amphiphilic,4.13
+EMB-3,Lecithin (PC),Phosphatidylcholine,amphiphilic,5.11
+EGCG,Hyaluronic acid solution,Sodium Hyaluronate (in water),polar_protic,6.12
+EGCG,Water,Aqua,polar_protic,6.5
+EGCG,Glycerin,Glycerin,polar_protic,7.72
+Asiaticoside,Propylene glycol,Propylene Glycol,polar_protic,2.53
+Asiaticoside,Butylene glycol,Butylene Glycol,polar_protic,4.49
+Asiaticoside,Glycerin,Glycerin,polar_protic,5.46
+Berberine,Caprylic/capric triglyceride,Caprylic/Capric Triglyceride,non_polar,4.09
+Berberine,Isopropyl myristate,Isopropyl Myristate,non_polar,4.09
+Berberine,Polysorbate 80,Polysorbate 80,amphiphilic,5.12
+Curcumin,PEG-400,PEG-8,amphiphilic,3.04
+Curcumin,Polysorbate 80,Polysorbate 80,amphiphilic,4.73
+Curcumin,Lecithin (PC),Phosphatidylcholine,amphiphilic,5.66

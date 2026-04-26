@@ -1,0 +1,2 @@
+compound,target,ic50_uM,hill_slope,r_squared,ed50_estimated_uM,n_points,note
+EMB-3_synthetic,MMP1,0.43831112961243135,1.2400849455256568,0.999893967286123,0.6261587565891877,6,4-parameter Hill fit converged.
