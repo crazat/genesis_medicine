@@ -15,12 +15,16 @@ from .cellaware_gnn_adapter import (
     CellAwareGNNPrediction,
     CellAwareGNNResult,
 )
+from .cmap_l1000_adapter import CMapHit, CMapL1000Adapter, CMapResult
 from .txgnn_adapter import TxGNNAdapter
 
 __all__ = [
     "CellAwareGNNAdapter",
     "CellAwareGNNPrediction",
     "CellAwareGNNResult",
+    "CMapHit",
+    "CMapL1000Adapter",
+    "CMapResult",
     "RepurposingHit",
     "RepurposingRequest",
     "RepurposingResult",

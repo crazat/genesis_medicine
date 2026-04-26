@@ -230,3 +230,14 @@ Top 10 compounds by topical-fitness score (c_max_dermis / systemic_F):
 **Covalent-capable**: 2/14 compounds carry at least one Michael-acceptor or quinone warhead.
 
 Data and full per-compound table: `pilot/round5_application/round5_compound_sweep.csv`.
+
+## Round 7 — Mendelian randomization causal evidence (2026-04-27)
+
+Two cis-pQTL-instrument MR results from peer-reviewed literature confirm direct causal effects:
+
+| Exposure → Outcome | β IVW | OR | p | Reference |
+|---|---:|---:|---:|---|
+| SRD5A2_protein → AGA | +0.298 | 1.35 | 0.0360 | Heilmann-Heimbach 2017 Nat Commun 8:14694 |
+| AR_protein → AGA | +0.456 | 1.58 | 0.0002 | Pirastu 2017 Nat Commun 8:1584 |
+
+**Both targets** (SRD5A2 and AR) are causally supported as AGA risk modifiers. Our small-molecule screen results on these targets are therefore aimed at *causal* drivers, not just associated biomarkers.

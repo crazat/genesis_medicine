@@ -1,0 +1,123 @@
+{
+  "benchmark": "ChEMBL_MMP1_pIC50_n15",
+  "model_name": "boltz2_v2.2.1_genesis_medicine",
+  "submitter": "HanCheongWoo / Genesis_Medicine Lab",
+  "predictions": [
+    {
+      "compound_id": "CHEMBL443684",
+      "smiles": "CC(C)CC(NC(=O)C(NC(=O)C(O)CC(C)C)C(C)(C)C)C(=O)NC",
+      "experimental_pIC50": 8.301029995663981,
+      "predicted_affinity": -0.1663274765014648,
+      "predicted_prob_binary": 0.9429546594619752
+    },
+    {
+      "compound_id": "CHEMBL415",
+      "smiles": "CC(C)CC(NC(=O)C(CC1=CC=CC=C1)NC(=O)C(O)CC(C)C)C(=O)NO",
+      "experimental_pIC50": 8.397940008672037,
+      "predicted_affinity": -1.4640350341796875,
+      "predicted_prob_binary": 0.8961541652679443
+    },
+    {
+      "compound_id": "CHEMBL292707",
+      "smiles": "CC(C)CC(=O)NC(CC(=O)NO)C(=O)N(C)C",
+      "experimental_pIC50": 6.698970004336019,
+      "predicted_affinity": 1.0790929794311523,
+      "predicted_prob_binary": 0.789330244064331
+    },
+    {
+      "compound_id": "CHEMBL259829",
+      "smiles": "CC1=CC2=C(C=C1)N(CC2=O)C1=CC=C(S(=O)(=O)NC(=O)C2=CC=CC=C2)C=C1",
+      "experimental_pIC50": 6.508638306165727,
+      "predicted_affinity": -0.1864824295043945,
+      "predicted_prob_binary": 0.2060419023036956
+    },
+    {
+      "compound_id": "CHEMBL94487",
+      "smiles": "O=C(NO)CC(C(=O)NC(C)c1ccccc1)Cc1ccc(Oc2ccc(F)cc2)cc1",
+      "experimental_pIC50": 7.920818753952375,
+      "predicted_affinity": -0.6945123672485352,
+      "predicted_prob_binary": 0.9344775676727296
+    },
+    {
+      "compound_id": "CHEMBL412",
+      "smiles": "CC(C)C[C@H](NC(=O)[C@H](CC1=CN=CC=C1)NC(=O)[C@H](O)CC(C)C)C(=O)NO",
+      "experimental_pIC50": 8.096910013008056,
+      "predicted_affinity": -1.385942459106445,
+      "predicted_prob_binary": 0.9161624312400818
+    },
+    {
+      "compound_id": "CHEMBL98",
+      "smiles": "CC(C)CC(=O)C1=CC=C(C=C1)S(=O)(=O)NCC(=O)NO",
+      "experimental_pIC50": 5.619788758288394,
+      "predicted_affinity": -0.2713708877563476,
+      "predicted_prob_binary": 0.8969008922576904
+    },
+    {
+      "compound_id": "CHEMBL257077",
+      "smiles": "CC(C)CC(NC(=O)C(NC(=O)C(O)CC(C)C)C(=O)NC)C(=O)NO",
+      "experimental_pIC50": 7.823908740944319,
+      "predicted_affinity": -0.316756010055542,
+      "predicted_prob_binary": 0.9441125392913818
+    },
+    {
+      "compound_id": "CHEMBL406",
+      "smiles": "O=C(NO)C(CCCC1CCCCC1)NS(=O)(=O)C1=CC=C(C=C1)OC1=CC=CC=C1",
+      "experimental_pIC50": 8.522878745280337,
+      "predicted_affinity": -2.49141788482666,
+      "predicted_prob_binary": 0.9911524057388306
+    },
+    {
+      "compound_id": "CHEMBL2105729",
+      "smiles": "CCC(=O)NC(CCCNC(=N)N)C(=O)NO",
+      "experimental_pIC50": 4.7447274948966935,
+      "predicted_affinity": 1.939544677734375,
+      "predicted_prob_binary": 0.7076766490936279
+    },
+    {
+      "compound_id": "CHEMBL93146",
+      "smiles": "O=C(NO)C(C(C)C)CC(=O)NC1CCCCC1",
+      "experimental_pIC50": 6.086186147616283,
+      "predicted_affinity": 0.792823314666748,
+      "predicted_prob_binary": 0.886005163192749
+    },
+    {
+      "compound_id": "CHEMBL3036",
+      "smiles": "O=C(NO)C(CC1=CC=CC=C1)NC(=O)C(C)NC(=O)OCC1=CC=CC=C1",
+      "experimental_pIC50": 7.552841968657781,
+      "predicted_affinity": 0.1484203338623047,
+      "predicted_prob_binary": 0.6399146914482117
+    },
+    {
+      "compound_id": "CHEMBL57058",
+      "smiles": "CC(C)C[C@H](NS(=O)(=O)C1=CC=C(C=C1)C1=CC=CC=C1)C(=O)NO",
+      "experimental_pIC50": 7.823908740944319,
+      "predicted_affinity": -1.915626049041748,
+      "predicted_prob_binary": 0.9695049524307252
+    },
+    {
+      "compound_id": "CHEMBL1207",
+      "smiles": "CC(C)CC(C(=O)NO)Sc1ccc(C(=O)NC2CCCCC2)cc1",
+      "experimental_pIC50": 7.259637310505756,
+      "predicted_affinity": 0.2216274738311767,
+      "predicted_prob_binary": 0.7831386923789978
+    },
+    {
+      "compound_id": "CHEMBL301236",
+      "smiles": "CC(C)C[C@H](NS(=O)(=O)c1ccc(F)cc1)C(=O)NO",
+      "experimental_pIC50": 7.376750709602099,
+      "predicted_affinity": -1.1428337097167969,
+      "predicted_prob_binary": 0.9749274253845216
+    }
+  ],
+  "metrics": {
+    "spearman_rho": -0.7238608788570412,
+    "spearman_p": 0.0022807312835138997,
+    "pearson_r": -0.7616646469851395,
+    "pearson_p": 0.000968236320203414,
+    "n_compounds": 15
+  },
+  "method_description": "Boltz-2 v2.2.1 cofold + affinity_pred head, sampling_steps=25, diffusion_samples=1, recycling_steps=3, sampling_steps_affinity=200, diffusion_samples_affinity=5, --affinity_mw_correction. MMP-1 catalytic domain MSA cached. 15 hydroxamate / sulfonamide / carboxylate inhibitors from ChEMBL spanning pIC50 [4.74, 8.52]. Spearman \u03c1 = -0.724 (p=0.002).",
+  "license": "CC-BY 4.0 (predictions); Apache-2.0 (code)",
+  "code_doi": "https://github.com/crazat/genesis_medicine",
+  "submission_date": "2026-04-27"
+}

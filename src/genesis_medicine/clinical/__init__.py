@@ -18,6 +18,7 @@ from .cro_quote import (
     recommend_assays,
     estimate_total_cost,
 )
+from .medsam_adapter import MedSAMAdapter, ScarMetrics
 
 __all__ = [
     "ClinicalContext",
@@ -27,4 +28,6 @@ __all__ = [
     "AssayCatalogue",
     "recommend_assays",
     "estimate_total_cost",
+    "MedSAMAdapter",
+    "ScarMetrics",
 ]

@@ -17,13 +17,21 @@ from .base import (
 )
 from .bioemu_adapter import BioEmuAdapter
 from .pocket_diversity import compute_pocket_diversity
+from .pocketminer_adapter import (
+    CrypticSite,
+    PocketMinerAdapter,
+    PocketMinerResult,
+)
 
 __all__ = [
     "AlphaFlowAdapter",
     "BioEmuAdapter",
     "ConformerSpec",
+    "CrypticSite",
     "EnsembleProvider",
     "EnsembleRequest",
     "EnsembleResult",
+    "PocketMinerAdapter",
+    "PocketMinerResult",
     "compute_pocket_diversity",
 ]
