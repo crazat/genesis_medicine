@@ -243,3 +243,25 @@ Data and full per-compound table: `pilot/round5_application/round5_compound_swee
 | TYR_protein → cutaneous melanoma | -0.224 | 0.80 | 0.0110 | Landi 2020 Nat Genet 52:494 |
 
 **TYR protein → cutaneous melanoma** OR=0.80 (p=0.011) — protective effect of *higher* TYR expression. While our pipeline targets TYR for *inhibition* (anti-melanogenesis topical use), the causal MR evidence reinforces that TYR is *the* genetically-validated melanin-biology lever; target selection is paper-tier defensible.
+
+## Round 8 — Polypharmacology + KCID regulatory status (2026-04-27)
+
+**Dealbreaker panel** for top 3 pigmentation leads:
+
+| Compound | Severity | Flags | Action |
+|---|---|---|---|
+| Oxyresveratrol | low | none | proceed (subject to ensemble caveat in v0.3) |
+| Glabridin | low | none | proceed |
+| Curcumin | low | none | proceed |
+
+**KCID Korean Cosmetic Ingredient Dictionary status**:
+
+| Compound | INCI name | KCID-listed | KFDA status | EU CosIng |
+|---|---|:-:|---|---|
+| Glabridin | Glabridin | ✓ | approved (미백 기능성 가능) | approved |
+| Curcumin | Curcuma Longa Root Extract | ✓ | approved | approved |
+| Oxyresveratrol | Morus Alba Root Extract | (parent extract listed) | approved (extract) | approved |
+| Hydroquinone | Hydroquinone | ✗ | **banned in cosmetics** | banned (Annex II) |
+| Kojic acid | Kojic Acid | ✓ | approved | restricted (Annex III max 1.0%) |
+
+**Reformulation implication**: All 3 Korean herbal leads (oxyresveratrol, glabridin, curcumin) are KFDA-approved cosmetic actives — **no Pre-Notification delay** for Recover product launch. Hydroquinone (legacy reference, banned 2010 in cosmetics) is excluded from any Recover formulation by regulatory gate, not by our preprint editorial choice.

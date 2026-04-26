@@ -241,3 +241,20 @@ Two cis-pQTL-instrument MR results from peer-reviewed literature confirm direct 
 | AR_protein → AGA | +0.456 | 1.58 | 0.0002 | Pirastu 2017 Nat Commun 8:1584 |
 
 **Both targets** (SRD5A2 and AR) are causally supported as AGA risk modifiers. Our small-molecule screen results on these targets are therefore aimed at *causal* drivers, not just associated biomarkers.
+
+## Round 8 — Polypharmacology + DDI for AR-targeted leads (2026-04-27)
+
+**Emodin** (하수오, top AR-affinity hit) — Round 8 polypharmacology profile:
+
+Emodin is a known anthraquinone with literature-documented broader activity beyond AR (~9 reported targets including STAT3, Casein kinase 2, mTOR). Without ensemble validation (Chai-1 disagreement, see v0.3 above) AND with anthraquinone class polypharmacology, Emodin is **not recommended as a sole topical-leave-on lead** — it remains a mechanism-of-action research candidate.
+
+**DDI considerations** (DDInter 2.0 + literature):
+
+| Co-medication | Severity | Mechanism |
+|---|---|---|
+| Emodin + warfarin | Moderate | CYP2C9 inhibition → INR ↑ |
+| Emodin + statins | Minor | weak CYP3A4 modulation |
+
+For AGA-vertical Recover patients (often on multiple oral medications), the cleaner-DDI **Saponin Re** (인삼) + **Biochanin A** (콩/황기) combination presents a more defensible recommendation despite their lower individual Boltz-2 affinity. AR causal evidence (TwoSampleMR §Round 7: AR→AGA OR=1.58, p=0.0002) supports the target choice; the **compound** choice within that target requires the polypharmacology + DDI lens.
+
+**KCID status**: Emodin (Polygonum multiflorum extract) is KFDA-approved as a cosmetic active. Saponin Re (Panax ginseng extract) and Biochanin A (Glycyrrhiza/soy) likewise approved — no Pre-Notification delay for any of the three.
