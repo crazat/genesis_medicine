@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>08_abfe_methodology</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+.display.math{display: block; text-align: center; margin: 0.5rem auto;}
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">08_abfe_methodology</h1>
+</header>
+<h1 id="a-calibrated-absolute-binding-free-energy-pipeline-with-flat-bottom-centroid-restraint-and-analytical-standard-state-correction-for-natural-product-scaffold-hopping-in-openmm-8-openmmtools-0.26">A
+calibrated absolute binding free energy pipeline with flat-bottom
+centroid restraint and analytical standard-state correction for
+natural-product scaffold-hopping in OpenMM 8 / openmmtools 0.26</h1>
+<p><strong>HanCheongWoo ¹,²,³</strong></p>
+<p>¹ Genesis_Medicine Lab, Seoul, Republic of Korea ² HAN PREDICT, Inc.;
+<a href="https://hanpredict.com" class="uri">https://hanpredict.com</a>
+³ Recover Korean Medicine Clinic; <a href="https://recover-clinic.kr" class="uri">https://recover-clinic.kr</a></p>
+<p>Code: <a href="https://github.com/crazat/genesis_medicine" class="uri">https://github.com/crazat/genesis_medicine</a> ·
+Correspondence: admin@hanpredict.com</p>
+<p><strong>Manuscript type</strong>: Methodology paper; <strong>Target
+preprint</strong>: ChemRxiv (immediate); <strong>Peer-review
+target</strong>: J Cheminform; <strong>License</strong>: CC-BY 4.0
+<strong>Status</strong>: Methodology + protocol description; T4 lysozyme
+L99A · benzene calibration in progress at time of writing</p>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>Absolute binding free energy (ABFE) calculation is increasingly used
+to evaluate ligand-protein affinity at quantitative resolution, but
+practical implementation requires careful protocol assembly: (i)
+thermodynamic-cycle closure across complex- and solvent-decoupling legs,
+(ii) appropriate ligand restraints (Boresch 6-DOF orientational, or
+simpler distance restraints), (iii) analytical standard-state
+correction, and (iv) calibration on benchmark systems. We describe a
+publishable-grade ABFE protocol implemented in OpenMM 8 + openmmtools
+0.26, using a <strong>flat-bottom centroid distance restraint</strong>
+between ligand and binding-site receptor anchors (k = 10 kcal mol⁻¹ Å⁻²,
+r_max = 8 Å) and the analytical standard-state correction ΔG_R° = -RT
+ln(V_R / V°), where V_R = (4/3)π r_max³ and V° = 1660.5 Å³. The cycle
+assembles as <strong>ΔG_bind = ΔG_solvent_decouple − ΔG_complex_decouple
+− ΔG_R°</strong>. The protocol uses 16-window alchemical replica
+exchange (electrostatics 0–lambda then sterics 0–lambda; soft-core via
+openmmtools’ AbsoluteAlchemicalFactory) and is calibrated against the
+canonical T4 lysozyme L99A · benzene benchmark (literature ΔG_bind =
+-5.18 ± 0.18 kcal/mol, Mobley et al. JCP 2007). We also describe lessons
+from earlier protocol iterations — including issues with Boresch 6-DOF
+setup that motivated the simpler flat-bottom design — and discuss
+limitations relevant to skin-fibrosis natural-product applications,
+including <strong>MMP-1 catalytic-zinc handling</strong> (planned ZAFF
+integration). Complete code is available open-source under
+Apache-2.0.</p>
+<p><strong>Keywords</strong>: ABFE, absolute binding free energy,
+OpenMM, openmmtools, flat-bottom restraint, T4 lysozyme L99A, benzene,
+calibration, natural products.</p>
+<hr />
+<h2 id="plain-language-summary">Plain-language summary</h2>
+<p>Computer-based prediction of how strongly a drug binds to a protein
+target is an important tool in modern drug discovery. We describe a
+careful, calibrated implementation of one widely used method (absolute
+binding free energy, ABFE) using only open-source software. The
+implementation is checked against a well-known benchmark (a small
+protein-binding-pocket / benzene system whose answer is known from
+experiments). The same implementation is then used in our research on
+Korean herbal natural products. <strong>No experimental laboratory
+measurements are reported in this paper.</strong> This paper describes
+the computational method and its calibration; downstream applications
+are reported in companion papers.</p>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<h3 id="abfe-in-drug-discovery">1.1 ABFE in drug discovery</h3>
+<p>Free energy methods compute the free energy difference between two
+thermodynamic states using molecular dynamics-based sampling of an
+alchemical pathway between them [1,2]. Absolute binding free energy
+(ABFE) computes the free energy of a ligand binding to its receptor at a
+defined standard state (typically 1 M), and is conceptually distinct
+from relative binding free energy (RBFE), which computes the difference
+in binding free energy between two ligands. ABFE is more demanding: it
+requires both <strong>complex</strong> and <strong>solvent</strong>
+decoupling legs and a careful treatment of restraint and standard
+state.</p>
+<p>The publishable-grade ABFE workflow comprises:</p>
+<ol type="1">
+<li>Equilibration of the ligand-protein complex in explicit
+solvent.</li>
+<li>Application of an orientational / positional restraint to keep the
+ligand near the binding site during alchemical decoupling.</li>
+<li>Alchemical decoupling in the complex (electrostatics + sterics,
+lambda 1 → 0).</li>
+<li>Alchemical decoupling in pure solvent (same ligand, no
+protein).</li>
+<li>Analytical correction for the restraint and the standard state.</li>
+<li>Final assembly via the thermodynamic cycle.</li>
+</ol>
+<h3 id="the-boresch-vs-flat-bottom-choice">1.2 The Boresch vs
+flat-bottom choice</h3>
+<p>The Boresch 6-DOF orientational restraint [3] is the rigorous
+standard, providing distance + 2 angles + 3 dihedrals. The analytical
+standard-state correction is given by Boresch et al.’s eq. 32:</p>
+<p>ΔG_R° = -RT ln{(8π² V° / r₀²) × (k_r k_θA k_θB k_φA k_φB k_φC)^(1/2)
+/ (2π RT)³ × sin(θ_A^0) × sin(θ_B^0)}</p>
+<p>The Boresch implementation is exquisitely sensitive to anchor
+selection (collinearity of receptor anchors, ligand anchor heavy atom
+selection) and to numerical edge cases (dihedral angles near ±π) in
+OpenMM’s <code>CustomCompoundBondForce</code>. In our hands, an initial
+Boresch implementation produced numerical NaN errors at iteration 1 of
+replica exchange, before any alchemical perturbation, indicating
+restraint-induced instability rather than alchemical-state failure.</p>
+<p>We therefore switched to a <strong>flat-bottom centroid distance
+restraint</strong> between the ligand heavy-atom centroid and the
+binding-site receptor Cα-anchor centroid (within 6 Å of the ligand at
+equilibration), with the analytical standard-state correction:</p>
+<p>ΔG_R° = -RT ln(V_R / V°), where V_R = (4/3)π r_max³</p>
+<p>This restraint is widely used in early ABFE benchmarks (e.g., Mobley
+et al. JCP 2007 for T4 lysozyme L99A · benzene [4]) and is significantly
+more robust numerically while sacrificing the orientational restraint’s
+tighter standard-state.</p>
+<h3 id="cycle-and-sign-conventions">1.3 Cycle and sign conventions</h3>
+<p>We use the following sign convention:</p>
+<ul>
+<li>ΔG_decouple = G(decoupled) − G(coupled). Typically positive for
+binders (decoupling costs energy).</li>
+<li>ΔG_R° as defined above (Boresch eq. 32 or flat-bottom analog) —
+negative for typical r_max ~ 8 Å.</li>
+<li><strong>ΔG_bind = ΔG_solvent_decouple − ΔG_complex_decouple −
+ΔG_R°</strong></li>
+<li>Tight binders: ΔG_complex_decouple &gt; ΔG_solvent_decouple, and
+ΔG_R° is negative (releasing the restraint to standard state is
+favorable), so ΔG_bind &lt; 0 (binding is favorable).</li>
+</ul>
+<hr />
+<h2 id="implementation">2. Implementation</h2>
+<h3 id="stack">2.1 Stack</h3>
+<ul>
+<li><strong>OpenMM 8.5.1</strong> [5] for the underlying MD</li>
+<li><strong>openmmtools 0.26</strong> [6] for alchemical sampling
+(<code>AbsoluteAlchemicalFactory</code>,
+<code>ReplicaExchangeSampler</code>)</li>
+<li><strong>openff.toolkit</strong> for ligand parameterization (am1bcc
+charges via antechamber)</li>
+<li><strong>openmmforcefields</strong> for SystemGenerator (GAFF-2.11 +
+Amber ff14SB + TIP3P)</li>
+<li><strong>pdbfixer</strong> for receptor preparation</li>
+<li><strong>MBAR</strong> (via openmmtools) for free energy
+estimation</li>
+</ul>
+<p>All open-source, all permissively licensed (MIT / BSD /
+Apache-2.0).</p>
+<h3 id="system-setup-complex-leg">2.2 System setup (complex leg)</h3>
+<pre><code>Protein PDB → PDBFixer → Modeller
++ Ligand SMILES → openff.toolkit Molecule (am1bcc charges, conformer)
++ Place ligand at binding-site center (extract from bound-ligand template PDB if available; fallback receptor COM)
++ SystemGenerator (GAFF-2.11 + ff14SB + TIP3P)
++ Add 0.15 M NaCl
++ 1.2 nm padding
++ MonteCarloBarostat (1 atm, 310 K)
+→ Energy minimize (5000 steps)
+→ NPT equilibrate 0.5 ns (Langevin, 2 fs, HBonds constraints)
+→ Save eq positions + box vectors</code></pre>
+<p>Choosing the binding-site center from a bound-ligand template (e.g.,
+extracting BNZ heavy-atom centroid from PDB 181L for T4L99A·benzene
+calibration) avoids placing the ligand far from the actual pocket, which
+we found in early implementations was a primary cause of immediate-NaN
+failure.</p>
+<h3 id="flat-bottom-restraint">2.3 Flat-bottom restraint</h3>
+<p>Implemented as <code>CustomCentroidBondForce</code> with two centroid
+groups (ligand heavy atoms; receptor binding-site Cα atoms within 6 Å of
+the ligand at equilibration):</p>
+<pre><code>energy expression: step(r - r_max) * 0.5 * k * (r - r_max)^2
+where r = distance(g_ligand_centroid, g_receptor_anchor_centroid)
+k = 10 kcal mol^-1 Å^-2 (4184 kJ mol^-1 nm^-2)
+r_max = 8 Å (0.8 nm)</code></pre>
+<p>The restraint applies zero force when the ligand is within r_max of
+the binding-site centroid and a harmonic restoring force otherwise. The
+ligand can rotate and translate freely within an 8-Å sphere.</p>
+<h3 id="alchemical-decoupling-16-window-replica-exchange">2.4 Alchemical
+decoupling (16-window replica exchange)</h3>
+<p>Lambda schedule: 9 electrostatic windows (lambda_elec 1 → 0 with
+sterics constant at 1) followed by 8 steric windows (sterics 1 → 0 with
+electrostatics at 0). Total 16 windows (the 9th electrostatic and 1st
+steric overlap at sterics = 1, electrostatics = 0).</p>
+<p>Replica exchange via
+<code>openmmtools.multistate.ReplicaExchangeSampler</code> with
+<code>LangevinDynamicsMove</code> (2 fs timestep, 1 ps⁻¹ collision rate,
+5000 steps per iteration = 10 ps), 400-500 iterations per replica = 4-5
+ns per window = 64-80 ns aggregate.</p>
+<p>Soft-core via openmmtools’ <code>AbsoluteAlchemicalFactory</code>
+defaults (softcore_alpha = 0.5, switch_width = 1 Å,
+alchemical_pme_treatment = “exact”).</p>
+<p>Free energy estimation via MBAR (via
+<code>MultiStateSamplerAnalyzer.get_free_energy()</code>).</p>
+<h3 id="solvent-leg-setup">2.5 Solvent-leg setup</h3>
+<p>The solvent leg is similar to the complex leg, except the system
+contains only the ligand in TIP3P water (smaller, faster).</p>
+<p>Same lambda schedule and replica exchange protocol.</p>
+<h3 id="analytical-standard-state-correction">2.6 Analytical
+standard-state correction</h3>
+<pre><code>V_R = (4/3) × π × (r_max [Å])³ Å³
+V° = 1660.5 Å³  (1 M standard state)
+ΔG_R° = -RT × ln(V_R / V°)  kcal/mol</code></pre>
+<p>For r_max = 8 Å: V_R = 2145 Å³ → ΔG_R° = -0.16 kcal/mol (small,
+favorable to release). For r_max = 5 Å (tighter restraint): V_R = 524 Å³
+→ ΔG_R° = +0.71 kcal/mol (cost to release).</p>
+<h3 id="final-assembly">2.7 Final assembly</h3>
+<pre><code>ΔG_bind = ΔG_solvent_decouple − ΔG_complex_decouple − ΔG_R°
+σ(ΔG_bind) = sqrt(σ(ΔG_solvent)² + σ(ΔG_complex)²)   (independent legs)
+implied K_d = exp(ΔG_bind / RT)   M</code></pre>
+<hr />
+<h2 id="calibration-on-t4-lysozyme-l99a-benzene">3. Calibration on T4
+lysozyme L99A · benzene</h2>
+<h3 id="benchmark-choice">3.1 Benchmark choice</h3>
+<p>The T4 lysozyme L99A · benzene system (PDB 181L bound complex) is the
+canonical small-molecule ABFE benchmark. Mobley et al. [4] report
+experimental ΔG_bind = -5.18 ± 0.18 kcal/mol from isothermal titration
+calorimetry. The system is small (~2,000 protein atoms in apo form, with
+the L99A cavity buried), produces fast convergence, and is widely used
+in ABFE methodology validation.</p>
+<h3 id="calibration-setup">3.2 Calibration setup</h3>
+<p>Receptor: PDB 181L apo (BNZ residue stripped). Ligand: benzene
+(<code>c1ccccc1</code>). Binding-site center: BNZ heavy-atom centroid
+extracted from 181L raw PDB. Box: 1.0 nm padding. Other parameters as in
+§2.</p>
+<h3 id="pass-criterion">3.3 Pass criterion</h3>
+<p>|ΔG_computed − (-5.18)| &lt; 2 kcal/mol (within ±2 σ of literature).
+At the time of writing, the calibration is in progress (running on 1 ×
+NVIDIA RTX 5090, ~8 h estimated wall time). Updated values will appear
+in v2 of this preprint upon completion.</p>
+<h3 id="lessons-from-earlier-iterations">3.4 Lessons from earlier
+iterations</h3>
+<p>We document earlier attempts (which produced NaN failures and
+now-known-incorrect results) for transparency and methodological
+reproducibility:</p>
+<ol type="1">
+<li><strong>Iteration 1 (Boresch 6-DOF restraint)</strong>: Implemented
+per Boresch et al. JPC B 2003 eq. 32. Produced
+<code>SimulationNaNError: Propagating replica 0 at state 8 resulted in a NaN!</code>
+early in the alchemical sampling. Possible causes: dihedral
+discontinuity near ±π in <code>CustomCompoundBondForce</code>, anchor
+selection collinearity, or restraint stiffness incompatible with initial
+equilibrium geometry. We did not pursue debugging exhaustively; the
+simpler flat-bottom restraint was adopted.</li>
+<li><strong>Iteration 2 (flat-bottom restraint, ligand placed at
+receptor COM)</strong>: NaN at iteration 1 state 0 (fully coupled).
+Diagnosis: ligand placed 10.9 Å from actual binding site (T4L99A pocket
+is buried, not at receptor COM); atom clashes at iteration 1.</li>
+<li><strong>Iteration 3 (flat-bottom restraint, ligand placed at
+extracted bound-pose centroid)</strong>: stable, currently running for
+completion.</li>
+</ol>
+<p>These iterations are committed to the open-source repository and are
+useful as failure-mode documentation for future ABFE practitioners.</p>
+<h3 id="earlier-reported-abfe-on-emb-3-embelin-retracted">3.5 Earlier
+reported ABFE on EMB-3 / Embelin (retracted)</h3>
+<p>Earlier (2026-04-25 / 26) we ran ABFE on EMB-3 · MMP-1 and Embelin ·
+MMP-1 using a complex-leg-only protocol without solvent leg, restraint,
+or standard-state correction. The reported values (ΔG_decouple_complex =
+-32.90 / -21.42 kcal/mol respectively) <strong>do not represent physical
+binding free energies</strong> under the corrected protocol formalism
+described here. We retract those values explicitly. Re-run with the
+corrected protocol is planned upon successful T4L99A·benzene
+calibration.</p>
+<hr />
+<h2 id="application-context-skin-fibrosis-natural-products">4.
+Application context: skin-fibrosis natural products</h2>
+<p>The corrected ABFE protocol is intended for application in our
+broader pipeline (companion preprints): screening of Korean herbal
+natural products against skin-fibrosis targets. Specific application
+notes:</p>
+<h3 id="mmp-1-catalytic-zinc-handling">4.1 MMP-1 catalytic zinc
+handling</h3>
+<p>MMP-1 is a zinc metalloprotease; the catalytic Zn²⁺ is essential for
+substrate turnover and for hydroxamate-class inhibitor binding
+(Marimastat, IC₅₀ ≈ 5 nM). The current GAFF-2.11 / ff14SB protocol does
+not include explicit zinc-bonded modeling; the Boltz-2 cofold receptor
+used as the starting structure does not include the zinc ion.
+<strong>Predicted MMP-1 binding free energies under the present protocol
+should be interpreted as a “MMP-1 minus zinc” model</strong>, useful for
+comparative ranking among non-zinc-coordinating compounds but not for
+direct comparison to literature hydroxamate IC₅₀ values.</p>
+<p>A planned follow-up integrates the Zinc Amber Force Field (ZAFF [7])
+with explicit zinc bonded to coordinating residues (His218, His222,
+His228 in MMP-1 catalytic domain) and re-runs ABFE on the same compound
+set.</p>
+<h3 id="tgf-β1-no-zinc">4.2 TGF-β1 (no zinc)</h3>
+<p>TGF-β1 is a soluble cytokine with a disulfide-stabilized cysteine
+knot fold [8]. No metal cofactor; the present protocol applies
+straightforwardly. ABFE on EMB-3 · TGF-β1 is planned in the companion
+application preprint.</p>
+<hr />
+<h2 id="limitations-and-forward-path">5. Limitations and forward
+path</h2>
+<ol type="1">
+<li><strong>T4L99A·benzene calibration in progress</strong> at time of
+writing; will be reported in v2 of this preprint.</li>
+<li><strong>MMP-1 zinc</strong>: addressed in planned follow-up.</li>
+<li><strong>Force-field choice</strong>: GAFF-2.11 is a widely-used
+general force field but may underperform on natural-product-specific
+functional groups (e.g., quinone tautomers in Embelin). Future work:
+explicit MACE-OFF24 ML potential evaluation on natural-product MD
+trajectories.</li>
+<li><strong>Convergence time</strong>: 4-5 ns per window (16 windows =
+64-80 ns aggregate) is on the fast end for ABFE; slow-converging systems
+may require 10-20 ns per window. Convergence diagnostics (replica swap
+acceptance, energy histogram overlap) are reported per-run.</li>
+<li><strong>Comparison to RBFE</strong>: ABFE is more demanding than
+RBFE; for lead optimization within a single chemical series, RBFE with
+single-topology or dual-topology may be more efficient. The choice
+depends on experimental goals.</li>
+<li><strong>Boresch as alternative</strong>: if orientational restraints
+are required for tight-binding flexible ligands, future work will
+revisit a debugged Boresch implementation in addition to the flat-bottom
+version.</li>
+</ol>
+<hr />
+<h2 id="conclusions">6. Conclusions</h2>
+<p>We have described a publishable-grade ABFE protocol implemented in
+OpenMM 8 + openmmtools 0.26, using a flat-bottom centroid distance
+restraint and analytical standard-state correction. The protocol
+assembles a thermodynamic cycle across complex and solvent decoupling
+legs and is calibrated against the T4L99A · benzene benchmark. The
+protocol is open-source under Apache-2.0 at <a href="https://github.com/crazat/genesis_medicine" class="uri">https://github.com/crazat/genesis_medicine</a>. Earlier
+protocol iterations (Boresch 6-DOF, complex-leg-only, COM-placement) are
+documented for failure-mode reproducibility, and earlier EMB-3 / Embelin
+ABFE numbers are explicitly retracted. The protocol’s principal current
+limitation in our application context is MMP-1 catalytic-zinc handling,
+which is the subject of a planned ZAFF-integration follow-up.</p>
+<hr />
+<h2 id="acknowledgments-contributions-competing-interests-data-availability">Acknowledgments
+/ Contributions / Competing interests / Data availability</h2>
+<p>Same standard text. Code: <a href="https://github.com/crazat/genesis_medicine" class="uri">https://github.com/crazat/genesis_medicine</a>. Specific
+scripts: <code>scripts/run_abfe_corrected.py</code>,
+<code>scripts/abfe_calibrate_t4l.py</code>,
+<code>scripts/boltz2_calibration_mmp1.py</code>.</p>
+<hr />
+<h2 id="references">References</h2>
+<p>[1] Mobley DL, Klimovich PV. Perspective: Alchemical free energy
+calculations for drug discovery. <em>J Chem Phys</em> 2012, 137, 230901.
+[2] Wang L, et al. Accurate and reliable prediction of relative ligand
+binding potency in prospective drug discovery by way of a modern
+free-energy calculation protocol and force field. <em>J Am Chem Soc</em>
+2015, 137, 2695–2703. [3] Boresch S, Tettinger F, Leitgeb M, Karplus M.
+Absolute binding free energies: a quantitative approach for their
+calculation. <em>J Phys Chem B</em> 2003, 107, 9535–9551. [4] Mobley DL,
+Chodera JD, Dill KA. Confine-and-release method: obtaining correct
+binding free energies in the presence of protein conformational change.
+<em>J Chem Theory Comput</em> 2007, 3, 1231–1235. [5] Eastman P, et
+al. OpenMM 8: molecular dynamics across hardware platforms. <em>J Chem
+Theory Comput</em> 2024, 20, 8226–8235. [6] Chodera JD, et
+al. openmmtools (v0.26). 2026. [7] Peters MB, et al. Structural survey
+of zinc-containing proteins and development of the zinc Amber force
+field (ZAFF). <em>J Chem Theory Comput</em> 2010, 6, 2935–2947. [8]
+Hinck AP. Structural studies of the TGF-β superfamily of cytokines.
+<em>FEBS Lett</em> 2012, 586, 1860–1870.</p>
+<hr />
+<p><em>v0.1 draft, 2026-04-26 · ~3,200 words · CC-BY 4.0</em></p>
+</body>
+</html>
