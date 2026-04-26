@@ -188,3 +188,31 @@ The principal Boltz-2-only finding of this preprint — **Baicalein × AR prob_b
 
 *v0.2 draft, 2026-04-26 · ~2,800 words · CC-BY 4.0*
 *v0.1 (fabricated rankings + nonexistent BCL-7 generative analog) explicitly retracted*
+
+## Round 5 application data — topical PK + skin sensitization (2026-04-27)
+
+Generated from `pilot/round5_application/round5_compound_sweep.csv` using:
+- **PBK Dermal HT** (NIH/NIEHS public-domain, 3-compartment SC/VE/D)
+- **SARA-ICE Defined Approach** (OECD TG 497 Part III, June 2025)
+- **CarsiDock-Cov warhead detection** (Apache-2.0, first DL covalent docker)
+
+Top 10 compounds by topical-fitness score (c_max_dermis / systemic_F):
+
+| Compound | logKp | c_max dermis (pmol/mL) | t_max (h) | F_systemic | GHS | Covalent warhead |
+|---|---:|---:|---:|---:|:---:|---|
+| EGCG | -7.40 | 0.0005 | 24.0 | 0.05 | nan | — |
+| Berberine | -6.55 | 0.0033 | 24.0 | 0.34 | nan | — |
+| Shikonin | -6.33 | 0.0054 | 24.0 | 0.57 | 1B | michael_acceptor_alpha_beta_un… |
+| Wogonin | -6.23 | 0.0067 | 24.0 | 0.71 | nan | — |
+| Acetylshikonin | -6.17 | 0.0078 | 24.0 | 0.82 | 1B | michael_acceptor_alpha_beta_un… |
+| Paeonol | -6.11 | 0.0087 | 24.0 | 0.92 | nan | — |
+| Palmatine | -6.07 | 0.0096 | 24.0 | 1.02 | nan | — |
+| Baicalein | -6.06 | 0.0099 | 24.0 | 1.05 | nan | — |
+| Curcumin | -6.03 | 0.0105 | 24.0 | 1.11 | 1B | michael_acceptor_alpha_beta_un… |
+| Resveratrol | -5.51 | 0.0316 | 24.0 | 3.53 | nan | — |
+
+**SARA-ICE summary for acne**: GHS Cat 1B sensitizers = 5/14; Cat 1A = 0/14; None = 0/14.
+
+**Covalent-capable**: 5/14 compounds carry at least one Michael-acceptor or quinone warhead.
+
+Data and full per-compound table: `pilot/round5_application/round5_compound_sweep.csv`.

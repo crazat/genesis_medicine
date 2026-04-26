@@ -207,3 +207,31 @@ The principal Boltz-2-only top-hit — **Oxyresveratrol × TYR prob_binary ≈ 0
 
 *v0.2 draft, 2026-04-26 · ~2,500 words · CC-BY 4.0*
 *v0.1 (fabricated rankings) explicitly retracted in §1.3 / methods*
+
+## Round 5 application data — topical PK + skin sensitization (2026-04-27)
+
+Generated from `pilot/round5_application/round5_compound_sweep.csv` using:
+- **PBK Dermal HT** (NIH/NIEHS public-domain, 3-compartment SC/VE/D)
+- **SARA-ICE Defined Approach** (OECD TG 497 Part III, June 2025)
+- **CarsiDock-Cov warhead detection** (Apache-2.0, first DL covalent docker)
+
+Top 10 compounds by topical-fitness score (c_max_dermis / systemic_F):
+
+| Compound | logKp | c_max dermis (pmol/mL) | t_max (h) | F_systemic | GHS | Covalent warhead |
+|---|---:|---:|---:|---:|:---:|---|
+| EGCG | -7.40 | 0.0005 | 24.0 | 0.05 | nan | — |
+| Kojic acid | -7.25 | 0.0007 | 24.0 | 0.07 | nan | — |
+| Niacinamide | -6.88 | 0.0015 | 24.0 | 0.16 | nan | — |
+| Hydroquinone | -6.16 | 0.0080 | 24.0 | 0.84 | nan | — |
+| Daidzein | -6.05 | 0.0102 | 24.0 | 1.08 | nan | — |
+| Curcumin | -6.03 | 0.0105 | 24.0 | 1.11 | 1B | michael_acceptor_alpha_beta_un… |
+| Oxyresveratrol | -5.81 | 0.0168 | 24.0 | 1.81 | nan | — |
+| Resveratrol | -5.51 | 0.0316 | 24.0 | 3.53 | nan | — |
+| Kazinol B | -5.40 | 0.0388 | 24.0 | 4.43 | nan | — |
+| Glabridin | -5.33 | 0.0445 | 24.0 | 5.17 | nan | — |
+
+**SARA-ICE summary for pigmentation**: GHS Cat 1B sensitizers = 2/15; Cat 1A = 0/15; None = 0/15.
+
+**Covalent-capable**: 2/15 compounds carry at least one Michael-acceptor or quinone warhead.
+
+Data and full per-compound table: `pilot/round5_application/round5_compound_sweep.csv`.

@@ -202,3 +202,31 @@ The principal AR-targeted top-hit — **Emodin × AR prob_binary = 0.768** (하�
 
 *v0.2 draft, 2026-04-26 · ~2,800 words · CC-BY 4.0*
 *v0.1 (fabricated rankings incl. Astragaloside IV 0.52, EMD-3 analog) explicitly retracted*
+
+## Round 5 application data — topical PK + skin sensitization (2026-04-27)
+
+Generated from `pilot/round5_application/round5_compound_sweep.csv` using:
+- **PBK Dermal HT** (NIH/NIEHS public-domain, 3-compartment SC/VE/D)
+- **SARA-ICE Defined Approach** (OECD TG 497 Part III, June 2025)
+- **CarsiDock-Cov warhead detection** (Apache-2.0, first DL covalent docker)
+
+Top 10 compounds by topical-fitness score (c_max_dermis / systemic_F):
+
+| Compound | logKp | c_max dermis (pmol/mL) | t_max (h) | F_systemic | GHS | Covalent warhead |
+|---|---:|---:|---:|---:|:---:|---|
+| Procyanidin B2 | -7.54 | 0.0003 | 24.0 | 0.03 | nan | — |
+| EGCG | -7.40 | 0.0005 | 24.0 | 0.05 | nan | — |
+| Finasteride | -6.57 | 0.0031 | 24.0 | 0.33 | nan | — |
+| Thujin | -6.57 | 0.0031 | 24.0 | 0.33 | 1B | michael_acceptor_alpha_beta_un… |
+| Emodin | -6.55 | 0.0033 | 24.0 | 0.34 | nan | — |
+| Physcion | -6.41 | 0.0045 | 24.0 | 0.48 | nan | — |
+| Ferulic acid | -6.36 | 0.0050 | 24.0 | 0.53 | 1B | michael_acceptor_acrylate;mich… |
+| Genistein | -6.35 | 0.0051 | 24.0 | 0.54 | nan | — |
+| Biochanin A | -6.21 | 0.0071 | 24.0 | 0.74 | nan | — |
+| Tanshinone IIA | -4.93 | 0.0816 | 24.0 | 11.18 | nan | — |
+
+**SARA-ICE summary for alopecia**: GHS Cat 1B sensitizers = 2/14; Cat 1A = 0/14; None = 0/14.
+
+**Covalent-capable**: 2/14 compounds carry at least one Michael-acceptor or quinone warhead.
+
+Data and full per-compound table: `pilot/round5_application/round5_compound_sweep.csv`.

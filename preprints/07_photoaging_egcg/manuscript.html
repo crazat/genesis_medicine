@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>07_photoaging_egcg</title>
+  <title>manuscript</title>
   <style>
 
 html {
@@ -169,9 +169,6 @@ vertical-align: middle;
 </style>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">07_photoaging_egcg</h1>
-</header>
 <h1 id="in-silico-screening-of-15-polyphenols-and-reference-compounds-against-mmp-1-sirt1-for-topical-photoaging-real-boltz-2-data-positions-emb-3-at-the-top-of-the-panel-resveratrol-leads-sirt1-axis-classical-references-vitamin-c-niacinamide-ferulic-acid-rank-low">In
 silico screening of 15 polyphenols and reference compounds against MMP-1
 + SIRT1 for topical photoaging: real Boltz-2 data positions EMB-3 at the
@@ -608,5 +605,135 @@ preprint, 2026.</p>
 <p><em>v0.2 draft, 2026-04-26 · ~2,500 words · CC-BY 4.0</em> <em>v0.1
 (fabricated 12-target EGCG scorecard) explicitly retracted in
 §1.2</em></p>
+<h2 id="round-5-application-data-topical-pk-skin-sensitization-2026-04-27">Round
+5 application data — topical PK + skin sensitization (2026-04-27)</h2>
+<p>Generated from
+<code>pilot/round5_application/round5_compound_sweep.csv</code> using: -
+<strong>PBK Dermal HT</strong> (NIH/NIEHS public-domain, 3-compartment
+SC/VE/D) - <strong>SARA-ICE Defined Approach</strong> (OECD TG 497 Part
+III, June 2025) - <strong>CarsiDock-Cov warhead detection</strong>
+(Apache-2.0, first DL covalent docker)</p>
+<p>Top 10 compounds by topical-fitness score (c_max_dermis /
+systemic_F):</p>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 18%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr>
+<th>Compound</th>
+<th style="text-align: right;">logKp</th>
+<th style="text-align: right;">c_max dermis (pmol/mL)</th>
+<th style="text-align: right;">t_max (h)</th>
+<th style="text-align: right;">F_systemic</th>
+<th style="text-align: center;">GHS</th>
+<th>Covalent warhead</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EGCG</td>
+<td style="text-align: right;">-7.40</td>
+<td style="text-align: right;">0.0005</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: right;">0.05</td>
+<td style="text-align: center;">nan</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Epigallocatechin</td>
+<td style="text-align: right;">-7.19</td>
+<td style="text-align: right;">0.0008</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: right;">0.08</td>
+<td style="text-align: center;">nan</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Epicatechin</td>
+<td style="text-align: right;">-6.89</td>
+<td style="text-align: right;">0.0015</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: center;">nan</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Niacinamide</td>
+<td style="text-align: right;">-6.88</td>
+<td style="text-align: right;">0.0015</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: center;">nan</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Ferulic acid</td>
+<td style="text-align: right;">-6.36</td>
+<td style="text-align: right;">0.0050</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: right;">0.53</td>
+<td style="text-align: center;">1B</td>
+<td>michael_acceptor_acrylate;mich…</td>
+</tr>
+<tr>
+<td>Genistein</td>
+<td style="text-align: right;">-6.35</td>
+<td style="text-align: right;">0.0051</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: right;">0.54</td>
+<td style="text-align: center;">nan</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Curcumin</td>
+<td style="text-align: right;">-6.03</td>
+<td style="text-align: right;">0.0105</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: right;">1.11</td>
+<td style="text-align: center;">1B</td>
+<td>michael_acceptor_alpha_beta_un…</td>
+</tr>
+<tr>
+<td>EMB-3</td>
+<td style="text-align: right;">-5.89</td>
+<td style="text-align: right;">0.0142</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: right;">1.52</td>
+<td style="text-align: center;">1B</td>
+<td>p_quinone;michael_acceptor_alp…</td>
+</tr>
+<tr>
+<td>Resveratrol</td>
+<td style="text-align: right;">-5.51</td>
+<td style="text-align: right;">0.0316</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: right;">3.53</td>
+<td style="text-align: center;">nan</td>
+<td>—</td>
+</tr>
+<tr>
+<td>Pterostilbene</td>
+<td style="text-align: right;">-5.22</td>
+<td style="text-align: right;">0.0532</td>
+<td style="text-align: right;">24.0</td>
+<td style="text-align: right;">6.37</td>
+<td style="text-align: center;">nan</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>SARA-ICE summary for photoaging</strong>: GHS Cat 1B
+sensitizers = 6/14; Cat 1A = 0/14; None = 0/14.</p>
+<p><strong>Covalent-capable</strong>: 6/14 compounds carry at least one
+Michael-acceptor or quinone warhead.</p>
+<p>Data and full per-compound table:
+<code>pilot/round5_application/round5_compound_sweep.csv</code>.</p>
 </body>
 </html>

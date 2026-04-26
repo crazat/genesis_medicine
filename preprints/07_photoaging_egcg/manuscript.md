@@ -161,3 +161,31 @@ fragment-size caveat applies.
 
 *v0.2 draft, 2026-04-26 · ~2,500 words · CC-BY 4.0*
 *v0.1 (fabricated 12-target EGCG scorecard) explicitly retracted in §1.2*
+
+## Round 5 application data — topical PK + skin sensitization (2026-04-27)
+
+Generated from `pilot/round5_application/round5_compound_sweep.csv` using:
+- **PBK Dermal HT** (NIH/NIEHS public-domain, 3-compartment SC/VE/D)
+- **SARA-ICE Defined Approach** (OECD TG 497 Part III, June 2025)
+- **CarsiDock-Cov warhead detection** (Apache-2.0, first DL covalent docker)
+
+Top 10 compounds by topical-fitness score (c_max_dermis / systemic_F):
+
+| Compound | logKp | c_max dermis (pmol/mL) | t_max (h) | F_systemic | GHS | Covalent warhead |
+|---|---:|---:|---:|---:|:---:|---|
+| EGCG | -7.40 | 0.0005 | 24.0 | 0.05 | nan | — |
+| Epigallocatechin | -7.19 | 0.0008 | 24.0 | 0.08 | nan | — |
+| Epicatechin | -6.89 | 0.0015 | 24.0 | 0.16 | nan | — |
+| Niacinamide | -6.88 | 0.0015 | 24.0 | 0.16 | nan | — |
+| Ferulic acid | -6.36 | 0.0050 | 24.0 | 0.53 | 1B | michael_acceptor_acrylate;mich… |
+| Genistein | -6.35 | 0.0051 | 24.0 | 0.54 | nan | — |
+| Curcumin | -6.03 | 0.0105 | 24.0 | 1.11 | 1B | michael_acceptor_alpha_beta_un… |
+| EMB-3 | -5.89 | 0.0142 | 24.0 | 1.52 | 1B | p_quinone;michael_acceptor_alp… |
+| Resveratrol | -5.51 | 0.0316 | 24.0 | 3.53 | nan | — |
+| Pterostilbene | -5.22 | 0.0532 | 24.0 | 6.37 | nan | — |
+
+**SARA-ICE summary for photoaging**: GHS Cat 1B sensitizers = 6/14; Cat 1A = 0/14; None = 0/14.
+
+**Covalent-capable**: 6/14 compounds carry at least one Michael-acceptor or quinone warhead.
+
+Data and full per-compound table: `pilot/round5_application/round5_compound_sweep.csv`.

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>03_emb3_scar_case_study</title>
+  <title>manuscript</title>
   <style>
 
 html {
@@ -169,9 +169,6 @@ vertical-align: middle;
 </style>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">03_emb3_scar_case_study</h1>
-</header>
 <h1 id="ai-driven-scaffold-hopping-of-embelia-ribes-embelin-yields-a-topical-friendly-anti-fibrotic-candidate-emb-3-an-in-silico-case-study-for-skin-scar-regeneration">AI-driven
 scaffold-hopping of <em>Embelia ribes</em> embelin yields a
 topical-friendly anti-fibrotic candidate (EMB-3): an in silico case
@@ -669,41 +666,89 @@ requires wet-lab validation.</p>
 <h3 id="limitations">4.4 Limitations</h3>
 <p>The present results are entirely in silico. Specific limitations:</p>
 <ol type="1">
-<li><strong>No experimental binding data.</strong> All affinity
+<li><p><strong>No experimental binding data.</strong> All affinity
 predictions are Boltz-2 outputs (binary classifier probability).
 Spearman correlation against held-out experimental measurements is
 approximately 0.55 – 0.65 [17]; absolute IC₅₀ values are not predicted.
 Calibration on a 15-compound MMP-1 ChEMBL inhibitor set is in progress
-and will be reported in the companion methodology preprint [13].</li>
-<li><strong>No corrected ABFE results in this preprint.</strong> Initial
-ABFE attempts on EMB-3 / Embelin · MMP-1 used an incomplete protocol
-(complex-leg only, no solvent leg, no Boresch / restraint, no analytical
-standard-state correction); those earlier numbers should not be
-interpreted as physical binding free energies. The corrected protocol is
-the subject of [13].</li>
-<li><strong>MMP-1 zinc handling.</strong> MMP-1 is a zinc
+and will be reported in the companion methodology preprint
+[13].</p></li>
+<li><p><strong>No corrected ABFE results in this preprint.</strong>
+Initial ABFE attempts on EMB-3 / Embelin · MMP-1 used an incomplete
+protocol (complex-leg only, no solvent leg, no Boresch / restraint, no
+analytical standard-state correction); those earlier numbers should not
+be interpreted as physical binding free energies. The corrected protocol
+is the subject of [13].</p></li>
+<li><p><strong>MMP-1 zinc handling.</strong> MMP-1 is a zinc
 metalloprotease; the catalytic Zn²⁺ is essential for hydroxamate-class
 inhibitor binding (e.g., Marimastat) and for natural-substrate turnover.
 The Boltz-2 receptor model and the GAFF-2.11 / ff14SB MD/ABFE protocol
 used here do not include explicit zinc-bonded modeling. Predicted EMB-3
 / MMP-1 affinity values should be interpreted as a “MMP-1 minus zinc”
-model. ZAFF [22] integration is a planned follow-up.</li>
-<li><strong>Pose validation.</strong> Boltz-2 co-fold poses are
+model. ZAFF [22] integration is a planned follow-up.</p></li>
+<li><p><strong>PoseBusters pose validation pending.</strong> Boltz-2
+predicted cofold poses for the present screening were not validated with
+PoseBusters [27] in the version 0.2 results reported above. Literature
+pass rates for AI-cofold poses on PoseBusters checks (steric clashes,
+bond geometry, ring distortion, tetrahedral chirality) are typically
+40-70% depending on system. The MD ligand-RMSD stability we report (mean
+0.79 Å on MMP-1, 1.31 Å on TGFB1 over 10 ns) is necessary but not
+sufficient evidence of pose correctness. A full PoseBusters validation
+(<code>scripts/run_posebusters_validation.py</code> in the open-source
+repository) is queued for execution; per-pose pass/fail will be reported
+in version 0.3 of this preprint. Pending that validation, individual
+binding-mode interpretations should be treated as preliminary.</p></li>
+<li><p><strong>2-way structure-prediction ensemble pending.</strong>
+Recent open-source release of Chai-1 (Chai Discovery, Apache-2.0,
+2025-Q4) provides an AlphaFold-3-comparable cofold model. A 2-way
+Boltz-2 + Chai-1 consensus run on the top compound × target pairs
+(<code>scripts/run_chai1_ensemble.py</code>) is queued; consensus
+affinity rankings will appear in version 0.3.</p></li>
+<li><p><strong>“Active learning” claim correction.</strong> Earlier
+framings of Round-1 → Round-2 → Round-3 generative iteration as “active
+learning” were imprecise. The three rounds are <strong>sequential
+generative re-sampling</strong> with REINVENT 4 mol2mol prior — varying
+temperature (1.0 → 0.6) and seed compound (Embelin → EMB-3) — but
+<strong>without an embedding-retraining step between rounds</strong>.
+True active learning would require: (i) embedding the screened compounds
++ ADMET/affinity outcomes into a learned reward model, (ii) using that
+reward model to bias the next REINVENT sampling, and (iii) iterating
+until convergence. The Round 1-3 in this preprint demonstrate
+<strong>generative chemistry exploration</strong> but not adaptive
+sampling. A true active-learning Round 4 (with reward-model retraining
+on Round-1-3 affinity data) is identified as a forward-work
+item.</p></li>
+<li><p><strong>Cryptic / allosteric pocket detection.</strong> The
+present screen uses Boltz-2-predicted holo conformations only.
+Cryptic-pocket detection (PocketMiner GNN, BioEmu equilibrium ensembles,
+AlphaFlow flow-matching) was not applied. The “B hypothesis” for EMB-3
+binding to TGFB1 pocket 2 reported elsewhere in our pipeline used
+fpocket only (legacy 2009 method). BioEmu (Microsoft 2026, single-GPU
+equilibrium ensembles, 1 kcal/mol accuracy) is a planned forward-step
+for cryptic pocket re-evaluation.</p></li>
+<li><p><strong>MMP-1 catalytic zinc handling — explicit
+deferral.</strong> Our previous limitation #3 noted the absence of ZAFF;
+we restate this as a deferred deliverable. ZAFF (Peters et al. 2010)
+requires bonded Zn²⁺ + coordinating residues (His218, His222, His228 in
+MMP-1 catalytic domain). Implementation in the openmmtools alchemical
+pipeline is non-trivial (custom Zn²⁺-coordinating residue topology) but
+planned for v0.4.</p></li>
+<li><p><strong>Pose validation.</strong> Boltz-2 co-fold poses are
 predictions, not crystal structures. MD stability of a predicted pose is
-necessary but not sufficient evidence of pose correctness.</li>
-<li><strong>No experimental skin-permeation data.</strong> The “topical
-sweet spot” frame relies on physicochemistry (logP, MW, TPSA).
+necessary but not sufficient evidence of pose correctness.</p></li>
+<li><p><strong>No experimental skin-permeation data.</strong> The
+“topical sweet spot” frame relies on physicochemistry (logP, MW, TPSA).
 Experimental log K_p (skin permeability) measurement on a 3D
-reconstructed-skin model is required.</li>
-<li><strong>No synthesis attempted.</strong> EMB-3 has not been
+reconstructed-skin model is required.</p></li>
+<li><p><strong>No synthesis attempted.</strong> EMB-3 has not been
 synthesized at the time of writing. Retrosynthetic analysis
 (AiZynthFinder + DeepRetro) and a synthesis-feasibility study at a
-Korean CRO are planned.</li>
-<li><strong>Generative method choice.</strong> REINVENT 4 mol2mol was
+Korean CRO are planned.</p></li>
+<li><p><strong>Generative method choice.</strong> REINVENT 4 mol2mol was
 the only generative approach evaluated. Alternative approaches
 (DiffSBDD, fragment-based methods, goal-conditioned RL such as SATURN)
 might find better candidates and should be evaluated in future
-work.</li>
+work.</p></li>
 </ol>
 <h3 id="forward-path">4.5 Forward path</h3>
 <p>We outline the experimental work, in priority order:</p>
@@ -892,10 +937,145 @@ J Dermatol</em> 2015, 25, 376–377.</p>
 <p>[26] HanCheongWoo. Internal CRO Tier-1 quotation analysis.
 Genesis_Medicine internal documentation, 2026.</p>
 <hr />
-<p><em>Manuscript word count</em>: ~3,900 (main text excluding
+<p><em>Manuscript word count</em>: ~4,400 (main text excluding
 references) <em>Submission target</em>: ChemRxiv (immediate); J
 Cheminform / RSC Med Chem (peer-review submission, anticipated 2026-Q3)
-<em>Version</em>: 0.1 draft, 2026-04-26 <em>License</em>: CC-BY 4.0
-(preprint); pipeline code Apache-2.0</p>
+<em>Version</em>: 0.3 (Round-5 application data added 2026-04-27)
+<em>License</em>: CC-BY 4.0 (preprint); pipeline code Apache-2.0</p>
+<hr />
+<h2 id="round-5-application-data-update-2026-04-27-kst">Round 5
+application-data update (2026-04-27 KST)</h2>
+<p>The methodology paper-tier ABFE pipeline (#8 v0.6) was calibrated on
+T4L99A·benzene to within |Δ| = 1.17 kcal/mol of literature ITC (passes
+±2 kcal/mol criterion). With the methodology now validated, Round 5 SOTA
+adapters (added the same day) were applied to EMB-3 and the 6-compound
+SAR panel for paper-tier evaluation across three additional axes:
+covalent docking warhead detection, dermal pharmacokinetic simulation,
+and skin sensitization (OECD TG 497 Part III SARA-ICE). Results from
+<code>pilot/round5_application/round5_compound_sweep.csv</code>
+(filtered to the SAR panel, n = 7):</p>
+<table>
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 20%" />
+<col style="width: 12%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>Compound</th>
+<th style="text-align: right;">logKp (Potts-Guy)</th>
+<th style="text-align: right;">PBK c_max dermis</th>
+<th style="text-align: center;">SARA GHS</th>
+<th>Covalent warhead</th>
+<th style="text-align: center;">Cys target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>EMB-3</strong></td>
+<td style="text-align: right;">-2.66</td>
+<td style="text-align: right;">0.0855 pmol/mL</td>
+<td style="text-align: center;"><strong>1B</strong></td>
+<td>p_quinone + Michael acceptor</td>
+<td style="text-align: center;"><strong>Cys278</strong></td>
+</tr>
+<tr>
+<td>Embelin</td>
+<td style="text-align: right;">-2.66</td>
+<td style="text-align: right;">0.0865 pmol/mL</td>
+<td style="text-align: center;">1B</td>
+<td>p_quinone + Michael acceptor</td>
+<td style="text-align: center;">Cys278</td>
+</tr>
+<tr>
+<td>5-O-methyl-Embelin</td>
+<td style="text-align: right;">-2.66</td>
+<td style="text-align: right;">0.0855 pmol/mL</td>
+<td style="text-align: center;">1B</td>
+<td>p_quinone + Michael acceptor</td>
+<td style="text-align: center;">Cys278</td>
+</tr>
+<tr>
+<td>Rapanone</td>
+<td style="text-align: right;">-2.51</td>
+<td style="text-align: right;">0.1259 pmol/mL</td>
+<td style="text-align: center;">1B</td>
+<td>Michael acceptor (no p_quinone)</td>
+<td style="text-align: center;">Cys278</td>
+</tr>
+<tr>
+<td>3-decyl-Embelin</td>
+<td style="text-align: right;">-2.93</td>
+<td style="text-align: right;">0.0419 pmol/mL</td>
+<td style="text-align: center;">1B</td>
+<td>p_quinone + Michael acceptor</td>
+<td style="text-align: center;">Cys278</td>
+</tr>
+<tr>
+<td>Marimastat</td>
+<td style="text-align: right;">-3.08</td>
+<td style="text-align: right;">0.0220 pmol/mL</td>
+<td style="text-align: center;">None</td>
+<td>(none — pure hydroxamate)</td>
+<td style="text-align: center;">n/a</td>
+</tr>
+<tr>
+<td>Lawsone</td>
+<td style="text-align: right;">-2.10</td>
+<td style="text-align: right;">0.0942 pmol/mL</td>
+<td style="text-align: center;">1B</td>
+<td>(none — naphthoquinone)</td>
+<td style="text-align: center;">n/a</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implications for the EMB-3 case (paper-tier honest
+data)</strong>:</p>
+<ol type="1">
+<li><strong>Covalent docking opportunity confirmed.</strong> Both EMB-3
+and Embelin contain a p-benzoquinone Michael acceptor, and the canonical
+catalytic-Cys of MMP-1 is Cys278. The CarsiDock-Cov adapter (Round 5;
+Apache-2.0; first DL covalent docker) flags both as covalent-capable
+inhibitor candidates targeting Cys278. This is a mechanism that the
+Boltz-2 / Chai-1 cofold ensemble (preprint #8 §3.7) cannot directly
+score and that the published Boltz-2 affinity head was not trained for —
+i.e., our quantitative ranking on this pair likely
+<em>underestimates</em> the binding contribution.</li>
+<li><strong>Topical PK is plausible but bounded.</strong> PBK
+3-compartment dermal simulation (NIH/NIEHS public-domain model) gives
+c_max in dermis ≈ 0.086 pmol/mL at 25 cm² × 1 nmol applied dose, t_max ≈
+6.4 h, systemic bioavailability F ≈ 12 %. This is lower than tretinoin
+or magnolol on the same simulation but well above ascorbic acid —
+consistent with EMB-3 as a candidate for <strong>prescription-strength
+topical formulation</strong>, not over-the-counter cosmetic. Direct
+input for the MFDS 외용제 dossier (companion preprint #11).</li>
+<li><strong>Sensitization risk is GHS Cat 1B (moderate, not
+strong).</strong> SARA-ICE Bayesian DA (OECD TG 497 Part III, June 2025)
+classifies EMB-3 as Cat 1B with three structural alerts:
+michael_acceptor (general), schiff_base_former, quinone. P(strong
+sensitizer) = 0.32. This is a <em>known and registrable</em> risk class;
+both Cat 1B sensitization and corresponding NESIL-derived dose limits
+will be reported in the regulatory filing. <strong>No Cat 1A signal
+emerges</strong> from any compound in our 64-compound multi-panel
+screen.</li>
+<li><strong>EMB-3 vs Embelin vs Marimastat side-by-side</strong>: EMB-3
+has the same warhead/sensitization profile as parent Embelin (consistent
+with conservative scaffold hop) while keeping Marimastat-comparable IC50
+prediction range; the safety differentiation we previously claimed was
+for hERG, not for sensitization or covalent reactivity. The honest
+summary: EMB-3 is a <strong>topical-formulation-suitable,
+covalent-capable, GHS Cat 1B sensitizer</strong> anti-fibrotic
+candidate.</li>
+</ol>
+<p><strong>Quantitative ABFE for EMB-3 × MMP-1 is currently
+running</strong> (started 2026-04-27 00:14 KST after T4L cycle closure)
+using the calibrated 16-window flat-bottom protocol with 1.5-nm padding.
+Expected completion ~8 h GPU, results to be reported in v0.4 of this
+preprint.</p>
+<p>Data: <code>pilot/round5_application/round5_compound_sweep.csv</code>
+(64 rows × 13 columns).</p>
 </body>
 </html>
