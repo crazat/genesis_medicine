@@ -1,0 +1,28 @@
+# PBK Dermal HT model — 3-compartment dermal PK (Round 5, NIH/NIEHS public-domain)
+# bioRxiv 2025.11.12.687995
+# Replaces single-compartment Kp; required for MFDS 외용제 dossier
+
+enabled: true       # public-domain, runs on numpy/scipy
+engine: pbk_dermal
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/pbk_dermal
+
+# Default forearm geometry (Bouwman 2024)
+volumes_ml:
+  sc: 0.0064
+  ve: 0.0496
+  d: 0.864
+
+# Perfusion (mL/h/cm²)
+ks:
+  sc_to_ve: 0.05
+  ve_to_d: 0.45
+  d_to_plasma: 1.6
+
+clearance_plasma_per_h: 0.05
+
+# Default dose conditions
+default_dose_pmol: 100.0
+default_application_area_cm2: 25.0
+default_duration_h: 24.0
+default_dt_h: 0.05

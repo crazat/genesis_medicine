@@ -1,0 +1,21 @@
+# AToM-OpenMM — Alchemical Transfer Method (Round 5, MIT, Gallicchio Lab)
+# Sidesteps MMP-1 zinc polarization issue without ZAFF
+# https://github.com/Gallicchio-Lab/AToM-OpenMM
+
+enabled: false      # requires AToM-OpenMM repo clone
+engine: atom_openmm
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/atom_openmm
+device: cuda:0
+
+n_replicas: 22
+n_iterations: 500
+direction: bound_to_solvent      # ATM transfer direction
+soft_core_lambda: 0.5
+
+# When to prefer over openmm_ml ABFE
+prefer_for_targets:
+  - MMP1
+  - MMP3
+  - MMP9
+  - TYR        # dicopper site

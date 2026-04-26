@@ -1,0 +1,17 @@
+# CarsiDock-Cov — first DL covalent docker (Round 5, Apache-2.0, CarbonSilicon AI 2025)
+# Critical for shikonin / EGCG / embelin Michael acceptors
+# https://github.com/sc8668/CarsiDock-Cov
+
+enabled: false      # requires CarsiDock-Cov repo clone + model weights
+engine: carsidock_cov
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/carsidock_cov
+device: cuda:0
+
+# Auto-trigger when warhead detected
+auto_trigger_on_warhead: true
+warhead_smarts:
+  - C=CC(=O)O                       # Michael acceptor acrylate
+  - O=C1C=CC(=O)C=C1                # p-quinone
+  - C1OC1                           # epoxide
+target_cys_lookup: true             # use TARGET_CYS dict from adapter

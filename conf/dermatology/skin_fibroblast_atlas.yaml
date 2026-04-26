@@ -1,0 +1,28 @@
+# Skin Fibroblast Pan-Disease Atlas — Reynolds 2025 (Round 5, CC-BY 4.0)
+# Nat Immunol 26(10):1807-1820, 350k cells, 23 skin diseases
+# F6 inflammatory myofibroblasts conserved skin↔IPF↔scleroderma
+
+enabled: true        # hard-coded literature lookups, no install required
+engine: skin_fibroblast_atlas
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/skin_fibroblast_atlas
+
+# Cell types of interest
+fibroblast_subtypes:
+  - F1_papillary
+  - F2_deep_reticular
+  - F3_perivascular_FRC
+  - F4_universal_proliferating
+  - F5_proliferative
+  - F6_inflammatory_myofibroblast    # KEY for scar / IPF cross-disease
+  - F7_interferon
+
+# Cross-tissue claims
+cross_tissue_evidence:
+  enabled: true
+  reference_papers:
+    - reynolds_nat_immunol_2025
+    - adams_sci_adv_2020          # IPF lung CTHRC1+ HAS1+
+    - tsukui_biorxiv_2024_10_12   # CTHRC1 mechanism
+    - erj_2025_lipofibroblast_switch
+    - ann_rheum_dis_2025_ssc_spatial

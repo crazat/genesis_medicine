@@ -1,0 +1,18 @@
+# AIMNet2 — charged-NP NN potential (Round 5, JACS Au 2024 + ACS 2025)
+# 14 elements (Cl, Br, I, S, P, B, As) + explicit Coulomb long-range
+# https://github.com/zubatyuk/aimnet2
+
+enabled: false      # awaiting openmm-ml integration #63
+engine: aimnet2
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/aimnet2
+device: cuda:0
+
+model_name: aimnet2
+ml_region: ligand_only           # for charged ligands; protein on FF
+prefer_for_compounds:
+  - berberine
+  - shikonin
+  - licochalcone_a
+  - ginsenoside_rg1
+  - glycyrrhizin

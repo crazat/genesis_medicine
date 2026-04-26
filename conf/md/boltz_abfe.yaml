@@ -1,0 +1,16 @@
+# Boltz-ABFE — crystal-structure-free ABFE (Round 5, Recursion + MIT 2025-10)
+# Pearson R = 0.95, MAE 0.42 kcal/mol on PL benchmark
+# arXiv 2508.19385 / JCTC 2025 10.1021/acs.jctc.5c01451
+
+enabled: false      # awaiting Recursion fork public release
+engine: boltz_abfe
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/boltz_abfe
+device: cuda:0
+
+# Cycle parameters (matches openmmtools 0.26)
+n_windows: 16
+n_iterations: 500
+ps_per_iteration: 10.0
+restraint: flat_bottom    # flat_bottom | boresch
+r_max_a: 8.0

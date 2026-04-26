@@ -1,0 +1,25 @@
+# CellAwareGNN — TxGNN successor with cell-type-aware inference
+# (Round 5, MIT, bioRxiv 2026.02.20.707076)
+# +6% AUPRC on autoimmune diseases vs TxGNN
+# scPrimeKG: 14M edges, 140k nodes, OneK1K cell-type-specific eQTLs
+
+enabled: false      # requires model weights + scPrimeKG download
+engine: cellaware_gnn
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/cellaware_gnn
+model_dir: ${oc.env:GENESIS_HOME,${oc.env:HOME}}/models/cellaware_gnn
+device: cuda:0
+
+top_k: 50
+target_cell_types:        # most relevant for skin diseases
+  - keratinocyte
+  - fibroblast
+  - melanocyte
+  - sebocyte
+  - dermal_papilla
+  - hair_follicle_stem_cell
+  - T_h2
+  - T_h17
+  - mast_cell
+
+include_attention_weights: true

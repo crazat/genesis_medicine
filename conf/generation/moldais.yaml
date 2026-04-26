@@ -1,0 +1,17 @@
+# MolDAIS — BoTorch SAASBO molecular Bayesian opt (Round 5, MIT, Paulson Lab)
+# Digital Discovery 2025 10.1039/D5DD00188A
+# <100 evals reach near-optimum on 100k library
+
+enabled: false      # auto-fallback to botorch_saasbo or lhs
+engine: moldais
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/moldais
+
+# Campaign defaults
+n_initial: 10            # random seed batch
+n_per_batch: 5
+max_iterations: 20
+target_metric: pareto_score    # composite (boltz, hERG, logKp, sa)
+
+# Featurizer
+featurizer: morgan_1024     # morgan_1024 | unimol2 | chemberta3

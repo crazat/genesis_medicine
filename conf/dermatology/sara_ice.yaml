@@ -1,0 +1,22 @@
+# SARA-ICE Defined Approach — OECD TG 497 Part III, June 2025
+# Skin sensitization Bayesian DA (Round 5, public OECD guideline)
+# Required for KFDA / MFDS cosmetic registration
+
+enabled: true        # OECD guideline, public
+engine: sara_ice
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/sara_ice
+
+# Mechanistic alert SMARTS (subset; full OECD list in adapter)
+alert_smarts_enabled: true
+
+# In-vitro inputs (supply when available; else in-silico-only fallback)
+fields_required_for_full_da:
+  - dpra_score        # OECD TG 442C
+  - keratinosens_imax # OECD TG 442D
+  - hclat_cv75        # OECD TG 442E
+
+# GHS classification thresholds (μg/cm² NESIL)
+ghs_thresholds:
+  cat_1a_max: 10
+  cat_1b_max: 500
