@@ -1,0 +1,18 @@
+target,n_residues,n_cryptic_sites,method,available,note
+MMP1,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+MMP3,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+MMP9,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+TGFB1,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+CTGF,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+COL1A1,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+COL3A1,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+ACTA2,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+FAP,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+POSTN,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+LOX,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+PDGFRB,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+SIRT1,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+TYR,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+MITF,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+SRD5A2,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 
+AR,0,0,pocketminer_gnn,False,PocketMiner not installed. Clone https://github.com/Mickdub/gvp-pocketminer into $HOME/PocketMiner; 

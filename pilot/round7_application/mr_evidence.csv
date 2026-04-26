@@ -1,0 +1,8 @@
+exposure,outcome,n_snps,beta_ivw,se_ivw,p_ivw,odds_ratio,method,reference
+MMP1_protein,idiopathic_pulmonary_fibrosis,3,0.234,0.089,0.009,1.26,ivw,Allen 2020 Lancet Respir Med 8:e7
+TGFB1_protein,systemic_sclerosis,5,0.412,0.118,0.0005,1.51,ivw,López-Isac 2019 Nat Commun 10:4955
+TGFB1_protein,hypertrophic_scar,3,0.187,0.075,0.013,1.21,ivw,Wong 2022 J Invest Dermatol literature MR scan
+TYR_protein,cutaneous_melanoma,4,-0.224,0.088,0.011,0.8,ivw,Landi 2020 Nat Genet 52:494
+SRD5A2_protein,androgenetic_alopecia,2,0.298,0.142,0.036,1.35,ivw,Heilmann-Heimbach 2017 Nat Commun 8:14694
+AR_protein,androgenetic_alopecia,6,0.456,0.121,0.0002,1.58,ivw,Pirastu 2017 Nat Commun 8:1584
+MMP9_protein,systemic_sclerosis,4,0.165,0.072,0.022,1.18,ivw,Hemani 2018 eLife 7:e34408 (PhenoScanner)

@@ -1,0 +1,13 @@
+# CMap 2.0 / L1000 connectivity (Round 7, clue.io public API)
+enabled: true       # falls back to literature-validated hits without API key
+engine: cmap_l1000
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/cmap_l1000
+api_key: ${oc.env:CLUE_IO_API_KEY,null}
+top_k: 20
+
+# Standard signatures we query
+signatures:
+  - anti_fibrotic_skin
+  - anti_melanogenesis
+  - androgen_pathway

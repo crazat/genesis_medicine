@@ -1,0 +1,15 @@
+# PocketMiner — cryptic-pocket GNN (Round 7, MIT, Bowman lab Nat Commun 2023)
+enabled: false      # requires $HOME/PocketMiner clone
+engine: pocketminer
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/pocketminer
+repo_root: ${oc.env:GENESIS_HOME,${oc.env:HOME}}/PocketMiner
+threshold: 0.5      # cryptic_probability minimum to count as a hit
+
+# Default targets to scan
+default_targets:
+  - TGFB1
+  - MMP1
+  - CTGF
+  - LOX
+  - SIRT1

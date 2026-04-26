@@ -1,0 +1,24 @@
+# TwoSampleMR — Mendelian randomization (Round 7, OpenGWAS API)
+enabled: true       # literature-validated fallback always available
+engine: twosample_mr
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/twosample_mr
+opengwas_jwt: ${oc.env:OPENGWAS_JWT,null}
+
+# Standard exposures + outcomes for our 5-disease pipeline
+exposures:
+  - MMP1_protein
+  - MMP9_protein
+  - TGFB1_protein
+  - TYR_protein
+  - SRD5A2_protein
+  - AR_protein
+
+outcomes:
+  - idiopathic_pulmonary_fibrosis
+  - systemic_sclerosis
+  - hypertrophic_scar
+  - androgenetic_alopecia
+  - cutaneous_melanoma
+
+p_threshold: 0.05

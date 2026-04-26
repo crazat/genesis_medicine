@@ -1,0 +1,15 @@
+# MedSAM-2 scar segmentation (Round 7, Apache-2.0, Bowang lab Nat Methods 2025)
+enabled: false      # requires $HOME/MedSAM clone + checkpoint download
+engine: medsam_v2
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/medsam
+model_path: ${oc.env:GENESIS_HOME,${oc.env:HOME}}/MedSAM/checkpoints/medsam_vit_b.pth
+fine_tuned_checkpoint: ${oc.env:GENESIS_HOME,${oc.env:HOME}}/MedSAM/checkpoints/recover_scar_medsam_v1.pth
+
+# Calibration (set per Recover photo cube specification)
+calibration_mm_per_px: null    # measured at deployment
+
+# CIELAB metrics extracted alongside mask
+extract_erythema_a_star: true
+extract_melanin_ita: true
+extract_3d_height: false        # requires Polycam LiDAR sidecar

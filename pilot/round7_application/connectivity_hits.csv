@@ -1,0 +1,12 @@
+signature,perturbation,perturbation_type,cell_line,tau_score,p_value,fdr
+anti_fibrotic_skin,niclosamide,trt_cp,A549,95.0,0.001,0.01
+anti_fibrotic_skin,pirfenidone,trt_cp,A549,87.5,0.001,0.02
+anti_fibrotic_skin,nintedanib,trt_cp,A549,84.2,0.002,0.02
+anti_fibrotic_skin,EGCG,trt_cp,A549,65.3,0.01,0.05
+anti_fibrotic_skin,curcumin,trt_cp,A549,58.7,0.02,0.08
+anti_fibrotic_skin,TGFB1,trt_sh,A549,-72.4,0.005,0.03
+anti_melanogenesis,hydroquinone,trt_cp,MNT-1,78.0,0.005,0.03
+anti_melanogenesis,kojic_acid,trt_cp,MNT-1,65.5,0.01,0.05
+anti_melanogenesis,arbutin,trt_cp,MNT-1,52.0,0.03,0.1
+androgen_pathway,finasteride,trt_cp,LNCaP,72.5,0.005,0.03
+androgen_pathway,dutasteride,trt_cp,LNCaP,81.3,0.001,0.02

@@ -1,0 +1,10 @@
+compound,matched,cell_line,n_cells,top_up,top_down,pathway_enrichments
+EGCG,True,MCF7,18234,NQO1;HMOX1;GCLC;GSTP1,MMP1;MMP9;VIM;CDH2,"{""Nrf2_oxidative_stress"": 4.3, ""EMT_reverse"": 2.8, ""MMP_pathway_down"": 3.1}"
+curcumin,True,A549,21102,NQO1;HMOX1;GADD45A,NFKB1;TNF;IL6;MMP9;VEGFA,"{""NFkB_inhibition"": 5.2, ""anti_inflammatory"": 4.1, ""anti_angiogenesis"": 2.4}"
+resveratrol,True,HepG2,15812,SIRT1;FOXO1;PPARGC1A;TFAM,FASN;SREBF1;ACACA,"{""SIRT1_activation"": 3.7, ""lipogenesis_inhibition"": 4.2}"
+berberine,True,HCT116,12409,AMPK_targets;CDKN1A;CDKN1B,CCND1;MYC;BCL2,"{""AMPK_activation"": 4.8, ""G1_arrest"": 3.2}"
+tretinoin,True,HL-60,24018,CD11B;CD66B;RARA,MYC;BCL2,"{""granulocyte_differentiation"": 6.1}"
+niclosamide,True,A549,19847,DDIT3;ATF3;CHOP,WNT3;WNT5A;CTNNB1;MMP9;TGFB1,"{""Wnt_inhibition"": 5.4, ""anti_fibrotic"": 4.7, ""MMP_down"": 3.8}"
+embelin,False,,0,,,{}
+EMB-3,False,,0,,,{}
+asiaticoside,False,,0,,,{}

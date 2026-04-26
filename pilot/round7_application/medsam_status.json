@@ -1,0 +1,8 @@
+{
+  "engine_name": "medsam_v2",
+  "available": false,
+  "model_path": "/home/crazat/MedSAM/checkpoints/medsam_vit_b.pth",
+  "fine_tuned_checkpoint": "/home/crazat/MedSAM/checkpoints/recover_scar_medsam_v1.pth",
+  "deployment_target": "Recover \ud55c\uc758\uc6d0 photo cube workflow (D-110)",
+  "next_step": "git clone bowang-lab/MedSAM into $HOME/MedSAM, download medsam_vit_b.pth from HuggingFace, fine-tune on 50 Recover scars after opening 2026-08-15."
+}

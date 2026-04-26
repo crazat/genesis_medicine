@@ -1,0 +1,18 @@
+# Tahoe-100M perturbation atlas (Round 7, HuggingFace CC-BY)
+enabled: true       # literature-validated fallback for known-overlap compounds
+engine: tahoe_100m
+
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/tahoe_100m
+streaming: true     # HuggingFace streaming (no full download)
+
+# Compounds we routinely query
+default_compounds:
+  - EGCG
+  - curcumin
+  - resveratrol
+  - berberine
+  - tretinoin
+  - niclosamide
+  - embelin
+  - EMB-3
+  - asiaticoside
