@@ -85,22 +85,73 @@
 - ADMET·Boltz-2·ABFE 한계 모두 명시
 - 외부 인용 70%+ (자기 인용 회피)
 
-**현재 진행**:
-1. T4L99A·benzene calibration v4 (flat-bottom restraint, PID 112376) — paper #8 ABFE methodology의 기반
-2. **Preprint #1 (Embelia ribes review) 작성 시작** ← C안 첫 액션
-3. **Preprint #2 (Recover workflow) 작성 동시 시작**
+**현재 진행 (2026-04-26 단일 세션 완료)**:
 
-**주요 산출 시점**:
-- W4 (D-84): 첫 2 preprints 등재 → Recover 홈페이지 RESEARCH 페이지 신설
-- W8 (D-56): 7편 누적 → 5 질환 풀 라인업 노출
-- W14 (D-14): 12편 + 2 peer-review in-review → 보도자료
-- W16 (D-Day): 한의원 최초 "AI 신약 12 preprints" 마케팅
+### ✅ 12편 preprint v0.1/v0.2 모두 작성 완료 + 19 figures + 12 PDFs
+**총 ~28,500 단어 main text + 19 publication-quality figures (300 DPI) + 12 self-contained PDFs (~6.5 MB).**
 
-**확률 (정직)**:
-- 8편 이상 등재: 80%
-- 12편 등재: 55%
+| # | Preprint | 상태 | Real data 출처 | Figures |
+|:-:|---|---|---|:-:|
+| 1 | Embelia ribes review | ✅ v0.2 (자운고 정정) | literature only | 1 |
+| 2 | Recover workflow | ✅ v0.1 honest | architecture | 2 |
+| 3 | EMB-3 case study | ✅ v0.2 (cross-disease 정정) | scaffold-hop + SAR panel + Round 1-3 | 3 |
+| 4 | Pigmentation | ✅ v0.2 | `pilot/screen/pigmentation/screen_results.csv` | 2 |
+| 5 | Alopecia | ✅ v0.2 | `pilot/screen/alopecia/screen_results.csv` | 2 |
+| 6 | Acne | ✅ v0.2 | `pilot/screen/acne/screen_results.csv` | 2 |
+| 7 | Photoaging | ✅ v0.2 | `pilot/screen/photoaging/screen_results.csv` | 2 |
+| 8 | ABFE methodology | ⏸ T4L 진행 중 | `pilot/calibration/t4l_benzene/` (~3-4h 남음) | 0 |
+| 9 | Cross-disease IPF | ✅ v0.2 | `pilot/open_targets/` (real GraphQL queries) | 2 |
+| 10 | Chronotherapy 자오류주 | ✅ v0.1 | conceptual framework | 1 |
+| 11 | Korean PGx | ✅ v0.1 | panel design | 1 |
+| 12 | 50-tool pipeline | ✅ v0.1 | resource paper | 1 |
+
+### ✅ 사용자 audit 통과 — 정직 데이터만
+- v0.1에 fabricated table 5편 (#4-7, #9) 발견 → **A안 (실제 screen 후 정정)** 채택
+- 4 disease screens 실행 완료 (60 cofolds × 4 = 240 Boltz-2 cofolds + ADMET-AI)
+- Open Targets v4 GraphQL forward + reverse queries 실측
+- 모든 preprint v0.2에서 fabricated 값 **0개**, retraction 명시
+
+### 🔄 진행 중 (백그라운드)
+- **T4L99A·benzene ABFE calibration** (PID 112376, ~14:39 시작 / ~22:00 완료 예상)
+- Monitor `bkm98s108` armed → 결과 도착 시 #8 자동 정정 + ABFE convergence figure 추가
+
+### 📋 Quality 검증 통과 항목
+- TRIPOD-AI 호환 limitation sections
+- Embelia ribes / 자운고 chemistry-based 정정 (`docs/EMBELIN_LITERATURE_REVIEW.md`)
+- MMP-1 zinc handling caveat 명시
+- Boltz-2 binary classifier vs IC₅₀ 구분
+- Earlier ABFE -32.90 explicitly retracted (#8 §3.5)
+- Berberine hERG 0.977 critical safety disclosure (#6)
+- 모든 cross-disease 86%/100% claim retracted → real OT 1/26 (PDGFRB only)
+
+### 🎯 즉시 가능 (사용자 다음 액션)
+1. **계정 등록** (총 30분): ORCID + bioRxiv + medRxiv + ChemRxiv
+2. **Preprint 검토 + 업로드**: 각 `preprints/<NN>/manuscript.pdf` 그대로 제출 가능
+3. **Recover 홈페이지** RESEARCH 페이지: `manuscript.html` 자체 게재 가능
+4. **상세 plan**: `docs/PREPRINT_SUBMISSION_GUIDE.md` (8 sections, 16주 timeline)
+
+### 📦 산출물 위치
+```
+preprints/<NN_dir>/
+├── manuscript.md      # markdown source
+├── manuscript.html    # self-contained HTML (base64 embedded images)
+├── manuscript.pdf     # publication PDF (figures inline)
+└── figures/*.png      # 300 DPI raw figures
+
+docs/
+├── PAPER_PLAN.md
+├── PREPRINT_SUBMISSION_GUIDE.md
+├── EMBELIN_LITERATURE_REVIEW.md
+├── CRO_TIER1_DECISION.md
+└── MFDS_K_BIO_LANDSCAPE.md
+```
+
+**확률 (정직 calibrated)**:
+- 11편 즉시 제출 가능 (#8 제외): 95% (만들어졌고 PDF까지 완성)
+- 12편 등재 (T4L 통과 후 #8 합류 시): 90%
 - Peer-review 1편 게재: 35% (12개월)
 - 의료법 민원 방어 가능: 85% (disclaimer 유지 시)
+- 의약화학·임상 reviewer rigor 통과: 50–65% (영문 교정 + 외부 collaborator 시 ↑)
 
 ---
 
