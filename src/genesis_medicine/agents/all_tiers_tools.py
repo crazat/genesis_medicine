@@ -368,4 +368,58 @@ ALL_TIERS_TOOLS: list[Tool] = [
               "genesis_medicine.integration.facial_dx_bridge",
               fromlist=["call_facial_dx_then_prescribe"]
               ).call_facial_dx_then_prescribe(**kw)),
+    # Tier 9 (5 — PROTAC, chronotherapy, OCT bridge, syn-bio, ESG)
+    Tool("design_protac_degrader",
+          "EMB-3 PROTAC TGFB1 degrader 자동 디자인 (warhead+linker+E3)",
+          {"type": "object",
+           "properties": {"warhead_smiles": {"type": "string"},
+                          "warhead_name": {"type": "string"},
+                          "target": {"type": "string"},
+                          "e3_ligase": {"type": "string"},
+                          "linker_type": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.protac.protac_designer",
+              fromlist=["design_protac"]).design_protac(**kw).__dict__),
+    Tool("chronotherapy_schedule",
+          "자오류주 + circadian medicine 시간대별 외용 schedule",
+          {"type": "object",
+           "properties": {"diagnosis": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.chronotherapy.jaoryuju",
+              fromlist=["time_optimal_topical_schedule"]
+              ).time_optimal_topical_schedule(**kw).__dict__),
+    Tool("current_meridian",
+          "현재 시간 활성 경락 (자오류주) — 시술 타이밍 권장",
+          {"type": "object", "properties": {}},
+          lambda **kw: __import__(
+              "genesis_medicine.chronotherapy.jaoryuju",
+              fromlist=["current_meridian_active"]
+              ).current_meridian_active()),
+    Tool("oct_skin_depth",
+          "OCT cross-section 흉터 깊이 정량 → facial_dx 통합",
+          {"type": "object",
+           "properties": {"image_path": {"type": "string"},
+                          "wavelength_nm": {"type": "integer"},
+                          "facial_dx_zone": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.integration.oct_bridge",
+              fromlist=["analyze_oct_skin_depth"]
+              ).analyze_oct_skin_depth(**kw).__dict__),
+    Tool("design_engineered_probiotic",
+          "환자 자가 C. acnes engineering — anti-fibrotic/anti-acne/모낭",
+          {"type": "object",
+           "properties": {"patient_id": {"type": "string"},
+                          "target_function": {"type": "string"},
+                          "delivery_format": {"type": "string"}}},
+          lambda **kw: __import__(
+              "genesis_medicine.synbio.engineered_probiotic",
+              fromlist=["design_engineered_probiotic"]
+              ).design_engineered_probiotic(**kw).__dict__),
+    Tool("esg_evaluation",
+          "Genesis_Medicine + Recover ESG 평가 + 펀딩 매칭",
+          {"type": "object", "properties": {}},
+          lambda **kw: __import__(
+              "genesis_medicine.sustainability.esg_analyzer",
+              fromlist=["evaluate_esg_friendliness"]
+              ).evaluate_esg_friendliness().__dict__),
 ]

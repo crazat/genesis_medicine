@@ -143,6 +143,41 @@ INTENT_TEMPLATES: dict[str, dict] = {
         "slots": [],
         "description": "한국 보험 수가 + QALY ICER",
     },
+    # Tier 9 + facial_dx integration
+    "facial_dx_workflow": {
+        "keywords": ["facial_dx", "환자 동선", "통합 plan", "안면 분석",
+                      "3d 진단"],
+        "slots": ["patient_id"],
+        "description": "facial_dx + Genesis_Medicine 통합 환자 동선",
+    },
+    "protac_design": {
+        "keywords": ["protac", "degrader", "단백질 분해"],
+        "slots": [],
+        "description": "PROTAC TGFB1 degrader 디자인",
+    },
+    "chronotherapy": {
+        "keywords": ["자오류주", "시간대", "chronotherapy", "circadian",
+                      "시진", "시간 의학"],
+        "slots": ["diagnosis"],
+        "description": "자오류주 + circadian 외용 schedule",
+    },
+    "oct_analysis": {
+        "keywords": ["oct", "optical coherence", "단층", "흉터 깊이"],
+        "slots": [],
+        "description": "OCT 흉터 깊이 + facial_dx 통합",
+    },
+    "engineered_probiotic": {
+        "keywords": ["probiotic", "프로바이오틱", "엔지니어링", "syn-bio",
+                      "c. acnes", "live biotherapeutic"],
+        "slots": ["patient_id"],
+        "description": "Engineered C. acnes 자가 probiotic",
+    },
+    "esg_evaluation": {
+        "keywords": ["esg", "지속가능성", "sustainability", "carbon",
+                      "탄소", "green chemistry"],
+        "slots": [],
+        "description": "ESG 평가 + 펀딩 매칭",
+    },
 }
 
 
