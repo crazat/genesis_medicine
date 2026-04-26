@@ -131,3 +131,9 @@ data/npass_2026/
 
 # Tier 0 install logs (regen)
 pilot/scaffold_hop/abfe_emb3_mmp1/*.log
+
+# Large pilot binaries
+pilot/**/*.nc
+pilot/**/*.dcd
+pilot/**/*.xtc
+pilot/**/checkpoint*

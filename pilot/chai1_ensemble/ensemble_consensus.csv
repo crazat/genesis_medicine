@@ -1,0 +1,7 @@
+status,compound,target,error,boltz2_affinity_prob_binary
+error,EMB-3,TGFB1,Numba needs NumPy 2.1 or less. Got NumPy 2.4.,0.749
+error,EMB-3,MMP1,Numba needs NumPy 2.1 or less. Got NumPy 2.4.,0.674
+error,Oxyresveratrol,TYR,Numba needs NumPy 2.1 or less. Got NumPy 2.4.,0.7500531673431396
+error,Baicalein,AR,Numba needs NumPy 2.1 or less. Got NumPy 2.4.,0.8198989629745483
+error,EMB-3,SIRT1,Numba needs NumPy 2.1 or less. Got NumPy 2.4.,0.632
+error,Emodin,AR,Numba needs NumPy 2.1 or less. Got NumPy 2.4.,0.7681165933609009

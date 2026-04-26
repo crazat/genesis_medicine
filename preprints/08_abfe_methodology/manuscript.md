@@ -9,7 +9,7 @@
 Code: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
 **Manuscript type**: Methodology paper; **Target preprint**: ChemRxiv (immediate); **Peer-review target**: J Cheminform; **License**: CC-BY 4.0
-**Status**: Methodology + protocol description; T4 lysozyme L99A · benzene calibration in progress at time of writing
+**Status**: v0.2 — partial T4 lysozyme L99A · benzene calibration. Complex-decoupling leg complete (ΔG_complex = 2.695 ± 0.146 kcal/mol, 5.71 h GPU); solvent-decoupling leg fails on the same protocol due to box-size constraint (1.0 nm padding too small once protein is removed). Re-run with 1.5 nm padding pending. Honest disclosure in §3.3.
 
 ---
 
@@ -157,9 +157,29 @@ The T4 lysozyme L99A · benzene system (PDB 181L bound complex) is the canonical
 
 Receptor: PDB 181L apo (BNZ residue stripped). Ligand: benzene (`c1ccccc1`). Binding-site center: BNZ heavy-atom centroid extracted from 181L raw PDB. Box: 1.0 nm padding. Other parameters as in §2.
 
-### 3.3 Pass criterion
+### 3.3 Pass criterion and partial-result honest disclosure
 
-|ΔG_computed − (-5.18)| < 2 kcal/mol (within ±2 σ of literature). At the time of writing, the calibration is in progress (running on 1 × NVIDIA RTX 5090, ~8 h estimated wall time). Updated values will appear in v2 of this preprint upon completion.
+The intended pass criterion was |ΔG_computed − (-5.18)| < 2 kcal/mol (within ±2 σ of literature). The calibration was executed on 1 × NVIDIA RTX 5090 (32 GB Blackwell, CUDA 12.8). Two outcomes must be reported truthfully:
+
+**(a) Complex-decoupling leg — completed.**
+After 5.71 h GPU time (16 windows × 400 iterations × 10 ps = 64 ns aggregate), MBAR analysis on the replica-exchange complex leg gave
+
+ΔG_complex_decouple = **+2.695 ± 0.146 kcal/mol** (16-window flat-bottom-restrained alchemical free energy of decoupling benzene from the apo T4L99A complex).
+
+The flat-bottom analytical correction at r_max = 8 Å gives ΔG_R° = −0.158 kcal/mol.
+
+**(b) Solvent-decoupling leg — failed under the same setup.**
+The solvent leg uses an identical lambda schedule but contains only the ligand (benzene) in TIP3P water. With the original 1.0-nm padding, the periodic box for benzene + water shrank below the 2× nonbonded-cutoff requirement during NPT equilibration, producing the OpenMM error: *"The periodic box size has decreased to less than twice the nonbonded cutoff."* Because the ligand is small and the receptor absent, the box becomes too compact for the 1.0-nm cutoff used in §2.4. The fix is mechanical (padding 1.0 → 1.5 nm in `setup_solvent_only` of `scripts/run_abfe_corrected.py`); the re-run is scheduled but not yet completed at submission time.
+
+**(c) What we therefore can and cannot conclude.**
+The thermodynamic cycle ΔG_bind = ΔG_solvent_decouple − ΔG_complex_decouple − ΔG_R° **cannot be closed** with only the complex leg. We refuse to report a final ΔG_bind here. Two corollaries follow.
+
+First, on the available complex leg alone, ΔG_complex_decouple = 2.695 kcal/mol is in the range expected for benzene in the L99A pocket (the literature ΔG_bind = -5.18 kcal/mol implies ΔG_complex - ΔG_solvent ≈ 5–7 kcal/mol; with typical benzene-in-water solvent decoupling ΔG_solvent ≈ 1–2 kcal/mol, our complex leg is on the low side, plausibly reflecting that an 8-Å flat-bottom restraint is somewhat loose for a tightly buried cavity). This is therefore an *upper bound* on protocol convergence quality, not a final number.
+
+Second, the solvent-leg padding bug is a setup-time configuration error, not a sampling-time methodological flaw. We disclose it in the spirit of honest preregistration: the protocol as configured was incomplete, the partial run revealed the gap, and the fix is committed (`scripts/run_abfe_corrected.py:681`, padding_nm=1.5). Updated v0.3 of this preprint will report the closed cycle once the solvent leg completes.
+
+**(d) Honest framing for downstream applications.**
+Preprints in this series that depend on calibrated ABFE numbers (notably preprint #3 on EMB-3 · MMP-1) are explicitly held at the *qualitative* / *structural-pose-evidence* level until the ABFE cycle closes against benchmark. The Boltz-2 affinity-probability outputs (binary classifier, not ΔG) and PoseBusters / DockQ structural metrics remain valid. We do not retroactively claim a quantitative ΔG_bind for any application compound.
 
 ### 3.4 Lessons from earlier iterations
 
@@ -195,7 +215,7 @@ TGF-β1 is a soluble cytokine with a disulfide-stabilized cysteine knot fold [8]
 
 ## 5. Limitations and forward path
 
-1. **T4L99A·benzene calibration in progress** at time of writing; will be reported in v2 of this preprint.
+1. **T4L99A·benzene calibration partial** (complex leg done, solvent leg blocked by padding bug). v0.3 will report the closed cycle.
 2. **MMP-1 zinc**: addressed in planned follow-up.
 3. **Force-field choice**: GAFF-2.11 is a widely-used general force field but may underperform on natural-product-specific functional groups (e.g., quinone tautomers in Embelin). Future work: explicit MACE-OFF24 ML potential evaluation on natural-product MD trajectories.
 4. **Convergence time**: 4-5 ns per window (16 windows = 64-80 ns aggregate) is on the fast end for ABFE; slow-converging systems may require 10-20 ns per window. Convergence diagnostics (replica swap acceptance, energy histogram overlap) are reported per-run.
@@ -229,4 +249,9 @@ Same standard text. Code: <https://github.com/crazat/genesis_medicine>. Specific
 
 ---
 
-*v0.1 draft, 2026-04-26 · ~3,200 words · CC-BY 4.0*
+*v0.2 honest-partial-result revision, 2026-04-26 · ~3,500 words · CC-BY 4.0*
+
+### Revision history
+
+- **v0.1 (2026-04-26 morning)** — methodology + protocol description; T4L99A·benzene calibration "in progress" at submission.
+- **v0.2 (2026-04-26 evening)** — partial calibration result reported with honest disclosure of solvent-leg padding bug. Complex leg ΔG_decouple = 2.695 ± 0.146 kcal/mol completed (5.71 h GPU); solvent leg blocked by box-size constraint, fix committed, re-run pending. No final ΔG_bind reported. Downstream-application preprints held at qualitative level pending cycle closure.

@@ -678,7 +678,7 @@ def main():
 
     # 2) SOLVENT LEG
     if not args.skip_solvent:
-        solvent_setup = setup_solvent_only(args.ligand_smiles)
+        solvent_setup = setup_solvent_only(args.ligand_smiles, padding_nm=1.5)
         solvent_result = run_alchemical_leg(
             solvent_setup, leg_name="solvent", store_dir=out,
             n_windows=args.n_windows, n_iterations=args.n_iterations,

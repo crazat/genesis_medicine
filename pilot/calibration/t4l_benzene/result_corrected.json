@@ -1,0 +1,25 @@
+{
+  "name": "t4l_benzene_calibration",
+  "status": "complex_leg_only",
+  "ligand_smiles": "c1ccccc1",
+  "complex": {
+    "delta_g_decouple_kcal_mol": 2.695,
+    "uncertainty_kcal_mol": 0.146,
+    "wall_hours": 5.71
+  },
+  "restraint": {
+    "delta_g_release_restraint_kcal_mol": -0.158,
+    "r_max_A": 8.0
+  },
+  "solvent": {
+    "status": "failed",
+    "error": "OpenMM box size shrunk below 2x nonbonded cutoff (1.0 nm padding too small for solvent leg)",
+    "fix": "padding 1.0nm → 1.5nm in setup_solvent_only — re-run pending"
+  },
+  "binding_free_energy_partial": {
+    "note": "ΔG_bind cannot be computed without solvent leg. Solvent leg re-run with 1.5nm padding required.",
+    "expected_complete": "If solvent leg gives ΔG_solvent_decouple ~ 1-2 kcal/mol (typical for benzene), then ΔG_bind ≈ ΔG_solvent - 2.695 - (-0.158) = (1-2) - 2.695 + 0.158 = -1.5 to -0.5 kcal/mol",
+    "literature": "-5.18 ± 0.18 kcal/mol (Mobley 2007)",
+    "interpretation": "Initial complex-leg ΔG = 2.695 may be too low — flat-bottom 8Å restraint may be too loose for tight T4L99A cavity. Boresch 6-DOF restraint or smaller flat-bottom (5Å) may give better calibration. Documented as protocol limitation."
+  }
+}
