@@ -1,0 +1,102 @@
+{
+  "name": "emb3_mmp1_v2",
+  "ligand_smiles": "CCCCCC1=C(O)C(=O)C(O)=C(C)C1=O",
+  "receptor": "/home/crazat/genesis_medicine/pilot/scaffold_hop/abfe_emb3_mmp1/receptor.pdb",
+  "n_windows": 16,
+  "n_iterations": 500,
+  "ps_per_iteration": 10.0,
+  "complex": {
+    "leg": "complex",
+    "delta_g_decouple_kcal_mol": -36.66016604967482,
+    "uncertainty_kcal_mol": 0.3075167103775507,
+    "n_windows": 16,
+    "n_iterations": 500,
+    "ps_per_iteration": 10.0,
+    "total_simulation_ns": 80.0,
+    "wall_hours": 5.607065755989816,
+    "storage": "/home/crazat/genesis_medicine/pilot/scaffold_hop/abfe_emb3_mmp1_v2/replica_exchange_complex.nc"
+  },
+  "restraint": {
+    "delta_g_release_restraint_kcal_mol": -0.1576053580650767,
+    "V_R_A3": 2144.660584850632,
+    "V_std_A3": 1660.5390671738467,
+    "r_max_A": 8.0,
+    "T_kelvin": 310.0,
+    "restraint_type": "flat_bottom_spherical",
+    "formula": "\u0394G_R^o = -RT ln(V_R / V\u00b0), V_R = 4/3 \u03c0 r_max\u00b3",
+    "restraint_info": {
+      "n_lig_atoms": 32,
+      "n_rec_atoms": 5,
+      "r_max_A": 8.0,
+      "k_kcal_mol_A2": 10.0,
+      "type": "flat_bottom_distance_centroid"
+    }
+  },
+  "restraint_anchors": {
+    "receptor_ca": [
+      2036,
+      4,
+      2050,
+      43,
+      98
+    ],
+    "ligand": [
+      2498,
+      2499,
+      2500,
+      2501,
+      2502,
+      2503,
+      2504,
+      2505,
+      2506,
+      2507,
+      2508,
+      2509,
+      2510,
+      2511,
+      2512,
+      2513,
+      2514,
+      2515,
+      2516,
+      2517,
+      2518,
+      2519,
+      2520,
+      2521,
+      2522,
+      2523,
+      2524,
+      2525,
+      2526,
+      2527,
+      2528,
+      2529
+    ]
+  },
+  "solvent": {
+    "leg": "solvent",
+    "delta_g_decouple_kcal_mol": -36.270100806677526,
+    "uncertainty_kcal_mol": 0.2270264625472393,
+    "n_windows": 16,
+    "n_iterations": 500,
+    "ps_per_iteration": 10.0,
+    "total_simulation_ns": 80.0,
+    "wall_hours": 2.9239517650339337,
+    "storage": "/home/crazat/genesis_medicine/pilot/scaffold_hop/abfe_emb3_mmp1_v2/replica_exchange_solvent.nc"
+  },
+  "binding_free_energy": {
+    "delta_g_bind_kcal_mol": 0.5476706010623718,
+    "uncertainty_kcal_mol": 0.38224016253939547,
+    "components": {
+      "delta_g_complex_decouple_kcal_mol": -36.66016604967482,
+      "delta_g_solvent_decouple_kcal_mol": -36.270100806677526,
+      "delta_g_release_restraint_kcal_mol": -0.1576053580650767
+    },
+    "formula": "\u0394G_bind = \u0394G_solvent - \u0394G_complex - \u0394G_release",
+    "interpretation": "weak/non-binder",
+    "implied_K_d_M": 2.4327627916158376
+  },
+  "wall_hours_total": 8.584081293079588
+}

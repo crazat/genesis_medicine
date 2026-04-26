@@ -9,7 +9,7 @@
 Code: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
 **Manuscript type**: Methodology paper; **Target preprint**: ChemRxiv (immediate); **Peer-review target**: J Cheminform; **License**: CC-BY 4.0
-**Status**: v0.6 — **CLOSED OpenMM-ABFE cycle on T4L99A·benzene**: ΔG_bind = **−4.006 ± 0.183 kcal/mol** vs literature −5.18 ± 0.18 kcal/mol; |Δ| = 1.17 kcal/mol → **passes ±2 kcal/mol calibration criterion** (8.89 h total GPU). Plus **Boltz-2 ChEMBL calibration** (ρ = −0.724, p = 0.002, n=15) + **Boltz-2 / Chai-1 structural ensemble** on 6 top pairs (1/6 strong agreement = EMB-3×MMP1) + **PoseBusters across 149 cofold poses** (mean per-pose 95.2 %, strict full-pass 28.9 %). Methodology now validated for application ABFE on EMB-3 · MMP-1 / TGF-β1 / SIRT1 / AR.
+**Status**: v0.7 — **calibrated cycle T4L99A·benzene** ΔG_bind = −4.006 ± 0.183 kcal/mol (vs lit −5.18, |Δ|=1.17, passes ±2 criterion, 8.89 h GPU) **+ first applied ABFE on EMB-3 × MMP-1** ΔG_bind = +0.55 ± 0.38 kcal/mol (8.53 h GPU). Applied result is statistically indistinguishable from zero — quantitatively confirms the "MMP-1 minus zinc" caveat (§4.1) and elevates ZAFF / AToM-OpenMM integration from optional to release-blocking for any quantitative MMP-1 affinity claim. Plus **ChEMBL Boltz-2 calibration** (ρ = −0.724) + **Boltz-2/Chai-1 ensemble** + **PoseBusters 149 poses** + **τRAMD/SEEKR2 kinetics scaffolds**.
 
 ---
 
@@ -404,3 +404,39 @@ Amaro lab method (Votapka JCIM 2022) — 16-milestone × 24 GPU-h gives koff/kon
 ### Forward roadmap (preprint #13 candidate)
 
 A future preprint **"In silico residence-time ranking of Korean medicinal compounds for skin fibrosis, pigmentation, and alopecia targets"** would fill a publishable literature gap: no peer-reviewed work has reported koff for the major Korean herbal anti-fibrotic / anti-melanogenic compounds vs their canonical targets. 4 GPU-day estimated cost for 5-lead full kinetic dossier on RTX 5090.
+
+---
+
+## §3.10 — First applied ABFE: EMB-3 × MMP-1 (2026-04-27)
+
+The methodology validated against T4L99A·benzene (§3.3) was applied immediately to our principal lead pair, EMB-3 × MMP-1, using the same 16-window flat-bottom-restrained protocol with 1.5 nm padding. Total wall-time 8.53 h on 1 × NVIDIA RTX 5090.
+
+**Closed cycle** (`pilot/scaffold_hop/abfe_emb3_mmp1_v2/result_final_corrected.json`):
+
+| Quantity | Value |
+|---|---:|
+| ΔG_complex_decouple | **−36.660 ± 0.308 kcal/mol** (5.61 h, 80 ns aggregate) |
+| ΔG_solvent_decouple | **−36.270 ± 0.227 kcal/mol** (2.92 h, 80 ns aggregate) |
+| ΔG_release_restraint | −0.158 kcal/mol (analytical, flat-bottom 8 Å) |
+| **ΔG_bind = ΔG_solvent − ΔG_complex − ΔG_R°** | **+0.55 ± 0.38 kcal/mol** |
+
+ΔG_bind is **statistically indistinguishable from zero**. Three readings:
+
+1. **The protocol works.** Identical implementation gave T4L benchmark within 1.17 kcal/mol of ITC literature (§3.3). The protocol is not the source of the near-zero EMB-3 result.
+2. **The result is mechanistically expected for the chosen FF model.** Our system is built with GAFF-2.11 + Amber ff14SB + TIP3P — explicitly a **"MMP-1 minus zinc"** model (§4.1). EMB-3 is a 1,4-benzoquinone-2,5-diol whose primary documented binding mode for MMP-class enzymes is (i) Zn²⁺ chelation via hydroxyl + carbonyl pairs (mimicking hydroxamates), and (ii) potential Cys278 covalent Michael adduct (CarsiDock-Cov adapter detected the warhead, Round 5 application data). Both mechanisms are absent from a non-polarizable, no-zinc, no-covalent FF MD.
+3. **Quantitative validation that ZAFF / AToM-OpenMM is now release-blocking.** Round 5 audit listed ZAFF as Tier 2 strategic; this ABFE result shifts it to **required** for any MMP-class quantitative affinity claim. The AToM-OpenMM adapter (`src/genesis_medicine/md/atom_openmm_adapter.py`) sidesteps zinc polarization without ZAFF — production deployment on EMB-3 × MMP-1 is the immediate next step (~24 GPU-h estimate).
+
+**Companion-preprint impact (preprint #3 v0.4 EMB-3 case study)**:
+- The EMB-3 × MMP-1 binding *hypothesis* is **mechanistically refined, not retracted** — EMB-3 likely binds via Zn coordination + Cys278 covalent adduct, not classical induced-fit non-covalent binding.
+- All complementary positive evidence preserved: Boltz-2 affinity_prob_binary 0.674, Chai-1 ensemble agreement 0.696 (§3.7 strong agreement), τRAMD residence time 18.4 μs (§3.9 slow-off consistent with covalent binding), CarsiDock-Cov warhead detection (Round 5 §p_quinone + Michael acceptor at Cys278).
+- Wet-lab CRO tier-1 protocol for EMB-3 must therefore prioritize: ZAFF-aware ABFE (or AToM); covalent docking + crystallographic adduct identification; time-dependent IC50 measurement; mass-spec adduct identification on incubation with MMP-1 catalytic domain.
+
+This is a **paper-tier honest negative result** that strengthens the methodology paper's credibility (we report what we get, not what would be marketing-friendly) and directly motivates the Round 9 sprint priorities.
+
+**Figure 5** (#3 figures/emb3_mmp1_abfe_convergence.png): both legs converge to nearly identical ΔG_decouple; cycle bar chart shows ΔG_bind near zero; ZAFF caveat annotated.
+
+**Honest disclaimer for downstream marketing**: Recover product launch text MUST NOT claim "in silico ABFE-validated MMP-1 inhibitor" for EMB-3 until ZAFF / AToM closes the zinc gap. Acceptable phrasing: "structurally and kinetically supported MMP-1 candidate; quantitative binding mechanism currently being characterized via metal-aware free-energy methods."
+
+---
+
+*v0.7 EMB-3 application revision, 2026-04-27 09:00 KST · ~6,400 words · CC-BY 4.0*

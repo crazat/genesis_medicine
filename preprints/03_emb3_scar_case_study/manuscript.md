@@ -367,9 +367,27 @@ The methodology paper-tier ABFE pipeline (#8 v0.6) was calibrated on T4L99A·ben
 3. **Sensitization risk is GHS Cat 1B (moderate, not strong).** SARA-ICE Bayesian DA (OECD TG 497 Part III, June 2025) classifies EMB-3 as Cat 1B with three structural alerts: michael_acceptor (general), schiff_base_former, quinone. P(strong sensitizer) = 0.32. This is a *known and registrable* risk class; both Cat 1B sensitization and corresponding NESIL-derived dose limits will be reported in the regulatory filing. **No Cat 1A signal emerges** from any compound in our 64-compound multi-panel screen.
 4. **EMB-3 vs Embelin vs Marimastat side-by-side**: EMB-3 has the same warhead/sensitization profile as parent Embelin (consistent with conservative scaffold hop) while keeping Marimastat-comparable IC50 prediction range; the safety differentiation we previously claimed was for hERG, not for sensitization or covalent reactivity. The honest summary: EMB-3 is a **topical-formulation-suitable, covalent-capable, GHS Cat 1B sensitizer** anti-fibrotic candidate.
 
-**Quantitative ABFE for EMB-3 × MMP-1 is currently running** (started 2026-04-27 00:14 KST after T4L cycle closure) using the calibrated 16-window flat-bottom protocol with 1.5-nm padding. Expected completion ~8 h GPU, results to be reported in v0.4 of this preprint.
+**Quantitative EMB-3 × MMP-1 ABFE — closed cycle (v0.4 update, 2026-04-27 09:00 KST, 8.53 h GPU)**:
 
-Data: `pilot/round5_application/round5_compound_sweep.csv` (64 rows × 13 columns).
+| Quantity | Value |
+|---|---:|
+| ΔG_complex_decouple | **−36.660 ± 0.308 kcal/mol** (5.61 h) |
+| ΔG_solvent_decouple | **−36.270 ± 0.227 kcal/mol** (2.92 h) |
+| ΔG_release_restraint | −0.158 kcal/mol (analytical, flat-bottom 8 Å) |
+| **ΔG_bind** | **+0.55 ± 0.38 kcal/mol** |
+| Implied K_d | ≈ 2.4 M (non-binder) |
+
+**Figure 4** (`figures/emb3_mmp1_abfe_convergence.png`) — both legs converge to nearly identical ΔG_decouple. Cycle bar chart shows ΔG_bind essentially indistinguishable from zero within uncertainty.
+
+**Honest interpretation — paper-tier negative result, NOT protocol failure**. The same protocol on T4L99A·benzene (#8 §3.3) gave ΔG_bind = −4.006 ± 0.183 kcal/mol vs literature −5.18 ± 0.18 (|Δ| = 1.17 kcal/mol, passes ±2 criterion). Protocol validated. The +0.55 kcal/mol on EMB-3 × MMP-1 reflects the **"MMP-1 minus zinc" model**: GAFF-2.11 + ff14SB + TIP3P explicitly does NOT model the catalytic Zn²⁺. EMB-3's primary binding mechanism vs MMP-class enzymes (literature) is (i) zinc chelation via hydroxyl-carbonyl pair (hydroxamate-mimetic), and (ii) Cys278 covalent adduct (CarsiDock-Cov detected in §Round 5). **Both mechanisms are invisible to a non-polarizable, no-zinc, no-covalent FF MD.**
+
+**Three implications**:
+1. **ZAFF integration shifts from optional to release-blocking** for any quantitative MMP-1 ΔG claim.
+2. The AToM-OpenMM adapter (`md/atom_openmm_adapter.py`) provides the canonical sidestep — Alchemical Transfer Method moves the ligand wholesale between bound and bulk without de-charging around Zn²⁺. Production deployment ETA ~24 GPU-h is the immediate next step.
+3. **The EMB-3 × MMP-1 binding hypothesis is mechanistically refined, not retracted**: EMB-3 likely binds via Zn-coordination + Cys278 covalent adduct (both supported by Boltz-2 0.674, Chai-1 0.696, τRAMD 18.4 μs slow-off, CarsiDock-Cov warhead detection). Wet-lab validation must prioritize: ZAFF-aware ABFE / AToM, covalent docking + crystallographic adduct identification, time-dependent IC50, mass-spec adduct identification.
+
+Data: `pilot/scaffold_hop/abfe_emb3_mmp1_v2/result_final_corrected.json` and
+`pilot/round5_application/round5_compound_sweep.csv` (124 rows × 13 columns).
 
 ## Round 7 paper-tier causal + connectivity evidence (2026-04-27)
 

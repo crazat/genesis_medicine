@@ -1,0 +1,36 @@
+{
+  "name": "emb3_mmp1_abfe_v2_closed",
+  "ligand_smiles": "CCCCCC1=C(O)C(=O)C(O)=C(C)C1=O",
+  "receptor": "MMP-1 catalytic domain (no zinc)",
+  "complex": {
+    "delta_g_decouple_kcal_mol": -36.66,
+    "uncertainty_kcal_mol": 0.308,
+    "wall_hours": 5.61
+  },
+  "solvent": {
+    "delta_g_decouple_kcal_mol": -36.27,
+    "uncertainty_kcal_mol": 0.227,
+    "wall_hours": 2.92
+  },
+  "restraint": {
+    "delta_g_release_restraint_kcal_mol": -0.158,
+    "r_max_A": 8.0
+  },
+  "binding_free_energy": {
+    "delta_g_bind_kcal_mol": 0.55,
+    "uncertainty_kcal_mol": 0.38,
+    "implied_K_d_M": 2.43,
+    "interpretation": "non_binder_in_zinc_free_model",
+    "honest_disclaimer": "Computed under the GAFF-2.11 + ff14SB + TIP3P 'MMP-1 minus zinc' model. The catalytic Zn^{2+} essential for hydroxamate / quinone chelation is NOT modeled. The +0.55 \u00b1 0.38 result is the protocol's verdict for non-zinc EMB-3 binding modes only. Quantitative binding via Zn coordination + Cys278 covalent adduct requires ZAFF + covalent docking (CarsiDock-Cov adapter, Round 5)."
+  },
+  "calibration_reference": {
+    "T4L99A_benzene": {
+      "delta_g_bind_kcal_mol": -4.006,
+      "uncertainty_kcal_mol": 0.183,
+      "literature": -5.18,
+      "abs_error_kcal_mol": 1.17,
+      "passes_2_kcal_criterion": true
+    }
+  },
+  "wall_hours_total": 8.53
+}
