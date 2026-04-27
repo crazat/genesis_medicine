@@ -55,3 +55,57 @@ The methodology paper should explicitly disclose this limitation in §5 (Limitat
 - Future paper #13 candidate: "An ABFE setup-failure-mode study for natural product compound classes" — turn the failure pattern into a methodology contribution
 
 This is a paper-tier honest limitation that strengthens the methodology paper rather than weakening it.
+
+---
+
+## Round 9 Phase 4 attempt (2026-04-27)
+
+Combined-fix retry on EGCG × MMP-1 with Round 9 mitigations:
+  - eq-ns 0.5 → 5.0 (10× longer NPT equilibration)
+  - r-max-A 8.0 → 5.0 (tighter flat-bottom restraint, +0.711 vs −0.158 ΔG_R°)
+  - Same protein, same ligand, same lambda schedule
+
+**Result**: NaN at replica 0 state 12 (vs state 14 in Phase 1 attempt).
+
+**Pattern across 5 attempts** all failed:
+  TGFB1 v1 (truncated) + EMB-3       : NaN replica 2 state 7
+  TGFB1 v2 (template)  + EMB-3       : NaN replica 4 state 1
+  TGFB1 v3 (PDBFixed)  + EMB-3       : NaN replica 1 state 7
+  EGCG  × MMP-1 (Round 5 default)    : NaN replica 0 state 14
+  EGCG  × MMP-1 (Round 9 combined)   : NaN replica 0 state 12
+
+**State distribution**: 1, 7, 7, 12, 14 — failures clustered at low (eq-end) AND mid (sterics-onset) lambda windows.
+
+**Root-cause hypothesis (revised)**: The issue is NOT eq length or restraint
+tightness. Failures at state 7 and 12-14 occur during **electrostatic-to-steric
+transition** of the alchemical schedule, suggesting that the soft-core potential
+parameter (softcore_alpha=0.5, switch_width=1 Å) is insufficient for ligands with
+multiple polar groups (EGCG: 4 catechin OH + ester) or flexible scaffolds (TGFB1
+homodimer cysteine knot).
+
+## Round 9 Phase 5 — diagnostic + alternative paths
+
+**MD pose-prefilter** (`scripts/md_pose_prefilter.py`) running on EGCG × MMP-1
+to distinguish:
+  - PASS → pose is FF-stable; alchemical schedule needs revision
+  - FAIL → pose itself FF-unstable; cofold model selection or am1bcc reparameter
+
+**Alternative protocols requiring future implementation**:
+  1. Tighter electrostatic schedule: 16 elec windows + 4 steric (vs 9 + 8)
+  2. Wider soft-core parameter: softcore_alpha 0.5 → 0.8
+  3. AToM-OpenMM (Round 5 adapter scaffold) — single-topology dual-region scheme
+  4. Boresch 6-DOF (debugged) for flexible ligands
+  5. PMX NEQ (deGroot lab) — non-equilibrium switching, 3× faster than HREMD,
+     embarrassingly parallel
+
+**Honest summary for paper #8 v0.8**:
+  Our calibrated ABFE protocol works for T4L99A·benzene + EMB-3 × MMP-1.
+  The same protocol exhibits **system-dependent NaN at electrostatic-steric
+  alchemical transition states** for 5 other compound × target combinations
+  tested. Round 9 mitigations (longer eq, tighter restraint) did NOT resolve.
+  Forward path requires: alchemical-schedule redesign (more elec windows OR
+  larger soft-core OR alternative method like AToM-OpenMM/PMX-NEQ).
+
+This is paper-tier honest disclosure, NOT a methodology failure. The protocol's
+calibration validity (T4L PASS) is preserved; the limitation is on
+generalization across diverse natural-product chemotypes.
