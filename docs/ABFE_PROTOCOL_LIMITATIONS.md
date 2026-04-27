@@ -109,3 +109,55 @@ to distinguish:
 This is paper-tier honest disclosure, NOT a methodology failure. The protocol's
 calibration validity (T4L PASS) is preserved; the limitation is on
 generalization across diverse natural-product chemotypes.
+
+---
+
+## Round 10 Phase 6 final attempt (2026-04-27)
+
+Combined fix on EGCG × MMP-1: --n-windows 24 (denser elec) + --softcore-alpha 0.8
+(wider) + --r-max-A 5.0 + --eq-ns 5.0 + --ligand-template-pdb cofold_template.pdb
++ --ligand-template-resname LIG1.
+
+**Result**: NaN at replica 2 state 18.
+
+**Critical log diagnostic**:
+  ```
+  fallback binding site = receptor COM      ← --ligand-template-pdb IGNORED
+  ΔG_release_restraint = -0.158 (r_max=8.0) ← --r-max-A 5.0 IGNORED
+  ```
+
+The Round 9 + Round 10 script CLI argument enhancements are NOT being properly
+threaded through setup_complex() / setup_alchemical_factory(). The actual run
+falls back to defaults (8 Å restraint, COM placement). This is a Python
+argparse-vs-keyword-passing bug in the script itself, not an alchemical
+methodology problem.
+
+**Round 11 priority** (separate sprint): debug setup_complex argument passing —
+verify ligand_template_pdb is actually consumed by the LIG1 residue lookup
+inside the setup function. Likely fix is a 1-line keyword forwarding correction.
+
+## Status accounting
+
+- Working ABFE cycles: 2 (T4L99A · benzene PASS, EMB-3 × MMP-1 +0.55)
+- Failed attempts: 6 (TGFB1 v1/v2/v3, EGCG v1/Round9/Round10 — all NaN at
+  alchemical sampling)
+- GPU time spent on attempts: ~4 GPU-hours (each fail in ~10-30 min)
+- Diagnostic value: unambiguous evidence that the ABFE pipeline works for
+  some systems and fails for others; root cause now narrowed to either
+  (a) ligand placement/conformer issue in setup_complex when
+      ligand_template is invoked, or
+  (b) Python argparse keyword-forwarding bug masking our Round 9/10 fixes.
+
+Both are debuggable in a focused sprint, but require careful single-issue
+fixing (not the brute-force "throw mitigations at it" approach used in
+Rounds 9-10).
+
+## What stands
+
+- Methodology paper #8 v0.7 ABFE results: T4L pass + EMB-3 cycle closed
+- Protocol calibration validity: PRESERVED
+- Application breadth: 1/14 compound × target combinations validated
+
+This is what we honestly have. Not more. Continued GPU retries of the same
+broken script add no value until the underlying argument-passing bug is
+debugged and verified.
