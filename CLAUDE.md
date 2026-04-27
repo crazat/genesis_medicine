@@ -327,6 +327,7 @@ python -m genesis_medicine.cli run disease=scar_regeneration build_profile=resea
 5. `test_license_gate.py` 실패 상태로 merge 금지.
 6. 상용·비상용 섞지 말 것 (어댑터 분리).
 7. **피부 특화**: 경피 흡수성(logP 1.5-3.5, logKp) + 피부 자극 최소화 + Lipinski MW ≤ 500.
+8. **CPU + GPU 동시 가동 필수**: 24 cores 시스템에서 한쪽이라도 idle 절대 금지. 매 turn `nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv` + `ps aux --sort=-%cpu | head -10` 확인. GPU long job (ABFE / Boltz-2 batch) 진행 중에도 `scripts/cpu_queue_v6_continuous.sh` 같은 24-core saturation 큐 동시 가동. Process 죽으면 즉시 재시작 + 새 job 큐잉. 자세한 패턴 + recurring bug fixes (tensorflow XLA / cuequivariance cu12-cu13 / BRICSBuild seed / boltz venv / PDB residue 3-char) → memory `feedback_cpu_gpu_concurrent.md`.
 
 ## 금지
 - `.env`, API 키 commit 금지.
