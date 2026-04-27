@@ -258,3 +258,84 @@ Emodin is a known anthraquinone with literature-documented broader activity beyo
 For AGA-vertical Recover patients (often on multiple oral medications), the cleaner-DDI **Saponin Re** (인삼) + **Biochanin A** (콩/황기) combination presents a more defensible recommendation despite their lower individual Boltz-2 affinity. AR causal evidence (TwoSampleMR §Round 7: AR→AGA OR=1.58, p=0.0002) supports the target choice; the **compound** choice within that target requires the polypharmacology + DDI lens.
 
 **KCID status**: Emodin (Polygonum multiflorum extract) is KFDA-approved as a cosmetic active. Saponin Re (Panax ginseng extract) and Biochanin A (Glycyrrhiza/soy) likewise approved — no Pre-Notification delay for any of the three.
+
+
+## R12 §4 — Korean herbal cross-reference
+
+### Method
+Top integrated paper-tier candidates were cross-referenced against
+102 curated Korean herbal compounds (skin_compounds_curated.csv,
+TGF-β1/MMP/COL1A1/TYR/AR target-annotated). Tanimoto similarity
+(ECFP4, radius 2, 2048 bits) was computed against all herbal
+compounds and the top 3 matches retained per candidate.
+
+### Top integrated candidates × Korean herbal proxies
+
+| Target | Compound | Best herbal match | Korean | Tanimoto |
+|---|---|---|---|---|
+| CTGF | top011 | Glabridin | 감초 | 0.290 |
+| CTGF | top005 | Curcumin | 울금 | 0.304 |
+| CTGF | top003 | Glabridin | 감초 | 0.268 |
+| CTGF | top006 | Glabridin | 감초 | 0.278 |
+| CTGF | top060 | EGCG | 녹차 | 0.365 |
+| MMP1 | top097 | EGCG | 녹차 | 0.354 |
+| MMP1 | top099 | EGCG | 녹차 | 0.338 |
+| MMP1 | top003 | Glabridin | 감초 | 0.268 |
+| MMP1 | top075 | Curcumin | 울금 | 0.333 |
+| MMP1 | top038 | Ferulic acid | 당귀/천궁 | 0.444 |
+| SIRT1 | top054 | Glabridin | 감초 | 0.247 |
+| SIRT1 | top016 | Ferulic acid | 당귀/천궁 | 0.415 |
+| SIRT1 | top039 | EGCG | 녹차 | 0.350 |
+| SIRT1 | top029 | Glabridin | 감초 | 0.373 |
+| SIRT1 | top018 | Glabridin | 감초 | 0.273 |
+
+### Direct Korean herbal cofold hits (Boltz-2)
+
+Selected high-affinity Boltz-2 cofolds with curated Korean herbals:
+
+| Target | Compound | Affinity prob. | Source botanical |
+|---|---|---|---|
+| MMP1 | embelin | 0.851 | (curated) |
+| AR | beta-sitosterol | 0.825 | (curated) |
+| AR | Baicalein | 0.820 | (curated) |
+| TYRP1 | Oxyresveratrol | 0.782 | (curated) |
+| AR | Emodin | 0.768 | (curated) |
+| TGFB1_POCKET2 | embelin | 0.759 | (curated) |
+| CTGF | curcumin | 0.752 | (curated) |
+| TYR | Oxyresveratrol | 0.750 | (curated) |
+| AR | Physcion | 0.750 | (curated) |
+| TGFB1 | emb3 | 0.749 | (curated) |
+
+### Interpretation
+- Top BRICS-derived candidates show **moderate scaffold overlap**
+  with Korean herbals (mean Tanimoto 0.32, max 0.44).
+- Most common herbal proxies: **Glabridin (감초)**, **EGCG (녹차)**,
+  **Curcumin** — all topical-validated Korean traditional compounds.
+- Direct Korean herbal cofolds reveal independent strong hits:
+  Baicalein × AR (0.82), Beta-sitosterol × AR (0.83), 
+  Oxyresveratrol × TYRP1 (0.78), Emodin × AR (0.77).
+
+### Limitations
+- ECFP4 Tanimoto is 2D-only; 3D pharmacophore alignment may differ.
+- Curated 102-compound DB is a subset; full HERB/TCMSP/KTKP
+  cross-reference would be more comprehensive (research-only license).
+- Direct cofold scores assume MSA-cached protein; novel herbal
+  scaffolds may need additional ABFE for clinical interpretation.
+
+
+## R12 §5 — Open Targets reverse evidence
+
+External validation via Open Targets Platform (api.platform.opentargets.org/v4) reverse association
+queries for skin-relevant diseases:
+
+| Target | Disease | OT score |
+|---|---|---|
+| AR | acne | 0.582 |
+| AR | androgenetic alopecia | 0.464 |
+| SRD5A2 | androgenetic alopecia | 0.702 |
+| SRD5A2 | alopecia | 0.547 |
+| SRD5A2 | skin aging | 0.285 |
+
+These scores represent disease-target associations integrated
+from genetic association, pathway, drug, RNA expression, and
+animal model evidence streams in the Open Targets Platform.

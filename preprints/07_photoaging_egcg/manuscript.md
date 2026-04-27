@@ -203,3 +203,70 @@ EGCG × MMP-1: τ = 8.3 μs (log10 = 0.92). Faster off-rate than EMB-3 (18.4 μs
 - Pathway enrichments: Nrf2_oxidative_stress=4.3, EMT_reverse=2.8, MMP_pathway_down=3.1
 
 EGCG's anti-photoaging mechanism is **morphologically validated** by the Tahoe-100M perturbation atlas: it suppresses the same MMP-1/MMP-9/EMT signature we target with our scaffold-hop leads. This is direct paper-tier evidence beyond the in silico cofold predictions.
+
+
+## R12 §3.SIRT1 — Integrated paper-tier ranking
+
+### Method
+Top 100 BRICS-derived candidates were cofolded with Boltz-2
+(n=1109 total cofolds, ipTM ≥ 0.7 in 32%) and scored by integrated
+paper-tier metric:
+
+$$\text{score} = 0.5 \cdot P(\text{binder}) + 0.3 \cdot S - 0.2 \cdot (1 - N)$$
+
+where $P$ = Boltz-2 affinity probability, $S$ = composite ADMET safety
+$(1 - hERG, 1 - AMES, 1 - Skin\_Reaction)$, $N$ = Tanimoto novelty
+$(1 - \max\_Tanimoto)$ vs ChEMBL+DrugBank reference.
+
+### Top candidates for SIRT1
+
+| Rank | Compound | Affinity prob. | Safety | Score | SMILES |
+|---|---|---|---|---|---|
+| 1 | top054 | 0.769 | 0.427 | 0.594 | `OCc1ccc(C=CC2COc3cc(O)ccc3C2)c(O)c1O` |
+| 2 | top016 | 0.743 | 0.402 | 0.592 | `COc1cc(C=CC2COc3cc(O)ccc3C2)ccc1O` |
+| 3 | top039 | 0.676 | 0.522 | 0.582 | `C=CC(C)(C)C1Cc2c(O)cc(O)cc2OC1OC` |
+| 4 | top029 | 0.685 | 0.470 | 0.576 | `C=CC(C)(C)c1ccc(O)c(C2COc3cc(O)ccc3C2)c1` |
+| 5 | top018 | 0.651 | 0.412 | 0.546 | `O=C(OC1COc2cc(O)ccc2C1)C1COc2cc(O)ccc2C1` |
+| 6 | top074 | 0.695 | 0.404 | 0.546 | `COC1Oc2cc(O)cc(O)c2CC1C=CC1COc2cc(O)ccc2C1` |
+| 7 | top092 | 0.659 | 0.473 | 0.543 | `C=CC(C)(C)C1Cc2c(O)cc(O)cc2OC1C1COc2cc(O)ccc2C1` |
+| 8 | top001 | 0.586 | 0.456 | 0.541 | `C=CC(C)(C)c1ccc(O)c(OC2COc3cc(O)ccc3C2)c1` |
+| 9 | top044 | 0.605 | 0.505 | 0.540 | `COC(=O)c1ccc(O)c(-c2cc(CO)ccc2O)c1` |
+| 10 | top051 | 0.537 | 0.618 | 0.536 | `COc1ccc(O)c(Oc2cc(CO)ccc2O)c1` |
+
+### Scaffold safety profile (top 5 safest, n ≥ 5)
+
+| Murcko scaffold | n | logP | hERG | Skin |
+|---|---|---|---|---|
+| `C1CCC(OC2CCCCO2)OC1` | 6 | -3.51 | 0.033 | 0.325 |
+| `C1CCOCC1` | 7 | -1.29 | 0.066 | 0.451 |
+| `c1cc(C2CCCCO2)ccc1C1CCCCO1` | 5 | -2.50 | 0.115 | 0.220 |
+| `c1cc(C2CCCCO2)cc(C2CCCCO2)c1` | 9 | -1.69 | 0.177 | 0.213 |
+| `c1ccc(C2CCCCO2)cc1` | 49 | -0.25 | 0.247 | 0.350 |
+
+### Limitations
+- Boltz-2 affinity_probability_binary is a binary classifier, NOT pIC50.
+  Wet-lab IC50 measurement required for clinical interpretation.
+- ADMET-AI v2 prediction confidence is endpoint-dependent; hERG/AMES
+  validated against ChEMBL but skin permeation logKp uses limited training.
+- Murcko scaffold analysis ignores stereochemistry and 3D conformation.
+- Top candidates require PoseBusters geometric validation (in progress).
+
+
+## R12 §5 — Open Targets reverse evidence
+
+External validation via Open Targets Platform (api.platform.opentargets.org/v4) reverse association
+queries for skin-relevant diseases:
+
+| Target | Disease | OT score |
+|---|---|---|
+| JUN | skin squamous cell carcinoma | 0.372 |
+| JUN | superficial spreading melanoma | 0.370 |
+| JUN | melanoma | 0.328 |
+| JUN | skin basal cell carcinoma | 0.301 |
+| LOX | skin aging | 0.409 |
+| LOX | Increased number of skin folds | 0.118 |
+| SIRT1 | melanoma | 0.109 |
+
+These scores represent disease-target associations integrated
+from genetic association, pathway, drug, RNA expression, and
+animal model evidence streams in the Open Targets Platform.

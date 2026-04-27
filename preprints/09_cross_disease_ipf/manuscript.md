@@ -273,3 +273,21 @@ Niclosamide downregulates the same anti-fibrotic markers (TGFB1, MMP9, CTNNB1) w
 Three fibrotic-mechanism compounds (Asiaticoside, EMB-3, EGCG) have residence times spanning a 5-fold range (8 → 42 μs). For a topical leave-on agent attacking F6 inflammatory myofibroblasts (Reynolds 2025 atlas, see §Round 5 update), residence time directly determines duration of TGF-β1 / MMP-1 suppression per unit applied dose. Slow-off Asiaticoside → multi-hour pharmacological effect after single application; fast-off EGCG → frequent reapplication required for sustained engagement.
 
 Combined with the F6 myofibroblast ranking (Round 5: ACTA2 > COL1A1 > CTGF > POSTN > FAP > TGFB1 > LOX > MMP1) and the cross-tissue conserved 8 targets (skin↔IPF↔SSc), the kinetic dimension provides a **third independent ranking axis** for cross-disease lead prioritization. The triple-axis (F6-priority + cross-tissue-conserved + slow-off-rate) intersection identifies **TGFB1 + Asiaticoside** as the highest-evidence cross-disease scar/IPF target-compound pair under our current data — a paper-tier finding for v0.4 of this preprint.
+
+
+## R12 §5 — Open Targets reverse evidence
+
+External validation via Open Targets Platform (api.platform.opentargets.org/v4) reverse association
+queries for skin-relevant diseases:
+
+| Target | Disease | OT score |
+|---|---|---|
+| PDGFRB | skeletal overgrowth-craniofacial dysmorphism-hyperelastic skin-white matter lesions syndrome | 0.748 |
+| PDGFRB | acroosteolysis-keloid-like lesions-premature aging syndrome | 0.744 |
+| PDGFRB | idiopathic pulmonary fibrosis | 0.594 |
+| PDGFRB | dermatofibrosarcoma protuberans | 0.565 |
+| PDGFRB | pulmonary fibrosis | 0.555 |
+
+These scores represent disease-target associations integrated
+from genetic association, pathway, drug, RNA expression, and
+animal model evidence streams in the Open Targets Platform.

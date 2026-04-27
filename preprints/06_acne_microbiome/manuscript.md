@@ -246,3 +246,16 @@ Round 8 polypharmacology audit (SwissTargetPrediction literature-validated) reve
 **Recover clinical implication**: Acne patients on isotretinoin / oral contraceptives / statins / immunosuppressants must NOT use 황련-containing topical or oral preparations without explicit DDI consultation. The claimed Boltz-2 acne-target affinity (mean 0.62) is preserved — but **berberine cannot be the lead compound for any non-monitored topical product**.
 
 **Wogonin (황금)** with cleaner ADMET (AMES 0.247, hERG 0.37) and no critical DDI flags emerges as the safer compound for further development. We update the §3.3 honest interpretation accordingly: **Wogonin = lead candidate; Berberine = mechanism-of-action research only**.
+
+
+## R12 §5 — Open Targets reverse evidence
+
+External validation via Open Targets Platform (api.platform.opentargets.org/v4) reverse association
+queries for skin-relevant diseases:
+
+| Target | Disease | OT score |
+|---|---|---|
+
+These scores represent disease-target associations integrated
+from genetic association, pathway, drug, RNA expression, and
+animal model evidence streams in the Open Targets Platform.

@@ -107,3 +107,64 @@
 ## 7. 즉시 실행
 
 이 honest narrative를 paper Introduction + Discussion에 채택. 메모리/코드의 잘못된 자운고 매핑은 **이번 commit에서 정정**.
+
+---
+
+## 8. v0.3 추가 정정 (2026-04-27) — PAINS + 8-target audit
+
+광범위 web search (2026-04-27) 결과 추가 발견:
+
+### 8.1 우리 in silico 8-target finding 검증 결과
+| Target | 직접 결합 보고 (literature) | 우리 prob | 상태 |
+|---|---|---|---|
+| MMP-1 | ❌ 0건 (MMP-9 cellular Western blot만) | 0.851 | first-in-literature |
+| TGFB1 pocket2 | ❌ 0건 | 0.759 | first-in-literature |
+| SMAD3 | ⚠️ pathway만, 직접 결합 0 | 0.733 | first-in-literature |
+| CTGF/CCN2 | ❌ 0건 | 0.716 | first-in-literature |
+| TGFB1 (canonical) | ⚠️ pathway만 | 0.675 | first-in-literature |
+| TGFB1 (full-length) | ⚠️ pathway만 | 0.667 | first-in-literature |
+| LOX (lysyl oxidase) | ❌ 0건 (5-LOX는 별개 효소!) | 0.657 | first-in-literature |
+| VEGFA | ⚠️ cellular expression만 | 0.656 | first-in-literature |
+
+### 8.2 Embelin의 실제 검증된 direct binding targets
+| Target | IC₅₀ / K_d | Source |
+|---|---|---|
+| **XIAP-BIR3** | 4.1 µM | Nikolovska-Coleska 2004 *J Med Chem* |
+| **PAI-1** | 4.94 µM | Sang 2014 *BMCL* |
+| **5-LOX / mPGES-1** | 0.06–2 µM | Schaible 2013 |
+| **TACE / ADAM17** | 50% @ 20 µM | Kundap 2014 |
+
+### 8.3 PAINS critical disclosure
+**1,4-benzoquinone-2,5-diol scaffold = PAINS class** (Baell 2010, 2017).
+3 orthogonal false-positive mechanisms:
+- **Redox cycling** — GSH/NADH 환원 → ROS 생성 → target 단백질 파괴
+- **Michael acceptor** — Cys-thiol / Lys ε-amine 비특이 공유결합
+- **Metal chelation** — Zn²⁺/Cu²⁺/Fe²⁺ sub-µM 결합 → MMP-1/LOX 점수 왜곡
+
+→ 우리 Boltz-2 prob=0.851 (embelin × MMP-1)은 **2,5-diol 모티프가 catalytic Zn²⁺ chelating한 결과**일 가능성 높음 (specific topology recognition X).
+
+### 8.4 Clinical translational status
+- **ClinicalTrials.gov 0건**, CTRI India에 polyherbal 1건만 (단일 분자 아님)
+- Embelin = "drug of antiquity" (40+년 phase 0 정체, Tandfonline 2014)
+- LD50 >5 g/kg rat (안전), 임신 금기, CYP2D6 inhibitor flag, oral F 30%, t½ 1h
+- KP/KHP 자단 미등재 → 한국 한약 narrative 약함, "AI 신약 발굴" 포지셔닝 권장
+- Patent landscape: scar/dermatology embelin patent 사실상 0 → IP 공백 = first-mover 가능
+
+### 8.5 Paper-tier defensible 클레임
+✅ "In silico co-fold (Boltz-2) predicts embelin 8 fibrotic-axis interactions, with PAINS caveat for 1,4-benzoquinone scaffold"
+✅ "Embelin is a validated XIAP-BIR3 / PAI-1 / 5-LOX inhibitor with established SAR enabling rational scaffold-hop optimization"
+✅ "EMB-3 inherits parent compound's first-in-literature status for skin-fibrosis indications, requiring biochemical validation"
+
+❌ "Embelin은 8개 fibrosis target에 직접 결합한다" — direct binding 0/8
+❌ "Multi-target promiscuous direct binder" — PAINS이지 specific binder 아님
+❌ "MMP-1 inhibitor" — literature 0건 (MMP-9 cellular만)
+
+### 8.6 Updated reference list (v0.3 추가)
+- Baell JB, Holloway GA. New substructure filters for removal of pan assay interference compounds (PAINS) from screening libraries. *J Med Chem* 2010, 53(7):2719-2740. doi:10.1021/jm901137j
+- Baell JB. Feeling Nature's PAINS: Natural Products, Natural Product Drugs, and Pan Assay Interference Compounds (PAINS). *J Nat Prod* 2016, 79(3):616-628.
+- Sang J et al. Embelin as a structural lead for the SAR development of plasminogen activator inhibitor-1 (PAI-1) inhibitors. *Bioorg Med Chem Lett* 2014, 24:3050-3054.
+- Schaible AM et al. Embelin discovery for inhibition of microsomal prostaglandin E2 synthase-1 and 5-lipoxygenase. *Br J Pharmacol* 2013, 168:1717-1728.
+- Kundap UP et al. Embelin and its derivatives in cancer: target evaluation, anti-tumor potency, drug delivery. *BMC Cancer* 2014, 14:617.
+- Wang J et al. Embelin inhibits angiogenesis in vitro by impacting endothelial mitochondrial respiration. *Mol Cancer Ther* 2014, 13:1382-1392.
+- Li Y et al. Pharmacokinetics and bioavailability of embelin in rats. *Pharmaceutics* 2019, 11(2):82. PMC6446108.
+

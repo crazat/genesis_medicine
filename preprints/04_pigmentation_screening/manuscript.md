@@ -265,3 +265,37 @@ Data and full per-compound table: `pilot/round5_application/round5_compound_swee
 | Kojic acid | Kojic Acid | ✓ | approved | restricted (Annex III max 1.0%) |
 
 **Reformulation implication**: All 3 Korean herbal leads (oxyresveratrol, glabridin, curcumin) are KFDA-approved cosmetic actives — **no Pre-Notification delay** for Recover product launch. Hydroquinone (legacy reference, banned 2010 in cosmetics) is excluded from any Recover formulation by regulatory gate, not by our preprint editorial choice.
+
+
+## R12 §5 — Open Targets reverse evidence
+
+External validation via Open Targets Platform (api.platform.opentargets.org/v4) reverse association
+queries for skin-relevant diseases:
+
+| Target | Disease | OT score |
+|---|---|---|
+| DCT | Abnormality of skin pigmentation | 0.264 |
+| DCT | melanoma | 0.110 |
+| DCT | retinitis pigmentosa | 0.078 |
+| MITF | cutaneous melanoma | 0.740 |
+| MITF | melanoma, cutaneous malignant, susceptibility to, 8 | 0.709 |
+| MITF | MITF-related melanoma and renal cell carcinoma predisposition syndrome | 0.508 |
+| MITF | melanoma | 0.498 |
+| MITF | skin cancer | 0.426 |
+| MITF | skin neoplasm | 0.424 |
+| TYR | Abnormality of skin pigmentation | 0.693 |
+| TYR | cutaneous melanoma | 0.582 |
+| TYR | melanoma | 0.554 |
+| TYR | skin neoplasm | 0.538 |
+| TYR | skin cancer | 0.536 |
+| TYR | skin disease | 0.509 |
+| TYR | Abnormality of the skin | 0.508 |
+| TYRP1 | Abnormality of skin pigmentation | 0.541 |
+| TYRP1 | skin cancer | 0.486 |
+| TYRP1 | cutaneous melanoma | 0.483 |
+| TYRP1 | skin disease | 0.418 |
+| TYRP1 | skin neoplasm | 0.315 |
+
+These scores represent disease-target associations integrated
+from genetic association, pathway, drug, RNA expression, and
+animal model evidence streams in the Open Targets Platform.

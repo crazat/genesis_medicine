@@ -198,6 +198,10 @@ We emphasize the in silico nature of this entire investigation. The following ca
 
 7. **Traditional medicine context disclaimer**. The Vidanga / 자단 traditional uses described in section 2 do not constitute clinical evidence for any modern indication. The traditional context is presented for completeness and historical accuracy, not as evidence of efficacy.
 
+8. **PAINS-class scaffold considerations (added v0.3, 2026-04)**. Embelin is structurally a 2,5-dihydroxy-1,4-benzoquinone, a chemotype recognized in the medicinal-chemistry literature as a Pan-Assay Interference compound (PAINS) class with three orthogonal mechanisms that can produce false-positive in silico and in vitro binding signals: (i) **redox cycling** with cellular reductants (GSH, NADH) generates reactive oxygen species that may degrade target proteins or assay readouts; (ii) **Michael acceptor reactivity** of the para-quinone enables non-specific covalent capture of nucleophilic residues (Cys-thiol, Lys ε-amine), which structure-based scoring functions including Boltz-2 may interpret as favorable interaction; (iii) **strong metal chelation** by the catechol-like 2,5-diol motif binds Zn²⁺, Cu²⁺, Fe²⁺ with sub-µM apparent affinity, potentially confounding scores against metal-containing targets such as MMP-1 (Zn²⁺) and lysyl oxidase (Cu²⁺). Reference: Baell & Holloway 2010 *J Med Chem*; Baell 2017 *ACS Chem Biol*. All Boltz-2 affinity probability scores reported in this manuscript and our companion preprints involving the embelin scaffold should be interpreted with this PAINS caveat. Mitigation in version 0.4 will include DTT-free counter-screen, Cys/Lys mutation control assays, and EDTA-treated holo-protein structure re-runs.
+
+9. **First-in-literature predictions disclosed (added v0.3)**. A targeted PubMed/PMC literature audit (April 2026) confirms that direct biochemical binding (IC₅₀, K_i, SPR, ITC, or co-crystal evidence) of embelin to the four predicted skin-fibrosis targets (TGF-β1, MMP-1, CTGF/CCN2, SMAD3) and to lysyl oxidase has **not** been reported in the peer-reviewed literature. Embelin's experimentally validated direct binding targets are XIAP-BIR3 (K_d ≈ 4.1 µM, Nikolovska-Coleska 2004), PAI-1 (IC₅₀ 4.94 µM, Sang 2014), 5-LOX/mPGES-1 (IC₅₀ 0.06–2 µM, Schaible 2013), and TACE/ADAM17 (Kundap 2014). Our predictions therefore constitute first-in-literature in silico hypotheses requiring SPR/ITC/co-crystal validation; readers should not interpret the predictions as confirmation of established mechanism.
+
 ---
 
 ## 6. Conclusions and forward path
@@ -372,3 +376,66 @@ the chemistry-based distinction between *E. ribes* and 자운고).
 *Embelin MMP-1 Boltz-2 from earlier scaffold-hop screen.
 
 EMB-3 trades 0.08 affinity-classifier signal for **6× hERG safety + topical logP fit + 1.5× residence time** — a textbook scaffold-hop optimization.
+
+
+## R12 §4 — Korean herbal cross-reference
+
+### Method
+Top integrated paper-tier candidates were cross-referenced against
+102 curated Korean herbal compounds (skin_compounds_curated.csv,
+TGF-β1/MMP/COL1A1/TYR/AR target-annotated). Tanimoto similarity
+(ECFP4, radius 2, 2048 bits) was computed against all herbal
+compounds and the top 3 matches retained per candidate.
+
+### Top integrated candidates × Korean herbal proxies
+
+| Target | Compound | Best herbal match | Korean | Tanimoto |
+|---|---|---|---|---|
+| CTGF | top011 | Glabridin | 감초 | 0.290 |
+| CTGF | top005 | Curcumin | 울금 | 0.304 |
+| CTGF | top003 | Glabridin | 감초 | 0.268 |
+| CTGF | top006 | Glabridin | 감초 | 0.278 |
+| CTGF | top060 | EGCG | 녹차 | 0.365 |
+| MMP1 | top097 | EGCG | 녹차 | 0.354 |
+| MMP1 | top099 | EGCG | 녹차 | 0.338 |
+| MMP1 | top003 | Glabridin | 감초 | 0.268 |
+| MMP1 | top075 | Curcumin | 울금 | 0.333 |
+| MMP1 | top038 | Ferulic acid | 당귀/천궁 | 0.444 |
+| SIRT1 | top054 | Glabridin | 감초 | 0.247 |
+| SIRT1 | top016 | Ferulic acid | 당귀/천궁 | 0.415 |
+| SIRT1 | top039 | EGCG | 녹차 | 0.350 |
+| SIRT1 | top029 | Glabridin | 감초 | 0.373 |
+| SIRT1 | top018 | Glabridin | 감초 | 0.273 |
+
+### Direct Korean herbal cofold hits (Boltz-2)
+
+Selected high-affinity Boltz-2 cofolds with curated Korean herbals:
+
+| Target | Compound | Affinity prob. | Source botanical |
+|---|---|---|---|
+| MMP1 | embelin | 0.851 | (curated) |
+| AR | beta-sitosterol | 0.825 | (curated) |
+| AR | Baicalein | 0.820 | (curated) |
+| TYRP1 | Oxyresveratrol | 0.782 | (curated) |
+| AR | Emodin | 0.768 | (curated) |
+| TGFB1_POCKET2 | embelin | 0.759 | (curated) |
+| CTGF | curcumin | 0.752 | (curated) |
+| TYR | Oxyresveratrol | 0.750 | (curated) |
+| AR | Physcion | 0.750 | (curated) |
+| TGFB1 | emb3 | 0.749 | (curated) |
+
+### Interpretation
+- Top BRICS-derived candidates show **moderate scaffold overlap**
+  with Korean herbals (mean Tanimoto 0.32, max 0.44).
+- Most common herbal proxies: **Glabridin (감초)**, **EGCG (녹차)**,
+  **Curcumin** — all topical-validated Korean traditional compounds.
+- Direct Korean herbal cofolds reveal independent strong hits:
+  Baicalein × AR (0.82), Beta-sitosterol × AR (0.83), 
+  Oxyresveratrol × TYRP1 (0.78), Emodin × AR (0.77).
+
+### Limitations
+- ECFP4 Tanimoto is 2D-only; 3D pharmacophore alignment may differ.
+- Curated 102-compound DB is a subset; full HERB/TCMSP/KTKP
+  cross-reference would be more comprehensive (research-only license).
+- Direct cofold scores assume MSA-cached protein; novel herbal
+  scaffolds may need additional ABFE for clinical interpretation.

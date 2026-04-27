@@ -1,4 +1,4 @@
-"""ChemBERTa-3 / MolFormer-XL adapter (HuggingFace transformers).
+"""ChemBERTa-3 / MolFormer-XL / Tahoe-100M adapter (HuggingFace transformers).
 
 Foundation models for molecular embedding / property prediction.
 ChemBERTa-3 (Digital Discovery 2026) is the fully-open re-implementation

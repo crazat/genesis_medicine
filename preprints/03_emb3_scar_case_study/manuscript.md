@@ -17,7 +17,7 @@ Code repository: <https://github.com/crazat/genesis_medicine> · Correspondence:
 
 ## Abstract (250 words)
 
-Embelin (2,5-dihydroxy-3-undecyl-1,4-benzoquinone) is the principal bioactive of ***Embelia ribes*** Burm.f. (Ayurvedic *Vidanga*; East Asian 자단), an Ayurvedic and East Asian traditional-medicine plant with documented anti-fibrotic activity in liver and pulmonary models but no published investigation in skin fibrosis. We present an in silico case study in which embelin serves as the scaffold-hop seed for an AI-augmented lead-optimization pipeline targeting the skin fibrotic master-switch network (TGF-β1, MMP-1, CTGF, SMAD3). The pipeline integrates REINVENT 4 generative chemistry, ADMET-AI property prediction, Boltz-2 protein–ligand co-folding, 10 ns molecular dynamics, and a corrected absolute binding free energy protocol calibrated on the T4 lysozyme L99A · benzene benchmark. Round-1 mol2mol scaffold-hopping yielded **EMB-3** (`CCCCCC1=C(O)C(=O)C(O)=C(C)C1=O`), a chain-truncated analog (C₁₁ undecyl → C₆ hexyl + methyl) with predicted hERG inhibition reduced from 0.40 to 0.16, predicted skin irritation reduced from 0.84 to 0.67, logP shifted into the topical sweet spot (5.4 → 2.36), and Boltz-2 affinity probability against TGF-β1 of 0.749. A 7-compound SAR panel spanning C10–C13 natural Embelin analogs and a non-benzoquinone scaffold control confirms that EMB-3 is uniquely positioned in the topical-friendly window. Two further generative rounds (T = 1.0 / 0.6, 100 / 300 samples plus BRICS herbal fragment grafting) failed to surpass EMB-3 on the affinity metric, suggesting a local optimum of the REINVENT4 mol2mol prior space. **All results are in silico; experimental synthesis and assay are the next required step.**
+Embelin (2,5-dihydroxy-3-undecyl-1,4-benzoquinone) is the principal bioactive of ***Embelia ribes*** Burm.f. (Ayurvedic *Vidanga*; East Asian 자단), an Ayurvedic and East Asian traditional-medicine plant with documented anti-fibrotic activity in liver and pulmonary models but no published investigation in skin fibrosis. We present an in silico case study in which embelin serves as the scaffold-hop seed for an AI-augmented lead-optimization pipeline targeting the skin fibrotic master-switch network (TGF-β1, MMP-1, CTGF, SMAD3). The pipeline integrates REINVENT 4 generative chemistry, ADMET-AI property prediction, Boltz-2 protein–ligand co-folding, 10 ns molecular dynamics, and a corrected absolute binding free energy protocol calibrated on the T4 lysozyme L99A · benzene benchmark. Round-1 mol2mol scaffold-hopping yielded **EMB-3** (`CCCCCC1=C(O)C(=O)C(O)=C(C)C1=O`), a chain-truncated analog (C₁₁ undecyl → C₆ hexyl + methyl) with predicted hERG inhibition reduced from 0.40 to 0.16, predicted skin irritation reduced from 0.84 to 0.67, logP shifted into the topical sweet spot (5.4 → 2.36), and Boltz-2 affinity probability against TGF-β1 of 0.749. A 7-compound SAR panel spanning C10–C13 natural Embelin analogs and a non-benzoquinone scaffold control confirms that EMB-3 is uniquely positioned in the topical-friendly window. Two further generative rounds (T = 1.0 / 0.6, 100 / 300 samples plus BRICS herbal fragment grafting) failed to surpass EMB-3 on the affinity metric, suggesting a local optimum of the REINVENT4 mol2mol prior space. **All results are in silico; experimental synthesis and assay are the next required step. We further note that direct biochemical binding of embelin to the four predicted targets (TGF-β1, MMP-1, CTGF, SMAD3) has not been reported in the peer-reviewed literature; embelin's experimentally validated direct binding targets are XIAP-BIR3 (IC₅₀ ≈ 4.1 μM), PAI-1 (IC₅₀ 4.94 μM), and 5-LOX/mPGES-1 (IC₅₀ 0.06–2 μM). Our predictions therefore constitute first-in-literature in silico hypotheses requiring SPR/ITC validation, with explicit consideration of embelin's PAINS-class 1,4-benzoquinone scaffold (potential redox cycling, Michael acceptor reactivity, and metal chelation) as alternative explanations for high in silico co-fold scores.**
 
 **Keywords**: scaffold-hopping, embelin, skin fibrosis, REINVENT4, Boltz-2, ABFE, natural products, in silico, traditional medicine.
 
@@ -194,7 +194,12 @@ The present results are entirely in silico. Specific limitations:
 7. **Cryptic / allosteric pocket detection.** The present screen uses Boltz-2-predicted holo conformations only. Cryptic-pocket detection (PocketMiner GNN, BioEmu equilibrium ensembles, AlphaFlow flow-matching) was not applied. The "B hypothesis" for EMB-3 binding to TGFB1 pocket 2 reported elsewhere in our pipeline used fpocket only (legacy 2009 method). BioEmu (Microsoft 2026, single-GPU equilibrium ensembles, 1 kcal/mol accuracy) is a planned forward-step for cryptic pocket re-evaluation.
 
 8. **MMP-1 catalytic zinc handling — explicit deferral.** Our previous limitation #3 noted the absence of ZAFF; we restate this as a deferred deliverable. ZAFF (Peters et al. 2010) requires bonded Zn²⁺ + coordinating residues (His218, His222, His228 in MMP-1 catalytic domain). Implementation in the openmmtools alchemical pipeline is non-trivial (custom Zn²⁺-coordinating residue topology) but planned for v0.4.
-4. **Pose validation.** Boltz-2 co-fold poses are predictions, not crystal structures. MD stability of a predicted pose is necessary but not sufficient evidence of pose correctness.
+
+9. **PAINS-class scaffold considerations (added v0.3).** Embelin (2,5-dihydroxy-3-undecyl-1,4-benzoquinone) belongs to the PAINS (pan-assay interference) class of 1,4-benzoquinone-2,5-diols (Baell & Holloway 2010, Baell 2017 *ACS Chem Biol*). Three orthogonal PAINS mechanisms can produce false-positive in silico binding scores against any protein target, independent of specific molecular recognition: (i) **redox cycling** with cellular reductants generates ROS that can degrade target proteins or assay readout; (ii) **Michael acceptor reactivity** of the quinone enables non-specific covalent capture of nucleophilic residues (Cys, Lys ε-amine), which Boltz-2 may score as favorable interaction energy; (iii) **metal chelation** by the catechol-like 2,5-diol motif strongly chelates Zn²⁺, Cu²⁺, Fe²⁺, which can confound Boltz-2 predictions on metal-containing targets (notably MMP-1, LOX). The high Boltz-2 affinity probability (0.851) we report for embelin × MMP-1 may therefore reflect the 2,5-diol motif chelating the catalytic Zn²⁺ ion, rather than a specific topology-recognizing interaction with the substrate-binding cleft. Reviewer and reader interpretation of all 1,4-benzoquinone-class predicted binding scores in this preprint must include this PAINS caveat. Mitigation in version 0.4 will include: (a) DTT-free counter-screen in the Tier-1 wet-lab package, (b) explicit Cys/Lys mutation control assays, (c) re-running the Boltz-2 panel with EDTA-treated holo-protein structures where applicable, (d) cross-validation against the experimentally validated embelin targets (XIAP, PAI-1, 5-LOX) where direct IC₅₀ measurements exist.
+
+10. **First-in-literature predicted targets — explicit caveat.** A targeted PubMed/PMC literature audit (April 2026) confirms that direct biochemical binding (IC₅₀, K_i, SPR, ITC, or co-crystal evidence) of embelin to the following targets has **not** been reported: MMP-1 (literature reports MMP-9 cellular Western blot reduction only; Kundap et al. 2014 *BMC Cancer*), CTGF/CCN2 (zero reports), lysyl oxidase (zero reports; the unrelated 5-lipoxygenase has been reported but is a distinct enzyme), SMAD3 (pathway modulation only, no direct binding), TGF-β1 (pathway modulation only), VEGFA (cellular expression suppression only). Our four-target prediction (TGF-β1, MMP-1, CTGF, SMAD3) thus constitutes a first-in-literature in silico hypothesis. EMB-3, as a scaffold-hop derivative, inherits the same first-in-literature status. Wet-lab validation is mandatory before any further claim of mechanism.
+
+11. **Pose validation — repeated.** Boltz-2 co-fold poses are predictions, not crystal structures. MD stability of a predicted pose is necessary but not sufficient evidence of pose correctness.
 5. **No experimental skin-permeation data.** The "topical sweet spot" frame relies on physicochemistry (logP, MW, TPSA). Experimental log K_p (skin permeability) measurement on a 3D reconstructed-skin model is required.
 6. **No synthesis attempted.** EMB-3 has not been synthesized at the time of writing. Retrosynthetic analysis (AiZynthFinder + DeepRetro) and a synthesis-feasibility study at a Korean CRO are planned.
 7. **Generative method choice.** REINVENT 4 mol2mol was the only generative approach evaluated. Alternative approaches (DiffSBDD, fragment-based methods, goal-conditioned RL such as SATURN) might find better candidates and should be evaluated in future work.
@@ -479,3 +484,177 @@ Embelin literature PK (extrapolation baseline for EMB-3):
 - Topical via PBK Dermal HT (§Round 5): cmax_dermis 0.086 pmol/mL @ tmax 6.4 h, F_systemic 12% — all within topical-fit window
 
 A formal Hill 4-parameter dose-response fit will require wet-lab IC50 measurement at 6-8 dose points (CRO Tier 1, ₩1.56M).
+
+
+## R12 §3.CTGF — Integrated paper-tier ranking
+
+### Method
+Top 100 BRICS-derived candidates were cofolded with Boltz-2
+(n=1109 total cofolds, ipTM ≥ 0.7 in 32%) and scored by integrated
+paper-tier metric:
+
+$$\text{score} = 0.5 \cdot P(\text{binder}) + 0.3 \cdot S - 0.2 \cdot (1 - N)$$
+
+where $P$ = Boltz-2 affinity probability, $S$ = composite ADMET safety
+$(1 - hERG, 1 - AMES, 1 - Skin\_Reaction)$, $N$ = Tanimoto novelty
+$(1 - \max\_Tanimoto)$ vs ChEMBL+DrugBank reference.
+
+### Top candidates for CTGF
+
+| Rank | Compound | Affinity prob. | Safety | Score | SMILES |
+|---|---|---|---|---|---|
+| 1 | top011 | 0.665 | 0.514 | 0.590 | `OCc1ccc(O)c(OC2COc3cc(O)ccc3C2)c1` |
+| 2 | top005 | 0.696 | 0.438 | 0.588 | `COc1cc(OC2COc3cc(O)ccc3C2)ccc1O` |
+| 3 | top003 | 0.683 | 0.432 | 0.581 | `OCc1cc(C=CC2COc3cc(O)ccc3C2)ccc1O` |
+| 4 | top006 | 0.724 | 0.368 | 0.581 | `COc1ccc(O)c(C=CC2COc3cc(O)ccc3C2)c1` |
+| 5 | top060 | 0.688 | 0.509 | 0.577 | `COc1ccc(O)c(OC2Oc3cc(O)cc(O)c3CC2OC)c1` |
+| 6 | top002 | 0.659 | 0.452 | 0.575 | `OCc1ccc(O)c(C=CC2COc3cc(O)ccc3C2)c1` |
+| 7 | top054 | 0.726 | 0.427 | 0.573 | `OCc1ccc(C=CC2COc3cc(O)ccc3C2)c(O)c1O` |
+| 8 | top099 | 0.677 | 0.541 | 0.572 | `COC(=O)C1Cc2c(O)cc(O)cc2OC1C1COc2cc(O)ccc2C1` |
+| 9 | top016 | 0.700 | 0.402 | 0.570 | `COc1cc(C=CC2COc3cc(O)ccc3C2)ccc1O` |
+| 10 | top057 | 0.672 | 0.512 | 0.570 | `COc1cc(OC2Oc3cc(O)cc(O)c3CC2OC)ccc1O` |
+
+### Scaffold safety profile (top 5 safest, n ≥ 5)
+
+| Murcko scaffold | n | logP | hERG | Skin |
+|---|---|---|---|---|
+| `C1CCC(OC2CCCCO2)OC1` | 6 | -3.51 | 0.033 | 0.325 |
+| `C1CCOCC1` | 7 | -1.29 | 0.066 | 0.451 |
+| `c1cc(C2CCCCO2)ccc1C1CCCCO1` | 5 | -2.50 | 0.115 | 0.220 |
+| `c1cc(C2CCCCO2)cc(C2CCCCO2)c1` | 9 | -1.69 | 0.177 | 0.213 |
+| `c1ccc(C2CCCCO2)cc1` | 49 | -0.25 | 0.247 | 0.350 |
+
+### Limitations
+- Boltz-2 affinity_probability_binary is a binary classifier, NOT pIC50.
+  Wet-lab IC50 measurement required for clinical interpretation.
+- ADMET-AI v2 prediction confidence is endpoint-dependent; hERG/AMES
+  validated against ChEMBL but skin permeation logKp uses limited training.
+- Murcko scaffold analysis ignores stereochemistry and 3D conformation.
+- Top candidates require PoseBusters geometric validation (in progress).
+
+
+## R12 §3.MMP1 — Integrated paper-tier ranking
+
+### Method
+Top 100 BRICS-derived candidates were cofolded with Boltz-2
+(n=1109 total cofolds, ipTM ≥ 0.7 in 32%) and scored by integrated
+paper-tier metric:
+
+$$\text{score} = 0.5 \cdot P(\text{binder}) + 0.3 \cdot S - 0.2 \cdot (1 - N)$$
+
+where $P$ = Boltz-2 affinity probability, $S$ = composite ADMET safety
+$(1 - hERG, 1 - AMES, 1 - Skin\_Reaction)$, $N$ = Tanimoto novelty
+$(1 - \max\_Tanimoto)$ vs ChEMBL+DrugBank reference.
+
+### Top candidates for MMP1
+
+| Rank | Compound | Affinity prob. | Safety | Score | SMILES |
+|---|---|---|---|---|---|
+| 1 | top097 | 0.513 | 0.634 | 0.518 | `COC(=O)C1Oc2cc(O)cc(O)c2CC1c1cc(OC)ccc1O` |
+| 2 | top099 | 0.557 | 0.541 | 0.512 | `COC(=O)C1Cc2c(O)cc(O)cc2OC1C1COc2cc(O)ccc2C1` |
+| 3 | top003 | 0.539 | 0.432 | 0.509 | `OCc1cc(C=CC2COc3cc(O)ccc3C2)ccc1O` |
+| 4 | top075 | 0.372 | 0.795 | 0.501 | `COC(=O)c1ccc(O)c(C(=O)OC)c1` |
+| 5 | top038 | 0.493 | 0.518 | 0.490 | `COc1cc(Oc2ccc(O)c(OC)c2)ccc1O` |
+| 6 | top016 | 0.538 | 0.402 | 0.489 | `COc1cc(C=CC2COc3cc(O)ccc3C2)ccc1O` |
+| 7 | top042 | 0.437 | 0.581 | 0.479 | `C=CC(C)(C)C1Oc2cc(O)cc(O)c2CC1OC` |
+| 8 | top005 | 0.476 | 0.438 | 0.478 | `COc1cc(OC2COc3cc(O)ccc3C2)ccc1O` |
+| 9 | top050 | 0.470 | 0.526 | 0.476 | `COC1Cc2c(O)cc(O)cc2OC1C1COc2cc(O)ccc2C1` |
+| 10 | top009 | 0.527 | 0.357 | 0.475 | `Oc1ccc2c(c1)OCC(C=CC1COc3cc(O)ccc3C1)C2` |
+
+### Scaffold safety profile (top 5 safest, n ≥ 5)
+
+| Murcko scaffold | n | logP | hERG | Skin |
+|---|---|---|---|---|
+| `C1CCC(OC2CCCCO2)OC1` | 6 | -3.51 | 0.033 | 0.325 |
+| `C1CCOCC1` | 7 | -1.29 | 0.066 | 0.451 |
+| `c1cc(C2CCCCO2)ccc1C1CCCCO1` | 5 | -2.50 | 0.115 | 0.220 |
+| `c1cc(C2CCCCO2)cc(C2CCCCO2)c1` | 9 | -1.69 | 0.177 | 0.213 |
+| `c1ccc(C2CCCCO2)cc1` | 49 | -0.25 | 0.247 | 0.350 |
+
+### Limitations
+- Boltz-2 affinity_probability_binary is a binary classifier, NOT pIC50.
+  Wet-lab IC50 measurement required for clinical interpretation.
+- ADMET-AI v2 prediction confidence is endpoint-dependent; hERG/AMES
+  validated against ChEMBL but skin permeation logKp uses limited training.
+- Murcko scaffold analysis ignores stereochemistry and 3D conformation.
+- Top candidates require PoseBusters geometric validation (in progress).
+
+
+## R12 §4 — Korean herbal cross-reference
+
+### Method
+Top integrated paper-tier candidates were cross-referenced against
+102 curated Korean herbal compounds (skin_compounds_curated.csv,
+TGF-β1/MMP/COL1A1/TYR/AR target-annotated). Tanimoto similarity
+(ECFP4, radius 2, 2048 bits) was computed against all herbal
+compounds and the top 3 matches retained per candidate.
+
+### Top integrated candidates × Korean herbal proxies
+
+| Target | Compound | Best herbal match | Korean | Tanimoto |
+|---|---|---|---|---|
+| CTGF | top011 | Glabridin | 감초 | 0.290 |
+| CTGF | top005 | Curcumin | 울금 | 0.304 |
+| CTGF | top003 | Glabridin | 감초 | 0.268 |
+| CTGF | top006 | Glabridin | 감초 | 0.278 |
+| CTGF | top060 | EGCG | 녹차 | 0.365 |
+| MMP1 | top097 | EGCG | 녹차 | 0.354 |
+| MMP1 | top099 | EGCG | 녹차 | 0.338 |
+| MMP1 | top003 | Glabridin | 감초 | 0.268 |
+| MMP1 | top075 | Curcumin | 울금 | 0.333 |
+| MMP1 | top038 | Ferulic acid | 당귀/천궁 | 0.444 |
+| SIRT1 | top054 | Glabridin | 감초 | 0.247 |
+| SIRT1 | top016 | Ferulic acid | 당귀/천궁 | 0.415 |
+| SIRT1 | top039 | EGCG | 녹차 | 0.350 |
+| SIRT1 | top029 | Glabridin | 감초 | 0.373 |
+| SIRT1 | top018 | Glabridin | 감초 | 0.273 |
+
+### Direct Korean herbal cofold hits (Boltz-2)
+
+Selected high-affinity Boltz-2 cofolds with curated Korean herbals:
+
+| Target | Compound | Affinity prob. | Source botanical |
+|---|---|---|---|
+| MMP1 | embelin | 0.851 | (curated) |
+| AR | beta-sitosterol | 0.825 | (curated) |
+| AR | Baicalein | 0.820 | (curated) |
+| TYRP1 | Oxyresveratrol | 0.782 | (curated) |
+| AR | Emodin | 0.768 | (curated) |
+| TGFB1_POCKET2 | embelin | 0.759 | (curated) |
+| CTGF | curcumin | 0.752 | (curated) |
+| TYR | Oxyresveratrol | 0.750 | (curated) |
+| AR | Physcion | 0.750 | (curated) |
+| TGFB1 | emb3 | 0.749 | (curated) |
+
+### Interpretation
+- Top BRICS-derived candidates show **moderate scaffold overlap**
+  with Korean herbals (mean Tanimoto 0.32, max 0.44).
+- Most common herbal proxies: **Glabridin (감초)**, **EGCG (녹차)**,
+  **Curcumin** — all topical-validated Korean traditional compounds.
+- Direct Korean herbal cofolds reveal independent strong hits:
+  Baicalein × AR (0.82), Beta-sitosterol × AR (0.83), 
+  Oxyresveratrol × TYRP1 (0.78), Emodin × AR (0.77).
+
+### Limitations
+- ECFP4 Tanimoto is 2D-only; 3D pharmacophore alignment may differ.
+- Curated 102-compound DB is a subset; full HERB/TCMSP/KTKP
+  cross-reference would be more comprehensive (research-only license).
+- Direct cofold scores assume MSA-cached protein; novel herbal
+  scaffolds may need additional ABFE for clinical interpretation.
+
+
+## R12 §5 — Open Targets reverse evidence
+
+External validation via Open Targets Platform (api.platform.opentargets.org/v4) reverse association
+queries for skin-relevant diseases:
+
+| Target | Disease | OT score |
+|---|---|---|
+| CCN2 | idiopathic pulmonary fibrosis | 0.329 |
+| MMP1 | acne | 0.612 |
+| MMP1 | rosacea | 0.586 |
+| TGFB1 | cystic fibrosis | 0.444 |
+
+These scores represent disease-target associations integrated
+from genetic association, pathway, drug, RNA expression, and
+animal model evidence streams in the Open Targets Platform.

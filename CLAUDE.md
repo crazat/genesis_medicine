@@ -175,6 +175,47 @@ docs/
 - 한약 매핑 (자운고 + EMB-3 강화 1순위 권장)
 - CRO 견적 (Tier 1 ₩1,560만 / 6-10주, 전체 ₩4,775만)
 
+### ✅ 완료 (2026-04-27, Round 12 + Round 13 + R5)
+**핵심 paper-tier 산출물**:
+- **MD top-5 lead ensemble** (10 ns × 5, RTX 5090): r3_6 × TGFB1 0.86 Å, β-sitosterol × AR 0.88 Å, shikonin × CTGF 1.24 Å, chlorogenic × SIRT1 1.61 Å, azelaic × TYRP1 1.71 Å — **모두 paper-tier 안정**
+- **R5 cofold expansion**: 1877 → 2077 rows (TGFB1+CTGF +200), R5 phase 2 (AR/SIRT1/LOX/MITF) 진행 중
+- **ChEMBL Boltz-2 calibration**: Pearson R = -0.453 (n=93), paper #8 결정 수치
+- **PoseBusters v3 fix**: 0% → 9.3% (LIG1 4-char filter 버그 해결)
+- **Pareto multi-objective + Bayesian Active Learning + Selectivity matrix + Quantum-corrected ranking** (8 ranker)
+- **R4 expanded → 194 candidates** (relaxed bioisostere library)
+- **Bayesian v2 round 6 candidates**: pterocarpan-vinyl-pyrogallol scaffold 발굴 (PAINS-free alternative!)
+- **Multi-ranker leader 식별**: 2 mol top in 4/7 rankers
+- **Round 4 selective compounds 71개**: β-sitosterol→AR sel_idx=0.563, shikonin→CTGF=0.247, chlorogenic→SIRT1=0.293
+
+**ABFE 12h pivot 결정 (사용자 승인)**:
+- ABFE EMB-3 × MMP-1 hardcoded script = 8/8 NaN (zinc 문제 미해결) → kill
+- 대신 **5 × 10 ns MD ensemble** = 64분 wall, 5 paper-tier RMSD < 2 Å. ROI 압도적.
+
+**🚨 PAINS audit critical finding (2026-04-27)**:
+- 광범위 web search 결과 우리 8-target embelin claim 검증:
+  - **8/8 직접 결합 보고 0건** (literature audit, PubMed/PMC)
+  - Embelin 실제 검증 target: XIAP-BIR3 (4.1 µM), PAI-1 (4.94 µM), 5-LOX/mPGES-1 (0.06–2 µM), TACE
+  - **1,4-benzoquinone-2,5-diol = PAINS class** (redox cycler + Michael acceptor + metal chelator)
+- Preprint #1, #3, EMBELIN_LITERATURE_REVIEW.md 모두 v0.3 정정 (PAINS section + first-in-literature caveat 추가)
+- Pool 2529 mol PAINS audit: PAINS_B 53.6%, Brenk 77.7%, embelin class 0.2% (4/2529 minority)
+- → 정직 disclosure로 reviewer rigor 통과율 ↑
+
+**3-Tier 로드맵 + 외부 액션 plan 4종 작성**:
+- `docs/ROADMAP_3_TIER.md`: T1 4mo ₩500만 (85-90%) + T2 18mo ₩8,000만 (45-65%) + T3 7yr ₩30-55억 (35-50% partnership)
+- `docs/CRO_TIER1_RFQ.md`: KIT/켐온/바이오톡스텍 견적 요청 template
+- `docs/MFDS_PRE_IND_PREP.md`: 식약처 사전상담 Briefing Book 구성
+- `docs/COLLABORATOR_OUTREACH.md`: 14 후보 그룹 outreach plan (₩3,000만/12mo)
+- `docs/SYNTHESIS_RFQ.md`: Enamine/WuXi/DT Pharma 합성 RFQ
+
+**사용자 결정 7개 (D1-D7)**:
+- D1: ORCID + bioRxiv + medRxiv + ChemRxiv 등록 (즉시)
+- D2: Editage / Enago 영문 교정 5편 (₩50-250만, W1)
+- D3: **CRO Tier 1 RFQ 3사 발송** (₩1,560만, W4) ← 최고 ROI
+- D4: 외부 collaborator 1명 contract (₩3,000만/12mo, M1)
+- D5: MFDS Pre-IND consultation 신청 (free, M6)
+- D6: Path A (cosmeceutical ₩1.5억) vs Path B (IND ₩30-55억) 분기 (M18)
+- D7: Korean pharma partnership (M24)
+
 ### 🔥 Tier 0 — 즉시 통합 (SOTA audit 2026-04-26 결과)
 > 광범위 SOTA 조사 결과 **즉각 통합하면 ROI 매우 큰** 7개 도구. 모두 MIT/Apache.
 1. **CellAwareGNN** (bioRxiv 2026-02) — TxGNN 직접 후속, scPrimeKG 기반, 자가면역 피부질환 +6% AUPRC. 자가면역(아토피·건선·원형탈모) 재창출 정확도 직격.
