@@ -72,6 +72,12 @@ def main():
     sim = Simulation(setup["modeller"].topology, setup["system"],
                       integrator, platform)
     sim.context.setPositions(setup["eq_positions"])
+    # Round 9 fix: box vectors REQUIRED for PME/PBC; absent → NaN at step 0
+    if "eq_box" in setup:
+        sim.context.setPeriodicBoxVectors(*setup["eq_box"])
+    else:
+        bv = setup["system"].getDefaultPeriodicBoxVectors()
+        sim.context.setPeriodicBoxVectors(*bv)
 
     n_steps = int(args.ns * 1000 / 0.002)    # 2 fs timestep, ns → steps
     save_every = n_steps // 100    # 100 frames
