@@ -1,0 +1,3 @@
+completed	failure	data: LOTUS Korean herbs 2,614 unique compounds CSV	CI	main	push	24955361875	14s	2026-04-26T11:20:50Z
+completed	failure	feat(phase G): LOTUS DB live integration — 2,614 unique Korean herbal…	CI	main	push	24955359326	17s	2026-04-26T11:20:41Z
+completed	success	feat(phase F): GFN2-xTB QM layer + PyEMMA/deeptime + GitHub CI/CD + #…	CI	main	push	24955150459	2m18s	2026-04-26T11:09:16Z

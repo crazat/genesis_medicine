@@ -1,0 +1,3 @@
+2026-04-27 11:07:22.467 | WARNING  | genesis_medicine.foundation.chemberta3_adapter:_load_model:85 - ChemBERTa3 model load failed: deepforestsci/chemberta3-base is not a local folder and is not a valid model identifier listed on 'https://huggingface.co/models'
+If this is a private repository, make sure to pass a token having permission to this repo either by logging in with `huggingface-cli login` or by passing `token=<your_token>`
+unavailable: failed to load model chemberta-3

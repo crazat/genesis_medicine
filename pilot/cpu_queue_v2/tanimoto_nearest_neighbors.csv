@@ -1,0 +1,125 @@
+compound,nearest_neighbor,similarity
+Beta-Sitosterol,Withaferin A,0.27173912525177
+Hyperforin,Kazinol B,0.190476194024086
+Lupeol,Betulinic acid,0.7222222089767456
+Oleanolic acid,Ursolic acid,0.694915235042572
+Betulinic acid,Lupeol,0.7222222089767456
+Ursolic acid,Oleanolic acid,0.694915235042572
+Bakuchiol,Linalool,0.43589743971824646
+Retinol,Tretinoin,0.695652186870575
+Tretinoin,Retinol,0.695652186870575
+Epimedin C,Rhein,0.1764705926179886
+Rapanone,Embelin,0.7058823704719543
+Bisabolol,Linalool,0.39024388790130615
+Tetrahydroxystilbene glucoside,Tyrosol,0.20512820780277252
+Calendulin,Cryptotanshinone,0.203125
+Honokiol,Hydroxytyrosol,0.2750000059604645
+Embelin,3-decyl-2-5-dihydroxy-benzoquinone,1.0
+5-O-methyl-Embelin,Embelin,0.6756756901741028
+Tanshinone IIA,Cryptotanshinone,0.5769230723381042
+Magnolol,Schizandrin A,0.26923078298568726
+Imperatorin,Wogonin,0.24193547666072845
+Licochalcone A,Ferulic acid,0.3214285671710968
+Hexylresorcinol,Rapanone,0.375
+3-decyl-2-5-dihydroxy-benzoquinone,Embelin,1.0
+alpha-Arbutin,Hexylresorcinol,0.25806450843811035
+Carnosic acid,Carnosol,0.44999998807907104
+Carnosol,Carnosic acid,0.44999998807907104
+Eucalyptol,Asiatic acid,0.13846154510974884
+Pterostilbene,Resveratrol,0.6296296119689941
+Linalool,Bakuchiol,0.43589743971824646
+Glabridin,Naringenin,0.2461538463830948
+Tea tree oil terpinen-4-ol,Bisabolol,0.20408163964748383
+Capsaicin,Curcumin,0.38181817531585693
+Menthol,Tea tree oil terpinen-4-ol,0.125
+Kazinol B,Naringenin,0.5686274766921997
+Schizandrin A,Berberine,0.3333333432674408
+Resveratrol,Pterostilbene,0.6296296119689941
+Cryptotanshinone,Tanshinone IIA,0.5769230723381042
+Formononetin,Daidzein,0.7631579041481018
+Asiatic acid,Asiaticoside,0.8095238208770752
+Daidzein,Formononetin,0.7631579041481018
+Oxyresveratrol,Resveratrol,0.5925925970077515
+Calycosin,Formononetin,0.7111111283302307
+Wogonin,Baicalein,0.5
+EMB-3,Rapanone,0.5277777910232544
+4-n-butylresorcinol,2-hydroxy-naphthoquinone,0.21621622145175934
+Azelaic acid,Salicylic acid,0.1538461595773697
+Genistein,Daidzein,0.6315789222717285
+Baicalein,Apigenin,0.5365853905677795
+Apigenin,Baicalein,0.5365853905677795
+Berberine,Palmatine,0.35820895433425903
+Curcumin,Ferulic acid,0.7428571581840515
+Paeonol,Pterostilbene,0.3513513505458832
+Naringenin,Kazinol B,0.5686274766921997
+Acetylshikonin,Quercetin,0.4761904776096344
+Hydroquinone,Tyrosol,0.47058823704719543
+Palmatine,Berberine,0.35820895433425903
+Biochanin A,Naringenin,0.3962264060974121
+Phloretin,Phloridzin,0.5306122303009033
+Salicylic acid,Rhein,0.3243243098258972
+2-hydroxy-naphthoquinone,Rhein,0.3947368562221527
+Ferulic acid,Curcumin,0.7428571581840515
+Physcion,Emodin,0.5135135054588318
+Tyrosol,Hydroxytyrosol,0.5416666865348816
+Sulforaphane,Rapanone,0.10638298094272614
+Spirulina-derived phycocyanin,Naringenin,0.380952388048172
+Asiaticoside,Madecassic acid,1.0
+Madecassic acid,Asiaticoside,1.0
+Caffeic acid,Ferulic acid,0.6363636255264282
+Shikonin,Kazinol B,0.2461538463830948
+Emodin,Physcion,0.5135135054588318
+Thujin,Schizandrin A,0.3333333432674408
+Quercetin,Apigenin,0.47727271914482117
+Finasteride,Allantoin from Symphytum,0.18333333730697632
+Withaferin A,Beta-Sitosterol,0.27173912525177
+Hydroxytyrosol,Tyrosol,0.5416666865348816
+Niacinamide,Salicylic acid,0.21212121844291687
+Rhein,Aloe-emodin,0.5897436141967773
+Epicatechin,Epigallocatechin,0.7435897588729858
+Aloe-emodin,Rhein,0.5897436141967773
+Andrographolide,Asiatic acid,0.21590909361839294
+Ellagic acid,Avenanthramide A,0.3492063581943512
+Epigallocatechin,Epicatechin,0.7435897588729858
+Kojic acid,Genistein,0.31707316637039185
+4-Methoxyresorcinol,Paeonol,0.2195121943950653
+EGCG,Epigallocatechin,0.5957446694374084
+Silymarin,Biochanin A,0.38235294818878174
+Procyanidin B2,Epicatechin,0.6600000262260437
+Marimastat,4-Methoxyresorcinol,0.13461539149284363
+Avenanthramide B,Procyanidin B2,0.6451612710952759
+Theaflavin,Epigallocatechin,0.6666666865348816
+Salvianolic acid B,Procyanidin B2,0.261904776096344
+Polydatin,Arbutin,0.6744186282157898
+Byakangelicin,Epimedin C,0.1666666716337204
+Mulberroside A,Carnosol,0.18987341225147247
+Liquiritin,Arbutin,0.5660377144813538
+Ascorbic acid,Kojic acid,0.20000000298023224
+Allantoin from Symphytum,Allantoin,1.0
+Allantoin,Allantoin from Symphytum,1.0
+Chlorogenic acid,Caffeic acid,0.4375
+Baicalin,Baicalein,0.5185185074806213
+Puerarin,Mangiferin,0.460317462682724
+Arbutin,Polydatin,0.6744186282157898
+Phloridzin,Salidroside,0.5370370149612427
+Salidroside,Arbutin,0.6097561120986938
+Aloin,Sennoside A,0.5230769515037537
+Geniposide,Arbutin,0.32258063554763794
+Mangiferin,Puerarin,0.460317462682724
+Saponin Re,Ginsenoside Rg1,0.9305555820465088
+Ginsenoside Rg1,Saponin Re,0.9305555820465088
+Ginsenoside Rg3,Saponin Re,0.8571428656578064
+Madecassoside,Asiaticoside,0.5869565010070801
+Sennoside A,Aloin,0.5230769515037537
+Mogroside V,Hesperidin,0.5925925970077515
+Glycyrrhizin,Ginsenoside Rg3,0.3883495032787323
+Icariin,Mogroside V,0.4193548262119293
+Saikosaponin A,Ginsenoside Rg3,0.3669724762439728
+Hesperidin,Mogroside V,0.5925925970077515
+Acteoside (Verbascoside),Salidroside,0.4084506928920746
+Paeoniflorin,Sennoside A,0.2921348214149475
+Avenanthramide A,Ellagic acid,0.3492063581943512
+Punicalagin,Beta-Sitosterol,0.18918919563293457
+Astragaloside IV,Ginsenoside Rg1,0.3786407709121704
+Ginsenoside Rb1,Saponin Re,0.9230769276618958
+Crocin,Salidroside,0.3333333432674408

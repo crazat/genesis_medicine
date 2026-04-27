@@ -1,0 +1,2109 @@
+compound,target,has_warhead,warheads,cys_target
+Beta-Sitosterol,MMP1,False,,Cys278
+Beta-Sitosterol,MMP3,False,,Cys100
+Beta-Sitosterol,MMP9,False,,Cys99
+Beta-Sitosterol,TGFB1,False,,Cys223
+Beta-Sitosterol,CTGF,False,,
+Beta-Sitosterol,TYR,False,,Cys81
+Beta-Sitosterol,SIRT1,False,,Cys371
+Beta-Sitosterol,SRD5A2,False,,
+Beta-Sitosterol,AR,False,,
+Beta-Sitosterol,FAP,False,,
+Beta-Sitosterol,LOX,False,,
+Beta-Sitosterol,PDGFRB,False,,
+Beta-Sitosterol,POSTN,False,,
+Beta-Sitosterol,ACTA2,False,,
+Beta-Sitosterol,MITF,False,,
+Beta-Sitosterol,COL1A1,False,,
+Beta-Sitosterol,COL3A1,False,,
+Hyperforin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Hyperforin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Hyperforin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Hyperforin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Hyperforin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Hyperforin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Hyperforin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Hyperforin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Hyperforin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Hyperforin,FAP,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Hyperforin,LOX,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Hyperforin,PDGFRB,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Hyperforin,POSTN,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Hyperforin,ACTA2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Hyperforin,MITF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Hyperforin,COL1A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Hyperforin,COL3A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Lupeol,MMP1,False,,Cys278
+Lupeol,MMP3,False,,Cys100
+Lupeol,MMP9,False,,Cys99
+Lupeol,TGFB1,False,,Cys223
+Lupeol,CTGF,False,,
+Lupeol,TYR,False,,Cys81
+Lupeol,SIRT1,False,,Cys371
+Lupeol,SRD5A2,False,,
+Lupeol,AR,False,,
+Lupeol,FAP,False,,
+Lupeol,LOX,False,,
+Lupeol,PDGFRB,False,,
+Lupeol,POSTN,False,,
+Lupeol,ACTA2,False,,
+Lupeol,MITF,False,,
+Lupeol,COL1A1,False,,
+Lupeol,COL3A1,False,,
+Oleanolic acid,MMP1,False,,Cys278
+Oleanolic acid,MMP3,False,,Cys100
+Oleanolic acid,MMP9,False,,Cys99
+Oleanolic acid,TGFB1,False,,Cys223
+Oleanolic acid,CTGF,False,,
+Oleanolic acid,TYR,False,,Cys81
+Oleanolic acid,SIRT1,False,,Cys371
+Oleanolic acid,SRD5A2,False,,
+Oleanolic acid,AR,False,,
+Oleanolic acid,FAP,False,,
+Oleanolic acid,LOX,False,,
+Oleanolic acid,PDGFRB,False,,
+Oleanolic acid,POSTN,False,,
+Oleanolic acid,ACTA2,False,,
+Oleanolic acid,MITF,False,,
+Oleanolic acid,COL1A1,False,,
+Oleanolic acid,COL3A1,False,,
+Betulinic acid,MMP1,False,,Cys278
+Betulinic acid,MMP3,False,,Cys100
+Betulinic acid,MMP9,False,,Cys99
+Betulinic acid,TGFB1,False,,Cys223
+Betulinic acid,CTGF,False,,
+Betulinic acid,TYR,False,,Cys81
+Betulinic acid,SIRT1,False,,Cys371
+Betulinic acid,SRD5A2,False,,
+Betulinic acid,AR,False,,
+Betulinic acid,FAP,False,,
+Betulinic acid,LOX,False,,
+Betulinic acid,PDGFRB,False,,
+Betulinic acid,POSTN,False,,
+Betulinic acid,ACTA2,False,,
+Betulinic acid,MITF,False,,
+Betulinic acid,COL1A1,False,,
+Betulinic acid,COL3A1,False,,
+Ursolic acid,MMP1,False,,Cys278
+Ursolic acid,MMP3,False,,Cys100
+Ursolic acid,MMP9,False,,Cys99
+Ursolic acid,TGFB1,False,,Cys223
+Ursolic acid,CTGF,False,,
+Ursolic acid,TYR,False,,Cys81
+Ursolic acid,SIRT1,False,,Cys371
+Ursolic acid,SRD5A2,False,,
+Ursolic acid,AR,False,,
+Ursolic acid,FAP,False,,
+Ursolic acid,LOX,False,,
+Ursolic acid,PDGFRB,False,,
+Ursolic acid,POSTN,False,,
+Ursolic acid,ACTA2,False,,
+Ursolic acid,MITF,False,,
+Ursolic acid,COL1A1,False,,
+Ursolic acid,COL3A1,False,,
+Bakuchiol,MMP1,False,,Cys278
+Bakuchiol,MMP3,False,,Cys100
+Bakuchiol,MMP9,False,,Cys99
+Bakuchiol,TGFB1,False,,Cys223
+Bakuchiol,CTGF,False,,
+Bakuchiol,TYR,False,,Cys81
+Bakuchiol,SIRT1,False,,Cys371
+Bakuchiol,SRD5A2,False,,
+Bakuchiol,AR,False,,
+Bakuchiol,FAP,False,,
+Bakuchiol,LOX,False,,
+Bakuchiol,PDGFRB,False,,
+Bakuchiol,POSTN,False,,
+Bakuchiol,ACTA2,False,,
+Bakuchiol,MITF,False,,
+Bakuchiol,COL1A1,False,,
+Bakuchiol,COL3A1,False,,
+Retinol,MMP1,False,,Cys278
+Retinol,MMP3,False,,Cys100
+Retinol,MMP9,False,,Cys99
+Retinol,TGFB1,False,,Cys223
+Retinol,CTGF,False,,
+Retinol,TYR,False,,Cys81
+Retinol,SIRT1,False,,Cys371
+Retinol,SRD5A2,False,,
+Retinol,AR,False,,
+Retinol,FAP,False,,
+Retinol,LOX,False,,
+Retinol,PDGFRB,False,,
+Retinol,POSTN,False,,
+Retinol,ACTA2,False,,
+Retinol,MITF,False,,
+Retinol,COL1A1,False,,
+Retinol,COL3A1,False,,
+Tretinoin,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Tretinoin,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Tretinoin,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Tretinoin,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Tretinoin,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Tretinoin,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Tretinoin,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Tretinoin,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Tretinoin,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Tretinoin,FAP,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Tretinoin,LOX,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Tretinoin,PDGFRB,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Tretinoin,POSTN,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Tretinoin,ACTA2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Tretinoin,MITF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Tretinoin,COL1A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Tretinoin,COL3A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Epimedin C,MMP1,False,,Cys278
+Epimedin C,MMP3,False,,Cys100
+Epimedin C,MMP9,False,,Cys99
+Epimedin C,TGFB1,False,,Cys223
+Epimedin C,CTGF,False,,
+Epimedin C,TYR,False,,Cys81
+Epimedin C,SIRT1,False,,Cys371
+Epimedin C,SRD5A2,False,,
+Epimedin C,AR,False,,
+Epimedin C,FAP,False,,
+Epimedin C,LOX,False,,
+Epimedin C,PDGFRB,False,,
+Epimedin C,POSTN,False,,
+Epimedin C,ACTA2,False,,
+Epimedin C,MITF,False,,
+Epimedin C,COL1A1,False,,
+Epimedin C,COL3A1,False,,
+Rapanone,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Rapanone,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Rapanone,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Rapanone,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Rapanone,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Rapanone,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Rapanone,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Rapanone,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Rapanone,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Rapanone,FAP,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Rapanone,LOX,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Rapanone,PDGFRB,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Rapanone,POSTN,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Rapanone,ACTA2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Rapanone,MITF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Rapanone,COL1A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Rapanone,COL3A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Bisabolol,MMP1,False,,Cys278
+Bisabolol,MMP3,False,,Cys100
+Bisabolol,MMP9,False,,Cys99
+Bisabolol,TGFB1,False,,Cys223
+Bisabolol,CTGF,False,,
+Bisabolol,TYR,False,,Cys81
+Bisabolol,SIRT1,False,,Cys371
+Bisabolol,SRD5A2,False,,
+Bisabolol,AR,False,,
+Bisabolol,FAP,False,,
+Bisabolol,LOX,False,,
+Bisabolol,PDGFRB,False,,
+Bisabolol,POSTN,False,,
+Bisabolol,ACTA2,False,,
+Bisabolol,MITF,False,,
+Bisabolol,COL1A1,False,,
+Bisabolol,COL3A1,False,,
+Tetrahydroxystilbene glucoside,MMP1,False,,Cys278
+Tetrahydroxystilbene glucoside,MMP3,False,,Cys100
+Tetrahydroxystilbene glucoside,MMP9,False,,Cys99
+Tetrahydroxystilbene glucoside,TGFB1,False,,Cys223
+Tetrahydroxystilbene glucoside,CTGF,False,,
+Tetrahydroxystilbene glucoside,TYR,False,,Cys81
+Tetrahydroxystilbene glucoside,SIRT1,False,,Cys371
+Tetrahydroxystilbene glucoside,SRD5A2,False,,
+Tetrahydroxystilbene glucoside,AR,False,,
+Tetrahydroxystilbene glucoside,FAP,False,,
+Tetrahydroxystilbene glucoside,LOX,False,,
+Tetrahydroxystilbene glucoside,PDGFRB,False,,
+Tetrahydroxystilbene glucoside,POSTN,False,,
+Tetrahydroxystilbene glucoside,ACTA2,False,,
+Tetrahydroxystilbene glucoside,MITF,False,,
+Tetrahydroxystilbene glucoside,COL1A1,False,,
+Tetrahydroxystilbene glucoside,COL3A1,False,,
+Calendulin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Calendulin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Calendulin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Calendulin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Calendulin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Calendulin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Calendulin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Calendulin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Calendulin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Calendulin,FAP,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Calendulin,LOX,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Calendulin,PDGFRB,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Calendulin,POSTN,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Calendulin,ACTA2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Calendulin,MITF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Calendulin,COL1A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Calendulin,COL3A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Honokiol,MMP1,False,,Cys278
+Honokiol,MMP3,False,,Cys100
+Honokiol,MMP9,False,,Cys99
+Honokiol,TGFB1,False,,Cys223
+Honokiol,CTGF,False,,
+Honokiol,TYR,False,,Cys81
+Honokiol,SIRT1,False,,Cys371
+Honokiol,SRD5A2,False,,
+Honokiol,AR,False,,
+Honokiol,FAP,False,,
+Honokiol,LOX,False,,
+Honokiol,PDGFRB,False,,
+Honokiol,POSTN,False,,
+Honokiol,ACTA2,False,,
+Honokiol,MITF,False,,
+Honokiol,COL1A1,False,,
+Honokiol,COL3A1,False,,
+Embelin,MMP1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Embelin,MMP3,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Embelin,MMP9,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Embelin,TGFB1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Embelin,CTGF,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Embelin,TYR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Embelin,SIRT1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Embelin,SRD5A2,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Embelin,AR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Embelin,FAP,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Embelin,LOX,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Embelin,PDGFRB,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Embelin,POSTN,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Embelin,ACTA2,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Embelin,MITF,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Embelin,COL1A1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Embelin,COL3A1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+5-O-methyl-Embelin,MMP1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+5-O-methyl-Embelin,MMP3,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+5-O-methyl-Embelin,MMP9,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+5-O-methyl-Embelin,TGFB1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+5-O-methyl-Embelin,CTGF,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+5-O-methyl-Embelin,TYR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+5-O-methyl-Embelin,SIRT1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+5-O-methyl-Embelin,SRD5A2,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+5-O-methyl-Embelin,AR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+5-O-methyl-Embelin,FAP,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+5-O-methyl-Embelin,LOX,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+5-O-methyl-Embelin,PDGFRB,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+5-O-methyl-Embelin,POSTN,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+5-O-methyl-Embelin,ACTA2,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+5-O-methyl-Embelin,MITF,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+5-O-methyl-Embelin,COL1A1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+5-O-methyl-Embelin,COL3A1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Tanshinone IIA,MMP1,False,,Cys278
+Tanshinone IIA,MMP3,False,,Cys100
+Tanshinone IIA,MMP9,False,,Cys99
+Tanshinone IIA,TGFB1,False,,Cys223
+Tanshinone IIA,CTGF,False,,
+Tanshinone IIA,TYR,False,,Cys81
+Tanshinone IIA,SIRT1,False,,Cys371
+Tanshinone IIA,SRD5A2,False,,
+Tanshinone IIA,AR,False,,
+Tanshinone IIA,FAP,False,,
+Tanshinone IIA,LOX,False,,
+Tanshinone IIA,PDGFRB,False,,
+Tanshinone IIA,POSTN,False,,
+Tanshinone IIA,ACTA2,False,,
+Tanshinone IIA,MITF,False,,
+Tanshinone IIA,COL1A1,False,,
+Tanshinone IIA,COL3A1,False,,
+Magnolol,MMP1,False,,Cys278
+Magnolol,MMP3,False,,Cys100
+Magnolol,MMP9,False,,Cys99
+Magnolol,TGFB1,False,,Cys223
+Magnolol,CTGF,False,,
+Magnolol,TYR,False,,Cys81
+Magnolol,SIRT1,False,,Cys371
+Magnolol,SRD5A2,False,,
+Magnolol,AR,False,,
+Magnolol,FAP,False,,
+Magnolol,LOX,False,,
+Magnolol,PDGFRB,False,,
+Magnolol,POSTN,False,,
+Magnolol,ACTA2,False,,
+Magnolol,MITF,False,,
+Magnolol,COL1A1,False,,
+Magnolol,COL3A1,False,,
+Imperatorin,MMP1,False,,Cys278
+Imperatorin,MMP3,False,,Cys100
+Imperatorin,MMP9,False,,Cys99
+Imperatorin,TGFB1,False,,Cys223
+Imperatorin,CTGF,False,,
+Imperatorin,TYR,False,,Cys81
+Imperatorin,SIRT1,False,,Cys371
+Imperatorin,SRD5A2,False,,
+Imperatorin,AR,False,,
+Imperatorin,FAP,False,,
+Imperatorin,LOX,False,,
+Imperatorin,PDGFRB,False,,
+Imperatorin,POSTN,False,,
+Imperatorin,ACTA2,False,,
+Imperatorin,MITF,False,,
+Imperatorin,COL1A1,False,,
+Imperatorin,COL3A1,False,,
+Licochalcone A,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Licochalcone A,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Licochalcone A,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Licochalcone A,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Licochalcone A,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Licochalcone A,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Licochalcone A,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Licochalcone A,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Licochalcone A,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Licochalcone A,FAP,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Licochalcone A,LOX,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Licochalcone A,PDGFRB,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Licochalcone A,POSTN,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Licochalcone A,ACTA2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Licochalcone A,MITF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Licochalcone A,COL1A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Licochalcone A,COL3A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Hexylresorcinol,MMP1,False,,Cys278
+Hexylresorcinol,MMP3,False,,Cys100
+Hexylresorcinol,MMP9,False,,Cys99
+Hexylresorcinol,TGFB1,False,,Cys223
+Hexylresorcinol,CTGF,False,,
+Hexylresorcinol,TYR,False,,Cys81
+Hexylresorcinol,SIRT1,False,,Cys371
+Hexylresorcinol,SRD5A2,False,,
+Hexylresorcinol,AR,False,,
+Hexylresorcinol,FAP,False,,
+Hexylresorcinol,LOX,False,,
+Hexylresorcinol,PDGFRB,False,,
+Hexylresorcinol,POSTN,False,,
+Hexylresorcinol,ACTA2,False,,
+Hexylresorcinol,MITF,False,,
+Hexylresorcinol,COL1A1,False,,
+Hexylresorcinol,COL3A1,False,,
+3-decyl-2-5-dihydroxy-benzoquinone,MMP1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+3-decyl-2-5-dihydroxy-benzoquinone,MMP3,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+3-decyl-2-5-dihydroxy-benzoquinone,MMP9,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+3-decyl-2-5-dihydroxy-benzoquinone,TGFB1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+3-decyl-2-5-dihydroxy-benzoquinone,CTGF,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+3-decyl-2-5-dihydroxy-benzoquinone,TYR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+3-decyl-2-5-dihydroxy-benzoquinone,SIRT1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+3-decyl-2-5-dihydroxy-benzoquinone,SRD5A2,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+3-decyl-2-5-dihydroxy-benzoquinone,AR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+3-decyl-2-5-dihydroxy-benzoquinone,FAP,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+3-decyl-2-5-dihydroxy-benzoquinone,LOX,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+3-decyl-2-5-dihydroxy-benzoquinone,PDGFRB,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+3-decyl-2-5-dihydroxy-benzoquinone,POSTN,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+3-decyl-2-5-dihydroxy-benzoquinone,ACTA2,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+3-decyl-2-5-dihydroxy-benzoquinone,MITF,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+3-decyl-2-5-dihydroxy-benzoquinone,COL1A1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+3-decyl-2-5-dihydroxy-benzoquinone,COL3A1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+alpha-Arbutin,MMP1,False,,Cys278
+alpha-Arbutin,MMP3,False,,Cys100
+alpha-Arbutin,MMP9,False,,Cys99
+alpha-Arbutin,TGFB1,False,,Cys223
+alpha-Arbutin,CTGF,False,,
+alpha-Arbutin,TYR,False,,Cys81
+alpha-Arbutin,SIRT1,False,,Cys371
+alpha-Arbutin,SRD5A2,False,,
+alpha-Arbutin,AR,False,,
+alpha-Arbutin,FAP,False,,
+alpha-Arbutin,LOX,False,,
+alpha-Arbutin,PDGFRB,False,,
+alpha-Arbutin,POSTN,False,,
+alpha-Arbutin,ACTA2,False,,
+alpha-Arbutin,MITF,False,,
+alpha-Arbutin,COL1A1,False,,
+alpha-Arbutin,COL3A1,False,,
+Carnosic acid,MMP1,False,,Cys278
+Carnosic acid,MMP3,False,,Cys100
+Carnosic acid,MMP9,False,,Cys99
+Carnosic acid,TGFB1,False,,Cys223
+Carnosic acid,CTGF,False,,
+Carnosic acid,TYR,False,,Cys81
+Carnosic acid,SIRT1,False,,Cys371
+Carnosic acid,SRD5A2,False,,
+Carnosic acid,AR,False,,
+Carnosic acid,FAP,False,,
+Carnosic acid,LOX,False,,
+Carnosic acid,PDGFRB,False,,
+Carnosic acid,POSTN,False,,
+Carnosic acid,ACTA2,False,,
+Carnosic acid,MITF,False,,
+Carnosic acid,COL1A1,False,,
+Carnosic acid,COL3A1,False,,
+Carnosol,MMP1,False,,Cys278
+Carnosol,MMP3,False,,Cys100
+Carnosol,MMP9,False,,Cys99
+Carnosol,TGFB1,False,,Cys223
+Carnosol,CTGF,False,,
+Carnosol,TYR,False,,Cys81
+Carnosol,SIRT1,False,,Cys371
+Carnosol,SRD5A2,False,,
+Carnosol,AR,False,,
+Carnosol,FAP,False,,
+Carnosol,LOX,False,,
+Carnosol,PDGFRB,False,,
+Carnosol,POSTN,False,,
+Carnosol,ACTA2,False,,
+Carnosol,MITF,False,,
+Carnosol,COL1A1,False,,
+Carnosol,COL3A1,False,,
+Eucalyptol,MMP1,False,,Cys278
+Eucalyptol,MMP3,False,,Cys100
+Eucalyptol,MMP9,False,,Cys99
+Eucalyptol,TGFB1,False,,Cys223
+Eucalyptol,CTGF,False,,
+Eucalyptol,TYR,False,,Cys81
+Eucalyptol,SIRT1,False,,Cys371
+Eucalyptol,SRD5A2,False,,
+Eucalyptol,AR,False,,
+Eucalyptol,FAP,False,,
+Eucalyptol,LOX,False,,
+Eucalyptol,PDGFRB,False,,
+Eucalyptol,POSTN,False,,
+Eucalyptol,ACTA2,False,,
+Eucalyptol,MITF,False,,
+Eucalyptol,COL1A1,False,,
+Eucalyptol,COL3A1,False,,
+Pterostilbene,MMP1,False,,Cys278
+Pterostilbene,MMP3,False,,Cys100
+Pterostilbene,MMP9,False,,Cys99
+Pterostilbene,TGFB1,False,,Cys223
+Pterostilbene,CTGF,False,,
+Pterostilbene,TYR,False,,Cys81
+Pterostilbene,SIRT1,False,,Cys371
+Pterostilbene,SRD5A2,False,,
+Pterostilbene,AR,False,,
+Pterostilbene,FAP,False,,
+Pterostilbene,LOX,False,,
+Pterostilbene,PDGFRB,False,,
+Pterostilbene,POSTN,False,,
+Pterostilbene,ACTA2,False,,
+Pterostilbene,MITF,False,,
+Pterostilbene,COL1A1,False,,
+Pterostilbene,COL3A1,False,,
+Linalool,MMP1,False,,Cys278
+Linalool,MMP3,False,,Cys100
+Linalool,MMP9,False,,Cys99
+Linalool,TGFB1,False,,Cys223
+Linalool,CTGF,False,,
+Linalool,TYR,False,,Cys81
+Linalool,SIRT1,False,,Cys371
+Linalool,SRD5A2,False,,
+Linalool,AR,False,,
+Linalool,FAP,False,,
+Linalool,LOX,False,,
+Linalool,PDGFRB,False,,
+Linalool,POSTN,False,,
+Linalool,ACTA2,False,,
+Linalool,MITF,False,,
+Linalool,COL1A1,False,,
+Linalool,COL3A1,False,,
+Glabridin,MMP1,False,,Cys278
+Glabridin,MMP3,False,,Cys100
+Glabridin,MMP9,False,,Cys99
+Glabridin,TGFB1,False,,Cys223
+Glabridin,CTGF,False,,
+Glabridin,TYR,False,,Cys81
+Glabridin,SIRT1,False,,Cys371
+Glabridin,SRD5A2,False,,
+Glabridin,AR,False,,
+Glabridin,FAP,False,,
+Glabridin,LOX,False,,
+Glabridin,PDGFRB,False,,
+Glabridin,POSTN,False,,
+Glabridin,ACTA2,False,,
+Glabridin,MITF,False,,
+Glabridin,COL1A1,False,,
+Glabridin,COL3A1,False,,
+Tea tree oil terpinen-4-ol,MMP1,False,,Cys278
+Tea tree oil terpinen-4-ol,MMP3,False,,Cys100
+Tea tree oil terpinen-4-ol,MMP9,False,,Cys99
+Tea tree oil terpinen-4-ol,TGFB1,False,,Cys223
+Tea tree oil terpinen-4-ol,CTGF,False,,
+Tea tree oil terpinen-4-ol,TYR,False,,Cys81
+Tea tree oil terpinen-4-ol,SIRT1,False,,Cys371
+Tea tree oil terpinen-4-ol,SRD5A2,False,,
+Tea tree oil terpinen-4-ol,AR,False,,
+Tea tree oil terpinen-4-ol,FAP,False,,
+Tea tree oil terpinen-4-ol,LOX,False,,
+Tea tree oil terpinen-4-ol,PDGFRB,False,,
+Tea tree oil terpinen-4-ol,POSTN,False,,
+Tea tree oil terpinen-4-ol,ACTA2,False,,
+Tea tree oil terpinen-4-ol,MITF,False,,
+Tea tree oil terpinen-4-ol,COL1A1,False,,
+Tea tree oil terpinen-4-ol,COL3A1,False,,
+Capsaicin,MMP1,False,,Cys278
+Capsaicin,MMP3,False,,Cys100
+Capsaicin,MMP9,False,,Cys99
+Capsaicin,TGFB1,False,,Cys223
+Capsaicin,CTGF,False,,
+Capsaicin,TYR,False,,Cys81
+Capsaicin,SIRT1,False,,Cys371
+Capsaicin,SRD5A2,False,,
+Capsaicin,AR,False,,
+Capsaicin,FAP,False,,
+Capsaicin,LOX,False,,
+Capsaicin,PDGFRB,False,,
+Capsaicin,POSTN,False,,
+Capsaicin,ACTA2,False,,
+Capsaicin,MITF,False,,
+Capsaicin,COL1A1,False,,
+Capsaicin,COL3A1,False,,
+Menthol,MMP1,False,,Cys278
+Menthol,MMP3,False,,Cys100
+Menthol,MMP9,False,,Cys99
+Menthol,TGFB1,False,,Cys223
+Menthol,CTGF,False,,
+Menthol,TYR,False,,Cys81
+Menthol,SIRT1,False,,Cys371
+Menthol,SRD5A2,False,,
+Menthol,AR,False,,
+Menthol,FAP,False,,
+Menthol,LOX,False,,
+Menthol,PDGFRB,False,,
+Menthol,POSTN,False,,
+Menthol,ACTA2,False,,
+Menthol,MITF,False,,
+Menthol,COL1A1,False,,
+Menthol,COL3A1,False,,
+Kazinol B,MMP1,False,,Cys278
+Kazinol B,MMP3,False,,Cys100
+Kazinol B,MMP9,False,,Cys99
+Kazinol B,TGFB1,False,,Cys223
+Kazinol B,CTGF,False,,
+Kazinol B,TYR,False,,Cys81
+Kazinol B,SIRT1,False,,Cys371
+Kazinol B,SRD5A2,False,,
+Kazinol B,AR,False,,
+Kazinol B,FAP,False,,
+Kazinol B,LOX,False,,
+Kazinol B,PDGFRB,False,,
+Kazinol B,POSTN,False,,
+Kazinol B,ACTA2,False,,
+Kazinol B,MITF,False,,
+Kazinol B,COL1A1,False,,
+Kazinol B,COL3A1,False,,
+Schizandrin A,MMP1,False,,Cys278
+Schizandrin A,MMP3,False,,Cys100
+Schizandrin A,MMP9,False,,Cys99
+Schizandrin A,TGFB1,False,,Cys223
+Schizandrin A,CTGF,False,,
+Schizandrin A,TYR,False,,Cys81
+Schizandrin A,SIRT1,False,,Cys371
+Schizandrin A,SRD5A2,False,,
+Schizandrin A,AR,False,,
+Schizandrin A,FAP,False,,
+Schizandrin A,LOX,False,,
+Schizandrin A,PDGFRB,False,,
+Schizandrin A,POSTN,False,,
+Schizandrin A,ACTA2,False,,
+Schizandrin A,MITF,False,,
+Schizandrin A,COL1A1,False,,
+Schizandrin A,COL3A1,False,,
+Resveratrol,MMP1,False,,Cys278
+Resveratrol,MMP3,False,,Cys100
+Resveratrol,MMP9,False,,Cys99
+Resveratrol,TGFB1,False,,Cys223
+Resveratrol,CTGF,False,,
+Resveratrol,TYR,False,,Cys81
+Resveratrol,SIRT1,False,,Cys371
+Resveratrol,SRD5A2,False,,
+Resveratrol,AR,False,,
+Resveratrol,FAP,False,,
+Resveratrol,LOX,False,,
+Resveratrol,PDGFRB,False,,
+Resveratrol,POSTN,False,,
+Resveratrol,ACTA2,False,,
+Resveratrol,MITF,False,,
+Resveratrol,COL1A1,False,,
+Resveratrol,COL3A1,False,,
+Cryptotanshinone,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Cryptotanshinone,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Cryptotanshinone,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Cryptotanshinone,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Cryptotanshinone,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Cryptotanshinone,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Cryptotanshinone,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Cryptotanshinone,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Cryptotanshinone,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Cryptotanshinone,FAP,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Cryptotanshinone,LOX,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Cryptotanshinone,PDGFRB,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Cryptotanshinone,POSTN,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Cryptotanshinone,ACTA2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Cryptotanshinone,MITF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Cryptotanshinone,COL1A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Cryptotanshinone,COL3A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Formononetin,MMP1,False,,Cys278
+Formononetin,MMP3,False,,Cys100
+Formononetin,MMP9,False,,Cys99
+Formononetin,TGFB1,False,,Cys223
+Formononetin,CTGF,False,,
+Formononetin,TYR,False,,Cys81
+Formononetin,SIRT1,False,,Cys371
+Formononetin,SRD5A2,False,,
+Formononetin,AR,False,,
+Formononetin,FAP,False,,
+Formononetin,LOX,False,,
+Formononetin,PDGFRB,False,,
+Formononetin,POSTN,False,,
+Formononetin,ACTA2,False,,
+Formononetin,MITF,False,,
+Formononetin,COL1A1,False,,
+Formononetin,COL3A1,False,,
+Asiatic acid,MMP1,False,,Cys278
+Asiatic acid,MMP3,False,,Cys100
+Asiatic acid,MMP9,False,,Cys99
+Asiatic acid,TGFB1,False,,Cys223
+Asiatic acid,CTGF,False,,
+Asiatic acid,TYR,False,,Cys81
+Asiatic acid,SIRT1,False,,Cys371
+Asiatic acid,SRD5A2,False,,
+Asiatic acid,AR,False,,
+Asiatic acid,FAP,False,,
+Asiatic acid,LOX,False,,
+Asiatic acid,PDGFRB,False,,
+Asiatic acid,POSTN,False,,
+Asiatic acid,ACTA2,False,,
+Asiatic acid,MITF,False,,
+Asiatic acid,COL1A1,False,,
+Asiatic acid,COL3A1,False,,
+Daidzein,MMP1,False,,Cys278
+Daidzein,MMP3,False,,Cys100
+Daidzein,MMP9,False,,Cys99
+Daidzein,TGFB1,False,,Cys223
+Daidzein,CTGF,False,,
+Daidzein,TYR,False,,Cys81
+Daidzein,SIRT1,False,,Cys371
+Daidzein,SRD5A2,False,,
+Daidzein,AR,False,,
+Daidzein,FAP,False,,
+Daidzein,LOX,False,,
+Daidzein,PDGFRB,False,,
+Daidzein,POSTN,False,,
+Daidzein,ACTA2,False,,
+Daidzein,MITF,False,,
+Daidzein,COL1A1,False,,
+Daidzein,COL3A1,False,,
+Oxyresveratrol,MMP1,False,,Cys278
+Oxyresveratrol,MMP3,False,,Cys100
+Oxyresveratrol,MMP9,False,,Cys99
+Oxyresveratrol,TGFB1,False,,Cys223
+Oxyresveratrol,CTGF,False,,
+Oxyresveratrol,TYR,False,,Cys81
+Oxyresveratrol,SIRT1,False,,Cys371
+Oxyresveratrol,SRD5A2,False,,
+Oxyresveratrol,AR,False,,
+Oxyresveratrol,FAP,False,,
+Oxyresveratrol,LOX,False,,
+Oxyresveratrol,PDGFRB,False,,
+Oxyresveratrol,POSTN,False,,
+Oxyresveratrol,ACTA2,False,,
+Oxyresveratrol,MITF,False,,
+Oxyresveratrol,COL1A1,False,,
+Oxyresveratrol,COL3A1,False,,
+Calycosin,MMP1,False,,Cys278
+Calycosin,MMP3,False,,Cys100
+Calycosin,MMP9,False,,Cys99
+Calycosin,TGFB1,False,,Cys223
+Calycosin,CTGF,False,,
+Calycosin,TYR,False,,Cys81
+Calycosin,SIRT1,False,,Cys371
+Calycosin,SRD5A2,False,,
+Calycosin,AR,False,,
+Calycosin,FAP,False,,
+Calycosin,LOX,False,,
+Calycosin,PDGFRB,False,,
+Calycosin,POSTN,False,,
+Calycosin,ACTA2,False,,
+Calycosin,MITF,False,,
+Calycosin,COL1A1,False,,
+Calycosin,COL3A1,False,,
+Wogonin,MMP1,False,,Cys278
+Wogonin,MMP3,False,,Cys100
+Wogonin,MMP9,False,,Cys99
+Wogonin,TGFB1,False,,Cys223
+Wogonin,CTGF,False,,
+Wogonin,TYR,False,,Cys81
+Wogonin,SIRT1,False,,Cys371
+Wogonin,SRD5A2,False,,
+Wogonin,AR,False,,
+Wogonin,FAP,False,,
+Wogonin,LOX,False,,
+Wogonin,PDGFRB,False,,
+Wogonin,POSTN,False,,
+Wogonin,ACTA2,False,,
+Wogonin,MITF,False,,
+Wogonin,COL1A1,False,,
+Wogonin,COL3A1,False,,
+EMB-3,MMP1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+EMB-3,MMP3,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+EMB-3,MMP9,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+EMB-3,TGFB1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+EMB-3,CTGF,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+EMB-3,TYR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+EMB-3,SIRT1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+EMB-3,SRD5A2,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+EMB-3,AR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+EMB-3,FAP,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+EMB-3,LOX,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+EMB-3,PDGFRB,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+EMB-3,POSTN,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+EMB-3,ACTA2,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+EMB-3,MITF,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+EMB-3,COL1A1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+EMB-3,COL3A1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+4-n-butylresorcinol,MMP1,False,,Cys278
+4-n-butylresorcinol,MMP3,False,,Cys100
+4-n-butylresorcinol,MMP9,False,,Cys99
+4-n-butylresorcinol,TGFB1,False,,Cys223
+4-n-butylresorcinol,CTGF,False,,
+4-n-butylresorcinol,TYR,False,,Cys81
+4-n-butylresorcinol,SIRT1,False,,Cys371
+4-n-butylresorcinol,SRD5A2,False,,
+4-n-butylresorcinol,AR,False,,
+4-n-butylresorcinol,FAP,False,,
+4-n-butylresorcinol,LOX,False,,
+4-n-butylresorcinol,PDGFRB,False,,
+4-n-butylresorcinol,POSTN,False,,
+4-n-butylresorcinol,ACTA2,False,,
+4-n-butylresorcinol,MITF,False,,
+4-n-butylresorcinol,COL1A1,False,,
+4-n-butylresorcinol,COL3A1,False,,
+Azelaic acid,MMP1,False,,Cys278
+Azelaic acid,MMP3,False,,Cys100
+Azelaic acid,MMP9,False,,Cys99
+Azelaic acid,TGFB1,False,,Cys223
+Azelaic acid,CTGF,False,,
+Azelaic acid,TYR,False,,Cys81
+Azelaic acid,SIRT1,False,,Cys371
+Azelaic acid,SRD5A2,False,,
+Azelaic acid,AR,False,,
+Azelaic acid,FAP,False,,
+Azelaic acid,LOX,False,,
+Azelaic acid,PDGFRB,False,,
+Azelaic acid,POSTN,False,,
+Azelaic acid,ACTA2,False,,
+Azelaic acid,MITF,False,,
+Azelaic acid,COL1A1,False,,
+Azelaic acid,COL3A1,False,,
+Genistein,MMP1,False,,Cys278
+Genistein,MMP3,False,,Cys100
+Genistein,MMP9,False,,Cys99
+Genistein,TGFB1,False,,Cys223
+Genistein,CTGF,False,,
+Genistein,TYR,False,,Cys81
+Genistein,SIRT1,False,,Cys371
+Genistein,SRD5A2,False,,
+Genistein,AR,False,,
+Genistein,FAP,False,,
+Genistein,LOX,False,,
+Genistein,PDGFRB,False,,
+Genistein,POSTN,False,,
+Genistein,ACTA2,False,,
+Genistein,MITF,False,,
+Genistein,COL1A1,False,,
+Genistein,COL3A1,False,,
+Baicalein,MMP1,False,,Cys278
+Baicalein,MMP3,False,,Cys100
+Baicalein,MMP9,False,,Cys99
+Baicalein,TGFB1,False,,Cys223
+Baicalein,CTGF,False,,
+Baicalein,TYR,False,,Cys81
+Baicalein,SIRT1,False,,Cys371
+Baicalein,SRD5A2,False,,
+Baicalein,AR,False,,
+Baicalein,FAP,False,,
+Baicalein,LOX,False,,
+Baicalein,PDGFRB,False,,
+Baicalein,POSTN,False,,
+Baicalein,ACTA2,False,,
+Baicalein,MITF,False,,
+Baicalein,COL1A1,False,,
+Baicalein,COL3A1,False,,
+Apigenin,MMP1,False,,Cys278
+Apigenin,MMP3,False,,Cys100
+Apigenin,MMP9,False,,Cys99
+Apigenin,TGFB1,False,,Cys223
+Apigenin,CTGF,False,,
+Apigenin,TYR,False,,Cys81
+Apigenin,SIRT1,False,,Cys371
+Apigenin,SRD5A2,False,,
+Apigenin,AR,False,,
+Apigenin,FAP,False,,
+Apigenin,LOX,False,,
+Apigenin,PDGFRB,False,,
+Apigenin,POSTN,False,,
+Apigenin,ACTA2,False,,
+Apigenin,MITF,False,,
+Apigenin,COL1A1,False,,
+Apigenin,COL3A1,False,,
+Berberine,MMP1,False,,Cys278
+Berberine,MMP3,False,,Cys100
+Berberine,MMP9,False,,Cys99
+Berberine,TGFB1,False,,Cys223
+Berberine,CTGF,False,,
+Berberine,TYR,False,,Cys81
+Berberine,SIRT1,False,,Cys371
+Berberine,SRD5A2,False,,
+Berberine,AR,False,,
+Berberine,FAP,False,,
+Berberine,LOX,False,,
+Berberine,PDGFRB,False,,
+Berberine,POSTN,False,,
+Berberine,ACTA2,False,,
+Berberine,MITF,False,,
+Berberine,COL1A1,False,,
+Berberine,COL3A1,False,,
+Curcumin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Curcumin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Curcumin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Curcumin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Curcumin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Curcumin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Curcumin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Curcumin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Curcumin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Curcumin,FAP,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Curcumin,LOX,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Curcumin,PDGFRB,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Curcumin,POSTN,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Curcumin,ACTA2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Curcumin,MITF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Curcumin,COL1A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Curcumin,COL3A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Paeonol,MMP1,False,,Cys278
+Paeonol,MMP3,False,,Cys100
+Paeonol,MMP9,False,,Cys99
+Paeonol,TGFB1,False,,Cys223
+Paeonol,CTGF,False,,
+Paeonol,TYR,False,,Cys81
+Paeonol,SIRT1,False,,Cys371
+Paeonol,SRD5A2,False,,
+Paeonol,AR,False,,
+Paeonol,FAP,False,,
+Paeonol,LOX,False,,
+Paeonol,PDGFRB,False,,
+Paeonol,POSTN,False,,
+Paeonol,ACTA2,False,,
+Paeonol,MITF,False,,
+Paeonol,COL1A1,False,,
+Paeonol,COL3A1,False,,
+Naringenin,MMP1,False,,Cys278
+Naringenin,MMP3,False,,Cys100
+Naringenin,MMP9,False,,Cys99
+Naringenin,TGFB1,False,,Cys223
+Naringenin,CTGF,False,,
+Naringenin,TYR,False,,Cys81
+Naringenin,SIRT1,False,,Cys371
+Naringenin,SRD5A2,False,,
+Naringenin,AR,False,,
+Naringenin,FAP,False,,
+Naringenin,LOX,False,,
+Naringenin,PDGFRB,False,,
+Naringenin,POSTN,False,,
+Naringenin,ACTA2,False,,
+Naringenin,MITF,False,,
+Naringenin,COL1A1,False,,
+Naringenin,COL3A1,False,,
+Acetylshikonin,MMP1,False,,Cys278
+Acetylshikonin,MMP3,False,,Cys100
+Acetylshikonin,MMP9,False,,Cys99
+Acetylshikonin,TGFB1,False,,Cys223
+Acetylshikonin,CTGF,False,,
+Acetylshikonin,TYR,False,,Cys81
+Acetylshikonin,SIRT1,False,,Cys371
+Acetylshikonin,SRD5A2,False,,
+Acetylshikonin,AR,False,,
+Acetylshikonin,FAP,False,,
+Acetylshikonin,LOX,False,,
+Acetylshikonin,PDGFRB,False,,
+Acetylshikonin,POSTN,False,,
+Acetylshikonin,ACTA2,False,,
+Acetylshikonin,MITF,False,,
+Acetylshikonin,COL1A1,False,,
+Acetylshikonin,COL3A1,False,,
+Hydroquinone,MMP1,False,,Cys278
+Hydroquinone,MMP3,False,,Cys100
+Hydroquinone,MMP9,False,,Cys99
+Hydroquinone,TGFB1,False,,Cys223
+Hydroquinone,CTGF,False,,
+Hydroquinone,TYR,False,,Cys81
+Hydroquinone,SIRT1,False,,Cys371
+Hydroquinone,SRD5A2,False,,
+Hydroquinone,AR,False,,
+Hydroquinone,FAP,False,,
+Hydroquinone,LOX,False,,
+Hydroquinone,PDGFRB,False,,
+Hydroquinone,POSTN,False,,
+Hydroquinone,ACTA2,False,,
+Hydroquinone,MITF,False,,
+Hydroquinone,COL1A1,False,,
+Hydroquinone,COL3A1,False,,
+Palmatine,MMP1,False,,Cys278
+Palmatine,MMP3,False,,Cys100
+Palmatine,MMP9,False,,Cys99
+Palmatine,TGFB1,False,,Cys223
+Palmatine,CTGF,False,,
+Palmatine,TYR,False,,Cys81
+Palmatine,SIRT1,False,,Cys371
+Palmatine,SRD5A2,False,,
+Palmatine,AR,False,,
+Palmatine,FAP,False,,
+Palmatine,LOX,False,,
+Palmatine,PDGFRB,False,,
+Palmatine,POSTN,False,,
+Palmatine,ACTA2,False,,
+Palmatine,MITF,False,,
+Palmatine,COL1A1,False,,
+Palmatine,COL3A1,False,,
+Biochanin A,MMP1,False,,Cys278
+Biochanin A,MMP3,False,,Cys100
+Biochanin A,MMP9,False,,Cys99
+Biochanin A,TGFB1,False,,Cys223
+Biochanin A,CTGF,False,,
+Biochanin A,TYR,False,,Cys81
+Biochanin A,SIRT1,False,,Cys371
+Biochanin A,SRD5A2,False,,
+Biochanin A,AR,False,,
+Biochanin A,FAP,False,,
+Biochanin A,LOX,False,,
+Biochanin A,PDGFRB,False,,
+Biochanin A,POSTN,False,,
+Biochanin A,ACTA2,False,,
+Biochanin A,MITF,False,,
+Biochanin A,COL1A1,False,,
+Biochanin A,COL3A1,False,,
+Phloretin,MMP1,False,,Cys278
+Phloretin,MMP3,False,,Cys100
+Phloretin,MMP9,False,,Cys99
+Phloretin,TGFB1,False,,Cys223
+Phloretin,CTGF,False,,
+Phloretin,TYR,False,,Cys81
+Phloretin,SIRT1,False,,Cys371
+Phloretin,SRD5A2,False,,
+Phloretin,AR,False,,
+Phloretin,FAP,False,,
+Phloretin,LOX,False,,
+Phloretin,PDGFRB,False,,
+Phloretin,POSTN,False,,
+Phloretin,ACTA2,False,,
+Phloretin,MITF,False,,
+Phloretin,COL1A1,False,,
+Phloretin,COL3A1,False,,
+Salicylic acid,MMP1,False,,Cys278
+Salicylic acid,MMP3,False,,Cys100
+Salicylic acid,MMP9,False,,Cys99
+Salicylic acid,TGFB1,False,,Cys223
+Salicylic acid,CTGF,False,,
+Salicylic acid,TYR,False,,Cys81
+Salicylic acid,SIRT1,False,,Cys371
+Salicylic acid,SRD5A2,False,,
+Salicylic acid,AR,False,,
+Salicylic acid,FAP,False,,
+Salicylic acid,LOX,False,,
+Salicylic acid,PDGFRB,False,,
+Salicylic acid,POSTN,False,,
+Salicylic acid,ACTA2,False,,
+Salicylic acid,MITF,False,,
+Salicylic acid,COL1A1,False,,
+Salicylic acid,COL3A1,False,,
+2-hydroxy-naphthoquinone,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+2-hydroxy-naphthoquinone,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+2-hydroxy-naphthoquinone,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+2-hydroxy-naphthoquinone,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+2-hydroxy-naphthoquinone,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+2-hydroxy-naphthoquinone,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+2-hydroxy-naphthoquinone,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+2-hydroxy-naphthoquinone,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+2-hydroxy-naphthoquinone,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+2-hydroxy-naphthoquinone,FAP,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+2-hydroxy-naphthoquinone,LOX,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+2-hydroxy-naphthoquinone,PDGFRB,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+2-hydroxy-naphthoquinone,POSTN,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+2-hydroxy-naphthoquinone,ACTA2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+2-hydroxy-naphthoquinone,MITF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+2-hydroxy-naphthoquinone,COL1A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+2-hydroxy-naphthoquinone,COL3A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ferulic acid,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Ferulic acid,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Ferulic acid,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Ferulic acid,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Ferulic acid,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ferulic acid,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Ferulic acid,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Ferulic acid,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ferulic acid,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ferulic acid,FAP,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ferulic acid,LOX,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ferulic acid,PDGFRB,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ferulic acid,POSTN,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ferulic acid,ACTA2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ferulic acid,MITF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ferulic acid,COL1A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ferulic acid,COL3A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Physcion,MMP1,False,,Cys278
+Physcion,MMP3,False,,Cys100
+Physcion,MMP9,False,,Cys99
+Physcion,TGFB1,False,,Cys223
+Physcion,CTGF,False,,
+Physcion,TYR,False,,Cys81
+Physcion,SIRT1,False,,Cys371
+Physcion,SRD5A2,False,,
+Physcion,AR,False,,
+Physcion,FAP,False,,
+Physcion,LOX,False,,
+Physcion,PDGFRB,False,,
+Physcion,POSTN,False,,
+Physcion,ACTA2,False,,
+Physcion,MITF,False,,
+Physcion,COL1A1,False,,
+Physcion,COL3A1,False,,
+Tyrosol,MMP1,False,,Cys278
+Tyrosol,MMP3,False,,Cys100
+Tyrosol,MMP9,False,,Cys99
+Tyrosol,TGFB1,False,,Cys223
+Tyrosol,CTGF,False,,
+Tyrosol,TYR,False,,Cys81
+Tyrosol,SIRT1,False,,Cys371
+Tyrosol,SRD5A2,False,,
+Tyrosol,AR,False,,
+Tyrosol,FAP,False,,
+Tyrosol,LOX,False,,
+Tyrosol,PDGFRB,False,,
+Tyrosol,POSTN,False,,
+Tyrosol,ACTA2,False,,
+Tyrosol,MITF,False,,
+Tyrosol,COL1A1,False,,
+Tyrosol,COL3A1,False,,
+Sulforaphane,MMP1,True,isothiocyanate,Cys278
+Sulforaphane,MMP3,True,isothiocyanate,Cys100
+Sulforaphane,MMP9,True,isothiocyanate,Cys99
+Sulforaphane,TGFB1,True,isothiocyanate,Cys223
+Sulforaphane,CTGF,True,isothiocyanate,
+Sulforaphane,TYR,True,isothiocyanate,Cys81
+Sulforaphane,SIRT1,True,isothiocyanate,Cys371
+Sulforaphane,SRD5A2,True,isothiocyanate,
+Sulforaphane,AR,True,isothiocyanate,
+Sulforaphane,FAP,True,isothiocyanate,
+Sulforaphane,LOX,True,isothiocyanate,
+Sulforaphane,PDGFRB,True,isothiocyanate,
+Sulforaphane,POSTN,True,isothiocyanate,
+Sulforaphane,ACTA2,True,isothiocyanate,
+Sulforaphane,MITF,True,isothiocyanate,
+Sulforaphane,COL1A1,True,isothiocyanate,
+Sulforaphane,COL3A1,True,isothiocyanate,
+Spirulina-derived phycocyanin,MMP1,False,,Cys278
+Spirulina-derived phycocyanin,MMP3,False,,Cys100
+Spirulina-derived phycocyanin,MMP9,False,,Cys99
+Spirulina-derived phycocyanin,TGFB1,False,,Cys223
+Spirulina-derived phycocyanin,CTGF,False,,
+Spirulina-derived phycocyanin,TYR,False,,Cys81
+Spirulina-derived phycocyanin,SIRT1,False,,Cys371
+Spirulina-derived phycocyanin,SRD5A2,False,,
+Spirulina-derived phycocyanin,AR,False,,
+Spirulina-derived phycocyanin,FAP,False,,
+Spirulina-derived phycocyanin,LOX,False,,
+Spirulina-derived phycocyanin,PDGFRB,False,,
+Spirulina-derived phycocyanin,POSTN,False,,
+Spirulina-derived phycocyanin,ACTA2,False,,
+Spirulina-derived phycocyanin,MITF,False,,
+Spirulina-derived phycocyanin,COL1A1,False,,
+Spirulina-derived phycocyanin,COL3A1,False,,
+Asiaticoside,MMP1,False,,Cys278
+Asiaticoside,MMP3,False,,Cys100
+Asiaticoside,MMP9,False,,Cys99
+Asiaticoside,TGFB1,False,,Cys223
+Asiaticoside,CTGF,False,,
+Asiaticoside,TYR,False,,Cys81
+Asiaticoside,SIRT1,False,,Cys371
+Asiaticoside,SRD5A2,False,,
+Asiaticoside,AR,False,,
+Asiaticoside,FAP,False,,
+Asiaticoside,LOX,False,,
+Asiaticoside,PDGFRB,False,,
+Asiaticoside,POSTN,False,,
+Asiaticoside,ACTA2,False,,
+Asiaticoside,MITF,False,,
+Asiaticoside,COL1A1,False,,
+Asiaticoside,COL3A1,False,,
+Madecassic acid,MMP1,False,,Cys278
+Madecassic acid,MMP3,False,,Cys100
+Madecassic acid,MMP9,False,,Cys99
+Madecassic acid,TGFB1,False,,Cys223
+Madecassic acid,CTGF,False,,
+Madecassic acid,TYR,False,,Cys81
+Madecassic acid,SIRT1,False,,Cys371
+Madecassic acid,SRD5A2,False,,
+Madecassic acid,AR,False,,
+Madecassic acid,FAP,False,,
+Madecassic acid,LOX,False,,
+Madecassic acid,PDGFRB,False,,
+Madecassic acid,POSTN,False,,
+Madecassic acid,ACTA2,False,,
+Madecassic acid,MITF,False,,
+Madecassic acid,COL1A1,False,,
+Madecassic acid,COL3A1,False,,
+Caffeic acid,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Caffeic acid,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Caffeic acid,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Caffeic acid,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Caffeic acid,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Caffeic acid,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Caffeic acid,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Caffeic acid,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Caffeic acid,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Caffeic acid,FAP,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Caffeic acid,LOX,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Caffeic acid,PDGFRB,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Caffeic acid,POSTN,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Caffeic acid,ACTA2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Caffeic acid,MITF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Caffeic acid,COL1A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Caffeic acid,COL3A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Shikonin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Shikonin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Shikonin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Shikonin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Shikonin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Shikonin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Shikonin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Shikonin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Shikonin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Shikonin,FAP,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Shikonin,LOX,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Shikonin,PDGFRB,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Shikonin,POSTN,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Shikonin,ACTA2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Shikonin,MITF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Shikonin,COL1A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Shikonin,COL3A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Emodin,MMP1,False,,Cys278
+Emodin,MMP3,False,,Cys100
+Emodin,MMP9,False,,Cys99
+Emodin,TGFB1,False,,Cys223
+Emodin,CTGF,False,,
+Emodin,TYR,False,,Cys81
+Emodin,SIRT1,False,,Cys371
+Emodin,SRD5A2,False,,
+Emodin,AR,False,,
+Emodin,FAP,False,,
+Emodin,LOX,False,,
+Emodin,PDGFRB,False,,
+Emodin,POSTN,False,,
+Emodin,ACTA2,False,,
+Emodin,MITF,False,,
+Emodin,COL1A1,False,,
+Emodin,COL3A1,False,,
+Thujin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Thujin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Thujin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Thujin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Thujin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Thujin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Thujin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Thujin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Thujin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Thujin,FAP,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Thujin,LOX,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Thujin,PDGFRB,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Thujin,POSTN,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Thujin,ACTA2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Thujin,MITF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Thujin,COL1A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Thujin,COL3A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Quercetin,MMP1,False,,Cys278
+Quercetin,MMP3,False,,Cys100
+Quercetin,MMP9,False,,Cys99
+Quercetin,TGFB1,False,,Cys223
+Quercetin,CTGF,False,,
+Quercetin,TYR,False,,Cys81
+Quercetin,SIRT1,False,,Cys371
+Quercetin,SRD5A2,False,,
+Quercetin,AR,False,,
+Quercetin,FAP,False,,
+Quercetin,LOX,False,,
+Quercetin,PDGFRB,False,,
+Quercetin,POSTN,False,,
+Quercetin,ACTA2,False,,
+Quercetin,MITF,False,,
+Quercetin,COL1A1,False,,
+Quercetin,COL3A1,False,,
+Finasteride,MMP1,False,,Cys278
+Finasteride,MMP3,False,,Cys100
+Finasteride,MMP9,False,,Cys99
+Finasteride,TGFB1,False,,Cys223
+Finasteride,CTGF,False,,
+Finasteride,TYR,False,,Cys81
+Finasteride,SIRT1,False,,Cys371
+Finasteride,SRD5A2,False,,
+Finasteride,AR,False,,
+Finasteride,FAP,False,,
+Finasteride,LOX,False,,
+Finasteride,PDGFRB,False,,
+Finasteride,POSTN,False,,
+Finasteride,ACTA2,False,,
+Finasteride,MITF,False,,
+Finasteride,COL1A1,False,,
+Finasteride,COL3A1,False,,
+Withaferin A,MMP1,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Withaferin A,MMP3,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Withaferin A,MMP9,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Withaferin A,TGFB1,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Withaferin A,CTGF,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Withaferin A,TYR,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Withaferin A,SIRT1,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Withaferin A,SRD5A2,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Withaferin A,AR,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Withaferin A,FAP,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Withaferin A,LOX,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Withaferin A,PDGFRB,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Withaferin A,POSTN,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Withaferin A,ACTA2,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Withaferin A,MITF,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Withaferin A,COL1A1,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Withaferin A,COL3A1,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Hydroxytyrosol,MMP1,False,,Cys278
+Hydroxytyrosol,MMP3,False,,Cys100
+Hydroxytyrosol,MMP9,False,,Cys99
+Hydroxytyrosol,TGFB1,False,,Cys223
+Hydroxytyrosol,CTGF,False,,
+Hydroxytyrosol,TYR,False,,Cys81
+Hydroxytyrosol,SIRT1,False,,Cys371
+Hydroxytyrosol,SRD5A2,False,,
+Hydroxytyrosol,AR,False,,
+Hydroxytyrosol,FAP,False,,
+Hydroxytyrosol,LOX,False,,
+Hydroxytyrosol,PDGFRB,False,,
+Hydroxytyrosol,POSTN,False,,
+Hydroxytyrosol,ACTA2,False,,
+Hydroxytyrosol,MITF,False,,
+Hydroxytyrosol,COL1A1,False,,
+Hydroxytyrosol,COL3A1,False,,
+Niacinamide,MMP1,False,,Cys278
+Niacinamide,MMP3,False,,Cys100
+Niacinamide,MMP9,False,,Cys99
+Niacinamide,TGFB1,False,,Cys223
+Niacinamide,CTGF,False,,
+Niacinamide,TYR,False,,Cys81
+Niacinamide,SIRT1,False,,Cys371
+Niacinamide,SRD5A2,False,,
+Niacinamide,AR,False,,
+Niacinamide,FAP,False,,
+Niacinamide,LOX,False,,
+Niacinamide,PDGFRB,False,,
+Niacinamide,POSTN,False,,
+Niacinamide,ACTA2,False,,
+Niacinamide,MITF,False,,
+Niacinamide,COL1A1,False,,
+Niacinamide,COL3A1,False,,
+Rhein,MMP1,False,,Cys278
+Rhein,MMP3,False,,Cys100
+Rhein,MMP9,False,,Cys99
+Rhein,TGFB1,False,,Cys223
+Rhein,CTGF,False,,
+Rhein,TYR,False,,Cys81
+Rhein,SIRT1,False,,Cys371
+Rhein,SRD5A2,False,,
+Rhein,AR,False,,
+Rhein,FAP,False,,
+Rhein,LOX,False,,
+Rhein,PDGFRB,False,,
+Rhein,POSTN,False,,
+Rhein,ACTA2,False,,
+Rhein,MITF,False,,
+Rhein,COL1A1,False,,
+Rhein,COL3A1,False,,
+Epicatechin,MMP1,False,,Cys278
+Epicatechin,MMP3,False,,Cys100
+Epicatechin,MMP9,False,,Cys99
+Epicatechin,TGFB1,False,,Cys223
+Epicatechin,CTGF,False,,
+Epicatechin,TYR,False,,Cys81
+Epicatechin,SIRT1,False,,Cys371
+Epicatechin,SRD5A2,False,,
+Epicatechin,AR,False,,
+Epicatechin,FAP,False,,
+Epicatechin,LOX,False,,
+Epicatechin,PDGFRB,False,,
+Epicatechin,POSTN,False,,
+Epicatechin,ACTA2,False,,
+Epicatechin,MITF,False,,
+Epicatechin,COL1A1,False,,
+Epicatechin,COL3A1,False,,
+Aloe-emodin,MMP1,False,,Cys278
+Aloe-emodin,MMP3,False,,Cys100
+Aloe-emodin,MMP9,False,,Cys99
+Aloe-emodin,TGFB1,False,,Cys223
+Aloe-emodin,CTGF,False,,
+Aloe-emodin,TYR,False,,Cys81
+Aloe-emodin,SIRT1,False,,Cys371
+Aloe-emodin,SRD5A2,False,,
+Aloe-emodin,AR,False,,
+Aloe-emodin,FAP,False,,
+Aloe-emodin,LOX,False,,
+Aloe-emodin,PDGFRB,False,,
+Aloe-emodin,POSTN,False,,
+Aloe-emodin,ACTA2,False,,
+Aloe-emodin,MITF,False,,
+Aloe-emodin,COL1A1,False,,
+Aloe-emodin,COL3A1,False,,
+Andrographolide,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Andrographolide,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Andrographolide,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Andrographolide,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Andrographolide,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Andrographolide,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Andrographolide,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Andrographolide,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Andrographolide,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Andrographolide,FAP,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Andrographolide,LOX,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Andrographolide,PDGFRB,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Andrographolide,POSTN,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Andrographolide,ACTA2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Andrographolide,MITF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Andrographolide,COL1A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Andrographolide,COL3A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ellagic acid,MMP1,False,,Cys278
+Ellagic acid,MMP3,False,,Cys100
+Ellagic acid,MMP9,False,,Cys99
+Ellagic acid,TGFB1,False,,Cys223
+Ellagic acid,CTGF,False,,
+Ellagic acid,TYR,False,,Cys81
+Ellagic acid,SIRT1,False,,Cys371
+Ellagic acid,SRD5A2,False,,
+Ellagic acid,AR,False,,
+Ellagic acid,FAP,False,,
+Ellagic acid,LOX,False,,
+Ellagic acid,PDGFRB,False,,
+Ellagic acid,POSTN,False,,
+Ellagic acid,ACTA2,False,,
+Ellagic acid,MITF,False,,
+Ellagic acid,COL1A1,False,,
+Ellagic acid,COL3A1,False,,
+Epigallocatechin,MMP1,False,,Cys278
+Epigallocatechin,MMP3,False,,Cys100
+Epigallocatechin,MMP9,False,,Cys99
+Epigallocatechin,TGFB1,False,,Cys223
+Epigallocatechin,CTGF,False,,
+Epigallocatechin,TYR,False,,Cys81
+Epigallocatechin,SIRT1,False,,Cys371
+Epigallocatechin,SRD5A2,False,,
+Epigallocatechin,AR,False,,
+Epigallocatechin,FAP,False,,
+Epigallocatechin,LOX,False,,
+Epigallocatechin,PDGFRB,False,,
+Epigallocatechin,POSTN,False,,
+Epigallocatechin,ACTA2,False,,
+Epigallocatechin,MITF,False,,
+Epigallocatechin,COL1A1,False,,
+Epigallocatechin,COL3A1,False,,
+Kojic acid,MMP1,False,,Cys278
+Kojic acid,MMP3,False,,Cys100
+Kojic acid,MMP9,False,,Cys99
+Kojic acid,TGFB1,False,,Cys223
+Kojic acid,CTGF,False,,
+Kojic acid,TYR,False,,Cys81
+Kojic acid,SIRT1,False,,Cys371
+Kojic acid,SRD5A2,False,,
+Kojic acid,AR,False,,
+Kojic acid,FAP,False,,
+Kojic acid,LOX,False,,
+Kojic acid,PDGFRB,False,,
+Kojic acid,POSTN,False,,
+Kojic acid,ACTA2,False,,
+Kojic acid,MITF,False,,
+Kojic acid,COL1A1,False,,
+Kojic acid,COL3A1,False,,
+4-Methoxyresorcinol,MMP1,False,,Cys278
+4-Methoxyresorcinol,MMP3,False,,Cys100
+4-Methoxyresorcinol,MMP9,False,,Cys99
+4-Methoxyresorcinol,TGFB1,False,,Cys223
+4-Methoxyresorcinol,CTGF,False,,
+4-Methoxyresorcinol,TYR,False,,Cys81
+4-Methoxyresorcinol,SIRT1,False,,Cys371
+4-Methoxyresorcinol,SRD5A2,False,,
+4-Methoxyresorcinol,AR,False,,
+4-Methoxyresorcinol,FAP,False,,
+4-Methoxyresorcinol,LOX,False,,
+4-Methoxyresorcinol,PDGFRB,False,,
+4-Methoxyresorcinol,POSTN,False,,
+4-Methoxyresorcinol,ACTA2,False,,
+4-Methoxyresorcinol,MITF,False,,
+4-Methoxyresorcinol,COL1A1,False,,
+4-Methoxyresorcinol,COL3A1,False,,
+EGCG,MMP1,False,,Cys278
+EGCG,MMP3,False,,Cys100
+EGCG,MMP9,False,,Cys99
+EGCG,TGFB1,False,,Cys223
+EGCG,CTGF,False,,
+EGCG,TYR,False,,Cys81
+EGCG,SIRT1,False,,Cys371
+EGCG,SRD5A2,False,,
+EGCG,AR,False,,
+EGCG,FAP,False,,
+EGCG,LOX,False,,
+EGCG,PDGFRB,False,,
+EGCG,POSTN,False,,
+EGCG,ACTA2,False,,
+EGCG,MITF,False,,
+EGCG,COL1A1,False,,
+EGCG,COL3A1,False,,
+Silymarin,MMP1,False,,Cys278
+Silymarin,MMP3,False,,Cys100
+Silymarin,MMP9,False,,Cys99
+Silymarin,TGFB1,False,,Cys223
+Silymarin,CTGF,False,,
+Silymarin,TYR,False,,Cys81
+Silymarin,SIRT1,False,,Cys371
+Silymarin,SRD5A2,False,,
+Silymarin,AR,False,,
+Silymarin,FAP,False,,
+Silymarin,LOX,False,,
+Silymarin,PDGFRB,False,,
+Silymarin,POSTN,False,,
+Silymarin,ACTA2,False,,
+Silymarin,MITF,False,,
+Silymarin,COL1A1,False,,
+Silymarin,COL3A1,False,,
+Procyanidin B2,MMP1,False,,Cys278
+Procyanidin B2,MMP3,False,,Cys100
+Procyanidin B2,MMP9,False,,Cys99
+Procyanidin B2,TGFB1,False,,Cys223
+Procyanidin B2,CTGF,False,,
+Procyanidin B2,TYR,False,,Cys81
+Procyanidin B2,SIRT1,False,,Cys371
+Procyanidin B2,SRD5A2,False,,
+Procyanidin B2,AR,False,,
+Procyanidin B2,FAP,False,,
+Procyanidin B2,LOX,False,,
+Procyanidin B2,PDGFRB,False,,
+Procyanidin B2,POSTN,False,,
+Procyanidin B2,ACTA2,False,,
+Procyanidin B2,MITF,False,,
+Procyanidin B2,COL1A1,False,,
+Procyanidin B2,COL3A1,False,,
+Marimastat,MMP1,False,,Cys278
+Marimastat,MMP3,False,,Cys100
+Marimastat,MMP9,False,,Cys99
+Marimastat,TGFB1,False,,Cys223
+Marimastat,CTGF,False,,
+Marimastat,TYR,False,,Cys81
+Marimastat,SIRT1,False,,Cys371
+Marimastat,SRD5A2,False,,
+Marimastat,AR,False,,
+Marimastat,FAP,False,,
+Marimastat,LOX,False,,
+Marimastat,PDGFRB,False,,
+Marimastat,POSTN,False,,
+Marimastat,ACTA2,False,,
+Marimastat,MITF,False,,
+Marimastat,COL1A1,False,,
+Marimastat,COL3A1,False,,
+Avenanthramide B,MMP1,False,,Cys278
+Avenanthramide B,MMP3,False,,Cys100
+Avenanthramide B,MMP9,False,,Cys99
+Avenanthramide B,TGFB1,False,,Cys223
+Avenanthramide B,CTGF,False,,
+Avenanthramide B,TYR,False,,Cys81
+Avenanthramide B,SIRT1,False,,Cys371
+Avenanthramide B,SRD5A2,False,,
+Avenanthramide B,AR,False,,
+Avenanthramide B,FAP,False,,
+Avenanthramide B,LOX,False,,
+Avenanthramide B,PDGFRB,False,,
+Avenanthramide B,POSTN,False,,
+Avenanthramide B,ACTA2,False,,
+Avenanthramide B,MITF,False,,
+Avenanthramide B,COL1A1,False,,
+Avenanthramide B,COL3A1,False,,
+Theaflavin,MMP1,False,,Cys278
+Theaflavin,MMP3,False,,Cys100
+Theaflavin,MMP9,False,,Cys99
+Theaflavin,TGFB1,False,,Cys223
+Theaflavin,CTGF,False,,
+Theaflavin,TYR,False,,Cys81
+Theaflavin,SIRT1,False,,Cys371
+Theaflavin,SRD5A2,False,,
+Theaflavin,AR,False,,
+Theaflavin,FAP,False,,
+Theaflavin,LOX,False,,
+Theaflavin,PDGFRB,False,,
+Theaflavin,POSTN,False,,
+Theaflavin,ACTA2,False,,
+Theaflavin,MITF,False,,
+Theaflavin,COL1A1,False,,
+Theaflavin,COL3A1,False,,
+Salvianolic acid B,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Salvianolic acid B,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Salvianolic acid B,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Salvianolic acid B,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Salvianolic acid B,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Salvianolic acid B,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Salvianolic acid B,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Salvianolic acid B,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Salvianolic acid B,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Salvianolic acid B,FAP,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Salvianolic acid B,LOX,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Salvianolic acid B,PDGFRB,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Salvianolic acid B,POSTN,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Salvianolic acid B,ACTA2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Salvianolic acid B,MITF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Salvianolic acid B,COL1A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Salvianolic acid B,COL3A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Polydatin,MMP1,False,,Cys278
+Polydatin,MMP3,False,,Cys100
+Polydatin,MMP9,False,,Cys99
+Polydatin,TGFB1,False,,Cys223
+Polydatin,CTGF,False,,
+Polydatin,TYR,False,,Cys81
+Polydatin,SIRT1,False,,Cys371
+Polydatin,SRD5A2,False,,
+Polydatin,AR,False,,
+Polydatin,FAP,False,,
+Polydatin,LOX,False,,
+Polydatin,PDGFRB,False,,
+Polydatin,POSTN,False,,
+Polydatin,ACTA2,False,,
+Polydatin,MITF,False,,
+Polydatin,COL1A1,False,,
+Polydatin,COL3A1,False,,
+Byakangelicin,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Byakangelicin,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Byakangelicin,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Byakangelicin,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Byakangelicin,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Byakangelicin,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Byakangelicin,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Byakangelicin,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Byakangelicin,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Byakangelicin,FAP,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Byakangelicin,LOX,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Byakangelicin,PDGFRB,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Byakangelicin,POSTN,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Byakangelicin,ACTA2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Byakangelicin,MITF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Byakangelicin,COL1A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Byakangelicin,COL3A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Mulberroside A,MMP1,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Mulberroside A,MMP3,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Mulberroside A,MMP9,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Mulberroside A,TGFB1,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Mulberroside A,CTGF,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Mulberroside A,TYR,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Mulberroside A,SIRT1,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Mulberroside A,SRD5A2,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Mulberroside A,AR,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Mulberroside A,FAP,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Mulberroside A,LOX,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Mulberroside A,PDGFRB,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Mulberroside A,POSTN,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Mulberroside A,ACTA2,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Mulberroside A,MITF,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Mulberroside A,COL1A1,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Mulberroside A,COL3A1,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Liquiritin,MMP1,False,,Cys278
+Liquiritin,MMP3,False,,Cys100
+Liquiritin,MMP9,False,,Cys99
+Liquiritin,TGFB1,False,,Cys223
+Liquiritin,CTGF,False,,
+Liquiritin,TYR,False,,Cys81
+Liquiritin,SIRT1,False,,Cys371
+Liquiritin,SRD5A2,False,,
+Liquiritin,AR,False,,
+Liquiritin,FAP,False,,
+Liquiritin,LOX,False,,
+Liquiritin,PDGFRB,False,,
+Liquiritin,POSTN,False,,
+Liquiritin,ACTA2,False,,
+Liquiritin,MITF,False,,
+Liquiritin,COL1A1,False,,
+Liquiritin,COL3A1,False,,
+Ascorbic acid,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Ascorbic acid,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Ascorbic acid,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Ascorbic acid,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Ascorbic acid,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ascorbic acid,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Ascorbic acid,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Ascorbic acid,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ascorbic acid,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ascorbic acid,FAP,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ascorbic acid,LOX,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ascorbic acid,PDGFRB,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ascorbic acid,POSTN,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ascorbic acid,ACTA2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ascorbic acid,MITF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ascorbic acid,COL1A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Ascorbic acid,COL3A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Allantoin from Symphytum,MMP1,False,,Cys278
+Allantoin from Symphytum,MMP3,False,,Cys100
+Allantoin from Symphytum,MMP9,False,,Cys99
+Allantoin from Symphytum,TGFB1,False,,Cys223
+Allantoin from Symphytum,CTGF,False,,
+Allantoin from Symphytum,TYR,False,,Cys81
+Allantoin from Symphytum,SIRT1,False,,Cys371
+Allantoin from Symphytum,SRD5A2,False,,
+Allantoin from Symphytum,AR,False,,
+Allantoin from Symphytum,FAP,False,,
+Allantoin from Symphytum,LOX,False,,
+Allantoin from Symphytum,PDGFRB,False,,
+Allantoin from Symphytum,POSTN,False,,
+Allantoin from Symphytum,ACTA2,False,,
+Allantoin from Symphytum,MITF,False,,
+Allantoin from Symphytum,COL1A1,False,,
+Allantoin from Symphytum,COL3A1,False,,
+Allantoin,MMP1,False,,Cys278
+Allantoin,MMP3,False,,Cys100
+Allantoin,MMP9,False,,Cys99
+Allantoin,TGFB1,False,,Cys223
+Allantoin,CTGF,False,,
+Allantoin,TYR,False,,Cys81
+Allantoin,SIRT1,False,,Cys371
+Allantoin,SRD5A2,False,,
+Allantoin,AR,False,,
+Allantoin,FAP,False,,
+Allantoin,LOX,False,,
+Allantoin,PDGFRB,False,,
+Allantoin,POSTN,False,,
+Allantoin,ACTA2,False,,
+Allantoin,MITF,False,,
+Allantoin,COL1A1,False,,
+Allantoin,COL3A1,False,,
+Chlorogenic acid,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Chlorogenic acid,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Chlorogenic acid,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Chlorogenic acid,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Chlorogenic acid,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Chlorogenic acid,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Chlorogenic acid,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Chlorogenic acid,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Chlorogenic acid,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Chlorogenic acid,FAP,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Chlorogenic acid,LOX,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Chlorogenic acid,PDGFRB,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Chlorogenic acid,POSTN,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Chlorogenic acid,ACTA2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Chlorogenic acid,MITF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Chlorogenic acid,COL1A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Chlorogenic acid,COL3A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Baicalin,MMP1,False,,Cys278
+Baicalin,MMP3,False,,Cys100
+Baicalin,MMP9,False,,Cys99
+Baicalin,TGFB1,False,,Cys223
+Baicalin,CTGF,False,,
+Baicalin,TYR,False,,Cys81
+Baicalin,SIRT1,False,,Cys371
+Baicalin,SRD5A2,False,,
+Baicalin,AR,False,,
+Baicalin,FAP,False,,
+Baicalin,LOX,False,,
+Baicalin,PDGFRB,False,,
+Baicalin,POSTN,False,,
+Baicalin,ACTA2,False,,
+Baicalin,MITF,False,,
+Baicalin,COL1A1,False,,
+Baicalin,COL3A1,False,,
+Puerarin,MMP1,False,,Cys278
+Puerarin,MMP3,False,,Cys100
+Puerarin,MMP9,False,,Cys99
+Puerarin,TGFB1,False,,Cys223
+Puerarin,CTGF,False,,
+Puerarin,TYR,False,,Cys81
+Puerarin,SIRT1,False,,Cys371
+Puerarin,SRD5A2,False,,
+Puerarin,AR,False,,
+Puerarin,FAP,False,,
+Puerarin,LOX,False,,
+Puerarin,PDGFRB,False,,
+Puerarin,POSTN,False,,
+Puerarin,ACTA2,False,,
+Puerarin,MITF,False,,
+Puerarin,COL1A1,False,,
+Puerarin,COL3A1,False,,
+Arbutin,MMP1,False,,Cys278
+Arbutin,MMP3,False,,Cys100
+Arbutin,MMP9,False,,Cys99
+Arbutin,TGFB1,False,,Cys223
+Arbutin,CTGF,False,,
+Arbutin,TYR,False,,Cys81
+Arbutin,SIRT1,False,,Cys371
+Arbutin,SRD5A2,False,,
+Arbutin,AR,False,,
+Arbutin,FAP,False,,
+Arbutin,LOX,False,,
+Arbutin,PDGFRB,False,,
+Arbutin,POSTN,False,,
+Arbutin,ACTA2,False,,
+Arbutin,MITF,False,,
+Arbutin,COL1A1,False,,
+Arbutin,COL3A1,False,,
+Phloridzin,MMP1,False,,Cys278
+Phloridzin,MMP3,False,,Cys100
+Phloridzin,MMP9,False,,Cys99
+Phloridzin,TGFB1,False,,Cys223
+Phloridzin,CTGF,False,,
+Phloridzin,TYR,False,,Cys81
+Phloridzin,SIRT1,False,,Cys371
+Phloridzin,SRD5A2,False,,
+Phloridzin,AR,False,,
+Phloridzin,FAP,False,,
+Phloridzin,LOX,False,,
+Phloridzin,PDGFRB,False,,
+Phloridzin,POSTN,False,,
+Phloridzin,ACTA2,False,,
+Phloridzin,MITF,False,,
+Phloridzin,COL1A1,False,,
+Phloridzin,COL3A1,False,,
+Salidroside,MMP1,False,,Cys278
+Salidroside,MMP3,False,,Cys100
+Salidroside,MMP9,False,,Cys99
+Salidroside,TGFB1,False,,Cys223
+Salidroside,CTGF,False,,
+Salidroside,TYR,False,,Cys81
+Salidroside,SIRT1,False,,Cys371
+Salidroside,SRD5A2,False,,
+Salidroside,AR,False,,
+Salidroside,FAP,False,,
+Salidroside,LOX,False,,
+Salidroside,PDGFRB,False,,
+Salidroside,POSTN,False,,
+Salidroside,ACTA2,False,,
+Salidroside,MITF,False,,
+Salidroside,COL1A1,False,,
+Salidroside,COL3A1,False,,
+Aloin,MMP1,False,,Cys278
+Aloin,MMP3,False,,Cys100
+Aloin,MMP9,False,,Cys99
+Aloin,TGFB1,False,,Cys223
+Aloin,CTGF,False,,
+Aloin,TYR,False,,Cys81
+Aloin,SIRT1,False,,Cys371
+Aloin,SRD5A2,False,,
+Aloin,AR,False,,
+Aloin,FAP,False,,
+Aloin,LOX,False,,
+Aloin,PDGFRB,False,,
+Aloin,POSTN,False,,
+Aloin,ACTA2,False,,
+Aloin,MITF,False,,
+Aloin,COL1A1,False,,
+Aloin,COL3A1,False,,
+Geniposide,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Geniposide,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Geniposide,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Geniposide,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Geniposide,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Geniposide,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Geniposide,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Geniposide,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Geniposide,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Geniposide,FAP,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Geniposide,LOX,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Geniposide,PDGFRB,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Geniposide,POSTN,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Geniposide,ACTA2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Geniposide,MITF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Geniposide,COL1A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Geniposide,COL3A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Mangiferin,MMP1,False,,Cys278
+Mangiferin,MMP3,False,,Cys100
+Mangiferin,MMP9,False,,Cys99
+Mangiferin,TGFB1,False,,Cys223
+Mangiferin,CTGF,False,,
+Mangiferin,TYR,False,,Cys81
+Mangiferin,SIRT1,False,,Cys371
+Mangiferin,SRD5A2,False,,
+Mangiferin,AR,False,,
+Mangiferin,FAP,False,,
+Mangiferin,LOX,False,,
+Mangiferin,PDGFRB,False,,
+Mangiferin,POSTN,False,,
+Mangiferin,ACTA2,False,,
+Mangiferin,MITF,False,,
+Mangiferin,COL1A1,False,,
+Mangiferin,COL3A1,False,,
+Saponin Re,MMP1,False,,Cys278
+Saponin Re,MMP3,False,,Cys100
+Saponin Re,MMP9,False,,Cys99
+Saponin Re,TGFB1,False,,Cys223
+Saponin Re,CTGF,False,,
+Saponin Re,TYR,False,,Cys81
+Saponin Re,SIRT1,False,,Cys371
+Saponin Re,SRD5A2,False,,
+Saponin Re,AR,False,,
+Saponin Re,FAP,False,,
+Saponin Re,LOX,False,,
+Saponin Re,PDGFRB,False,,
+Saponin Re,POSTN,False,,
+Saponin Re,ACTA2,False,,
+Saponin Re,MITF,False,,
+Saponin Re,COL1A1,False,,
+Saponin Re,COL3A1,False,,
+Ginsenoside Rg1,MMP1,False,,Cys278
+Ginsenoside Rg1,MMP3,False,,Cys100
+Ginsenoside Rg1,MMP9,False,,Cys99
+Ginsenoside Rg1,TGFB1,False,,Cys223
+Ginsenoside Rg1,CTGF,False,,
+Ginsenoside Rg1,TYR,False,,Cys81
+Ginsenoside Rg1,SIRT1,False,,Cys371
+Ginsenoside Rg1,SRD5A2,False,,
+Ginsenoside Rg1,AR,False,,
+Ginsenoside Rg1,FAP,False,,
+Ginsenoside Rg1,LOX,False,,
+Ginsenoside Rg1,PDGFRB,False,,
+Ginsenoside Rg1,POSTN,False,,
+Ginsenoside Rg1,ACTA2,False,,
+Ginsenoside Rg1,MITF,False,,
+Ginsenoside Rg1,COL1A1,False,,
+Ginsenoside Rg1,COL3A1,False,,
+Ginsenoside Rg3,MMP1,False,,Cys278
+Ginsenoside Rg3,MMP3,False,,Cys100
+Ginsenoside Rg3,MMP9,False,,Cys99
+Ginsenoside Rg3,TGFB1,False,,Cys223
+Ginsenoside Rg3,CTGF,False,,
+Ginsenoside Rg3,TYR,False,,Cys81
+Ginsenoside Rg3,SIRT1,False,,Cys371
+Ginsenoside Rg3,SRD5A2,False,,
+Ginsenoside Rg3,AR,False,,
+Ginsenoside Rg3,FAP,False,,
+Ginsenoside Rg3,LOX,False,,
+Ginsenoside Rg3,PDGFRB,False,,
+Ginsenoside Rg3,POSTN,False,,
+Ginsenoside Rg3,ACTA2,False,,
+Ginsenoside Rg3,MITF,False,,
+Ginsenoside Rg3,COL1A1,False,,
+Ginsenoside Rg3,COL3A1,False,,
+Madecassoside,MMP1,False,,Cys278
+Madecassoside,MMP3,False,,Cys100
+Madecassoside,MMP9,False,,Cys99
+Madecassoside,TGFB1,False,,Cys223
+Madecassoside,CTGF,False,,
+Madecassoside,TYR,False,,Cys81
+Madecassoside,SIRT1,False,,Cys371
+Madecassoside,SRD5A2,False,,
+Madecassoside,AR,False,,
+Madecassoside,FAP,False,,
+Madecassoside,LOX,False,,
+Madecassoside,PDGFRB,False,,
+Madecassoside,POSTN,False,,
+Madecassoside,ACTA2,False,,
+Madecassoside,MITF,False,,
+Madecassoside,COL1A1,False,,
+Madecassoside,COL3A1,False,,
+Sennoside A,MMP1,False,,Cys278
+Sennoside A,MMP3,False,,Cys100
+Sennoside A,MMP9,False,,Cys99
+Sennoside A,TGFB1,False,,Cys223
+Sennoside A,CTGF,False,,
+Sennoside A,TYR,False,,Cys81
+Sennoside A,SIRT1,False,,Cys371
+Sennoside A,SRD5A2,False,,
+Sennoside A,AR,False,,
+Sennoside A,FAP,False,,
+Sennoside A,LOX,False,,
+Sennoside A,PDGFRB,False,,
+Sennoside A,POSTN,False,,
+Sennoside A,ACTA2,False,,
+Sennoside A,MITF,False,,
+Sennoside A,COL1A1,False,,
+Sennoside A,COL3A1,False,,
+Mogroside V,MMP1,False,,Cys278
+Mogroside V,MMP3,False,,Cys100
+Mogroside V,MMP9,False,,Cys99
+Mogroside V,TGFB1,False,,Cys223
+Mogroside V,CTGF,False,,
+Mogroside V,TYR,False,,Cys81
+Mogroside V,SIRT1,False,,Cys371
+Mogroside V,SRD5A2,False,,
+Mogroside V,AR,False,,
+Mogroside V,FAP,False,,
+Mogroside V,LOX,False,,
+Mogroside V,PDGFRB,False,,
+Mogroside V,POSTN,False,,
+Mogroside V,ACTA2,False,,
+Mogroside V,MITF,False,,
+Mogroside V,COL1A1,False,,
+Mogroside V,COL3A1,False,,
+Glycyrrhizin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Glycyrrhizin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Glycyrrhizin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Glycyrrhizin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Glycyrrhizin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Glycyrrhizin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Glycyrrhizin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Glycyrrhizin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Glycyrrhizin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Glycyrrhizin,FAP,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Glycyrrhizin,LOX,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Glycyrrhizin,PDGFRB,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Glycyrrhizin,POSTN,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Glycyrrhizin,ACTA2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Glycyrrhizin,MITF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Glycyrrhizin,COL1A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Glycyrrhizin,COL3A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Icariin,MMP1,False,,Cys278
+Icariin,MMP3,False,,Cys100
+Icariin,MMP9,False,,Cys99
+Icariin,TGFB1,False,,Cys223
+Icariin,CTGF,False,,
+Icariin,TYR,False,,Cys81
+Icariin,SIRT1,False,,Cys371
+Icariin,SRD5A2,False,,
+Icariin,AR,False,,
+Icariin,FAP,False,,
+Icariin,LOX,False,,
+Icariin,PDGFRB,False,,
+Icariin,POSTN,False,,
+Icariin,ACTA2,False,,
+Icariin,MITF,False,,
+Icariin,COL1A1,False,,
+Icariin,COL3A1,False,,
+Saikosaponin A,MMP1,False,,Cys278
+Saikosaponin A,MMP3,False,,Cys100
+Saikosaponin A,MMP9,False,,Cys99
+Saikosaponin A,TGFB1,False,,Cys223
+Saikosaponin A,CTGF,False,,
+Saikosaponin A,TYR,False,,Cys81
+Saikosaponin A,SIRT1,False,,Cys371
+Saikosaponin A,SRD5A2,False,,
+Saikosaponin A,AR,False,,
+Saikosaponin A,FAP,False,,
+Saikosaponin A,LOX,False,,
+Saikosaponin A,PDGFRB,False,,
+Saikosaponin A,POSTN,False,,
+Saikosaponin A,ACTA2,False,,
+Saikosaponin A,MITF,False,,
+Saikosaponin A,COL1A1,False,,
+Saikosaponin A,COL3A1,False,,
+Hesperidin,MMP1,False,,Cys278
+Hesperidin,MMP3,False,,Cys100
+Hesperidin,MMP9,False,,Cys99
+Hesperidin,TGFB1,False,,Cys223
+Hesperidin,CTGF,False,,
+Hesperidin,TYR,False,,Cys81
+Hesperidin,SIRT1,False,,Cys371
+Hesperidin,SRD5A2,False,,
+Hesperidin,AR,False,,
+Hesperidin,FAP,False,,
+Hesperidin,LOX,False,,
+Hesperidin,PDGFRB,False,,
+Hesperidin,POSTN,False,,
+Hesperidin,ACTA2,False,,
+Hesperidin,MITF,False,,
+Hesperidin,COL1A1,False,,
+Hesperidin,COL3A1,False,,
+Acteoside (Verbascoside),MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Acteoside (Verbascoside),MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Acteoside (Verbascoside),MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Acteoside (Verbascoside),TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Acteoside (Verbascoside),CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Acteoside (Verbascoside),TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Acteoside (Verbascoside),SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Acteoside (Verbascoside),SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Acteoside (Verbascoside),AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Acteoside (Verbascoside),FAP,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Acteoside (Verbascoside),LOX,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Acteoside (Verbascoside),PDGFRB,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Acteoside (Verbascoside),POSTN,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Acteoside (Verbascoside),ACTA2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Acteoside (Verbascoside),MITF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Acteoside (Verbascoside),COL1A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Acteoside (Verbascoside),COL3A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Paeoniflorin,MMP1,False,,Cys278
+Paeoniflorin,MMP3,False,,Cys100
+Paeoniflorin,MMP9,False,,Cys99
+Paeoniflorin,TGFB1,False,,Cys223
+Paeoniflorin,CTGF,False,,
+Paeoniflorin,TYR,False,,Cys81
+Paeoniflorin,SIRT1,False,,Cys371
+Paeoniflorin,SRD5A2,False,,
+Paeoniflorin,AR,False,,
+Paeoniflorin,FAP,False,,
+Paeoniflorin,LOX,False,,
+Paeoniflorin,PDGFRB,False,,
+Paeoniflorin,POSTN,False,,
+Paeoniflorin,ACTA2,False,,
+Paeoniflorin,MITF,False,,
+Paeoniflorin,COL1A1,False,,
+Paeoniflorin,COL3A1,False,,
+Avenanthramide A,MMP1,False,,Cys278
+Avenanthramide A,MMP3,False,,Cys100
+Avenanthramide A,MMP9,False,,Cys99
+Avenanthramide A,TGFB1,False,,Cys223
+Avenanthramide A,CTGF,False,,
+Avenanthramide A,TYR,False,,Cys81
+Avenanthramide A,SIRT1,False,,Cys371
+Avenanthramide A,SRD5A2,False,,
+Avenanthramide A,AR,False,,
+Avenanthramide A,FAP,False,,
+Avenanthramide A,LOX,False,,
+Avenanthramide A,PDGFRB,False,,
+Avenanthramide A,POSTN,False,,
+Avenanthramide A,ACTA2,False,,
+Avenanthramide A,MITF,False,,
+Avenanthramide A,COL1A1,False,,
+Avenanthramide A,COL3A1,False,,
+Punicalagin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Punicalagin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Punicalagin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Punicalagin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Punicalagin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Punicalagin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Punicalagin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Punicalagin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Punicalagin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Punicalagin,FAP,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Punicalagin,LOX,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Punicalagin,PDGFRB,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Punicalagin,POSTN,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Punicalagin,ACTA2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Punicalagin,MITF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Punicalagin,COL1A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Punicalagin,COL3A1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Astragaloside IV,MMP1,False,,Cys278
+Astragaloside IV,MMP3,False,,Cys100
+Astragaloside IV,MMP9,False,,Cys99
+Astragaloside IV,TGFB1,False,,Cys223
+Astragaloside IV,CTGF,False,,
+Astragaloside IV,TYR,False,,Cys81
+Astragaloside IV,SIRT1,False,,Cys371
+Astragaloside IV,SRD5A2,False,,
+Astragaloside IV,AR,False,,
+Astragaloside IV,FAP,False,,
+Astragaloside IV,LOX,False,,
+Astragaloside IV,PDGFRB,False,,
+Astragaloside IV,POSTN,False,,
+Astragaloside IV,ACTA2,False,,
+Astragaloside IV,MITF,False,,
+Astragaloside IV,COL1A1,False,,
+Astragaloside IV,COL3A1,False,,
+Ginsenoside Rb1,MMP1,False,,Cys278
+Ginsenoside Rb1,MMP3,False,,Cys100
+Ginsenoside Rb1,MMP9,False,,Cys99
+Ginsenoside Rb1,TGFB1,False,,Cys223
+Ginsenoside Rb1,CTGF,False,,
+Ginsenoside Rb1,TYR,False,,Cys81
+Ginsenoside Rb1,SIRT1,False,,Cys371
+Ginsenoside Rb1,SRD5A2,False,,
+Ginsenoside Rb1,AR,False,,
+Ginsenoside Rb1,FAP,False,,
+Ginsenoside Rb1,LOX,False,,
+Ginsenoside Rb1,PDGFRB,False,,
+Ginsenoside Rb1,POSTN,False,,
+Ginsenoside Rb1,ACTA2,False,,
+Ginsenoside Rb1,MITF,False,,
+Ginsenoside Rb1,COL1A1,False,,
+Ginsenoside Rb1,COL3A1,False,,
+Crocin,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278
+Crocin,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100
+Crocin,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99
+Crocin,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223
+Crocin,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Crocin,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81
+Crocin,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371
+Crocin,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Crocin,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Crocin,FAP,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Crocin,LOX,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Crocin,PDGFRB,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Crocin,POSTN,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Crocin,ACTA2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Crocin,MITF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Crocin,COL1A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
+Crocin,COL3A1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,
