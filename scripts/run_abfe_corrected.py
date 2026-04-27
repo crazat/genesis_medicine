@@ -356,16 +356,36 @@ def setup_complex(receptor_pdb: Path, ligand_smiles: str,
     )
 
     # Determine binding site center (nm)
+    # Round 11: PDB format truncates residue names to 3 chars (LIG1 → LIG).
+    # Try exact match first; if fail, try 3-char truncation; if fail, try
+    # any non-amino-acid residue.
+    AA_3 = {"ALA","ARG","ASN","ASP","CYS","GLN","GLU","GLY","HIS","ILE",
+            "LEU","LYS","MET","PHE","PRO","SER","THR","TRP","TYR","VAL"}
     binding_center_nm = None
     if ligand_template_pdb is not None and ligand_template_resname:
         tmpl = app.PDBFile(str(ligand_template_pdb))
         tmpl_pos = []
+        target_name = ligand_template_resname
+        target_3 = target_name[:3]    # PDB 3-char truncated form
         for atom, p in zip(tmpl.topology.atoms(), tmpl.positions):
-            if atom.residue.name == ligand_template_resname:
+            if atom.residue.name == target_name or atom.residue.name == target_3:
                 tmpl_pos.append([p.x, p.y, p.z])
+        if not tmpl_pos:
+            # Final fallback: any non-amino-acid residue (likely the ligand)
+            for atom, p in zip(tmpl.topology.atoms(), tmpl.positions):
+                if atom.residue.name not in AA_3 and atom.residue.name not in {"HOH","WAT","NA","CL","K","MG","CA","ZN"}:
+                    tmpl_pos.append([p.x, p.y, p.z])
+            if tmpl_pos:
+                actual_name = list({a.residue.name
+                                     for a in tmpl.topology.atoms()
+                                     if a.residue.name not in AA_3
+                                     and a.residue.name not in {"HOH","WAT","NA","CL","K","MG","CA","ZN"}})
+                print(f"  Round 11 fallback: matched {len(tmpl_pos)} atoms "
+                      f"in non-AA residues {actual_name}")
         if tmpl_pos:
             binding_center_nm = np.array(tmpl_pos).mean(axis=0)
-            print(f"  binding site from template ({ligand_template_resname}): "
+            print(f"  binding site from template ({ligand_template_resname} → "
+                  f"matched {target_3 if target_name != target_3 else target_name}): "
                   f"{binding_center_nm} nm ({len(tmpl_pos)} atoms)")
     if binding_center_nm is None:
         rec_pos = np.asarray(modeller.positions.value_in_unit(unit.nanometer))
