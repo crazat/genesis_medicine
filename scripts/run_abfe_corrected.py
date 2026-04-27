@@ -477,8 +477,14 @@ def setup_solvent_only(ligand_smiles: str, padding_nm: float = 1.0,
 def run_alchemical_leg(setup: dict, *, leg_name: str, store_dir: Path,
                          n_windows: int = N_LAMBDA_WINDOWS_DEFAULT,
                          n_iterations: int = N_ITERATIONS_DEFAULT,
-                         steps_per_iter: int = STEPS_PER_ITERATION_DEFAULT) -> dict:
-    """Run alchemical decoupling leg (electrostatics → sterics)."""
+                         steps_per_iter: int = STEPS_PER_ITERATION_DEFAULT,
+                         softcore_alpha: float = 0.5,
+                         softcore_a: int = 1) -> dict:
+    """Run alchemical decoupling leg (electrostatics → sterics).
+
+    Round 10: softcore_alpha and softcore_a exposed as parameters to mitigate
+    NaN at electrostatic-steric transition for polyphenol / charged ligands.
+    """
     from openmmtools import alchemy, multistate, mcmc, states
     from openmm import unit
 
@@ -495,7 +501,11 @@ def run_alchemical_leg(setup: dict, *, leg_name: str, store_dir: Path,
         consistent_exceptions=False, switch_width=1.0*unit.angstrom,
         alchemical_pme_treatment="exact",
     )
-    region = alchemy.AlchemicalRegion(alchemical_atoms=setup["lig_atoms"])
+    region = alchemy.AlchemicalRegion(
+        alchemical_atoms=setup["lig_atoms"],
+        softcore_alpha=softcore_alpha,
+        softcore_a=softcore_a,
+    )
     alch_system = factory.create_alchemical_system(setup["system"], region)
 
     # lambda schedule: electrostatics first (1→0), then sterics (1→0)
@@ -601,6 +611,10 @@ def main():
                          help="flat-bottom restraint radius in Å (Round 9: try 5.0 for buried pockets)")
     parser.add_argument("--minimize-tolerance", type=float, default=10.0,
                          help="energy minimization tolerance in kJ/mol (Round 9: try 1.0 for tighter starting state)")
+    parser.add_argument("--softcore-alpha", type=float, default=0.5,
+                         help="alchemical soft-core alpha (Round 10: try 0.8 for polyphenol/charged ligands)")
+    parser.add_argument("--softcore-a", type=int, default=1,
+                         help="alchemical soft-core 'a' exponent (default 1)")
     parser.add_argument("--skip-complex", action="store_true",
                          help="skip complex leg (debugging)")
     parser.add_argument("--skip-solvent", action="store_true",
@@ -674,6 +688,7 @@ def main():
         complex_result = run_alchemical_leg(
             complex_setup, leg_name="complex", store_dir=out,
             n_windows=args.n_windows, n_iterations=args.n_iterations,
+            softcore_alpha=args.softcore_alpha, softcore_a=args.softcore_a,
         )
         results["complex"] = complex_result
         results["restraint"] = std_corr
@@ -686,6 +701,7 @@ def main():
         solvent_result = run_alchemical_leg(
             solvent_setup, leg_name="solvent", store_dir=out,
             n_windows=args.n_windows, n_iterations=args.n_iterations,
+            softcore_alpha=args.softcore_alpha, softcore_a=args.softcore_a,
         )
         results["solvent"] = solvent_result
 

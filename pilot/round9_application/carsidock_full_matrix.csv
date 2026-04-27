@@ -1,0 +1,1117 @@
+compound,target,has_warhead,warheads,cys_target,consensus
+Beta-Sitosterol,MMP1,False,,Cys278,non_covalent_only
+Beta-Sitosterol,MMP3,False,,Cys100,non_covalent_only
+Beta-Sitosterol,MMP9,False,,Cys99,non_covalent_only
+Beta-Sitosterol,TGFB1,False,,Cys223,non_covalent_only
+Beta-Sitosterol,CTGF,False,,,non_covalent_only
+Beta-Sitosterol,TYR,False,,Cys81,non_covalent_only
+Beta-Sitosterol,SIRT1,False,,Cys371,non_covalent_only
+Beta-Sitosterol,SRD5A2,False,,,non_covalent_only
+Beta-Sitosterol,AR,False,,,non_covalent_only
+Hyperforin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Hyperforin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Hyperforin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Hyperforin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Hyperforin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Hyperforin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Hyperforin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Hyperforin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Hyperforin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Lupeol,MMP1,False,,Cys278,non_covalent_only
+Lupeol,MMP3,False,,Cys100,non_covalent_only
+Lupeol,MMP9,False,,Cys99,non_covalent_only
+Lupeol,TGFB1,False,,Cys223,non_covalent_only
+Lupeol,CTGF,False,,,non_covalent_only
+Lupeol,TYR,False,,Cys81,non_covalent_only
+Lupeol,SIRT1,False,,Cys371,non_covalent_only
+Lupeol,SRD5A2,False,,,non_covalent_only
+Lupeol,AR,False,,,non_covalent_only
+Oleanolic acid,MMP1,False,,Cys278,non_covalent_only
+Oleanolic acid,MMP3,False,,Cys100,non_covalent_only
+Oleanolic acid,MMP9,False,,Cys99,non_covalent_only
+Oleanolic acid,TGFB1,False,,Cys223,non_covalent_only
+Oleanolic acid,CTGF,False,,,non_covalent_only
+Oleanolic acid,TYR,False,,Cys81,non_covalent_only
+Oleanolic acid,SIRT1,False,,Cys371,non_covalent_only
+Oleanolic acid,SRD5A2,False,,,non_covalent_only
+Oleanolic acid,AR,False,,,non_covalent_only
+Betulinic acid,MMP1,False,,Cys278,non_covalent_only
+Betulinic acid,MMP3,False,,Cys100,non_covalent_only
+Betulinic acid,MMP9,False,,Cys99,non_covalent_only
+Betulinic acid,TGFB1,False,,Cys223,non_covalent_only
+Betulinic acid,CTGF,False,,,non_covalent_only
+Betulinic acid,TYR,False,,Cys81,non_covalent_only
+Betulinic acid,SIRT1,False,,Cys371,non_covalent_only
+Betulinic acid,SRD5A2,False,,,non_covalent_only
+Betulinic acid,AR,False,,,non_covalent_only
+Ursolic acid,MMP1,False,,Cys278,non_covalent_only
+Ursolic acid,MMP3,False,,Cys100,non_covalent_only
+Ursolic acid,MMP9,False,,Cys99,non_covalent_only
+Ursolic acid,TGFB1,False,,Cys223,non_covalent_only
+Ursolic acid,CTGF,False,,,non_covalent_only
+Ursolic acid,TYR,False,,Cys81,non_covalent_only
+Ursolic acid,SIRT1,False,,Cys371,non_covalent_only
+Ursolic acid,SRD5A2,False,,,non_covalent_only
+Ursolic acid,AR,False,,,non_covalent_only
+Bakuchiol,MMP1,False,,Cys278,non_covalent_only
+Bakuchiol,MMP3,False,,Cys100,non_covalent_only
+Bakuchiol,MMP9,False,,Cys99,non_covalent_only
+Bakuchiol,TGFB1,False,,Cys223,non_covalent_only
+Bakuchiol,CTGF,False,,,non_covalent_only
+Bakuchiol,TYR,False,,Cys81,non_covalent_only
+Bakuchiol,SIRT1,False,,Cys371,non_covalent_only
+Bakuchiol,SRD5A2,False,,,non_covalent_only
+Bakuchiol,AR,False,,,non_covalent_only
+Retinol,MMP1,False,,Cys278,non_covalent_only
+Retinol,MMP3,False,,Cys100,non_covalent_only
+Retinol,MMP9,False,,Cys99,non_covalent_only
+Retinol,TGFB1,False,,Cys223,non_covalent_only
+Retinol,CTGF,False,,,non_covalent_only
+Retinol,TYR,False,,Cys81,non_covalent_only
+Retinol,SIRT1,False,,Cys371,non_covalent_only
+Retinol,SRD5A2,False,,,non_covalent_only
+Retinol,AR,False,,,non_covalent_only
+Tretinoin,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Tretinoin,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Tretinoin,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Tretinoin,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Tretinoin,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Tretinoin,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Tretinoin,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Tretinoin,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Tretinoin,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Epimedin C,MMP1,False,,Cys278,non_covalent_only
+Epimedin C,MMP3,False,,Cys100,non_covalent_only
+Epimedin C,MMP9,False,,Cys99,non_covalent_only
+Epimedin C,TGFB1,False,,Cys223,non_covalent_only
+Epimedin C,CTGF,False,,,non_covalent_only
+Epimedin C,TYR,False,,Cys81,non_covalent_only
+Epimedin C,SIRT1,False,,Cys371,non_covalent_only
+Epimedin C,SRD5A2,False,,,non_covalent_only
+Epimedin C,AR,False,,,non_covalent_only
+Rapanone,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Rapanone,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Rapanone,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Rapanone,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Rapanone,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Rapanone,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Rapanone,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Rapanone,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Rapanone,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Bisabolol,MMP1,False,,Cys278,non_covalent_only
+Bisabolol,MMP3,False,,Cys100,non_covalent_only
+Bisabolol,MMP9,False,,Cys99,non_covalent_only
+Bisabolol,TGFB1,False,,Cys223,non_covalent_only
+Bisabolol,CTGF,False,,,non_covalent_only
+Bisabolol,TYR,False,,Cys81,non_covalent_only
+Bisabolol,SIRT1,False,,Cys371,non_covalent_only
+Bisabolol,SRD5A2,False,,,non_covalent_only
+Bisabolol,AR,False,,,non_covalent_only
+Tetrahydroxystilbene glucoside,MMP1,False,,Cys278,non_covalent_only
+Tetrahydroxystilbene glucoside,MMP3,False,,Cys100,non_covalent_only
+Tetrahydroxystilbene glucoside,MMP9,False,,Cys99,non_covalent_only
+Tetrahydroxystilbene glucoside,TGFB1,False,,Cys223,non_covalent_only
+Tetrahydroxystilbene glucoside,CTGF,False,,,non_covalent_only
+Tetrahydroxystilbene glucoside,TYR,False,,Cys81,non_covalent_only
+Tetrahydroxystilbene glucoside,SIRT1,False,,Cys371,non_covalent_only
+Tetrahydroxystilbene glucoside,SRD5A2,False,,,non_covalent_only
+Tetrahydroxystilbene glucoside,AR,False,,,non_covalent_only
+Calendulin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Calendulin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Calendulin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Calendulin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Calendulin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Calendulin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Calendulin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Calendulin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Calendulin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Honokiol,MMP1,False,,Cys278,non_covalent_only
+Honokiol,MMP3,False,,Cys100,non_covalent_only
+Honokiol,MMP9,False,,Cys99,non_covalent_only
+Honokiol,TGFB1,False,,Cys223,non_covalent_only
+Honokiol,CTGF,False,,,non_covalent_only
+Honokiol,TYR,False,,Cys81,non_covalent_only
+Honokiol,SIRT1,False,,Cys371,non_covalent_only
+Honokiol,SRD5A2,False,,,non_covalent_only
+Honokiol,AR,False,,,non_covalent_only
+Embelin,MMP1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Embelin,MMP3,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Embelin,MMP9,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Embelin,TGFB1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Embelin,CTGF,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Embelin,TYR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Embelin,SIRT1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Embelin,SRD5A2,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Embelin,AR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+5-O-methyl-Embelin,MMP1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+5-O-methyl-Embelin,MMP3,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+5-O-methyl-Embelin,MMP9,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+5-O-methyl-Embelin,TGFB1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+5-O-methyl-Embelin,CTGF,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+5-O-methyl-Embelin,TYR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+5-O-methyl-Embelin,SIRT1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+5-O-methyl-Embelin,SRD5A2,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+5-O-methyl-Embelin,AR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Tanshinone IIA,MMP1,False,,Cys278,non_covalent_only
+Tanshinone IIA,MMP3,False,,Cys100,non_covalent_only
+Tanshinone IIA,MMP9,False,,Cys99,non_covalent_only
+Tanshinone IIA,TGFB1,False,,Cys223,non_covalent_only
+Tanshinone IIA,CTGF,False,,,non_covalent_only
+Tanshinone IIA,TYR,False,,Cys81,non_covalent_only
+Tanshinone IIA,SIRT1,False,,Cys371,non_covalent_only
+Tanshinone IIA,SRD5A2,False,,,non_covalent_only
+Tanshinone IIA,AR,False,,,non_covalent_only
+Magnolol,MMP1,False,,Cys278,non_covalent_only
+Magnolol,MMP3,False,,Cys100,non_covalent_only
+Magnolol,MMP9,False,,Cys99,non_covalent_only
+Magnolol,TGFB1,False,,Cys223,non_covalent_only
+Magnolol,CTGF,False,,,non_covalent_only
+Magnolol,TYR,False,,Cys81,non_covalent_only
+Magnolol,SIRT1,False,,Cys371,non_covalent_only
+Magnolol,SRD5A2,False,,,non_covalent_only
+Magnolol,AR,False,,,non_covalent_only
+Imperatorin,MMP1,False,,Cys278,non_covalent_only
+Imperatorin,MMP3,False,,Cys100,non_covalent_only
+Imperatorin,MMP9,False,,Cys99,non_covalent_only
+Imperatorin,TGFB1,False,,Cys223,non_covalent_only
+Imperatorin,CTGF,False,,,non_covalent_only
+Imperatorin,TYR,False,,Cys81,non_covalent_only
+Imperatorin,SIRT1,False,,Cys371,non_covalent_only
+Imperatorin,SRD5A2,False,,,non_covalent_only
+Imperatorin,AR,False,,,non_covalent_only
+Licochalcone A,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Licochalcone A,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Licochalcone A,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Licochalcone A,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Licochalcone A,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Licochalcone A,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Licochalcone A,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Licochalcone A,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Licochalcone A,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Hexylresorcinol,MMP1,False,,Cys278,non_covalent_only
+Hexylresorcinol,MMP3,False,,Cys100,non_covalent_only
+Hexylresorcinol,MMP9,False,,Cys99,non_covalent_only
+Hexylresorcinol,TGFB1,False,,Cys223,non_covalent_only
+Hexylresorcinol,CTGF,False,,,non_covalent_only
+Hexylresorcinol,TYR,False,,Cys81,non_covalent_only
+Hexylresorcinol,SIRT1,False,,Cys371,non_covalent_only
+Hexylresorcinol,SRD5A2,False,,,non_covalent_only
+Hexylresorcinol,AR,False,,,non_covalent_only
+3-decyl-2-5-dihydroxy-benzoquinone,MMP1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+3-decyl-2-5-dihydroxy-benzoquinone,MMP3,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+3-decyl-2-5-dihydroxy-benzoquinone,MMP9,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+3-decyl-2-5-dihydroxy-benzoquinone,TGFB1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+3-decyl-2-5-dihydroxy-benzoquinone,CTGF,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+3-decyl-2-5-dihydroxy-benzoquinone,TYR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+3-decyl-2-5-dihydroxy-benzoquinone,SIRT1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+3-decyl-2-5-dihydroxy-benzoquinone,SRD5A2,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+3-decyl-2-5-dihydroxy-benzoquinone,AR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+alpha-Arbutin,MMP1,False,,Cys278,non_covalent_only
+alpha-Arbutin,MMP3,False,,Cys100,non_covalent_only
+alpha-Arbutin,MMP9,False,,Cys99,non_covalent_only
+alpha-Arbutin,TGFB1,False,,Cys223,non_covalent_only
+alpha-Arbutin,CTGF,False,,,non_covalent_only
+alpha-Arbutin,TYR,False,,Cys81,non_covalent_only
+alpha-Arbutin,SIRT1,False,,Cys371,non_covalent_only
+alpha-Arbutin,SRD5A2,False,,,non_covalent_only
+alpha-Arbutin,AR,False,,,non_covalent_only
+Carnosic acid,MMP1,False,,Cys278,non_covalent_only
+Carnosic acid,MMP3,False,,Cys100,non_covalent_only
+Carnosic acid,MMP9,False,,Cys99,non_covalent_only
+Carnosic acid,TGFB1,False,,Cys223,non_covalent_only
+Carnosic acid,CTGF,False,,,non_covalent_only
+Carnosic acid,TYR,False,,Cys81,non_covalent_only
+Carnosic acid,SIRT1,False,,Cys371,non_covalent_only
+Carnosic acid,SRD5A2,False,,,non_covalent_only
+Carnosic acid,AR,False,,,non_covalent_only
+Carnosol,MMP1,False,,Cys278,non_covalent_only
+Carnosol,MMP3,False,,Cys100,non_covalent_only
+Carnosol,MMP9,False,,Cys99,non_covalent_only
+Carnosol,TGFB1,False,,Cys223,non_covalent_only
+Carnosol,CTGF,False,,,non_covalent_only
+Carnosol,TYR,False,,Cys81,non_covalent_only
+Carnosol,SIRT1,False,,Cys371,non_covalent_only
+Carnosol,SRD5A2,False,,,non_covalent_only
+Carnosol,AR,False,,,non_covalent_only
+Eucalyptol,MMP1,False,,Cys278,non_covalent_only
+Eucalyptol,MMP3,False,,Cys100,non_covalent_only
+Eucalyptol,MMP9,False,,Cys99,non_covalent_only
+Eucalyptol,TGFB1,False,,Cys223,non_covalent_only
+Eucalyptol,CTGF,False,,,non_covalent_only
+Eucalyptol,TYR,False,,Cys81,non_covalent_only
+Eucalyptol,SIRT1,False,,Cys371,non_covalent_only
+Eucalyptol,SRD5A2,False,,,non_covalent_only
+Eucalyptol,AR,False,,,non_covalent_only
+Pterostilbene,MMP1,False,,Cys278,non_covalent_only
+Pterostilbene,MMP3,False,,Cys100,non_covalent_only
+Pterostilbene,MMP9,False,,Cys99,non_covalent_only
+Pterostilbene,TGFB1,False,,Cys223,non_covalent_only
+Pterostilbene,CTGF,False,,,non_covalent_only
+Pterostilbene,TYR,False,,Cys81,non_covalent_only
+Pterostilbene,SIRT1,False,,Cys371,non_covalent_only
+Pterostilbene,SRD5A2,False,,,non_covalent_only
+Pterostilbene,AR,False,,,non_covalent_only
+Linalool,MMP1,False,,Cys278,non_covalent_only
+Linalool,MMP3,False,,Cys100,non_covalent_only
+Linalool,MMP9,False,,Cys99,non_covalent_only
+Linalool,TGFB1,False,,Cys223,non_covalent_only
+Linalool,CTGF,False,,,non_covalent_only
+Linalool,TYR,False,,Cys81,non_covalent_only
+Linalool,SIRT1,False,,Cys371,non_covalent_only
+Linalool,SRD5A2,False,,,non_covalent_only
+Linalool,AR,False,,,non_covalent_only
+Glabridin,MMP1,False,,Cys278,non_covalent_only
+Glabridin,MMP3,False,,Cys100,non_covalent_only
+Glabridin,MMP9,False,,Cys99,non_covalent_only
+Glabridin,TGFB1,False,,Cys223,non_covalent_only
+Glabridin,CTGF,False,,,non_covalent_only
+Glabridin,TYR,False,,Cys81,non_covalent_only
+Glabridin,SIRT1,False,,Cys371,non_covalent_only
+Glabridin,SRD5A2,False,,,non_covalent_only
+Glabridin,AR,False,,,non_covalent_only
+Tea tree oil terpinen-4-ol,MMP1,False,,Cys278,non_covalent_only
+Tea tree oil terpinen-4-ol,MMP3,False,,Cys100,non_covalent_only
+Tea tree oil terpinen-4-ol,MMP9,False,,Cys99,non_covalent_only
+Tea tree oil terpinen-4-ol,TGFB1,False,,Cys223,non_covalent_only
+Tea tree oil terpinen-4-ol,CTGF,False,,,non_covalent_only
+Tea tree oil terpinen-4-ol,TYR,False,,Cys81,non_covalent_only
+Tea tree oil terpinen-4-ol,SIRT1,False,,Cys371,non_covalent_only
+Tea tree oil terpinen-4-ol,SRD5A2,False,,,non_covalent_only
+Tea tree oil terpinen-4-ol,AR,False,,,non_covalent_only
+Capsaicin,MMP1,False,,Cys278,non_covalent_only
+Capsaicin,MMP3,False,,Cys100,non_covalent_only
+Capsaicin,MMP9,False,,Cys99,non_covalent_only
+Capsaicin,TGFB1,False,,Cys223,non_covalent_only
+Capsaicin,CTGF,False,,,non_covalent_only
+Capsaicin,TYR,False,,Cys81,non_covalent_only
+Capsaicin,SIRT1,False,,Cys371,non_covalent_only
+Capsaicin,SRD5A2,False,,,non_covalent_only
+Capsaicin,AR,False,,,non_covalent_only
+Menthol,MMP1,False,,Cys278,non_covalent_only
+Menthol,MMP3,False,,Cys100,non_covalent_only
+Menthol,MMP9,False,,Cys99,non_covalent_only
+Menthol,TGFB1,False,,Cys223,non_covalent_only
+Menthol,CTGF,False,,,non_covalent_only
+Menthol,TYR,False,,Cys81,non_covalent_only
+Menthol,SIRT1,False,,Cys371,non_covalent_only
+Menthol,SRD5A2,False,,,non_covalent_only
+Menthol,AR,False,,,non_covalent_only
+Kazinol B,MMP1,False,,Cys278,non_covalent_only
+Kazinol B,MMP3,False,,Cys100,non_covalent_only
+Kazinol B,MMP9,False,,Cys99,non_covalent_only
+Kazinol B,TGFB1,False,,Cys223,non_covalent_only
+Kazinol B,CTGF,False,,,non_covalent_only
+Kazinol B,TYR,False,,Cys81,non_covalent_only
+Kazinol B,SIRT1,False,,Cys371,non_covalent_only
+Kazinol B,SRD5A2,False,,,non_covalent_only
+Kazinol B,AR,False,,,non_covalent_only
+Schizandrin A,MMP1,False,,Cys278,non_covalent_only
+Schizandrin A,MMP3,False,,Cys100,non_covalent_only
+Schizandrin A,MMP9,False,,Cys99,non_covalent_only
+Schizandrin A,TGFB1,False,,Cys223,non_covalent_only
+Schizandrin A,CTGF,False,,,non_covalent_only
+Schizandrin A,TYR,False,,Cys81,non_covalent_only
+Schizandrin A,SIRT1,False,,Cys371,non_covalent_only
+Schizandrin A,SRD5A2,False,,,non_covalent_only
+Schizandrin A,AR,False,,,non_covalent_only
+Resveratrol,MMP1,False,,Cys278,non_covalent_only
+Resveratrol,MMP3,False,,Cys100,non_covalent_only
+Resveratrol,MMP9,False,,Cys99,non_covalent_only
+Resveratrol,TGFB1,False,,Cys223,non_covalent_only
+Resveratrol,CTGF,False,,,non_covalent_only
+Resveratrol,TYR,False,,Cys81,non_covalent_only
+Resveratrol,SIRT1,False,,Cys371,non_covalent_only
+Resveratrol,SRD5A2,False,,,non_covalent_only
+Resveratrol,AR,False,,,non_covalent_only
+Cryptotanshinone,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Cryptotanshinone,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Cryptotanshinone,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Cryptotanshinone,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Cryptotanshinone,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Cryptotanshinone,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Cryptotanshinone,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Cryptotanshinone,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Cryptotanshinone,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Formononetin,MMP1,False,,Cys278,non_covalent_only
+Formononetin,MMP3,False,,Cys100,non_covalent_only
+Formononetin,MMP9,False,,Cys99,non_covalent_only
+Formononetin,TGFB1,False,,Cys223,non_covalent_only
+Formononetin,CTGF,False,,,non_covalent_only
+Formononetin,TYR,False,,Cys81,non_covalent_only
+Formononetin,SIRT1,False,,Cys371,non_covalent_only
+Formononetin,SRD5A2,False,,,non_covalent_only
+Formononetin,AR,False,,,non_covalent_only
+Asiatic acid,MMP1,False,,Cys278,non_covalent_only
+Asiatic acid,MMP3,False,,Cys100,non_covalent_only
+Asiatic acid,MMP9,False,,Cys99,non_covalent_only
+Asiatic acid,TGFB1,False,,Cys223,non_covalent_only
+Asiatic acid,CTGF,False,,,non_covalent_only
+Asiatic acid,TYR,False,,Cys81,non_covalent_only
+Asiatic acid,SIRT1,False,,Cys371,non_covalent_only
+Asiatic acid,SRD5A2,False,,,non_covalent_only
+Asiatic acid,AR,False,,,non_covalent_only
+Daidzein,MMP1,False,,Cys278,non_covalent_only
+Daidzein,MMP3,False,,Cys100,non_covalent_only
+Daidzein,MMP9,False,,Cys99,non_covalent_only
+Daidzein,TGFB1,False,,Cys223,non_covalent_only
+Daidzein,CTGF,False,,,non_covalent_only
+Daidzein,TYR,False,,Cys81,non_covalent_only
+Daidzein,SIRT1,False,,Cys371,non_covalent_only
+Daidzein,SRD5A2,False,,,non_covalent_only
+Daidzein,AR,False,,,non_covalent_only
+Oxyresveratrol,MMP1,False,,Cys278,non_covalent_only
+Oxyresveratrol,MMP3,False,,Cys100,non_covalent_only
+Oxyresveratrol,MMP9,False,,Cys99,non_covalent_only
+Oxyresveratrol,TGFB1,False,,Cys223,non_covalent_only
+Oxyresveratrol,CTGF,False,,,non_covalent_only
+Oxyresveratrol,TYR,False,,Cys81,non_covalent_only
+Oxyresveratrol,SIRT1,False,,Cys371,non_covalent_only
+Oxyresveratrol,SRD5A2,False,,,non_covalent_only
+Oxyresveratrol,AR,False,,,non_covalent_only
+Calycosin,MMP1,False,,Cys278,non_covalent_only
+Calycosin,MMP3,False,,Cys100,non_covalent_only
+Calycosin,MMP9,False,,Cys99,non_covalent_only
+Calycosin,TGFB1,False,,Cys223,non_covalent_only
+Calycosin,CTGF,False,,,non_covalent_only
+Calycosin,TYR,False,,Cys81,non_covalent_only
+Calycosin,SIRT1,False,,Cys371,non_covalent_only
+Calycosin,SRD5A2,False,,,non_covalent_only
+Calycosin,AR,False,,,non_covalent_only
+Wogonin,MMP1,False,,Cys278,non_covalent_only
+Wogonin,MMP3,False,,Cys100,non_covalent_only
+Wogonin,MMP9,False,,Cys99,non_covalent_only
+Wogonin,TGFB1,False,,Cys223,non_covalent_only
+Wogonin,CTGF,False,,,non_covalent_only
+Wogonin,TYR,False,,Cys81,non_covalent_only
+Wogonin,SIRT1,False,,Cys371,non_covalent_only
+Wogonin,SRD5A2,False,,,non_covalent_only
+Wogonin,AR,False,,,non_covalent_only
+EMB-3,MMP1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+EMB-3,MMP3,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+EMB-3,MMP9,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+EMB-3,TGFB1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+EMB-3,CTGF,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+EMB-3,TYR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+EMB-3,SIRT1,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+EMB-3,SRD5A2,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+EMB-3,AR,True,p_quinone;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+4-n-butylresorcinol,MMP1,False,,Cys278,non_covalent_only
+4-n-butylresorcinol,MMP3,False,,Cys100,non_covalent_only
+4-n-butylresorcinol,MMP9,False,,Cys99,non_covalent_only
+4-n-butylresorcinol,TGFB1,False,,Cys223,non_covalent_only
+4-n-butylresorcinol,CTGF,False,,,non_covalent_only
+4-n-butylresorcinol,TYR,False,,Cys81,non_covalent_only
+4-n-butylresorcinol,SIRT1,False,,Cys371,non_covalent_only
+4-n-butylresorcinol,SRD5A2,False,,,non_covalent_only
+4-n-butylresorcinol,AR,False,,,non_covalent_only
+Azelaic acid,MMP1,False,,Cys278,non_covalent_only
+Azelaic acid,MMP3,False,,Cys100,non_covalent_only
+Azelaic acid,MMP9,False,,Cys99,non_covalent_only
+Azelaic acid,TGFB1,False,,Cys223,non_covalent_only
+Azelaic acid,CTGF,False,,,non_covalent_only
+Azelaic acid,TYR,False,,Cys81,non_covalent_only
+Azelaic acid,SIRT1,False,,Cys371,non_covalent_only
+Azelaic acid,SRD5A2,False,,,non_covalent_only
+Azelaic acid,AR,False,,,non_covalent_only
+Genistein,MMP1,False,,Cys278,non_covalent_only
+Genistein,MMP3,False,,Cys100,non_covalent_only
+Genistein,MMP9,False,,Cys99,non_covalent_only
+Genistein,TGFB1,False,,Cys223,non_covalent_only
+Genistein,CTGF,False,,,non_covalent_only
+Genistein,TYR,False,,Cys81,non_covalent_only
+Genistein,SIRT1,False,,Cys371,non_covalent_only
+Genistein,SRD5A2,False,,,non_covalent_only
+Genistein,AR,False,,,non_covalent_only
+Baicalein,MMP1,False,,Cys278,non_covalent_only
+Baicalein,MMP3,False,,Cys100,non_covalent_only
+Baicalein,MMP9,False,,Cys99,non_covalent_only
+Baicalein,TGFB1,False,,Cys223,non_covalent_only
+Baicalein,CTGF,False,,,non_covalent_only
+Baicalein,TYR,False,,Cys81,non_covalent_only
+Baicalein,SIRT1,False,,Cys371,non_covalent_only
+Baicalein,SRD5A2,False,,,non_covalent_only
+Baicalein,AR,False,,,non_covalent_only
+Apigenin,MMP1,False,,Cys278,non_covalent_only
+Apigenin,MMP3,False,,Cys100,non_covalent_only
+Apigenin,MMP9,False,,Cys99,non_covalent_only
+Apigenin,TGFB1,False,,Cys223,non_covalent_only
+Apigenin,CTGF,False,,,non_covalent_only
+Apigenin,TYR,False,,Cys81,non_covalent_only
+Apigenin,SIRT1,False,,Cys371,non_covalent_only
+Apigenin,SRD5A2,False,,,non_covalent_only
+Apigenin,AR,False,,,non_covalent_only
+Berberine,MMP1,False,,Cys278,non_covalent_only
+Berberine,MMP3,False,,Cys100,non_covalent_only
+Berberine,MMP9,False,,Cys99,non_covalent_only
+Berberine,TGFB1,False,,Cys223,non_covalent_only
+Berberine,CTGF,False,,,non_covalent_only
+Berberine,TYR,False,,Cys81,non_covalent_only
+Berberine,SIRT1,False,,Cys371,non_covalent_only
+Berberine,SRD5A2,False,,,non_covalent_only
+Berberine,AR,False,,,non_covalent_only
+Curcumin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Curcumin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Curcumin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Curcumin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Curcumin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Curcumin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Curcumin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Curcumin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Curcumin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Paeonol,MMP1,False,,Cys278,non_covalent_only
+Paeonol,MMP3,False,,Cys100,non_covalent_only
+Paeonol,MMP9,False,,Cys99,non_covalent_only
+Paeonol,TGFB1,False,,Cys223,non_covalent_only
+Paeonol,CTGF,False,,,non_covalent_only
+Paeonol,TYR,False,,Cys81,non_covalent_only
+Paeonol,SIRT1,False,,Cys371,non_covalent_only
+Paeonol,SRD5A2,False,,,non_covalent_only
+Paeonol,AR,False,,,non_covalent_only
+Naringenin,MMP1,False,,Cys278,non_covalent_only
+Naringenin,MMP3,False,,Cys100,non_covalent_only
+Naringenin,MMP9,False,,Cys99,non_covalent_only
+Naringenin,TGFB1,False,,Cys223,non_covalent_only
+Naringenin,CTGF,False,,,non_covalent_only
+Naringenin,TYR,False,,Cys81,non_covalent_only
+Naringenin,SIRT1,False,,Cys371,non_covalent_only
+Naringenin,SRD5A2,False,,,non_covalent_only
+Naringenin,AR,False,,,non_covalent_only
+Acetylshikonin,MMP1,False,,Cys278,non_covalent_only
+Acetylshikonin,MMP3,False,,Cys100,non_covalent_only
+Acetylshikonin,MMP9,False,,Cys99,non_covalent_only
+Acetylshikonin,TGFB1,False,,Cys223,non_covalent_only
+Acetylshikonin,CTGF,False,,,non_covalent_only
+Acetylshikonin,TYR,False,,Cys81,non_covalent_only
+Acetylshikonin,SIRT1,False,,Cys371,non_covalent_only
+Acetylshikonin,SRD5A2,False,,,non_covalent_only
+Acetylshikonin,AR,False,,,non_covalent_only
+Hydroquinone,MMP1,False,,Cys278,non_covalent_only
+Hydroquinone,MMP3,False,,Cys100,non_covalent_only
+Hydroquinone,MMP9,False,,Cys99,non_covalent_only
+Hydroquinone,TGFB1,False,,Cys223,non_covalent_only
+Hydroquinone,CTGF,False,,,non_covalent_only
+Hydroquinone,TYR,False,,Cys81,non_covalent_only
+Hydroquinone,SIRT1,False,,Cys371,non_covalent_only
+Hydroquinone,SRD5A2,False,,,non_covalent_only
+Hydroquinone,AR,False,,,non_covalent_only
+Palmatine,MMP1,False,,Cys278,non_covalent_only
+Palmatine,MMP3,False,,Cys100,non_covalent_only
+Palmatine,MMP9,False,,Cys99,non_covalent_only
+Palmatine,TGFB1,False,,Cys223,non_covalent_only
+Palmatine,CTGF,False,,,non_covalent_only
+Palmatine,TYR,False,,Cys81,non_covalent_only
+Palmatine,SIRT1,False,,Cys371,non_covalent_only
+Palmatine,SRD5A2,False,,,non_covalent_only
+Palmatine,AR,False,,,non_covalent_only
+Biochanin A,MMP1,False,,Cys278,non_covalent_only
+Biochanin A,MMP3,False,,Cys100,non_covalent_only
+Biochanin A,MMP9,False,,Cys99,non_covalent_only
+Biochanin A,TGFB1,False,,Cys223,non_covalent_only
+Biochanin A,CTGF,False,,,non_covalent_only
+Biochanin A,TYR,False,,Cys81,non_covalent_only
+Biochanin A,SIRT1,False,,Cys371,non_covalent_only
+Biochanin A,SRD5A2,False,,,non_covalent_only
+Biochanin A,AR,False,,,non_covalent_only
+Phloretin,MMP1,False,,Cys278,non_covalent_only
+Phloretin,MMP3,False,,Cys100,non_covalent_only
+Phloretin,MMP9,False,,Cys99,non_covalent_only
+Phloretin,TGFB1,False,,Cys223,non_covalent_only
+Phloretin,CTGF,False,,,non_covalent_only
+Phloretin,TYR,False,,Cys81,non_covalent_only
+Phloretin,SIRT1,False,,Cys371,non_covalent_only
+Phloretin,SRD5A2,False,,,non_covalent_only
+Phloretin,AR,False,,,non_covalent_only
+Salicylic acid,MMP1,False,,Cys278,non_covalent_only
+Salicylic acid,MMP3,False,,Cys100,non_covalent_only
+Salicylic acid,MMP9,False,,Cys99,non_covalent_only
+Salicylic acid,TGFB1,False,,Cys223,non_covalent_only
+Salicylic acid,CTGF,False,,,non_covalent_only
+Salicylic acid,TYR,False,,Cys81,non_covalent_only
+Salicylic acid,SIRT1,False,,Cys371,non_covalent_only
+Salicylic acid,SRD5A2,False,,,non_covalent_only
+Salicylic acid,AR,False,,,non_covalent_only
+2-hydroxy-naphthoquinone,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+2-hydroxy-naphthoquinone,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+2-hydroxy-naphthoquinone,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+2-hydroxy-naphthoquinone,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+2-hydroxy-naphthoquinone,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+2-hydroxy-naphthoquinone,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+2-hydroxy-naphthoquinone,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+2-hydroxy-naphthoquinone,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+2-hydroxy-naphthoquinone,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Ferulic acid,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Ferulic acid,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Ferulic acid,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Ferulic acid,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Ferulic acid,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Ferulic acid,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Ferulic acid,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Ferulic acid,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Ferulic acid,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Physcion,MMP1,False,,Cys278,non_covalent_only
+Physcion,MMP3,False,,Cys100,non_covalent_only
+Physcion,MMP9,False,,Cys99,non_covalent_only
+Physcion,TGFB1,False,,Cys223,non_covalent_only
+Physcion,CTGF,False,,,non_covalent_only
+Physcion,TYR,False,,Cys81,non_covalent_only
+Physcion,SIRT1,False,,Cys371,non_covalent_only
+Physcion,SRD5A2,False,,,non_covalent_only
+Physcion,AR,False,,,non_covalent_only
+Tyrosol,MMP1,False,,Cys278,non_covalent_only
+Tyrosol,MMP3,False,,Cys100,non_covalent_only
+Tyrosol,MMP9,False,,Cys99,non_covalent_only
+Tyrosol,TGFB1,False,,Cys223,non_covalent_only
+Tyrosol,CTGF,False,,,non_covalent_only
+Tyrosol,TYR,False,,Cys81,non_covalent_only
+Tyrosol,SIRT1,False,,Cys371,non_covalent_only
+Tyrosol,SRD5A2,False,,,non_covalent_only
+Tyrosol,AR,False,,,non_covalent_only
+Sulforaphane,MMP1,True,isothiocyanate,Cys278,covalent_capable
+Sulforaphane,MMP3,True,isothiocyanate,Cys100,covalent_capable
+Sulforaphane,MMP9,True,isothiocyanate,Cys99,covalent_capable
+Sulforaphane,TGFB1,True,isothiocyanate,Cys223,covalent_capable
+Sulforaphane,CTGF,True,isothiocyanate,,covalent_capable
+Sulforaphane,TYR,True,isothiocyanate,Cys81,covalent_capable
+Sulforaphane,SIRT1,True,isothiocyanate,Cys371,covalent_capable
+Sulforaphane,SRD5A2,True,isothiocyanate,,covalent_capable
+Sulforaphane,AR,True,isothiocyanate,,covalent_capable
+Spirulina-derived phycocyanin,MMP1,False,,Cys278,non_covalent_only
+Spirulina-derived phycocyanin,MMP3,False,,Cys100,non_covalent_only
+Spirulina-derived phycocyanin,MMP9,False,,Cys99,non_covalent_only
+Spirulina-derived phycocyanin,TGFB1,False,,Cys223,non_covalent_only
+Spirulina-derived phycocyanin,CTGF,False,,,non_covalent_only
+Spirulina-derived phycocyanin,TYR,False,,Cys81,non_covalent_only
+Spirulina-derived phycocyanin,SIRT1,False,,Cys371,non_covalent_only
+Spirulina-derived phycocyanin,SRD5A2,False,,,non_covalent_only
+Spirulina-derived phycocyanin,AR,False,,,non_covalent_only
+Asiaticoside,MMP1,False,,Cys278,non_covalent_only
+Asiaticoside,MMP3,False,,Cys100,non_covalent_only
+Asiaticoside,MMP9,False,,Cys99,non_covalent_only
+Asiaticoside,TGFB1,False,,Cys223,non_covalent_only
+Asiaticoside,CTGF,False,,,non_covalent_only
+Asiaticoside,TYR,False,,Cys81,non_covalent_only
+Asiaticoside,SIRT1,False,,Cys371,non_covalent_only
+Asiaticoside,SRD5A2,False,,,non_covalent_only
+Asiaticoside,AR,False,,,non_covalent_only
+Madecassic acid,MMP1,False,,Cys278,non_covalent_only
+Madecassic acid,MMP3,False,,Cys100,non_covalent_only
+Madecassic acid,MMP9,False,,Cys99,non_covalent_only
+Madecassic acid,TGFB1,False,,Cys223,non_covalent_only
+Madecassic acid,CTGF,False,,,non_covalent_only
+Madecassic acid,TYR,False,,Cys81,non_covalent_only
+Madecassic acid,SIRT1,False,,Cys371,non_covalent_only
+Madecassic acid,SRD5A2,False,,,non_covalent_only
+Madecassic acid,AR,False,,,non_covalent_only
+Caffeic acid,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Caffeic acid,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Caffeic acid,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Caffeic acid,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Caffeic acid,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Caffeic acid,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Caffeic acid,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Caffeic acid,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Caffeic acid,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Shikonin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Shikonin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Shikonin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Shikonin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Shikonin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Shikonin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Shikonin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Shikonin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Shikonin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Emodin,MMP1,False,,Cys278,non_covalent_only
+Emodin,MMP3,False,,Cys100,non_covalent_only
+Emodin,MMP9,False,,Cys99,non_covalent_only
+Emodin,TGFB1,False,,Cys223,non_covalent_only
+Emodin,CTGF,False,,,non_covalent_only
+Emodin,TYR,False,,Cys81,non_covalent_only
+Emodin,SIRT1,False,,Cys371,non_covalent_only
+Emodin,SRD5A2,False,,,non_covalent_only
+Emodin,AR,False,,,non_covalent_only
+Thujin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Thujin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Thujin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Thujin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Thujin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Thujin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Thujin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Thujin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Thujin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Quercetin,MMP1,False,,Cys278,non_covalent_only
+Quercetin,MMP3,False,,Cys100,non_covalent_only
+Quercetin,MMP9,False,,Cys99,non_covalent_only
+Quercetin,TGFB1,False,,Cys223,non_covalent_only
+Quercetin,CTGF,False,,,non_covalent_only
+Quercetin,TYR,False,,Cys81,non_covalent_only
+Quercetin,SIRT1,False,,Cys371,non_covalent_only
+Quercetin,SRD5A2,False,,,non_covalent_only
+Quercetin,AR,False,,,non_covalent_only
+Finasteride,MMP1,False,,Cys278,non_covalent_only
+Finasteride,MMP3,False,,Cys100,non_covalent_only
+Finasteride,MMP9,False,,Cys99,non_covalent_only
+Finasteride,TGFB1,False,,Cys223,non_covalent_only
+Finasteride,CTGF,False,,,non_covalent_only
+Finasteride,TYR,False,,Cys81,non_covalent_only
+Finasteride,SIRT1,False,,Cys371,non_covalent_only
+Finasteride,SRD5A2,False,,,non_covalent_only
+Finasteride,AR,False,,,non_covalent_only
+Withaferin A,MMP1,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Withaferin A,MMP3,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Withaferin A,MMP9,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Withaferin A,TGFB1,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Withaferin A,CTGF,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Withaferin A,TYR,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Withaferin A,SIRT1,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Withaferin A,SRD5A2,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Withaferin A,AR,True,michael_acceptor_acrylate;epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Hydroxytyrosol,MMP1,False,,Cys278,non_covalent_only
+Hydroxytyrosol,MMP3,False,,Cys100,non_covalent_only
+Hydroxytyrosol,MMP9,False,,Cys99,non_covalent_only
+Hydroxytyrosol,TGFB1,False,,Cys223,non_covalent_only
+Hydroxytyrosol,CTGF,False,,,non_covalent_only
+Hydroxytyrosol,TYR,False,,Cys81,non_covalent_only
+Hydroxytyrosol,SIRT1,False,,Cys371,non_covalent_only
+Hydroxytyrosol,SRD5A2,False,,,non_covalent_only
+Hydroxytyrosol,AR,False,,,non_covalent_only
+Niacinamide,MMP1,False,,Cys278,non_covalent_only
+Niacinamide,MMP3,False,,Cys100,non_covalent_only
+Niacinamide,MMP9,False,,Cys99,non_covalent_only
+Niacinamide,TGFB1,False,,Cys223,non_covalent_only
+Niacinamide,CTGF,False,,,non_covalent_only
+Niacinamide,TYR,False,,Cys81,non_covalent_only
+Niacinamide,SIRT1,False,,Cys371,non_covalent_only
+Niacinamide,SRD5A2,False,,,non_covalent_only
+Niacinamide,AR,False,,,non_covalent_only
+Rhein,MMP1,False,,Cys278,non_covalent_only
+Rhein,MMP3,False,,Cys100,non_covalent_only
+Rhein,MMP9,False,,Cys99,non_covalent_only
+Rhein,TGFB1,False,,Cys223,non_covalent_only
+Rhein,CTGF,False,,,non_covalent_only
+Rhein,TYR,False,,Cys81,non_covalent_only
+Rhein,SIRT1,False,,Cys371,non_covalent_only
+Rhein,SRD5A2,False,,,non_covalent_only
+Rhein,AR,False,,,non_covalent_only
+Epicatechin,MMP1,False,,Cys278,non_covalent_only
+Epicatechin,MMP3,False,,Cys100,non_covalent_only
+Epicatechin,MMP9,False,,Cys99,non_covalent_only
+Epicatechin,TGFB1,False,,Cys223,non_covalent_only
+Epicatechin,CTGF,False,,,non_covalent_only
+Epicatechin,TYR,False,,Cys81,non_covalent_only
+Epicatechin,SIRT1,False,,Cys371,non_covalent_only
+Epicatechin,SRD5A2,False,,,non_covalent_only
+Epicatechin,AR,False,,,non_covalent_only
+Aloe-emodin,MMP1,False,,Cys278,non_covalent_only
+Aloe-emodin,MMP3,False,,Cys100,non_covalent_only
+Aloe-emodin,MMP9,False,,Cys99,non_covalent_only
+Aloe-emodin,TGFB1,False,,Cys223,non_covalent_only
+Aloe-emodin,CTGF,False,,,non_covalent_only
+Aloe-emodin,TYR,False,,Cys81,non_covalent_only
+Aloe-emodin,SIRT1,False,,Cys371,non_covalent_only
+Aloe-emodin,SRD5A2,False,,,non_covalent_only
+Aloe-emodin,AR,False,,,non_covalent_only
+Andrographolide,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Andrographolide,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Andrographolide,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Andrographolide,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Andrographolide,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Andrographolide,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Andrographolide,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Andrographolide,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Andrographolide,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Ellagic acid,MMP1,False,,Cys278,non_covalent_only
+Ellagic acid,MMP3,False,,Cys100,non_covalent_only
+Ellagic acid,MMP9,False,,Cys99,non_covalent_only
+Ellagic acid,TGFB1,False,,Cys223,non_covalent_only
+Ellagic acid,CTGF,False,,,non_covalent_only
+Ellagic acid,TYR,False,,Cys81,non_covalent_only
+Ellagic acid,SIRT1,False,,Cys371,non_covalent_only
+Ellagic acid,SRD5A2,False,,,non_covalent_only
+Ellagic acid,AR,False,,,non_covalent_only
+Epigallocatechin,MMP1,False,,Cys278,non_covalent_only
+Epigallocatechin,MMP3,False,,Cys100,non_covalent_only
+Epigallocatechin,MMP9,False,,Cys99,non_covalent_only
+Epigallocatechin,TGFB1,False,,Cys223,non_covalent_only
+Epigallocatechin,CTGF,False,,,non_covalent_only
+Epigallocatechin,TYR,False,,Cys81,non_covalent_only
+Epigallocatechin,SIRT1,False,,Cys371,non_covalent_only
+Epigallocatechin,SRD5A2,False,,,non_covalent_only
+Epigallocatechin,AR,False,,,non_covalent_only
+Kojic acid,MMP1,False,,Cys278,non_covalent_only
+Kojic acid,MMP3,False,,Cys100,non_covalent_only
+Kojic acid,MMP9,False,,Cys99,non_covalent_only
+Kojic acid,TGFB1,False,,Cys223,non_covalent_only
+Kojic acid,CTGF,False,,,non_covalent_only
+Kojic acid,TYR,False,,Cys81,non_covalent_only
+Kojic acid,SIRT1,False,,Cys371,non_covalent_only
+Kojic acid,SRD5A2,False,,,non_covalent_only
+Kojic acid,AR,False,,,non_covalent_only
+4-Methoxyresorcinol,MMP1,False,,Cys278,non_covalent_only
+4-Methoxyresorcinol,MMP3,False,,Cys100,non_covalent_only
+4-Methoxyresorcinol,MMP9,False,,Cys99,non_covalent_only
+4-Methoxyresorcinol,TGFB1,False,,Cys223,non_covalent_only
+4-Methoxyresorcinol,CTGF,False,,,non_covalent_only
+4-Methoxyresorcinol,TYR,False,,Cys81,non_covalent_only
+4-Methoxyresorcinol,SIRT1,False,,Cys371,non_covalent_only
+4-Methoxyresorcinol,SRD5A2,False,,,non_covalent_only
+4-Methoxyresorcinol,AR,False,,,non_covalent_only
+EGCG,MMP1,False,,Cys278,non_covalent_only
+EGCG,MMP3,False,,Cys100,non_covalent_only
+EGCG,MMP9,False,,Cys99,non_covalent_only
+EGCG,TGFB1,False,,Cys223,non_covalent_only
+EGCG,CTGF,False,,,non_covalent_only
+EGCG,TYR,False,,Cys81,non_covalent_only
+EGCG,SIRT1,False,,Cys371,non_covalent_only
+EGCG,SRD5A2,False,,,non_covalent_only
+EGCG,AR,False,,,non_covalent_only
+Silymarin,MMP1,False,,Cys278,non_covalent_only
+Silymarin,MMP3,False,,Cys100,non_covalent_only
+Silymarin,MMP9,False,,Cys99,non_covalent_only
+Silymarin,TGFB1,False,,Cys223,non_covalent_only
+Silymarin,CTGF,False,,,non_covalent_only
+Silymarin,TYR,False,,Cys81,non_covalent_only
+Silymarin,SIRT1,False,,Cys371,non_covalent_only
+Silymarin,SRD5A2,False,,,non_covalent_only
+Silymarin,AR,False,,,non_covalent_only
+Procyanidin B2,MMP1,False,,Cys278,non_covalent_only
+Procyanidin B2,MMP3,False,,Cys100,non_covalent_only
+Procyanidin B2,MMP9,False,,Cys99,non_covalent_only
+Procyanidin B2,TGFB1,False,,Cys223,non_covalent_only
+Procyanidin B2,CTGF,False,,,non_covalent_only
+Procyanidin B2,TYR,False,,Cys81,non_covalent_only
+Procyanidin B2,SIRT1,False,,Cys371,non_covalent_only
+Procyanidin B2,SRD5A2,False,,,non_covalent_only
+Procyanidin B2,AR,False,,,non_covalent_only
+Marimastat,MMP1,False,,Cys278,non_covalent_only
+Marimastat,MMP3,False,,Cys100,non_covalent_only
+Marimastat,MMP9,False,,Cys99,non_covalent_only
+Marimastat,TGFB1,False,,Cys223,non_covalent_only
+Marimastat,CTGF,False,,,non_covalent_only
+Marimastat,TYR,False,,Cys81,non_covalent_only
+Marimastat,SIRT1,False,,Cys371,non_covalent_only
+Marimastat,SRD5A2,False,,,non_covalent_only
+Marimastat,AR,False,,,non_covalent_only
+Avenanthramide B,MMP1,False,,Cys278,non_covalent_only
+Avenanthramide B,MMP3,False,,Cys100,non_covalent_only
+Avenanthramide B,MMP9,False,,Cys99,non_covalent_only
+Avenanthramide B,TGFB1,False,,Cys223,non_covalent_only
+Avenanthramide B,CTGF,False,,,non_covalent_only
+Avenanthramide B,TYR,False,,Cys81,non_covalent_only
+Avenanthramide B,SIRT1,False,,Cys371,non_covalent_only
+Avenanthramide B,SRD5A2,False,,,non_covalent_only
+Avenanthramide B,AR,False,,,non_covalent_only
+Theaflavin,MMP1,False,,Cys278,non_covalent_only
+Theaflavin,MMP3,False,,Cys100,non_covalent_only
+Theaflavin,MMP9,False,,Cys99,non_covalent_only
+Theaflavin,TGFB1,False,,Cys223,non_covalent_only
+Theaflavin,CTGF,False,,,non_covalent_only
+Theaflavin,TYR,False,,Cys81,non_covalent_only
+Theaflavin,SIRT1,False,,Cys371,non_covalent_only
+Theaflavin,SRD5A2,False,,,non_covalent_only
+Theaflavin,AR,False,,,non_covalent_only
+Salvianolic acid B,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Salvianolic acid B,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Salvianolic acid B,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Salvianolic acid B,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Salvianolic acid B,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Salvianolic acid B,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Salvianolic acid B,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Salvianolic acid B,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Salvianolic acid B,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Polydatin,MMP1,False,,Cys278,non_covalent_only
+Polydatin,MMP3,False,,Cys100,non_covalent_only
+Polydatin,MMP9,False,,Cys99,non_covalent_only
+Polydatin,TGFB1,False,,Cys223,non_covalent_only
+Polydatin,CTGF,False,,,non_covalent_only
+Polydatin,TYR,False,,Cys81,non_covalent_only
+Polydatin,SIRT1,False,,Cys371,non_covalent_only
+Polydatin,SRD5A2,False,,,non_covalent_only
+Polydatin,AR,False,,,non_covalent_only
+Byakangelicin,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Byakangelicin,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Byakangelicin,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Byakangelicin,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Byakangelicin,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Byakangelicin,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Byakangelicin,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Byakangelicin,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Byakangelicin,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Mulberroside A,MMP1,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Mulberroside A,MMP3,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Mulberroside A,MMP9,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Mulberroside A,TGFB1,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Mulberroside A,CTGF,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Mulberroside A,TYR,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Mulberroside A,SIRT1,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Mulberroside A,SRD5A2,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Mulberroside A,AR,True,epoxide;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Liquiritin,MMP1,False,,Cys278,non_covalent_only
+Liquiritin,MMP3,False,,Cys100,non_covalent_only
+Liquiritin,MMP9,False,,Cys99,non_covalent_only
+Liquiritin,TGFB1,False,,Cys223,non_covalent_only
+Liquiritin,CTGF,False,,,non_covalent_only
+Liquiritin,TYR,False,,Cys81,non_covalent_only
+Liquiritin,SIRT1,False,,Cys371,non_covalent_only
+Liquiritin,SRD5A2,False,,,non_covalent_only
+Liquiritin,AR,False,,,non_covalent_only
+Ascorbic acid,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Ascorbic acid,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Ascorbic acid,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Ascorbic acid,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Ascorbic acid,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Ascorbic acid,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Ascorbic acid,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Ascorbic acid,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Ascorbic acid,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Allantoin from Symphytum,MMP1,False,,Cys278,non_covalent_only
+Allantoin from Symphytum,MMP3,False,,Cys100,non_covalent_only
+Allantoin from Symphytum,MMP9,False,,Cys99,non_covalent_only
+Allantoin from Symphytum,TGFB1,False,,Cys223,non_covalent_only
+Allantoin from Symphytum,CTGF,False,,,non_covalent_only
+Allantoin from Symphytum,TYR,False,,Cys81,non_covalent_only
+Allantoin from Symphytum,SIRT1,False,,Cys371,non_covalent_only
+Allantoin from Symphytum,SRD5A2,False,,,non_covalent_only
+Allantoin from Symphytum,AR,False,,,non_covalent_only
+Allantoin,MMP1,False,,Cys278,non_covalent_only
+Allantoin,MMP3,False,,Cys100,non_covalent_only
+Allantoin,MMP9,False,,Cys99,non_covalent_only
+Allantoin,TGFB1,False,,Cys223,non_covalent_only
+Allantoin,CTGF,False,,,non_covalent_only
+Allantoin,TYR,False,,Cys81,non_covalent_only
+Allantoin,SIRT1,False,,Cys371,non_covalent_only
+Allantoin,SRD5A2,False,,,non_covalent_only
+Allantoin,AR,False,,,non_covalent_only
+Chlorogenic acid,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Chlorogenic acid,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Chlorogenic acid,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Chlorogenic acid,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Chlorogenic acid,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Chlorogenic acid,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Chlorogenic acid,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Chlorogenic acid,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Chlorogenic acid,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Baicalin,MMP1,False,,Cys278,non_covalent_only
+Baicalin,MMP3,False,,Cys100,non_covalent_only
+Baicalin,MMP9,False,,Cys99,non_covalent_only
+Baicalin,TGFB1,False,,Cys223,non_covalent_only
+Baicalin,CTGF,False,,,non_covalent_only
+Baicalin,TYR,False,,Cys81,non_covalent_only
+Baicalin,SIRT1,False,,Cys371,non_covalent_only
+Baicalin,SRD5A2,False,,,non_covalent_only
+Baicalin,AR,False,,,non_covalent_only
+Puerarin,MMP1,False,,Cys278,non_covalent_only
+Puerarin,MMP3,False,,Cys100,non_covalent_only
+Puerarin,MMP9,False,,Cys99,non_covalent_only
+Puerarin,TGFB1,False,,Cys223,non_covalent_only
+Puerarin,CTGF,False,,,non_covalent_only
+Puerarin,TYR,False,,Cys81,non_covalent_only
+Puerarin,SIRT1,False,,Cys371,non_covalent_only
+Puerarin,SRD5A2,False,,,non_covalent_only
+Puerarin,AR,False,,,non_covalent_only
+Arbutin,MMP1,False,,Cys278,non_covalent_only
+Arbutin,MMP3,False,,Cys100,non_covalent_only
+Arbutin,MMP9,False,,Cys99,non_covalent_only
+Arbutin,TGFB1,False,,Cys223,non_covalent_only
+Arbutin,CTGF,False,,,non_covalent_only
+Arbutin,TYR,False,,Cys81,non_covalent_only
+Arbutin,SIRT1,False,,Cys371,non_covalent_only
+Arbutin,SRD5A2,False,,,non_covalent_only
+Arbutin,AR,False,,,non_covalent_only
+Phloridzin,MMP1,False,,Cys278,non_covalent_only
+Phloridzin,MMP3,False,,Cys100,non_covalent_only
+Phloridzin,MMP9,False,,Cys99,non_covalent_only
+Phloridzin,TGFB1,False,,Cys223,non_covalent_only
+Phloridzin,CTGF,False,,,non_covalent_only
+Phloridzin,TYR,False,,Cys81,non_covalent_only
+Phloridzin,SIRT1,False,,Cys371,non_covalent_only
+Phloridzin,SRD5A2,False,,,non_covalent_only
+Phloridzin,AR,False,,,non_covalent_only
+Salidroside,MMP1,False,,Cys278,non_covalent_only
+Salidroside,MMP3,False,,Cys100,non_covalent_only
+Salidroside,MMP9,False,,Cys99,non_covalent_only
+Salidroside,TGFB1,False,,Cys223,non_covalent_only
+Salidroside,CTGF,False,,,non_covalent_only
+Salidroside,TYR,False,,Cys81,non_covalent_only
+Salidroside,SIRT1,False,,Cys371,non_covalent_only
+Salidroside,SRD5A2,False,,,non_covalent_only
+Salidroside,AR,False,,,non_covalent_only
+Aloin,MMP1,False,,Cys278,non_covalent_only
+Aloin,MMP3,False,,Cys100,non_covalent_only
+Aloin,MMP9,False,,Cys99,non_covalent_only
+Aloin,TGFB1,False,,Cys223,non_covalent_only
+Aloin,CTGF,False,,,non_covalent_only
+Aloin,TYR,False,,Cys81,non_covalent_only
+Aloin,SIRT1,False,,Cys371,non_covalent_only
+Aloin,SRD5A2,False,,,non_covalent_only
+Aloin,AR,False,,,non_covalent_only
+Geniposide,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Geniposide,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Geniposide,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Geniposide,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Geniposide,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Geniposide,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Geniposide,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Geniposide,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Geniposide,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Mangiferin,MMP1,False,,Cys278,non_covalent_only
+Mangiferin,MMP3,False,,Cys100,non_covalent_only
+Mangiferin,MMP9,False,,Cys99,non_covalent_only
+Mangiferin,TGFB1,False,,Cys223,non_covalent_only
+Mangiferin,CTGF,False,,,non_covalent_only
+Mangiferin,TYR,False,,Cys81,non_covalent_only
+Mangiferin,SIRT1,False,,Cys371,non_covalent_only
+Mangiferin,SRD5A2,False,,,non_covalent_only
+Mangiferin,AR,False,,,non_covalent_only
+Saponin Re,MMP1,False,,Cys278,non_covalent_only
+Saponin Re,MMP3,False,,Cys100,non_covalent_only
+Saponin Re,MMP9,False,,Cys99,non_covalent_only
+Saponin Re,TGFB1,False,,Cys223,non_covalent_only
+Saponin Re,CTGF,False,,,non_covalent_only
+Saponin Re,TYR,False,,Cys81,non_covalent_only
+Saponin Re,SIRT1,False,,Cys371,non_covalent_only
+Saponin Re,SRD5A2,False,,,non_covalent_only
+Saponin Re,AR,False,,,non_covalent_only
+Ginsenoside Rg1,MMP1,False,,Cys278,non_covalent_only
+Ginsenoside Rg1,MMP3,False,,Cys100,non_covalent_only
+Ginsenoside Rg1,MMP9,False,,Cys99,non_covalent_only
+Ginsenoside Rg1,TGFB1,False,,Cys223,non_covalent_only
+Ginsenoside Rg1,CTGF,False,,,non_covalent_only
+Ginsenoside Rg1,TYR,False,,Cys81,non_covalent_only
+Ginsenoside Rg1,SIRT1,False,,Cys371,non_covalent_only
+Ginsenoside Rg1,SRD5A2,False,,,non_covalent_only
+Ginsenoside Rg1,AR,False,,,non_covalent_only
+Ginsenoside Rg3,MMP1,False,,Cys278,non_covalent_only
+Ginsenoside Rg3,MMP3,False,,Cys100,non_covalent_only
+Ginsenoside Rg3,MMP9,False,,Cys99,non_covalent_only
+Ginsenoside Rg3,TGFB1,False,,Cys223,non_covalent_only
+Ginsenoside Rg3,CTGF,False,,,non_covalent_only
+Ginsenoside Rg3,TYR,False,,Cys81,non_covalent_only
+Ginsenoside Rg3,SIRT1,False,,Cys371,non_covalent_only
+Ginsenoside Rg3,SRD5A2,False,,,non_covalent_only
+Ginsenoside Rg3,AR,False,,,non_covalent_only
+Madecassoside,MMP1,False,,Cys278,non_covalent_only
+Madecassoside,MMP3,False,,Cys100,non_covalent_only
+Madecassoside,MMP9,False,,Cys99,non_covalent_only
+Madecassoside,TGFB1,False,,Cys223,non_covalent_only
+Madecassoside,CTGF,False,,,non_covalent_only
+Madecassoside,TYR,False,,Cys81,non_covalent_only
+Madecassoside,SIRT1,False,,Cys371,non_covalent_only
+Madecassoside,SRD5A2,False,,,non_covalent_only
+Madecassoside,AR,False,,,non_covalent_only
+Sennoside A,MMP1,False,,Cys278,non_covalent_only
+Sennoside A,MMP3,False,,Cys100,non_covalent_only
+Sennoside A,MMP9,False,,Cys99,non_covalent_only
+Sennoside A,TGFB1,False,,Cys223,non_covalent_only
+Sennoside A,CTGF,False,,,non_covalent_only
+Sennoside A,TYR,False,,Cys81,non_covalent_only
+Sennoside A,SIRT1,False,,Cys371,non_covalent_only
+Sennoside A,SRD5A2,False,,,non_covalent_only
+Sennoside A,AR,False,,,non_covalent_only
+Mogroside V,MMP1,False,,Cys278,non_covalent_only
+Mogroside V,MMP3,False,,Cys100,non_covalent_only
+Mogroside V,MMP9,False,,Cys99,non_covalent_only
+Mogroside V,TGFB1,False,,Cys223,non_covalent_only
+Mogroside V,CTGF,False,,,non_covalent_only
+Mogroside V,TYR,False,,Cys81,non_covalent_only
+Mogroside V,SIRT1,False,,Cys371,non_covalent_only
+Mogroside V,SRD5A2,False,,,non_covalent_only
+Mogroside V,AR,False,,,non_covalent_only
+Glycyrrhizin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Glycyrrhizin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Glycyrrhizin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Glycyrrhizin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Glycyrrhizin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Glycyrrhizin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Glycyrrhizin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Glycyrrhizin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Glycyrrhizin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Icariin,MMP1,False,,Cys278,non_covalent_only
+Icariin,MMP3,False,,Cys100,non_covalent_only
+Icariin,MMP9,False,,Cys99,non_covalent_only
+Icariin,TGFB1,False,,Cys223,non_covalent_only
+Icariin,CTGF,False,,,non_covalent_only
+Icariin,TYR,False,,Cys81,non_covalent_only
+Icariin,SIRT1,False,,Cys371,non_covalent_only
+Icariin,SRD5A2,False,,,non_covalent_only
+Icariin,AR,False,,,non_covalent_only
+Saikosaponin A,MMP1,False,,Cys278,non_covalent_only
+Saikosaponin A,MMP3,False,,Cys100,non_covalent_only
+Saikosaponin A,MMP9,False,,Cys99,non_covalent_only
+Saikosaponin A,TGFB1,False,,Cys223,non_covalent_only
+Saikosaponin A,CTGF,False,,,non_covalent_only
+Saikosaponin A,TYR,False,,Cys81,non_covalent_only
+Saikosaponin A,SIRT1,False,,Cys371,non_covalent_only
+Saikosaponin A,SRD5A2,False,,,non_covalent_only
+Saikosaponin A,AR,False,,,non_covalent_only
+Hesperidin,MMP1,False,,Cys278,non_covalent_only
+Hesperidin,MMP3,False,,Cys100,non_covalent_only
+Hesperidin,MMP9,False,,Cys99,non_covalent_only
+Hesperidin,TGFB1,False,,Cys223,non_covalent_only
+Hesperidin,CTGF,False,,,non_covalent_only
+Hesperidin,TYR,False,,Cys81,non_covalent_only
+Hesperidin,SIRT1,False,,Cys371,non_covalent_only
+Hesperidin,SRD5A2,False,,,non_covalent_only
+Hesperidin,AR,False,,,non_covalent_only
+Acteoside (Verbascoside),MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Acteoside (Verbascoside),MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Acteoside (Verbascoside),MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Acteoside (Verbascoside),TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Acteoside (Verbascoside),CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Acteoside (Verbascoside),TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Acteoside (Verbascoside),SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Acteoside (Verbascoside),SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Acteoside (Verbascoside),AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Paeoniflorin,MMP1,False,,Cys278,non_covalent_only
+Paeoniflorin,MMP3,False,,Cys100,non_covalent_only
+Paeoniflorin,MMP9,False,,Cys99,non_covalent_only
+Paeoniflorin,TGFB1,False,,Cys223,non_covalent_only
+Paeoniflorin,CTGF,False,,,non_covalent_only
+Paeoniflorin,TYR,False,,Cys81,non_covalent_only
+Paeoniflorin,SIRT1,False,,Cys371,non_covalent_only
+Paeoniflorin,SRD5A2,False,,,non_covalent_only
+Paeoniflorin,AR,False,,,non_covalent_only
+Avenanthramide A,MMP1,False,,Cys278,non_covalent_only
+Avenanthramide A,MMP3,False,,Cys100,non_covalent_only
+Avenanthramide A,MMP9,False,,Cys99,non_covalent_only
+Avenanthramide A,TGFB1,False,,Cys223,non_covalent_only
+Avenanthramide A,CTGF,False,,,non_covalent_only
+Avenanthramide A,TYR,False,,Cys81,non_covalent_only
+Avenanthramide A,SIRT1,False,,Cys371,non_covalent_only
+Avenanthramide A,SRD5A2,False,,,non_covalent_only
+Avenanthramide A,AR,False,,,non_covalent_only
+Punicalagin,MMP1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Punicalagin,MMP3,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Punicalagin,MMP9,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Punicalagin,TGFB1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Punicalagin,CTGF,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Punicalagin,TYR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Punicalagin,SIRT1,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Punicalagin,SRD5A2,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Punicalagin,AR,True,michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Astragaloside IV,MMP1,False,,Cys278,non_covalent_only
+Astragaloside IV,MMP3,False,,Cys100,non_covalent_only
+Astragaloside IV,MMP9,False,,Cys99,non_covalent_only
+Astragaloside IV,TGFB1,False,,Cys223,non_covalent_only
+Astragaloside IV,CTGF,False,,,non_covalent_only
+Astragaloside IV,TYR,False,,Cys81,non_covalent_only
+Astragaloside IV,SIRT1,False,,Cys371,non_covalent_only
+Astragaloside IV,SRD5A2,False,,,non_covalent_only
+Astragaloside IV,AR,False,,,non_covalent_only
+Ginsenoside Rb1,MMP1,False,,Cys278,non_covalent_only
+Ginsenoside Rb1,MMP3,False,,Cys100,non_covalent_only
+Ginsenoside Rb1,MMP9,False,,Cys99,non_covalent_only
+Ginsenoside Rb1,TGFB1,False,,Cys223,non_covalent_only
+Ginsenoside Rb1,CTGF,False,,,non_covalent_only
+Ginsenoside Rb1,TYR,False,,Cys81,non_covalent_only
+Ginsenoside Rb1,SIRT1,False,,Cys371,non_covalent_only
+Ginsenoside Rb1,SRD5A2,False,,,non_covalent_only
+Ginsenoside Rb1,AR,False,,,non_covalent_only
+Crocin,MMP1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys278,covalent_capable
+Crocin,MMP3,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys100,covalent_capable
+Crocin,MMP9,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys99,covalent_capable
+Crocin,TGFB1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys223,covalent_capable
+Crocin,CTGF,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Crocin,TYR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys81,covalent_capable
+Crocin,SIRT1,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,Cys371,covalent_capable
+Crocin,SRD5A2,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable
+Crocin,AR,True,michael_acceptor_acrylate;michael_acceptor_alpha_beta_unsaturated_carbonyl,,covalent_capable

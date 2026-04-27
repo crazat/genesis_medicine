@@ -1,0 +1,125 @@
+compound,n_dealbreakers,severity,flags
+Beta-Sitosterol,0,low,{}
+Hyperforin,0,low,{}
+Lupeol,0,low,{}
+Oleanolic acid,0,low,{}
+Betulinic acid,0,low,{}
+Ursolic acid,0,low,{}
+Bakuchiol,0,low,{}
+Retinol,0,low,{}
+Tretinoin,0,low,{}
+Epimedin C,0,low,{}
+Rapanone,0,low,{}
+Bisabolol,0,low,{}
+Tetrahydroxystilbene glucoside,0,low,{}
+Calendulin,0,low,{}
+Honokiol,0,low,{}
+Embelin,0,low,{}
+5-O-methyl-Embelin,0,low,{}
+Tanshinone IIA,0,low,{}
+Magnolol,0,low,{}
+Imperatorin,0,low,{}
+Licochalcone A,0,low,{}
+Hexylresorcinol,0,low,{}
+3-decyl-2-5-dihydroxy-benzoquinone,0,low,{}
+alpha-Arbutin,0,low,{}
+Carnosic acid,0,low,{}
+Carnosol,0,low,{}
+Eucalyptol,0,low,{}
+Pterostilbene,0,low,{}
+Linalool,0,low,{}
+Glabridin,0,low,{}
+Tea tree oil terpinen-4-ol,0,low,{}
+Capsaicin,0,low,{}
+Menthol,0,low,{}
+Kazinol B,0,low,{}
+Schizandrin A,0,low,{}
+Resveratrol,0,low,{}
+Cryptotanshinone,0,low,{}
+Formononetin,0,low,{}
+Asiatic acid,0,low,{}
+Daidzein,0,low,{}
+Oxyresveratrol,0,low,{}
+Calycosin,0,low,{}
+Wogonin,0,low,{}
+EMB-3,0,low,{}
+4-n-butylresorcinol,0,low,{}
+Azelaic acid,0,low,{}
+Genistein,0,low,{}
+Baicalein,1,moderate,"{""AR_offtarget"": 0.82}"
+Apigenin,0,low,{}
+Berberine,3,high,"{""ER_class"": 0.977, ""hERG_class"": 0.977, ""CYP3A4_class"": 0.85}"
+Curcumin,0,low,{}
+Paeonol,0,low,{}
+Naringenin,0,low,{}
+Acetylshikonin,0,low,{}
+Hydroquinone,0,low,{}
+Palmatine,0,low,{}
+Biochanin A,0,low,{}
+Phloretin,0,low,{}
+Salicylic acid,0,low,{}
+2-hydroxy-naphthoquinone,0,low,{}
+Ferulic acid,0,low,{}
+Physcion,0,low,{}
+Tyrosol,0,low,{}
+Sulforaphane,0,low,{}
+Spirulina-derived phycocyanin,0,low,{}
+Asiaticoside,0,low,{}
+Madecassic acid,0,low,{}
+Caffeic acid,0,low,{}
+Shikonin,0,low,{}
+Emodin,0,low,{}
+Thujin,0,low,{}
+Quercetin,0,low,{}
+Finasteride,0,low,{}
+Withaferin A,0,low,{}
+Hydroxytyrosol,0,low,{}
+Niacinamide,0,low,{}
+Rhein,0,low,{}
+Epicatechin,0,low,{}
+Aloe-emodin,0,low,{}
+Andrographolide,0,low,{}
+Ellagic acid,0,low,{}
+Epigallocatechin,0,low,{}
+Kojic acid,0,low,{}
+4-Methoxyresorcinol,0,low,{}
+EGCG,1,moderate,"{""ER_class"": 0.85}"
+Silymarin,0,low,{}
+Procyanidin B2,0,low,{}
+Marimastat,0,low,{}
+Avenanthramide B,0,low,{}
+Theaflavin,0,low,{}
+Salvianolic acid B,0,low,{}
+Polydatin,0,low,{}
+Byakangelicin,0,low,{}
+Mulberroside A,0,low,{}
+Liquiritin,0,low,{}
+Ascorbic acid,0,low,{}
+Allantoin from Symphytum,0,low,{}
+Allantoin,0,low,{}
+Chlorogenic acid,0,low,{}
+Baicalin,0,low,{}
+Puerarin,0,low,{}
+Arbutin,0,low,{}
+Phloridzin,0,low,{}
+Salidroside,0,low,{}
+Aloin,0,low,{}
+Geniposide,0,low,{}
+Mangiferin,0,low,{}
+Saponin Re,0,low,{}
+Ginsenoside Rg1,0,low,{}
+Ginsenoside Rg3,0,low,{}
+Madecassoside,0,low,{}
+Sennoside A,0,low,{}
+Mogroside V,0,low,{}
+Glycyrrhizin,0,low,{}
+Icariin,0,low,{}
+Saikosaponin A,0,low,{}
+Hesperidin,0,low,{}
+Acteoside (Verbascoside),0,low,{}
+Paeoniflorin,0,low,{}
+Avenanthramide A,0,low,{}
+Punicalagin,0,low,{}
+Astragaloside IV,0,low,{}
+Ginsenoside Rb1,0,low,{}
+Crocin,0,low,{}

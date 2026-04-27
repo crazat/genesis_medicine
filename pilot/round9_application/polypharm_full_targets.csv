@@ -1,0 +1,57 @@
+compound,target,class,p
+Embelin,XIAP,apoptosis,0.94
+Embelin,NF-κB,transcription_factor,0.78
+Embelin,MMP-1,enzyme,0.74
+Embelin,MMP-9,enzyme,0.69
+Embelin,TGF-β1 (Smad),cytokine,0.66
+Embelin,STAT3,transcription_factor,0.62
+Embelin,CTGF,growth_factor,0.58
+EMB-3,XIAP,apoptosis,0.86
+EMB-3,MMP-1,enzyme,0.79
+EMB-3,MMP-9,enzyme,0.71
+EMB-3,TGF-β1 (Smad),cytokine,0.69
+EMB-3,CTGF,growth_factor,0.63
+EMB-3,KCNH2 (hERG),ion_channel,0.16
+Baicalein,AR,nuclear_receptor,0.82
+Baicalein,12-Lipoxygenase,enzyme,0.79
+Baicalein,OATP1B1,transporter,0.75
+Baicalein,BCRP,transporter,0.72
+Baicalein,CYP1A2,enzyme,0.69
+Baicalein,UGT1A1,enzyme,0.66
+Baicalein,MMP-2,enzyme,0.62
+Berberine,KCNH2 (hERG),ion_channel,0.977
+Berberine,CYP3A4,enzyme,0.85
+Berberine,AMPK,kinase,0.81
+Berberine,PCSK9,enzyme,0.74
+Berberine,BACE1,enzyme,0.69
+Berberine,AChE,enzyme,0.68
+Berberine,HMG-CoA Reductase,enzyme,0.65
+Berberine,DNA topoisomerase II,enzyme,0.62
+Berberine,COX-2,enzyme,0.6
+Berberine,MAO-A,enzyme,0.58
+Curcumin,NF-κB,transcription_factor,0.88
+Curcumin,COX-2,enzyme,0.86
+Curcumin,STAT3,transcription_factor,0.83
+Curcumin,p300/CBP,epigenetic,0.79
+Curcumin,HDAC1,epigenetic,0.74
+Curcumin,VEGF,growth_factor,0.72
+Curcumin,TNF-α,cytokine,0.7
+Curcumin,IL-6,cytokine,0.68
+Curcumin,Cyclin D1,cell_cycle,0.65
+Curcumin,BCL-2,apoptosis,0.62
+Asiaticoside,TGF-β1,cytokine,0.82
+Asiaticoside,Smad2/3,transcription_factor,0.78
+Asiaticoside,MMP-1,enzyme,0.71
+Asiaticoside,MMP-9,enzyme,0.69
+Asiaticoside,Collagen I (COL1A1),structural,0.68
+Asiaticoside,Hyaluronidase,enzyme,0.62
+EGCG,MMP-9,enzyme,0.91
+EGCG,MMP-2,enzyme,0.89
+EGCG,Telomerase (TERT),enzyme,0.85
+EGCG,Dihydrofolate reductase,enzyme,0.82
+EGCG,UGT1A1,enzyme,0.78
+EGCG,EGFR,kinase,0.74
+EGCG,HER2,kinase,0.71
+EGCG,GSK-3β,kinase,0.68
+EGCG,PDK1,kinase,0.65
+EGCG,OATP1A2,transporter,0.63
