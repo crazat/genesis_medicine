@@ -49,8 +49,44 @@ targets:
     rationale: "탈모에서 PGD2 상승 → DP2 길항 시 모발 성장 (setipiprant 임상 실패 but scalp topical 재검토)."
     af_db: "https://alphafold.ebi.ac.uk/files/AF-Q9Y5Y4-F1-model_v6.cif"
 
+  # --- 2026-04-27 추가: Pilosebaceous atlas (bioRxiv 2025-09) + Nat Commun 2026 evidence
+  - key: PIEZO1
+    uniprot: Q92508
+    display: "PIEZO1 mechanosensitive channel"
+    mode: inhibitor
+    rationale: |
+      AGA에서 connective tissue sheath (CTS) hypercontractility → mechanosensation.
+      PIEZO1 inhibitor + ML-7 (MLCK)이 ex vivo + humanized 모델에서 발모 회복
+      (Nat Commun 2026). dermal papilla + CTS fibroblast에서 고발현
+      (pilosebaceous atlas 2025-09).
+    pocket_hint: "Cap dome + central pore (Y2022/F2023 helix)"
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-Q92508-F1-model_v6.cif"
+    cell_types: ["hair_follicle.dermal_papilla", "connective_tissue_sheath.fibroblast"]
+    novel_target: true
+
+  - key: MYLK
+    uniprot: Q15746
+    display: "Myosin light chain kinase (MLCK)"
+    mode: inhibitor
+    rationale: |
+      ML-7 (MLCK inhibitor)가 인간화 AGA 모델에서 발모 회복
+      (Nat Commun 2026). CTS hypercontractility 직접 차단.
+      PIEZO1 axis와 합성치사(synthetic lethal-like).
+    pocket_hint: "Catalytic kinase domain, CaM-binding"
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-Q15746-F1-model_v6.cif"
+    cell_types: ["connective_tissue_sheath.fibroblast"]
+    known_inhibitors: ["ML-7", "ML-9"]
+    novel_target: true
+
 evaluation:
   selectivity_required:
     - "SRD5A2 vs SRD5A1 (finasteride selectivity)"
     - "topical scalp vs systemic AR"
+    - "PIEZO1 (skin) vs PIEZO2 (proprioception, pain) — selectivity 필수"
+    - "MYLK (CTS) vs cardiac MLCK"
   bonus_for_topical_only: 0.3
+  bonus_for_mechanotransduction: 0.2     # PIEZO1+MYLK dual axis
+  cell_type_priority:
+    - "hair_follicle.dermal_papilla"
+    - "connective_tissue_sheath.fibroblast"
+    - "hair_follicle.matrix_progenitor"

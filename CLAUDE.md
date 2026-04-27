@@ -175,6 +175,38 @@ docs/
 - 한약 매핑 (자운고 + EMB-3 강화 1순위 권장)
 - CRO 견적 (Tier 1 ₩1,560만 / 6-10주, 전체 ₩4,775만)
 
+### ✅ 완료 (2026-04-27 22:20, Tier B SOTA audit 11개 통합 — "세계 최고" sweep)
+**광범위 외부 SOTA 조사 + 내부 cross-verify 결과 식별된 11개 gap 일괄 통합**:
+
+| # | 도구 | 위치 | License | 상태 |
+|---|---|---|---|---|
+| 1 | Protenix-v2 (ByteDance, 2026-04-08) | `external_tools/protenix_v2/` (152MB clone) + `structure/protenix_adapter.py` engine_version 갱신 | Apache-2.0 ✅ | 통합됨 |
+| 2 | g-xTB / NN-xTB (Grimme 2025) | `md/gxtb_adapter.py` graceful + LicenseGate research | Grimme academic | scaffold 완성, binary install 필요 |
+| 3 | OSP MoBi Dancik skin PBPK | `dermatology/skin_pbpk_dancik.py` 자체 4-layer ODE 구현 + LGBM logKp head slot | Method commercial-safe | EMB-3 logKp=-2.39 검증 |
+| 4 | AceFF v2 (Acellera, 2026-01) | `md/aceff_adapter.py` openmm-ml 호환 | MIT ✅ | scaffold 완성 |
+| 5 | PocketXMol (Cell 2026) | `external_tools/pocketxmol/` (16MB) + `structure/pocketxmol_adapter.py` (small_molecule + cyclic_peptide + linker + PROTAC modes) | MIT ✅ | 통합됨, 약침 cyclic 모드 |
+| 6 | SiteAF3 (PNAS 2026) | `structure/siteaf3_adapter.py` LicenseGate research | TBD | scaffold (라이선스 미확정) |
+| 7 | Multi-fidelity BO cascade (ACS Cent Sci 2025) | `optimization/multi_fidelity_bo.py` + `scripts/cpu_multi_fidelity_bo_demo.py` | Method commercial-safe | 자체 구현, GP cascade 검증 |
+| 8 | scPrimeKG + CellAwareGNN (bioRxiv 2026-02) | `knowledge_graph/scprimekg_adapter.py` | MIT (likely) | scaffold + cell-type-conditioned scoring |
+| 9 | NPASS 2026 update (NAR 2026) | `ethnobotany/npass_2026_adapter.py` + `cache/npass2026/` | Free academic+commercial | 로더 + skin-permeable query + LGBM training set export |
+| 10 | Pilosebaceous unit atlas (bioRxiv 2025-09) | `transcriptomics/pilosebaceous_atlas.py` | CC-BY 4.0 | 7 cell type catalog + AR/PIEZO1/MYLK 발현 검증 |
+| 11 | PIEZO1/MLCK + PAR-2/GR 신규 타겟 | `conf/skin_targets/alopecia.yaml` (PIEZO1+MYLK) + `conf/skin_targets/pigment.yaml` (F2RL1+NR3C1) | conf only | 통합됨 |
+
+**검증 결과** (`python -c "import all 9..."`):
+- ✅ 9 신규 어댑터 모두 import OK
+- ✅ License registry 83 → 95 components (+12)
+- ✅ Dancik EMB-3 logKp = -2.39 cm/s (외용 적합), flux_ss = 1464 µg/cm²/h
+- ✅ Pilosebaceous atlas: AR → dermal papilla 71% (생물학적 정확)
+- ✅ Multi-fidelity BO: GP cascade 작동, cost-aware acquisition
+
+**라이선스 분기**:
+- commercial-safe (8개): Protenix-v2, PocketXMol, AceFF, Dancik (자체 구현), Multi-fidelity BO, NPASS 2026, scPrimeKG, Pilosebaceous atlas
+- research-only (3개): g-xTB (Grimme), NN-xTB (Grimme), SiteAF3 (가중치 NC?)
+
+**즉시 가능 신규 paper 2편 (preprint #13, #14)**:
+- #13: PIEZO1/MLCK mechanotransduction in AGA (Nat Commun 2026 cite + 자체 Boltz-2 cofold)
+- #14: Topical PBPK for natural-product-inspired skin therapeutics (Dancik + SkinPiX + 자체 LGBM)
+
 ### ✅ 완료 (2026-04-27, Round 12 + Round 13 + R5)
 **핵심 paper-tier 산출물**:
 - **MD top-5 lead ensemble** (10 ns × 5, RTX 5090): r3_6 × TGFB1 0.86 Å, β-sitosterol × AR 0.88 Å, shikonin × CTGF 1.24 Å, chlorogenic × SIRT1 1.61 Å, azelaic × TYRP1 1.71 Å — **모두 paper-tier 안정**

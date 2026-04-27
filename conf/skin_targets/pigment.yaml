@@ -41,7 +41,41 @@ targets:
     rationale: "α-MSH 수용체. GPCR. 선택적 길항제로 멜라닌 합성 감소."
     af_db: "https://alphafold.ebi.ac.uk/files/AF-Q01726-F1-model_v6.cif"
 
+  # --- 2026-04-27 추가: 멜라닌 transfer 차단 (J Enzyme Inhib 2025)
+  - key: F2RL1
+    uniprot: P55085
+    display: "PAR-2 (Protease-activated receptor 2)"
+    mode: antagonist
+    rationale: |
+      Keratinocyte-melanocyte 멜라닌 transfer mediator. PAR-2 antagonism이
+      tyrosinase 차단보다 안전 — 멜라닌 합성 자체는 보존하고 transfer만
+      차단 (J Enzyme Inhib 2025). 자외선 보호 기능 유지하면서 색소 침착만
+      감소.
+    pocket_hint: "Extracellular peptide-binding (tethered ligand)"
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P55085-F1-model_v6.cif"
+    cell_types: ["keratinocyte.basal", "melanocyte.epidermal"]
+    novel_target: true
+    safety_advantage: "tyrosinase inhibitor 대비 photoprotection 보존"
+
+  - key: NR3C1
+    uniprot: P04150
+    display: "Glucocorticoid receptor (GR)"
+    mode: agonist_topical_selective
+    rationale: |
+      Topical GR agonist (mild)가 PAR-2 axis와 시너지로 멜라닌 transfer 차단
+      (J Enzyme Inhib 2025). 단 systemic GR-mediated immunosuppression 회피
+      위해 ester-soft drug 설계 (skin-degradable).
+    pocket_hint: "LBD (helix 12 conformation)"
+    af_db: "https://alphafold.ebi.ac.uk/files/AF-P04150-F1-model_v6.cif"
+    safety_concerns: ["systemic immunosuppression", "skin atrophy if not soft drug"]
+
 evaluation:
   dual_action_bonus: 0.25     # TYR + MITF 동시 타겟
+  triple_action_bonus: 0.40   # TYR + MITF + PAR-2 (synthesis + transfer)
   selectivity_required:
     - "tyrosinase isoforms (human vs fungal)"
+    - "PAR-2 vs PAR-1 (thrombin receptor, vascular)"
+    - "topical GR vs systemic GR (soft drug 설계)"
+  cell_type_priority:
+    - "melanocyte.epidermal"
+    - "keratinocyte.basal"

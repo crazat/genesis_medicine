@@ -137,3 +137,6 @@ pilot/**/*.nc
 pilot/**/*.dcd
 pilot/**/*.xtc
 pilot/**/checkpoint*
+
+# External tool clones (Tier B SOTA integration 2026-04-27)
+external_tools/
