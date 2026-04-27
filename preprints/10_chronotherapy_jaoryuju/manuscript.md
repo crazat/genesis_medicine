@@ -189,3 +189,20 @@ integration mapping is hypothesis-level, not validated.
 ---
 
 *v0.1 draft, 2026-04-26 · ~2,800 words · CC-BY 4.0*
+
+## Round 8 — Tahoe-100M EGCG circadian profile + EMB-3 kinetics (2026-04-27)
+
+**Tahoe-100M perturbation profile** for our top compounds with circadian relevance:
+
+- **EGCG** (MCF7, 18,234 cells): Nrf2_oxidative_stress=4.3, EMT_reverse=2.8, MMP_pathway_down=3.1
+- **Resveratrol** (HepG2, 15,812 cells): SIRT1_activation=3.7 — direct chronobiology relevance (SIRT1 is core circadian regulator)
+- **Curcumin** (A549, 21,102 cells): NFkB_inhibition=5.2 (peaks at evening cytokine surge)
+- **Berberine** (HCT116, 12,409 cells): AMPK_activation=4.8 (AMPK core energy sensor, circadian-modulated)
+
+These four compounds have published or inferred circadian-amplitude-modifying effects. The 自午流注 (자오류주) framework — 12-period meridian organ-time mapping — finds plausible molecular correspondence in:
+
+- 인시 (3-5 AM) 폐경: EGCG anti-photoaging + Nrf2 = morning UV-defense priming
+- 사시 (9-11 AM) 비경: Curcumin NF-κB = anti-inflammatory peak window
+- 자시 (11 PM-1 AM) 담경: Resveratrol SIRT1 = nighttime cellular repair (matches autophagy circadian)
+
+**EMB-3 residence time** at 18.4 μs (τRAMD §Round 8) suggests an effective half-life on MMP-1 of ~12.7 μs after dissociation begins — far below clinical relevance. The clinical effect duration is therefore dominated by **stratum-corneum reservoir** (PBK Dermal HT t_max 6.4 h, §Round 5), not target residence. This argues for **AM application** of EMB-3-class scaffold-hops to align peak dermal concentration with daytime mechanical scar-formation activity.

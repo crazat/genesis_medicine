@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>11_korean_pgx_topical</title>
+  <title>manuscript</title>
   <style>
 
 html {
@@ -169,9 +169,6 @@ vertical-align: middle;
 </style>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">11_korean_pgx_topical</h1>
-</header>
 <h1 id="a-korean-pharmacogenomics-panel-for-topical-herb-medicine-personalization-framework-design-integrating-cyp-ugt-hla-and-skin-barrier-variants">A
 Korean pharmacogenomics panel for topical-herb-medicine personalization:
 framework design integrating CYP, UGT, HLA, and skin-barrier
@@ -476,5 +473,76 @@ al. Topical herbal SJS case report. <em>Korean J Dermatol</em> 2019, 57,
 234–238.</p>
 <hr />
 <p><em>v0.1 draft, 2026-04-26 · ~3,000 words · CC-BY 4.0</em></p>
+<h2 id="round-8-ddi-panel-korean-cyp-variant-frequency-2026-04-27">Round
+8 — DDI panel + Korean CYP variant frequency (2026-04-27)</h2>
+<p><strong>Korean-specific DDI risk</strong> for our 6 most-used Korean
+herbal compounds (DDInter 2.0 + literature):</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Compound</th>
+<th>CYP/transporter</th>
+<th>Korean PM frequency</th>
+<th>Major DDI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Berberine</td>
+<td><strong>CYP3A4</strong> inhibitor + <strong>CYP2D6</strong>
+inhibitor</td>
+<td>CYP2D6 *10 PM ~50% Korean</td>
+<td>cyclosporine AUC −34%, warfarin INR ↑</td>
+</tr>
+<tr>
+<td>EGCG</td>
+<td><strong>UGT1A1</strong> inhibitor + OATP1A2</td>
+<td>UGT1A1 *6 ~13% Korean</td>
+<td>irinotecan toxicity ↑, nadolol AUC −85%</td>
+</tr>
+<tr>
+<td>Baicalein</td>
+<td><strong>OATP1B1</strong> + BCRP</td>
+<td>SLCO1B1 *5 ~5% Korean</td>
+<td>rosuvastatin AUC ↓, methotrexate clearance ↓</td>
+</tr>
+<tr>
+<td>Curcumin</td>
+<td>CYP3A4 + P-gp</td>
+<td>CYP3A4 *22 (Korean low)</td>
+<td>tacrolimus AUC ↑</td>
+</tr>
+<tr>
+<td>Ginsenoside Rb1</td>
+<td>variable</td>
+<td>—</td>
+<td>warfarin INR ↑↓ unpredictable</td>
+</tr>
+<tr>
+<td>Emodin</td>
+<td>CYP2C9</td>
+<td>CYP2C9 *3 ~3.4% Korean</td>
+<td>warfarin INR ↑</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recover personalized medicine pathway</strong>: 1. PGx panel
+design (this preprint v0.1) covers CYP2C9/CYP2D6/CYP2C19/SLCO1B1/UGT1A1
+— exactly the variants flagged above as Korean-relevant. 2. Patient
+genotype → DDI risk score → 한약 처방 modification. 3. Smart Charts AI
+EHR (HAN PREDICT) integration: DDInter check at every prescription
+event. 4. <strong>사상체질 + 유전형 = personalized 한방
+medicine</strong> — defensible regulatory framing under existing 의료법
+§56 (research-only AI prediction with clinician-in-loop).</p>
+<p>AR → AGA causal evidence (TwoSampleMR §Round 7: OR=1.58, p=0.0002)
+directly supports the alopecia-vertical PGx argument: AR variants (e.g.,
+CAG repeat polymorphism) modulate AGA risk × Korean herbal
+SRD5A2/AR-engaging compound efficacy → personalized prescription.</p>
 </body>
 </html>

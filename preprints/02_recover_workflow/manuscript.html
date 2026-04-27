@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>02_recover_workflow</title>
+  <title>manuscript</title>
   <style>
 
 html {
@@ -169,9 +169,6 @@ vertical-align: middle;
 </style>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">02_recover_workflow</h1>
-</header>
 <h1 id="an-integrated-ai-workflow-for-a-korean-medicine-clinic-3d-facial-diagnostics-rag-based-electronic-medical-records-and-computational-molecular-prescription">An
 integrated AI workflow for a Korean medicine clinic: 3D facial
 diagnostics, RAG-based electronic medical records, and computational
@@ -765,5 +762,189 @@ references) <em>Submission target</em>: medRxiv (immediate); a Korean
 Medicine / clinical-informatics peer-reviewed venue (anticipated
 2026-Q3) <em>Version</em>: 0.1 draft, 2026-04-26 <em>License</em>: CC-BY
 4.0 (preprint); platform code licenses as noted in §6</p>
+<h2 id="round-89-pipeline-maturity-audit-recover-d-110-deployment-plan-2026-04-27">Round
+8+9 — Pipeline maturity audit + Recover D-110 deployment plan
+(2026-04-27)</h2>
+<p><strong>System inventory after Rounds 5+7+8</strong> (3 audit
+cycles):</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Module</th>
+<th style="text-align: center;">Adapter count</th>
+<th style="text-align: center;">Production</th>
+<th style="text-align: center;">Real-data artifacts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>md/ (free energy + ML potentials)</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">T4L + EMB-3 × MMP-1 closed cycles</td>
+</tr>
+<tr>
+<td>generation/</td>
+<td style="text-align: center;">1 (MolDAIS)</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">botorch_saasbo demo</td>
+</tr>
+<tr>
+<td>dermatology/</td>
+<td style="text-align: center;">4 (PBK, SARA-ICE, Atlas, PanDerm)</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">124-compound sweep + IPF target
+ranking</td>
+</tr>
+<tr>
+<td>repurposing/</td>
+<td style="text-align: center;">2 (CellAware, CMap)</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">connectivity hits</td>
+</tr>
+<tr>
+<td>ensemble/</td>
+<td style="text-align: center;">3 (BioEmu, AlphaFlow, PocketMiner)</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">scaffold</td>
+</tr>
+<tr>
+<td>foundation/</td>
+<td style="text-align: center;">2 (ChemBERTa3, Tahoe-100M)</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">perturbation profiles</td>
+</tr>
+<tr>
+<td>causal/</td>
+<td style="text-align: center;">1 (TwoSampleMR)</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">7 paper-tier MR results</td>
+</tr>
+<tr>
+<td>clinical/</td>
+<td style="text-align: center;">1 (MedSAM)</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">scaffold for D-110 photo cube</td>
+</tr>
+<tr>
+<td>kinetics/</td>
+<td style="text-align: center;">2 (τRAMD, SEEKR2)</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">6 residence-time entries</td>
+</tr>
+<tr>
+<td>polypharmacology/</td>
+<td style="text-align: center;">2 (SwissTarget, Dealbreaker)</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">60 hits + 7 dealbreakers</td>
+</tr>
+<tr>
+<td>ddi/</td>
+<td style="text-align: center;">2 (DDInter, HerbalDDI)</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">24 interactions + 17 curated</td>
+</tr>
+<tr>
+<td>formulation/</td>
+<td style="text-align: center;">3 (CPE-DB, HSP, KCID)</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">15 PE + 15 vehicle + 5 KCID</td>
+</tr>
+<tr>
+<td>pkpd/</td>
+<td style="text-align: center;">2 (httk, Hill)</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">5-compound PK + IC50 fit</td>
+</tr>
+<tr>
+<td>protein_design/</td>
+<td style="text-align: center;">1 (LigandMPNN)</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">scaffold for 약침</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: center;"><strong>25</strong></td>
+<td style="text-align: center;"><strong>14 (56%)</strong></td>
+<td style="text-align: center;"><strong>30+ CSVs</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Recover D-110 readiness scorecard</strong> (2026-08-15
+opening):</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Workflow component</th>
+<th style="text-align: center;">Status</th>
+<th>Blocker</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>In silico screening (Boltz-2 + ADMET-AI + 102 compounds)</td>
+<td style="text-align: center;">✓</td>
+<td>none</td>
+</tr>
+<tr>
+<td>Quantitative ABFE (calibration)</td>
+<td style="text-align: center;">✓</td>
+<td>T4L pass</td>
+</tr>
+<tr>
+<td>Quantitative ABFE (application)</td>
+<td style="text-align: center;">⚠️ partial</td>
+<td>EMB-3 × MMP-1 closed but +0.55 needs ZAFF</td>
+</tr>
+<tr>
+<td>Polypharmacology + dealbreaker check</td>
+<td style="text-align: center;">✓</td>
+<td>none</td>
+</tr>
+<tr>
+<td>DDI 한약-양약 cross-check</td>
+<td style="text-align: center;">✓</td>
+<td>DDInter SQLite full dump pending</td>
+</tr>
+<tr>
+<td>Topical formulation prototype</td>
+<td style="text-align: center;">⚠️ partial</td>
+<td>EMB-3 KCID Pre-Notification 6-12mo</td>
+</tr>
+<tr>
+<td>MFDS regulatory dossier</td>
+<td style="text-align: center;">⚠️ partial</td>
+<td>SARA-ICE in vitro inputs needed (₩2-3M CRO)</td>
+</tr>
+<tr>
+<td>Photo cube + REDCap loop</td>
+<td style="text-align: center;">scaffold</td>
+<td>hardware purchase + 50-scar fine-tune</td>
+</tr>
+<tr>
+<td>Wet-lab CRO Tier 1</td>
+<td style="text-align: center;">not started</td>
+<td>₩15.6M budget allocated</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Round 9 forward path</strong> (next sprint priorities): 1.
+AToM-OpenMM production deployment for ABFE NaN failure cases (TGFB1,
+EGCG × MMP-1) 2. Longer eq (5 ns) + tighter restraint (5 Å) script
+enhancement for protocol robustness 3. MD-pose-prefilter (10 ns
+stability check before ABFE attempt) 4. Recover D-110 photo cube
+hardware purchase + REDCap deployment 5. CRO Tier 1 RFQ to
+KIT/켐온/바이오톡스텍 with EMB-3 + Embelin + Wogonin packages</p>
 </body>
 </html>

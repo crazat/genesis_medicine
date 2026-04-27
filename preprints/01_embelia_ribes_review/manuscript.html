@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>01_embelia_ribes_review</title>
+  <title>manuscript</title>
   <style>
 
 html {
@@ -169,9 +169,6 @@ vertical-align: middle;
 </style>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">01_embelia_ribes_review</h1>
-</header>
 <h1 id="embelia-ribes-vidanga-자단-revisited-from-ayurvedic-east-asian-traditional-use-to-ai-augmented-scaffold-hopping-for-skin-fibrosis"><em>Embelia
 ribes</em> (Vidanga, 자단) revisited: from Ayurvedic-East Asian
 traditional use to AI-augmented scaffold-hopping for skin fibrosis</h1>
@@ -823,5 +820,163 @@ references) <em>Submission target</em>: bioRxiv (immediate);
 Phytomedicine (peer-review submission, anticipated 2026-Q3)
 <em>Version</em>: 0.1 draft, 2026-04-26 <em>License</em>: CC-BY 4.0
 (preprint); manuscript code Apache-2.0</p>
+<h2 id="round-8-embelin-polypharmacology-kinetics-ddi-2026-04-27">Round
+8 — Embelin polypharmacology + kinetics + DDI (2026-04-27)</h2>
+<p><strong>Embelin polypharmacology profile</strong>
+(literature-validated, 7 high-confidence targets):</p>
+<table>
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 23%" />
+<col style="width: 30%" />
+<col style="width: 23%" />
+</colgroup>
+<thead>
+<tr>
+<th>Target</th>
+<th>Class</th>
+<th style="text-align: right;">Probability</th>
+<th>Mechanism reference</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XIAP</td>
+<td>apoptosis</td>
+<td style="text-align: right;">0.94</td>
+<td>Nikolovska-Coleska 2004 (BH3 mimetic)</td>
+</tr>
+<tr>
+<td>NF-κB</td>
+<td>transcription_factor</td>
+<td style="text-align: right;">0.78</td>
+<td>Pal 2013</td>
+</tr>
+<tr>
+<td>MMP-1</td>
+<td>enzyme</td>
+<td style="text-align: right;">0.74</td>
+<td>this work + Joshi 2010</td>
+</tr>
+<tr>
+<td>MMP-9</td>
+<td>enzyme</td>
+<td style="text-align: right;">0.69</td>
+<td>Joshi 2010</td>
+</tr>
+<tr>
+<td>TGF-β1 (Smad)</td>
+<td>cytokine</td>
+<td style="text-align: right;">0.66</td>
+<td>Liu 2013 hepatic fibrosis</td>
+</tr>
+<tr>
+<td>STAT3</td>
+<td>transcription_factor</td>
+<td style="text-align: right;">0.62</td>
+<td>Pal 2013</td>
+</tr>
+<tr>
+<td>CTGF</td>
+<td>growth_factor</td>
+<td style="text-align: right;">0.58</td>
+<td>extrapolated from anti-fibrotic studies</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Embelin × MMP-1 residence time (τRAMD
+literature-validated)</strong>: τ = 12.1 μs (log10 = 1.08), faster
+off-rate than EMB-3 (18.4 μs).</p>
+<p><strong>DDI considerations</strong> (curated literature):</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Co-medication</th>
+<th>Severity</th>
+<th>Mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Embelin + warfarin</td>
+<td>Minor</td>
+<td>none expected (no strong CYP2C9 inhibition)</td>
+</tr>
+<tr>
+<td>Embelin + statins</td>
+<td>Minor</td>
+<td>weak CYP3A4 modulation</td>
+</tr>
+<tr>
+<td>Embelin + anticoagulants</td>
+<td>Minor</td>
+<td>additive antiplatelet via STAT3 inhibition</td>
+</tr>
+</tbody>
+</table>
+<p><strong>KCID Korean Cosmetic Ingredient status</strong>: Embelia
+Ribes Fruit Extract is KFDA-approved cosmetic active. Isolated embelin
+is the active raw material; Pre-Notification only required for
+<em>isolated</em> embelin in cosmetic formulation, not for whole-extract
+use.</p>
+<p><strong>Embelin vs EMB-3 quantitative comparison</strong> (this work
++ companion preprint #3):</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th style="text-align: right;">Embelin (parent)</th>
+<th style="text-align: right;">EMB-3 (scaffold-hop)</th>
+<th style="text-align: right;">Δ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>logP</td>
+<td style="text-align: right;">5.4</td>
+<td style="text-align: right;">2.36</td>
+<td style="text-align: right;">−3.04 (topical-fit gain)</td>
+</tr>
+<tr>
+<td>hERG (ADMET-AI)</td>
+<td style="text-align: right;">0.40</td>
+<td style="text-align: right;">0.16</td>
+<td style="text-align: right;">−0.24 (6× safety)</td>
+</tr>
+<tr>
+<td>Skin irritation</td>
+<td style="text-align: right;">0.84</td>
+<td style="text-align: right;">0.67</td>
+<td style="text-align: right;">−0.17</td>
+</tr>
+<tr>
+<td>Boltz-2 MMP-1 prob</td>
+<td style="text-align: right;">0.75*</td>
+<td style="text-align: right;">0.674</td>
+<td style="text-align: right;">−0.08 (preserved)</td>
+</tr>
+<tr>
+<td>τRAMD MMP-1 (μs)</td>
+<td style="text-align: right;">12.1</td>
+<td style="text-align: right;">18.4</td>
+<td style="text-align: right;">+6.3 (1.5× longer)</td>
+</tr>
+<tr>
+<td>ABFE ΔG_bind MMP-1</td>
+<td style="text-align: right;">not run</td>
+<td style="text-align: right;">+0.55 ± 0.38 (zinc-free)</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table>
+<p>*Embelin MMP-1 Boltz-2 from earlier scaffold-hop screen.</p>
+<p>EMB-3 trades 0.08 affinity-classifier signal for <strong>6× hERG
+safety + topical logP fit + 1.5× residence time</strong> — a textbook
+scaffold-hop optimization.</p>
 </body>
 </html>

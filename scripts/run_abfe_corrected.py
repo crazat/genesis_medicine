@@ -597,6 +597,10 @@ def main():
     parser.add_argument("--n-iterations", type=int, default=N_ITERATIONS_DEFAULT)
     parser.add_argument("--eq-ns", type=float, default=EQ_NS_DEFAULT)
     parser.add_argument("--padding-nm", type=float, default=PADDING_NM_DEFAULT)
+    parser.add_argument("--r-max-A", type=float, default=8.0,
+                         help="flat-bottom restraint radius in Å (Round 9: try 5.0 for buried pockets)")
+    parser.add_argument("--minimize-tolerance", type=float, default=10.0,
+                         help="energy minimization tolerance in kJ/mol (Round 9: try 1.0 for tighter starting state)")
     parser.add_argument("--skip-complex", action="store_true",
                          help="skip complex leg (debugging)")
     parser.add_argument("--skip-solvent", action="store_true",
@@ -653,7 +657,7 @@ def main():
             rec_anchors = [ca_idx[i] for i in np.argsort(ca_dists)[:5]]
         print(f"\n[restraint] ligand atoms: {len(lig_idx)}, "
               f"receptor binding-site Cα atoms: {len(rec_anchors)}")
-        r_max_A = 8.0    # ligand confined within 8 Å of pocket center
+        r_max_A = args.r_max_A    # Round 9: configurable (was 8.0)
         rinfo = add_flat_bottom_restraint_to_system(
             complex_setup["system"], lig_idx, rec_anchors,
             r_max_A=r_max_A, k_kcal_mol_A2=10.0,

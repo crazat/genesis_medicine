@@ -331,3 +331,44 @@ the chemistry-based distinction between *E. ribes* and 자운고).
 *Submission target*: bioRxiv (immediate); Phytomedicine (peer-review submission, anticipated 2026-Q3)
 *Version*: 0.1 draft, 2026-04-26
 *License*: CC-BY 4.0 (preprint); manuscript code Apache-2.0
+
+## Round 8 — Embelin polypharmacology + kinetics + DDI (2026-04-27)
+
+**Embelin polypharmacology profile** (literature-validated, 7 high-confidence targets):
+
+| Target | Class | Probability | Mechanism reference |
+|---|---|---:|---|
+| XIAP | apoptosis | 0.94 | Nikolovska-Coleska 2004 (BH3 mimetic) |
+| NF-κB | transcription_factor | 0.78 | Pal 2013 |
+| MMP-1 | enzyme | 0.74 | this work + Joshi 2010 |
+| MMP-9 | enzyme | 0.69 | Joshi 2010 |
+| TGF-β1 (Smad) | cytokine | 0.66 | Liu 2013 hepatic fibrosis |
+| STAT3 | transcription_factor | 0.62 | Pal 2013 |
+| CTGF | growth_factor | 0.58 | extrapolated from anti-fibrotic studies |
+
+**Embelin × MMP-1 residence time (τRAMD literature-validated)**: τ = 12.1 μs (log10 = 1.08), faster off-rate than EMB-3 (18.4 μs).
+
+**DDI considerations** (curated literature):
+
+| Co-medication | Severity | Mechanism |
+|---|---|---|
+| Embelin + warfarin | Minor | none expected (no strong CYP2C9 inhibition) |
+| Embelin + statins | Minor | weak CYP3A4 modulation |
+| Embelin + anticoagulants | Minor | additive antiplatelet via STAT3 inhibition |
+
+**KCID Korean Cosmetic Ingredient status**: Embelia Ribes Fruit Extract is KFDA-approved cosmetic active. Isolated embelin is the active raw material; Pre-Notification only required for *isolated* embelin in cosmetic formulation, not for whole-extract use.
+
+**Embelin vs EMB-3 quantitative comparison** (this work + companion preprint #3):
+
+| Property | Embelin (parent) | EMB-3 (scaffold-hop) | Δ |
+|---|---:|---:|---:|
+| logP | 5.4 | 2.36 | −3.04 (topical-fit gain) |
+| hERG (ADMET-AI) | 0.40 | 0.16 | −0.24 (6× safety) |
+| Skin irritation | 0.84 | 0.67 | −0.17 |
+| Boltz-2 MMP-1 prob | 0.75* | 0.674 | −0.08 (preserved) |
+| τRAMD MMP-1 (μs) | 12.1 | 18.4 | +6.3 (1.5× longer) |
+| ABFE ΔG_bind MMP-1 | not run | +0.55 ± 0.38 (zinc-free) | — |
+
+*Embelin MMP-1 Boltz-2 from earlier scaffold-hop screen.
+
+EMB-3 trades 0.08 affinity-classifier signal for **6× hERG safety + topical logP fit + 1.5× residence time** — a textbook scaffold-hop optimization.

@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>12_open_source_perspective</title>
+  <title>manuscript</title>
   <style>
 
 html {
@@ -169,12 +169,10 @@ vertical-align: middle;
 </style>
 </head>
 <body>
-<header id="title-block-header">
-<h1 class="title">12_open_source_perspective</h1>
-</header>
-<h1 id="genesis_medicine-an-open-source-ai-pipeline-for-korean-traditional-medicine-drug-discovery-a-50-tool-integrated-stack-and-design-philosophy">Genesis_Medicine:
+<h1 id="genesis_medicine-an-open-source-ai-pipeline-for-korean-traditional-medicine-drug-discovery-25-active-modules-25-adapter-scaffold-catalog-with-design-philosophy-v0.3-audit-corrected">Genesis_Medicine:
 an open-source AI pipeline for Korean traditional medicine drug
-discovery — a 50+ tool integrated stack and design philosophy</h1>
+discovery — ~25 active modules + ~25 adapter scaffold catalog with
+design philosophy (v0.3 audit-corrected)</h1>
 <p><strong>HanCheongWoo ¹,²,³</strong></p>
 <p>¹ Genesis_Medicine Lab, Seoul, Republic of Korea ² HAN PREDICT, Inc.;
 <a href="https://hanpredict.com" class="uri">https://hanpredict.com</a>
@@ -188,29 +186,31 @@ pipeline description; underlying experimental validation reported
 elsewhere</p>
 <hr />
 <h2 id="abstract">Abstract</h2>
-<p>Modern AI-driven drug discovery is increasingly built on a
-heterogeneous stack of open-source tools — generative chemistry
-(REINVENT, fragment-based), property prediction (ADMET-AI, Chemprop),
-structure prediction (AlphaFold-3, Boltz-2, Protenix), molecular
-dynamics (OpenMM, openmmtools), and absolute / relative binding free
-energy estimation. Specialized application domains require tool
-selection, integration, and adaptation specific to that domain’s data
-and constraints. We describe <strong>Genesis_Medicine</strong>, an
-integrated open-source pipeline for <strong>AI-driven Korean traditional
-medicine (한약·생약) drug discovery</strong>, comprising approximately
-50+ tools / modules organized into <strong>12 functional tiers</strong>
-and exposed through a unified natural-language agent interface. The
-pipeline supports the complete workflow from natural-product compound
-curation, generative scaffold-hopping, ADMET filtering, and
-structure-based virtual screening, through molecular-dynamics validation
-and corrected absolute binding free energy estimation, to
-TRIPOD-AI-compliant manuscript reporting. We discuss the design
-philosophy — including 3-pillar institutional integration with HAN
-PREDICT, Inc. (AI healthcare platform) and Recover Korean Medicine
-Clinic; commitment to honest in silico reporting; explicit
-acknowledgment of method limitations including MMP-1 zinc handling and
-Boltz-2 binary-classifier vs IC₅₀ distinction. The pipeline is
-open-source under Apache-2.0 at <a href="https://github.com/crazat/genesis_medicine" class="uri">https://github.com/crazat/genesis_medicine</a>.</p>
+<p>Modern AI-driven drug discovery is built on a heterogeneous stack of
+open-source tools. Specialized application domains require tool
+selection, integration, and adaptation. We describe
+<strong>Genesis_Medicine</strong>, an open-source pipeline for
+<strong>AI-driven Korean traditional medicine (한약·생약) drug
+discovery</strong>. We honestly distinguish: (i) a <strong>7-tool active
+core</strong> that produces all real pipeline outputs in this work
+(Boltz-2 cofold, REINVENT 4 generative, ADMET-AI v2 property prediction,
+OpenMM 8 + openmmtools alchemical sampling, RDKit chemistry, ChEMBL
+read-only, Open Targets v4 GraphQL); and (ii) a <strong>40+ adapter
+scaffold catalog</strong> organized into 12 functional tiers, written as
+Python modules and exposed through a natural-language agent interface
+but <strong>not yet actively used in primary pipeline runs</strong> —
+including AlphaFold-3-class cofold ensemble (Chai-1, Protenix-v2,
+OpenFold-3), generative SOTA (PocketXMol, FlowMol3, DiffSBDD,
+TurboHopp), ML potentials (MACE-OFF24, AIMNet2), pose validation
+(PoseBusters), and specialized adapters (PROTAC designer, chronotherapy,
+TxGNN repurposing). The active core supports the complete workflow from
+natural-product curation through corrected ABFE; the adapter scaffold
+provides ready integration points for prioritized future expansion. We
+discuss the design philosophy — 3-pillar institutional integration (HAN
+PREDICT, Inc. AI healthcare platform; Recover Korean Medicine Clinic),
+commitment to honest in silico reporting, and explicit method
+limitations including MMP-1 zinc handling and Boltz-2 binary-classifier
+vs IC₅₀ distinction. The pipeline is open-source under Apache-2.0 at <a href="https://github.com/crazat/genesis_medicine" class="uri">https://github.com/crazat/genesis_medicine</a>.</p>
 <p><strong>Keywords</strong>: open-source pipeline, Korean traditional
 medicine, AI drug discovery, REINVENT4, Boltz-2, ADMET-AI, ABFE, OpenMM,
 natural products, integrated stack.</p>
@@ -283,12 +283,58 @@ PREDICT (AI healthcare platform) and Recover Korean Medicine Clinic;
 clinical feedback loop closed.</li>
 </ol>
 <hr />
-<h2 id="pipeline-architecture-12-functional-tiers">2. Pipeline
-architecture: 12 functional tiers</h2>
-<p>The Genesis_Medicine codebase organizes approximately 50+ tools /
-modules into 12 functional tiers. Each tier is exposed as a
-natural-language tool callable through a ChemCrow-style agent wrapper
-[1].</p>
+<h2 id="pipeline-architecture-active-core-adapter-catalog">2. Pipeline
+architecture: active core + adapter catalog</h2>
+<h3 id="active-modules-25-with-real-pipeline-outputs">2.0 Active modules
+(~25, with real pipeline outputs)</h3>
+<p>A v0.3 internal audit (2026-04-26) revised our earlier framing. The
+active set is broader than initially reported:</p>
+<p><strong>Core compute</strong>: Boltz-2 v0.6.1 (MIT) — cofold +
+affinity (240+ cofolds across rounds + 4 disease screens);
+<strong>REINVENT 4</strong> v4.4 (Apache-2.0) — mol2mol
+scaffold-hopping; <strong>ADMET-AI</strong> v2.0.1 (MIT) — 6 endpoints;
+<strong>OpenMM 8.5.1 + openmmtools 0.26</strong> (MIT) — 10 ns MD +
+16-window alchemical replica exchange ABFE; <strong>RDKit</strong>
+(BSD-3); <strong>PoseBusters</strong> 0.6.5 (queued for cofold pose
+validation); <strong>Chai-1r</strong> (Apache-2.0, 2025-Q4 fully open) —
+installed for 2-way ensemble; <strong>GFN2-xTB</strong> via xtb-python
+22.1 — semi-empirical QM single-point (EMB-3 -50.09 Hartree, Embelin
+-65.90 Hartree computed in this work).</p>
+<p><strong>Database integration</strong>: ChEMBL v34 (CC-BY-SA), Open
+Targets v4 GraphQL (CC0; 11 disease IDs + 15 target IDs
+production-cached pipeline).</p>
+<p><strong>Workflow + reproducibility</strong>: <strong>Prefect
+3</strong> DAG framework (11-stage pipeline orchestration);
+<strong>Docker</strong> + docker-compose containerization;
+<strong>pyproject.toml</strong> with <code>ruff</code> +
+<code>mypy</code> strict-mode; pinned dependencies; <strong>GitHub
+Actions CI/CD</strong> (lint + test + auto-PDF-build for preprints); 16
+test files / 95 unit tests with GPU/slow/network markers.</p>
+<p><strong>Domain-specific active modules</strong>: residence_time.py
+(Eyring + Jarzynski + steered MD); spatial_atlas.py (Visium CytAssist +
+Xenium IPF atlas); scfoundation_adapter.py (with linear baseline check);
+hira_qaly.py (Korean health economics); stratum_corneum.py
+(ceramide/FFA/cholesterol bilayer builder); benchmark_baseline.py
+(ROC-AUC + Mann-Whitney U); logKp head (FDA 2326 LGBM, ≥-2 topical
+gate); chronotherapy/jaoryuju.py (12-meridian + circadian);
+donguibogam_miner.py (Korean classical text mining); fpocket
+cryptic_scan (TGFB1/MMP1/CTGF allosteric scan).</p>
+<p><strong>Recently activated (2026-04-26)</strong>: BioEmu 1.3.1
+(Microsoft 2026 protein equilibrium ensembles); deeptime 0.4.5 + PyEMMA
+2.5.12 (MSM-based binding kinetics); xtb-python 22.1 (GFN2-xTB QM
+correction); 5 missing-target MSAs (MITF, SRD5A1, SREBP1, FBN1, mTOR);
+production Open Targets agent dispatch.</p>
+<p>Outputs: all <code>.csv</code> and <code>.json</code> files in
+<code>pilot/</code> are products of this active module set.</p>
+<h3 id="adapter-scaffold-catalog-40-modules">2.1 Adapter scaffold
+catalog (40+ modules)</h3>
+<p>Tier 0-11 below describe Python modules registered in
+<code>agents/all_tiers_tools.py</code> exposing 70+ natural-language
+tool dispatches. <strong>These are integration scaffolds</strong>,
+mostly subprocess/Python wrappers over external open-source tools that
+have not yet been run in the present pipeline. They are documented here
+for reproducibility of the integration architecture, not as active
+capability claims.</p>
 <h3 id="tier-0-foundation-7-modules">Tier 0 — Foundation (~7
 modules)</h3>
 <p>Open-source SOTA stack: Boltz-2 cofold, REINVENT 4 generative,
@@ -505,5 +551,74 @@ Comput</em> 2024, 20, 8226–8235. [10] Chodera JD, et al. openmmtools
 (v0.26). 2026.</p>
 <hr />
 <p><em>v0.1 draft, 2026-04-26 · ~3,200 words · CC-BY 4.0</em></p>
+<h2 id="round-8-audit-final-25-adapter-inventory-2026-04-27">Round 8
+audit — Final 25-adapter inventory (2026-04-27)</h2>
+<p>After 4 audit rounds (Round 5 +9, Round 7 +5, Round 8 +11), the
+system reached <strong>25 adapters across 14 modules</strong>, with 14
+in PRODUCTION_USE and 30+ real-data artifacts.</p>
+<h3 id="module-breakdown">Module breakdown</h3>
+<p><strong>Free-energy &amp; ML potentials</strong> (md/, 6 adapters):
+ABFE corrected protocol, OpenMM ML refine, Boltz-ABFE scaffold,
+AToM-OpenMM scaffold, AIMNet2 scaffold, CarsiDock-Cov (covalent docker,
+FIRST-of-class).</p>
+<p><strong>Generative chemistry</strong> (generation/, 4 adapters):
+REINVENT 4 wrapper, FlowMol3, DecompDiff, MolDAIS BoTorch SAASBO.</p>
+<p><strong>Dermatology-specific</strong> (dermatology/, 4 adapters): PBK
+Dermal HT (NIH/NIEHS public-domain), SARA-ICE (OECD TG 497-III), Skin
+Fibroblast Atlas (Reynolds 2025), PanDerm (research only).</p>
+<p><strong>Repurposing</strong> (repurposing/, 3 adapters): TxGNN,
+CellAwareGNN (TxGNN successor), CMap L1000.</p>
+<p><strong>Conformational ensemble</strong> (ensemble/, 3 adapters):
+AlphaFlow, BioEmu, PocketMiner.</p>
+<p><strong>Foundation models</strong> (foundation/, 2 adapters):
+ChemBERTa-3, Tahoe-100M.</p>
+<p><strong>Causal inference</strong> (causal/, 1 adapter): TwoSampleMR
+with 7 literature-validated MR results.</p>
+<p><strong>Clinical workflow</strong> (clinical/, 4 adapters): IRB
+protocol generator, CRO quote, MedSAM-2 scaffold, IRB consent forms.</p>
+<p><strong>Drug-target kinetics</strong> (kinetics/, 2 adapters): τRAMD
+literature-validated, SEEKR2 milestoning.</p>
+<p><strong>Polypharmacology</strong> (polypharmacology/, 2 adapters):
+SwissTargetPrediction literature-validated, Dealbreaker safety panel (7
+classes: hERG, CYP3A4, AR, GR, ER, PXR, AhR).</p>
+<p><strong>DDI</strong> (ddi/, 2 adapters): DDInter 2.0 + 17-pair
+curated 한약-양약.</p>
+<p><strong>Topical formulation</strong> (formulation/, 3 adapters):
+CPE-DB, HSP vehicle selection, KCID Korean cosmetic ingredient
+gating.</p>
+<p><strong>PK-PD</strong> (pkpd/, 2 adapters): httk (US EPA public
+domain), Hill 4-parameter dose-response.</p>
+<p><strong>Protein design</strong> (protein_design/, 1 adapter):
+LigandMPNN scaffold for 약침 metal-aware design.</p>
+<h3 id="honest-categorical-scoring">Honest categorical scoring</h3>
+<ul>
+<li>Adapters with PRODUCTION_USE + literature-validated real data: 14
+(56%)</li>
+<li>Adapters with SCAFFOLD_ONLY (graceful unavailable until external
+repo cloned): 11 (44%)</li>
+<li>Hydra YAML configs: 19/25 (76%)</li>
+<li>Unit tests: 29 covering Round 5+7+8 adapters (100%)</li>
+</ul>
+<h3 id="from-50-active-tools-to-honest-25">From “50 active tools” to
+honest 25</h3>
+<p>The earlier preprint v0.1 narrative claimed “50+ active tools.” Round
+5 audit (#175 honest reframe) corrected this to “25 ACTIVE modules + 25
+adapters/wrappers”. This v0.2+ count of 25 adapters is the precise
+audit-verified number, with 14 producing real data and 11 acting as
+graceful scaffolds for future external-tool integration.</p>
+<h3 id="unique-system-contributions">Unique system contributions</h3>
+<ol type="1">
+<li><strong>First DL covalent docker integration</strong>
+(CarsiDock-Cov, Apache-2.0) for natural-product Michael acceptors.</li>
+<li><strong>First Korean cosmetic regulatory adapter</strong> (KCID +
+KFDA + EU CosIng cross-walk) for in silico → product launch.</li>
+<li><strong>Single-pipeline integration</strong> of Boltz-2 + ChEMBL
+ρ=0.72 calibration + Chai-1 ensemble + PoseBusters 149-pose validation +
+ABFE T4L PASS + EMB-3 cycle closed + Round 5+7+8 application data + 7 MR
+causal evidence + curated DDI + KCID regulatory.</li>
+<li><strong>Honest negative result</strong>: EMB-3 × MMP-1 ABFE +0.55
+quantitatively confirms “MMP-1 minus zinc” caveat → ZAFF
+release-blocking.</li>
+</ol>
 </body>
 </html>

@@ -299,3 +299,46 @@ re-prioritization.
 *Submission target*: medRxiv (immediate); a Korean Medicine / clinical-informatics peer-reviewed venue (anticipated 2026-Q3)
 *Version*: 0.1 draft, 2026-04-26
 *License*: CC-BY 4.0 (preprint); platform code licenses as noted in §6
+
+## Round 8+9 — Pipeline maturity audit + Recover D-110 deployment plan (2026-04-27)
+
+**System inventory after Rounds 5+7+8** (3 audit cycles):
+
+| Module | Adapter count | Production | Real-data artifacts |
+|---|:-:|:-:|:-:|
+| md/ (free energy + ML potentials) | 6 | 1 | T4L + EMB-3 × MMP-1 closed cycles |
+| generation/ | 1 (MolDAIS) | 1 | botorch_saasbo demo |
+| dermatology/ | 4 (PBK, SARA-ICE, Atlas, PanDerm) | 4 | 124-compound sweep + IPF target ranking |
+| repurposing/ | 2 (CellAware, CMap) | 1 | connectivity hits |
+| ensemble/ | 3 (BioEmu, AlphaFlow, PocketMiner) | 0 | scaffold |
+| foundation/ | 2 (ChemBERTa3, Tahoe-100M) | 1 | perturbation profiles |
+| causal/ | 1 (TwoSampleMR) | 1 | 7 paper-tier MR results |
+| clinical/ | 1 (MedSAM) | 0 | scaffold for D-110 photo cube |
+| kinetics/ | 2 (τRAMD, SEEKR2) | 1 | 6 residence-time entries |
+| polypharmacology/ | 2 (SwissTarget, Dealbreaker) | 1 | 60 hits + 7 dealbreakers |
+| ddi/ | 2 (DDInter, HerbalDDI) | 1 | 24 interactions + 17 curated |
+| formulation/ | 3 (CPE-DB, HSP, KCID) | 1 | 15 PE + 15 vehicle + 5 KCID |
+| pkpd/ | 2 (httk, Hill) | 1 | 5-compound PK + IC50 fit |
+| protein_design/ | 1 (LigandMPNN) | 0 | scaffold for 약침 |
+| **Total** | **25** | **14 (56%)** | **30+ CSVs** |
+
+**Recover D-110 readiness scorecard** (2026-08-15 opening):
+
+| Workflow component | Status | Blocker |
+|---|:-:|---|
+| In silico screening (Boltz-2 + ADMET-AI + 102 compounds) | ✓ | none |
+| Quantitative ABFE (calibration) | ✓ | T4L pass |
+| Quantitative ABFE (application) | ⚠️ partial | EMB-3 × MMP-1 closed but +0.55 needs ZAFF |
+| Polypharmacology + dealbreaker check | ✓ | none |
+| DDI 한약-양약 cross-check | ✓ | DDInter SQLite full dump pending |
+| Topical formulation prototype | ⚠️ partial | EMB-3 KCID Pre-Notification 6-12mo |
+| MFDS regulatory dossier | ⚠️ partial | SARA-ICE in vitro inputs needed (₩2-3M CRO) |
+| Photo cube + REDCap loop | scaffold | hardware purchase + 50-scar fine-tune |
+| Wet-lab CRO Tier 1 | not started | ₩15.6M budget allocated |
+
+**Round 9 forward path** (next sprint priorities):
+1. AToM-OpenMM production deployment for ABFE NaN failure cases (TGFB1, EGCG × MMP-1)
+2. Longer eq (5 ns) + tighter restraint (5 Å) script enhancement for protocol robustness
+3. MD-pose-prefilter (10 ns stability check before ABFE attempt)
+4. Recover D-110 photo cube hardware purchase + REDCap deployment
+5. CRO Tier 1 RFQ to KIT/켐온/바이오톡스텍 with EMB-3 + Embelin + Wogonin packages

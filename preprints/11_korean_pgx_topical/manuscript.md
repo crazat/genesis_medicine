@@ -204,3 +204,24 @@ herb-medicine PGx panel.
 ---
 
 *v0.1 draft, 2026-04-26 · ~3,000 words · CC-BY 4.0*
+
+## Round 8 — DDI panel + Korean CYP variant frequency (2026-04-27)
+
+**Korean-specific DDI risk** for our 6 most-used Korean herbal compounds (DDInter 2.0 + literature):
+
+| Compound | CYP/transporter | Korean PM frequency | Major DDI |
+|---|---|---|---|
+| Berberine | **CYP3A4** inhibitor + **CYP2D6** inhibitor | CYP2D6 *10 PM ~50% Korean | cyclosporine AUC −34%, warfarin INR ↑ |
+| EGCG | **UGT1A1** inhibitor + OATP1A2 | UGT1A1 *6 ~13% Korean | irinotecan toxicity ↑, nadolol AUC −85% |
+| Baicalein | **OATP1B1** + BCRP | SLCO1B1 *5 ~5% Korean | rosuvastatin AUC ↓, methotrexate clearance ↓ |
+| Curcumin | CYP3A4 + P-gp | CYP3A4 *22 (Korean low) | tacrolimus AUC ↑ |
+| Ginsenoside Rb1 | variable | — | warfarin INR ↑↓ unpredictable |
+| Emodin | CYP2C9 | CYP2C9 *3 ~3.4% Korean | warfarin INR ↑ |
+
+**Recover personalized medicine pathway**:
+1. PGx panel design (this preprint v0.1) covers CYP2C9/CYP2D6/CYP2C19/SLCO1B1/UGT1A1 — exactly the variants flagged above as Korean-relevant.
+2. Patient genotype → DDI risk score → 한약 처방 modification.
+3. Smart Charts AI EHR (HAN PREDICT) integration: DDInter check at every prescription event.
+4. **사상체질 + 유전형 = personalized 한방 medicine** — defensible regulatory framing under existing 의료법 §56 (research-only AI prediction with clinician-in-loop).
+
+AR → AGA causal evidence (TwoSampleMR §Round 7: OR=1.58, p=0.0002) directly supports the alopecia-vertical PGx argument: AR variants (e.g., CAG repeat polymorphism) modulate AGA risk × Korean herbal SRD5A2/AR-engaging compound efficacy → personalized prescription.
