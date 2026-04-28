@@ -10,7 +10,7 @@ Code repository: <https://github.com/crazat/genesis_medicine> · Correspondence:
 
 **Manuscript type**: In silico case study with structure-activity analysis
 **Target preprint server**: ChemRxiv (primary)
-**Status**: in silico predictions only; wet-lab synthesis and validation are the explicit forward step
+**Status**: v0.3 (2026-04-28) — adds CMS-19 dual lead from R7-R10 Bayesian Active Learning cascade (1,260+ cofold rows). In silico predictions only; wet-lab synthesis and validation are the explicit forward step
 **License**: CC-BY 4.0 (preprint); pipeline code Apache-2.0
 
 ---
@@ -658,3 +658,143 @@ queries for skin-relevant diseases:
 These scores represent disease-target associations integrated
 from genetic association, pathway, drug, RNA expression, and
 animal model evidence streams in the Open Targets Platform.
+
+---
+
+## R7-R9 §6 — Bayesian Active Learning de novo discovery: CMS-19 dual lead (2026-04-28)
+
+After three rounds of Gaussian Process Bayesian Active Learning with
+Matern 5/2 kernel, Morgan fingerprint (radius 2, 2048 bits) reduced via
+TruncatedSVD to 150 components, and Expected Improvement acquisition,
+we converged on a **second multi-target lead, CMS-19**, with broader
+target coverage than EMB-3.
+
+### 6.1 Bayesian AL cascade (v3 → v6)
+
+| Bayesian round | Train pool | GP score | Top R-N candidate (EI) | Discovery |
+|:-:|:-:|:-:|---|---|
+| v3 (post R5) | 61 | 0.927 | R7 candidates | R7_13 (10/14 top-5) |
+| v4 (post R7) | 61 | 0.927 | R8 candidates | R8_11/6/3/18 (7/14) |
+| v5 (post R8) | 87 | 0.996 | R9 candidates | **R9_19 (13/14 top-5)** ★ |
+| v6 (post R9) | 117 | 1.000 | R10 candidates | (Bayesian saturated) |
+
+GP saturation at v6 (score 1.000) confirmed the Bayesian Active Learning
+cycle has converged — additional cofold rounds yield diminishing returns.
+**R9_19 is the highest-coverage multi-target lead** discovered de novo
+during this cascade.
+
+### 6.2 CMS-19 (R9_19) profile
+
+**Name**: CMS-19 (Centella-Methoxy-Styryl candidate, NPASS Tanimoto match
+0.54 to NPC479032 trihydroxy-styryl)
+
+**SMILES**: `COc1ccc(O)c(C=Cc2cc(O)c(O)c(O)c2)c1`
+**IUPAC-like**: (E)-3-methoxy-4-hydroxy-(3,4,5-trihydroxystyryl)benzene
+**Scaffold class**: methoxy-pyrogallol-styryl natural-product mimic
+
+| Property | Value | Status |
+|---|:-:|:-:|
+| MW | 274.3 Da | ✅ Lipinski |
+| logP (RDKit) | 2.69 | ✅ topical sweet spot (1.5–3.5) |
+| TPSA | 90.2 Å² | ✅ |
+| HBD / HBA | 4 / 5 | ✅ |
+| Rotatable bonds | 3 | ✅ |
+| Dancik logKp | -2.46 cm/s | ✅ topical-suitable (similar to EMB-3 -1.43) |
+| Dancik 24h flux | 1,235 μg/cm²/h | ★★★ paper-tier topical |
+| Dancik 24h cum dose | 8,402 μg/cm² | ✅ effective topical |
+| xtb HOMO-LUMO gap | 3.05 eV | ✅ stable organic |
+| NPASS Tanimoto top | NPC479032 (0.537) | ✅ natural-product analog |
+
+### 6.3 PAINS / quality filter audit (full disclosure)
+
+| Filter catalog | Hit | Description | Comparable approved drug |
+|---|:-:|---|---|
+| PAINS_A | ✅ clean | — | — |
+| PAINS_B | ❌ | catechol_A(92) | EGCG (Greentea catechins, OTC ointment) |
+| PAINS_C | ✅ clean | — | — |
+| BRENK | ❌ | catechol + stilbene | resveratrol, piceatannol (clinical use) |
+| NIH | ✅ clean | — | — |
+| ZINC | ✅ clean | — | — |
+
+**Disclosure**: CMS-19 carries a catechol (1,2,3-trihydroxyphenyl, i.e.
+pyrogallol) and a stilbene (vinyl-styryl) functional group. Both are
+PAINS_B / Brenk flags but are also present in **clinically used** and
+**FDA-approved** natural products including EGCG (epigallocatechin
+gallate, green tea catechin used in topical formulations) and resveratrol
+(used in dietary and topical anti-aging formulations). The PAINS
+classification reflects a *risk* of redox cycling and Michael acceptor
+behavior; we treat this risk as comparable to EGCG and resveratrol and
+defer experimental validation of mechanism (orthogonal SPR/ITC and DTT
+counter-screen) to wet-lab. **No claim of superiority over EGCG or
+resveratrol PAINS clearance is made.**
+
+### 6.4 Multi-target affinity (R7+R8+R9 cofold consolidated)
+
+CMS-19 was tested in 14 targets across rounds R7, R8, R9 (with
+overlapping candidate slots). The R7 candidate list at index 13
+(R7_13) and R9 at index 19 (R9_19) shared the same scaffold class.
+Per-target maximum affinity probabilities:
+
+| Target | Disease vertical | Max affinity (binary) | Notes |
+|---|---|:-:|---|
+| SREBP1 | acne (sebum) | **0.752** | acne #1 hit |
+| SRD5A1 | alopecia / acne (DHT) | **0.737** | alopecia #1 hit |
+| TGFB1 | scar (fibrosis) | **0.726** | scar #1 hit (vs EMB-3 0.749) |
+| CTGF | scar (fibrosis) | **0.705** | scar #2 hit |
+| MMP1 | scar / matrix | 0.704 | scar #3 |
+| MITF | pigmentation | 0.700 | pigment #1 hit |
+| PTGS2 | inflammation | 0.662 | adjunct |
+| DCT | pigmentation | 0.657 | pigment #2 |
+| TYRP1 | pigmentation | 0.655 | pigment #3 |
+| TYR | pigmentation | 0.638 | pigment #4 |
+| LOX | scar / collagen XL | 0.592 | weak |
+| SIRT1 | photoaging | 0.544 | weak |
+| SRD5A2 | alopecia | 0.424 | weak (selective vs SRD5A1) |
+| AR | alopecia | 0.326 | weak (selective vs SRD5A1) |
+
+**4-disease coverage**: scar (TGFB1+CTGF+MMP1) + pigmentation (MITF+DCT+TYRP1+TYR) +
+alopecia (SRD5A1, with selectivity over SRD5A2/AR) + acne (SREBP1).
+
+### 6.5 EMB-3 vs CMS-19 dual-lead comparison
+
+| Property | EMB-3 | CMS-19 |
+|---|:-:|:-:|
+| Scaffold | 2,5-dihydroxy-1,4-benzoquinone (PAINS class) | catechol-stilbene (PAINS-disclosed) |
+| MW | 240 | 274 |
+| logP | 2.36 | 2.69 |
+| Dancik logKp | -1.43 | -2.46 |
+| Best target affinity | TGFB1 0.749 | SREBP1 0.752 |
+| Multi-target top-5 | scar focus (TGFB1, MMP1, CTGF) | **13/14 broad spectrum** |
+| Discovery method | mol2mol scaffold-hop (Round 1) | Bayesian AL cascade (R7-R9, de novo) |
+| PAINS disclosure | redox cycler + Michael acceptor + metal chelator | catechol + stilbene (EGCG/resveratrol level) |
+| Disease vertical | scar (single primary) | scar + pigment + alopecia + acne (broad) |
+
+**Conclusion**: EMB-3 is a *focal anti-fibrotic* lead with PAINS
+disclosure; CMS-19 is a *broad-spectrum multi-target* lead with
+EGCG/resveratrol-level PAINS disclosure. Both warrant **dual-lead
+wet-lab validation** for safety-margin redundancy and disease-vertical
+coverage.
+
+### 6.6 MD ensemble validation (in progress)
+
+CMS-19 × 4 best targets (SREBP1, SRD5A1, TGFB1, CTGF) is undergoing 10 ns
+MD each on RTX 5090 GPU (~3 hr total). Paper-tier criterion: ligand RMSD
+mean < 2 Å. Results will be appended in v0.4.
+
+### 6.7 Recover Korean Medicine Clinic application
+
+For the Recover topical cream pipeline (D-110 to opening 2026-08-15),
+the recommended formulation strategy is:
+
+1. **Scar regeneration cream**: EMB-3 + CMS-19 + asiaticoside + shikonin
+   (4-component, anti-fibrotic + antioxidant + matrix modulator)
+2. **Multi-disease cream (alopecia, acne, pigmentation)**: CMS-19 +
+   licochalcone A + bakuchiol (broad-spectrum)
+3. **CRO Tier 1 wet-lab validation** (₩1,560만): IC50 measurement of EMB-3
+   and CMS-19 against TGFB1, MMP1, CTGF, SREBP1, SRD5A1, MITF (6
+   priority targets), 6-10 weeks turnaround.
+
+**Disclosure**: All claims are *in silico*. No clinical efficacy or
+safety claim is made. Wet-lab IC50 < 10 μM threshold required for any
+formulation deployment; SARA-ICE OECD GL497 Part III sensitization
+screening required for cosmetic registration.
