@@ -442,3 +442,28 @@ This is a **paper-tier honest negative result** that strengthens the methodology
 ---
 
 *v0.7 EMB-3 application revision, 2026-04-27 09:00 KST · ~6,400 words · CC-BY 4.0*
+
+---
+
+## Use of AI tools in writing (ICMJE 2024 disclosure)
+
+The author used Claude (Anthropic, Opus 4.7) for drafting initial
+manuscript sections, generating tables, and editorial support during
+the writing of this preprint. The author personally:
+
+- Designed the research protocol and experimental scope
+- Performed all computational experiments and pipeline executions
+- Verified every factual claim and quantitative result
+- Validated all citations and external references
+- Took full responsibility for the final content
+
+AI tools were **not** used to generate experimental data, original
+hypotheses, or analytical results. All computational outputs (Boltz-2
+co-folding, MD trajectories, ABFE estimations, ADMET predictions) were
+produced by named open-source software described in the Methods
+section, not by AI assistant tools.
+
+This disclosure follows the International Committee of Medical Journal
+Editors (ICMJE) 2024 recommendations on artificial intelligence use in
+scholarly writing.
+

@@ -344,3 +344,28 @@ re-prioritization.
 3. MD-pose-prefilter (10 ns stability check before ABFE attempt)
 4. Recover D-110 photo cube hardware purchase + REDCap deployment
 5. CRO Tier 1 RFQ to KIT/켐온/바이오톡스텍 with EMB-3 + Embelin + Wogonin packages
+
+---
+
+## Use of AI tools in writing (ICMJE 2024 disclosure)
+
+The author used Claude (Anthropic, Opus 4.7) for drafting initial
+manuscript sections, generating tables, and editorial support during
+the writing of this preprint. The author personally:
+
+- Designed the research protocol and experimental scope
+- Performed all computational experiments and pipeline executions
+- Verified every factual claim and quantitative result
+- Validated all citations and external references
+- Took full responsibility for the final content
+
+AI tools were **not** used to generate experimental data, original
+hypotheses, or analytical results. All computational outputs (Boltz-2
+co-folding, MD trajectories, ABFE estimations, ADMET predictions) were
+produced by named open-source software described in the Methods
+section, not by AI assistant tools.
+
+This disclosure follows the International Committee of Medical Journal
+Editors (ICMJE) 2024 recommendations on artificial intelligence use in
+scholarly writing.
+

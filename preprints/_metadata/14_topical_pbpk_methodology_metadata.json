@@ -31,5 +31,12 @@
   "word_count_md": 1290,
   "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
   "funding": "Self-funded by HAN PREDICT, Inc.",
-  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results."
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results.",
+  "ai_disclosure": {
+    "used": true,
+    "tool": "Claude (Anthropic, Opus 4.7)",
+    "role": "drafting + tables + editorial support",
+    "icmje_compliant": true,
+    "note": "Author verified all claims; AI not used for data or hypotheses."
+  }
 }

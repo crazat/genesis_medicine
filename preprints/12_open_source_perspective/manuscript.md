@@ -288,3 +288,28 @@ The earlier preprint v0.1 narrative claimed "50+ active tools." Round 5 audit (#
 2. **First Korean cosmetic regulatory adapter** (KCID + KFDA + EU CosIng cross-walk) for in silico → product launch.
 3. **Single-pipeline integration** of Boltz-2 + ChEMBL ρ=0.72 calibration + Chai-1 ensemble + PoseBusters 149-pose validation + ABFE T4L PASS + EMB-3 cycle closed + Round 5+7+8 application data + 7 MR causal evidence + curated DDI + KCID regulatory.
 4. **Honest negative result**: EMB-3 × MMP-1 ABFE +0.55 quantitatively confirms "MMP-1 minus zinc" caveat → ZAFF release-blocking.
+
+---
+
+## Use of AI tools in writing (ICMJE 2024 disclosure)
+
+The author used Claude (Anthropic, Opus 4.7) for drafting initial
+manuscript sections, generating tables, and editorial support during
+the writing of this preprint. The author personally:
+
+- Designed the research protocol and experimental scope
+- Performed all computational experiments and pipeline executions
+- Verified every factual claim and quantitative result
+- Validated all citations and external references
+- Took full responsibility for the final content
+
+AI tools were **not** used to generate experimental data, original
+hypotheses, or analytical results. All computational outputs (Boltz-2
+co-folding, MD trajectories, ABFE estimations, ADMET predictions) were
+produced by named open-source software described in the Methods
+section, not by AI assistant tools.
+
+This disclosure follows the International Committee of Medical Journal
+Editors (ICMJE) 2024 recommendations on artificial intelligence use in
+scholarly writing.
+

@@ -208,3 +208,28 @@ These four compounds have published or inferred circadian-amplitude-modifying ef
 - 자시 (11 PM-1 AM) 담경: Resveratrol SIRT1 = nighttime cellular repair (matches autophagy circadian)
 
 **EMB-3 residence time** at 18.4 μs (τRAMD §Round 8) suggests an effective half-life on MMP-1 of ~12.7 μs after dissociation begins — far below clinical relevance. The clinical effect duration is therefore dominated by **stratum-corneum reservoir** (PBK Dermal HT t_max 6.4 h, §Round 5), not target residence. This argues for **AM application** of EMB-3-class scaffold-hops to align peak dermal concentration with daytime mechanical scar-formation activity.
+
+---
+
+## Use of AI tools in writing (ICMJE 2024 disclosure)
+
+The author used Claude (Anthropic, Opus 4.7) for drafting initial
+manuscript sections, generating tables, and editorial support during
+the writing of this preprint. The author personally:
+
+- Designed the research protocol and experimental scope
+- Performed all computational experiments and pipeline executions
+- Verified every factual claim and quantitative result
+- Validated all citations and external references
+- Took full responsibility for the final content
+
+AI tools were **not** used to generate experimental data, original
+hypotheses, or analytical results. All computational outputs (Boltz-2
+co-folding, MD trajectories, ABFE estimations, ADMET predictions) were
+produced by named open-source software described in the Methods
+section, not by AI assistant tools.
+
+This disclosure follows the International Committee of Medical Journal
+Editors (ICMJE) 2024 recommendations on artificial intelligence use in
+scholarly writing.
+
