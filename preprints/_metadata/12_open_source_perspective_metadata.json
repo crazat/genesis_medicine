@@ -1,0 +1,35 @@
+{
+  "paper_id": "12_open_source_perspective",
+  "title": "Genesis_Medicine: an open-source AI pipeline for Korean traditional medicine drug discovery — ~25 active modules + ~25 adapter scaffold catalog with design philosophy (v0.3 audit-corrected)",
+  "abstract": "Modern AI-driven drug discovery is built on a heterogeneous stack of open-source tools. Specialized application domains require tool selection, integration, and adaptation. We describe Genesis_Medicine, an open-source pipeline for AI-driven Korean traditional medicine (한약·생약) drug discovery. We honestly distinguish: (i) a 7-tool active core that produces all real pipeline outputs in this work (Boltz-2 cofold, REINVENT 4 generative, ADMET-AI v2 property prediction, OpenMM 8 + openmmtools alchemical sampling, RDKit chemistry, ChEMBL read-only, Open Targets v4 GraphQL); and (ii) a 40+ adapter scaffold catalog organized into 12 functional tiers, written as Python modules and exposed through a natural-language agent interface but not yet actively used in primary pipeline runs — including AlphaFold-3-class cofold ensemble (Chai-1, Protenix-v2, OpenFold-3), generative SOTA (PocketXMol, FlowMol3, DiffSBDD, TurboHopp), ML potentials (MACE-OFF24, AIMNet2), pose validation (PoseBusters), and specialized adapters (PROTAC designer, chronotherapy, TxGNN repurposing). The active core supports the complete workflow from natural-product curation through corrected ABFE; the adapter scaffold provides ready integration points for prioritized future expansion. We discuss the design philosophy — 3-pillar institutional integration (HAN PREDICT, Inc. AI healthcare platform; Recover Korean Medicine Clinic), commitment to honest in silico reporting, and explicit method limitations including MMP-1 zinc handling and Boltz-2 binary-classifier vs IC₅₀ distinction. The pipeline is open-source under Apache-2.0 at <https://github.com/crazat/genesis_medicine>. Keywords: open-source pipeline, Korean traditional medicine, AI drug discovery, REINVENT4, Boltz-2, ADMET-AI, ABFE, OpenMM, natural products, integrated stack.",
+  "keywords": [
+    "open science",
+    "drug discovery",
+    "AI"
+  ],
+  "target_server": "ChemRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "<USER_FILL_ORCID_iD>",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "open science",
+  "subcategory": "drug discovery",
+  "manuscript_path": "preprints/12_open_source_perspective/manuscript.md",
+  "pdf_path": "preprints/12_open_source_perspective/manuscript.pdf",
+  "n_figures": 1,
+  "word_count_md": 2765,
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results."
+}

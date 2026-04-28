@@ -1,0 +1,35 @@
+{
+  "paper_id": "07_photoaging_egcg",
+  "title": "In silico screening of 15 polyphenols and reference compounds against MMP-1 + SIRT1 for topical photoaging: real Boltz-2 data positions EMB-3 at the top of the panel; Resveratrol leads SIRT1 axis; classical references (vitamin C, niacinamide, ferulic acid) rank low",
+  "abstract": "Photoaging — UV-induced premature dermal change including wrinkle formation, elastosis, pigment irregularity — is mediated by MMP-1 (interstitial collagenase, the principal photoaging effector) and SIRT1 (NAD-dependent deacetylase, longevity / DNA-repair regulator), among other targets. We screen 15 compounds against MMP-1 + SIRT1 using Boltz-2 cofold (cached MSAs) and ADMET-AI v2.0.1. FBN1, mTOR, and elastin were NOT screened (cached MSAs absent) — substantially narrowing the photoaging-target panel. Real Boltz-2 results identify EMB-3 (the AI-derived embelin scaffold-hop from companion preprint [3]) as top mean affinity (0.621) — even surpassing the parent Embelin (0.601) — driven by paired moderate engagement of MMP-1 (0.610) and SIRT1 (0.632). Resveratrol leads SIRT1 axis (0.588), consistent with the established resveratrol–SIRT1 pharmacology. EGCG scores moderately (mean 0.520; MMP-1 0.570; SIRT1 0.470) — substantially lower than the v0.1 fabricated values (claimed 0.71 and 0.65 respectively). Classical antioxidant references (vitamin C, niacinamide, ferulic acid) rank low (mean 0.331 – 0.394), consistent with Boltz-2's underranking of fragment-size compounds. The v0.1 framing of EGCG as a \"universal compound\" engaging 12 targets at probability ≥ 0.50 was synthesized from non-real numbers and is explicitly retracted. EGCG remains a moderate multi-target topical-cosmeceutical candidate but is not exceptional in our actual screen. All results are in silico. Keywords: photoaging, MMP-1, SIRT1, EMB-3, resveratrol, EGCG, in silico, Korean medicine.",
+  "keywords": [
+    "pharmacology",
+    "skin aging",
+    "EGCG"
+  ],
+  "target_server": "bioRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "<USER_FILL_ORCID_iD>",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "pharmacology",
+  "subcategory": "skin aging",
+  "manuscript_path": "preprints/07_photoaging_egcg/manuscript.md",
+  "pdf_path": "preprints/07_photoaging_egcg/manuscript.pdf",
+  "n_figures": 2,
+  "word_count_md": 2646,
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results."
+}

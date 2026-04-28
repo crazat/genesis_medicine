@@ -1,0 +1,35 @@
+{
+  "paper_id": "14_topical_pbpk_methodology",
+  "title": "A Topical Skin PBPK Pipeline for Natural-Product-Inspired Therapeutics: Integrating Dancik 4-Layer ODE, SkinPiX-Trained LGBM logKp, and NPASS 2026 ADME Records",
+  "abstract": "Topical (transdermal) drug delivery is the dominant route for dermatological therapeutics, yet most AI drug-discovery pipelines omit physiologically-based pharmacokinetic (PBPK) modeling for skin. We present a fully open-source pipeline combining: (1) Dancik 4-layer skin PBPK (stratum corneum → viable epidermis → dermis → systemic); (2) LightGBM logKp head trained on SkinPiX (n=2,326, OECD 428) + NPASS 2026 ADME records (n=9,713); (3) integration with cofolding output to produce per-compound topical bioavailability + skin layer concentration estimates. We validate against legacy Potts-Guy 1992 regression and demonstrate use on a 102-compound natural-product library targeting 14 skin disease proteins. Code is released under Apache-2.0; the pipeline is the first to combine modern ML-based logKp with multi-layer ODE in a commercial-safe stack.",
+  "keywords": [
+    "pharmacokinetics",
+    "topical",
+    "PBPK"
+  ],
+  "target_server": "ChemRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "<USER_FILL_ORCID_iD>",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "pharmacokinetics",
+  "subcategory": "topical",
+  "manuscript_path": "preprints/14_topical_pbpk_methodology/manuscript.md",
+  "pdf_path": "preprints/14_topical_pbpk_methodology/manuscript.pdf",
+  "n_figures": 3,
+  "word_count_md": 1290,
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results."
+}

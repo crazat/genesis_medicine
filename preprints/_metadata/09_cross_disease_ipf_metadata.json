@@ -1,0 +1,35 @@
+{
+  "paper_id": "09_cross_disease_ipf",
+  "title": "From skin scar to systemic fibrosis: Open Targets evidence and the limits of canonical anti-fibrotic axis-based cross-disease hypothesis (an EMB-3 in silico case)",
+  "abstract": "Pathological fibrosis across organs — skin scarring, idiopathic pulmonary fibrosis (IPF), systemic sclerosis, renal fibrosis, hepatic fibrosis — is widely framed in medicinal-chemistry literature as sharing a converging TGF-β / Smad / MMP / CTGF / collagen-deposition master-switch network. We investigated whether this conceptual axis-sharing translates to evidence-based cross-disease applicability for an AI-derived multi-target candidate (EMB-3, an *Embelia ribes* embelin scaffold-hop, described in companion preprint [3]) by querying the Open Targets Platform v4 GraphQL API for both directions: (a) for each fibrotic indication, what targets are associated above OT score ≥ 0.4? (b) for each canonical anti-fibrotic target, what fibrotic-spectrum diseases are associated? The results substantially temper the cross-disease hypothesis as initially framed: only PDGFRB among 9 canonical anti-fibrotic targets shows consistent OT association (≥ 0.4) across fibrotic-spectrum diseases (IPF 0.59, systemic sclerosis 0.55, ILD 0.57, pulmonary fibrosis 0.56, dermatofibrosarcoma protuberans 0.57). Other canonical targets (TGFB1, MMP1, CTGF, SMAD3, MMP3/9, LOX, COL1A1) show ≤ 1 fibrotic disease above the threshold. The \"TGF-β master-switch\" axis is supported in review literature but is not mirrored in Open Targets genetic-evidence-weighted association scoring. The Rentosertib (TNIK inhibitor, IPF Phase 2) precedent demonstrates that AI-discovered anti-fibrotic candidates can reach clinical efficacy, but cross-disease translation requires evidence-grounded, not framework-asserted, target prioritization. All EMB-3 affinity values are in silico; cross-disease translation requires substantial wet-lab validation. Keywords: cross-disease, fibrosis, IPF, Open Targets, EMB-3, evidence audit, PDGFRB, TGF-β master-switch.",
+  "keywords": [
+    "systems biology",
+    "fibrosis",
+    "IPF"
+  ],
+  "target_server": "bioRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "<USER_FILL_ORCID_iD>",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "systems biology",
+  "subcategory": "fibrosis",
+  "manuscript_path": "preprints/09_cross_disease_ipf/manuscript.md",
+  "pdf_path": "preprints/09_cross_disease_ipf/manuscript.pdf",
+  "n_figures": 2,
+  "word_count_md": 3137,
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results."
+}

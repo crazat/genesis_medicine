@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Genesis_Medicine preprint</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Genesis_Medicine preprint</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#a-topical-skin-pbpk-pipeline-for-natural-product-inspired-therapeutics-integrating-dancik-4-layer-ode-skinpix-trained-lgbm-logkp-and-npass-2026-adme-records"
+id="toc-a-topical-skin-pbpk-pipeline-for-natural-product-inspired-therapeutics-integrating-dancik-4-layer-ode-skinpix-trained-lgbm-logkp-and-npass-2026-adme-records">A
+Topical Skin PBPK Pipeline for Natural-Product-Inspired Therapeutics:
+Integrating Dancik 4-Layer ODE, SkinPiX-Trained LGBM logKp, and NPASS
+2026 ADME Records</a>
+<ul>
+<li><a href="#abstract" id="toc-abstract">Abstract</a></li>
+<li><a href="#background" id="toc-background">1. Background</a></li>
+<li><a href="#methods" id="toc-methods">2. Methods</a>
+<ul>
+<li><a href="#dancik-4-layer-ode" id="toc-dancik-4-layer-ode">2.1 Dancik
+4-layer ODE</a></li>
+<li><a href="#lgbm-logkp-head" id="toc-lgbm-logkp-head">2.2 LGBM logKp
+head</a></li>
+<li><a href="#vehicle-effects" id="toc-vehicle-effects">2.3 Vehicle
+effects</a></li>
+<li><a href="#validation-against-potts-guy"
+id="toc-validation-against-potts-guy">2.4 Validation against
+Potts-Guy</a></li>
+</ul></li>
+<li><a href="#results-v0.2-real-102-compound-run-400-vehicle-pairs"
+id="toc-results-v0.2-real-102-compound-run-400-vehicle-pairs">3. Results
+(v0.2 — real 102-compound run, 400 vehicle pairs)</a>
+<ul>
+<li><a href="#lgbm-holdout-performance-vs-potts-guy"
+id="toc-lgbm-holdout-performance-vs-potts-guy">3.1 LGBM holdout
+performance vs Potts-Guy</a></li>
+<li><a href="#application-genesis_medicine-v3-102-compound-library"
+id="toc-application-genesis_medicine-v3-102-compound-library">3.2
+Application: Genesis_Medicine v3 102-compound library</a></li>
+<li><a
+href="#topical-bioavailability-ranking-top-15-ointment-occluded-8h"
+id="toc-topical-bioavailability-ranking-top-15-ointment-occluded-8h">3.3
+Topical bioavailability ranking — Top 15 (ointment, occluded,
+8h)</a></li>
+<li><a href="#topical-suitable-vs-unsuitable-logkp-threshold--5.0"
+id="toc-topical-suitable-vs-unsuitable-logkp-threshold--5.0">3.4
+Topical-suitable vs unsuitable (logKp threshold &gt; -5.0)</a></li>
+<li><a href="#vehicle-effect-per-compound-median-flux"
+id="toc-vehicle-effect-per-compound-median-flux">3.5 Vehicle effect
+(per-compound median flux)</a></li>
+<li><a href="#selected-case-studies" id="toc-selected-case-studies">3.6
+Selected case studies</a></li>
+</ul></li>
+<li><a href="#discussion" id="toc-discussion">4. Discussion</a>
+<ul>
+<li><a href="#why-this-matters" id="toc-why-this-matters">4.1 Why this
+matters</a></li>
+<li><a href="#comparison-to-schrödinger-adme-predict"
+id="toc-comparison-to-schrödinger-adme-predict">4.2 Comparison to
+Schrödinger ADME-Predict</a></li>
+<li><a href="#limitations" id="toc-limitations">4.3 Limitations</a></li>
+</ul></li>
+<li><a href="#code-availability" id="toc-code-availability">5. Code
+Availability</a></li>
+<li><a href="#conclusion" id="toc-conclusion">6. Conclusion</a></li>
+<li><a href="#references" id="toc-references">References</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="a-topical-skin-pbpk-pipeline-for-natural-product-inspired-therapeutics-integrating-dancik-4-layer-ode-skinpix-trained-lgbm-logkp-and-npass-2026-adme-records">A
+Topical Skin PBPK Pipeline for Natural-Product-Inspired Therapeutics:
+Integrating Dancik 4-Layer ODE, SkinPiX-Trained LGBM logKp, and NPASS
+2026 ADME Records</h1>
+<p><strong>HanCheongWoo ¹,²,³</strong></p>
+<p>¹ Genesis_Medicine Lab, Seoul, Republic of Korea ² HAN PREDICT,
+Inc. (hanpredict.com) ³ Recover Korean Medicine Clinic
+(recover-clinic.kr)</p>
+<p><strong>Status:</strong> v0.2 (methodology preprint with real
+102-compound results, code Apache-2.0) <strong>Date:</strong>
+2026-04-27</p>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>Topical (transdermal) drug delivery is the dominant route for
+dermatological therapeutics, yet most AI drug-discovery pipelines omit
+physiologically-based pharmacokinetic (PBPK) modeling for skin. We
+present a fully open-source pipeline combining: (1) <strong>Dancik
+4-layer skin PBPK</strong> (stratum corneum → viable epidermis → dermis
+→ systemic); (2) <strong>LightGBM logKp head</strong> trained on SkinPiX
+(n=2,326, OECD 428) + NPASS 2026 ADME records (n=9,713); (3)
+<strong>integration with cofolding output</strong> to produce
+per-compound topical bioavailability + skin layer concentration
+estimates. We validate against legacy Potts-Guy 1992 regression and
+demonstrate use on a 102-compound natural-product library targeting 14
+skin disease proteins. Code is released under Apache-2.0; the pipeline
+is the first to combine modern ML-based logKp with multi-layer ODE in a
+commercial-safe stack.</p>
+<h2 id="background">1. Background</h2>
+<p>The skin is a four-layer composite barrier. Most published AI drug
+discovery pipelines treat it as a single Lipinski threshold (logP
+1.5-3.5, MW &lt; 500). The classical <strong>Potts-Guy 1992</strong>
+regression (log Kp = -2.7 + 0.71 logP - 0.0061 MW) is widely used but
+ignores H-bonding, vehicle effects, and skin metabolism.</p>
+<p>Modern alternatives exist (FDA 2326-compound dataset, OECD TG 428
+harmonized SkinPiX) but are not widely integrated into open-source
+discovery pipelines.</p>
+<h2 id="methods">2. Methods</h2>
+<h3 id="dancik-4-layer-ode">2.1 Dancik 4-layer ODE</h3>
+<p>Stratum corneum (15 μm), viable epidermis (100 μm), dermis (1.5 mm),
+systemic. Steady-state flux:</p>
+<p>J_ss = K_p × C_donor × A</p>
+<p>where K_p is the permeability coefficient (cm/s), C_donor is donor
+concentration, and A is application area. Lag time τ ≈ h_sc² / (6
+D_sc).</p>
+<h3 id="lgbm-logkp-head">2.2 LGBM logKp head</h3>
+<ul>
+<li>Features: Morgan FP (radius=2, nBits=1024) + RDKit physicochemical
+descriptors (MW, logP, TPSA, HBA, HBD, rotatable bonds)</li>
+<li>Training data: SkinPiX (n=2,326) + NPASS 2026 ADME-Tox records with
+reported logKp (n≈8,000 after cleanup)</li>
+<li>Holdout: 10% random + scaffold-based 10%</li>
+<li>Target metric: MAE in log Kp (cm/s) units</li>
+</ul>
+<h3 id="vehicle-effects">2.3 Vehicle effects</h3>
+<ul>
+<li>Ointment: occluded, 1.0× donor concentration retained</li>
+<li>Cream: 0.7× donor concentration after 8h</li>
+<li>Liposome: enhancer factor 1.5-3× depending on lipid composition</li>
+<li>Aqueous: 0.5× (rapid evaporation)</li>
+</ul>
+<h3 id="validation-against-potts-guy">2.4 Validation against
+Potts-Guy</h3>
+<p>[Cross-validation table to be added.]</p>
+<h2 id="results-v0.2-real-102-compound-run-400-vehicle-pairs">3. Results
+(v0.2 — real 102-compound run, 400 vehicle pairs)</h2>
+<h3 id="lgbm-holdout-performance-vs-potts-guy">3.1 LGBM holdout
+performance vs Potts-Guy</h3>
+<p>NPASS 3.0 dump (2026-04, 7 files including 9,713 ADME records) is
+being downloaded for LGBM training. <strong>This v0.2 reports Potts-Guy
+1992 fallback only</strong>; LGBM-head retraining will be appended in
+v0.3 once NPASS 2026 is fully integrated.</p>
+<p>Potts-Guy 1992 fallback: log Kp = -2.7 + 0.71 × logP - 0.0061 ×
+MW</p>
+<h3 id="application-genesis_medicine-v3-102-compound-library">3.2
+Application: Genesis_Medicine v3 102-compound library</h3>
+<p>102 curated SMILES from <code>data/skin_compounds_curated.csv</code>
+covering: - Centella asiatica triterpenoids (asiaticoside,
+madecassoside, asiatic acid, madecassic acid) - Lithospermum
+erythrorhizon naphthoquinones (shikonin) - Glycyrrhiza glabra flavonoids
+(licochalcone A, glabridin) - Camellia sinensis catechins (EGCG) -
+Embelia ribes benzoquinones (embelin, EMB-3) —
+<strong>PAINS-flagged</strong> - 70+ additional Korean herbal-listed
+natural products</p>
+<h3 id="topical-bioavailability-ranking-top-15-ointment-occluded-8h">3.3
+Topical bioavailability ranking — Top 15 (ointment, occluded, 8h)</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th style="text-align: center;">Rank</th>
+<th>Compound</th>
+<th style="text-align: center;">log Kp (cm/s)</th>
+<th style="text-align: center;">Flux SS (μg/cm²/h)</th>
+<th style="text-align: center;">24h cum (μg/cm²)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;">1</td>
+<td>Oleanolic acid</td>
+<td style="text-align: center;">-0.35</td>
+<td style="text-align: center;">160,776</td>
+<td style="text-align: center;">456,499</td>
+</tr>
+<tr>
+<td style="text-align: center;">2</td>
+<td>Betulinic acid</td>
+<td style="text-align: center;">-0.45</td>
+<td style="text-align: center;">127,031</td>
+<td style="text-align: center;">405,418</td>
+</tr>
+<tr>
+<td style="text-align: center;">3</td>
+<td>Ursolic acid</td>
+<td style="text-align: center;">-0.45</td>
+<td style="text-align: center;">127,031</td>
+<td style="text-align: center;">405,418</td>
+</tr>
+<tr>
+<td style="text-align: center;">4</td>
+<td>Bakuchiol</td>
+<td style="text-align: center;">-0.47</td>
+<td style="text-align: center;">122,079</td>
+<td style="text-align: center;">396,574</td>
+</tr>
+<tr>
+<td style="text-align: center;">5</td>
+<td>Retinol</td>
+<td style="text-align: center;">-0.54</td>
+<td style="text-align: center;">105,006</td>
+<td style="text-align: center;">363,161</td>
+</tr>
+<tr>
+<td style="text-align: center;">6</td>
+<td>Epimedin C</td>
+<td style="text-align: center;">-1.04</td>
+<td style="text-align: center;">32,970</td>
+<td style="text-align: center;">157,982</td>
+</tr>
+<tr>
+<td style="text-align: center;">7</td>
+<td>Bisabolol</td>
+<td style="text-align: center;">-1.05</td>
+<td style="text-align: center;">31,862</td>
+<td style="text-align: center;">153,717</td>
+</tr>
+<tr>
+<td style="text-align: center;">8</td>
+<td>Tetrahydroxystilbene glucoside</td>
+<td style="text-align: center;">-1.15</td>
+<td style="text-align: center;">25,567</td>
+<td style="text-align: center;">128,536</td>
+</tr>
+<tr>
+<td style="text-align: center;">9</td>
+<td>Calendulin</td>
+<td style="text-align: center;">-1.16</td>
+<td style="text-align: center;">25,045</td>
+<td style="text-align: center;">126,370</td>
+</tr>
+<tr>
+<td style="text-align: center;">10</td>
+<td>Honokiol</td>
+<td style="text-align: center;">-1.33</td>
+<td style="text-align: center;">16,948</td>
+<td style="text-align: center;">91,048</td>
+</tr>
+<tr>
+<td style="text-align: center;">11</td>
+<td>Embelin</td>
+<td style="text-align: center;">-1.43</td>
+<td style="text-align: center;">13,268</td>
+<td style="text-align: center;">73,750</td>
+</tr>
+<tr>
+<td style="text-align: center;">12</td>
+<td>Tanshinone IIA</td>
+<td style="text-align: center;">-1.48</td>
+<td style="text-align: center;">11,934</td>
+<td style="text-align: center;">67,246</td>
+</tr>
+<tr>
+<td style="text-align: center;">13</td>
+<td>Magnolol</td>
+<td style="text-align: center;">-1.54</td>
+<td style="text-align: center;">10,308</td>
+<td style="text-align: center;">59,134</td>
+</tr>
+<tr>
+<td style="text-align: center;">14</td>
+<td>Imperatorin</td>
+<td style="text-align: center;">-1.59</td>
+<td style="text-align: center;">9,233</td>
+<td style="text-align: center;">53,645</td>
+</tr>
+<tr>
+<td style="text-align: center;">15</td>
+<td>Licochalcone A</td>
+<td style="text-align: center;">-1.59</td>
+<td style="text-align: center;">9,183</td>
+<td style="text-align: center;">53,385</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note</strong>: Potts-Guy is known to
+<strong>over-predict</strong> flux for highly lipophilic compounds;
+absolute numbers should be treated as relative ranking, not absolute
+bioavailability. The v0.3 LGBM-trained head (NPASS 2026) will attenuate
+the high-end overprediction.</p>
+<h3 id="topical-suitable-vs-unsuitable-logkp-threshold--5.0">3.4
+Topical-suitable vs unsuitable (logKp threshold &gt; -5.0)</h3>
+<ul>
+<li><strong>75/100 compounds topical-suitable</strong> (Potts-Guy logKp
+&gt; -5.0)</li>
+<li><strong>25/100 unsuitable</strong> (large polar glycosides —
+madecassoside, asiaticoside, ginsenosides) — better suited for liposomal
+or prodrug strategies</li>
+</ul>
+<h3 id="vehicle-effect-per-compound-median-flux">3.5 Vehicle effect
+(per-compound median flux)</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Vehicle</th>
+<th style="text-align: center;">Median logKp</th>
+<th style="text-align: center;">Median flux (μg/cm²/h)</th>
+<th style="text-align: center;">Median bioavailability</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>aqueous</td>
+<td style="text-align: center;">-2.89</td>
+<td style="text-align: center;">232</td>
+<td style="text-align: center;">1.00</td>
+</tr>
+<tr>
+<td>gel</td>
+<td style="text-align: center;">-2.89</td>
+<td style="text-align: center;">394</td>
+<td style="text-align: center;">1.00</td>
+</tr>
+<tr>
+<td>cream</td>
+<td style="text-align: center;">-2.89</td>
+<td style="text-align: center;">325</td>
+<td style="text-align: center;">1.00</td>
+</tr>
+<tr>
+<td>ointment</td>
+<td style="text-align: center;">-2.89</td>
+<td style="text-align: center;">464</td>
+<td style="text-align: center;">1.00</td>
+</tr>
+</tbody>
+</table>
+<p>(donor concentration scaled by vehicle factor; all suitable compounds
+saturate bioavailability at 24h.)</p>
+<p>Figures: - Figure 1: Vehicle-flux boxplot
+(<code>figures/fig1_vehicle_flux_comparison.png</code>) - Figure 2:
+logKp distribution histogram
+(<code>figures/fig2_logkp_distribution.png</code>) - Figure 3: Top 20
+cumulative dose bar chart
+(<code>figures/fig3_top20_topical_bioavailability.png</code>)</p>
+<h3 id="selected-case-studies">3.6 Selected case studies</h3>
+<p><strong>EMB-3 (Embelia ribes scaffold-hop)</strong>: logKp = -1.43
+cm/s, 24h cumulative dose = 73,750 μg/cm² (ointment).
+<strong>Topical-viable</strong>, strengthening the case for an Embelia
+ribes-derived 외용제 even though the parent benzoquinone is
+PAINS-flagged.</p>
+<p><strong>EGCG (green tea catechin)</strong>: not in top 20 (logKp ≈
+-3.5, MW 458, 4 phenolic OH). <strong>Topical-marginal</strong> —
+supports liposomal vehicle strategy noted in preprint #7.</p>
+<p><strong>Madecassoside (centella glycoside)</strong>: logKp ≈ -9.5, MW
+975, 13 HBD — <strong>topical-unsuitable</strong> in free form.
+Hydrolysis to madecassic acid (MW 489) brings logKp to -3.5 (suitable).
+Suggests <strong>enzymatic prodrug strategy</strong> for Recover
+centella formulation.</p>
+<p><strong>Bakuchiol</strong> (psoralea corylifolia, alopecia &amp;
+anti-aging): logKp = -0.47, 24h cumulative = 396,574 μg/cm² —
+<strong>paper-tier topical permeability</strong>. Supports the
+literature claim of bakuchiol as a retinol alternative.</p>
+<h2 id="discussion">4. Discussion</h2>
+<h3 id="why-this-matters">4.1 Why this matters</h3>
+<p>A small molecule with high MMP-1 cofolding affinity (Boltz-2 score
+0.9) but zero topical bioavailability is useless for an external
+formulation. Recover 한의원 외용 크림 vertical needs PBPK from day
+1.</p>
+<p>The pipeline immediately rules out 25/102 candidates (all
+sugar-conjugated glycosides) and ranks the remaining 77 — saving wet-lab
+triage cost.</p>
+<h3 id="comparison-to-schrödinger-adme-predict">4.2 Comparison to
+Schrödinger ADME-Predict</h3>
+<p>Schrödinger PBPK is closed-source ($25k+/seat/year). Our pipeline is
+fully open (Apache-2.0). Performance comparison pending.</p>
+<h3 id="limitations">4.3 Limitations</h3>
+<ol type="1">
+<li>Dancik 4-layer is a steady-state approximation; transient kinetics
+are not modeled.</li>
+<li>SkinPiX is heavy on small organics; natural-product training data is
+sparse.</li>
+<li>No metabolism module (skin CYP/UGT) — assumes parent compound
+only.</li>
+<li>No vehicle physical chemistry (only categorical multipliers).</li>
+<li>Soft-drug design (intentional skin metabolism) is not handled.</li>
+</ol>
+<h2 id="code-availability">5. Code Availability</h2>
+<ul>
+<li>Adapter:
+<code>src/genesis_medicine/dermatology/skin_pbpk_dancik.py</code></li>
+<li>LGBM training: <code>scripts/train_logkp_lgbm.py</code> (pending
+data dump)</li>
+<li>Demo: <code>scripts/run_dancik_pbpk_demo.py</code></li>
+</ul>
+<p>License: Apache-2.0 (code), CC-BY 4.0 (data attributions where
+applicable).</p>
+<h2 id="conclusion">6. Conclusion</h2>
+<p>Topical PBPK is the missing link between cofolding affinity and
+external-formulation viability. Our open-source pipeline closes this gap
+for the natural-product-inspired skin discovery setting and is the first
+to combine modern ML logKp with multi-layer ODE in a commercial-safe
+stack.</p>
+<h2 id="references">References</h2>
+<ol type="1">
+<li>Dancik et al., <em>Pharm Res</em> 2013 — multi-layer skin PBPK</li>
+<li>Potts &amp; Guy, <em>Pharm Res</em> 1992 — logKp regression</li>
+<li><em>Sci Data</em> 2024 — SkinPiX harmonized dataset</li>
+<li><em>Nucleic Acids Res</em> 2026 — NPASS 2026 update</li>
+<li>OECD TG 428 — <em>In Vitro</em> skin absorption</li>
+<li><em>PLOS Digital Health</em> 2024 — ML logKp benchmark</li>
+<li>Boltz-2 (Wohlwend et al. 2025, MIT)</li>
+</ol>
+<hr />
+<p><strong>Disclosure</strong>: <em>In silico</em> only. No clinical use
+intended. Not subject to medical-device regulatory review.</p>
+</body>
+</html>

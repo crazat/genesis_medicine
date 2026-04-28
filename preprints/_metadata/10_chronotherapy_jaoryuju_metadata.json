@@ -1,0 +1,34 @@
+{
+  "paper_id": "10_chronotherapy_jaoryuju",
+  "title": "Chronotherapy of topical Korean medicine: a quantitative framework integrating 자오류주(子午流注) twelve-meridian timing with circadian molecular biology and topical pharmacokinetics",
+  "abstract": "Korean traditional medicine maintains a centuries-old chronotherapeutic framework — 자오류주(子午流注, Cha-Oh-Ryu-Ju) twelve-meridian timing — in which the twelve principal meridians (간/담/심/소장/비/위/폐/대장/신/방광/심포/삼초) are assigned 2-hour windows of peak qi flow (시진, sì-jin) across the 24-hour cycle. Modern circadian biology has revealed substantial molecular evidence for cell-autonomous and tissue-level circadian rhythms, including in skin (hair-follicle stem-cell rhythmicity, keratinocyte proliferation timing, sebaceous lipid output) and in drug-metabolizing enzymes (CYP P450 family, UGT, sulfotransferase). We propose a quantitative framework that integrates these two independent traditions: a mapping table between 자오류주 시진 windows and the principal molecular circadian outputs relevant to skin and to topical-drug pharmacokinetics, and a time-of-day-conditioned topical-treatment schedule for Korean-medicine-clinic protocols. We do not claim that 자오류주 has direct molecular validity; we present the framework as a structured hypothesis that can be tested experimentally and that may improve topical-treatment timing within Korean medicine practice. All proposals are conceptual; no clinical or laboratory experiments are reported. Keywords: 자오류주, chronotherapy, circadian biology, skin pharmacokinetics, topical drug timing, Korean medicine, 12-meridian, framework.",
+  "keywords": [
+    "chronobiology",
+    "traditional medicine"
+  ],
+  "target_server": "bioRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "<USER_FILL_ORCID_iD>",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "chronobiology",
+  "subcategory": "traditional medicine",
+  "manuscript_path": "preprints/10_chronotherapy_jaoryuju/manuscript.md",
+  "pdf_path": "preprints/10_chronotherapy_jaoryuju/manuscript.pdf",
+  "n_figures": 1,
+  "word_count_md": 2080,
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results."
+}

@@ -1,0 +1,35 @@
+{
+  "paper_id": "06_acne_microbiome",
+  "title": "In silico screening of Korean herbal compounds against the SRD5A2 / AR sebaceous-androgen axis for inflammatory acne: real Boltz-2 data identifies Baicalein as top topical-friendly candidate; Berberine carries a critical hERG safety flag",
+  "abstract": "Inflammatory acne pathogenesis includes androgen-driven sebaceous activity (SRD5A1/2 + AR + SREBP1), ductal hyperkeratinization, *Cutibacterium acnes* colonization with virulence factor expression (RoxP, GehA, sortase), and inflammatory cascades. Korean traditional medicine documents anti-acne preparations centered on 황련 (*Coptis chinensis*; berberine, palmatine), 황금 (*Scutellaria baicalensis*; baicalein, baicalin, wogonin), 감초 (licochalcone A), 목단피 (paeonol), and others. We screen 14 Korean herbal phytochemicals against the human SRD5A2 + AR sebaceous-androgen axis using Boltz-2 cofold (cached MSAs) and ADMET-AI v2.0.1. SREBP1, *C. acnes* virulence proteins, and SRD5A1 are NOT screened (cached MSAs absent for all four) — a substantial limitation that narrows the present screen to the androgen axis only. Real Boltz-2 results identify Baicalein (황금) as top mean affinity (0.744) with AR engagement 0.820 (highest in panel) and topical-friendly properties; Berberine (황련) shows a critical hERG flag (0.977) disqualifying it from systemic topical formulation without dose limitation, despite reasonable acne-axis engagement. Wogonin (황금) has the cleanest ADMET safety profile (AMES 0.247) at moderate affinity. The Korean traditional formulary's combinatorial pattern of 황련 + 황금 + 감초 finds partial structural support but with the safety caveats above. All results are in silico; sebaceous cell + *C. acnes* assay validation remain the explicit next step. Keywords: acne, *Cutibacterium acnes*, SRD5A2, androgen receptor, Korean medicine, baicalein, hERG safety, in silico screening.",
+  "keywords": [
+    "microbiology",
+    "skin",
+    "AI"
+  ],
+  "target_server": "bioRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "<USER_FILL_ORCID_iD>",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "microbiology",
+  "subcategory": "skin",
+  "manuscript_path": "preprints/06_acne_microbiome/manuscript.md",
+  "pdf_path": "preprints/06_acne_microbiome/manuscript.pdf",
+  "n_figures": 2,
+  "word_count_md": 2739,
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results."
+}

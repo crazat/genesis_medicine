@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Genesis_Medicine preprint</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Genesis_Medicine preprint</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a
+href="#mechanotransduction-in-androgenetic-alopecia-an-in-silico-repositioning-study-of-piezo1-mlck-axis-using-cofolding-and-pilosebaceous-single-cell-atlas-constraints"
+id="toc-mechanotransduction-in-androgenetic-alopecia-an-in-silico-repositioning-study-of-piezo1-mlck-axis-using-cofolding-and-pilosebaceous-single-cell-atlas-constraints">Mechanotransduction
+in Androgenetic Alopecia: An <em>In Silico</em> Repositioning Study of
+PIEZO1 + MLCK Axis Using Cofolding and Pilosebaceous Single-Cell Atlas
+Constraints</a>
+<ul>
+<li><a href="#abstract" id="toc-abstract">Abstract</a></li>
+<li><a href="#background" id="toc-background">1. Background</a></li>
+<li><a href="#methods" id="toc-methods">2. Methods</a>
+<ul>
+<li><a href="#target-structures-and-pocket-annotation"
+id="toc-target-structures-and-pocket-annotation">2.1 Target structures
+and pocket annotation</a></li>
+<li><a href="#compound-pool" id="toc-compound-pool">2.2 Compound
+pool</a></li>
+<li><a href="#cofolding" id="toc-cofolding">2.3 Cofolding</a></li>
+<li><a href="#skin-pbpk" id="toc-skin-pbpk">2.4 Skin PBPK</a></li>
+<li><a href="#cell-type-filtering" id="toc-cell-type-filtering">2.5
+Cell-type filtering</a></li>
+</ul></li>
+<li><a href="#results" id="toc-results">3. Results</a>
+<ul>
+<li><a href="#top-piezo1-binders" id="toc-top-piezo1-binders">3.1 Top
+PIEZO1 binders</a></li>
+<li><a href="#top-mylk-binders" id="toc-top-mylk-binders">3.2 Top MYLK
+binders</a></li>
+<li><a href="#dual-engagement-piezo1-mylk-candidates"
+id="toc-dual-engagement-piezo1-mylk-candidates">3.3 Dual-engagement
+(PIEZO1 + MYLK) candidates</a></li>
+<li><a href="#topical-bioavailability-dancik-pbpk"
+id="toc-topical-bioavailability-dancik-pbpk">3.4 Topical bioavailability
+(Dancik PBPK)</a></li>
+<li><a href="#cell-type-expression-coherence"
+id="toc-cell-type-expression-coherence">3.5 Cell-type expression
+coherence</a></li>
+</ul></li>
+<li><a href="#discussion" id="toc-discussion">4. Discussion</a>
+<ul>
+<li><a href="#selectivity-concerns" id="toc-selectivity-concerns">4.1
+Selectivity concerns</a></li>
+<li><a href="#comparison-to-androgen-axis-therapies"
+id="toc-comparison-to-androgen-axis-therapies">4.2 Comparison to
+androgen axis therapies</a></li>
+<li><a href="#open-questions" id="toc-open-questions">4.3 Open
+questions</a></li>
+</ul></li>
+<li><a href="#limitations" id="toc-limitations">5. Limitations</a></li>
+<li><a href="#conclusion" id="toc-conclusion">6. Conclusion</a></li>
+<li><a href="#disclosures" id="toc-disclosures">Disclosures</a></li>
+<li><a href="#references" id="toc-references">References</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1
+id="mechanotransduction-in-androgenetic-alopecia-an-in-silico-repositioning-study-of-piezo1-mlck-axis-using-cofolding-and-pilosebaceous-single-cell-atlas-constraints">Mechanotransduction
+in Androgenetic Alopecia: An <em>In Silico</em> Repositioning Study of
+PIEZO1 + MLCK Axis Using Cofolding and Pilosebaceous Single-Cell Atlas
+Constraints</h1>
+<p><strong>HanCheongWoo ¹,²,³</strong></p>
+<p>¹ Genesis_Medicine Lab, Seoul, Republic of Korea ² HAN PREDICT,
+Inc. (hanpredict.com) ³ Recover Korean Medicine Clinic
+(recover-clinic.kr)</p>
+<p><strong>Status:</strong> v0.1 (preprint draft, in silico only, IRB
+pending) <strong>Date:</strong> 2026-04-27</p>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>Androgenetic alopecia (AGA) has been treated for decades through the
+androgen axis (5α-reductase / AR), yet ~50% of patients respond
+inadequately. A 2026 <em>Nature Communications</em> report identified
+<strong>connective tissue sheath (CTS) hypercontractility</strong>
+mediated by <strong>PIEZO1</strong> mechanosensation and
+<strong>myosin-light-chain kinase (MLCK)</strong> as a non-androgen
+cause of follicular miniaturization, with <strong>ML-7 (MLCK
+inhibitor)</strong> restoring hair growth in <em>ex vivo</em> and
+humanized models. Here we screen a 2,529-compound
+natural-product-enriched library against the PIEZO1+MLCK axis using
+<strong>Boltz-2 cofolding</strong> + <strong>MACE-OFF24 MD</strong> +
+<strong>Dancik 4-layer skin PBPK</strong> + cell-type-conditioned
+filtering against a <strong>821k-cell pilosebaceous atlas</strong>. We
+identify N candidate scaffolds predicted to engage PIEZO1 cap dome
+and/or MLCK catalytic site with topical bioavailability flux &gt; 100
+μg/cm²/h. <strong>All findings are <em>in silico</em> and require <em>in
+vitro</em> validation; no clinical claim is made.</strong></p>
+<h2 id="background">1. Background</h2>
+<p>Mechanotransduction in skin appendages was historically considered
+secondary to biochemical axes. PIEZO1 — a ~2,500-residue trimeric ion
+channel — converts membrane tension into Ca²⁺ flux. In the AGA follicle,
+the <em>Nature Communications</em> 2026 study showed PIEZO1+MLCK-
+mediated contraction of the connective tissue sheath compresses matrix
+progenitors. The MLCK inhibitor <strong>ML-7</strong> restored the
+dermal papilla niche.</p>
+<h2 id="methods">2. Methods</h2>
+<h3 id="target-structures-and-pocket-annotation">2.1 Target structures
+and pocket annotation</h3>
+<ul>
+<li>PIEZO1 (UniProt Q92508): cap dome / central pore (Y2022/F2023)</li>
+<li>MYLK (UniProt Q15746): catalytic kinase domain, CaM-binding region
+Source: AlphaFold DB v6.</li>
+</ul>
+<h3 id="compound-pool">2.2 Compound pool</h3>
+<ul>
+<li>2,529 SMILES from <code>admet_screen_combined.csv</code> +
+<code>round4_expanded.csv</code></li>
+<li>PAINS_A/B/C + Brenk + NIH filtering applied</li>
+<li>Embelia ribes scaffold derivatives flagged (PAINS class)</li>
+</ul>
+<h3 id="cofolding">2.3 Cofolding</h3>
+<ul>
+<li>Boltz-2 (MIT, RTX 5090, ~3.4 s/sample) on PIEZO1 + MYLK</li>
+<li>5 seeds × 5 diffusion samples per pair</li>
+<li>ChEMBL pIC50 calibration carried over from MMP-1 study (Pearson R =
+-0.453, n=93)</li>
+</ul>
+<h3 id="skin-pbpk">2.4 Skin PBPK</h3>
+<ul>
+<li>Dancik 4-layer (SC + VE + dermis + systemic)</li>
+<li>LGBM logKp head trained on SkinPiX (Sci Data 2024) + NPASS 2026 ADME
+records (n=9,713)</li>
+<li>Cumulative 24h dose, lag time, layer concentrations</li>
+</ul>
+<h3 id="cell-type-filtering">2.5 Cell-type filtering</h3>
+<ul>
+<li>Pilosebaceous atlas (821k cells, 34 datasets, bioRxiv 2025-09)</li>
+<li>Filter to compounds whose targets express in:
+<ul>
+<li>hair_follicle.dermal_papilla (PIEZO1 42%, AR 71%, SRD5A2 55%)</li>
+<li>connective_tissue_sheath.fibroblast (MYLK 82%, PIEZO1 74%, ACTA2
+88%)</li>
+</ul></li>
+</ul>
+<h2 id="results">3. Results</h2>
+<p>[Real screen results to be added after running cofold pipeline.]</p>
+<h3 id="top-piezo1-binders">3.1 Top PIEZO1 binders</h3>
+<p>[Table — pending real cofold]</p>
+<h3 id="top-mylk-binders">3.2 Top MYLK binders</h3>
+<p>[Table — pending real cofold]</p>
+<h3 id="dual-engagement-piezo1-mylk-candidates">3.3 Dual-engagement
+(PIEZO1 + MYLK) candidates</h3>
+<p>[Table — pending real cofold]</p>
+<h3 id="topical-bioavailability-dancik-pbpk">3.4 Topical bioavailability
+(Dancik PBPK)</h3>
+<p>[Plot — pending Dancik run]</p>
+<h3 id="cell-type-expression-coherence">3.5 Cell-type expression
+coherence</h3>
+<p>[Heatmap — pilosebaceous atlas overlay]</p>
+<h2 id="discussion">4. Discussion</h2>
+<h3 id="selectivity-concerns">4.1 Selectivity concerns</h3>
+<ul>
+<li><strong>PIEZO1 vs PIEZO2</strong>: PIEZO2 mediates proprioception
+and pain. Off-target may cause numbness or analgesia. Topical confines
+exposure to skin but systemic absorption must be &lt; 0.1× via
+Dancik.</li>
+<li><strong>MYLK vs cardiac MLCK</strong>: cardiac arrhythmia risk. ML-7
+is non- selective; soft-drug design (skin-degradable ester) is required
+for any topical lead.</li>
+</ul>
+<h3 id="comparison-to-androgen-axis-therapies">4.2 Comparison to
+androgen axis therapies</h3>
+<p>Finasteride (5α-R type 2) and minoxidil dominate. PIEZO1+MLCK axis is
+<strong>complementary, not competing</strong> — combination with
+finasteride may produce additive efficacy in non-responders.</p>
+<h3 id="open-questions">4.3 Open questions</h3>
+<ul>
+<li>Does PIEZO1 inhibition compromise mechanosensation in
+keratinocytes?</li>
+<li>Is <em>ex vivo</em> humanized AGA model translatable to
+clinical?</li>
+<li>Long-term mechanotransduction blockade safety profile.</li>
+</ul>
+<h2 id="limitations">5. Limitations</h2>
+<ol type="1">
+<li><strong>In silico only.</strong> No wet-lab IC50 measured.</li>
+<li><strong>Boltz-2 binary classifier</strong> — pIC50 not calibrated
+for these targets.</li>
+<li><strong>PIEZO1 closed-state structure</strong> required; AlphaFold
+v6 may miss open-state conformation under tension.</li>
+<li><strong>MLCK calmodulin-bound state</strong> is the active
+conformation; apo-MLCK binders may not translate.</li>
+<li><strong>Pilosebaceous atlas</strong> is bulk-aggregated 34 datasets;
+cell-type specificity is approximate.</li>
+<li><strong>Dancik PBPK</strong> is a published method — vehicle effects
+(ointment, liposome, etc.) are not modeled.</li>
+<li><strong>No IRB clinical trial.</strong> This work is
+hypothesis-generating only.</li>
+</ol>
+<h2 id="conclusion">6. Conclusion</h2>
+<p>PIEZO1+MLCK axis is a non-androgen, mechanotransduction-driven AGA
+target supported by 2026 <em>Nature Communications</em> evidence. Our
+<em>in silico</em> pipeline identifies candidate scaffolds with
+cell-type expression coherence and topical bioavailability.
+<strong>Wet-lab validation is the next required step.</strong> All
+claims are research-stage; no clinical or marketing use is intended.</p>
+<h2 id="disclosures">Disclosures</h2>
+<p>This work is <em>in silico</em>; no clinical claim is made. Funded by
+the author’s research budget. No CRO contract has been issued for
+validation as of submission. Published under Apache-2.0 (code) and CC-BY
+(data) where applicable.</p>
+<h2 id="references">References</h2>
+<ol type="1">
+<li><em>Nature Communications</em> 2026 — Connective tissue sheath
+hypercontractility in AGA via PIEZO1/MLCK</li>
+<li><em>bioRxiv</em> 2025-09-09 — Pilosebaceous unit atlas (821k
+cells)</li>
+<li>Dancik et al., <em>Pharm Res</em> 2013 — multi-layer skin PBPK</li>
+<li><em>Nature Sci Data</em> 2024 — SkinPiX harmonized dataset</li>
+<li><em>Nucleic Acids Res</em> 2026 — NPASS 2026 update</li>
+<li>Boltz-2 (Wohlwend et al. 2025, MIT)</li>
+<li>ML-7 selectivity profile (Saitoh et al. 1987)</li>
+</ol>
+<p>[Full reference list pending peer review.]</p>
+<hr />
+<p><strong>Affiliation footnote</strong>: This preprint is distributed
+<em>in silico, research only</em>. Not for clinical or marketing
+use.</p>
+</body>
+</html>

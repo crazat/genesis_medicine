@@ -1,0 +1,35 @@
+{
+  "paper_id": "02_recover_workflow",
+  "title": "An integrated AI workflow for a Korean medicine clinic: 3D facial diagnostics, RAG-based electronic medical records, and computational molecular prescription",
+  "abstract": "Korean medicine (한의학) clinics face a structural gap between traditional pattern-based diagnosis (변증) and modern personalized molecular medicine. We describe an integrated end-to-end workflow assembled across three affiliated entities — HAN PREDICT, Inc. (AI healthcare technology platform), Genesis_Medicine Lab (in silico natural-product drug discovery), and Recover Korean Medicine Clinic (skin-regeneration practice opening 2026-08-15) — that operationalizes a patient encounter as a sequence of (i) 3D facial-surface diagnostic capture (Morpheus 3D scanner and iPhone TrueDepth), (ii) retrieval-augmented electronic medical records with traditional-pattern reasoning (Smart Charts, integrating InBody body composition), and (iii) molecular-level prescription generation drawing on a curated library of Korean herbal natural products evaluated through a REINVENT4 + Boltz-2 + corrected absolute binding free energy (ABFE) pipeline. We outline the regulatory framework (Personal Information Protection Act §23-2 biometric-data handling, Korea AI Basic Act 2026, Medical Service Act §17/§56, HIPAA-aligned data security) under which the system operates, present a representative scar-treatment patient journey, and document specific limitations including the absence of randomized clinical validation, the in silico nature of the molecular-prescription module, and zinc-coordination constraints in metalloprotease modeling. We do not assert clinical efficacy. The integrated workflow is presented as a system-design contribution to support reproducible Korean medicine practice; clinical and regulatory validation under an IRB-approved protocol (filed 2026-04-27) is the explicit next step. Keywords: Korean medicine, 한의학, AI clinic workflow, 3D facial diagnostics, retrieval-augmented EMR, in silico drug discovery, regulatory compliance, traditional-modern integration.",
+  "keywords": [
+    "medical informatics",
+    "AI",
+    "drug discovery"
+  ],
+  "target_server": "medRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "<USER_FILL_ORCID_iD>",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "medical informatics",
+  "subcategory": "AI",
+  "manuscript_path": "preprints/02_recover_workflow/manuscript.md",
+  "pdf_path": "preprints/02_recover_workflow/manuscript.pdf",
+  "n_figures": 2,
+  "word_count_md": 4368,
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results."
+}

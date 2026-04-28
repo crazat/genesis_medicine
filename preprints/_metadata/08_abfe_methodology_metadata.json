@@ -1,0 +1,35 @@
+{
+  "paper_id": "08_abfe_methodology",
+  "title": "A calibrated absolute binding free energy pipeline with flat-bottom centroid restraint and analytical standard-state correction for natural-product scaffold-hopping in OpenMM 8 / openmmtools 0.26",
+  "abstract": "Absolute binding free energy (ABFE) calculation is increasingly used to evaluate ligand-protein affinity at quantitative resolution, but practical implementation requires careful protocol assembly: (i) thermodynamic-cycle closure across complex- and solvent-decoupling legs, (ii) appropriate ligand restraints (Boresch 6-DOF orientational, or simpler distance restraints), (iii) analytical standard-state correction, and (iv) calibration on benchmark systems. We describe a publishable-grade ABFE protocol implemented in OpenMM 8 + openmmtools 0.26, using a flat-bottom centroid distance restraint between ligand and binding-site receptor anchors (k = 10 kcal mol⁻¹ Å⁻², r_max = 8 Å) and the analytical standard-state correction ΔG_R° = -RT ln(V_R / V°), where V_R = (4/3)π r_max³ and V° = 1660.5 Å³. The cycle assembles as ΔG_bind = ΔG_solvent_decouple − ΔG_complex_decouple − ΔG_R°. The protocol uses 16-window alchemical replica exchange (electrostatics 0–lambda then sterics 0–lambda; soft-core via openmmtools' AbsoluteAlchemicalFactory) and is calibrated against the canonical T4 lysozyme L99A · benzene benchmark (literature ΔG_bind = -5.18 ± 0.18 kcal/mol, Mobley et al. JCP 2007). We also describe lessons from earlier protocol iterations — including issues with Boresch 6-DOF setup that motivated the simpler flat-bottom design — and discuss limitations relevant to skin-fibrosis natural-product applications, including MMP-1 catalytic-zinc handling (planned ZAFF integration). Complete code is available open-source under Apache-2.0. Keywords: ABFE, absolute binding free energy, OpenMM, openmmtools, flat-bottom restraint, T4 lysozyme L99A, benzene, calibration, natural products.",
+  "keywords": [
+    "computational chemistry",
+    "FEP",
+    "ABFE"
+  ],
+  "target_server": "ChemRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "<USER_FILL_ORCID_iD>",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "computational chemistry",
+  "subcategory": "FEP",
+  "manuscript_path": "preprints/08_abfe_methodology/manuscript.md",
+  "pdf_path": "preprints/08_abfe_methodology/manuscript.pdf",
+  "n_figures": 3,
+  "word_count_md": 6066,
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results."
+}

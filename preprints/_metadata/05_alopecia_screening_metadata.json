@@ -1,0 +1,35 @@
+{
+  "paper_id": "05_alopecia_screening",
+  "title": "In silico screening of 15 Korean herbal compounds against the SRD5A2 / AR / β-catenin axis for androgenetic alopecia: real Boltz-2 data identifies Emodin, Saponin Re, and Biochanin A as topical-scalp candidates with safety considerations",
+  "abstract": "Androgenetic alopecia (AGA) is driven by androgen-pathway enzymes (SRD5A1/2 catalyzing testosterone → DHT), the androgen receptor (AR), and the hair-follicle-cycle Wnt / β-catenin axis. Korean traditional medicine documents hair-vitalization preparations centered on *Polygonum multiflorum* (하수오; emodin, physcion), *Astragalus membranaceus* (황기; astragaloside IV), and *Panax ginseng* (인삼; ginsenosides Rg1, Rb1, Saponin Re), among others. We screen 15 Korean-herbal phytochemicals against the SRD5A2 / AR / CTNNB1 (β-catenin) three-target panel using Boltz-2 protein-ligand co-folding (cached MSAs) and ADMET-AI v2.0.1. SRD5A1 was not screened (cached MSA absent); this is an explicit limitation. Real Boltz-2 affinity_probability_binary results identify Saponin Re (인삼) and Emodin (하수오) as joint top-1 by mean affinity (0.675 each), with Saponin Re leading SRD5A2 (0.746) and Emodin leading AR (0.768). However, both Emodin (Skin 0.957, AMES 0.711) and Physcion (Skin 0.921, AMES 0.734) carry significant safety flags, and Saponin Re (MW 947, logP −0.03) is far outside topical sweet-spot. Biochanin A (콩/황기; mean 0.544, hERG 0.52, AMES 0.24, topical-friendly) emerges as the cleanest combined-profile candidate. Finasteride (reference SRD5A2 inhibitor) ranks low (mean 0.202) — likely reflecting Boltz-2's binary classifier missing mechanism-based / covalent inhibition; methodological observation. All results are in silico; experimental validation is the explicit next step. Keywords: androgenetic alopecia, 5α-reductase, SRD5A2, androgen receptor, Wnt β-catenin, Korean medicine, in silico, Emodin, Biochanin A.",
+  "keywords": [
+    "pharmacology",
+    "skin",
+    "AI"
+  ],
+  "target_server": "bioRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "<USER_FILL_ORCID_iD>",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "pharmacology",
+  "subcategory": "skin",
+  "manuscript_path": "preprints/05_alopecia_screening/manuscript.md",
+  "pdf_path": "preprints/05_alopecia_screening/manuscript.pdf",
+  "n_figures": 2,
+  "word_count_md": 3512,
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results."
+}

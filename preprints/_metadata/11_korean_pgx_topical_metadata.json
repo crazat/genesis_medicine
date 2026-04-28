@@ -1,0 +1,34 @@
+{
+  "paper_id": "11_korean_pgx_topical",
+  "title": "A Korean pharmacogenomics panel for topical-herb-medicine personalization: framework design integrating CYP, UGT, HLA, and skin-barrier variants",
+  "abstract": "Pharmacogenomic (PGx) variation drives substantial inter-individual differences in drug response. The Korean population exhibits distinctive allele frequencies relative to the Caucasian-dominated reference data underlying many published PGx panels — for example, CYP2D6\\*10 (intermediate metabolizer, ~50% frequency in Koreans vs ~3% Caucasian [1]) and HLA-B\\*15:02 (severe cutaneous adverse-reaction risk, frequency ~0.2% Korean vs 8-15% Han Chinese) [2]. While most PGx clinical applications focus on systemic drugs, topical-herbal-medicine pharmacology has received limited PGx attention despite (i) Korean medicine's centrality in Korean dermatology, (ii) systemic absorption of topical compounds, and (iii) reported herb-drug interactions involving CYP- and UGT-mediated metabolism. We propose a Korean-population-tailored PGx panel covering 23 variants across drug-metabolizing enzymes (CYP2D6, CYP3A4, CYP3A5, CYP2C9, CYP2C19, UGT1A1), HLA loci (HLA-B*15:02, *57:01, *58:01), and skin-barrier-relevant variants (FLG, KLK7), with a focus on topical-herb-medicine personalization at Recover Korean Medicine Clinic. We describe the variant selection rationale, the proposed clinical decision-support workflow, and the regulatory framework (PIPA §23, Korean genetic-testing oversight). No patient or laboratory data are reported; this is a framework design paper. Keywords: pharmacogenomics, Korean population, CYP2D6\\*10, HLA-B\\*15:02, FLG, topical herbal medicine, panel design, personalization.",
+  "keywords": [
+    "pharmacogenomics",
+    "Korean medicine"
+  ],
+  "target_server": "medRxiv",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "<USER_FILL_ORCID_iD>",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "pharmacogenomics",
+  "subcategory": "Korean medicine",
+  "manuscript_path": "preprints/11_korean_pgx_topical/manuscript.md",
+  "pdf_path": "preprints/11_korean_pgx_topical/manuscript.pdf",
+  "n_figures": 1,
+  "word_count_md": 2060,
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results."
+}
