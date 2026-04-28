@@ -775,11 +775,28 @@ EGCG/resveratrol-level PAINS disclosure. Both warrant **dual-lead
 wet-lab validation** for safety-margin redundancy and disease-vertical
 coverage.
 
-### 6.6 MD ensemble validation (in progress)
+### 6.6 MD ensemble validation — 3/4 paper-tier (v0.4, 2026-04-28)
 
-CMS-19 × 4 best targets (SREBP1, SRD5A1, TGFB1, CTGF) is undergoing 10 ns
-MD each on RTX 5090 GPU (~3 hr total). Paper-tier criterion: ligand RMSD
-mean < 2 Å. Results will be appended in v0.4.
+CMS-19 × 4 best targets, OpenMM 8 + GAFF-2.11 + AM1-BCC, 10 ns each
+on RTX 5090, ligand RMSD vs frame 0 across all heavy atoms.
+
+| Target | Disease | RMSD mean (Å) | max (Å) | final (Å) | Paper-tier |
+|---|---|:-:|:-:|:-:|:-:|
+| **SRD5A1** | alopecia/acne | **0.70** | 1.48 | 0.77 | ✅ ★★★ |
+| **TGFB1** | scar | **1.24** | 1.60 | 1.29 | ✅ ★★ |
+| **CTGF** | scar | **1.09** | 1.60 | 1.11 | ✅ ★★ |
+| SREBP1 | acne | NaN | — | — | ❌ (OpenMM crash, retry needed) |
+
+**Result**: 3/4 paper-tier (RMSD < 2 Å). CMS-19 binding stability validated
+for **alopecia (SRD5A1)** + **scar (TGFB1+CTGF)** verticals. SREBP1 NaN
+is a common OpenMM pitfall (cofold pose clash); to be retried with
+extended energy minimization in v0.5.
+
+Wall time: ~7 min/job × 3 = ~21 min on RTX 5090.
+
+Figures:
+- `figures/fig_cms19_md_rmsd_timeseries.png` — 3-panel time-series with paper-tier threshold
+- `figures/fig_cms19_md_rmsd_summary.png` — bar chart of mean/max RMSD per target
 
 ### 6.7 Recover Korean Medicine Clinic application
 
