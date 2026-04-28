@@ -204,6 +204,23 @@ _MODELS = [
               LicenseTag.COMMERCIAL_SAFE,
               "https://pubs.acs.org/doi/10.1021/acscentsci.4c01991",
               note="ACS Cent Sci 2025 multi-fidelity BO cascade. 자체 구현."),
+    # --- 2026-04-28 추가: KCI + Lens API 통합 -------------------------------
+    Component("kci_openapi", ComponentKind.DATA, "Korean gov free (registered key)",
+              LicenseTag.COMMERCIAL_SAFE,
+              "https://www.kci.go.kr/openapi/info",
+              note="한국연구재단 KCI OpenAPI. Korean academic citation + h-index."),
+    Component("lens_api", ComponentKind.DATA, "Cambia non-profit (academic free 1000/mo)",
+              LicenseTag.COMMERCIAL_CONDITIONAL,
+              "https://www.lens.org",
+              note="Lens.org Patent + Scholarly Works API. IP prior-art + Korean herbal patent landscape."),
+    Component("drugbank", ComponentKind.DATA, "Academic free / Commercial $$",
+              LicenseTag.COMMERCIAL_CONDITIONAL,
+              "https://www.drugbank.ca",
+              note="Academic license 신청 중 (2026-04-28). 거부 시 DrugCentral (CC-BY-SA) 대체."),
+    Component("drugcentral", ComponentKind.DATA, "CC-BY-SA",
+              LicenseTag.COMMERCIAL_SHARE_ALIKE,
+              "https://drugcentral.org",
+              note="DrugBank 대체. UNM Bioinformatics 운영. 무료. 4500+ approved drug DB."),
 ]
 
 # --- 데이터 ------------------------------------------------------------------
