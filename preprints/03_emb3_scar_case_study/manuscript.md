@@ -2,6 +2,8 @@
 
 **HanCheongWoo ¹,²,³**
 
+**ORCID**: [0009-0004-4805-8815](https://orcid.org/0009-0004-4805-8815)
+
 ¹ Genesis_Medicine Lab — AI in silico drug discovery R&D division, Seoul, Republic of Korea
 ² HAN PREDICT, Inc. — AI healthcare technology platform; <https://hanpredict.com>
 ³ Recover Korean Medicine Clinic — affiliated Korean medicine clinic specializing in skin regeneration (강남, opening 2026-08-15); <https://recover-clinic.kr>
