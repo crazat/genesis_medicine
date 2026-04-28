@@ -775,7 +775,7 @@ EGCG/resveratrol-level PAINS disclosure. Both warrant **dual-lead
 wet-lab validation** for safety-margin redundancy and disease-vertical
 coverage.
 
-### 6.6 MD ensemble validation — 3/4 paper-tier (v0.4, 2026-04-28)
+### 6.6 MD ensemble validation — 7/8 paper-tier across 3 disease verticals (v0.5, 2026-04-28)
 
 CMS-19 × 4 best targets, OpenMM 8 + GAFF-2.11 + AM1-BCC, 10 ns each
 on RTX 5090, ligand RMSD vs frame 0 across all heavy atoms.
@@ -785,18 +785,28 @@ on RTX 5090, ligand RMSD vs frame 0 across all heavy atoms.
 | **SRD5A1** | alopecia/acne | **0.70** | 1.48 | 0.77 | ✅ ★★★ |
 | **TGFB1** | scar | **1.24** | 1.60 | 1.29 | ✅ ★★ |
 | **CTGF** | scar | **1.09** | 1.60 | 1.11 | ✅ ★★ |
-| SREBP1 | acne | NaN | — | — | ❌ (OpenMM crash, retry needed) |
+| **MMP1** | scar | **1.31** | 1.70 | 1.42 | ✅ ★★ |
+| **MITF** | pigmentation | **0.76** | 1.39 | 0.94 | ✅ ★★★ |
+| **TYR** | pigmentation | **1.30** | 1.78 | 1.49 | ✅ ★★ |
+| **TYRP1** | pigmentation | **0.94** | 1.30 | 0.84 | ✅ ★★★ |
+| SREBP1 | acne | NaN | — | — | ❌ (OpenMM crash, 2 retries failed) |
 
-**Result**: 3/4 paper-tier (RMSD < 2 Å). CMS-19 binding stability validated
-for **alopecia (SRD5A1)** + **scar (TGFB1+CTGF)** verticals. SREBP1 NaN
-is a common OpenMM pitfall (cofold pose clash); to be retried with
-extended energy minimization in v0.5.
+**Result**: **7/8 paper-tier (RMSD < 2 Å)**. CMS-19 binding stability validated across
+**3 disease verticals**:
+- **Alopecia/acne** (SRD5A1) — RMSD 0.70 Å (★★★ excellent)
+- **Scar / fibrosis** (TGFB1 + CTGF + MMP1) — all RMSD 1.09-1.31 Å
+- **Pigmentation** (MITF + TYR + TYRP1) — RMSD 0.76-1.30 Å
 
-Wall time: ~7 min/job × 3 = ~21 min on RTX 5090.
+SREBP1 NaN failed twice (extended minimization 5,000 iters) — likely deeper cofold
+pose clash; SREBP1 cofold structure may need re-prediction or alternate
+pose ranking before MD.
+
+Wall time: 7 jobs × ~10 min = ~70 min on RTX 5090.
 
 Figures:
-- `figures/fig_cms19_md_rmsd_timeseries.png` — 3-panel time-series with paper-tier threshold
-- `figures/fig_cms19_md_rmsd_summary.png` — bar chart of mean/max RMSD per target
+- `figures/fig_cms19_md_rmsd_timeseries.png` — 3-panel time-series (initial 3 jobs)
+- `figures/fig_cms19_md_rmsd_summary.png` — bar chart (initial 3 jobs)
+- `figures/fig_cms19_md_ensemble_combined.png` — combined 7-job summary across 3 disease verticals
 
 ### 6.7 Recover Korean Medicine Clinic application
 
