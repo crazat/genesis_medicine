@@ -285,6 +285,45 @@ docs/
 - §4.10–§4.18 5 universal scaffolds + final lead recommendation matrix 완성
 - Pending: §4.19 extended-time validation table (PTGS2 도착 시)
 
+### ✅ 완료 + 진행 중 (2026-04-30 11:35, R15 BRICS triage + batch2 GPU)
+**R15 next-round candidate triage** (handoff to Codex):
+
+**BRICS pool generation** — round 1 + round 2 → **38 unique** (R12_11 20, R12_23 11, R12_4 3, R13_13 4):
+- `scripts/cpu_r15_brics_expansion.py` (44 candidates, MAX_BUILD 800)
+- `scripts/cpu_r15_brics_deeper.py` (60 candidates, MAX_BUILD 3000, relaxed filter MW 180-550, logP 0.5-5.5, lipinski_viol≤1)
+- ⚠️ R12_11 + R14_5 SMILES 완전 중복 (메톡시 위치만 다른 동일 chemical neighborhood) → R14_5 dedup 후 0개
+
+**Triple filter pipeline (deadlock fix split)**:
+- ⚠️ `cpu_r15_admet_xtb_filter.py` (combined script): TF + multiprocessing.Pool fork = futex deadlock (35분 0.7% CPU 후 kill)
+- ✅ `cpu_r15_admet_only.py` (no Pool, ADMET-AI sequential) — 38행 × 14 ADMET endpoints
+- ✅ `cpu_r15_xtb_only.py` (Pool of 8 xtb workers, no TF) — 38행 × HOMO-LUMO gap
+
+**핵심 발견**:
+- xtb gap mean 3.61 eV (electronically stable), max 4.36 eV (R12_23 methoxy chromanol)
+- ADMET triple-safe (AMES + hERG + DILI 모두 < 0.3): **38개 중 단 1개** = `OCC1COc2cc(O)ccc2C1` (R12_4 chromanol fragment, MW 180.2, logP 0.94, QED 0.676, AMES 0.18, hERG 0.17, DILI 0.21)
+- → R15 next-round MD validation의 1순위 후보 (small core, 외용 적합 logP, clean tox)
+
+**Extended 30ns batch 2 진행 중** (PID 37674, ~12:00-12:30 ETA):
+- ✅ mmp1×R12_4: 0.67/0.65 sub-Å steady-state
+- ✅ sirt1×R12_4: 0.92/1.11 paper-tier
+- ✅ srebp1×R12_23: 1.08/1.11 paper-tier
+- 🔄 srebp1×R14_5 (running)
+- 🔄 tgfb1×R12_11 (queued)
+
+**Output 파일**:
+- `pilot/cpu_meaningful/r15_brics_candidates.csv` (44, round 1)
+- `pilot/cpu_meaningful/r15_brics_round2.csv` (60, round 2)
+- `pilot/cpu_meaningful/r15_xtb_only.csv` (38 unique × HOMO/LUMO/gap)
+- `pilot/cpu_meaningful/r15_admet_only.csv` (38 unique × 14 ADMET endpoints)
+- `pilot/md_extended_30ns_batch2/summary.json` (batch2 5 pairs)
+- `pilot/universal_scaffold_admet/full_tanimoto_top30.csv` (5 leaders × top 30 vs full pool)
+
+**다음 핸드오프 (Codex 이어받음)**:
+1. batch2 완료 대기 (ETA 12:00-12:30) → §4.19 5-pair full table 업데이트
+2. R15 single triple-safe candidate (`OCC1COc2cc(O)ccc2C1`) Boltz-2 cofold × 14 targets — GPU 작업
+3. preprint #15 v1.4 §4.21 R15 next-round triage 섹션 추가 + PDF 재빌드
+4. CLAUDE.md feedback 추가: TF + multiprocessing.Pool fork deadlock 패턴 (recurring bug)
+
 ### 🔥 Tier 0 — 즉시 통합 (SOTA audit 2026-04-26 결과)
 > 광범위 SOTA 조사 결과 **즉각 통합하면 ROI 매우 큰** 7개 도구. 모두 MIT/Apache.
 1. **CellAwareGNN** (bioRxiv 2026-02) — TxGNN 직접 후속, scPrimeKG 기반, 자가면역 피부질환 +6% AUPRC. 자가면역(아토피·건선·원형탈모) 재창출 정확도 직격.

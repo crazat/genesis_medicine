@@ -1,0 +1,32 @@
+[
+  {
+    "name": "mmp1__r12_4_30ns",
+    "status": "ok",
+    "wall_min": 23.24,
+    "rmsd_mean_A": 0.67,
+    "rmsd_max_A": 1.17,
+    "rmsd_final_A": 0.73,
+    "rmsd_last10ns_A": 0.65,
+    "ns_simulated": 30.0
+  },
+  {
+    "name": "sirt1__r12_4_30ns",
+    "status": "ok",
+    "wall_min": 37.48,
+    "rmsd_mean_A": 0.92,
+    "rmsd_max_A": 1.9,
+    "rmsd_final_A": 1.48,
+    "rmsd_last10ns_A": 1.11,
+    "ns_simulated": 30.0
+  },
+  {
+    "name": "srebp1__r12_23_30ns",
+    "status": "ok",
+    "wall_min": 23.26,
+    "rmsd_mean_A": 1.08,
+    "rmsd_max_A": 1.61,
+    "rmsd_final_A": 1.13,
+    "rmsd_last10ns_A": 1.11,
+    "ns_simulated": 30.0
+  }
+]
