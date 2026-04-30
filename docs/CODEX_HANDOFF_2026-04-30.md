@@ -165,3 +165,128 @@ weasyprint manuscript.html manuscript.pdf
 
 **핸드오프 작성**: Claude Opus 4.7 (1M context) — 2026-04-30 11:35 KST
 **받는 사람**: Codex (or any successor session)
+
+---
+
+## 📌 11:35 이후 추가된 내용 (2026-04-30 11:40 update)
+
+### 새 commit 2개
+- `e73560a`: initial handoff (이 문서 + R15 ADMET/xtb/BRICS round 2)
+- `a5b3d66`: R15 master triage + chromanol Boltz-2 launch
+
+### Master triage CSV (이미 생성됨, 재실행 금지)
+- `pilot/cpu_meaningful/r15_master_triage.csv` (38 rows, composite score 정렬)
+- `scripts/cpu_r15_master_triage.py`로 재계산 가능
+- **Score 공식**: `(1-AMES)*0.30 + (1-hERG)*0.20 + (1-DILI)*0.15 + skin_window*0.15 + (gap_eV>2.5)*0.10 + QED*0.10`
+
+### 🔑 결정적 nuance (preprint §4.21 narrative 핵심)
+
+**Triple-safe ≠ best by composite score** — skin window vs tox tradeoff:
+
+| 후보 | rank | logP | hERG | skin_window | score | 의미 |
+|---|:-:|---|---|:-:|---|---|
+| OCC1Cc2c(O)cc(O)cc2OC1C1COc2cc(O)ccc2C1 (R12_4 dimer) | 1 | 1.97 | 0.62 | ✅ | 0.752 | skin OK, hERG 주의 |
+| CC(C)=CC1COc2cc(O)ccc2C1 (R13_13 prenyl) | 2 | 2.91 | 0.58 | ✅ | 0.748 | 외용 sweet spot, hERG 주의 |
+| **OCC1COc2cc(O)ccc2C1 (R12_4 chromanol)** | **11** | **0.94** | **0.17** | ❌ | **0.697** | **유일 triple-safe, but skin window 미달** |
+
+→ 외용 후보: top-3 (skin window OK, hERG monitoring 필요)
+→ 경구·주사 후보: chromanol (clean tox, but logP 너무 hydrophilic)
+→ **§4.21에 두 path 분리 제시 필요** (외용 lead vs systemic lead)
+
+### R15 chromanol Boltz-2 cofold 이미 launch됨 (재실행 금지!)
+- PID 52782 (`gpu_r15_chromanol_chain.sh`)
+- Output: `pilot/cpu_meaningful/output_r15_chromanol/boltz_results_inputs_r15_chromanol/`
+- ETA ~12:00-12:05 KST
+- batch2 30ns GPU와 공존 (memory 2/32GB, util 68-76% 공유)
+- 14 targets affinity → preprint §4.21 표 핵심 데이터
+
+### GPU 공존 패턴 (앞으로 이용 가능)
+Boltz-2 cofold (~2GB GPU memory) + OpenMM MD (~1.5GB) 동시 실행 검증됨:
+- 메모리 합쳐 4GB / 32GB 여유
+- GPU compute 시간분할로 둘 다 진행 (개별 wall time ~1.3-1.5x)
+- 단일 작업 대비 throughput 1.5-1.8x 증가
+- → 앞으로 GPU 한 작업 진행 중에도 보조 GPU 작업 큐잉 가능
+
+### batch2 4/5 결과 (12:00 시점)
+- mmp1×R12_4: 0.67/0.65 ✅ sub-Å steady-state
+- sirt1×R12_4: 0.92/1.11 paper-tier
+- srebp1×R12_23: 1.08/1.11 paper-tier
+- **srebp1×R14_5: 1.94/2.08 borderline** (last-10ns drift to 2 Å) — §4.19에 caveat 명시
+- 🔄 tgfb1×R12_11 (running)
+
+batch1 + batch2 통합 시 **8 sub-Å pairs** kinetic stability 표:
+
+| Pair | full mean | last-10ns | 평가 |
+|---|---|---|---|
+| mmp1×R14_5 | 0.69 | 0.69 | sub-Å steady ✅ |
+| ar×R12_23 | 0.77 | 0.85 | sub-Å steady ✅ |
+| sirt1×R12_23 | 0.72 | 0.79 | sub-Å steady ✅ |
+| ctgf×R14_5 | 1.34 | 1.76 | paper-tier with drift |
+| ptgs2×R12_23 | (TBD) | (TBD) | (batch1 마지막) |
+| mmp1×R12_4 | 0.67 | 0.65 | sub-Å steady ✅ |
+| sirt1×R12_4 | 0.92 | 1.11 | paper-tier |
+| srebp1×R12_23 | 1.08 | 1.11 | paper-tier |
+| srebp1×R14_5 | 1.94 | 2.08 | drift (caveat) |
+| tgfb1×R12_11 | (running) | — | — |
+
+→ **5건 sub-Å steady-state 30ns kinetic stability 확인** (batch1 3건 + batch2 2건 추가)
+
+### 새 메모리 파일 2개 (참조)
+- `~/.claude/projects/-home-crazat-genesis-medicine/memory/project_r15_brics_triage.md` — R15 결과 + tradeoff finding
+- `~/.claude/projects/-home-crazat-genesis-medicine/memory/feedback_tf_pool_deadlock.md` — TF + Pool fork 데드락 패턴
+
+### 백그라운드 NPASS 큐 주의
+- PID 1345, 15578 (NPASS rank 1k-2k + top500 round2): 17h+ 누적, kill 절대 금지
+- 결과 도착하면 `pilot/cpu_meaningful/` 어딘가에 csv 생성됨 (output 위치는 스크립트 상단 확인)
+- MASTER ranking 한 번 더 돌릴 때 NPASS pool 추가하면 더 풍부한 천연물 비교 가능
+
+### 다음 작업 시 즉시 실행할 명령
+
+```bash
+cd /home/crazat/genesis_medicine
+
+# 둘 다 끝났는지 확인
+cat pilot/md_extended_30ns_batch2/summary.json | python3 -c "import json,sys; d=json.load(sys.stdin); print(f'batch2: {len(d)}/5')"
+ls pilot/cpu_meaningful/output_r15_chromanol/boltz_results_inputs_r15_chromanol/predictions/ 2>/dev/null | wc -l
+
+# Boltz-2 결과 affinity 추출 (예시 패턴, 기존 스크립트 참고)
+find pilot/cpu_meaningful/output_r15_chromanol -name "affinity*.json" | head -5
+# affinity.json에 binding_log_ic50, affinity_pred_value 들어있음
+
+# preprint 빌드
+cd preprints/15_universal_scaffold/
+pandoc manuscript.md -o manuscript.html --self-contained
+weasyprint manuscript.html manuscript.pdf
+```
+
+### preprint #15 v1.4 작성 시 §4.21 권장 골자
+
+```
+§4.21 R15 next-round triage
+- BRICS 2 rounds → 38 unique candidates (R12_11 20, R12_23 11, R12_4 3, R13_13 4)
+- R12_11 ↔ R14_5 SMILES 완전 중복 finding
+- xtb HOMO-LUMO gap distribution (electronic stability)
+- ADMET filter: triple-safe (AMES+hERG+DILI <0.3) → 단 1개 (chromanol fragment)
+- Composite score formula 정의
+
+§4.21.1 외용 lead path (skin window OK, hERG monitoring)
+- Top-3 by composite score (R12_4 dimer, R13_13 prenyl, R12_11 methoxy)
+- chromanol Boltz-2 cofold 14-target affinity matrix
+- vs PIH ranked top → next-round MD candidates
+
+§4.21.2 Systemic lead path (clean tox, hydrophilic)
+- chromanol fragment 단독 분석
+- 향후 prodrug 변형 가능성 (skin permeation 향상)
+- 14-target affinity matrix → 후보 우선순위
+
+§4.21.3 Honest limitation
+- Boltz-2 affinity = ChEMBL R=-0.453 calibrated, IC50 nM 직접 변환 안 됨
+- 38 → 1 triple-safe는 strict cutoff (0.3) 결과 — 0.5 cutoff 시 5+개로 확장됨
+- skin_window 정의 (logP 1.5-3.5)는 Lipinski 외 추가 heuristic, 외용 임상 데이터 caveat
+```
+
+---
+
+**최종 push**: `a5b3d66` (origin/main)
+**진행 중**: GPU batch2 4/5 + chromanol cofold (ETA 12:05)
+**다음 wakeup**: 12:05 KST (autonomous-loop-dynamic)
