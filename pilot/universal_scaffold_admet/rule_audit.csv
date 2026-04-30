@@ -1,0 +1,6 @@
+leader,variant,MW,logP,HBD,HBA,TPSA,rotb,aro_rings,rings,lipinski_violations,veber_pass,pains_flag,brenk_flag,skin_permeable_window,subA_count,best_target
+R12_4,hydroxymethyl pterocarpan-vinyl-phenol,344.4,1.97,4,6,99.4,2,2,4,0,True,False,False,True,2,"MMP1 (0.73), SIRT1 (0.76)"
+R12_11,methoxy variant,298.3,3.37,2,4,58.9,3,2,3,0,True,False,False,True,3,"TGFB1 (0.93), DCT (1.01), LOX (1.09)"
+R12_23,methyl ester variant,372.4,2.15,3,7,105.5,2,2,4,0,True,False,False,True,6,"AR/SIRT1 (0.68), PTGS2 (0.72), SREBP1 (0.79)"
+R14_5,methoxy variant 2,298.3,3.37,2,4,58.9,3,2,3,0,True,False,False,True,3,"MMP1 (0.56), CTGF (0.68), SREBP1 (0.89)"
+R13_13,prenyl R11_0 variant (PAINS-flagged),368.4,4.28,4,5,90.2,4,2,3,0,True,False,False,False,1,PTGS2 (1.01)
