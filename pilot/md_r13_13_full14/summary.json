@@ -1,0 +1,101 @@
+[
+  {
+    "name": "mmp1__r13_13",
+    "status": "ok",
+    "wall_min": 8.57,
+    "rmsd_mean_A": 1.41,
+    "rmsd_max_A": 2.56,
+    "rmsd_final_A": 2.26,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "ctgf__r13_13",
+    "status": "ok",
+    "wall_min": 7.74,
+    "rmsd_mean_A": 1.86,
+    "rmsd_max_A": 2.81,
+    "rmsd_final_A": 1.9,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "mitf__r13_13",
+    "status": "ok",
+    "wall_min": 8.81,
+    "rmsd_mean_A": 1.5,
+    "rmsd_max_A": 1.94,
+    "rmsd_final_A": 1.63,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "lox__r13_13",
+    "status": "ok",
+    "wall_min": 8.82,
+    "rmsd_mean_A": 1.53,
+    "rmsd_max_A": 2.21,
+    "rmsd_final_A": 1.24,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "tyr__r13_13",
+    "status": "ok",
+    "wall_min": 8.86,
+    "rmsd_mean_A": 2.5,
+    "rmsd_max_A": 3.43,
+    "rmsd_final_A": 3.2,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "tyrp1__r13_13",
+    "status": "ok",
+    "wall_min": 8.77,
+    "rmsd_mean_A": 1.12,
+    "rmsd_max_A": 1.99,
+    "rmsd_final_A": 1.13,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "dct__r13_13",
+    "status": "ok",
+    "wall_min": 8.68,
+    "rmsd_mean_A": 2.75,
+    "rmsd_max_A": 3.42,
+    "rmsd_final_A": 3.07,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "srd5a1__r13_13",
+    "status": "ok",
+    "wall_min": 7.9,
+    "rmsd_mean_A": 1.81,
+    "rmsd_max_A": 2.33,
+    "rmsd_final_A": 1.92,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "srd5a2__r13_13",
+    "status": "ok",
+    "wall_min": 8.04,
+    "rmsd_mean_A": 1.31,
+    "rmsd_max_A": 2.68,
+    "rmsd_final_A": 1.07,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "ptgs2__r13_13",
+    "status": "ok",
+    "wall_min": 10.26,
+    "rmsd_mean_A": 1.01,
+    "rmsd_max_A": 1.65,
+    "rmsd_final_A": 1.34,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "sirt1__r13_13",
+    "status": "ok",
+    "wall_min": 12.29,
+    "rmsd_mean_A": 1.6,
+    "rmsd_max_A": 3.07,
+    "ns_simulated": 10.0,
+    "rmsd_final_A": 3.07
+  }
+]

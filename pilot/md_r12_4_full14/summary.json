@@ -1,0 +1,65 @@
+[
+  {
+    "name": "tgfb1__r12_4",
+    "status": "ok",
+    "wall_min": 14.08,
+    "rmsd_mean_A": 1.26,
+    "rmsd_max_A": 2.36,
+    "rmsd_final_A": 1.07,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "tyr__r12_4",
+    "status": "ok",
+    "wall_min": 10.18,
+    "rmsd_mean_A": 1.49,
+    "rmsd_max_A": 2.42,
+    "rmsd_final_A": 1.51,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "tyrp1__r12_4",
+    "status": "ok",
+    "wall_min": 9.26,
+    "rmsd_mean_A": 1.15,
+    "rmsd_max_A": 2.34,
+    "rmsd_final_A": 0.99,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "dct__r12_4",
+    "status": "ok",
+    "wall_min": 8.91,
+    "rmsd_mean_A": 1.07,
+    "rmsd_max_A": 1.53,
+    "rmsd_final_A": 1.08,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "srd5a1__r12_4",
+    "status": "ok",
+    "wall_min": 8.54,
+    "rmsd_mean_A": 1.5,
+    "rmsd_max_A": 1.83,
+    "rmsd_final_A": 1.68,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "srd5a2__r12_4",
+    "status": "ok",
+    "wall_min": 8.41,
+    "rmsd_mean_A": 2.29,
+    "rmsd_max_A": 2.87,
+    "rmsd_final_A": 2.43,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "ptgs2__r12_4",
+    "status": "ok",
+    "wall_min": 10.46,
+    "rmsd_mean_A": 1.3,
+    "rmsd_max_A": 2.19,
+    "rmsd_final_A": 1.22,
+    "ns_simulated": 10.0
+  }
+]

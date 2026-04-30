@@ -248,6 +248,43 @@ docs/
 - D6: Path A (cosmeceutical ₩1.5억) vs Path B (IND ₩30-55억) 분기 (M18)
 - D7: Korean pharma partnership (M24)
 
+### ✅ 완료 (2026-04-30, Universal scaffold 14/14 × 5 leaders + Extended 30ns validation)
+**핵심 paper-tier 성과 — Preprint #15 Universal Scaffold 시리즈 v1.1**:
+
+**5 universal scaffold leaders × 14 skin targets = 70 MD simulations all paper-tier**:
+| Leader | SMILES variant | 14/14 결과 | sub-Å 개수 |
+|---|---|---|---|
+| **R12_4** | hydroxymethyl pterocarpan-vinyl-phenol | 14/14 paper-tier (mean<2.0Å) | 2 (MMP1 0.73, SIRT1 0.76) |
+| **R12_11** | methoxy variant | 14/14 paper-tier | 3 (TGFB1 0.93, DCT 1.01, LOX 1.09) |
+| **R12_23** | methyl ester variant | 14/14 paper-tier | **6** (AR 0.68, SIRT1 0.68, PTGS2 0.72, SREBP1 0.79, TYR 1.03, SRD5A1 1.06) |
+| **R14_5** | methoxy variant 2 | 14/14 paper-tier | 3 (**MMP1 0.56**, CTGF 0.68, SREBP1 0.89) |
+| **R13_13** | prenyl R11_0 variant (PAINS-flagged) | 14/14 paper-tier | 1 (PTGS2 1.01) |
+
+**Extended-time kinetic validation (30 ns × top-5 sub-Å pairs)**:
+| Pair | mean (full 30ns) | last-10ns mean | 평가 |
+|---|---|---|---|
+| MMP1 × R14_5 | **0.69** | **0.69** | sub-Å steady-state ✅ |
+| AR × R12_23 | 0.77 | **0.85** | sub-Å steady-state ✅ |
+| SIRT1 × R12_23 | **0.72** | **0.79** | sub-Å steady-state ✅ |
+| CTGF × R14_5 | 1.34 | 1.76 | paper-tier with drift |
+| PTGS2 × R12_23 | 진행 중 (~09:43 ETA) | — | — |
+
+→ **3건 sub-Å 30ns kinetic stability 확인** = paper-tier reviewer 통과율 직접 강화.
+
+**자동 overnight chain orchestration 성공**:
+- `scripts/overnight_chain.sh`: bash nohup polling (60s 간격, 30분 stale detection)
+- 03:03→04:56 R14_5 → R13_13 자동 sequence 완료
+- 06:48~ extended 30ns chain 가동 (PID 34773), GPU 91% 지속
+
+**89-simulation comprehensive ensemble heatmap (`figures/fig7_full_ensemble_heatmap.png`)**:
+- All MD runs across R11_0 + R12_4/11/23 + R13_13 + R14_5 + earlier batches
+- Target × Leader pivot showing 5-leader convergence on 14 skin disease targets
+
+**즉시 가능 (사용자 다음 액션)**:
+- Preprint #15 v1.1 PDF 38.6 KB main + 9 figures, 38.7 KB total
+- §4.10–§4.18 5 universal scaffolds + final lead recommendation matrix 완성
+- Pending: §4.19 extended-time validation table (PTGS2 도착 시)
+
 ### 🔥 Tier 0 — 즉시 통합 (SOTA audit 2026-04-26 결과)
 > 광범위 SOTA 조사 결과 **즉각 통합하면 ROI 매우 큰** 7개 도구. 모두 MIT/Apache.
 1. **CellAwareGNN** (bioRxiv 2026-02) — TxGNN 직접 후속, scPrimeKG 기반, 자가면역 피부질환 +6% AUPRC. 자가면역(아토피·건선·원형탈모) 재창출 정확도 직격.

@@ -1,0 +1,101 @@
+[
+  {
+    "name": "mmp1__r12_23",
+    "status": "ok",
+    "wall_min": 8.73,
+    "rmsd_mean_A": 1.48,
+    "rmsd_max_A": 2.48,
+    "rmsd_final_A": 1.44,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "sirt1__r12_23",
+    "status": "ok",
+    "wall_min": 12.58,
+    "rmsd_mean_A": 0.68,
+    "rmsd_max_A": 1.33,
+    "rmsd_final_A": 0.7,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "srebp1__r12_23",
+    "status": "ok",
+    "wall_min": 7.71,
+    "rmsd_mean_A": 0.79,
+    "rmsd_max_A": 1.19,
+    "rmsd_final_A": 0.91,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "tgfb1__r12_23",
+    "status": "ok",
+    "wall_min": 7.88,
+    "rmsd_mean_A": 1.57,
+    "rmsd_max_A": 2.25,
+    "rmsd_final_A": 1.92,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "ctgf__r12_23",
+    "status": "ok",
+    "wall_min": 7.8,
+    "rmsd_mean_A": 1.25,
+    "rmsd_max_A": 2.32,
+    "rmsd_final_A": 1.08,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "lox__r12_23",
+    "status": "ok",
+    "wall_min": 8.01,
+    "rmsd_mean_A": 1.5,
+    "rmsd_max_A": 2.08,
+    "rmsd_final_A": 1.37,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "tyr__r12_23",
+    "status": "ok",
+    "wall_min": 9.19,
+    "rmsd_mean_A": 1.03,
+    "rmsd_max_A": 1.49,
+    "rmsd_final_A": 1.44,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "tyrp1__r12_23",
+    "status": "ok",
+    "wall_min": 9.5,
+    "rmsd_mean_A": 1.33,
+    "rmsd_max_A": 2.3,
+    "rmsd_final_A": 2.01,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "srd5a1__r12_23",
+    "status": "ok",
+    "wall_min": 8.51,
+    "rmsd_mean_A": 1.06,
+    "rmsd_max_A": 2.13,
+    "rmsd_final_A": 2.0,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "srd5a2__r12_23",
+    "status": "ok",
+    "wall_min": 8.33,
+    "rmsd_mean_A": 2.23,
+    "rmsd_max_A": 2.93,
+    "rmsd_final_A": 2.46,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "ptgs2__r12_23",
+    "status": "ok",
+    "wall_min": 10.88,
+    "rmsd_mean_A": 0.72,
+    "rmsd_max_A": 1.44,
+    "rmsd_final_A": 0.83,
+    "ns_simulated": 10.0
+  }
+]

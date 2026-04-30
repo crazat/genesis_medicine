@@ -1,0 +1,42 @@
+[
+  {
+    "name": "mmp1__r14_5_30ns",
+    "status": "ok",
+    "wall_min": 23.09,
+    "rmsd_mean_A": 0.69,
+    "rmsd_max_A": 1.11,
+    "rmsd_final_A": 0.63,
+    "rmsd_last10ns_A": 0.69,
+    "ns_simulated": 30.0
+  },
+  {
+    "name": "ctgf__r14_5_30ns",
+    "status": "ok",
+    "wall_min": 24.14,
+    "rmsd_mean_A": 1.34,
+    "rmsd_max_A": 2.51,
+    "rmsd_final_A": 1.73,
+    "rmsd_last10ns_A": 1.76,
+    "ns_simulated": 30.0
+  },
+  {
+    "name": "ar__r12_23_30ns",
+    "status": "ok",
+    "wall_min": 47.95,
+    "rmsd_mean_A": 0.77,
+    "rmsd_max_A": 1.76,
+    "rmsd_final_A": 0.88,
+    "rmsd_last10ns_A": 0.85,
+    "ns_simulated": 30.0
+  },
+  {
+    "name": "sirt1__r12_23_30ns",
+    "status": "ok",
+    "wall_min": 35.85,
+    "rmsd_mean_A": 0.72,
+    "rmsd_max_A": 1.44,
+    "rmsd_final_A": 0.78,
+    "rmsd_last10ns_A": 0.79,
+    "ns_simulated": 30.0
+  }
+]
