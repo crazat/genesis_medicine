@@ -324,6 +324,48 @@ docs/
 3. preprint #15 v1.4 §4.21 R15 next-round triage 섹션 추가 + PDF 재빌드
 4. CLAUDE.md feedback 추가: TF + multiprocessing.Pool fork deadlock 패턴 (recurring bug)
 
+### ✅ Codex autonomous curator loop (2026-04-30 20:00)
+
+Claude Code식 "시간마다 결과 기반으로 다음 큐를 지능적으로 고르는" 루프를 Codex에서 별도 구현:
+- 빠른 deterministic fill: `scripts/auto_queue_cpu_gpu_daemon.sh` (기존 planner 기반, 120초 polling)
+- LLM curator tick: `scripts/codex_curator_loop.sh` (기본 1800초 간격, `codex exec`가 최신 context를 읽고 큐잉/보류 판단)
+- supervisor: `scripts/monitor_supervisor.sh`가 queue daemon + Codex curator loop를 감시하고 재시작
+- prompt: `docs/CODEX_CURATOR_LOOP_PROMPT.md`
+- context/decision/action log:
+  - `pilot/codex_curator_context.md`
+  - `pilot/codex_curator_decision.md`
+  - `pilot/codex_curator_actions.log`
+- triggers:
+  - `/tmp/genesis_auto_queue_enabled`
+  - `/tmp/genesis_monitor_enabled`
+  - `/tmp/genesis_codex_curator_enabled`
+
+운용 원칙:
+- deterministic planner는 빠른 공백 채우기, Codex curator는 scientific priority/narrative/중복 위험을 감안한 judgement 담당.
+- 보호 큐 `PID 1345`, `PID 15578` 및 자식 프로세스 kill 금지.
+- 백그라운드 launch는 항상 `nohup setsid`.
+- GPU util이 낮아도 OpenMM/antechamber/sqm 전처리로 CPU가 포화이면 추가 GPU 큐잉을 보류할 수 있음.
+
+### ✅ Storage pressure + D: archive policy (2026-05-02 19:50)
+
+Windows C:가 WSL ext4.vhdx를 품고 있어 `/home/crazat/genesis_medicine`의 대형 `pilot/` 산출물이 C: 여유공간을 직접 압박한다. D:는 NVMe SSD 여유가 크지만 `/mnt/d` 직접 연산은 DrvFS/9p 경유라 작은 파일이 많은 Boltz/OpenMM/xTB 작업에는 불리하다.
+
+운영 원칙:
+- 활성 계산은 WSL native ext4 유지: `pilot/cpu_meaningful`, active Boltz/OpenMM/xTB output, 보호 NPASS queue는 이동 금지.
+- 완료된 대형 MD raw만 D: archive: `/mnt/d/genesis_archive/genesis_medicine/pilot/...`
+- 로컬에는 `summary.json`, `summary.csv`, `.archive_manifest.json`, `ARCHIVED_TO_D.txt`만 남겨 planner/manuscript evidence를 보존.
+- archive worker: `scripts/archive_completed_pilot_raw.py`
+  - 보수적 선택: `pilot/md_*` + summary 존재 + raw child dir 존재 + process table에 active path 없음.
+  - 전체 `rsync` 후 dry-run validation 통과 시에만 local raw child 삭제.
+  - manifest: `pilot/completed_pilot_raw_archive_manifest.jsonl`
+  - log: `pilot/completed_pilot_raw_archive.log`
+- duplicate archive launch 금지. 재실행 전 반드시:
+  - `pgrep -af 'archive_completed_pilot_raw|rsync .*genesis_archive'`
+  - `tail -80 pilot/completed_pilot_raw_archive.log`
+- storage report: `scripts/write_storage_pressure_report.py` → `docs/STORAGE_OPERATIONS_PLAN.md` + `pilot/storage_pressure_report.json`
+- queue planner hard-hold: `scripts/auto_result_planner.py`가 Windows C: 또는 WSL root free `< GENESIS_MIN_FREE_GB` (default 80GB)이면 신규 대형 CPU/GPU launch를 막는다. warn threshold default 200GB.
+- 장기 최선책: active job 정지·백업 후 Ubuntu WSL distro 자체를 D:로 `wsl --export`/`wsl --import` 이전. 현재 큐가 도는 동안은 VHDX compaction/이전 금지.
+
 ### 🔥 Tier 0 — 즉시 통합 (SOTA audit 2026-04-26 결과)
 > 광범위 SOTA 조사 결과 **즉각 통합하면 ROI 매우 큰** 7개 도구. 모두 MIT/Apache.
 1. **CellAwareGNN** (bioRxiv 2026-02) — TxGNN 직접 후속, scPrimeKG 기반, 자가면역 피부질환 +6% AUPRC. 자가면역(아토피·건선·원형탈모) 재창출 정확도 직격.
