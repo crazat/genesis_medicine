@@ -16,8 +16,9 @@ export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 
 active_gpu_job() {
   local self="$$"
-  ps -eo pid=,args= | awk -v self="$self" '
+  ps -eo pid=,comm=,args= | awk -v self="$self" '
     $1 == self { next }
+    $2 !~ /^python[0-9.]*$/ { next }
     /boltz predict/ { found = 1 }
     /python -u scripts\/run_active_learning_next_cofold.py/ { found = 1 }
     END { exit found ? 0 : 1 }
