@@ -450,6 +450,11 @@ ComfyUI는 C:의 기존 `Ubuntu`에 남기고, Genesis_Medicine만 D: native WSL
     - 기존 DrvFS archive `/mnt/d/genesis_archive`를 D native ext4 `/home/crazat/genesis_archive`로 복사.
     - 로그: `pilot/d_wsl_full_migration_<RUN_ID>.log`, tar stderr: `pilot/d_wsl_full_migration_project_tar_<RUN_ID>.log`, `pilot/d_wsl_full_migration_archive_tar_<RUN_ID>.log`.
   - migration 완료 전까지 `pilot/QUEUE_DRAIN_MODE` 유지, C: Ubuntu에서 신규 대형 큐 시작 금지. 완료 marker `pilot/D_NATIVE_FULL_MIGRATION_<RUN_ID>.txt`와 verification 통과 후 `Ubuntu-Genesis`를 Genesis canonical runtime으로 사용.
+  - D: GPU smoke/backfill fix (2026-05-02 22:42):
+    - `Ubuntu-Genesis` 최소 rootfs에는 `gcc/g++/make`가 없어 Boltz-2 Triton/cuequivariance JIT가 `Failed to find C compiler`로 실패했다. root로 `apt-get install -y build-essential` 완료.
+    - Boltz cache `/home/crazat/.boltz`는 D native에서 초기화 완료(약 7.6GB). 이후 D: Boltz-2 첫 실행의 CCD/weight download 지연은 없어야 함.
+    - archive copy 중 GPU backfill은 대형 MD 대신 output이 작은 active-learning Boltz-2 cofold만 허용. 현재 D native log: `pilot/active_learning_next_cofold_batch20_d_native.log` (batch21 재실행), loop log: `pilot/active_learning_gpu_backfill_d_native_loop.log`.
+    - GPU backfill loop는 현재 batch 종료 후 `scripts/run_active_learning_next_cofold.py --batch-size 16`을 순차 실행한다. 대형 CPU/xTB 추가 큐는 archive native copy가 끝난 뒤 worker 수/중복 여부를 재평가.
 
 ### 🔥 Tier 0 — 즉시 통합 (SOTA audit 2026-04-26 결과)
 > 광범위 SOTA 조사 결과 **즉각 통합하면 ROI 매우 큰** 7개 도구. 모두 MIT/Apache.
