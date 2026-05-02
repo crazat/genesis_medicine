@@ -426,6 +426,12 @@ ComfyUI는 C:의 기존 `Ubuntu`에 남기고, Genesis_Medicine만 D: native WSL
 - 기존 C: Ubuntu 세션에서 Windows exe interop binfmt가 빠져 `wsl.exe` 직접 실행이 `Exec format error`를 낼 수 있음.
   - D: 관리 shell scripts는 `wsl.exe` 실패 시 `/init /mnt/c/WINDOWS/system32/wsl.exe -- ...` fallback을 사용하도록 수정.
   - 수동으로 Windows exe를 호출할 때도 같은 fallback을 사용하면 WSL shutdown 없이 진행 가능.
+- Queue drain mode (2026-05-02 21:42):
+  - 목적: 현재 실행 중인 Boltz/xTB/NPASS 작업까지만 끝내고, 이후 새 자동 큐잉 없이 final D: WSL cutover 준비.
+  - local marker: `pilot/QUEUE_DRAIN_MODE`
+  - removed triggers: `/tmp/genesis_auto_queue_enabled`, `/tmp/genesis_monitor_enabled`, `/tmp/genesis_morning_queue_guard_enabled`, `/tmp/genesis_codex_curator_enabled`, `/tmp/genesis_world_class_gap_enabled`
+  - running compute jobs are preserved; scripts now refuse to start/restart auto queue, monitor, morning guard, curator, and world-class watchdog while the marker exists.
+  - 재개 시: marker 제거 후 필요한 supervisor를 `nohup setsid ...` 방식으로 재시작.
 
 ### 🔥 Tier 0 — 즉시 통합 (SOTA audit 2026-04-26 결과)
 > 광범위 SOTA 조사 결과 **즉각 통합하면 ROI 매우 큰** 7개 도구. 모두 MIT/Apache.
