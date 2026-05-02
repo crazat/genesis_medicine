@@ -456,6 +456,39 @@ ComfyUI는 C:의 기존 `Ubuntu`에 남기고, Genesis_Medicine만 D: native WSL
     - archive copy 중 GPU backfill은 대형 MD 대신 output이 작은 active-learning Boltz-2 cofold만 허용. 현재 D native log: `pilot/active_learning_next_cofold_batch20_d_native.log` (batch21 재실행), loop log: `pilot/active_learning_gpu_backfill_d_native_loop.log`.
     - GPU backfill loop는 현재 batch 종료 후 `scripts/run_active_learning_next_cofold.py --batch-size 16`을 순차 실행한다. 대형 CPU/xTB 추가 큐는 archive native copy가 끝난 뒤 worker 수/중복 여부를 재평가.
 
+### ✅ D-native canonical runtime + overnight queue armed (2026-05-03 00:55 KST)
+- **Canonical repo is now `Ubuntu-Genesis:/home/crazat/genesis_medicine`**. All compute, `CLAUDE.md` updates, commits, and pushes must be done from this D-backed distro unless the user explicitly says otherwise.
+- C-backed `Ubuntu` may still be used as an interop/control shell to call `wsl.exe -d Ubuntu-Genesis`, but it must not be treated as the source of truth and must not receive new OpenFold3/Boltz/xTB installs.
+- `Ubuntu-Genesis` storage: `/dev/sdf` ext4 max `1.8T`, D-backed VHD. Last operational check showed >1T free; native project outputs and archive can live inside this distro.
+- D OpenFold3 transfer/install verified:
+  - `external_tools/openfold-3/` copied to D native ext4.
+  - checkpoint `.cache/openfold3/of3-p2-155k.pt` copied to D native cache.
+  - smoke passed at `pilot/openfold3_smoke/20260503_003339`; log confirmed `GPU available: True (cuda), used: True`, `Successful Queries: 1`.
+  - CUDA/WSL path fix required in scripts: prepend `/usr/lib/wsl/lib` and set `CONDA_OVERRIDE_CUDA=12.8` where needed.
+- Drain mode resolved for D runtime:
+  - `pilot/QUEUE_DRAIN_MODE` absent.
+  - active triggers: `/tmp/genesis_auto_queue_enabled`, `/tmp/genesis_monitor_enabled`, `/tmp/genesis_codex_curator_enabled`, `/tmp/genesis_morning_queue_guard_enabled`.
+- Overnight guard / monitor stack is active until the user morning window:
+  - `scripts/morning_queue_guard.sh` with `GENESIS_GUARD_UNTIL=2026-05-03T10:30:00+09:00`.
+  - `scripts/monitor_supervisor.sh`.
+  - `scripts/codex_curator_loop.sh`.
+  - `scripts/auto_queue_cpu_gpu_daemon.sh`.
+  - D keepalive process keeps `Ubuntu-Genesis` from being torn down by WSL after the launcher exits.
+- GPU queue policy after cutover:
+  - `scripts/overnight_gpu_backfill_d_native.sh` keeps GPU filled until `2026-05-03T10:00:00+09:00`.
+  - Priority order: active-learning Boltz-2 cofold with MMP1 included → scaffold-hop / cryptic / round3 gap fills → R17 green 120 ns MD → R18 chromanol expanded backfill.
+  - Latest observed active job: `run_active_learning_next_cofold.py --include-mmp1`, batch32 Boltz-2, CUDA memory in use.
+- CPU queue policy after cutover:
+  - xTB NPASS refine ladders continue on D native ext4 with multi-worker CPU saturation.
+  - Latest observed active jobs: `xtb_npass_top1000_hetero3_refine_288conf.csv` and `xtb_npass_top3000_hetero5_refine_288conf.csv`; planner can continue into hetero8/hetero9 ladders when idle.
+- Scientific claim discipline remains mandatory:
+  - MMP1/Zn results are triage-only until ZAFF/metal-aware ABFE gate passes. Do not claim “perfect binding” or confirmed negative ABFE from non-ZAFF runs.
+  - R18 chromanol expanded backfill is discovery triage only; no novelty/FTO/commercial claim until prior-art gate passes.
+  - Boltz-only affinity requires cross-model, decoy, PLIF, MD, or free-energy validation before strong manuscript language.
+- Known D-launch reliability rule:
+  - Background jobs should be launched with `nohup` and a Windows-side `wsl.exe -d Ubuntu-Genesis` client or equivalent keepalive. Simple detached `nohup` inside a one-shot WSL invocation can be reaped when the distro idles.
+  - Preferred manual pattern from C control shell: `/init /mnt/c/Windows/System32/cmd.exe /c "cd /d C:\ && wsl.exe -d Ubuntu-Genesis --cd /home/crazat/genesis_medicine -e bash -s"` with the script piped on stdin.
+
 ### 🔥 Tier 0 — 즉시 통합 (SOTA audit 2026-04-26 결과)
 > 광범위 SOTA 조사 결과 **즉각 통합하면 ROI 매우 큰** 7개 도구. 모두 MIT/Apache.
 1. **CellAwareGNN** (bioRxiv 2026-02) — TxGNN 직접 후속, scPrimeKG 기반, 자가면역 피부질환 +6% AUPRC. 자가면역(아토피·건선·원형탈모) 재창출 정확도 직격.
@@ -529,7 +562,8 @@ ComfyUI는 C:의 기존 `Ubuntu`에 남기고, Genesis_Medicine만 D: native WSL
 - **KHP/KP 수록 한약재 +α 가중치** (한국 임상 진입 우선).
 
 ## 실행 환경 (절대 규칙)
-- **진짜 저장소**: WSL2 ext4 `/home/crazat/genesis_medicine/`
+- **진짜 저장소 / canonical runtime**: `Ubuntu-Genesis` WSL2 native ext4 `/home/crazat/genesis_medicine/` (D: VHD `D:\WSL\Ubuntu-Genesis\ext4.vhdx`).
+- **C: Ubuntu `/home/crazat/genesis_medicine`는 legacy/control shell only**. 신규 설치, 신규 계산, commit/push는 사용자가 명시하지 않는 한 금지.
 - **Python 메인 venv**: 3.11 (uv 관리) — Boltz-2, ADMET-AI, OpenMM 8 호환
 - **보조 conda env**:
   - `genesis-md` (py3.11): MD 전용 (openmm + openff + mace + pdbfixer)
