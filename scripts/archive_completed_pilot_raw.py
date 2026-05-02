@@ -24,6 +24,12 @@ PILOT = ROOT / "pilot"
 DEFAULT_ARCHIVE_ROOT = Path("/mnt/d/genesis_archive/genesis_medicine")
 MANIFEST = PILOT / "completed_pilot_raw_archive_manifest.jsonl"
 LOG = PILOT / "completed_pilot_raw_archive.log"
+RSYNC_DRVFS_OPTIONS = [
+    "--no-perms",
+    "--no-owner",
+    "--no-group",
+    "--modify-window=2",
+]
 
 KEEP_TOP_LEVEL = {
     "summary.json",
@@ -119,6 +125,7 @@ def rsync_copy(src: Path, dst: Path, bwlimit_kb: int, dry_run: bool) -> int:
         "-a",
         "--human-readable",
         "--info=stats1",
+        *RSYNC_DRVFS_OPTIONS,
     ]
     if bwlimit_kb > 0:
         cmd.append(f"--bwlimit={bwlimit_kb}")
@@ -132,7 +139,7 @@ def rsync_copy(src: Path, dst: Path, bwlimit_kb: int, dry_run: bool) -> int:
 
 
 def rsync_validate(src: Path, dst: Path, bwlimit_kb: int) -> bool:
-    cmd = ["rsync", "-a", "--dry-run", "--itemize-changes"]
+    cmd = ["rsync", "-a", "--dry-run", "--itemize-changes", *RSYNC_DRVFS_OPTIONS]
     if bwlimit_kb > 0:
         cmd.append(f"--bwlimit={bwlimit_kb}")
     cmd.extend([f"{src}/", f"{dst}/"])

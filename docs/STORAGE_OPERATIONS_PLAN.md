@@ -17,6 +17,9 @@
    queue workers are running.
 5. If Windows C or WSL root free space drops below `80 GB`,
    the queue planner should hold new large tasks until space is recovered.
+6. When validating archives on `/mnt/d`, ignore Unix ownership/permission bits
+   (`--no-perms --no-owner --no-group --modify-window=2`) because DrvFS/NTFS can
+   otherwise report permission-only differences after a complete copy.
 
 ## Largest Project Directories
 

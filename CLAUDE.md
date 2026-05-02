@@ -357,6 +357,7 @@ Windows C:가 WSL ext4.vhdx를 품고 있어 `/home/crazat/genesis_medicine`의 
 - archive worker: `scripts/archive_completed_pilot_raw.py`
   - 보수적 선택: `pilot/md_*` + summary 존재 + raw child dir 존재 + process table에 active path 없음.
   - 전체 `rsync` 후 dry-run validation 통과 시에만 local raw child 삭제.
+  - `/mnt/d` DrvFS/NTFS 권한 비트 차이를 피하려고 `--no-perms --no-owner --no-group --modify-window=2`로 검증.
   - manifest: `pilot/completed_pilot_raw_archive_manifest.jsonl`
   - log: `pilot/completed_pilot_raw_archive.log`
 - duplicate archive launch 금지. 재실행 전 반드시:
