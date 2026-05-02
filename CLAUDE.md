@@ -407,7 +407,7 @@ ComfyUI는 C:의 기존 `Ubuntu`에 남기고, Genesis_Medicine만 D: native WSL
 주의:
 - 현재 initial staging은 기존 큐를 유지한 무중단 복제이므로, C: Ubuntu에서 계속 생성되는 최신 `pilot/` outputs는 최종 전환 전 한 번 더 delta sync 필요.
 - 최종 전환 순서: queue pause/stop → final delta sync → `Ubuntu-Genesis`에서 verification → queue restart → C: Genesis 삭제는 며칠 안정화 후.
-- `Ubuntu-Genesis` 기본 VHD max는 현재 1TB. 1.5TB resize는 `wsl --shutdown`이 필요해 보호 큐가 끝난 maintenance window에서 수행.
+- `Ubuntu-Genesis` VHD max는 `1800GB`로 확장 완료. D:를 Genesis native ext4 중심으로 사용할 수 있음.
 
 추가 정리/최적화 (2026-05-02 21:30):
 - D:에서 Genesis와 무관한 실사용 잔여물 정리 완료:
@@ -432,6 +432,12 @@ ComfyUI는 C:의 기존 `Ubuntu`에 남기고, Genesis_Medicine만 D: native WSL
   - removed triggers: `/tmp/genesis_auto_queue_enabled`, `/tmp/genesis_monitor_enabled`, `/tmp/genesis_morning_queue_guard_enabled`, `/tmp/genesis_codex_curator_enabled`, `/tmp/genesis_world_class_gap_enabled`
   - running compute jobs are preserved; scripts now refuse to start/restart auto queue, monitor, morning guard, curator, and world-class watchdog while the marker exists.
   - 재개 시: marker 제거 후 필요한 supervisor를 `nohup setsid ...` 방식으로 재시작.
+- `Ubuntu-Genesis` VHD 확장 (2026-05-02 21:52):
+  - `wsl --manage Ubuntu-Genesis --resize`는 C: Ubuntu가 running인 상태에서 WSL service shutdown을 요구하여 사용하지 않음.
+  - 대신 Hyper-V `Resize-VHD -Path D:\WSL\Ubuntu-Genesis\ext4.vhdx -SizeBytes 1800GB`로 VHDX max 확장.
+  - `Ubuntu-Genesis` 내부 `/` 확인: `/dev/sdf ext4 1.8T`, used 약 `155G`, avail 약 `1.5T`.
+  - VHDX는 dynamic이므로 Windows 실제 파일 크기는 약 `156G`로 유지되고, native ext4 사용량이 늘 때만 D: 물리 사용량 증가.
+  - `/mnt/d/genesis_archive`는 final cutover 시 native archive(`/home/crazat/genesis_archive/...` 또는 project-local archive)로 이전 가능.
 
 ### 🔥 Tier 0 — 즉시 통합 (SOTA audit 2026-04-26 결과)
 > 광범위 SOTA 조사 결과 **즉각 통합하면 ROI 매우 큰** 7개 도구. 모두 MIT/Apache.
