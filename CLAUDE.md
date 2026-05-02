@@ -409,6 +409,24 @@ ComfyUI는 C:의 기존 `Ubuntu`에 남기고, Genesis_Medicine만 D: native WSL
 - 최종 전환 순서: queue pause/stop → final delta sync → `Ubuntu-Genesis`에서 verification → queue restart → C: Genesis 삭제는 며칠 안정화 후.
 - `Ubuntu-Genesis` 기본 VHD max는 현재 1TB. 1.5TB resize는 `wsl --shutdown`이 필요해 보호 큐가 끝난 maintenance window에서 수행.
 
+추가 정리/최적화 (2026-05-02 21:30):
+- D:에서 Genesis와 무관한 실사용 잔여물 정리 완료:
+  - `$RECYCLE.BIN` contents, `steam`, `XboxGames`, `WpSystem`, `WUDownloadCache`, `.parts`, `.url` 제거.
+  - D: 사용량 대략 `374G -> 329G`; 여유공간 약 `1.5T`.
+  - `WindowsApps`, `Program Files`, `Google Drive`는 Windows ACL/프로세스 lock으로 0-byte placeholder만 남음.
+- C: Ubuntu 최적화 확인:
+  - 전역 `%USERPROFILE%\.wslconfig`: `memory=56GB`, `processors=24`, `swap=16GB`, `mitigations=off`, `transparent_hugepage=madvise`, `autoMemoryReclaim=dropcache`, `sparseVhd=true`.
+  - 이 설정은 WSL 전체에 적용되므로 `Ubuntu-Genesis`에도 재시작 후 동일하게 적용.
+- `Ubuntu-Genesis` 전용 성능 보강 스크립트:
+  - `scripts/configure_ubuntu_genesis_perf.sh`
+  - `/etc/wsl.conf`: `systemd=true`, default user, automount metadata.
+  - open-file limit: soft/hard `1048576`.
+  - `/etc/profile.d/genesis-performance.sh`: Genesis cache, CUDA path, nofile.
+  - C: Ubuntu의 selected dotfiles + CUDA 12.8 toolkit을 D: distro에 반영.
+- 기존 C: Ubuntu 세션에서 Windows exe interop binfmt가 빠져 `wsl.exe` 직접 실행이 `Exec format error`를 낼 수 있음.
+  - D: 관리 shell scripts는 `wsl.exe` 실패 시 `/init /mnt/c/WINDOWS/system32/wsl.exe -- ...` fallback을 사용하도록 수정.
+  - 수동으로 Windows exe를 호출할 때도 같은 fallback을 사용하면 WSL shutdown 없이 진행 가능.
+
 ### 🔥 Tier 0 — 즉시 통합 (SOTA audit 2026-04-26 결과)
 > 광범위 SOTA 조사 결과 **즉각 통합하면 ROI 매우 큰** 7개 도구. 모두 MIT/Apache.
 1. **CellAwareGNN** (bioRxiv 2026-02) — TxGNN 직접 후속, scPrimeKG 기반, 자가면역 피부질환 +6% AUPRC. 자가면역(아토피·건선·원형탈모) 재창출 정확도 직격.
