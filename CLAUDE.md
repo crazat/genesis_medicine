@@ -367,6 +367,48 @@ Windows C:가 WSL ext4.vhdx를 품고 있어 `/home/crazat/genesis_medicine`의 
 - queue planner hard-hold: `scripts/auto_result_planner.py`가 Windows C: 또는 WSL root free `< GENESIS_MIN_FREE_GB` (default 80GB)이면 신규 대형 CPU/GPU launch를 막는다. warn threshold default 200GB.
 - 장기 최선책: active job 정지·백업 후 Ubuntu WSL distro 자체를 D:로 `wsl --export`/`wsl --import` 이전. 현재 큐가 도는 동안은 VHDX compaction/이전 금지.
 
+### ✅ Genesis-only native D: WSL staging (2026-05-02 21:10)
+
+ComfyUI는 C:의 기존 `Ubuntu`에 남기고, Genesis_Medicine만 D: native WSL ext4로 분리하는 방향으로 전환 중.
+
+현재 구조:
+- C: 기존 distro: `Ubuntu`
+  - BasePath: `C:\Users\craza\AppData\Local\wsl\{0930df6a-828b-4f35-9b21-e20cd00e17e7}`
+  - ComfyUI 유지: `/home/crazat/ComfyUI`
+  - 기존 Genesis 큐가 아직 여기서 실행 중.
+- D: Genesis 전용 distro: `Ubuntu-Genesis`
+  - BasePath: `D:\WSL\Ubuntu-Genesis`
+  - root fs: `D:\WSL\Ubuntu-Genesis\ext4.vhdx`
+  - 내부 경로: `/home/crazat/genesis_medicine`
+  - ComfyUI 없음.
+
+진행 완료:
+- 공식 Ubuntu 24.04 WSL rootfs 다운로드: `D:\WSL\Images\ubuntu-noble-wsl-amd64-24.04lts.rootfs.tar.gz`
+- `wsl --import Ubuntu-Genesis D:\WSL\Ubuntu-Genesis ... --version 2`
+- `crazat` default user 설정, `sudo/rsync/git/curl/ca-certificates` 설치.
+- 무중단 initial staging 완료:
+  - `/home/crazat/genesis_medicine`
+  - `/home/crazat/miniforge3`
+  - `/home/crazat/miniconda3`
+  - `/home/crazat/.local` (uv Python symlink target)
+  - `/home/crazat/.cache`
+- 검증:
+  - `df -hT .` → `/dev/sdf ext4`
+  - `.venv/bin/python` RDKit OK
+  - `.venv` torch CUDA OK
+  - `miniforge3/envs/genesis-md` OpenMM OK
+  - `nvidia-smi` OK
+
+운영 스크립트:
+- create: `scripts/create_ubuntu_genesis_on_d.ps1`
+- staging copy: `scripts/stage_genesis_to_ubuntu_genesis.sh`
+- verification: `scripts/verify_ubuntu_genesis.sh`
+
+주의:
+- 현재 initial staging은 기존 큐를 유지한 무중단 복제이므로, C: Ubuntu에서 계속 생성되는 최신 `pilot/` outputs는 최종 전환 전 한 번 더 delta sync 필요.
+- 최종 전환 순서: queue pause/stop → final delta sync → `Ubuntu-Genesis`에서 verification → queue restart → C: Genesis 삭제는 며칠 안정화 후.
+- `Ubuntu-Genesis` 기본 VHD max는 현재 1TB. 1.5TB resize는 `wsl --shutdown`이 필요해 보호 큐가 끝난 maintenance window에서 수행.
+
 ### 🔥 Tier 0 — 즉시 통합 (SOTA audit 2026-04-26 결과)
 > 광범위 SOTA 조사 결과 **즉각 통합하면 ROI 매우 큰** 7개 도구. 모두 MIT/Apache.
 1. **CellAwareGNN** (bioRxiv 2026-02) — TxGNN 직접 후속, scPrimeKG 기반, 자가면역 피부질환 +6% AUPRC. 자가면역(아토피·건선·원형탈모) 재창출 정확도 직격.
