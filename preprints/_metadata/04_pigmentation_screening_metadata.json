@@ -1,42 +1,15 @@
 {
-  "paper_id": "04_pigmentation_screening",
-  "title": "In silico screening of 15 Korean herbal compounds against tyrosinase, TYRP1 and DCT (TRP-2) for topical hyperpigmentation: real Boltz-2 cofold + ADMET-AI results identify oxyresveratrol, curcumin, and resveratrol as topical-friendly leads",
-  "abstract": "Topical hyperpigmentation disorders (melasma, post-inflammatory hyperpigmentation, solar lentigines) are mediated by the tyrosinase (TYR) / TYRP1 / DCT (TRP-2) melanin-synthesis network and the master transcription factor MITF. Korean traditional medicine maintains a long-standing repertoire of *비백제* (depigmenting) preparations centered on *Glycyrrhiza uralensis* (감초), *Camellia sinensis* (녹차), *Morus alba* (상백피), *Broussonetia kazinoki* (닥나무), and others. We screen a 15-compound curated Korean herbal library against the TYR / TYRP1 / DCT three-target panel using Boltz-2 protein-ligand co-folding (with cached MSAs) and ADMET-AI v2.0.1 property prediction. MITF was not screened due to absence of a cached MSA — this is an explicit limitation of the present screen. Real Boltz-2 affinity_probability_binary results identify oxyresveratrol (mulberry root, *M. alba*) as the top mean-affinity candidate (mean 0.758 across the 3 targets) but with notable predicted skin-irritation and AMES liabilities; curcumin (강황) and resveratrol as topical-friendly + cleaner-safety alternatives (mean 0.695 and 0.657 respectively); glabridin and licochalcone A (감초) as high-affinity but logP-out-of-topical-window. Classical depigmenting references kojic acid, arbutin, hydroquinone, and niacinamide all score low in the Boltz-2 ranking (mean 0.32 – 0.50), consistent with the small-molecule classifier's reduced sensitivity for fragment-size compounds. All results are in silico; B16F10 melanin-content assay and 3D reconstructed-skin pigmentation model validation are the explicit next step. Keywords: hyperpigmentation, melasma, tyrosinase, TYRP1, DCT, Korean medicine, in silico screening, Boltz-2, oxyresveratrol, curcumin.",
-  "keywords": [
-    "pharmacology",
-    "skin",
-    "AI"
-  ],
-  "target_server": "bioRxiv",
-  "authors": [
-    {
-      "name": "HanCheongWoo",
-      "affiliations": [
-        "Genesis_Medicine Lab, Seoul, Republic of Korea",
-        "HAN PREDICT, Inc. (hanpredict.com)",
-        "Recover Korean Medicine Clinic (recover-clinic.kr)"
-      ],
-      "orcid": "0009-0004-4805-8815",
-      "email": "admin@hanpredict.com",
-      "corresponding": true
-    }
-  ],
+  "preprint_number": 4,
+  "slug": "pigmentation_screening",
+  "title": "Multi-target evaluation of Korean herbal compounds against the tyrosinase / TYRP1 / DCT axis for topical hyperpigmentation: Boltz-2 cofold, ChEMBL-anchored ranking, ADMET-AI 107-endpoint safety panel, and 30 ns molecular dynamics validation of oxyresveratrol and curcumin leads",
+  "submission_id": "BIORXIV/2026/722471",
+  "submission_date": "2026-05-03",
+  "subject_area": "Pharmacology and Toxicology",
   "license": "CC-BY 4.0",
-  "code_url": "https://github.com/crazat/genesis_medicine",
-  "category": "pharmacology",
-  "subcategory": "skin",
+  "version_at_submission": "v0.3",
+  "doi": null,
+  "doi_issued_date": null,
+  "prior_history": "ChemRxiv rejected 2026-04-30 (scope mismatch, curator letter); bioRxiv rejected 2026-04-28 as BIORXIV/2026/721241 ('not a complete research paper, just a screening report'); reframed in v0.3 emphasizing 4 analytical layers (Boltz-2 cofold + ChEMBL pIC50 anchor + 30 ns MD + ADMET-AI 107-endpoint) and resubmitted 2026-05-03.",
   "manuscript_path": "preprints/04_pigmentation_screening/manuscript.md",
-  "pdf_path": "preprints/04_pigmentation_screening/manuscript.pdf",
-  "n_figures": 2,
-  "word_count_md": 3103,
-  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
-  "funding": "Self-funded by HAN PREDICT, Inc.",
-  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results.",
-  "ai_disclosure": {
-    "used": true,
-    "tool": "Claude (Anthropic, Opus 4.7)",
-    "role": "drafting + tables + editorial support",
-    "icmje_compliant": true,
-    "note": "Author verified all claims; AI not used for data or hypotheses."
-  }
+  "pdf_path": "preprints/04_pigmentation_screening/manuscript.pdf"
 }

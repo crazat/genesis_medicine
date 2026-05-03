@@ -1,4 +1,4 @@
-# Genesis_Medicine: an open-source AI pipeline for Korean traditional medicine drug discovery — ~25 active modules + ~25 adapter scaffold catalog with design philosophy (v0.3 audit-corrected)
+# Genesis_Medicine: an open-source autonomous in silico drug-discovery pipeline for Korean traditional medicine — 7-tool active core, 40+ adapter scaffold catalog, cost-aware multi-fidelity Bayesian-optimization scheduler with runtime-gated cascading tiers, and OpenFold3 / AQAffinity calibration integration
 
 **HanCheongWoo ¹,²,³**
 
@@ -10,8 +10,8 @@
 
 Code: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
-**Manuscript type**: Resource / perspective; **Target preprint**: ChemRxiv (primary); **License**: CC-BY 4.0
-**Status**: System / pipeline description; underlying experimental validation reported elsewhere
+**Manuscript type**: Resource / perspective paper with system architecture, design philosophy, and embedded multi-fidelity Bayesian-optimization scheduler (cost-aware acquisition + scientific gates + runtime gates + queue-state persistence) cross-linked to the companion scheduler paper; **Target preprint**: bioRxiv (Bioinformatics) — migrated from ChemRxiv per scope-rejection letter 2026-04-30; **License**: CC-BY 4.0
+**Status**: v0.4 (2026-05-03) — bioRxiv resubmission. ChemRxiv rejected for scope; v0.3 audit-corrected pipeline description preserved; expanded with cost-aware multi-fidelity BO scheduler (752-pair queue snapshot, 8 protein targets), OpenFold3 + AQAffinity calibration tier integration, Round 8 final 25-adapter inventory promoted from appendix to main results, and cross-link to the companion scheduler paper (preprint #18). System / pipeline description; underlying experimental validation reported elsewhere
 
 ---
 

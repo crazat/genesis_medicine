@@ -1,4 +1,4 @@
-# *Embelia ribes* (Vidanga, 자단) revisited: from Ayurvedic-East Asian traditional use to AI-augmented scaffold-hopping for skin fibrosis
+# Embelia ribes (Vidanga, Jadan) revisited: from traditional Ayurvedic and East Asian use to AI-augmented scaffold-hopping for skin fibrosis with embelin parent and EMB-3 derivative case study
 
 **HanCheongWoo ¹,²,³**
 
@@ -10,9 +10,9 @@
 
 Code repository: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
-**Manuscript type**: Narrative review with computational case study
-**Target preprint server**: bioRxiv (primary), Phytomedicine (peer-review submission)
-**Status**: in silico results only; wet-lab validation pending
+**Manuscript type**: Narrative review with computational case study (literature synthesis + AI scaffold-hopping pipeline application + EMB-3 derivative emergence)
+**Target preprint server**: bioRxiv (Plant Biology / Pharmacology); peer-review target Phytomedicine
+**Status**: v0.3 (2026-05-03) — bioRxiv resubmission. ChemRxiv rejected for scope (curator letter 2026-04-30, "work not suitable for ChemRxiv"); content unchanged, target server migrated to bioRxiv with title romanized for ASCII compliance and Round 8 polypharmacology / kinetics / DDI evidence promoted from appendix to main results. In silico results only; wet-lab validation pending
 **Code**: <https://github.com/crazat/genesis_medicine>
 
 ---

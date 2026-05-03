@@ -10,9 +10,9 @@
 
 Code repository: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
-**Manuscript type**: In silico case study with structure-activity analysis
-**Target preprint server**: ChemRxiv (primary)
-**Status**: v0.3 (2026-04-28) — adds CMS-19 dual lead from R7-R10 Bayesian Active Learning cascade (1,260+ cofold rows). In silico predictions only; wet-lab synthesis and validation are the explicit forward step
+**Manuscript type**: In silico case study with multi-layer structure-activity analysis (REINVENT4 mol2mol scaffold hop + Boltz-2 cofold + ADMET-AI 107-endpoint + 10 ns MD + corrected ABFE protocol calibrated on T4 lysozyme L99A * benzene + R7-R10 Bayesian active learning cascade providing CMS-19 dual lead)
+**Target preprint server**: bioRxiv (Pharmacology); peer-review target J Cheminform or RSC Med Chem
+**Status**: v0.4 (2026-05-03) — bioRxiv resubmission. ChemRxiv rejected for scope (curator letter 2026-04-30, "work not suitable for ChemRxiv"); CMS-19 dual lead from v0.3 retained; target server migrated to bioRxiv with v0.3 active-learning cascade (1,260+ cofold rows) and §3.10 first applied ABFE on EMB-3 * MMP-1 promoted to main results. In silico predictions only; wet-lab synthesis and validation are the explicit forward step
 **License**: CC-BY 4.0 (preprint); pipeline code Apache-2.0
 
 ---

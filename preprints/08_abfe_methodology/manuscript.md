@@ -10,8 +10,8 @@
 
 Code: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
-**Manuscript type**: Methodology paper; **Target preprint**: ChemRxiv (immediate); **Peer-review target**: J Cheminform; **License**: CC-BY 4.0
-**Status**: v0.7 — **calibrated cycle T4L99A·benzene** ΔG_bind = −4.006 ± 0.183 kcal/mol (vs lit −5.18, |Δ|=1.17, passes ±2 criterion, 8.89 h GPU) **+ first applied ABFE on EMB-3 × MMP-1** ΔG_bind = +0.55 ± 0.38 kcal/mol (8.53 h GPU). Applied result is statistically indistinguishable from zero — quantitatively confirms the "MMP-1 minus zinc" caveat (§4.1) and elevates ZAFF / AToM-OpenMM integration from optional to release-blocking for any quantitative MMP-1 affinity claim. Plus **ChEMBL Boltz-2 calibration** (ρ = −0.724) + **Boltz-2/Chai-1 ensemble** + **PoseBusters 149 poses** + **τRAMD/SEEKR2 kinetics scaffolds**.
+**Manuscript type**: Methodology paper with calibration benchmark and applied case study; **Target preprint**: bioRxiv (Biophysics) — migrated from ChemRxiv per scope-rejection letter 2026-04-30; **Peer-review target**: J Cheminform; **License**: CC-BY 4.0
+**Status**: v0.8 (2026-05-03) — bioRxiv resubmission of v0.7 ABFE methodology. **Calibrated cycle T4L99A * benzene** delta-G_bind = -4.006 +/- 0.183 kcal/mol (vs literature -5.18, abs-difference 1.17, passes +/-2 criterion, 8.89 h GPU). **First applied ABFE on EMB-3 * MMP-1** delta-G_bind = +0.55 +/- 0.38 kcal/mol (8.53 h GPU). Applied result is statistically indistinguishable from zero, quantitatively confirms the MMP-1-minus-zinc caveat (Section 4.1), and elevates ZAFF / AToM-OpenMM integration from optional to release-blocking for any quantitative MMP-1 affinity claim. Plus ChEMBL Boltz-2 calibration (Spearman rho = -0.724), Boltz-2 / Chai-1 ensemble, PoseBusters 149-pose validation, and tau-RAMD / SEEKR2 kinetics scaffolds. Section 3.10 (EMB-3 * MMP-1 applied ABFE) and Section 3.9 (kinetics roadmap) promoted from appendix to main results for bioRxiv editorial readability.
 
 ---
 

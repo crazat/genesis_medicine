@@ -1,4 +1,4 @@
-# A Topical Skin PBPK Pipeline for Natural-Product-Inspired Therapeutics: Integrating Dancik 4-Layer ODE, SkinPiX-Trained LGBM logKp, and NPASS 2026 ADME Records
+# A topical skin PBPK pipeline for natural-product-inspired therapeutics: Dancik 4-layer ODE, SkinPiX-trained LGBM logKp head, NPASS 2026 ADME records, and a 102-compound 4-vehicle finite-dose evaluation with IVRT / IVPT readiness anchor
 
 **HanCheongWoo ¹,²,³**
 
@@ -8,8 +8,9 @@
 ² HAN PREDICT, Inc. (hanpredict.com)
 ³ Recover Korean Medicine Clinic (recover-clinic.kr)
 
-**Status:** v0.2 (methodology preprint with real 102-compound results, code Apache-2.0)
-**Date:** 2026-04-27
+**Manuscript type:** Methodology paper with calibrated logKp head and finite-dose application case (102 compounds * 4 vehicles = 408 pairs); **Target preprint**: bioRxiv (Pharmacology) — migrated from ChemRxiv per scope-rejection letter 2026-04-30; **License**: CC-BY 4.0
+**Status:** v0.3 (2026-05-03) — bioRxiv resubmission of v0.2 methodology preprint with real 102-compound, 4-vehicle results. NPASS 2026 ADME records and finite-dose IVRT / IVPT readiness anchor added; code Apache-2.0
+**Date:** 2026-05-03
 
 ---
 

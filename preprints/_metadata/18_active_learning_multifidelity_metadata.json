@@ -1,0 +1,15 @@
+{
+  "preprint_number": 18,
+  "slug": "active_learning_multifidelity",
+  "title": "Cost-Aware Multi-Fidelity Bayesian Optimization with Runtime-Gated Cascading Tiers for Autonomous in silico Dermatology Discovery",
+  "submission_id": "BIORXIV/2026/722486",
+  "submission_date": "2026-05-03",
+  "subject_area": "Bioinformatics",
+  "license": "CC-BY 4.0",
+  "version_at_submission": "v0.1",
+  "doi": null,
+  "doi_issued_date": null,
+  "prior_history": "First submission. New v0.1 draft 2026-05-03 describing cost-aware multi-fidelity BO scheduler with runtime-gated cascading tiers; submitted to bioRxiv 2026-05-03.",
+  "manuscript_path": "preprints/18_active_learning_multifidelity/manuscript.md",
+  "pdf_path": "preprints/18_active_learning_multifidelity/manuscript.pdf"
+}

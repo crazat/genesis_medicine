@@ -1,42 +1,15 @@
 {
-  "paper_id": "03_emb3_scar_case_study",
-  "title": "AI-driven scaffold-hopping of *Embelia ribes* embelin yields a topical-friendly anti-fibrotic candidate (EMB-3): an in silico case study for skin scar regeneration",
-  "abstract": "Embelin (2,5-dihydroxy-3-undecyl-1,4-benzoquinone) is the principal bioactive of *Embelia ribes* Burm.f. (Ayurvedic *Vidanga*; East Asian 자단), an Ayurvedic and East Asian traditional-medicine plant with documented anti-fibrotic activity in liver and pulmonary models but no published investigation in skin fibrosis. We present an in silico case study in which embelin serves as the scaffold-hop seed for an AI-augmented lead-optimization pipeline targeting the skin fibrotic master-switch network (TGF-β1, MMP-1, CTGF, SMAD3). The pipeline integrates REINVENT 4 generative chemistry, ADMET-AI property prediction, Boltz-2 protein–ligand co-folding, 10 ns molecular dynamics, and a corrected absolute binding free energy protocol calibrated on the T4 lysozyme L99A · benzene benchmark. Round-1 mol2mol scaffold-hopping yielded EMB-3 (`CCCCCC1=C(O)C(=O)C(O)=C(C)C1=O`), a chain-truncated analog (C₁₁ undecyl → C₆ hexyl + methyl) with predicted hERG inhibition reduced from 0.40 to 0.16, predicted skin irritation reduced from 0.84 to 0.67, logP shifted into the topical sweet spot (5.4 → 2.36), and Boltz-2 affinity probability against TGF-β1 of 0.749. A 7-compound SAR panel spanning C10–C13 natural Embelin analogs and a non-benzoquinone scaffold control confirms that EMB-3 is uniquely positioned in the topical-friendly window. Two further generative rounds (T = 1.0 / 0.6, 100 / 300 samples plus BRICS herbal fragment grafting) failed to surpass EMB-3 on the affinity metric, suggesting a local optimum of the REINVENT4 mol2mol prior space. All results are in silico; experimental synthesis and assay are the next required step. We further note that direct biochemical binding of embelin to the four predicted targets (TGF-β1, MMP-1, CTGF, SMAD3) has not been reported in the peer-reviewed literature; embelin's experimentally validated direct binding targets are XIAP-BIR3 (IC₅₀ ≈ 4.1 μM), PAI-1 (IC₅₀ 4.94 μM), and 5-LOX/mPGES-1 (IC₅₀ 0.06–2 μM). Our predictions therefore constitute first-in-literature in silico hypotheses requiring SPR/ITC validation, with explicit consideration of embelin's PAINS-class 1,4-benzoquinone scaffold (potential redox cycling, Michael acceptor reactivity, and metal chelation) as alternative explanations for high in silico co-fold scores. Keywords: scaffold-hopping, embelin, skin fibrosis, REINVENT4, Boltz-2, ABFE, natural products, in silico, traditional medicine.",
-  "keywords": [
-    "medicinal chemistry",
-    "scaffold-hopping",
-    "AI"
-  ],
-  "target_server": "ChemRxiv",
-  "authors": [
-    {
-      "name": "HanCheongWoo",
-      "affiliations": [
-        "Genesis_Medicine Lab, Seoul, Republic of Korea",
-        "HAN PREDICT, Inc. (hanpredict.com)",
-        "Recover Korean Medicine Clinic (recover-clinic.kr)"
-      ],
-      "orcid": "0009-0004-4805-8815",
-      "email": "admin@hanpredict.com",
-      "corresponding": true
-    }
-  ],
+  "preprint_number": 3,
+  "slug": "emb3_scar_case_study",
+  "title": "AI-driven scaffold-hopping of Embelia ribes embelin yields a topical-friendly anti-fibrotic candidate (EMB-3): an in silico case study for skin scar regeneration",
+  "submission_id": "BIORXIV/2026/722476",
+  "submission_date": "2026-05-03",
+  "subject_area": "Pharmacology and Toxicology",
   "license": "CC-BY 4.0",
-  "code_url": "https://github.com/crazat/genesis_medicine",
-  "category": "medicinal chemistry",
-  "subcategory": "scaffold-hopping",
+  "version_at_submission": "v0.4",
+  "doi": null,
+  "doi_issued_date": null,
+  "prior_history": "ChemRxiv rejected 2026-04-30 (scope mismatch, curator letter); manuscript type expanded in v0.4 with REINVENT 4 + 7-compound SAR panel + ABFE protocol; resubmitted to bioRxiv 2026-05-03.",
   "manuscript_path": "preprints/03_emb3_scar_case_study/manuscript.md",
-  "pdf_path": "preprints/03_emb3_scar_case_study/manuscript.pdf",
-  "n_figures": 7,
-  "word_count_md": 9377,
-  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
-  "funding": "Self-funded by HAN PREDICT, Inc.",
-  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results.",
-  "ai_disclosure": {
-    "used": true,
-    "tool": "Claude (Anthropic, Opus 4.7)",
-    "role": "drafting + tables + editorial support",
-    "icmje_compliant": true,
-    "note": "Author verified all claims; AI not used for data or hypotheses."
-  }
+  "pdf_path": "preprints/03_emb3_scar_case_study/manuscript.pdf"
 }
