@@ -1,27 +1,83 @@
 cff-version: 1.2.0
-title: "Genesis_Medicine: AI-driven Korean herbal drug discovery pipeline"
-message: "If you use this software, please cite our preprints (DOI list at https://github.com/crazat/genesis_medicine#preprints)."
+title: "Genesis_Medicine: open-source autonomous in silico drug-discovery pipeline for Korean traditional medicine"
+message: "If you use this software or build on the preprints, please cite the relevant bioRxiv DOI listed at https://github.com/crazat/genesis_medicine#preprints and the repository entry below."
 type: software
+version: "0.5"
+date-released: "2026-05-03"
 authors:
   - given-names: HanCheongWoo
-    affiliation: "Genesis_Medicine Lab, Seoul; HAN PREDICT, Inc.; Recover Korean Medicine Clinic"
-    orcid: https://orcid.org/0009-0000-0000-0000
+    affiliation: "Genesis_Medicine Lab; HAN PREDICT, Inc.; Recover Korean Medicine Clinic"
+    orcid: https://orcid.org/0009-0004-4805-8815
+    email: crazat7@gmail.com
 license: Apache-2.0
 repository-code: "https://github.com/crazat/genesis_medicine"
 url: "https://hanpredict.com"
+abstract: >
+  Genesis_Medicine is an open-source autonomous in silico drug-discovery pipeline
+  for Korean traditional medicine. It integrates AlphaFold-3-class protein-ligand
+  cofold (Boltz-2 + OpenFold3 + AQAffinity ensemble), REINVENT4 generative
+  chemistry, ADMET-AI v2 107-endpoint safety prediction, OpenMM 8 + openmmtools
+  0.26 corrected absolute binding free energy, and a cost-aware multi-fidelity
+  Bayesian-optimization scheduler with runtime-gated cascading tiers. Released
+  alongside 19 bioRxiv preprints (2026-04 to 2026-05) on AI-augmented dermatology
+  lead discovery anchored to the Korean Pharmacopoeia herbal scaffold
+  cross-reference. Recover Korean Medicine Clinic (Seoul Gangnam, opening
+  2026-08-15) is the translational anchor.
 keywords:
   - drug discovery
+  - in silico
   - Korean traditional medicine
-  - AlphaFold-3
+  - Korean Pharmacopoeia
+  - dermatology
+  - AlphaFold 3
   - Boltz-2
-  - ABFE
-  - skin fibrosis
-  - natural products
+  - OpenFold3
+  - AQAffinity
+  - REINVENT4
   - ADMET-AI
+  - OpenMM
+  - absolute binding free energy
+  - ABFE
+  - Bayesian active learning
+  - multi-fidelity Bayesian optimization
+  - cost-aware acquisition
+  - runtime-gated scheduling
+  - evidence ledger
+  - scientific gates
+  - natural products
+  - skin therapeutics
+  - scaffold hopping
+  - bioRxiv
+identifiers:
+  - type: url
+    value: "https://github.com/crazat/genesis_medicine"
+    description: "Source repository"
+references:
+  - type: article
+    title: "Multi-target evaluation of Korean herbal compounds against the tyrosinase / TYRP1 / DCT axis for topical hyperpigmentation"
+    authors:
+      - family-names: HanCheongWoo
+    year: 2026
+    notes: "bioRxiv preprint #4, BIORXIV/2026/722471 (DOI pending)"
+  - type: article
+    title: "Cost-aware multi-fidelity Bayesian optimization with runtime-gated cascading tiers for autonomous in silico dermatology discovery"
+    authors:
+      - family-names: HanCheongWoo
+    year: 2026
+    notes: "bioRxiv preprint #18, BIORXIV/2026/722486 (DOI pending)"
+  - type: article
+    title: "Korean Pharmacopoeia herbal scaffold cross-reference for AI-derived dermatology lead candidates: ECFP6 Tanimoto similarity audit"
+    authors:
+      - family-names: HanCheongWoo
+    year: 2026
+    notes: "Preprint #19, in preparation"
 preferred-citation:
   type: software
-  title: "Genesis_Medicine v0.4 (Round 5 + 6)"
+  title: "Genesis_Medicine v0.5 (2026-05-03 public release)"
   authors:
     - given-names: HanCheongWoo
+      orcid: https://orcid.org/0009-0004-4805-8815
   year: 2026
   url: "https://github.com/crazat/genesis_medicine"
+  version: "0.5"
+  date-released: "2026-05-03"
