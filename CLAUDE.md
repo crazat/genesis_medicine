@@ -489,6 +489,66 @@ ComfyUI는 C:의 기존 `Ubuntu`에 남기고, Genesis_Medicine만 D: native WSL
   - Background jobs should be launched with `nohup` and a Windows-side `wsl.exe -d Ubuntu-Genesis` client or equivalent keepalive. Simple detached `nohup` inside a one-shot WSL invocation can be reaped when the distro idles.
   - Preferred manual pattern from C control shell: `/init /mnt/c/Windows/System32/cmd.exe /c "cd /d C:\ && wsl.exe -d Ubuntu-Genesis --cd /home/crazat/genesis_medicine -e bash -s"` with the script piped on stdin.
 
+### ✅ C 드라이브 legacy 유지 결정 (2026-05-03 11:00 KST)
+
+D Ubuntu-Genesis cutover 직후 시점에서도 C `Ubuntu` distro 안의 Genesis 자산은 **유지**한다. fallback 백업 가치 + 위급 storage pressure 부재.
+
+- 결정: 자동 cleanup / VHDX compact / 삭제 제안 금지. 사용자가 다시 묻거나 C free < 100 GB 위급 시에만 단계 B/C 재검토.
+- 시점 수치: Windows C 503 GB free / 2.0 TB. C VHDX(`Ubuntu`) 685 GB sparse, ext4 used 327 GB. C `/home/crazat/genesis_medicine` 118 GB.
+- 절대 보존: `/home/crazat/ComfyUI` (130 GB), 다른 venv/projects, `miniforge3`/`miniconda3` 통째 (Genesis env만 선택 제거 가능), `~/.local`, `~/.cache`, Claude 메타.
+- 단일 최대 회수 후보: `/home/crazat/genesis_medicine` (118 GB, 내부 `.venv` 18 GB 포함). 실제 Windows 회수는 `Optimize-VHD -Mode Full` 별도 실행 필요(C `Ubuntu` distro shutdown 동반 → ComfyUI 일시 정지).
+- 재검토 트리거 (모두 충족): R17 120ns plan(9 jobs) 완료 + D HEAD push 검증(`git rev-list --left-right --count origin/main...HEAD` = `0\t0`) + D-native 1주 무사고 + 사용자 재확인.
+- 상세 메모리: `~/.claude/projects/-home-crazat-genesis-medicine/memory/project_c_drive_legacy_retention.md`.
+- 참고: 인계자 manifest `docs/C_DRIVE_GENESIS_CLEANUP_MANIFEST_2026-05-02.md` 동일 결론.
+
+### ✅ Paper #A methodology pipeline — Tier 2/3 인프라 완성 (2026-05-04)
+
+JCTC/JCIM/RSC Digital Discovery target — 17 Zenodo papers를 1편 deep methods paper로 재구성. 가설: ZAFF-AMBER + alch RE-MD (16λ × 3 rep × 8/5 ns)이 ChEMBL MMP-1 IC50 ranking을 Spearman ρ ≥ 0.6으로 회복.
+
+**Tier 2 deliverables**:
+- `pilot/abfe_mmp1_holo_zn/abfe_production/dG_bind.json`: EMB-3 ABFE INCONCLUSIVE (+0.38 ± 0.29 kcal/mol).
+- `scripts/zaff_phase5_warmup_generic.py`: 임의 ABFE work-dir용 warmup (10000-iter min + 0K→310K heat + restrained NPT). NaN crash 방지 핵심.
+- `scripts/zaff_phase5_abfe_production_generic.py`: parameterized Phase 5 (`--work` CLI). PHASE4 gate `{work}/complex/PHASE4_OK`. **Production timing 업그레이드**: NS_PROD_COMPLEX 5.0→8.0, NS_PROD_SOLVENT 3.0→5.0 (literature Δ ns 기반 Spearman ρ uplift +0.05~0.15). Per compound 19-29h, Tier-1 full run ~8d wall.
+- `scripts/abfe_benchmark_orchestrator.py`: Tier-1 6 compounds 순차 실행 + Spearman/MAE aggregation. PHASE4_OK는 root-level 사용 (warmup/Phase 5 generic은 `complex/PHASE4_OK`).
+- `scripts/abfe_benchmark_prepare.py`: Vina+obabel pose + AM1-BCC + tleap parm. (meeko CLI는 이 env에서 broken — obabel로 대체.)
+- `preprints/PRE_REGISTRATION_TEMPLATE.md`: OSF 사전등록 template (H1-H3 lock).
+
+**Tier 3 / paper-strengthening deliverables**:
+- `scripts/active_learning_screen.py` + `pilot/active_learning/round1/`: 1390 mols 학습, cv_r2=0.83±0.25.
+- `scripts/kipris_patent_check.py`: KIPRIS+PubChem patent novelty (필요: `KIPRIS_API_KEY`).
+- `scripts/dude_decoy_benchmark.py` + 315 decoys: enrichment는 actives xtb-scoring 별도.
+- `scripts/zenodo_code_release.py`: code DOI 발급 (필요: `ZENODO_TOKEN`).
+- `scripts/of3_aqaff_paper_a_b.py`: OpenFold3 + AQAffinity cross-engine (modes: tier1, top500). MMP1_SEQ apo stub 재사용 (R=-0.292 일관성).
+
+**Tier-1 ABFE benchmark targets (paper #A locked subset)** — 6 ChEMBL MMP-1 4 nM → 18 μM:
+| ChEMBL ID | Name | IC50 (nM) | Class |
+|---|---|---|---|
+| CHEMBL415 | Batimastat | 4 | hydroxamate |
+| CHEMBL94487 | RS-130830 | 12 | carboxylate |
+| CHEMBL257077 | — | 15 | prinomastat-like hydroxamate |
+| CHEMBL301236 | — | 42 | fluoro-aryl hydroxamate |
+| CHEMBL292707 | Ilomastat | 200 | zinc-chelating |
+| CHEMBL2105729 | — | 18000 | very weak hydroxamate |
+
+EMB-3 (done) + embelin (running) → N=8 ABFE for Spearman.
+
+**Vina active-site grid (MMP-1 1HFC)**: Zn (40.32, 27.89, 36.94), grid 25×25×25 Å, exhaustiveness=16, num_modes=5. First-shell 3-His: HID111/115/121.
+
+**Why this matters (paper #A submission criteria)**:
+1. ABFE protocol validated against experimental Ki (이전 missing piece).
+2. Statistical rigor (5+ diverse-scaffold 화합물).
+3. Reproducibility chain (Vina + obabel + AmberTools + OpenMM 모두 conda).
+4. Pre-registered hypothesis (screening-paper rejection 회피).
+
+**Known pitfalls (다음 세션에서 회피)**:
+- Phase 5는 minimization 없음 → C12+ alkyl 즉시 NaN. 항상 warmup 먼저.
+- meeko CLI (`mk_prepare_*`)는 이 env에서 broken (config bug). obabel 사용.
+- subprocess의 `python3`은 base conda Python (no parmed) 해석. absolute path 사용.
+- Vina 출력 PDQBT는 H 누락. obabel `-h` 또는 RDKit AddHs 필요.
+- 백그라운드 launch 전 stale orchestrator process 반드시 kill + trajectory.nc 정리.
+
+**TF + multiprocessing.Pool fork = futex deadlock (recurring bug)**: ADMET-AI(TF) + multiprocessing.Pool fork가 같은 프로세스에서 동시 사용되면 deadlock. 항상 별도 스크립트로 분리 (`*_admet_only.py` sequential + `*_xtb_only.py` Pool).
+
 ### 🔥 Tier 0 — 즉시 통합 (SOTA audit 2026-04-26 결과)
 > 광범위 SOTA 조사 결과 **즉각 통합하면 ROI 매우 큰** 7개 도구. 모두 MIT/Apache.
 1. **CellAwareGNN** (bioRxiv 2026-02) — TxGNN 직접 후속, scPrimeKG 기반, 자가면역 피부질환 +6% AUPRC. 자가면역(아토피·건선·원형탈모) 재창출 정확도 직격.
