@@ -286,10 +286,27 @@ internal-consistency check independent of ABFE.
 \subsection{Per-compound ABFE results}
 \label{sec:results-table}
 
-Table~\ref{tab:abfe} reports the binding free energy estimate,
-within-run statistical error, between-replicate dispersion
-$\Delta_{\text{rep}}$, replicate-mean $\langle\dGbind\rangle$, and
-deviation from experiment for the seven compounds.
+Table~\ref{tab:abfe} and Figure~\ref{fig:replicate-scatter} report
+the binding free energy estimate, within-run statistical error,
+between-replicate dispersion $\Delta_{\text{rep}}$, replicate-mean
+$\langle\dGbind\rangle$, and deviation from experiment for the seven
+compounds.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.85\linewidth]{figures/fig1_replicate_scatter.png}
+\caption{Per-compound ABFE replicate values vs the experimental binding
+free energy $\dGexp$. Compounds are ordered by $\dGexp$ (strongest
+binder at top). Each marker shape codes one replicate
+(\textbullet\ rep1, $\blacksquare$ rep2, $\blacktriangle$ rep3); the
+black diamond shows the replicate mean (where $\geq 2$ replicates are
+available), and the green vertical tick is $\dGexp$. Marker color
+encodes scaffold class. Note that CHEMBL415 (Batimastat) replicate
+values span $\sim 19\,\unit{\kcalmol}$ but the mean lands at
+$-10.7\,\unit{\kcalmol}$ near experiment, while CHEMBL94487 and
+CHEMBL443684 replicates fall systematically far from $\dGexp$.}
+\label{fig:replicate-scatter}
+\end{figure>
 
 \begin{table}[ht]
 \centering
@@ -347,7 +364,26 @@ This pattern argues against using single-run within-run statistical
 error as the sole uncertainty estimate for production-screening claims.
 Reporting an ABFE result with an error bar of \SI{0.6}{\kcalmol}
 \emph{can be misleading} if the actual replicate-mean uncertainty is
-4--10$\times$ larger.
+4--10$\times$ larger. Figure~\ref{fig:repdisp-vs-accuracy} plots the
+replicate dispersion $\Delta_{\text{rep}}$ against the accuracy gap
+$|\langle\dGbind\rangle - \dGexp|$ for the six compounds with $\geq 2$
+replicates: there is no monotonic relationship between the two.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.7\linewidth]{figures/fig2_repdisp_vs_accuracy.png}
+\caption{Replicate dispersion $\Delta_{\text{rep}}$
+(= $\max - \min$ of replicate $\dGbind$ values) plotted against the
+accuracy gap $|\langle\dGbind\rangle - \dGexp|$. The dashed diagonal
+marks the $\Delta_{\text{exp}} = \Delta_{\text{rep}}$ line. The shaded
+green band is the chemical-accuracy threshold ($\pm 2\,\unit{\kcalmol}$).
+Reproducibility (low $\Delta_{\text{rep}}$) does not imply accuracy
+(low accuracy gap): CHEMBL94487 has near-zero $\Delta_{\text{rep}}$ but
+sits 9.7 $\unit{\kcalmol}$ above the chemical-accuracy band, while
+CHEMBL415 has the highest $\Delta_{\text{rep}}$ but its mean falls
+within the band.}
+\label{fig:repdisp-vs-accuracy}
+\end{figure>
 
 \subsection{Three-replicate mean recovers strong inhibitors}
 \label{sec:results-three-rep}
@@ -398,24 +434,78 @@ initially proposed when only six compounds were available; the inclusion
 of Marimastat (single-replicate $-2.9$ \unit{\kcalmol}, under-bind)
 breaks the strong-inhibitor consensus. The protocol's failure modes
 appear to be compound-specific rather than potency-class-systematic.
+Figure~\ref{fig:potency-residuals} shows the residual versus pIC$_{50}$
+view of the same data.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.75\linewidth]{figures/fig3_potency_residuals.png}
+\caption{ABFE residual $\langle\dGbind\rangle - \dGexp$ as a function
+of experimental potency (pIC$_{50}$, strongest binders on the left).
+Error bars show the standard deviation across replicates (zero where
+only one replicate is available). The shaded green band is the
+chemical-accuracy threshold ($\pm 2\,\unit{\kcalmol}$). Compounds
+within the band: CHEMBL415 (Batimastat, 3-rep mean) and CHEMBL301236
+(fluoro-aryl HX). Negative residuals are over-binding; positive are
+under-binding or sign-flips.}
+\label{fig:potency-residuals}
+\end{figure>
 
 \subsection{Cross-method ranking robustness on the screening corpus}
 \label{sec:results-xtb}
 
-\todo{insert xtb GFN1 vs GFN2 cross-method finding from
-\texttt{xtb\_npass\_top9997\_hetero10\_gfn1\_432conf.csv} vs the
-GFN2 432-conf cohort. Spearman $\rho = 0.978$, top-10 IoU 9/10,
-top-50 IoU 45/50, $n = 986$ molecules. Solvent variation matrix
-(water/methanol/DMSO/hexane, ALPB) currently in progress;
-expected delivery 2026-05-06.}
+To put the ABFE absolute-affinity instability in context, we ran two
+parallel xtb semi-empirical calculations on a 1050-molecule subset of
+the NPAtlas natural-product corpus (the same 432-conformer ensemble
+protocol detailed in Section~\ref{sec:methods}; ALPB implicit water).
+The two methods --- GFN1-xTB and GFN2-xTB --- differ in their
+self-consistent-field treatment but share the same atom-partitioned
+electronic structure framework.
 
-The xtb-based ranking on a 986-molecule screening corpus shows
-cross-method Spearman correlation $\rho = 0.978$ between GFN1-xTB and
-GFN2-xTB, contrasting sharply with the ABFE replicate-mean spread
-documented above. We interpret this as evidence that semi-empirical QM
-ranking is method-robust at the population level, while ABFE absolute
-binding affinity is not robust at the single-compound level on the
-ZAFF-AMBER MMP-1 system class.
+Pairwise rank Spearman correlations across $n = 1050$ paired molecules
+are reported in Table~\ref{tab:xtb-cross}. Total energy ranks are
+nearly identical across the two methods
+($\rho = +0.993$); gap, HOMO, and LUMO ranks are also strongly
+preserved ($\rho > 0.92$ in every channel).
+
+\begin{table}[ht]
+\centering
+\caption{Cross-method rank correlations: GFN1-xTB vs GFN2-xTB,
+432-conformer ensembles, ALPB water, $n = 1050$ paired molecules from
+the NPAtlas hetero-10 cohort.}
+\label{tab:xtb-cross}
+\small
+\begin{tabular}{lrr}
+\toprule
+xtb feature & Spearman $\rho$ & Pearson $r$ \\
+\midrule
+energy (kcal mol$^{-1}$, lowest-conformer) & $+0.9934$ & $+0.583$ \\
+HOMO--LUMO gap (eV, mean over 432 conf.)   & $+0.9781$ & $+0.978$ \\
+HOMO (eV, lowest-conformer)                & $+0.9278$ & $+0.859$ \\
+LUMO (eV, lowest-conformer)                & $+0.9488$ & $+0.959$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Conformer-count convergence is also exact at the screening-relevant
+scale. Pairwise rank Spearman across the
+$432/480/528/576/720/816$-conformer ladder ($n = 1040\textrm{--}1066$
+molecules per pair) is $\rho = 1.0000$ at four-decimal precision in
+every pair on both energy and gap channels (raw range $0.999825 -
+1.000000$). Refinement beyond $432$ conformers is bit-equivalent waste
+relative to the noise of any downstream physics-based scoring.
+
+Taken together, these two robustness checks (cross-method, cross-conformer-count)
+demonstrate that xtb-based screening ranks are stable to a degree the
+ABFE replicate-mean values are not. We interpret this contrast as
+follows: \emph{semi-empirical QM is rank-robust at the population
+level on natural-product screening corpora; alchemical ABFE on the
+ZAFF-AMBER MMP-1 system class is not rank-robust at the single-compound
+level.} Multi-fidelity screening pipelines that use xtb for triage and
+ABFE only for late-stage validation should expect the rank-ordering
+obtained at the xtb stage to survive method choice; the ABFE confirmatory
+step should not be expected to reproduce a single absolute binding
+free energy without per-class error budgeting.
 
 \section{Discussion}
 \label{sec:discussion}

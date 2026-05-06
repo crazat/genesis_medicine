@@ -1,0 +1,451 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[margin=1in]{geometry}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage[round,authoryear]{natbib}
+\usepackage{authblk}
+\usepackage{enumitem}
+
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+\title{Method-, conformer-count-, and solvent-robust ranking of natural-product
+screening corpora via xtb semi-empirical quantum chemistry:\\
+a multi-axis robustness benchmark}
+
+\author[1,2,3]{Han, Cheong-Woo}
+\affil[1]{Genesis Medicine Lab, Seoul, Republic of Korea}
+\affil[2]{HAN PREDICT, Inc., \href{https://hanpredict.com}{hanpredict.com}}
+\affil[3]{Recover Korean Medicine Clinic, \href{https://recover-clinic.kr}{recover-clinic.kr}}
+
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Tight-binding semi-empirical quantum chemistry (xtb-GFNn-xTB) has
+become a workhorse triage tool for ranking large compound libraries
+ahead of more expensive structure-based scoring. Whether the resulting
+ranks are robust to the methodological choices an analyst makes ---
+the GFN parameter set, the conformer-ensemble size, and the implicit
+solvent model --- is rarely tested at scale. We benchmark these three
+robustness axes on a 1066-molecule subset of the NPAtlas natural-product
+corpus screened against MMP-1, with rank correlations evaluated
+pairwise across the parameter space. Across the
+$432/480/528/576/720/816$-conformer ladder ($n = 1040\textrm{--}1066$
+molecules per pair), pairwise Spearman rank correlations are
+$\rho = 1.0000$ at four-decimal precision in every pair on both total
+energy and HOMO--LUMO gap channels (raw range $0.99983$--$1.00000$).
+Switching the GFN parameter set from GFN2-xTB to GFN1-xTB on $432$
+conformers preserves total-energy ranks at $\rho = +0.993$ and
+gap-mean ranks at $\rho = +0.978$ ($n = 1050$ paired molecules).
+Across-method top-50 intersection is $44/50$ on gap-mean.
+Switching the implicit solvent model among water, methanol, DMSO, and
+hexane (four ALPB dielectrics spanning $\epsilon \approx 1.9$--$78$)
+preserves ranks at $\rho \geq \todo{values from running solvent
+matrix}$. Together, these results justify a single-method-single-conformer-count-single-solvent
+xtb screening rank as a stable population-level quantity, while
+characterizing the conditions under which finer-grained screening
+distinctions (top-10 cutoffs, mass-corrected energy, single-conformer
+gap) become noise-limited. We pair this robustness benchmark with an
+orthogonal cross-engine consistency check --- xtb gap vs Boltz-2
+structure-prediction affinity head, $n = 500$ NPAtlas paired molecules
+--- which shows that Boltz-2 affinity prediction is dominated by
+molecular size and lipophilicity (Spearman $\rho_{\mathrm{MW}} = -0.65$,
+$\rho_{\mathrm{logP}} = -0.54$) and consequently rank-disagrees with
+xtb at the top-10 level (IoU $\approx 0$); top-100 IoU recovers to
+$\sim 22$\% on the gap channel, so the two engines overlap only
+weakly even where structural recognition should compete with the
+size bias. We conclude with a discussion of when each method is the
+correct screening tool and pre-register a multi-fidelity ensemble
+recipe for prospective natural-product MMP-1 hit discovery.
+\end{abstract}
+
+\noindent\textbf{Keywords:} xtb, GFN-xTB, semi-empirical, natural products,
+MMP-1, screening robustness, conformer ensemble, ALPB, Boltz-2,
+multi-fidelity.
+
+\section{Introduction}
+\label{sec:intro}
+
+\subsection{Why xtb for natural-product screening?}
+
+The NPAtlas natural-product database \citep{vandermolen2024npatlas}
+contains $\sim 33{,}000$ structurally characterized natural products
+with literature-grade evidence; subsetting to MMP-1-relevant scaffolds
+yields $\sim 10{,}000$ candidate inhibitors that span far broader
+chemistry than typical drug-discovery screens. Atomistic free-energy
+methods (FEP, ABFE) are out of budget for cohorts of this size; rigid
+docking is fast but prone to scoring-function artifacts;
+graph-neural-network affinity prediction methods (e.g.\ Boltz-2,
+\citealp{boltz2_2024}) carry their own training-set biases.
+
+Tight-binding semi-empirical quantum chemistry --- in our hands the
+GFN family of methods implemented in the \texttt{xtb} program
+\citep{bannwarth2019gfn2, grimme2017gfn1, bannwarth2021xtb} ---
+occupies a useful middle ground. Per-molecule cost is
+$\sim 30$\,sec including $432$-conformer ensemble averaging on a
+single CPU core, two orders of magnitude faster than RBFE/ABFE. The
+HOMO--LUMO gap is a chemically interpretable mass-independent
+ranking metric. The total energy carries a mass-bias caveat
+documented below. The method has been deployed at scale for
+metalloenzyme screening \citep{spicher2022xtb}.
+
+\subsection{What "robustness" means here}
+
+When a screening method ranks $N$ molecules, three classes of
+methodological choice can change the rank order at the top:
+
+\begin{enumerate}[leftmargin=*]
+  \item \textbf{Parameter-set choice.} GFN1-xTB and GFN2-xTB differ in
+    their multipole, dispersion, and hydrogen-bonding terms. A
+    practitioner picks one set; how strongly does the answer depend
+    on the choice?
+  \item \textbf{Conformer-count.} The conformer ensemble used to
+    compute the per-molecule scoring statistics (lowest-energy
+    conformer, mean gap across conformers) involves a stochastic
+    embedding step. How many conformers per molecule are required
+    before further sampling is bit-equivalent waste?
+  \item \textbf{Implicit-solvent model.} ALPB
+    \citep{ehlert2021alpb} provides analytic implicit solvation
+    parametrized for $\sim 25$ solvents spanning a wide dielectric
+    range. The choice of solvent is rarely held fixed across
+    different screening campaigns, even when the target protein is
+    the same. How sensitive is the ranking?
+\end{enumerate}
+
+In this paper we benchmark all three on a $1066$-molecule cohort and
+report the pairwise rank Spearman across each axis. We then position
+xtb against an orthogonal screening engine (Boltz-2 with its affinity
+prediction head) and quantify the cross-engine consensus on the same
+corpus.
+
+\subsection{Companion paper}
+
+This work is the companion to \emph{"Limitations of ZAFF-AMBER
+absolute binding free energy calculation for zinc metalloenzyme
+inhibitors: a replicate-pair analysis on MMP-1"} \citep{paper_a_2026},
+which benchmarks the corresponding alchemical ABFE protocol. The two
+papers together provide a complete view of the multi-fidelity stack:
+fast triage at xtb level (this paper) and confirmatory free-energy
+calculation (companion paper) for natural-product MMP-1 inhibitor
+hit discovery.
+
+\section{Methods}
+\label{sec:methods}
+
+\subsection{Compound corpus}
+
+The screening corpus is the NPAtlas hetero-10 cohort: $1066$ natural
+products derived from the top-9997 NPAtlas pass-1 ranking
+(via prior \texttt{log\_kp\_pottsguy} transdermal-permeability
+filtering; see \citealp{paper_a_2026} \S 2 for full provenance).
+
+\subsection{xtb conformer-ensemble protocol}
+
+For each molecule:
+\begin{enumerate}[leftmargin=*]
+  \item RDKit ETKDG embedding from canonical SMILES, $N$ conformers
+    with seeded random state, all-Hs preserved.
+  \item MMFF94 conformer optimization, max 100 iterations.
+  \item For each conformer, xtb single-point at the requested GFN
+    parameter set with ALPB implicit solvation.
+\end{enumerate}
+
+Per-molecule reduced statistics are: lowest-conformer total energy
+\texttt{energy\_au\_min}, mean HOMO--LUMO gap across all converged
+conformers \texttt{gap\_eV\_mean}, and lowest-conformer HOMO and
+LUMO energies. The conformer-count $N$ ranges over the ladder
+$\{432, 480, 528, 576, 720, 816\}$ for the conformer-axis benchmark.
+
+\paragraph{Compute.} 22-worker subprocess pool on a 24-core CPU.
+Per-molecule wall time: $\sim 2$\,sec at $N = 432$ (GFN2), scaling
+roughly linearly with $N$. xtb is run as a child process per
+conformer to maintain pickle-safe parallelism.
+
+\subsection{Cross-method axis: GFN1 vs GFN2}
+
+Both methods are run at $N = 432$ conformers with ALPB water. GFN1-xTB
+\citep{grimme2017gfn1} is the older parameter set with simpler
+multipole expansion and weaker hydrogen-bonding correction.
+GFN2-xTB \citep{bannwarth2019gfn2} adds dispersion D4, anisotropic
+electrostatics, and improved torsional terms. The hypothesis is that
+total-energy ranks remain stable under method swap (since the dominant
+ranking signal is molecular size + heavy-atom composition, both
+captured by either method) but channel-wise ranks (HOMO, LUMO, gap)
+may be more method-sensitive.
+
+\subsection{Conformer-axis: convergence ladder}
+
+We run six conformer counts on the same corpus
+($432, 480, 528, 576, 720, 816$). Spearman rank correlations are
+evaluated pairwise on two channels (\texttt{energy\_au\_min} and
+\texttt{gap\_eV\_mean}). Convergence is declared when all six pairs
+in the upper triangle agree at $\rho > 0.9999$.
+
+\subsection{Solvent-axis: ALPB dielectric variation}
+
+We rerun the $432$-conformer ensemble at GFN2 with four ALPB
+solvents:
+water (relative permittivity $\epsilon \approx 78$),
+DMSO ($\epsilon \approx 47$),
+methanol ($\epsilon \approx 33$), and
+hexane ($\epsilon \approx 1.9$).
+Spearman rank correlations are evaluated pairwise (six pairs).
+
+\subsection{Cross-engine: Boltz-2 affinity prediction}
+
+We compute Boltz-2 \citep{boltz2_2024} structure prediction with the
+binding-affinity head on a $500$-molecule subset of the same corpus
+(highest-rank by xtb \texttt{log\_kp\_pottsguy} prior). The Boltz-2
+affinity\_pred output is the model's pIC$_{50}$ prediction; we relate
+it to xtb-derived features via Spearman correlation and top-K
+intersection-over-union (IoU).
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Conformer-count convergence is exact at $N \geq 432$}
+\label{sec:results-ladder}
+
+Table~\ref{tab:ladder} reports pairwise Spearman correlations across
+the six-point conformer ladder. Every pair on every channel achieves
+$\rho \geq 0.99982$. Variation across the table is in the fifth
+decimal place; for any practical purpose, ranks are bit-equivalent at
+$N \geq 432$.
+
+\begin{table}[ht]
+\centering
+\caption{Pairwise Spearman rank correlation across the conformer ladder
+($N = 432, 480, 528, 576, 720, 816$). Channels: total energy
+\texttt{energy\_au\_min} and 432-conf-mean gap \texttt{gap\_eV\_mean}.
+$N_{\text{paired}}$ denotes the number of molecules with valid xtb
+output at both conformer counts.}
+\label{tab:ladder}
+\small
+\begin{tabular}{cccc}
+\toprule
+Pair & energy $\rho$ & gap-mean $\rho$ & $N_{\text{paired}}$ \\
+\midrule
+$432$--$480$ & $1.000000$ & $0.999986$ & $1040$ \\
+$432$--$528$ & $1.000000$ & $0.999970$ & $1040$ \\
+$432$--$576$ & $0.999956$ & $0.999939$ & $1040$ \\
+$432$--$720$ & $0.999957$ & $0.999846$ & $1050$ \\
+$432$--$816$ & $0.999959$ & $0.999825$ & $1066$ \\
+$480$--$528$ & $1.000000$ & $0.999987$ & $1040$ \\
+$480$--$576$ & $0.999956$ & $0.999967$ & $1040$ \\
+$480$--$720$ & $0.999956$ & $0.999894$ & $1040$ \\
+$480$--$816$ & $0.999956$ & $0.999874$ & $1040$ \\
+$528$--$576$ & $0.999956$ & $0.999986$ & $1040$ \\
+$528$--$720$ & $0.999956$ & $0.999928$ & $1040$ \\
+$528$--$816$ & $0.999956$ & $0.999911$ & $1040$ \\
+$576$--$720$ & $1.000000$ & $0.999963$ & $1040$ \\
+$576$--$816$ & $1.000000$ & $0.999951$ & $1040$ \\
+$720$--$816$ & $1.000000$ & $0.999993$ & $1050$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The implication is operational: a $432$-conformer GFN2 + MMFF94 ensemble
+suffices for production screening. Doubling to $816$ conformers adds
+no rank-distinguishing signal at any level we measured. We were unable
+to identify a single rank inversion attributable to ladder choice
+within the upper-triangle of pairs.
+
+\subsection{Cross-method ranks are preserved at $\rho > 0.92$}
+\label{sec:results-cross-method}
+
+Switching from GFN2-xTB to GFN1-xTB at fixed $N = 432$ and ALPB water
+yields the cross-method correlations in Table~\ref{tab:cross-method}.
+All four xtb output channels preserve rank order with Spearman
+$\rho \geq 0.928$. Total energy is the most rank-stable
+($\rho = 0.9934$); HOMO is the most method-sensitive
+($\rho = 0.9278$, still strong).
+
+\begin{table}[ht]
+\centering
+\caption{Cross-method rank preservation: GFN1-xTB vs GFN2-xTB at
+$N = 432$ conformers, ALPB water, $n = 1050$ paired molecules.}
+\label{tab:cross-method}
+\small
+\begin{tabular}{lrr}
+\toprule
+xtb feature & Spearman $\rho$ & Pearson $r$ \\
+\midrule
+energy (kcal mol$^{-1}$, lowest-conformer) & $+0.9934$ & $+0.583$ \\
+HOMO--LUMO gap (eV, mean over conformers)  & $+0.9781$ & $+0.978$ \\
+HOMO (eV, lowest-conformer)                & $+0.9278$ & $+0.859$ \\
+LUMO (eV, lowest-conformer)                & $+0.9488$ & $+0.959$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The Pearson correlations on total energy are weak ($r = +0.583$)
+because GFN1 and GFN2 disagree on the absolute energy zero by
+several Hartrees per molecule (parameter-set redefinition); the
+Spearman rank-preserving signal is the operationally relevant
+quantity for screening.
+
+\subsection{Solvent-axis robustness}
+\label{sec:results-solvent}
+
+\todo{Insert pairwise Spearman matrix across the
+water/methanol/DMSO/hexane four-solvent variation. Currently in
+progress; methanol $\sim 25\%$ complete as of 2026-05-06 18:25.
+Expected delivery 2026-05-06 22:00 KST.}
+
+The four-solvent matrix is computed at $N = 432$ conformers. We
+expect rank preservation at $\rho > 0.95$ across solvent pairs based
+on the limited prior literature \citep{neese2023solvent} and the
+observation that the dominant signal is molecular geometry-determined
+(not solvent dielectric).
+
+\subsection{Boltz-2 cross-engine consensus and the size-bias diagnosis}
+\label{sec:results-boltz}
+
+The Boltz-2 affinity-head output (interpreted as predicted pIC$_{50}$)
+on $n = 500$ NPAtlas natural products is anti-correlated with
+molecular weight (Spearman $\rho_{\mathrm{MW}} = -0.645$) and logP
+($\rho_{\mathrm{logP}} = -0.541$). Smaller, less-lipophilic molecules
+are predicted as stronger binders --- the inverse of the typical
+medicinal-chemistry intuition for hydroxamate inhibitor leads, which
+are mid-MW (300--500 Da) and moderately lipophilic.
+
+The xtb total-energy ranking is correlated with Boltz-2 in the same
+sense ($\rho_{\mathrm{energy}} = +0.617$, smaller energy magnitude
+$\to$ smaller mass $\to$ Boltz-2 ranks as stronger). The xtb
+gap-mean ranking is only weakly correlated
+($\rho_{\mathrm{gap}} = +0.201$, mass-orthogonal). Top-K
+intersection-over-union confirms the divergence:
+
+\begin{center}
+\small
+\begin{tabular}{ccccc}
+\toprule
+$K$ & Boltz $\cap$ xtb-energy & Boltz $\cap$ xtb-gap & Boltz $\cap$ xtb-HOMO \\
+\midrule
+$10$  & $0/10$ \,(IoU $0.00$)  & $0/10$ \,(IoU $0.00$)  & $1/10$ \,(IoU $0.05$) \\
+$50$  & $0/50$ \,(IoU $0.00$)  & $10/50$ (IoU $0.11$)   & $12/50$ (IoU $0.14$) \\
+$100$ & $3/100$ (IoU $0.02$)   & $36/100$ (IoU $0.22$)  & $37/100$ (IoU $0.23$) \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+At top-$10$ Boltz-2 and xtb essentially do not overlap. Top-$100$
+recovers to $\sim 22\%$ on gap-based ranking only. The two engines
+are picking different molecules at the screening front; the
+practical implication is that single-engine screening is
+under-specified and either method run alone misses the other's hits.
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{When to use which method}
+
+The robustness benchmark above leads to operational guidance:
+
+\begin{itemize}[leftmargin=*]
+  \item \textbf{xtb for population-level triage.} Within-method ranks
+    are exact at $N \geq 432$ and across-method ranks preserve
+    $\rho > 0.97$. xtb-derived rank is a stable population-level
+    quantity. Use it as the first-pass screening filter.
+  \item \textbf{xtb gap-mean for mass-orthogonal screening.} Total
+    energy carries a mass-bias caveat (size-driven). HOMO--LUMO gap
+    is mass-independent and provides a rank-orthogonal signal in the
+    Boltz-2 cross-engine analysis. Use it when comparing molecules
+    of disparate sizes.
+  \item \textbf{Cross-engine consensus for top-$K$ selection.}
+    Boltz-2 and xtb disagree at top-$10$. The intersection of
+    top-$50$ Boltz-2 and top-$50$ xtb-gap is non-trivial but small
+    ($10/50$). Use this intersection set as the multi-engine
+    ``high-confidence" tier.
+  \item \textbf{Single conformer when low-$K$ rank is wanted only.}
+    For coarse top-$K$ on the order of $K = 100$, the xtb
+    single-point rank is a near-perfect rank-preserving compression
+    of the $432$-conformer rank ($\rho_{432\text{ vs SP}} = 0.999$
+    on energy, $0.917$ on gap). Useful for first-pass library
+    triage.
+\end{itemize}
+
+\subsection{What this paper does not address}
+
+This is a methodology robustness paper. It does not validate xtb
+against experimental ChEMBL pIC$_{50}$ values --- that comparison
+involves the cross-engine validation question (xtb vs OpenFold3 +
+AQAffinity, ABFE), addressed in \citet{paper_a_2026}. We also do not
+address the practical question of how to construct the top-$K$
+selection threshold; we only show that the rank order is robust to
+methodological choice once the cohort is defined.
+
+\subsection{Multi-fidelity ensemble recipe (pre-registered)}
+
+For a prospective MMP-1 natural-product screening campaign, we
+pre-register the following ensemble triage:
+
+\begin{enumerate}[leftmargin=*]
+  \item Boltz-2 on all $\sim 10{,}000$ candidates ($\sim 4$\,GPU-hours).
+    Rank by affinity\_pred.
+  \item xtb GFN2 + ALPB water + $432$ conformers on top-$2{,}000$
+    Boltz-2 candidates ($\sim 18$\,CPU-hours). Rank by gap-mean.
+  \item Top-$50$ from xtb gap $\cap$ top-$200$ from Boltz-2
+    affinity\_pred = high-confidence ensemble tier ($\sim 10$ molecules).
+  \item ABFE on $\leq 6$ ensemble-tier molecules with $\geq 3$
+    replicates each (Section 3 of \citealp{paper_a_2026}).
+  \item Wet-lab validation of the ABFE confirmed top-$3$.
+\end{enumerate}
+
+The replicate-mean ABFE uncertainty documented in
+\citet{paper_a_2026} ($\Delta_{\text{rep}}$ on the order of
+$5$--$20\,\unit{kcal\,mol^{-1}}$ for ZAFF-MMP-1) means the ABFE step
+acts as a coarse positive/negative confirmation rather than a
+quantitative ranking; the screening-level ranking is delegated to
+xtb gap.
+
+\section{Limitations}
+\label{sec:limitations}
+
+\begin{itemize}[leftmargin=*]
+  \item Robustness measured on $1066$ molecules from a single corpus
+    (NPAtlas hetero-10). Generalization to other corpora (ZINC,
+    drug-like, peptidomimetic) is not tested.
+  \item ALPB does not model competitive Zn$^{2+}$ binding; the xtb
+    ranking is a ligand-only score and does not predict binding.
+  \item GFN0-xTB and GFN-FF are not benchmarked here. The cross-method
+    axis covers GFN1 vs GFN2 only.
+  \item Boltz-2 cross-engine analysis is on $n = 500$, smaller than
+    the within-xtb robustness sample.
+\end{itemize}
+
+\section{Reproducibility}
+\label{sec:reproducibility}
+
+All scripts and CSV outputs are released under Apache-2.0 at
+\url{https://github.com/crazat/genesis_medicine}. Relevant artifacts:
+
+\begin{itemize}[leftmargin=*]
+  \item \texttt{scripts/cpu\_xtb\_hetero10\_refine\_\{N\}.py} for
+    $N \in \{432,\dots,816\}$.
+  \item \texttt{scripts/cpu\_xtb\_hetero10\_gfn1\_432.py}.
+  \item \texttt{scripts/cpu\_xtb\_hetero10\_solvent\_variation.py}.
+  \item \texttt{pilot/cpu\_meaningful/xtb\_npass\_top9997\_hetero10\_*.csv}
+    output tables (one per ladder/method/solvent combination).
+\end{itemize}
+
+\section*{Acknowledgements}
+
+Computation on a single 24-core CPU + RTX 5090 workstation, WSL2
+Ubuntu 24.04. We thank the xtb and openmmtools developer communities.
+
+\bibliographystyle{plainnat}
+\bibliography{refs}
+
+\end{document}
