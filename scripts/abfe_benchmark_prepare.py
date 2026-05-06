@@ -3,22 +3,28 @@ ABFE benchmark — Phase 4 prep for 15 ChEMBL MMP-1 reference inhibitors.
 
 Builds complex.parm7/rst7 for each compound using the same protocol as the
 EMB-3/embelin runs (GAFF-2.11 + AM1-BCC + ZAFF Zn nonbonded), but with
-Vina-docked starting poses instead of MCS alignment. This ensures each
-hydroxamate / sulfonamide inhibitor gets a chemistry-aware initial pose
-near the catalytic Zn.
+Vina-docked starting poses instead of MCS alignment.
 
 Pipeline per compound:
-  1. RDKit ETKDG 3D embedding from SMILES
-  2. meeko PDBQT export
+  1. RDKit ETKDG 3D embedding from SMILES + formal-charge detection
+  2. obabel PDBQT export
   3. AutoDock Vina rigid docking (grid centered on Zn at (40.32, 27.89, 36.94))
-  4. Top pose -> SDF
-  5. antechamber AM1-BCC -> mol2
+  4. Top pose -> SDF (written to {chembl_id}/complex/lig.sdf)
+  5. antechamber AM1-BCC -> mol2 (with -nc <formal_charge>; required for
+     hydroxamates/carboxylates/sulfonates that are anionic at pH 7)
   6. parmchk2 -> frcmod
   7. tleap merge with mmp1_holo -> complex.parm7/rst7
 
-Output:
-  pilot/abfe_benchmark_chembl/{chembl_id}/{lig.sdf, lig.mol2, lig.frcmod, complex.parm7, complex.rst7, ...}
-  pilot/abfe_benchmark_chembl/manifest.json (compound_id -> path mapping + experimental Ki)
+Output layout (matches what warmup_generic / production_generic /
+production_mss expect; in earlier revisions tleap outputs were written flat
+in {chembl_id}/, requiring a manual post-prep reorganization):
+
+  pilot/abfe_benchmark_chembl/{chembl_id}/
+      lig_pre.sdf, lig.pdbqt, docked.pdbqt, mmp1_holo.pdb, *.log    (intermediates)
+      complex/
+          lig.sdf, lig.mol2, lig.frcmod, complex.parm7, complex.rst7
+          tleap_complex.in, PHASE4_OK
+  pilot/abfe_benchmark_chembl/manifest.json
 """
 from __future__ import annotations
 
@@ -67,6 +73,62 @@ def prepare_receptor_pdbqt(out_dir: Path) -> Path:
     rc, _, _ = run([f"{CONDA_BIN}/obabel", str(pdb_clean), "-O", str(pdbqt), "-xr"],
                    cwd=out_dir, log=out_dir / "receptor_prep.log")
     return pdbqt if pdbqt.exists() and pdbqt.stat().st_size > 1000 else None
+
+
+def compute_net_charge(smiles: str) -> int:
+    """Estimate the net charge antechamber should use for the inhibitor's
+    Zn-binding state.
+
+    antechamber's sqm fails with "number of electrons is odd" when the
+    charge it computes from the input SDF doesn't match the implicit electron
+    count (9/15 compounds failed this way on 2026-05-04). For MMP-1 hydroxamate
+    inhibitors the binding form is the deprotonated anion (Zn²⁺ chelation
+    requires the conjugate base regardless of bulk pKa ~9 for hydroxamate).
+    Passing -nc -1 to antechamber resolves both the parity error and reflects
+    the actual bound-state charge.
+
+    Strategy:
+      1. Start from RDKit's formal charge on the parsed SMILES (handles
+         already-deprotonated inputs e.g. trailing "[O-]").
+      2. If still 0, scan for known anionic functional groups via SMARTS
+         (hydroxamate, carboxylate, sulfonate, phosphonate, tetrazole) and
+         subtract one per match. Cap at -2 to avoid over-counting on
+         pathological inputs.
+
+    Verified 2026-05-06: CHEMBL406 (Prinomastat, hydroxamate) prep succeeded
+    with -nc -1; this function returns -1 for that SMILES via the hydroxamate
+    SMARTS branch.
+    """
+    from rdkit import Chem
+
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        return 0
+
+    formal = Chem.GetFormalCharge(mol)
+    if formal != 0:
+        return formal
+
+    # SMARTS for groups that are deprotonated in the inhibitor binding form
+    # at physiological pH OR when chelating a divalent cation. The patterns
+    # match the neutral acid form because that is how SMILES authors usually
+    # write these manifests.
+    anion_smarts = [
+        ("hydroxamate",  "[CX3](=O)[NX3H][OX2H]"),    # R-C(=O)-NH-OH
+        ("carboxylate",  "[CX3](=O)[OX2H]"),           # R-COOH
+        ("sulfonate",    "[SX4](=O)(=O)[OX2H]"),       # R-SO3H
+        ("phosphonate",  "[PX4](=O)([OX2H])[OX2H]"),   # R-PO(OH)2 -> -1 (mono)
+        ("tetrazole",    "c1nnn[nH]1"),                # tetrazole
+    ]
+    n_anions = 0
+    for _name, smarts in anion_smarts:
+        patt = Chem.MolFromSmarts(smarts)
+        if patt is None:
+            continue
+        matches = mol.GetSubstructMatches(patt)
+        n_anions += len(matches)
+
+    return max(-2, -n_anions)
 
 
 def prepare_ligand(chembl_id: str, smiles: str, out_dir: Path) -> Path | None:
@@ -121,7 +183,9 @@ def vina_dock(lig_sdf: Path, receptor_pdbqt: Path, out_dir: Path) -> Path | None
 
     # Convert top pose (first model) back to SDF via obabel, adding hydrogens
     # (Vina PDBQT only has polar Hs — antechamber needs all Hs for AM1-BCC)
-    docked_sdf = out_dir / "lig.sdf"
+    cx_dir = out_dir / "complex"
+    cx_dir.mkdir(parents=True, exist_ok=True)
+    docked_sdf = cx_dir / "lig.sdf"
     rc, _, _ = run([f"{CONDA_BIN}/obabel", str(docked_pdbqt), "-O", str(docked_sdf), "-l", "1", "-h"],
                    cwd=out_dir, log=out_dir / "export.log")
     if not docked_sdf.exists() or docked_sdf.stat().st_size < 100:
@@ -144,23 +208,34 @@ def vina_dock(lig_sdf: Path, receptor_pdbqt: Path, out_dir: Path) -> Path | None
     return docked_sdf
 
 
-def build_complex(chembl_id: str, lig_sdf: Path, out_dir: Path) -> tuple[bool, dict]:
-    """Run antechamber + parmchk2 + tleap to produce complex.parm7/rst7."""
-    # antechamber
-    mol2 = out_dir / "lig.mol2"
+def build_complex(chembl_id: str, lig_sdf: Path, out_dir: Path, net_charge: int) -> tuple[bool, dict]:
+    """Run antechamber + parmchk2 + tleap to produce complex/complex.parm7/rst7.
+
+    All artifacts that downstream warmup_generic / production_generic /
+    production_mss expect are written into out_dir/complex/. Intermediates
+    (logs, mmp1_holo.pdb) stay at out_dir top level.
+    """
+    cx_dir = out_dir / "complex"
+    cx_dir.mkdir(parents=True, exist_ok=True)
+
+    # antechamber — pass detected formal charge via -nc so anionic
+    # ligands (hydroxamates / carboxylates / sulfonates at pH 7) don't
+    # trip sqm's "odd electrons" guard.
+    mol2 = cx_dir / "lig.mol2"
     rc, _, _ = run([
         f"{CONDA_BIN}/antechamber",
         "-i", str(lig_sdf), "-fi", "sdf",
         "-o", str(mol2), "-fo", "mol2",
         "-c", "bcc", "-s", "2", "-rn", "LIG", "-pf", "y", "-at", "gaff2",
-    ], cwd=out_dir, log=out_dir / "antechamber.log")
+        "-nc", str(net_charge),
+    ], cwd=cx_dir, log=out_dir / "antechamber.log")
     if rc != 0 or not mol2.exists():
-        return False, {"step": "antechamber", "rc": rc}
+        return False, {"step": "antechamber", "rc": rc, "net_charge": net_charge}
 
     # parmchk2
-    frcmod = out_dir / "lig.frcmod"
+    frcmod = cx_dir / "lig.frcmod"
     rc, _, _ = run([f"{CONDA_BIN}/parmchk2", "-i", str(mol2), "-f", "mol2", "-o", str(frcmod), "-s", "2"],
-                   cwd=out_dir, log=out_dir / "parmchk2.log")
+                   cwd=cx_dir, log=out_dir / "parmchk2.log")
     if rc != 0 or not frcmod.exists():
         return False, {"step": "parmchk2", "rc": rc}
 
@@ -177,8 +252,8 @@ def build_complex(chembl_id: str, lig_sdf: Path, out_dir: Path) -> tuple[bool, d
     if not holo_pdb.exists():
         return False, {"step": "parmed_export", "error": "no output"}
 
-    # tleap
-    leap_in = out_dir / "tleap_complex.in"
+    # tleap runs inside complex/; reference the holo PDB via relative path (../)
+    leap_in = cx_dir / "tleap_complex.in"
     leap_in.write_text(
         f"source leaprc.protein.ff14SB\n"
         f"source leaprc.water.tip3p\n"
@@ -186,7 +261,7 @@ def build_complex(chembl_id: str, lig_sdf: Path, out_dir: Path) -> tuple[bool, d
         f"loadAmberParams frcmod.ions234lm_126_tip3p\n"
         f"loadAmberParams {frcmod.name}\n"
         f"LIG = loadMol2 {mol2.name}\n"
-        f"mol = loadPdb {holo_pdb.name}\n"
+        f"mol = loadPdb ../{holo_pdb.name}\n"
         f"complex = combine {{ mol LIG }}\n"
         f"solvateBox complex TIP3PBOX 12.0\n"
         f"addIons complex Na+ 0\n"
@@ -194,16 +269,17 @@ def build_complex(chembl_id: str, lig_sdf: Path, out_dir: Path) -> tuple[bool, d
         f"saveAmberParm complex complex.parm7 complex.rst7\n"
         f"quit\n"
     )
-    rc, _, _ = run([f"{CONDA_BIN}/tleap", "-f", str(leap_in.name)], cwd=out_dir, log=out_dir / "tleap.log")
-    if rc != 0 or not (out_dir / "complex.parm7").exists():
+    rc, _, _ = run([f"{CONDA_BIN}/tleap", "-f", str(leap_in.name)], cwd=cx_dir, log=out_dir / "tleap.log")
+    if rc != 0 or not (cx_dir / "complex.parm7").exists():
         return False, {"step": "tleap", "rc": rc}
 
     # Validate
     import parmed as pmd
-    cx = pmd.load_file(str(out_dir / "complex.parm7"), str(out_dir / "complex.rst7"))
+    cx = pmd.load_file(str(cx_dir / "complex.parm7"), str(cx_dir / "complex.rst7"))
     n_zn = sum(1 for a in cx.atoms if a.element_name == "Zn" or a.name == "ZN")
     n_lig = sum(1 for r in cx.residues if r.name == "LIG")
     return (n_zn >= 1 and n_lig >= 1), {
+        "net_charge": net_charge,
         "complex_atoms": len(cx.atoms),
         "complex_residues": len(cx.residues),
         "zn_atoms": n_zn,
@@ -213,6 +289,12 @@ def build_complex(chembl_id: str, lig_sdf: Path, out_dir: Path) -> tuple[bool, d
 
 
 def main() -> int:
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--only", action="append", default=None,
+                    help="Restrict to specific ChEMBL IDs (repeatable). Default: all rows in calibration CSV.")
+    args = ap.parse_args()
+
     if not DATA_CSV.exists():
         print(f"FAIL: missing {DATA_CSV}")
         return 1
@@ -221,10 +303,12 @@ def main() -> int:
         print(f"FAIL: vina not yet installed at {CONDA_BIN}/vina")
         return 2
 
-    # Read 15 reference compounds
+    # Read reference compounds (optionally filtered)
     compounds = []
     with DATA_CSV.open() as f:
         for row in csv.DictReader(f):
+            if args.only and row["chembl_id"] not in args.only:
+                continue
             compounds.append(row)
     print(f"loaded {len(compounds)} reference compounds")
 
@@ -251,11 +335,19 @@ def main() -> int:
                 "reference": cmp.get("reference", ""), "notes": cmp.get("notes", "")}
         print(f"\n=== {chembl_id} ic50={ic50_nm} nM ===")
 
-        if (out_dir / "PHASE4_OK").exists():
+        # PHASE4_OK lives inside complex/ to match what warmup_generic /
+        # production_generic / production_mss expect. Tolerate the legacy
+        # top-level marker that earlier prepare runs produced.
+        if (out_dir / "complex" / "PHASE4_OK").exists() or (out_dir / "PHASE4_OK").exists():
             print(f"  already prepared, skipping")
             info["status"] = "ok"
             manifest["compounds"].append(info)
             continue
+
+        net_charge = compute_net_charge(smiles)
+        if net_charge != 0:
+            print(f"  detected formal net charge: {net_charge:+d} (passing -nc to antechamber)")
+        info["net_charge"] = net_charge
 
         t0 = time.time()
         sdf_pre = prepare_ligand(chembl_id, smiles, out_dir)
@@ -270,11 +362,11 @@ def main() -> int:
             manifest["compounds"].append(info)
             continue
 
-        ok, build_info = build_complex(chembl_id, sdf_docked, out_dir)
+        ok, build_info = build_complex(chembl_id, sdf_docked, out_dir, net_charge)
         info.update(build_info)
         info["wall_min"] = round((time.time() - t0) / 60.0, 2)
         if ok:
-            (out_dir / "PHASE4_OK").touch()
+            (out_dir / "complex" / "PHASE4_OK").touch()
             info["status"] = "ok"
             print(f"  PHASE4_OK in {info['wall_min']} min")
         else:
@@ -282,9 +374,21 @@ def main() -> int:
             print(f"  FAILED at {info['status']}")
         manifest["compounds"].append(info)
 
-    (OUT_BASE / "manifest.json").write_text(json.dumps(manifest, indent=2))
+    # When --only restricted the run to a subset, merge into the existing
+    # manifest rather than overwriting it (otherwise per-compound smoke tests
+    # would erase the rest of the table).
+    manifest_path = OUT_BASE / "manifest.json"
+    if args.only and manifest_path.exists():
+        existing = json.loads(manifest_path.read_text())
+        new_by_id = {c["chembl_id"]: c for c in manifest["compounds"]}
+        merged = []
+        for c in existing.get("compounds", []):
+            merged.append(new_by_id.pop(c["chembl_id"], c))
+        merged.extend(new_by_id.values())
+        manifest = {**existing, "compounds": merged}
+    manifest_path.write_text(json.dumps(manifest, indent=2))
     n_ok = sum(1 for c in manifest["compounds"] if c.get("status") == "ok")
-    print(f"\n=== summary: {n_ok}/{len(compounds)} compounds prepared OK ===")
+    print(f"\n=== summary: {n_ok}/{len(manifest['compounds'])} compounds in manifest OK ===")
     return 0
 
 

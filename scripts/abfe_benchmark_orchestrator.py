@@ -16,7 +16,7 @@ Strategic subset for paper #A submission (run these first; full set later):
   CHEMBL2105729 (very weak hydroxamate, IC50=18000 nM)
 
 Output:
-  pilot/abfe_benchmark_chembl/{chembl_id}/abfe_production/dG_bind.json
+  pilot/abfe_benchmark_chembl/{chembl_id}/abfe_production_mss/dG_bind.json
   pilot/abfe_benchmark_chembl/benchmark_summary.json    (Spearman, MAE, table)
 """
 from __future__ import annotations
@@ -31,7 +31,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BENCH_BASE = ROOT / "pilot/abfe_benchmark_chembl"
-PHASE5_GENERIC = ROOT / "scripts/zaff_phase5_abfe_production_generic.py"
+# Use the MultiStateSampler variant: smoketest 2026-05-05 confirmed it completes
+# all iterations on the ZAFF + Zn restraint system, whereas the original
+# ReplicaExchangeSampler (production_generic) deadlocks at swap-all on the
+# same input. The 12h overnight benchmark (6 compounds × 2 reps) ran on
+# production_mss.py.
+PHASE5 = ROOT / "scripts/zaff_phase5_abfe_production_mss.py"
 WARMUP_GENERIC = ROOT / "scripts/zaff_phase5_warmup_generic.py"
 CONDA_PY = "/home/crazat/miniforge3/envs/genesis-md/bin/python"
 
@@ -62,21 +67,30 @@ def run(cmd: list[str], cwd: Path | None = None, log_path: Path | None = None) -
 
 def process_compound(chembl_id: str) -> dict:
     work = BENCH_BASE / chembl_id
-    if not (work / "PHASE4_OK").exists():
+    # Production scripts (generic / mss) gate on complex/PHASE4_OK; tolerate
+    # the legacy top-level marker for compounds prepped before the layout fix.
+    if not ((work / "complex" / "PHASE4_OK").exists() or (work / "PHASE4_OK").exists()):
         return {"chembl_id": chembl_id, "status": "no_phase4"}
-    if (work / "abfe_production" / "PHASE5_OK").exists():
-        # Read existing dG_bind.json
-        try:
-            data = json.loads((work / "abfe_production" / "dG_bind.json").read_text())
-            return {"chembl_id": chembl_id, "status": "ok", **data}
-        except Exception:
-            pass
-    if (work / "abfe_production" / "PHASE5_INCONCLUSIVE").exists():
-        try:
-            data = json.loads((work / "abfe_production" / "dG_bind.json").read_text())
-            return {"chembl_id": chembl_id, "status": "inconclusive", **data}
-        except Exception:
-            pass
+    # Skip if already done in either production layout (mss = current default,
+    # legacy abfe_production = ReplicaExchangeSampler runs from before the
+    # 2026-05-05 swap-all deadlock fix).
+    for prod_dir_name, status_label in (
+        ("abfe_production_mss", "ok"),
+        ("abfe_production", "ok"),
+    ):
+        prod_dir = work / prod_dir_name
+        if (prod_dir / "PHASE5_OK").exists():
+            try:
+                data = json.loads((prod_dir / "dG_bind.json").read_text())
+                return {"chembl_id": chembl_id, "status": status_label, **data}
+            except Exception:
+                pass
+        if (prod_dir / "PHASE5_INCONCLUSIVE").exists():
+            try:
+                data = json.loads((prod_dir / "dG_bind.json").read_text())
+                return {"chembl_id": chembl_id, "status": "inconclusive", **data}
+            except Exception:
+                pass
 
     # Step A: warmup (writes new complex.rst7 + solvent.rst7 with relaxed clashes)
     print(f"\n=== {chembl_id} warmup ===")
@@ -85,16 +99,20 @@ def process_compound(chembl_id: str) -> dict:
     if rc != 0:
         return {"chembl_id": chembl_id, "status": "warmup_fail", "rc": rc}
 
-    # Step B: Phase 5 production (complex + solvent + combine)
+    # Step B: Phase 5 production (complex + solvent + combine, MultiStateSampler)
     print(f"=== {chembl_id} Phase 5 production ===")
-    rc = run([CONDA_PY, str(PHASE5_GENERIC), "--work", str(work), "--leg", "all"],
+    rc = run([CONDA_PY, str(PHASE5), "--work", str(work), "--leg", "all"],
              log_path=work / "phase5.log")
     if rc != 0:
         return {"chembl_id": chembl_id, "status": "phase5_fail", "rc": rc}
 
-    if (work / "abfe_production" / "dG_bind.json").exists():
-        data = json.loads((work / "abfe_production" / "dG_bind.json").read_text())
-        return {"chembl_id": chembl_id, "status": "ok", **data}
+    # production_mss writes to abfe_production_mss/; production_generic to
+    # abfe_production/. Check both so this orchestrator works against either.
+    for prod_dir_name in ("abfe_production_mss", "abfe_production"):
+        dG_path = work / prod_dir_name / "dG_bind.json"
+        if dG_path.exists():
+            data = json.loads(dG_path.read_text())
+            return {"chembl_id": chembl_id, "status": "ok", **data}
     return {"chembl_id": chembl_id, "status": "no_dg_json"}
 
 
@@ -182,12 +200,14 @@ def main() -> int:
             # Save intermediate
             (BENCH_BASE / "benchmark_intermediate.json").write_text(json.dumps(results, indent=2))
     else:
-        # Read existing
+        # Read existing — check both mss (current) and legacy paths
         for chembl_id in targets:
-            d = BENCH_BASE / chembl_id / "abfe_production" / "dG_bind.json"
-            if d.exists():
-                data = json.loads(d.read_text())
-                results.append({"chembl_id": chembl_id, "status": "ok", **data})
+            for prod_dir_name in ("abfe_production_mss", "abfe_production"):
+                d = BENCH_BASE / chembl_id / prod_dir_name / "dG_bind.json"
+                if d.exists():
+                    data = json.loads(d.read_text())
+                    results.append({"chembl_id": chembl_id, "status": "ok", **data})
+                    break
 
     summary = {
         "phase": "ABFE benchmark vs ChEMBL MMP-1 IC50",

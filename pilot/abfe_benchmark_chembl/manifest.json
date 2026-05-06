@@ -82,10 +82,18 @@
       "ic50_nm": 8.0,
       "reference": "Trocade-like; Cherney 1998",
       "notes": "hydroxamate",
-      "step": "antechamber",
-      "rc": 1,
-      "wall_min": 0.92,
-      "status": "fail_antechamber"
+      "net_charge": -1,
+      "complex_atoms": 74293,
+      "complex_residues": 24123,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 1.22,
+      "status": "ok"
     },
     {
       "chembl_id": "CHEMBL98",
