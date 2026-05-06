@@ -114,11 +114,14 @@ def compute_net_charge(smiles: str) -> int:
     # match the neutral acid form because that is how SMILES authors usually
     # write these manifests.
     anion_smarts = [
-        ("hydroxamate",  "[CX3](=O)[NX3H][OX2H]"),    # R-C(=O)-NH-OH
-        ("carboxylate",  "[CX3](=O)[OX2H]"),           # R-COOH
-        ("sulfonate",    "[SX4](=O)(=O)[OX2H]"),       # R-SO3H
-        ("phosphonate",  "[PX4](=O)([OX2H])[OX2H]"),   # R-PO(OH)2 -> -1 (mono)
-        ("tetrazole",    "c1nnn[nH]1"),                # tetrazole
+        ("hydroxamate",   "[CX3](=O)[NX3H][OX2H]"),         # R-C(=O)-NH-OH
+        ("carboxylate",   "[CX3](=O)[OX2H]"),                # R-COOH
+        ("sulfonate",     "[SX4](=O)(=O)[OX2H]"),            # R-SO3H
+        ("phosphonate",   "[PX4](=O)([OX2H])[OX2H]"),        # R-PO(OH)2 -> -1 (mono)
+        ("tetrazole",     "c1nnn[nH]1"),                     # tetrazole
+        # Acyl sulfonamide a.k.a. sulfonyl-acyl-imide R-SO2-NH-C(=O)-R':
+        # NH pKa ~5-6 (drug-relevant; e.g. CGS27023A binds MMPs as the anion)
+        ("acyl_sulfonamide", "[SX4](=O)(=O)[NX3H][CX3]=O"),
     ]
     n_anions = 0
     for _name, smarts in anion_smarts:
@@ -208,6 +211,17 @@ def vina_dock(lig_sdf: Path, receptor_pdbqt: Path, out_dir: Path) -> Path | None
     return docked_sdf
 
 
+def _run_antechamber(lig_sdf: Path, mol2: Path, cx_dir: Path, log: Path, nc: int) -> int:
+    rc, _, _ = run([
+        f"{CONDA_BIN}/antechamber",
+        "-i", str(lig_sdf), "-fi", "sdf",
+        "-o", str(mol2), "-fo", "mol2",
+        "-c", "bcc", "-s", "2", "-rn", "LIG", "-pf", "y", "-at", "gaff2",
+        "-nc", str(nc),
+    ], cwd=cx_dir, log=log)
+    return rc
+
+
 def build_complex(chembl_id: str, lig_sdf: Path, out_dir: Path, net_charge: int) -> tuple[bool, dict]:
     """Run antechamber + parmchk2 + tleap to produce complex/complex.parm7/rst7.
 
@@ -218,19 +232,30 @@ def build_complex(chembl_id: str, lig_sdf: Path, out_dir: Path, net_charge: int)
     cx_dir = out_dir / "complex"
     cx_dir.mkdir(parents=True, exist_ok=True)
 
-    # antechamber — pass detected formal charge via -nc so anionic
-    # ligands (hydroxamates / carboxylates / sulfonates at pH 7) don't
-    # trip sqm's "odd electrons" guard.
+    # antechamber — try the SMARTS-detected charge first, then retry with
+    # ±1 if sqm reports odd electron count. The Vina+obabel pipeline
+    # sometimes preserves the hydroxamate OH proton and sometimes strips
+    # it; either parity can hit "odd electrons" at the inferred charge.
+    # Worked-example cases: CHEMBL415 succeeded at -nc 0, CHEMBL406 at
+    # -nc -1, CHEMBL443684 at -nc 0 (we infer -1 from SMARTS first).
     mol2 = cx_dir / "lig.mol2"
-    rc, _, _ = run([
-        f"{CONDA_BIN}/antechamber",
-        "-i", str(lig_sdf), "-fi", "sdf",
-        "-o", str(mol2), "-fo", "mol2",
-        "-c", "bcc", "-s", "2", "-rn", "LIG", "-pf", "y", "-at", "gaff2",
-        "-nc", str(net_charge),
-    ], cwd=cx_dir, log=out_dir / "antechamber.log")
+    log_path = out_dir / "antechamber.log"
+    candidates = [net_charge, net_charge + 1, net_charge - 1]
+    # de-dup while preserving order
+    seen = set()
+    candidates = [c for c in candidates if not (c in seen or seen.add(c))]
+    rc = 1
+    used_nc = None
+    for nc in candidates:
+        rc = _run_antechamber(lig_sdf, mol2, cx_dir, log_path, nc)
+        if rc == 0 and mol2.exists():
+            used_nc = nc
+            if nc != net_charge:
+                print(f"  antechamber retry succeeded at -nc {nc} (initial guess was {net_charge})")
+            break
     if rc != 0 or not mol2.exists():
-        return False, {"step": "antechamber", "rc": rc, "net_charge": net_charge}
+        return False, {"step": "antechamber", "rc": rc, "net_charge_tried": candidates}
+    net_charge = used_nc
 
     # parmchk2
     frcmod = cx_dir / "lig.frcmod"

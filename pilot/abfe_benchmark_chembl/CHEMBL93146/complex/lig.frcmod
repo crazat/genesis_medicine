@@ -1,0 +1,37 @@
+Remark line goes here
+MASS
+
+BOND
+
+ANGLE
+c1-c -ns   68.130     115.100   same as cg-c -ns, penalty score=  0.5
+c -c2-c1   68.850     113.810   same as c1-c2-c2, penalty score=  2.6
+c1-c2-ns   67.950     125.270   same as c1-c2-n , penalty score=  0.0
+c2-c -ns   67.390     114.510   same as ce-c -ns, penalty score=  2.2
+
+DIHE
+c1-c -ns-hn   4   10.000       180.000           2.000      same as X -c -n -X , penalty score=  0.0
+c1-c -ns-c2   4   10.000       180.000           2.000      same as X -c -n -X , penalty score=  0.0
+c1-c2-ns-c    4    2.600       180.000           2.000      same as X -c2-n -X , penalty score=  0.0
+o -c -ns-hn   1    2.500       180.000          -2.000      same as o -c -n -hn
+o -c -ns-hn   1    2.000         0.000           1.000      same as o -c -n -hn, penalty score=  0.0
+o -c -ns-c2   4   10.000       180.000           2.000      same as X -c -n -X , penalty score=  0.0
+c1-c2-ns-hn   4    2.600       180.000           2.000      same as X -c2-n -X , penalty score=  0.0
+c2-c -ns-hn   4   10.000       180.000           2.000      same as X -c -n -X , penalty score=  0.0
+c2-c -ns-oh   4   10.000       180.000           2.000      same as X -c -n -X , penalty score=  0.0
+o -c -ns-oh   4   10.000       180.000           2.000      same as X -c -n -X , penalty score=  0.0
+hn-ns-oh-ho   2    3.000         0.000           2.000      same as X -n -oh-X , penalty score=  0.0
+
+IMPROPER
+c1-ns-c -o         10.5          180.0         2.0          Using general improper torsional angle  X- X- c- o, penalty score=  6.0)
+c -c2-ns-hn         1.1          180.0         2.0          Same as X -X -n -hn, penalty score=  6.0 (use general term))
+c1-c1-c2-ns         1.1          180.0         2.0          Using the default value
+c -c1-c2-c2         1.1          180.0         2.0          Using the default value
+c2-ns-c -o         10.5          180.0         2.0          Using general improper torsional angle  X- X- c- o, penalty score=  6.0)
+c -hn-ns-oh         1.1          180.0         2.0          Using the default value
+c1-c1-c2-c2         1.1          180.0         2.0          Using the default value
+
+NONBON
+
+
+

@@ -1,5 +1,5 @@
 chembl_id,smiles,ic50_nm,reference,notes
-CHEMBL443684,CC(C)CC(NC(=O)C(NC(=O)C(O)CC(C)C)C(C)(C)C)C(=O)NC,5.0,Marimastat (BB-2516); Drummond 1999,hydroxamate broad-spectrum MMP inhibitor
+CHEMBL443684,CC(C)C[C@H]([C@@H](C(=O)N[C@H](C(=O)NC)C(C)(C)C)O)C(=O)NO,5.0,Marimastat (BB-2516); Drummond 1999 (PubChem CID 119031),hydroxamate broad-spectrum MMP inhibitor
 CHEMBL415,CC(C)CC(NC(=O)C(CC1=CC=CC=C1)NC(=O)C(O)CC(C)C)C(=O)NO,4.0,Batimastat (BB-94); Brown 1995,hydroxamate
 CHEMBL292707,CC(C)CC(=O)NC(CC(=O)NO)C(=O)N(C)C,200.0,Ilomastat (GM6001); Galardy 1994,zinc-chelating
 CHEMBL259829,CC1=CC2=C(C=C1)N(CC2=O)C1=CC=C(S(=O)(=O)NC(=O)C2=CC=CC=C2)C=C1,310.0,CGS27023A; MacPherson 1997,non-hydroxamate sulfonamide

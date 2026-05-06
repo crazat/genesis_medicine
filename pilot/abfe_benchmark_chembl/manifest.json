@@ -2,14 +2,22 @@
   "compounds": [
     {
       "chembl_id": "CHEMBL443684",
-      "smiles": "CC(C)CC(NC(=O)C(NC(=O)C(O)CC(C)C)C(C)(C)C)C(=O)NC",
+      "smiles": "CC(C)C[C@H]([C@@H](C(=O)N[C@H](C(=O)NC)C(C)(C)C)O)C(=O)NO",
       "ic50_nm": 5.0,
-      "reference": "Marimastat (BB-2516); Drummond 1999",
+      "reference": "Marimastat (BB-2516); Drummond 1999 (PubChem CID 119031)",
       "notes": "hydroxamate broad-spectrum MMP inhibitor",
-      "step": "antechamber",
-      "rc": 1,
-      "wall_min": 0.6,
-      "status": "fail_antechamber"
+      "net_charge": 0,
+      "complex_atoms": 74286,
+      "complex_residues": 24122,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 0.8,
+      "status": "ok"
     },
     {
       "chembl_id": "CHEMBL415",
@@ -53,10 +61,18 @@
       "ic50_nm": 310.0,
       "reference": "CGS27023A; MacPherson 1997",
       "notes": "non-hydroxamate sulfonamide",
-      "step": "antechamber",
-      "rc": 1,
-      "wall_min": 0.36,
-      "status": "fail_antechamber"
+      "net_charge": -1,
+      "complex_atoms": 74286,
+      "complex_residues": 24122,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 2.07,
+      "status": "ok"
     },
     {
       "chembl_id": "CHEMBL94487",
@@ -101,10 +117,18 @@
       "ic50_nm": 2400.0,
       "reference": "non-hydroxamate aryl sulfone; Gowravaram 1995",
       "notes": "weak inhibitor",
-      "step": "antechamber",
-      "rc": 1,
-      "wall_min": 0.33,
-      "status": "fail_antechamber"
+      "net_charge": -1,
+      "complex_atoms": 74280,
+      "complex_residues": 24122,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 0.51,
+      "status": "ok"
     },
     {
       "chembl_id": "CHEMBL257077",
@@ -130,10 +154,7 @@
       "ic50_nm": 3.0,
       "reference": "prinomastat (AG3340); Shalinsky 1999",
       "notes": "sulfonamide hydroxamate",
-      "step": "antechamber",
-      "rc": 1,
-      "wall_min": 0.99,
-      "status": "fail_antechamber"
+      "status": "ok"
     },
     {
       "chembl_id": "CHEMBL2105729",
@@ -159,10 +180,18 @@
       "ic50_nm": 820.0,
       "reference": "medium-potency; Beckett 1996",
       "notes": "carboxylate",
-      "step": "antechamber",
-      "rc": 1,
-      "wall_min": 0.27,
-      "status": "fail_antechamber"
+      "net_charge": -1,
+      "complex_atoms": 74280,
+      "complex_residues": 24123,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 1.12,
+      "status": "ok"
     },
     {
       "chembl_id": "CHEMBL3036",
@@ -170,10 +199,18 @@
       "ic50_nm": 28.0,
       "reference": "broad-spectrum hydroxamate; Whittaker 1999",
       "notes": "",
-      "step": "antechamber",
-      "rc": 1,
-      "wall_min": 0.8,
-      "status": "fail_antechamber"
+      "net_charge": -1,
+      "complex_atoms": 74291,
+      "complex_residues": 24123,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 1.27,
+      "status": "ok"
     },
     {
       "chembl_id": "CHEMBL57058",
@@ -181,10 +218,18 @@
       "ic50_nm": 15.0,
       "reference": "Mobashery 1999",
       "notes": "sulfonamide hydroxamate",
-      "step": "antechamber",
-      "rc": 1,
-      "wall_min": 0.4,
-      "status": "fail_antechamber"
+      "net_charge": -1,
+      "complex_atoms": 74284,
+      "complex_residues": 24122,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 0.8,
+      "status": "ok"
     },
     {
       "chembl_id": "CHEMBL1207",
@@ -192,10 +237,18 @@
       "ic50_nm": 55.0,
       "reference": "thiol-based; Schultz 1998",
       "notes": "thiol zinc-chelate",
-      "step": "antechamber",
-      "rc": 1,
-      "wall_min": 0.41,
-      "status": "fail_antechamber"
+      "net_charge": -1,
+      "complex_atoms": 74287,
+      "complex_residues": 24123,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 0.79,
+      "status": "ok"
     },
     {
       "chembl_id": "CHEMBL301236",
