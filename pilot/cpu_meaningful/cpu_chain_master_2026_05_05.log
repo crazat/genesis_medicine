@@ -1,0 +1,16 @@
+[2026-05-05 10:49:52] === CPU CHAIN START ===
+[2026-05-05 10:49:52] Stage 0: waiting for cpu_xtb_chembl_mmp1_refine_432 to finish
+[2026-05-05 10:52:43] Stage 0 (ChEMBL refine) done
+[2026-05-05 10:52:43] Stage 1: hetero10 top9997 432-conf RESUME
+[2026-05-05 12:47:14] Stage 1 done (hetero10 432-conf)
+[2026-05-05 12:47:14] Stage 2: ChEMBL pIC50 vs xtb correlation
+[2026-05-05 12:47:13] Stage 2 done
+[2026-05-05 12:47:13] Stage 3: hetero10 cross-engine consistency
+[2026-05-05 12:47:14] Stage 3 done
+[2026-05-05 12:47:14] Stage 4: AL v3 XGBoost combined
+[2026-05-05 12:47:18] Stage 4 done
+[2026-05-05 12:47:18] Stage 5: DUD-E enrichment recompute
+[2026-05-05 12:47:18] Stage 5 done
+[2026-05-05 12:47:18] === CPU CHAIN COMPLETE ===
+[2026-05-05 12:47:18] Stage 5 done
+[2026-05-05 12:47:18] === CPU CHAIN COMPLETE ===

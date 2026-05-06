@@ -1,0 +1,73 @@
+******************************************************************
+*               Welcome to use the MCPB.py program               *
+*                          Version 2024                          *
+*                       Author: Pengfei Li                       *
+*                      Merz Research Group                       *
+*                   Michigan State University                    *
+*                              AND                               *
+*                 Hammes-Schiffer Research Group                 *
+*                        Yale University                         *
+*                              AND                               *
+*                       Li Research Group                        *
+*                   Loyola University Chicago                    *
+******************************************************************
+The input file you are using is : mmp1_holo.in
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+The following is the input variable you have:
+The variable ion_ids is :  [2388]
+The variable ion_info is :  []
+The variable ion_mol2files is :  ['ZN.mol2']
+The variable original_pdb is :  1HFC_amber.pdb
+The variable add_bonded_pairs is :  []
+The variable add_redcrd is :  0
+The variable additional_resids is :  []
+The variable anglefc_avg is :  0
+The variable bondfc_avg is :  0
+The variable chgfix_resids is :  []
+The variable cut_off is :  2.8
+The variable force_field is :  ff19SB
+The variable frcmod_files is :  []
+The variable gaff is :  2
+The variable group_name is :  MMP1_zn
+The variable ion_paraset is :  12_6 (Only for the ions using the nonbonded model).
+The variable large_opt is :  0
+The variable lgmodel_chg is :  -99
+The variable lgmodel_spin is :  -99
+             -99 means program will assign a charge automatically.
+The variable naa_mol2files is :  []
+The variable scale_factor is :  1.0
+             ATTENTION: This is the scale factor of frequency. The 
+             force constants will be scaled by multiplying the square
+             of scale_factor.
+The variable smmodel_chg is :  -99
+The variable smmodel_spin is :  -99
+             -99 means program will assign a charge automatically.
+The variable software_version is :  g16
+The variable sqm_opt is :  0
+The variable water_model is :  OPC
+The variable xstru is :  0
+******************************************************************
+*                                                                *
+*===================Generate the Initial frcmod file=============*
+*                                                                *
+******************************************************************
+Atoms which has changed the atom types: [1729, 1787, 1871, 2388]
+112-HID@1729-NE2 : NB --> Y1
+116-HID@1787-NE2 : NB --> Y2
+122-HID@1871-NE2 : NB --> Y3
+158-ZN@2388-ZN : ZN --> M1
+******************************************************************
+*                                                                *
+*=========Using the Seminario method to solve the problem========*
+*                                                                *
+******************************************************************
+Traceback (most recent call last):
+  File "/home/crazat/miniforge3/envs/genesis-md/bin/MCPB.py", line 682, in <module>
+    gene_by_QM_fitting_sem(smpdbf, ionids, xstru, stfpf, prefcdf, finfcdf,
+  File "/home/crazat/miniforge3/envs/genesis-md/lib/python3.11/site-packages/pymsmt/mcpb/gene_final_frcmod_file.py", line 742, in gene_by_QM_fitting_sem
+    crds = get_crds_from_fchk(chkfname, len(atids))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/crazat/miniforge3/envs/genesis-md/lib/python3.11/site-packages/pymsmt/mol/gauio.py", line 366, in get_crds_from_fchk
+    fp = open(fname, 'r')
+         ^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'MMP1_zn_small_opt.fchk'

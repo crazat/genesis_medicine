@@ -1,0 +1,12 @@
+version: 1
+sequences:
+- protein:
+    id: A
+    sequence: LFREMPGGPVWRKHYITYRINNYTPDMNREDVDYAIRKAFQVWSNVTPLKFSKINTGMADILVVFARGAHGDFHAFDGKGGILAHAFGPGSGIGGDAHFDEDERWTNNFREYNLHRVAAHELGHSLGLSHSTDIGALMYPSYTFSGDVQLAQDDIDGIQAIYG
+    msa: /home/crazat/genesis_medicine/data/msa/mmp1.a3m
+- ligand:
+    id: B
+    smiles: CC(C)C[C@H](NC(=O)[C@H](CC1=CN=CC=C1)NC(=O)[C@H](O)CC(C)C)C(=O)NO
+properties:
+- affinity:
+    binder: B

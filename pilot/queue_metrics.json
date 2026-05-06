@@ -1,0 +1,128 @@
+{
+  "generated_at": "2026-05-03T10:46:32+00:00",
+  "scheduler_runs_tracked": 5,
+  "tier_runtime_status": {
+    "T1b_openfold3": {
+      "present": true,
+      "missing": [],
+      "reason": "ok"
+    },
+    "T1c_aqaffinity": {
+      "present": true,
+      "missing": [],
+      "reason": "ok"
+    }
+  },
+  "per_next_tier": {
+    "T1b_openfold3": {
+      "pending": 752,
+      "blocked_runtime": 0,
+      "blocked_gate": 124,
+      "top_score": 0.9372
+    }
+  },
+  "stalled_items_count": 752,
+  "stalled_items_top": [
+    {
+      "work_id": "OCC1COc2cc(O)c(Cl)cc2C1|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "OCC1COc2cc(O)cc(Cl)c2C1|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "Cc1cc2c(c(C)c1O)OCC(CO)C2|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "Cc1cc(O)c(C)c2c1CC(CO)CO2|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "Cc1c(O)cc2c(c1C)CC(CO)CO2|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "OCC1COc2c(ccc(O)c2Cl)C1|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "C1CCN2CC3CC(CN4CCCCC34)C2C1|CTGF",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "OCC1COc2cc(O)c(O)cc2C1|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "C1CCN2C[C@@H]3C[C@@H](CN4CCCC[C@@H]34)[C@H]2C1|CTGF",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "O[C@H]1[C@@H]2CCO[C@@H]3OC[C@@](O)([C@@H]32)[C@@H]1O|CTGF",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "OCC1COc2cc(O)ccc2C1|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "OCC1COc2cc(O)cc(O)c2C1|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "CCCCCCCCCCCCCCCCCCOC1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O|CTGF",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "OCC1COc2cc(O)c(Cl)c(Cl)c2C1|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "OCC1COc2c(cc(Cl)c(O)c2F)C1|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "OCC1COc2cc(O)c(F)cc2C1|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "OCC1COc2c(cc(F)c(O)c2Cl)C1|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "CN[C@H]1CC[C@@]2(C)C(CC[C@H]3[C@@H]4CC[C@H]([C@H](C)N(C)C)[C@@]4(C)CC[C@@H]32)C1|CTGF",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "OCC1COc2c(cc(Cl)c(O)c2Cl)C1|TGFB1",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    },
+    {
+      "work_id": "OCC1COc2cc(O)ccc2C1|TYR",
+      "consecutive_runs": 5,
+      "signature": "T1_boltz2->advance_to_T1b_openfold3"
+    }
+  ],
+  "stale_threshold_runs": 3
+}

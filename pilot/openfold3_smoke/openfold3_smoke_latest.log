@@ -1,0 +1,46 @@
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+WARNING:openfold3.entry_points.experiment_runner:No version_tensor is found for this checkpoint.Assuming the user knows checkpoints are parameters are compatible, continuing...
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+💡 Tip: For seamless cloud uploads and versioning, try installing [litmodels](https://pypi.org/project/litmodels/) to enable LitModelCheckpoint, which syncs automatically with the Lightning model registry.
+/home/crazat/genesis_medicine/external_tools/openfold-3/openfold3/core/data/framework/data_module.py:658: UserWarning: Expected MSA file for chain A of type PROTEIN in query ubiquitin, but no MSA files found. A dummy MSA with only the query sequence will be used for this chain.
+  self.inference_config.query_set = augment_main_msa_with_query_sequence(
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/crazat/genesis_medicine/external_tools/openfold-3/.pixi/envs/openfold3-cuda12/lib/python3.13/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+Seed set to 2746317213
+/home/crazat/genesis_medicine/external_tools/openfold-3/.pixi/envs/openfold3-cuda12/lib/python3.13/site-packages/biotite/structure/io/pdbx/convert.py:912: DeprecationWarning: `include_bonds` parameter is deprecated, intra-residue are always written, if available
+  warnings.warn(
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+
+==================================================
+    PREDICTION SUMMARY (COMPLETE)    
+==================================================
+Total Queries Processed: 1
+  - Successful Queries:  1
+  - Failed Queries:      0
+==================================================
+
+Predicting ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1/1 0:00:18 • 0:00:00 0.00it/s 
+Removing empty log directory...
+/home/crazat/genesis_medicine/pilot/openfold3_smoke/20260503_003339

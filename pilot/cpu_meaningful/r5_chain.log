@@ -1,0 +1,32 @@
+[19:52:18] === R5 cofold chain start ===
+[19:52:18] R5 tgfb1 cofold start
+[20:24:17] R5 tgfb1 cofold done
+[20:24:17] skip ar (no inputs)
+[20:24:17] R5 ctgf cofold start
+[20:55:40] R5 ctgf cofold done
+[20:55:40] skip sirt1 (no inputs)
+[20:55:40] skip lox (no inputs)
+[20:55:40] === R5 chain done ===
+CONSOLIDATED R5: 2077 cofold rows
+target
+mmp1             351
+ctgf             276
+tgfb1            194
+srd5a2           175
+sirt1            166
+jun              153
+ptgs2            145
+dct              142
+tyr              142
+lox              103
+ar                87
+ctnnb1            54
+tyrp1             42
+unknown           29
+fgf2               3
+pdgfrb             3
+smad3              3
+tgfb1_pocket2      3
+tgfb1full          3
+vegfa              3
+dtype: int64

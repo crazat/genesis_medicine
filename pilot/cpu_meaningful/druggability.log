@@ -1,0 +1,9 @@
+========================================================================
+Druggability scoring — 14 disease targets
+========================================================================
+
+✅ druggability_per_target.csv (13 pockets)
+
+[Druggability ranking — top 14 targets]
+  batch        drug=0.558 pocket_size=31 (n=9)
+  unknown      drug=0.554 pocket_size=16 (n=4)

@@ -501,6 +501,44 @@ D Ubuntu-Genesis cutover 직후 시점에서도 C `Ubuntu` distro 안의 Genesis
 - 상세 메모리: `~/.claude/projects/-home-crazat-genesis-medicine/memory/project_c_drive_legacy_retention.md`.
 - 참고: 인계자 manifest `docs/C_DRIVE_GENESIS_CLEANUP_MANIFEST_2026-05-02.md` 동일 결론.
 
+### ✅ Paper #A 12h overnight 연산 결과 (2026-05-04 22:34 → 2026-05-06 12:42 KST)
+
+> 사용자 12h 자율연산 위임 → 6-compound ChEMBL MMP-1 ABFE benchmark + xtb GFN1/GFN2 cross-method analysis 완료. **paper #A 핵심 finding 확정**.
+
+**6-compound ABFE rep1+rep2 결과** (`pilot/abfe_benchmark_chembl/CHEMBL{ID}/abfe_production_mss/dG_bind.json`):
+
+| ChEMBL | exp dG | rep1 | rep2 | mean | Δrep | mean−exp |
+|---|---|---|---|---|---|---|
+| 415 (4nM, strong) | -11.6 | -19.7 | -0.869 | -10.28 | **18.8** | -1.32 ✓ |
+| 94487 (12nM, strong) | -10.9 | -20.9 | -21.019 | -20.96 | 0.12 | +10.06 ❌ |
+| 257077 (15nM, mid) | -10.7 | +8.6 | +3.165 | +5.88 | 5.4 | +16.58 ❌ |
+| 301236 (42nM, mid) | -10.0 | -7.5 | -11.215 | -9.36 | 3.7 | -0.64 ✓ |
+| 292707 (200nM, mid) | -9.0 | +4.9 | +4.632 | +4.77 | 0.27 | +13.77 ❌ |
+| 2105729 (18μM, weak) | -6.4 | +0.35 | +7.198 | +3.77 | 6.85 | +10.17 ❌ |
+
+**Pass rate: 2/6** (415, 301236).
+
+**rep3 부분 확장** (415 + 2105729): 415 rep3 = -11.49 (Δexp 0.11★), 3-rep mean -10.69 (Δexp 0.91). **3-replicate mean이 catastrophic Δrep variance를 평균화하여 strong inhibitor의 experimental value를 1 kcal/mol 이내 회복**. Weak binder (2105729)는 3 rep 모두 양수로 일관 실패.
+
+**Paper #A 핵심 finding (publishable angle)**: *Reproducibility ≠ accuracy.* 94487은 Δrep 0.12 (극도 reproducibility) 이지만 +10 kcal systematic over-binding. 415는 Δrep 18.8 (catastrophic variance) 이지만 mean이 1.3 kcal 이내. ZAFF-AMBER ABFE on Zn metalloenzymes은 compound-specific failure mode가 Δrep과 상관 없음.
+
+**Paper #A 권장 framing (locked)**: "*Limitations of ZAFF-AMBER ABFE for Zn metalloenzyme binding affinity prediction: replicate-pair analysis on MMP-1.*" Pass 2/6은 "validation" framing 불가 — methodology evaluation paper로 포지셔닝. JCTC submission target.
+
+**xtb GFN1 vs GFN2 cross-method (paper #B add-on)**: 9997 hetero10 cohort, 432 conf, ALPB. **Spearman ρ(gap) = 0.978**, ρ(energy_min) = 0.993. Top-10 9/10, Top-50 45/50. xtb method-agnostic ranking robustness 입증 → paper #B method-robustness section 데이터 확보.
+
+**Prinomastat (CHEMBL406) ABFE 시도 (2026-05-06 11:09)**: prep `-nc -1` 적용 후 구조 정상 (74290 atoms, Zn 1, LIG 1). 하지만 Phase 5 complex leg equilibration replica 0 state 0에서 NaN crash (4 LangevinDynamicsMove restart 실패). **embelin과 동일 failure mode** — prep script가 warmup 스킵해서 발생. 다음 세션: `scripts/zaff_phase5_warmup_generic.py --work pilot/abfe_benchmark_chembl/CHEMBL406` 먼저 돌리고 production 재발진.
+
+**Manifest 15개 중 ok 6 / fail_antechamber 9** — 9개 모두 `-nc -1` flag로 prep 가능 확인 (CHEMBL443684 Marimastat / CHEMBL406 ✓ / 412 / 259829 / 98 / 93146 / 3036 / 57058 / 1207). Tier-1 확장 시 orchestrator에 warmup 단계 + `-nc -1` autodetect 추가 필요.
+
+### 다음 세션 즉시 액션 (continuity)
+1. **CHEMBL406 warmup → ABFE 재발진**: `python scripts/zaff_phase5_warmup_generic.py --work pilot/abfe_benchmark_chembl/CHEMBL406` → `python scripts/zaff_phase5_abfe_production_mss.py --work pilot/abfe_benchmark_chembl/CHEMBL406` (PATH export 필수: `export PATH=/home/crazat/miniforge3/envs/genesis-md/bin:$PATH`).
+2. **`abfe_benchmark_prepare.py` 패치**: build_complex 단계에서 RDKit GetFormalCharge() 결과를 antechamber `-nc` 인자로 자동 전달 + tleap 후 warmup_generic 호출 추가.
+3. **나머지 8개 manifest 화합물 prep 재실행**: -nc -1 fix 적용.
+4. **Paper #A 초고**: `preprints/08_abfe_methodology/manuscript.md` 6+rep3 데이터 + GFN1/GFN2 cross-method 섹션 추가. 권장 framing 적용.
+5. **CPU**: GFN1 cohort csv (`pilot/cpu_meaningful/xtb_npass_top9997_hetero10_gfn1_432conf.csv`) 분석 figure 생성 가능.
+
+---
+
 ### ✅ Paper #A methodology pipeline — Tier 2/3 인프라 완성 (2026-05-04)
 
 JCTC/JCIM/RSC Digital Discovery target — 17 Zenodo papers를 1편 deep methods paper로 재구성. 가설: ZAFF-AMBER + alch RE-MD (16λ × 3 rep × 8/5 ns)이 ChEMBL MMP-1 IC50 ranking을 Spearman ρ ≥ 0.6으로 회복.

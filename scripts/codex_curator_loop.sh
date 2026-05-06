@@ -15,6 +15,8 @@ TIMEOUT_SEC="${CODEX_CURATOR_TIMEOUT_SEC:-1200}"
 REASONING="${CODEX_CURATOR_REASONING:-high}"
 CODEX_BIN="${CODEX_BIN:-codex}"
 
+export PATH="/usr/lib/wsl/lib:${PATH}"
+
 mkdir -p "$ROOT/pilot"
 cd "$ROOT"
 if [[ -f "$DRAIN" ]]; then

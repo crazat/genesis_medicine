@@ -1,0 +1,12 @@
+{
+  "ligand_smiles": "C[C@@H]1CC[C@@]2(CC[C@@]3(C(=CC[C@H]4[C@]3(C[C@H]([C@@H]5[C@@]4(C[C@H]([C@@H]([C@@]5(C)CO)O)O)C)O)C)[C@@H]2[C@H]1C)C)C(=O)O",
+  "sc_system": "/home/crazat/genesis_medicine/pilot/scaffold_hop/sc_permeation/sc_system/system.pdb",
+  "config": {
+    "n_replicas": 8,
+    "eq_ns": 20.0,
+    "pull_ns": 50.0,
+    "temperature_K": 310.0
+  },
+  "status": "pending",
+  "estimated_gpu_hours": 0.5
+}

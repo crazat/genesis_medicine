@@ -1,0 +1,13 @@
+{
+  "system": "EMB-3_MMP1",
+  "method": "openmmtools_alchemical_replica_exchange",
+  "n_lambda_windows": 8,
+  "n_iterations": 300,
+  "ps_per_iteration": 1,
+  "total_simulation_ns": 2.4,
+  "delta_g_decoupling_kcal_mol": -32.212068538268745,
+  "delta_g_uncertainty_kcal_mol": 1.5154767507080111,
+  "interpretation": "\u0394G_decoupling \uc791\uc744\uc218\ub85d \uc57d\uacb0\ud569 (ligand \ub5bc\ub294 \ube44\uc6a9 \uc791\uc74c). \uc2e4\ud5d8 IC50 \ucd94\uc815\uc5d0\ub294 standard volume correction + restraint correction \ucd94\uac00 \ud544\uc694. \uc5ec\uae30\uc11c\ub294 EMB-3 lead \uc815\ub7c9 baseline \ud655\ubcf4\uc6a9.",
+  "wall_minutes": 12.2,
+  "wall_simulation_minutes": 11.47
+}

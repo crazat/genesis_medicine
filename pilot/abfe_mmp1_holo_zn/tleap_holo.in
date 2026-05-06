@@ -1,0 +1,9 @@
+source leaprc.protein.ff14SB
+source leaprc.water.tip3p
+loadAmberParams frcmod.ions234lm_126_tip3p
+mol = loadPdb 1HFC_amber.pdb
+solvateBox mol TIP3PBOX 12.0
+addIons mol Na+ 0
+addIons mol Cl- 0
+saveAmberParm mol mmp1_holo.parm7 mmp1_holo.rst7
+quit

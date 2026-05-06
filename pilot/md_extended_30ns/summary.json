@@ -38,5 +38,15 @@
     "rmsd_final_A": 0.78,
     "rmsd_last10ns_A": 0.79,
     "ns_simulated": 30.0
+  },
+  {
+    "name": "ptgs2__r12_23_30ns",
+    "status": "ok",
+    "wall_min": 29.35,
+    "rmsd_mean_A": 1.38,
+    "rmsd_max_A": 2.16,
+    "rmsd_final_A": 1.72,
+    "rmsd_last10ns_A": 1.76,
+    "ns_simulated": 30.0
   }
 ]

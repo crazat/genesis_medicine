@@ -1,0 +1,10 @@
+{
+  "phase": "C1 active learning round 2 v2 (gap_eV target + druglike filter)",
+  "target": "gap_eV_mean",
+  "cv_r2": -2.89,
+  "cv_r2_std": 5.685,
+  "n_train": 80,
+  "n_predicted": 9728,
+  "n_druglike": 3798,
+  "wallclock_min": 0.21
+}

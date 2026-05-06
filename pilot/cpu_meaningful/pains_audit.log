@@ -1,0 +1,18 @@
+Total mol for full PAINS audit: 2529
+
+✅ pains_full_audit.csv (2529)
+
+[Filter-fail rates]
+  PAINS_A_match: 137/2529 (5.4%)
+  PAINS_B_match: 1355/2529 (53.6%)
+  PAINS_C_match: 0/2529 (0.0%)
+  Brenk_match: 1964/2529 (77.7%)
+  NIH_match: 1324/2529 (52.4%)
+  is_benzoquinone: 0/2529 (0.0%)
+  is_2_5_dihydroxy_bq: 4/2529 (0.2%)
+
+[Pool composition by 1,4-benzoquinone scaffold]
+  All 1,4-benzoquinones: 0 (0.0%)
+  2,5-dihydroxy-1,4-benzoquinones (embelin class): 4 (0.2%)
+
+[1,4-benzoquinones passing ALL PAINS+Brenk+NIH: 0]

@@ -1,0 +1,7 @@
+source leaprc.water.tip3p
+source leaprc.gaff2
+loadAmberParams /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415_rep3/complex/lig.frcmod
+LIG = loadMol2 /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415_rep3/complex/lig.mol2
+solvateBox LIG TIP3PBOX 12.0
+saveAmberParm LIG /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415_rep3/abfe_production_mss/solvent_leg/solvent.parm7 /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415_rep3/abfe_production_mss/solvent_leg/solvent.rst7
+quit

@@ -1,0 +1,57 @@
+{
+  "phase": "Phase 3 sanity MD",
+  "wallclock_minutes": 22.5,
+  "ns_simulated": 5.0,
+  "n_atoms": 28943,
+  "zn_atom_idx": 2388,
+  "coord_atoms": [
+    {
+      "atom_idx": 1731,
+      "resname": "HID",
+      "resnum": 111,
+      "name": "NE2",
+      "distance_A": 1.88
+    },
+    {
+      "atom_idx": 1873,
+      "resname": "HID",
+      "resnum": 121,
+      "name": "NE2",
+      "distance_A": 2.02
+    },
+    {
+      "atom_idx": 1789,
+      "resname": "HID",
+      "resnum": 115,
+      "name": "NE2",
+      "distance_A": 2.08
+    }
+  ],
+  "starting_distances_A": [
+    2.04,
+    2.491,
+    2.13
+  ],
+  "last_third_mean_distances_A": [
+    2.2,
+    2.197,
+    2.169
+  ],
+  "drift_A": [
+    0.16,
+    -0.294,
+    0.039
+  ],
+  "drift_within_0.5A": [
+    true,
+    true,
+    true
+  ],
+  "pass": true,
+  "pass_criterion": "all 3 Zn-NE2 distances drift < 0.5 A in last third",
+  "outputs": {
+    "trajectory": "pilot/abfe_mmp1_holo_zn/sanity_md/traj.dcd",
+    "final_pdb": "pilot/abfe_mmp1_holo_zn/sanity_md/final.pdb",
+    "log_csv": "pilot/abfe_mmp1_holo_zn/sanity_md/log.csv"
+  }
+}

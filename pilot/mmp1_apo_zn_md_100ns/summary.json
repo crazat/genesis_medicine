@@ -1,0 +1,17 @@
+{
+  "phase": "apo-Zn MMP-1 100 ns NPT control MD",
+  "purpose": "Control trajectory for #08 paper \u2014 Zn coordination dynamics without ligand",
+  "ns_simulated": 100.0,
+  "n_atoms": 28943,
+  "dt_fs": 2.0,
+  "temperature_K": 310.0,
+  "pressure_bar": 1.0,
+  "report_ps": 100.0,
+  "wallclock_minutes": 696.0,
+  "starting_frame_from": "pilot/abfe_mmp1_holo_zn/sanity_md/final.pdb",
+  "outputs": {
+    "traj": "pilot/mmp1_apo_zn_md_100ns/traj.dcd",
+    "log": "pilot/mmp1_apo_zn_md_100ns/log.csv",
+    "final": "pilot/mmp1_apo_zn_md_100ns/final.pdb"
+  }
+}

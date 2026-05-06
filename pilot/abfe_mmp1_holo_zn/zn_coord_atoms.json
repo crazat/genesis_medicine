@@ -1,0 +1,27 @@
+{
+  "zn_atom_idx": 2388,
+  "coord_atoms": [
+    {
+      "atom_idx": 1731,
+      "resname": "HID",
+      "resnum": 111,
+      "name": "NE2",
+      "distance_A": 1.88
+    },
+    {
+      "atom_idx": 1873,
+      "resname": "HID",
+      "resnum": 121,
+      "name": "NE2",
+      "distance_A": 2.02
+    },
+    {
+      "atom_idx": 1789,
+      "resname": "HID",
+      "resnum": 115,
+      "name": "NE2",
+      "distance_A": 2.08
+    }
+  ],
+  "rationale": "non-bonded Zn (ions234lm_126_tip3p) with cartesian coordination restraints"
+}

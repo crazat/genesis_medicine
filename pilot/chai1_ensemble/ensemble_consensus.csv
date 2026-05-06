@@ -1,7 +1,7 @@
-status,compound,target,error,boltz2_affinity_prob_binary
-error,EMB-3,TGFB1,Numba needs NumPy 2.1 or less. Got NumPy 2.4.,0.749
-error,EMB-3,MMP1,Numba needs NumPy 2.1 or less. Got NumPy 2.4.,0.674
-error,Oxyresveratrol,TYR,Numba needs NumPy 2.1 or less. Got NumPy 2.4.,0.7500531673431396
-error,Baicalein,AR,Numba needs NumPy 2.1 or less. Got NumPy 2.4.,0.8198989629745483
-error,EMB-3,SIRT1,Numba needs NumPy 2.1 or less. Got NumPy 2.4.,0.632
-error,Emodin,AR,Numba needs NumPy 2.1 or less. Got NumPy 2.4.,0.7681165933609009
+status,compound,target,chai1_aggregate_score,out_path,boltz2_affinity_prob_binary,consensus_call
+ok,EMB-3,TGFB1,,/home/crazat/genesis_medicine/pilot/chai1_ensemble/chai1_runs/TGFB1__EMB-3_chai1,0.749,moderate
+ok,EMB-3,MMP1,,/home/crazat/genesis_medicine/pilot/chai1_ensemble/chai1_runs/MMP1__EMB-3_chai1,0.674,moderate
+ok,Oxyresveratrol,TYR,,/home/crazat/genesis_medicine/pilot/chai1_ensemble/chai1_runs/TYR__Oxyresveratrol_chai1,0.7500531673431396,moderate
+ok,Baicalein,AR,,/home/crazat/genesis_medicine/pilot/chai1_ensemble/chai1_runs/AR__Baicalein_chai1,0.8198989629745483,moderate
+ok,EMB-3,SIRT1,,/home/crazat/genesis_medicine/pilot/chai1_ensemble/chai1_runs/SIRT1__EMB-3_chai1,0.632,moderate
+ok,Emodin,AR,,/home/crazat/genesis_medicine/pilot/chai1_ensemble/chai1_runs/AR__Emodin_chai1,0.7681165933609009,moderate

@@ -30,7 +30,9 @@ def research_gate() -> LicenseGate:
         "coconut_2", "lotus", "open_targets", "alphafold_db", "uniprot",
         "reactome", "wikipathways", "rdkit", "openmm", "mmseqs2", "hydra",
         # v2 고도화 추가
-        "openfold3", "flowdock", "drugclip", "flowmol3", "decompdiff",
+        "openfold3", "openfold3_weights_p2",
+        "aqaffinity", "aqaffinity_weights",
+        "flowdock", "drugclip", "flowmol3", "decompdiff",
         "saturn", "posebusters", "aizynthfinder", "npatlas_3",
         # v2.1 ultrathink 추가
         "txgnn", "alphaflow", "bioemu",

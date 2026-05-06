@@ -28,5 +28,25 @@
     "rmsd_final_A": 1.13,
     "rmsd_last10ns_A": 1.11,
     "ns_simulated": 30.0
+  },
+  {
+    "name": "srebp1__r14_5_30ns",
+    "status": "ok",
+    "wall_min": 24.49,
+    "rmsd_mean_A": 1.94,
+    "rmsd_max_A": 2.54,
+    "rmsd_final_A": 2.38,
+    "rmsd_last10ns_A": 2.08,
+    "ns_simulated": 30.0
+  },
+  {
+    "name": "tgfb1__r12_11_30ns",
+    "status": "ok",
+    "wall_min": 27.05,
+    "rmsd_mean_A": 1.44,
+    "rmsd_max_A": 2.53,
+    "rmsd_final_A": 1.61,
+    "rmsd_last10ns_A": 1.15,
+    "ns_simulated": 30.0
   }
 ]

@@ -1,0 +1,12 @@
+{
+  "phase": "C1 active learning round 2 v3 (master training)",
+  "train_csv": "xtb_npass_10k_master.csv (basic xtb, n_confs=2)",
+  "n_train": 9728,
+  "target": "gap_eV_mean",
+  "held_out_r2": -0.0,
+  "held_out_spearman": 0.85,
+  "cv_r2_mean": -1159.709,
+  "cv_r2_std": 2119.833,
+  "n_druglike": 3798,
+  "wallclock_min": 3.32
+}

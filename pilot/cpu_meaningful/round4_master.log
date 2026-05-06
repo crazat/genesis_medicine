@@ -1,0 +1,143 @@
+[18:07:54] === R4 cofold chain start ===
+[18:07:54] Round 4 mmp1 cofold start
+Checking input data.
+Processing 20 inputs with 20 threads.
+  0%|          | 0/20 [00:00<?, ?it/s]  5%|▌         | 1/20 [00:00<00:04,  3.92it/s]100%|██████████| 20/20 [00:00<00:00, 71.42it/s]
+Using bfloat16 Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+Running structure prediction for 20 inputs.
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/migration/utils.py:56: The loaded checkpoint was produced with Lightning v2.5.0.post0, which is newer than your current Lightning version: v2.5.0
+You are using a CUDA device ('NVIDIA GeForce RTX 5090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+Predicting: |          | 0/? [00:00<?, ?it/s]Predicting:   0%|          | 0/20 [00:00<?, ?it/s]Predicting DataLoader 0:   0%|          | 0/20 [00:00<?, ?it/s]/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/torch/jit/_script.py:1488: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/cuequivariance_ops_torch/triangle_attention.py:199: UserWarning: Non-SM100f kernel expects bias to be float32 so it's going to be cast to torch.float32. Check if you can change your code for maximum performance.
+  warnings.warn(
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+Predicting DataLoader 0:   5%|▌         | 1/20 [00:07<02:17,  0.14it/s]Predicting DataLoader 0:  10%|█         | 2/20 [00:27<04:04,  0.07it/s]Predicting DataLoader 0:  15%|█▌        | 3/20 [00:58<05:32,  0.05it/s]Predicting DataLoader 0:  20%|██        | 4/20 [01:33<06:15,  0.04it/s]Predicting DataLoader 0:  25%|██▌       | 5/20 [02:04<06:14,  0.04it/s]Predicting DataLoader 0:  30%|███       | 6/20 [02:33<05:58,  0.04it/s]Predicting DataLoader 0:  35%|███▌      | 7/20 [03:07<05:49,  0.04it/s]Predicting DataLoader 0:  40%|████      | 8/20 [03:36<05:24,  0.04it/s]Predicting DataLoader 0:  45%|████▌     | 9/20 [04:05<05:00,  0.04it/s]Predicting DataLoader 0:  50%|█████     | 10/20 [04:31<04:31,  0.04it/s]Predicting DataLoader 0:  55%|█████▌    | 11/20 [05:03<04:08,  0.04it/s]Predicting DataLoader 0:  60%|██████    | 12/20 [05:37<03:44,  0.04it/s]Predicting DataLoader 0:  65%|██████▌   | 13/20 [06:07<03:17,  0.04it/s]Predicting DataLoader 0:  70%|███████   | 14/20 [06:22<02:43,  0.04it/s]Predicting DataLoader 0:  75%|███████▌  | 15/20 [06:30<02:10,  0.04it/s]Predicting DataLoader 0:  80%|████████  | 16/20 [06:33<01:38,  0.04it/s]Predicting DataLoader 0:  85%|████████▌ | 17/20 [06:35<01:09,  0.04it/s]Predicting DataLoader 0:  90%|█████████ | 18/20 [06:37<00:44,  0.05it/s]Predicting DataLoader 0:  95%|█████████▌| 19/20 [06:39<00:21,  0.05it/s]Predicting DataLoader 0: 100%|██████████| 20/20 [06:41<00:00,  0.05it/s]Number of failed examples: 0
+Predicting DataLoader 0: 100%|██████████| 20/20 [06:41<00:00,  0.05it/s]
+
+Predicting property: affinity
+
+Checking input data for affinity.
+Running affinity prediction for 20 inputs.
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/migration/utils.py:56: The loaded checkpoint was produced with Lightning v2.5.0.post0, which is newer than your current Lightning version: v2.5.0
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+Predicting: |          | 0/? [00:00<?, ?it/s]/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/boltz/data/feature/featurizerv2.py:1623: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  deletion = np.pi / 2 * np.arctan(deletion / 3)
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/boltz/data/feature/featurizerv2.py:1623: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  deletion = np.pi / 2 * np.arctan(deletion / 3)
+Predicting:   0%|          | 0/20 [00:00<?, ?it/s]Predicting DataLoader 0:   0%|          | 0/20 [00:00<?, ?it/s]Predicting DataLoader 0:   5%|▌         | 1/20 [00:07<02:24,  0.13it/s]Predicting DataLoader 0:  10%|█         | 2/20 [00:15<02:20,  0.13it/s]Predicting DataLoader 0:  15%|█▌        | 3/20 [00:23<02:13,  0.13it/s]Predicting DataLoader 0:  20%|██        | 4/20 [00:32<02:08,  0.12it/s]Predicting DataLoader 0:  25%|██▌       | 5/20 [00:40<02:00,  0.12it/s]Predicting DataLoader 0:  30%|███       | 6/20 [00:48<01:52,  0.12it/s]Predicting DataLoader 0:  35%|███▌      | 7/20 [00:56<01:44,  0.12it/s]Predicting DataLoader 0:  40%|████      | 8/20 [01:03<01:35,  0.13it/s]Predicting DataLoader 0:  45%|████▌     | 9/20 [01:12<01:29,  0.12it/s]Predicting DataLoader 0:  50%|█████     | 10/20 [01:21<01:21,  0.12it/s]Predicting DataLoader 0:  55%|█████▌    | 11/20 [01:30<01:13,  0.12it/s]Predicting DataLoader 0:  60%|██████    | 12/20 [01:38<01:05,  0.12it/s]Predicting DataLoader 0:  65%|██████▌   | 13/20 [01:46<00:57,  0.12it/s]Predicting DataLoader 0:  70%|███████   | 14/20 [01:54<00:49,  0.12it/s]Predicting DataLoader 0:  75%|███████▌  | 15/20 [02:02<00:40,  0.12it/s]Predicting DataLoader 0:  80%|████████  | 16/20 [02:10<00:32,  0.12it/s]Predicting DataLoader 0:  85%|████████▌ | 17/20 [02:18<00:24,  0.12it/s]Predicting DataLoader 0:  90%|█████████ | 18/20 [02:26<00:16,  0.12it/s]Predicting DataLoader 0:  95%|█████████▌| 19/20 [02:34<00:08,  0.12it/s]Predicting DataLoader 0: 100%|██████████| 20/20 [02:43<00:00,  0.12it/s]Number of failed examples: 0
+Predicting DataLoader 0: 100%|██████████| 20/20 [02:43<00:00,  0.12it/s]
+[18:18:19] Round 4 mmp1 cofold done
+[18:18:19] Round 4 tgfb1 cofold start
+Checking input data.
+Processing 20 inputs with 20 threads.
+  0%|          | 0/20 [00:00<?, ?it/s]  5%|▌         | 1/20 [00:00<00:02,  7.71it/s]100%|██████████| 20/20 [00:00<00:00, 137.03it/s]
+Using bfloat16 Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+Running structure prediction for 20 inputs.
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/migration/utils.py:56: The loaded checkpoint was produced with Lightning v2.5.0.post0, which is newer than your current Lightning version: v2.5.0
+You are using a CUDA device ('NVIDIA GeForce RTX 5090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+Predicting: |          | 0/? [00:00<?, ?it/s]Predicting:   0%|          | 0/20 [00:00<?, ?it/s]Predicting DataLoader 0:   0%|          | 0/20 [00:00<?, ?it/s]/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/torch/jit/_script.py:1488: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/cuequivariance_ops_torch/triangle_attention.py:199: UserWarning: Non-SM100f kernel expects bias to be float32 so it's going to be cast to torch.float32. Check if you can change your code for maximum performance.
+  warnings.warn(
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/cuequivariance_ops_torch/triangle_attention.py:199: UserWarning: Non-SM100f kernel expects bias to be float32 so it's going to be cast to torch.float32. Check if you can change your code for maximum performance.
+  warnings.warn(
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+Predicting DataLoader 0:   5%|▌         | 1/20 [00:04<01:33,  0.20it/s]/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/cuequivariance_ops_torch/triangle_attention.py:199: UserWarning: Non-SM100f kernel expects bias to be float32 so it's going to be cast to torch.float32. Check if you can change your code for maximum performance.
+  warnings.warn(
+Predicting DataLoader 0:  10%|█         | 2/20 [00:06<01:02,  0.29it/s]Predicting DataLoader 0:  15%|█▌        | 3/20 [00:08<00:50,  0.34it/s]/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/cuequivariance_ops_torch/triangle_attention.py:199: UserWarning: Non-SM100f kernel expects bias to be float32 so it's going to be cast to torch.float32. Check if you can change your code for maximum performance.
+  warnings.warn(
+Predicting DataLoader 0:  20%|██        | 4/20 [00:10<00:43,  0.36it/s]Predicting DataLoader 0:  25%|██▌       | 5/20 [00:12<00:38,  0.38it/s]/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/cuequivariance_ops_torch/triangle_attention.py:199: UserWarning: Non-SM100f kernel expects bias to be float32 so it's going to be cast to torch.float32. Check if you can change your code for maximum performance.
+  warnings.warn(
+Predicting DataLoader 0:  30%|███       | 6/20 [00:15<00:35,  0.39it/s]Predicting DataLoader 0:  35%|███▌      | 7/20 [00:17<00:32,  0.41it/s]Predicting DataLoader 0:  40%|████      | 8/20 [00:19<00:28,  0.42it/s]/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/cuequivariance_ops_torch/triangle_attention.py:199: UserWarning: Non-SM100f kernel expects bias to be float32 so it's going to be cast to torch.float32. Check if you can change your code for maximum performance.
+  warnings.warn(
+Predicting DataLoader 0:  45%|████▌     | 9/20 [00:21<00:25,  0.42it/s]Predicting DataLoader 0:  50%|█████     | 10/20 [00:23<00:23,  0.43it/s]Predicting DataLoader 0:  55%|█████▌    | 11/20 [00:25<00:20,  0.43it/s]Predicting DataLoader 0:  60%|██████    | 12/20 [00:27<00:18,  0.44it/s]Predicting DataLoader 0:  65%|██████▌   | 13/20 [00:29<00:15,  0.45it/s]Predicting DataLoader 0:  70%|███████   | 14/20 [00:31<00:13,  0.45it/s]Predicting DataLoader 0:  75%|███████▌  | 15/20 [00:33<00:11,  0.45it/s]Predicting DataLoader 0:  80%|████████  | 16/20 [00:35<00:08,  0.45it/s]Predicting DataLoader 0:  85%|████████▌ | 17/20 [00:37<00:06,  0.46it/s]Predicting DataLoader 0:  90%|█████████ | 18/20 [00:39<00:04,  0.46it/s]Predicting DataLoader 0:  95%|█████████▌| 19/20 [00:41<00:02,  0.46it/s]Predicting DataLoader 0: 100%|██████████| 20/20 [00:43<00:00,  0.46it/s]Number of failed examples: 0
+Predicting DataLoader 0: 100%|██████████| 20/20 [00:43<00:00,  0.46it/s]
+
+Predicting property: affinity
+
+Checking input data for affinity.
+Running affinity prediction for 20 inputs.
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/migration/utils.py:56: The loaded checkpoint was produced with Lightning v2.5.0.post0, which is newer than your current Lightning version: v2.5.0
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+Predicting: |          | 0/? [00:00<?, ?it/s]/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/boltz/data/feature/featurizerv2.py:1623: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  deletion = np.pi / 2 * np.arctan(deletion / 3)
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/boltz/data/feature/featurizerv2.py:1623: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  deletion = np.pi / 2 * np.arctan(deletion / 3)
+Predicting:   0%|          | 0/20 [00:00<?, ?it/s]Predicting DataLoader 0:   0%|          | 0/20 [00:00<?, ?it/s]Predicting DataLoader 0:   5%|▌         | 1/20 [00:07<02:14,  0.14it/s]Predicting DataLoader 0:  10%|█         | 2/20 [00:14<02:12,  0.14it/s]Predicting DataLoader 0:  15%|█▌        | 3/20 [00:48<04:33,  0.06it/s]Predicting DataLoader 0:  20%|██        | 4/20 [01:01<04:06,  0.07it/s]Predicting DataLoader 0:  25%|██▌       | 5/20 [01:14<03:43,  0.07it/s]Predicting DataLoader 0:  30%|███       | 6/20 [01:27<03:24,  0.07it/s]Predicting DataLoader 0:  35%|███▌      | 7/20 [01:39<03:05,  0.07it/s]Predicting DataLoader 0:  40%|████      | 8/20 [01:50<02:45,  0.07it/s]Predicting DataLoader 0:  45%|████▌     | 9/20 [02:01<02:28,  0.07it/s]Predicting DataLoader 0:  50%|█████     | 10/20 [02:12<02:12,  0.08it/s]Predicting DataLoader 0:  55%|█████▌    | 11/20 [02:23<01:57,  0.08it/s]Predicting DataLoader 0:  60%|██████    | 12/20 [02:34<01:42,  0.08it/s]Predicting DataLoader 0:  65%|██████▌   | 13/20 [02:41<01:27,  0.08it/s]Predicting DataLoader 0:  70%|███████   | 14/20 [02:49<01:12,  0.08it/s]Predicting DataLoader 0:  75%|███████▌  | 15/20 [02:56<00:58,  0.08it/s]Predicting DataLoader 0:  80%|████████  | 16/20 [03:03<00:45,  0.09it/s]Predicting DataLoader 0:  85%|████████▌ | 17/20 [03:11<00:33,  0.09it/s]Predicting DataLoader 0:  90%|█████████ | 18/20 [03:18<00:22,  0.09it/s]Predicting DataLoader 0:  95%|█████████▌| 19/20 [03:26<00:10,  0.09it/s]Predicting DataLoader 0: 100%|██████████| 20/20 [03:34<00:00,  0.09it/s]Number of failed examples: 0
+Predicting DataLoader 0: 100%|██████████| 20/20 [03:34<00:00,  0.09it/s]
+[18:23:30] Round 4 tgfb1 cofold done
+[18:23:30] Round 4 ctgf cofold start
+Checking input data.
+Processing 20 inputs with 20 threads.
+  0%|          | 0/20 [00:00<?, ?it/s] 55%|█████▌    | 11/20 [00:00<00:00, 109.53it/s]100%|██████████| 20/20 [00:00<00:00, 197.86it/s]
+Using bfloat16 Automatic Mixed Precision (AMP)
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+Running structure prediction for 20 inputs.
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/migration/utils.py:56: The loaded checkpoint was produced with Lightning v2.5.0.post0, which is newer than your current Lightning version: v2.5.0
+You are using a CUDA device ('NVIDIA GeForce RTX 5090') that has Tensor Cores. To properly utilize them, you should set `torch.set_float32_matmul_precision('medium' | 'high')` which will trade-off precision for performance. For more details, read https://pytorch.org/docs/stable/generated/torch.set_float32_matmul_precision.html#torch.set_float32_matmul_precision
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+Predicting: |          | 0/? [00:00<?, ?it/s]Predicting:   0%|          | 0/20 [00:00<?, ?it/s]Predicting DataLoader 0:   0%|          | 0/20 [00:00<?, ?it/s]/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/torch/jit/_script.py:1488: DeprecationWarning: `torch.jit.script` is deprecated. Please switch to `torch.compile` or `torch.export`.
+  warnings.warn(
+Failed to get GPU information from pynvml: Not Supported. Using default values for NVIDIA GeForce RTX 5090.
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/cuequivariance_ops_torch/triangle_attention.py:199: UserWarning: Non-SM100f kernel expects bias to be float32 so it's going to be cast to torch.float32. Check if you can change your code for maximum performance.
+  warnings.warn(
+GPU information: NVIDIA RTX A6000, 8, 6, 45, 84, 300, 2100
+Predicting DataLoader 0:   5%|▌         | 1/20 [00:05<01:35,  0.20it/s]Predicting DataLoader 0:  10%|█         | 2/20 [00:07<01:05,  0.27it/s]Predicting DataLoader 0:  15%|█▌        | 3/20 [00:09<00:54,  0.31it/s]Predicting DataLoader 0:  20%|██        | 4/20 [00:11<00:47,  0.34it/s]Predicting DataLoader 0:  25%|██▌       | 5/20 [00:14<00:43,  0.35it/s]Predicting DataLoader 0:  30%|███       | 6/20 [00:16<00:38,  0.36it/s]Predicting DataLoader 0:  35%|███▌      | 7/20 [00:18<00:34,  0.37it/s]Predicting DataLoader 0:  40%|████      | 8/20 [00:20<00:31,  0.38it/s]Predicting DataLoader 0:  45%|████▌     | 9/20 [00:23<00:28,  0.39it/s]Predicting DataLoader 0:  50%|█████     | 10/20 [00:25<00:25,  0.39it/s]Predicting DataLoader 0:  55%|█████▌    | 11/20 [00:27<00:22,  0.39it/s]Predicting DataLoader 0:  60%|██████    | 12/20 [00:30<00:20,  0.40it/s]Predicting DataLoader 0:  65%|██████▌   | 13/20 [00:32<00:17,  0.40it/s]Predicting DataLoader 0:  70%|███████   | 14/20 [00:35<00:15,  0.40it/s]Predicting DataLoader 0:  75%|███████▌  | 15/20 [00:37<00:12,  0.40it/s]Predicting DataLoader 0:  80%|████████  | 16/20 [00:39<00:09,  0.40it/s]Predicting DataLoader 0:  85%|████████▌ | 17/20 [00:42<00:07,  0.40it/s]Predicting DataLoader 0:  90%|█████████ | 18/20 [00:44<00:04,  0.40it/s]Predicting DataLoader 0:  95%|█████████▌| 19/20 [00:46<00:02,  0.41it/s]Predicting DataLoader 0: 100%|██████████| 20/20 [00:49<00:00,  0.41it/s]Number of failed examples: 0
+Predicting DataLoader 0: 100%|██████████| 20/20 [00:49<00:00,  0.41it/s]
+
+Predicting property: affinity
+
+Checking input data for affinity.
+Running affinity prediction for 20 inputs.
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/migration/utils.py:56: The loaded checkpoint was produced with Lightning v2.5.0.post0, which is newer than your current Lightning version: v2.5.0
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+Predicting: |          | 0/? [00:00<?, ?it/s]/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/boltz/data/feature/featurizerv2.py:1623: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  deletion = np.pi / 2 * np.arctan(deletion / 3)
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/boltz/data/feature/featurizerv2.py:1623: DeprecationWarning: __array_wrap__ must accept context and return_scalar arguments (positionally) in the future. (Deprecated NumPy 2.0)
+  deletion = np.pi / 2 * np.arctan(deletion / 3)
+Predicting:   0%|          | 0/20 [00:00<?, ?it/s]Predicting DataLoader 0:   0%|          | 0/20 [00:00<?, ?it/s]Predicting DataLoader 0:   5%|▌         | 1/20 [00:08<02:39,  0.12it/s]Predicting DataLoader 0:  10%|█         | 2/20 [00:16<02:26,  0.12it/s]Predicting DataLoader 0:  15%|█▌        | 3/20 [00:23<02:14,  0.13it/s]Predicting DataLoader 0:  20%|██        | 4/20 [00:31<02:05,  0.13it/s]Predicting DataLoader 0:  25%|██▌       | 5/20 [00:39<01:58,  0.13it/s]Predicting DataLoader 0:  30%|███       | 6/20 [00:47<01:50,  0.13it/s]Predicting DataLoader 0:  35%|███▌      | 7/20 [00:55<01:42,  0.13it/s]Predicting DataLoader 0:  40%|████      | 8/20 [01:02<01:33,  0.13it/s]Predicting DataLoader 0:  45%|████▌     | 9/20 [01:10<01:25,  0.13it/s]Predicting DataLoader 0:  50%|█████     | 10/20 [01:18<01:18,  0.13it/s]Predicting DataLoader 0:  55%|█████▌    | 11/20 [01:26<01:10,  0.13it/s]Predicting DataLoader 0:  60%|██████    | 12/20 [01:34<01:02,  0.13it/s]Predicting DataLoader 0:  65%|██████▌   | 13/20 [01:41<00:54,  0.13it/s]Predicting DataLoader 0:  70%|███████   | 14/20 [01:49<00:47,  0.13it/s]Predicting DataLoader 0:  75%|███████▌  | 15/20 [01:57<00:39,  0.13it/s]Predicting DataLoader 0:  80%|████████  | 16/20 [02:05<00:31,  0.13it/s]Predicting DataLoader 0:  85%|████████▌ | 17/20 [02:13<00:23,  0.13it/s]Predicting DataLoader 0:  90%|█████████ | 18/20 [02:21<00:15,  0.13it/s]Predicting DataLoader 0:  95%|█████████▌| 19/20 [02:29<00:07,  0.13it/s]Predicting DataLoader 0: 100%|██████████| 20/20 [02:36<00:00,  0.13it/s]Number of failed examples: 0
+Predicting DataLoader 0: 100%|██████████| 20/20 [02:36<00:00,  0.13it/s]
+[18:27:47] Round 4 ctgf cofold done
+[18:27:47] === R4 chain done ===
+CONSOLIDATED R4: 1877 cofold rows
+target
+mmp1             351
+ctgf             176
+srd5a2           175
+sirt1            166
+jun              153
+ptgs2            145
+dct              142
+tyr              142
+lox              103
+tgfb1             94
+ar                87
+ctnnb1            54
+tyrp1             42
+unknown           29
+fgf2               3
+pdgfrb             3
+smad3              3
+tgfb1_pocket2      3
+tgfb1full          3
+vegfa              3
+dtype: int64

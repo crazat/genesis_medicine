@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Genesis_Medicine - 43_r17_chromanol_generative_atlas</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+</style>
+  
+  <style>
+@page { size: A4; margin: 1.55cm 1.15cm; }
+body { font-family: "DejaVu Sans", sans-serif; font-size: 10pt; line-height: 1.45; }
+h1 { font-size: 16pt; margin-top: 0.6em; }
+h2 { font-size: 13pt; margin-top: 1.0em; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+h3 { font-size: 11pt; margin-top: 0.8em; }
+code, pre { font-family: "DejaVu Sans Mono", monospace; font-size: 8.4pt; }
+table { border-collapse: collapse; width: 100%; table-layout: auto; font-size: 8.2pt; margin: 0.55em 0; }
+th, td { border: 1px solid #bbb; padding: 3px 5px; vertical-align: top; word-break: break-word; overflow-wrap: anywhere; }
+th { background: #eee; font-weight: 600; }
+img { max-width: 100%; height: auto; page-break-inside: avoid; }
+figure { page-break-inside: avoid; margin: 0.8em 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Genesis_Medicine -
+43_r17_chromanol_generative_atlas</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#r17-constrained-generative-chromanol-analog-atlas-photosafety-gated-boltz-2-cofolding-and-10-60-ns-md-robustness" id="toc-r17-constrained-generative-chromanol-analog-atlas-photosafety-gated-boltz-2-cofolding-and-10-60-ns-md-robustness">R17
+Constrained Generative Chromanol Analog Atlas: Photosafety-Gated Boltz-2
+Cofolding and 10-60 ns MD Robustness</a>
+<ul>
+<li><a href="#abstract" id="toc-abstract">Abstract</a></li>
+<li><a href="#research-question" id="toc-research-question">1. Research
+Question</a></li>
+<li><a href="#data-sources" id="toc-data-sources">2. Data
+Sources</a></li>
+<li><a href="#results" id="toc-results">3. Results</a>
+<ul>
+<li><a href="#cofold-atlas-by-target" id="toc-cofold-atlas-by-target">3.1 Cofold atlas by target</a></li>
+<li><a href="#top-photosafety-green-candidates" id="toc-top-photosafety-green-candidates">3.2 Top photosafety-green
+candidates</a></li>
+<li><a href="#staged-md-robustness" id="toc-staged-md-robustness">3.3
+Staged MD robustness</a></li>
+<li><a href="#expanded-60-ns-final-gate" id="toc-expanded-60-ns-final-gate">3.4 Expanded 60 ns final
+gate</a></li>
+<li><a href="#prior-art-and-markush-discipline" id="toc-prior-art-and-markush-discipline">3.5 Prior-art and Markush
+discipline</a></li>
+</ul></li>
+<li><a href="#development-interpretation" id="toc-development-interpretation">4. Development
+Interpretation</a></li>
+<li><a href="#limitations" id="toc-limitations">5. Limitations</a></li>
+<li><a href="#conclusion" id="toc-conclusion">6. Conclusion</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="r17-constrained-generative-chromanol-analog-atlas-photosafety-gated-boltz-2-cofolding-and-10-60-ns-md-robustness">R17
+Constrained Generative Chromanol Analog Atlas: Photosafety-Gated Boltz-2
+Cofolding and 10-60 ns MD Robustness</h1>
+<h2 id="abstract">Abstract</h2>
+<p>R17 extends the R16 topical chromanol program with a constrained
+generative analog atlas. The goal was not an unconstrained novelty
+claim, but a disciplined hit-to-lead expansion that keeps the chromanol
+core compact while varying substitution patterns and tracking target,
+photosafety, and prior-art gates. The atlas contains <code>240</code>
+Boltz-2 cofold rows across balanced skin-relevant targets.
+Photosafety-green candidates reached affinity probabilities up to
+<code>0.672</code>, while aryl-halogen candidates were retained only
+with explicit photosafety review labels. The MD ladder covers top, next,
+and expanded green-target panels through 10, 30, and 60 ns. Expanded 60
+ns status is <code>3/3</code> ok, so this manuscript status is
+<code>complete</code>. All findings are in silico only and remain
+Markush/FTO and wet-lab validation pending.</p>
+<p><strong>Keywords</strong>: chromanol, generative design, Boltz-2,
+OpenMM, photosafety, prior-art gate, in silico</p>
+<h2 id="research-question">1. Research Question</h2>
+<p>Can a constrained R17 chromanol analog generator produce
+target-relevant, photosafety-gated candidates that remain stable through
+staged MD robustness checks without overclaiming novelty, freedom to
+operate, or clinical efficacy?</p>
+<h2 id="data-sources">2. Data Sources</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>file</th>
+<th>role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pilot/cpu_meaningful/r17_chromanol_generative_batch*_cofold.csv</code></td>
+<td>240-row Boltz-2 cofold atlas</td>
+</tr>
+<tr>
+<td><code>pilot/md_r17_chromanol_generative_top_green_*/summary.json</code></td>
+<td>top green-target 10/30/60 ns MD ladder</td>
+</tr>
+<tr>
+<td><code>pilot/md_r17_chromanol_generative_next_green_*/summary.json</code></td>
+<td>next green-target 10/30/60 ns MD ladder</td>
+</tr>
+<tr>
+<td><code>pilot/md_r17_chromanol_generative_expanded_green_*/summary.json</code></td>
+<td>expanded green-target 10/30/60 ns MD ladder</td>
+</tr>
+<tr>
+<td><code>pilot/cpu_meaningful/precompute_prior_art_gate.csv</code></td>
+<td>technical prior-art and Markush pre-gate</td>
+</tr>
+</tbody>
+</table>
+<h2 id="results">3. Results</h2>
+<h3 id="cofold-atlas-by-target">3.1 Cofold atlas by target</h3>
+<figure>
+<img role="img" aria-label="Figure 1. Distribution of R17 cofold affinity probabilities by target. Green points indicate photosafety_proxy=none_detected; red points indicate aryl-halogen review." src="figures/fig1_r17_affinity_by_target.png" alt="Figure 1. Distribution of R17 cofold affinity probabilities by target. Green points indicate photosafety_proxy=none_detected; red points indicate aryl-halogen review." />
+<figcaption aria-hidden="true">Figure 1. Distribution of R17 cofold
+affinity probabilities by target. Green points indicate
+<code>photosafety_proxy=none_detected</code>; red points indicate
+aryl-halogen review.</figcaption>
+</figure>
+<h3 id="top-photosafety-green-candidates">3.2 Top photosafety-green
+candidates</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>job_id</th>
+<th>target</th>
+<th>design</th>
+<th>affinity probability</th>
+<th>cLogP</th>
+<th>QED</th>
+<th>photosafety proxy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r17_15_tgfb1_chromanol_arom9_oh_tgfb1</td>
+<td>TGFB1</td>
+<td>chromanol_arom9_OH_tgfb1</td>
+<td>0.672</td>
+<td>0.64</td>
+<td>0.576</td>
+<td>none_detected</td>
+</tr>
+<tr>
+<td>r17_30_tyr_chromanol_arom6_arom9_f_f_tyr</td>
+<td>TYR</td>
+<td>chromanol_arom6+arom9_F+F_tyr</td>
+<td>0.592</td>
+<td>1.21</td>
+<td>0.741</td>
+<td>none_detected</td>
+</tr>
+<tr>
+<td>r17_16_tgfb1_chromanol_arom10_oh_tgfb1</td>
+<td>TGFB1</td>
+<td>chromanol_arom10_OH_tgfb1</td>
+<td>0.574</td>
+<td>0.64</td>
+<td>0.616</td>
+<td>none_detected</td>
+</tr>
+<tr>
+<td>r17_22_tyr_chromanol_arom6_f_tyr</td>
+<td>TYR</td>
+<td>chromanol_arom6_F_tyr</td>
+<td>0.559</td>
+<td>1.07</td>
+<td>0.709</td>
+<td>none_detected</td>
+</tr>
+<tr>
+<td>r17_29_dct_chromanol_arom6_arom9_f_f_dct</td>
+<td>DCT</td>
+<td>chromanol_arom6+arom9_F+F_dct</td>
+<td>0.559</td>
+<td>1.21</td>
+<td>0.741</td>
+<td>none_detected</td>
+</tr>
+<tr>
+<td>r17_20_tgfb1_chromanol_arom9_f_tgfb1</td>
+<td>TGFB1</td>
+<td>chromanol_arom9_F_tgfb1</td>
+<td>0.552</td>
+<td>1.07</td>
+<td>0.709</td>
+<td>none_detected</td>
+</tr>
+<tr>
+<td>r17_16_tyr_chromanol_arom9_f_tyr</td>
+<td>TYR</td>
+<td>chromanol_arom9_F_tyr</td>
+<td>0.540</td>
+<td>1.07</td>
+<td>0.709</td>
+<td>none_detected</td>
+</tr>
+<tr>
+<td>r17_16_tgfb1_chromanol_arom6_arom9_f_ome_tgfb1</td>
+<td>TGFB1</td>
+<td>chromanol_arom6+arom9_F+OMe_tgfb1</td>
+<td>0.532</td>
+<td>1.08</td>
+<td>0.795</td>
+<td>none_detected</td>
+</tr>
+<tr>
+<td>r17_08_tyr_chromanol_arom6_arom10_f_me_tyr</td>
+<td>TYR</td>
+<td>chromanol_arom6+arom10_F+Me_tyr</td>
+<td>0.530</td>
+<td>1.38</td>
+<td>0.739</td>
+<td>none_detected</td>
+</tr>
+<tr>
+<td>r17_10_tgfb1_chromanol_arom9_me_tgfb1</td>
+<td>TGFB1</td>
+<td>chromanol_arom9_Me_tgfb1</td>
+<td>0.525</td>
+<td>1.24</td>
+<td>0.707</td>
+<td>none_detected</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img role="img" aria-label="Figure 2. Top photosafety-green R17 candidates by Boltz-2 affinity probability." src="figures/fig2_r17_top_none_detected.png" alt="Figure 2. Top photosafety-green R17 candidates by Boltz-2 affinity probability." />
+<figcaption aria-hidden="true">Figure 2. Top photosafety-green R17
+candidates by Boltz-2 affinity probability.</figcaption>
+</figure>
+<h3 id="staged-md-robustness">3.3 Staged MD robustness</h3>
+<p>The R17 staged MD ladder currently contains <code>27</code> ok rows.
+The completed top and next green-target 60 ns panels were stable. The
+expanded 60 ns panel is the final promotion gate and is <code>3/3</code>
+complete in this manuscript snapshot.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+</colgroup>
+<thead>
+<tr>
+<th>panel</th>
+<th>target</th>
+<th>analog</th>
+<th>affinity probability</th>
+<th>mean RMSD A</th>
+<th>last-third RMSD A</th>
+<th>max RMSD A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>expanded_10ns</td>
+<td>DCT</td>
+<td>chromanol_arom6+arom9_F+F_dct</td>
+<td>0.559</td>
+<td>0.49</td>
+<td>0.59</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>expanded_10ns</td>
+<td>TYR</td>
+<td>chromanol_arom6+arom9_F+F_tyr</td>
+<td>0.592</td>
+<td>0.69</td>
+<td>0.25</td>
+<td>1.26</td>
+</tr>
+<tr>
+<td>expanded_10ns</td>
+<td>TYR</td>
+<td>chromanol_arom6_F_tyr</td>
+<td>0.559</td>
+<td>0.51</td>
+<td>0.52</td>
+<td>0.70</td>
+</tr>
+<tr>
+<td>expanded_30ns</td>
+<td>DCT</td>
+<td>chromanol_arom6+arom9_F+F_dct</td>
+<td>0.559</td>
+<td>0.33</td>
+<td>0.21</td>
+<td>0.83</td>
+</tr>
+<tr>
+<td>expanded_30ns</td>
+<td>TYR</td>
+<td>chromanol_arom6+arom9_F+F_tyr</td>
+<td>0.592</td>
+<td>0.28</td>
+<td>0.37</td>
+<td>0.73</td>
+</tr>
+<tr>
+<td>expanded_30ns</td>
+<td>TYR</td>
+<td>chromanol_arom6_F_tyr</td>
+<td>0.559</td>
+<td>0.30</td>
+<td>0.23</td>
+<td>0.61</td>
+</tr>
+<tr>
+<td>expanded_60ns</td>
+<td>DCT</td>
+<td>chromanol_arom6+arom9_F+F_dct</td>
+<td>0.559</td>
+<td>0.51</td>
+<td>0.48</td>
+<td>0.76</td>
+</tr>
+<tr>
+<td>expanded_60ns</td>
+<td>TYR</td>
+<td>chromanol_arom6+arom9_F+F_tyr</td>
+<td>0.592</td>
+<td>0.42</td>
+<td>0.30</td>
+<td>1.05</td>
+</tr>
+<tr>
+<td>expanded_60ns</td>
+<td>TYR</td>
+<td>chromanol_arom6_F_tyr</td>
+<td>0.559</td>
+<td>0.48</td>
+<td>0.46</td>
+<td>0.72</td>
+</tr>
+<tr>
+<td>next_10ns</td>
+<td>DCT</td>
+<td>chromanol_arom9+arom10_Cl+Cl_dct</td>
+<td>0.575</td>
+<td>0.51</td>
+<td>0.60</td>
+<td>0.87</td>
+</tr>
+<tr>
+<td>next_10ns</td>
+<td>DCT</td>
+<td>chromanol_arom6+arom9_F+Me_dct</td>
+<td>0.500</td>
+<td>0.51</td>
+<td>0.53</td>
+<td>0.80</td>
+</tr>
+<tr>
+<td>next_10ns</td>
+<td>TYR</td>
+<td>chromanol_arom9+arom10_F+Cl_tyr</td>
+<td>0.578</td>
+<td>0.51</td>
+<td>0.56</td>
+<td>0.76</td>
+</tr>
+<tr>
+<td>next_30ns</td>
+<td>DCT</td>
+<td>chromanol_arom9+arom10_Cl+Cl_dct</td>
+<td>0.575</td>
+<td>0.53</td>
+<td>0.54</td>
+<td>0.70</td>
+</tr>
+<tr>
+<td>next_30ns</td>
+<td>DCT</td>
+<td>chromanol_arom6+arom9_F+Me_dct</td>
+<td>0.500</td>
+<td>0.50</td>
+<td>0.34</td>
+<td>0.86</td>
+</tr>
+<tr>
+<td>next_30ns</td>
+<td>TYR</td>
+<td>chromanol_arom9+arom10_F+Cl_tyr</td>
+<td>0.578</td>
+<td>0.51</td>
+<td>0.51</td>
+<td>0.68</td>
+</tr>
+<tr>
+<td>next_60ns</td>
+<td>DCT</td>
+<td>chromanol_arom9+arom10_Cl+Cl_dct</td>
+<td>0.575</td>
+<td>0.53</td>
+<td>0.70</td>
+<td>1.10</td>
+</tr>
+<tr>
+<td>next_60ns</td>
+<td>DCT</td>
+<td>chromanol_arom6+arom9_F+Me_dct</td>
+<td>0.500</td>
+<td>0.49</td>
+<td>0.52</td>
+<td>1.12</td>
+</tr>
+<tr>
+<td>next_60ns</td>
+<td>TYR</td>
+<td>chromanol_arom9+arom10_F+Cl_tyr</td>
+<td>0.578</td>
+<td>0.97</td>
+<td>0.97</td>
+<td>1.23</td>
+</tr>
+<tr>
+<td>top_10ns</td>
+<td>DCT</td>
+<td>chromanol_arom6+arom9_Cl+Cl_dct</td>
+<td>0.582</td>
+<td>0.71</td>
+<td>0.69</td>
+<td>0.94</td>
+</tr>
+<tr>
+<td>top_10ns</td>
+<td>TYR</td>
+<td>chromanol_arom6+arom9_F+Cl_tyr</td>
+<td>0.607</td>
+<td>0.50</td>
+<td>0.49</td>
+<td>1.05</td>
+</tr>
+<tr>
+<td>top_10ns</td>
+<td>TYR</td>
+<td>chromanol_arom9_F_tyr</td>
+<td>0.540</td>
+<td>0.50</td>
+<td>0.74</td>
+<td>1.01</td>
+</tr>
+<tr>
+<td>top_30ns</td>
+<td>DCT</td>
+<td>chromanol_arom6+arom9_Cl+Cl_dct</td>
+<td>0.582</td>
+<td>0.50</td>
+<td>0.73</td>
+<td>0.98</td>
+</tr>
+<tr>
+<td>top_30ns</td>
+<td>TYR</td>
+<td>chromanol_arom6+arom9_F+Cl_tyr</td>
+<td>0.607</td>
+<td>0.31</td>
+<td>0.20</td>
+<td>0.87</td>
+</tr>
+<tr>
+<td>top_30ns</td>
+<td>TYR</td>
+<td>chromanol_arom9_F_tyr</td>
+<td>0.540</td>
+<td>0.53</td>
+<td>0.55</td>
+<td>0.70</td>
+</tr>
+<tr>
+<td>top_60ns</td>
+<td>DCT</td>
+<td>chromanol_arom6+arom9_Cl+Cl_dct</td>
+<td>0.582</td>
+<td>0.54</td>
+<td>0.55</td>
+<td>0.72</td>
+</tr>
+<tr>
+<td>top_60ns</td>
+<td>TYR</td>
+<td>chromanol_arom6+arom9_F+Cl_tyr</td>
+<td>0.607</td>
+<td>0.50</td>
+<td>0.56</td>
+<td>0.94</td>
+</tr>
+<tr>
+<td>top_60ns</td>
+<td>TYR</td>
+<td>chromanol_arom9_F_tyr</td>
+<td>0.540</td>
+<td>0.55</td>
+<td>0.62</td>
+<td>0.82</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img role="img" aria-label="Figure 3. R17 MD robustness ladder across 10, 30, and 60 ns panels." src="figures/fig3_r17_md_panels.png" alt="Figure 3. R17 MD robustness ladder across 10, 30, and 60 ns panels." />
+<figcaption aria-hidden="true">Figure 3. R17 MD robustness ladder across
+10, 30, and 60 ns panels.</figcaption>
+</figure>
+<h3 id="expanded-60-ns-final-gate">3.4 Expanded 60 ns final gate</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th>name</th>
+<th>target</th>
+<th>analog</th>
+<th>mean RMSD A</th>
+<th>last-third RMSD A</th>
+<th>max RMSD A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>r17_30_tyr_chromanol_arom6_arom9_f_f_tyr__chromanol_arom6_arom9_F_F_tyr__60ns</td>
+<td>TYR</td>
+<td>chromanol_arom6+arom9_F+F_tyr</td>
+<td>0.42</td>
+<td>0.30</td>
+<td>1.05</td>
+</tr>
+<tr>
+<td>r17_29_dct_chromanol_arom6_arom9_f_f_dct__chromanol_arom6_arom9_F_F_dct__60ns</td>
+<td>DCT</td>
+<td>chromanol_arom6+arom9_F+F_dct</td>
+<td>0.51</td>
+<td>0.48</td>
+<td>0.76</td>
+</tr>
+<tr>
+<td>r17_22_tyr_chromanol_arom6_f_tyr__chromanol_arom6_F_tyr__60ns</td>
+<td>TYR</td>
+<td>chromanol_arom6_F_tyr</td>
+<td>0.48</td>
+<td>0.46</td>
+<td>0.72</td>
+</tr>
+</tbody>
+</table>
+<h3 id="prior-art-and-markush-discipline">3.5 Prior-art and Markush
+discipline</h3>
+<p>The R17 prior-art precompute gate counts are
+<code>{&#39;hold_expensive_compute_until_markush_review&#39;: 240}</code>. This
+gate does not kill the scientific atlas, but it blocks stronger
+commercial language. A PubChem no-hit result is not freedom to operate,
+because Markush and use claims can still cover unmade or unlisted
+analogs.</p>
+<figure>
+<img role="img" aria-label="Figure 4. R17 prior-art precompute gate distribution." src="figures/fig4_r17_prior_art_gate.png" alt="Figure 4. R17 prior-art precompute gate distribution." />
+<figcaption aria-hidden="true">Figure 4. R17 prior-art precompute gate
+distribution.</figcaption>
+</figure>
+<h2 id="development-interpretation">4. Development Interpretation</h2>
+<p>R17 is best interpreted as a constrained hit-to-lead expansion paper.
+Its strongest contribution is a reproducible design queue that combines
+target cofolding, photosafety labeling, staged MD robustness, and
+prior-art discipline. R16 remains the cleaner immediate topical lead
+manuscript; R17 supplies the broader analog design space.</p>
+<h2 id="limitations">5. Limitations</h2>
+<p>All findings are in silico only. Boltz-2 cofolding is not biochemical
+binding evidence. MD RMSD stability is not potency, residence time,
+target engagement, or skin exposure. Photosafety, sensitization, hERG,
+AMES, DILI, irritation, IVRT/IVPT, PBPK, formulation compatibility, and
+target-engagement assays remain required. Markush/FTO review is
+mandatory before synthesis, purchasing, commercial novelty claims, or
+additional expensive 100-200 ns/RBFE/ABFE expansion.</p>
+<h2 id="conclusion">6. Conclusion</h2>
+<p>The R17 atlas is complete for manuscript-level reporting as a
+disciplined constrained-design workflow: the 240-row cofold atlas and
+all top/next/expanded 10/30/60 ns MD panels are finished, including the
+final expanded 60 ns 3/3 stable gate. The next step is not another
+automatic long-MD expansion, but cross-model/decoy or PLIF checks,
+Markush/FTO review, and wet-lab/formulation packages.</p>
+</body>
+</html>

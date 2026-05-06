@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Genesis_Medicine - 16_r15_chromanol_safety_triage</title>
+  <style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+</style>
+  
+  <style>
+@page { size: A4; margin: 1.55cm 1.15cm; }
+body { font-family: "DejaVu Sans", sans-serif; font-size: 10pt; line-height: 1.45; }
+h1 { font-size: 16pt; margin-top: 0.6em; }
+h2 { font-size: 13pt; margin-top: 1.0em; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+h3 { font-size: 11pt; margin-top: 0.8em; }
+code, pre { font-family: "DejaVu Sans Mono", monospace; font-size: 8.4pt; }
+table { border-collapse: collapse; width: 100%; table-layout: auto; font-size: 8.3pt; margin: 0.55em 0; }
+th, td { border: 1px solid #bbb; padding: 3px 5px; vertical-align: top; word-break: break-word; overflow-wrap: anywhere; }
+th { background: #eee; font-weight: 600; }
+img { max-width: 100%; height: auto; page-break-inside: avoid; }
+figure { page-break-inside: avoid; margin: 0.8em 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Genesis_Medicine - 16_r15_chromanol_safety_triage</h1>
+</header>
+<nav id="TOC" role="doc-toc">
+<ul>
+<li><a href="#r15-chromanol-safety-first-fragment-triage-14-target-cofolding-admetxtb-filtering-and-30-ns-md-separates-systemic-safety-and-topical-lead-paths" id="toc-r15-chromanol-safety-first-fragment-triage-14-target-cofolding-admetxtb-filtering-and-30-ns-md-separates-systemic-safety-and-topical-lead-paths">R15
+Chromanol Safety-First Fragment Triage: 14-Target Cofolding, ADMET/xTB
+Filtering, and 30 ns MD Separates Systemic-Safety and Topical-Lead
+Paths</a>
+<ul>
+<li><a href="#abstract" id="toc-abstract">Abstract</a></li>
+<li><a href="#research-question" id="toc-research-question">1. Research
+Question</a></li>
+<li><a href="#data-sources" id="toc-data-sources">2. Data
+Sources</a></li>
+<li><a href="#results" id="toc-results">3. Results</a>
+<ul>
+<li><a href="#r15-is-safety-first-not-topical-first" id="toc-r15-is-safety-first-not-topical-first">3.1 R15 is safety-first,
+not topical-first</a></li>
+<li><a href="#cofolding-identifies-tgfb1-tyr-and-dct-as-top-targets" id="toc-cofolding-identifies-tgfb1-tyr-and-dct-as-top-targets">3.2
+Cofolding identifies TGFB1, TYR, and DCT as top targets</a></li>
+<li><a href="#top-3-cofold-targets-persist-over-30-ns-md" id="toc-top-3-cofold-targets-persist-over-30-ns-md">3.3 Top-3 cofold
+targets persist over 30 ns MD</a></li>
+<li><a href="#raw-pose-sanity-gate-is-disclosed-rather-than-hidden" id="toc-raw-pose-sanity-gate-is-disclosed-rather-than-hidden">3.4
+Raw-pose sanity gate is disclosed rather than hidden</a></li>
+</ul></li>
+<li><a href="#prior-art-and-claim-discipline" id="toc-prior-art-and-claim-discipline">4. Prior-Art and Claim
+Discipline</a></li>
+<li><a href="#limitations" id="toc-limitations">5. Limitations</a></li>
+<li><a href="#conclusion" id="toc-conclusion">6. Conclusion</a></li>
+</ul></li>
+</ul>
+</nav>
+<h1 id="r15-chromanol-safety-first-fragment-triage-14-target-cofolding-admetxtb-filtering-and-30-ns-md-separates-systemic-safety-and-topical-lead-paths">R15
+Chromanol Safety-First Fragment Triage: 14-Target Cofolding, ADMET/xTB
+Filtering, and 30 ns MD Separates Systemic-Safety and Topical-Lead
+Paths</h1>
+<h2 id="abstract">Abstract</h2>
+<p>R15 generated a compact chromanol fragment,
+<code>OCC1COc2cc(O)ccc2C1</code>, as a safety-first derivative of the
+broader pterocarpan-vinyl-polyphenol scaffold program. The central
+question is whether this fragment should be treated as a topical lead or
+as a systemic-safety fragment hypothesis. The answer is deliberately
+split. In ADMET/xTB triage, the R15 parent is predicted to be clean for
+AMES, DILI, and hERG liability, but its logP is <code>0.94</code>, below
+the intended skin-window threshold, and it ranks <code>11</code> by the
+topical composite score. Conversely, the top-3 topical-score analogs
+satisfy the skin-window heuristic but retain hERG caution values around
+0.58-0.70. Boltz-2 14-target cofolding identifies TGFB1, TYR, and DCT as
+the top three targets by affinity probability, and all three remain
+stable in 30 ns OpenMM MD with mean ligand RMSD values of 0.51, 0.92,
+and 0.47 A. Raw-pose sanity gating found <code>9</code> pass,
+<code>5</code> review, and <code>0</code> fail rows across the R15
+14-target panel. We therefore frame R15 chromanol as a safety-first
+comparator and SAR anchor, not as a ready topical efficacy
+candidate.</p>
+<p><strong>Keywords</strong>: chromanol, ADMET, hERG, skin permeability,
+Boltz-2, OpenMM, in silico, topical drug discovery</p>
+<h2 id="research-question">1. Research Question</h2>
+<p>This manuscript is intentionally narrower than the universal-scaffold
+paper. It asks whether the R15 chromanol fragment can be advanced as a
+safety-first scaffold and how that path should be separated from R16
+topical chromanol optimization. Combining both paths would overstate the
+evidence: R15 has the cleaner predicted systemic-safety profile, while
+R16 analogs are better topical-window candidates but require separate
+safety and prior-art caveats.</p>
+<h2 id="data-sources">2. Data Sources</h2>
+<table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>file</th>
+<th>role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pilot/cpu_meaningful/r15_master_triage.csv</code></td>
+<td>ADMET/xTB and topical composite ranking for 38 R15-derived
+candidates</td>
+</tr>
+<tr>
+<td><code>pilot/cpu_meaningful/r15_chromanol_cofold_14targets.csv</code></td>
+<td>14-target Boltz-2 cofolding profile for
+<code>R15_chromanol</code></td>
+</tr>
+<tr>
+<td><code>pilot/md_r15_chromanol_top3_30ns/summary.json</code></td>
+<td>30 ns MD validation for the top-3 cofold targets</td>
+</tr>
+<tr>
+<td><code>pilot/cpu_meaningful/chromanol_pose_sanity_gate.csv</code></td>
+<td>OpenMM/RDKit/PoseBusters raw-pose sanity gate</td>
+</tr>
+<tr>
+<td><code>pilot/cpu_meaningful/precompute_prior_art_gate.csv</code></td>
+<td>technical prior-art pre-gate, not legal FTO opinion</td>
+</tr>
+</tbody>
+</table>
+<h2 id="results">3. Results</h2>
+<h3 id="r15-is-safety-first-not-topical-first">3.1 R15 is safety-first,
+not topical-first</h3>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr>
+<th>label</th>
+<th>SMILES</th>
+<th>logP</th>
+<th>QED</th>
+<th>hERG</th>
+<th>AMES</th>
+<th>DILI</th>
+<th>score</th>
+<th>rank</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>R15 parent</td>
+<td>OCC1COc2cc(O)ccc2C1</td>
+<td>0.94</td>
+<td>0.676</td>
+<td>0.169</td>
+<td>0.182</td>
+<td>0.214</td>
+<td>0.697</td>
+<td>11</td>
+</tr>
+<tr>
+<td>topical-score top-1</td>
+<td>OCC1Cc2c(O)cc(O)cc2OC1C1COc2cc(O)ccc2C1</td>
+<td>1.97</td>
+<td>0.665</td>
+<td>0.616</td>
+<td>0.101</td>
+<td>0.408</td>
+<td>0.752</td>
+<td>1</td>
+</tr>
+<tr>
+<td>topical-score top-2</td>
+<td>CC(C)=CC1COc2cc(O)ccc2C1</td>
+<td>2.91</td>
+<td>0.713</td>
+<td>0.575</td>
+<td>0.259</td>
+<td>0.202</td>
+<td>0.748</td>
+<td>2</td>
+</tr>
+<tr>
+<td>topical-score top-3</td>
+<td>CC(C)=CCC1COc2cc(O)ccc2C1</td>
+<td>3.30</td>
+<td>0.772</td>
+<td>0.700</td>
+<td>0.216</td>
+<td>0.165</td>
+<td>0.748</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img role="img" aria-label="Figure 1. R15 triage scatter showing topical composite score versus predicted hERG. The R15 parent is highlighted separately from the top-3 topical-score candidates." src="figures/fig1_r15_score_vs_herg.png" alt="Figure 1. R15 triage scatter showing topical composite score versus predicted hERG. The R15 parent is highlighted separately from the top-3 topical-score candidates." />
+<figcaption aria-hidden="true">Figure 1. R15 triage scatter showing
+topical composite score versus predicted hERG. The R15 parent is
+highlighted separately from the top-3 topical-score
+candidates.</figcaption>
+</figure>
+<p>The parent fragment is useful because its predicted safety profile is
+cleaner than the topical-score leaders. It should not be described as
+the best topical lead. The correct narrative is a split path: R15 for
+safety-first fragment triage and R16 for topical optimization.</p>
+<h3 id="cofolding-identifies-tgfb1-tyr-and-dct-as-top-targets">3.2
+Cofolding identifies TGFB1, TYR, and DCT as top targets</h3>
+<table>
+<thead>
+<tr>
+<th>rank</th>
+<th>target</th>
+<th>affinity probability</th>
+<th>confidence score</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>TGFB1</td>
+<td>0.594</td>
+<td>0.709</td>
+</tr>
+<tr>
+<td>2</td>
+<td>TYR</td>
+<td>0.536</td>
+<td>0.892</td>
+</tr>
+<tr>
+<td>3</td>
+<td>DCT</td>
+<td>0.502</td>
+<td>0.887</td>
+</tr>
+<tr>
+<td>4</td>
+<td>PTGS2</td>
+<td>0.494</td>
+<td>0.908</td>
+</tr>
+<tr>
+<td>5</td>
+<td>SIRT1</td>
+<td>0.463</td>
+<td>0.515</td>
+</tr>
+<tr>
+<td>6</td>
+<td>TYRP1</td>
+<td>0.460</td>
+<td>0.896</td>
+</tr>
+<tr>
+<td>7</td>
+<td>AR</td>
+<td>0.396</td>
+<td>0.574</td>
+</tr>
+<tr>
+<td>8</td>
+<td>MMP1</td>
+<td>0.393</td>
+<td>0.719</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img role="img" aria-label="Figure 2. Boltz-2 cofold probabilities across 14 skin-relevant targets for the R15 chromanol parent." src="figures/fig2_r15_14target_cofold.png" alt="Figure 2. Boltz-2 cofold probabilities across 14 skin-relevant targets for the R15 chromanol parent." />
+<figcaption aria-hidden="true">Figure 2. Boltz-2 cofold probabilities
+across 14 skin-relevant targets for the R15 chromanol
+parent.</figcaption>
+</figure>
+<h3 id="top-3-cofold-targets-persist-over-30-ns-md">3.3 Top-3 cofold
+targets persist over 30 ns MD</h3>
+<table>
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr>
+<th>target</th>
+<th>affinity probability</th>
+<th>mean RMSD A</th>
+<th>last-third RMSD A</th>
+<th>max RMSD A</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>TGFB1</td>
+<td>0.594</td>
+<td>0.51</td>
+<td>0.72</td>
+<td>0.91</td>
+</tr>
+<tr>
+<td>TYR</td>
+<td>0.536</td>
+<td>0.92</td>
+<td>1.06</td>
+<td>1.33</td>
+</tr>
+<tr>
+<td>DCT</td>
+<td>0.502</td>
+<td>0.47</td>
+<td>0.50</td>
+<td>0.69</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img role="img" aria-label="Figure 3. R15 top-3 target MD stability over 30 ns. Bars show mean RMSD and markers show maximum and last-third RMSD." src="figures/fig3_r15_top3_30ns_md.png" alt="Figure 3. R15 top-3 target MD stability over 30 ns. Bars show mean RMSD and markers show maximum and last-third RMSD." />
+<figcaption aria-hidden="true">Figure 3. R15 top-3 target MD stability
+over 30 ns. Bars show mean RMSD and markers show maximum and last-third
+RMSD.</figcaption>
+</figure>
+<h3 id="raw-pose-sanity-gate-is-disclosed-rather-than-hidden">3.4
+Raw-pose sanity gate is disclosed rather than hidden</h3>
+<p>Across the R15 parent 14-target panel, all poses loaded and were
+checkable. The pass/review/fail split was
+<code>9</code>/<code>5</code>/<code>0</code>. Review status is not a
+rejection by itself; it means the raw cofold geometry has a caveat and
+should be interpreted together with minimization and MD persistence.</p>
+<figure>
+<img role="img" aria-label="Figure 4. Raw cofold-pose sanity gate for R15 and R16 chromanol rows." src="figures/fig4_chromanol_pose_gate.png" alt="Figure 4. Raw cofold-pose sanity gate for R15 and R16 chromanol rows." />
+<figcaption aria-hidden="true">Figure 4. Raw cofold-pose sanity gate for
+R15 and R16 chromanol rows.</figcaption>
+</figure>
+<h2 id="prior-art-and-claim-discipline">4. Prior-Art and Claim
+Discipline</h2>
+<p>The local precompute gate reports R15 parent PubChem exact status as
+<code>hit</code> and gate status as
+<code>hold_expensive_compute_until_prior_art_review</code>. This is a
+technical screen only. It does not establish freedom to operate or
+composition novelty. Any manuscript or commercial narrative must avoid
+clinical efficacy, confirmed target engagement, and FTO language until
+professional patent/Markush and wet-lab review are complete.</p>
+<h2 id="limitations">5. Limitations</h2>
+<p>All findings are in silico only. Boltz-2 cofolding is a
+prioritization model, not a binding assay. MD pose stability is not
+potency. ADMET-AI estimates cannot replace AMES, hERG patch-clamp,
+hepatotoxicity, irritation, sensitization, or permeation assays.
+Skin-window interpretation is heuristic and must be checked by
+formulation-dependent IVRT/IVPT and PBPK modeling.</p>
+<h2 id="conclusion">6. Conclusion</h2>
+<p>R15 chromanol is best written as a safety-first fragment triage
+paper. Its strongest contribution is not a topical lead claim, but the
+disciplined separation of a clean predicted safety profile from the R16
+topical optimization path.</p>
+</body>
+</html>

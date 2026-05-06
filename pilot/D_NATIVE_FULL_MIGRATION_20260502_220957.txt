@@ -1,0 +1,3 @@
+completed_at_kst=2026-05-02 23:20:02 KST
+source=C Ubuntu /home/crazat + /mnt/d/genesis_archive
+target=Ubuntu-Genesis /home/crazat native ext4

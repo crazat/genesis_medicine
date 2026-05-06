@@ -1,0 +1,71 @@
+[2026-05-05 03:27:21] === OVERNIGHT CPU CHAIN START ===
+[2026-05-05 03:27:21] waiting for 9997 singlept subprocess to complete...
+[2026-05-05 03:33:59] 9997 singlept finished
+[2026-05-05 03:33:59] >>> Stage 1: top500 refine 432-conf (~32 min)
+top500: 442 mol
+launching 442 mol on 22 subprocess workers, num_confs=432
+  30/442 (11.7 min, ETA 160.9 min)
+  60/442 (19.4 min, ETA 123.7 min)
+  90/442 (26.2 min, ETA 102.3 min)
+  120/442 (30.8 min, ETA 82.7 min)
+  150/442 (35.4 min, ETA 68.8 min)
+  180/442 (39.3 min, ETA 57.2 min)
+  210/442 (44.4 min, ETA 49.0 min)
+  240/442 (49.2 min, ETA 41.4 min)
+  270/442 (52.9 min, ETA 33.7 min)
+  300/442 (56.4 min, ETA 26.7 min)
+  330/442 (59.1 min, ETA 20.1 min)
+  360/442 (62.4 min, ETA 14.2 min)
+  390/442 (66.5 min, ETA 8.9 min)
+  420/442 (70.1 min, ETA 3.7 min)
+done 442 in 74.1 min
+[2026-05-05 04:48:04] <<< Stage 1 done rc=0
+[2026-05-05 04:48:04] >>> Stage 2: AL round 3 retrain on full master (~5 min)
+master: 9997 mol
+singlept ok: 9811 rows
+trainable: 9857 mol
+featurizing...
+  featurized 1000/9857
+  featurized 2000/9857
+  featurized 3000/9857
+  featurized 4000/9857
+  featurized 5000/9857
+  featurized 6000/9857
+  featurized 7000/9857
+  featurized 8000/9857
+  featurized 9000/9857
+X: (9857, 2058), y: (9857,)
+training...
+held-out: Spearman=0.8490, Pearson=0.0560
+saved 9857 rows to /home/crazat/genesis_medicine/pilot/cpu_meaningful/al_round3_master_predictions.csv in 0.3 min
+[2026-05-05 04:48:22] <<< Stage 2 done rc=0
+[2026-05-05 04:48:22] >>> Stage 3: cross-engine full 9997 analysis (~3 min)
+master: 9997, singlept ok: 9811
+boltz: 500 rows, cols: ['np_id', 'affinity_pred', 'affinity_prob_binary', 'json_file']
+saved /home/crazat/genesis_medicine/pilot/cpu_meaningful/cross_engine_full_9997_summary.json
+{
+  "n_master": 9997,
+  "n_singlept_ok": 9811,
+  "n_master_xtb_ok": 9728,
+  "singlept_stats": {
+    "energy_au_mean": -85.21106872713865,
+    "energy_au_std": 888.4456307171862,
+    "gap_eV_mean": 3.1579698383861587,
+    "gap_eV_std": 20.13458606179699,
+    "homo_eV_mean": -1.279809025887087
+  },
+  "refine_vs_singlept_overlap": {
+    "n": 9682,
+    "spearman_energy_refine_vs_sp": 0.9994593796248482,
+    "spearman_gap_mean_refine_vs_sp_1conf": 0.9166221823498732
+  },
+  "boltz_vs_singlept_full_overlap": {
+    "n": 500,
+    "spearman_boltz_vs_xtb_energy_au": 0.616623810495242,
+    "spearman_boltz_vs_xtb_gap_eV": 0.18157128628514513
+  }
+}
+[2026-05-05 04:48:23] <<< Stage 3 done rc=0
+[2026-05-05 04:48:23] >>> Stage 4: extending refine 432 — re-run top500 refine in case more master rows added
+[2026-05-05 04:48:23] <<< Stage 4 skipped (Stage 1 covered)
+[2026-05-05 04:48:23] === OVERNIGHT CPU CHAIN COMPLETE ===

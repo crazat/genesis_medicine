@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018339
+zenodo_url: https://zenodo.org/record/20018339
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/2026/722473 rejected 2026-05-03 (scope mismatch)
+---
+
 # Multi-target evaluation of Korean herbal compounds against the SRD5A2 / AR / beta-catenin axis for androgenetic alopecia: Boltz-2 cofold, ChEMBL-anchored ranking, ADMET-AI 107-endpoint safety panel, and pilosebaceous single-cell atlas-constrained prioritization of Saponin Re, Emodin, and Biochanin A
 
 **HanCheongWoo ¹,²,³**

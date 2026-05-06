@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018343
+zenodo_url: https://zenodo.org/record/20018343
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/2026/722485 rejected 2026-05-03 (scope mismatch)
+---
+
 # Genesis_Medicine: an open-source autonomous in silico drug-discovery pipeline for Korean traditional medicine — 7-tool active core, 40+ adapter scaffold catalog, cost-aware multi-fidelity Bayesian-optimization scheduler with runtime-gated cascading tiers, and OpenFold3 / AQAffinity calibration integration
 
 **HanCheongWoo ¹,²,³**

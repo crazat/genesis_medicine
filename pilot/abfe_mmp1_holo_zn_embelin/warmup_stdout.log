@@ -1,0 +1,25 @@
+[warmup-complex] backed up complex.rst7 -> complex.rst7.preminim
+[warmup-complex] loading parmed structure
+[warmup-complex] system: 87769 atoms, box=[105.118445 103.979629  99.545195  90.        90.        90.      ]
+[warmup-complex] restraining 1246 protein heavy atoms (k=10 kcal/mol/A^2)
+[warmup-complex] minimizing up to 10000 iterations (tol=10 kJ/mol/nm)
+[warmup-complex]   minimization done 0.5 min
+[warmup-complex]   PE after min: -1419981.5168888792 kJ/mol
+[warmup-complex] heating 0K -> 310K over 100 ps
+[warmup-complex]   heat done 2.7 min
+[warmup-complex] NPT 100 ps with restraints
+[warmup-complex]   restrained NPT done 1.6 min
+[warmup-complex] NPT 100 ps unrestrained
+[warmup-complex]   free NPT done 1.5 min
+[warmup-complex] wrote warmed rst7 -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn_embelin/complex/complex.rst7
+[warmup-solvent] backed up solvent.rst7 -> solvent.rst7.preminim
+[warmup-solvent] loading parmed structure
+[warmup-solvent] system: 4070 atoms, box=[41.937116 39.302541 35.723272 90.       90.       90.      ]
+[warmup-solvent] minimizing up to 10000 iterations (tol=10 kJ/mol/nm)
+[warmup-solvent]   minimization done 0.3 min
+[warmup-solvent]   PE after min: -63900.63498546503 kJ/mol
+[warmup-solvent] heating 0K -> 310K over 100 ps
+[warmup-solvent]   heat done 2.7 min
+[warmup-solvent] NPT 100 ps with restraints
+[warmup-solvent]   restrained NPT done 1.3 min
+[warmup-solvent] wrote warmed rst7 -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn_embelin/abfe_production/solvent_leg/solvent.rst7

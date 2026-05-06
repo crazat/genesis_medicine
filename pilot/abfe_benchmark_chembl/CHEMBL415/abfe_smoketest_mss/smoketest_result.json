@@ -1,0 +1,13 @@
+{
+  "phase": "Phase 5 ABFE smoketest (MultiStateSampler, no replica exchange)",
+  "system": "CHEMBL415 (Batimastat) + holo MMP-1 ZAFF",
+  "n_lambda": 4,
+  "ns_eq": 0.05,
+  "ns_prod": 0.1,
+  "eq_minutes": 0.61,
+  "prod_minutes": 1.25,
+  "dG_alch_kcal_mol": 2.727,
+  "dG_err_kcal_mol": 0.49,
+  "diagnostic_pass": true,
+  "interpretation": "MultiStateSampler completed all iterations \u2014 replica-exchange swap was the root deadlock cause. Production can switch to MSS."
+}

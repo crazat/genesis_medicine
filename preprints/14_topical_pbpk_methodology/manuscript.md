@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018345
+zenodo_url: https://zenodo.org/record/20018345
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/2026/722481 rejected 2026-05-03 (scope mismatch)
+---
+
 # A topical skin PBPK pipeline for natural-product-inspired therapeutics: Dancik 4-layer ODE, SkinPiX-trained LGBM logKp head, NPASS 2026 ADME records, and a 102-compound 4-vehicle finite-dose evaluation with IVRT / IVPT readiness anchor
 
 **HanCheongWoo ¹,²,³**

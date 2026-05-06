@@ -1,0 +1,8 @@
+# cmd: /home/crazat/miniforge3/envs/genesis-md/bin/obabel /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL93146/lig_pre.sdf -O /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL93146/lig.pdbqt -h
+# rc: 0
+
+## stdout
+
+
+## stderr
+1 molecule converted

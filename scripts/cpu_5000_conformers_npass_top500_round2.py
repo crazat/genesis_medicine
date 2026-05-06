@@ -49,7 +49,7 @@ def main():
 
     args = [(i + 500, target.iloc[i]["smiles"]) for i in range(len(target))]
     t0 = time.time()
-    with Pool(16) as p:
+    with Pool(14) as p:
         results = p.map(gen5000, args)
     print(f"Wall: {(time.time()-t0)/60:.1f} min")
     valid = [r for r in results if r and "boltzmann_eff_confs" in r]

@@ -1,0 +1,89 @@
+{
+  "phase": "Boltz top500 vs xtb master cross-engine",
+  "n": 500,
+  "spearman": {
+    "energy_kcal_min": {
+      "rho": 0.617,
+      "p": 0.0
+    },
+    "gap_eV_mean": {
+      "rho": 0.201,
+      "p": 1e-05
+    },
+    "HOMO_eV": {
+      "rho": -0.321,
+      "p": 0.0
+    },
+    "LUMO_eV": {
+      "rho": 0.03,
+      "p": 0.49811
+    },
+    "log_kp_pottsguy": {
+      "rho": -0.293,
+      "p": 0.0
+    },
+    "logp": {
+      "rho": -0.541,
+      "p": 0.0
+    },
+    "mw": {
+      "rho": -0.645,
+      "p": 0.0
+    }
+  },
+  "pearson": {
+    "energy_kcal_min": {
+      "r": 0.6
+    },
+    "gap_eV_mean": {
+      "r": 0.132
+    },
+    "HOMO_eV": {
+      "r": -0.301
+    },
+    "LUMO_eV": {
+      "r": 0.068
+    },
+    "log_kp_pottsguy": {
+      "r": -0.229
+    },
+    "logp": {
+      "r": -0.499
+    },
+    "mw": {
+      "r": -0.624
+    }
+  },
+  "spearman_with_prob": {
+    "energy_kcal_min": {
+      "rho": 0.169,
+      "p": 0.00014
+    },
+    "gap_eV_mean": {
+      "rho": -0.191,
+      "p": 2e-05
+    },
+    "HOMO_eV": {
+      "rho": -0.083,
+      "p": 0.06495
+    },
+    "LUMO_eV": {
+      "rho": -0.166,
+      "p": 0.0002
+    },
+    "log_kp_pottsguy": {
+      "rho": 0.064,
+      "p": 0.15597
+    },
+    "logp": {
+      "rho": -0.054,
+      "p": 0.2296
+    },
+    "mw": {
+      "rho": -0.149,
+      "p": 0.00082
+    }
+  },
+  "boltz_internal_spearman": -0.048,
+  "note": "Boltz affinity_pred is log10(Kd nM); high = strong binder. xtb energy_kcal_min mass-dependent. gap_eV mass-independent. Sign of correlation reveals method agreement."
+}

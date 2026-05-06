@@ -1,0 +1,268 @@
+{
+  "timestamp": "2026-05-06T12:46:35+09:00",
+  "schema_name": "Genesis_Medicine FAIR assay metadata v1",
+  "principles": [
+    "ISA-style investigation/study/assay identifiers",
+    "BAO-style assay format",
+    "RO-Crate-ready raw file provenance"
+  ],
+  "required_fields": [
+    "investigation_id",
+    "study_id",
+    "assay_id",
+    "experiment_date",
+    "compound_id",
+    "smiles",
+    "batch_id",
+    "target_or_pathway",
+    "disease_context",
+    "assay_type",
+    "cell_type_or_model",
+    "dose",
+    "dose_unit",
+    "timepoint",
+    "endpoint",
+    "value",
+    "unit",
+    "replicate_id",
+    "control_type",
+    "protocol_version",
+    "raw_file",
+    "raw_file_sha256",
+    "quality_flag",
+    "interpretation"
+  ],
+  "fields": [
+    {
+      "field": "investigation_id",
+      "requirement": "required",
+      "description": "ISA investigation identifier",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "study_id",
+      "requirement": "required",
+      "description": "ISA study identifier or project arm",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "assay_id",
+      "requirement": "required",
+      "description": "assay run identifier",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "experiment_date",
+      "requirement": "required",
+      "description": "ISO date for experiment start",
+      "type": "date",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "compound_id",
+      "requirement": "required",
+      "description": "Genesis candidate identifier",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "smiles",
+      "requirement": "required",
+      "description": "canonical or submitted SMILES",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "batch_id",
+      "requirement": "required",
+      "description": "compound batch or vendor lot",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "target_or_pathway",
+      "requirement": "required",
+      "description": "target, pathway, or phenotype axis",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "disease_context",
+      "requirement": "required",
+      "description": "scar, pigment, acne, alopecia, photoaging, or control",
+      "type": "controlled_string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "assay_type",
+      "requirement": "required",
+      "description": "qPCR, enzyme, Cell Painting, viability, IVRT, IVPT, etc.",
+      "type": "controlled_string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "bao_assay_format",
+      "requirement": "recommended",
+      "description": "BAO-style assay format class",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "cell_type_or_model",
+      "requirement": "required",
+      "description": "cell line, primary cell, organoid, skin model, or biochemical assay",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "plate_id",
+      "requirement": "recommended",
+      "description": "plate or run identifier",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "well_id",
+      "requirement": "recommended",
+      "description": "well position if plate-based",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "dose",
+      "requirement": "required",
+      "description": "dose value",
+      "type": "number",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "dose_unit",
+      "requirement": "required",
+      "description": "dose unit",
+      "type": "controlled_string",
+      "allowed_values_or_example": "uM;ug/mL;percent_w_w"
+    },
+    {
+      "field": "timepoint",
+      "requirement": "required",
+      "description": "duration or sampling time",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "endpoint",
+      "requirement": "required",
+      "description": "measured endpoint",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "value",
+      "requirement": "required",
+      "description": "numeric readout",
+      "type": "number",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "unit",
+      "requirement": "required",
+      "description": "endpoint unit",
+      "type": "controlled_string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "replicate_id",
+      "requirement": "required",
+      "description": "biological/technical replicate identifier",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "control_type",
+      "requirement": "required",
+      "description": "vehicle, positive, negative, untreated, reference drug",
+      "type": "controlled_string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "control_id",
+      "requirement": "recommended",
+      "description": "control compound or condition",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "protocol_version",
+      "requirement": "required",
+      "description": "protocol or SOP version",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "instrument_id",
+      "requirement": "recommended",
+      "description": "instrument and acquisition setting",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "reagent_lot",
+      "requirement": "recommended",
+      "description": "critical reagent lot",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "raw_file",
+      "requirement": "required",
+      "description": "path or URI for raw data",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "raw_file_sha256",
+      "requirement": "required",
+      "description": "hash for raw file integrity",
+      "type": "sha256",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "analysis_script",
+      "requirement": "recommended",
+      "description": "script/notebook used for processing",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "analysis_version",
+      "requirement": "recommended",
+      "description": "git commit or version",
+      "type": "string",
+      "allowed_values_or_example": ""
+    },
+    {
+      "field": "quality_flag",
+      "requirement": "required",
+      "description": "pass, review, fail",
+      "type": "controlled_string",
+      "allowed_values_or_example": "pass;review;fail"
+    },
+    {
+      "field": "interpretation",
+      "requirement": "required",
+      "description": "promote, hold, deprioritize",
+      "type": "controlled_string",
+      "allowed_values_or_example": "promote;hold;deprioritize"
+    },
+    {
+      "field": "notes",
+      "requirement": "optional",
+      "description": "free-text caveats",
+      "type": "string",
+      "allowed_values_or_example": ""
+    }
+  ]
+}

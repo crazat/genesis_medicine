@@ -1,0 +1,15 @@
+========================================================================
+Target sequence similarity matrix
+========================================================================
+Targets found: 22
+  ['round4_mmp1', 'round4_tgfb1', 'jun', 'dct', 'tyr', 'round4_ctgf', 'srd5a2', 'ptgs2', 'tgfb1full', 'itgb6', 'lpar1', 'yap1', 'wwtr1', 'tgfb1_pocket2', 'ctgf', 'mmp1', 'tgfb1', 'smad3', 'vegfa', 'pdgfrb', 'fgf2', 'lox']
+
+✅ target_sequence_similarity.csv (22×22)
+✅ figures_r13/target_similarity_matrix.png
+
+[Off-target risk pairs (sim > 0.4)]
+  ctgf     × round4_ctgf  sim=1.000
+  mmp1     × round4_mmp1  sim=1.000
+  round4_tgfb1 × tgfb1     sim=1.000
+  round4_tgfb1 × tgfb1_pocket2  sim=1.000
+  tgfb1    × tgfb1_pocket2  sim=1.000

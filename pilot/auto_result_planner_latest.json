@@ -1,0 +1,194 @@
+{
+  "gpu": {
+    "task": "none",
+    "reason": "GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels",
+    "stability": {
+      "priority": {
+        "stable": true,
+        "max_rmsd_A": 1.38,
+        "max_last_third_A": 1.17,
+        "reason": "max RMSD 1.38 A, max last-third 1.17 A"
+      },
+      "tgfb1_extra": {
+        "stable": true,
+        "max_rmsd_A": 1.24,
+        "max_last_third_A": 1.04,
+        "reason": "max RMSD 1.24 A, max last-third 1.04 A"
+      },
+      "chloro_tgfb1": {
+        "stable": true,
+        "max_rmsd_A": 0.87,
+        "max_last_third_A": 0.67,
+        "reason": "max RMSD 0.87 A, max last-third 0.67 A"
+      },
+      "chloro_pigment": {
+        "stable": true,
+        "max_rmsd_A": 1.25,
+        "max_last_third_A": 1.0,
+        "reason": "max RMSD 1.25 A, max last-third 1.00 A"
+      },
+      "dimethyl_pigment": {
+        "stable": true,
+        "max_rmsd_A": 0.93,
+        "max_last_third_A": 0.59,
+        "reason": "max RMSD 0.93 A, max last-third 0.59 A"
+      },
+      "tgfb1_top6_60ns": {
+        "stable": true,
+        "max_rmsd_A": 1.22,
+        "max_last_third_A": 0.96,
+        "reason": "max RMSD 1.22 A, max last-third 0.96 A"
+      },
+      "r15_top3_30ns": {
+        "stable": true,
+        "max_rmsd_A": 1.33,
+        "max_last_third_A": 1.06,
+        "reason": "max RMSD 1.33 A, max last-third 1.06 A"
+      },
+      "pigment_representative_60ns": {
+        "stable": true,
+        "max_rmsd_A": 1.1,
+        "max_last_third_A": 0.78,
+        "reason": "max RMSD 1.10 A, max last-third 0.78 A"
+      },
+      "anchor_triad_100ns": {
+        "stable": true,
+        "max_rmsd_A": 1.13,
+        "max_last_third_A": 0.51,
+        "reason": "max RMSD 1.13 A, max last-third 0.51 A"
+      },
+      "anchor_triad_200ns": {
+        "stable": true,
+        "max_rmsd_A": 1.05,
+        "max_last_third_A": 0.57,
+        "reason": "max RMSD 1.05 A, max last-third 0.57 A"
+      },
+      "r17_top_green_10ns": {
+        "stable": true,
+        "max_rmsd_A": 1.05,
+        "max_last_third_A": 0.74,
+        "reason": "max RMSD 1.05 A, max last-third 0.74 A"
+      },
+      "r17_top_green_30ns": {
+        "stable": true,
+        "max_rmsd_A": 0.98,
+        "max_last_third_A": 0.73,
+        "reason": "max RMSD 0.98 A, max last-third 0.73 A"
+      },
+      "r17_top_green_60ns": {
+        "stable": true,
+        "max_rmsd_A": 0.94,
+        "max_last_third_A": 0.62,
+        "reason": "max RMSD 0.94 A, max last-third 0.62 A"
+      },
+      "r17_next_green_10ns": {
+        "stable": true,
+        "max_rmsd_A": 0.87,
+        "max_last_third_A": 0.6,
+        "reason": "max RMSD 0.87 A, max last-third 0.60 A"
+      },
+      "r17_next_green_30ns": {
+        "stable": true,
+        "max_rmsd_A": 0.86,
+        "max_last_third_A": 0.54,
+        "reason": "max RMSD 0.86 A, max last-third 0.54 A"
+      },
+      "r17_next_green_60ns": {
+        "stable": true,
+        "max_rmsd_A": 1.23,
+        "max_last_third_A": 0.97,
+        "reason": "max RMSD 1.23 A, max last-third 0.97 A"
+      },
+      "r17_expanded_green_10ns": {
+        "stable": true,
+        "max_rmsd_A": 1.26,
+        "max_last_third_A": 0.59,
+        "reason": "max RMSD 1.26 A, max last-third 0.59 A"
+      },
+      "r17_expanded_green_30ns": {
+        "stable": true,
+        "max_rmsd_A": 0.83,
+        "max_last_third_A": 0.37,
+        "reason": "max RMSD 0.83 A, max last-third 0.37 A"
+      },
+      "r17_expanded_green_60ns": {
+        "stable": true,
+        "max_rmsd_A": 1.05,
+        "max_last_third_A": 0.48,
+        "reason": "max RMSD 1.05 A, max last-third 0.48 A"
+      }
+    },
+    "paper_candidate": "r17_chromanol_generative_atlas",
+    "completed_rows": 240,
+    "target_rows": 240
+  },
+  "cpu": {
+    "task": "none",
+    "spec": "none",
+    "reason": "all configured xTB refinement outputs exist or are running through 384conf"
+  },
+  "storage_pressure": {
+    "status": "ok",
+    "min_free_gb": 450.0,
+    "min_free_gb_required": 80.0,
+    "warn_free_gb": 200.0,
+    "disks": {
+      "wsl_root": {
+        "path": "/",
+        "exists": true,
+        "total_gb": 1770.7,
+        "used_gb": 441.4,
+        "free_gb": 1247.1,
+        "used_pct": 24.9
+      },
+      "windows_c": {
+        "path": "/mnt/c",
+        "exists": true,
+        "total_gb": 1906.9,
+        "used_gb": 1456.9,
+        "free_gb": 450.0,
+        "used_pct": 76.4
+      },
+      "windows_d": {
+        "path": "/mnt/d",
+        "exists": true,
+        "total_gb": 1863.0,
+        "used_gb": 690.8,
+        "free_gb": 1172.2,
+        "used_pct": 37.1
+      }
+    },
+    "note": "Active compute should stay on WSL ext4; completed heavy outputs should be archived to D:."
+  },
+  "world_class_queue_policy": {
+    "finish_already_running_r17_expanded_60ns": false,
+    "allow_cpu_cheap_atlas": true,
+    "no_new_chromanol_100_200ns_or_fe_or_synthesis_until_markush_fto": true,
+    "no_mmp1_abfe_confirmed_claim_until_zaff_gate_pass": true,
+    "emb3_quinone_requires_wetlab_safety_package": true,
+    "boltz_only_claims_require_cross_model_decoy_or_plif_before_strong_language": true,
+    "wetlab_first_when_dmtl_or_ivpt_ready": true,
+    "creative_generation_requires_synthesis_or_prior_art_guard": true,
+    "active_learning_short_cofold_fallback_enabled": true,
+    "cryptic_pocket_generation_requires_ensemble_pocket_gate": true,
+    "phenomics_generation_requires_signature_or_assay_gate": true,
+    "target_msa_coverage_gap_blocks_target_queue": true,
+    "new_scaffold_gpu_followup_requires_uncertainty_and_benchmark_gate": true
+  },
+  "world_class_readiness_counts": {
+    "cheap_compute_or_paper_with_fto_caveat": 378,
+    "triage_accumulating": 1193,
+    "hold_or_benchmark_only": 757
+  },
+  "world_class_heavy_compute_permission_counts": {
+    "short_triage_only": 378,
+    "cheap_compute_only": 1193,
+    "hold": 757
+  },
+  "notes": [
+    "This planner is deterministic and result-aware; it is not an LLM process.",
+    "LLM-level reprioritization is handled by scripts/codex_curator_loop.sh when enabled.",
+    "World-class gap closure decisions are summarized in pilot/auto_queue_decision_policy.json and docs/WORLD_CLASS_GAP_CLOSURE.md.",
+    "Storage hard-hold blocks new large launches when Windows C: or WSL root free space is below GENESIS_MIN_FREE_GB."
+  ]
+}

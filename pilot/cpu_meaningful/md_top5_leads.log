@@ -1,0 +1,58 @@
+========================================================================
+Top-5 selective lead MD ensemble (10 ns × 5 = ~2.5h GPU)
+========================================================================
+
+======================================================================
+=== tgfb1__r3_6 ===
+  CIF: pilot/scaffold_hop_round3/boltz_output/boltz_results_boltz_inputs/predictions/tgfb1__r3_6/tgfb1__r3_6_model_0.cif
+  SMILES: CCCCCC1=C(O)C(=O)C(O)=C(C)C1=O
+  Using CUDA platform
+  ✅ 10.0 ns in 13.8 min, RMSD mean=0.86 Å, max=1.49 Å, final=1.28 Å
+
+======================================================================
+=== ar__beta-sitosterol ===
+  CIF: pilot/skin_alopecia/results_v1/boltz2_output/boltz_results_boltz2_inputs/predictions/ar__beta-sitosterol/ar__beta-sitosterol_model_0.cif
+  SMILES: CC[C@@H](CC[C@@H](C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC=C4[C@@]3(CC[C@@H](C4)O)C)C)C(C)C
+  Using CUDA platform
+  ✅ 10.0 ns in 17.6 min, RMSD mean=0.88 Å, max=1.91 Å, final=1.70 Å
+
+======================================================================
+=== ctgf__shikonin ===
+  CIF: pilot/skin_scar/results_v2/boltz2_output/boltz_results_boltz2_inputs/predictions/ctgf__shikonin/ctgf__shikonin_model_0.cif
+  SMILES: CC(=CCC(C1=CC(=O)c2c(O)ccc(O)c2C1=O)O)C
+  Using CUDA platform
+  ✅ 10.0 ns in 9.0 min, RMSD mean=1.24 Å, max=1.86 Å, final=1.28 Å
+
+======================================================================
+=== sirt1__chlorogenic_acid ===
+  CIF: pilot/skin_photoaging/results_v1/boltz2_output/boltz_results_boltz2_inputs/predictions/sirt1__chlorogenic_acid/sirt1__chlorogenic_acid_model_0.cif
+  SMILES: O=C(O)[C@H]1C[C@H](OC(=O)/C=C/c2ccc(O)c(O)c2)[C@@H](O)[C@@H](O)C1
+  Using CUDA platform
+  ✅ 10.0 ns in 13.2 min, RMSD mean=1.61 Å, max=2.67 Å, final=1.57 Å
+
+======================================================================
+=== tyrp1__azelaic_acid ===
+  CIF: pilot/skin_pigment/results_v1/boltz2_output/boltz_results_boltz2_inputs/predictions/tyrp1__azelaic_acid/tyrp1__azelaic_acid_model_0.cif
+  SMILES: OC(=O)CCCCCCCC(=O)O
+  Using CUDA platform
+  ✅ 10.0 ns in 9.2 min, RMSD mean=1.71 Å, max=2.76 Å, final=1.68 Å
+
+======================================================================
+Top-5 Lead MD ensemble — final summary
+======================================================================
+                   name status  rmsd_mean_A  rmsd_max_A  wall_min
+            tgfb1__r3_6     ok         0.86        1.49     13.77
+    ar__beta-sitosterol     ok         0.88        1.91     17.64
+         ctgf__shikonin     ok         1.24        1.86      9.01
+sirt1__chlorogenic_acid     ok         1.61        2.67     13.24
+    tyrp1__azelaic_acid     ok         1.71        2.76      9.18
+dcdplugin) detected standard 32-bit DCD file of native endianness
+dcdplugin) CHARMM format DCD file (also NAMD 2.1 and later)
+dcdplugin) detected standard 32-bit DCD file of native endianness
+dcdplugin) CHARMM format DCD file (also NAMD 2.1 and later)
+dcdplugin) detected standard 32-bit DCD file of native endianness
+dcdplugin) CHARMM format DCD file (also NAMD 2.1 and later)
+dcdplugin) detected standard 32-bit DCD file of native endianness
+dcdplugin) CHARMM format DCD file (also NAMD 2.1 and later)
+dcdplugin) detected standard 32-bit DCD file of native endianness
+dcdplugin) CHARMM format DCD file (also NAMD 2.1 and later)

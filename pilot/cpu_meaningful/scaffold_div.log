@@ -1,0 +1,41 @@
+========================================================================
+Murcko + generic scaffold diversity
+========================================================================
+Pool: 2336
+Valid: 2336
+
+Unique Murcko scaffolds: 272
+Top 15 Murcko scaffolds:
+   106× c1ccc(-c2cccc(-c3ccccc3)c2)cc1
+   101× c1ccc(C2Cc3ccccc3OC2c2ccccc2)cc1
+    86× c1ccc(-c2cccc(C3COc4ccccc4C3)c2)cc1
+    86× c1ccc(-c2ccccc2)cc1
+    62× c1ccc(C2COc3ccccc3C2)cc1
+    62× c1ccc(-c2cccc(C3CCCCO3)c2)cc1
+    60× c1ccc(-c2cccc(C3CCc4ccccc4O3)c2)cc1
+    58× c1ccc(Oc2ccccc2)cc1
+    58× c1ccc(-c2ccc(-c3ccccc3)cc2)cc1
+    58× c1ccc(C2CCCC(c3ccccc3)O2)cc1
+    49× c1ccc(C2CCc3ccccc3O2)cc1
+    49× c1ccc(C2CCCCO2)cc1
+    44× c1ccc(OC2COc3ccccc3C2)cc1
+    41× c1ccc(-c2ccc(C3COc4ccccc4C3)cc2)cc1
+    39× c1ccc(-c2cccc(-c3cccc(-c4ccccc4)c3)c2)cc1
+
+Unique generic scaffolds: 156
+Top 10 generic scaffolds:
+   235× C1CCC(C2CCCC(C3CCCCC3)C2)CC1
+   223× C1CCC(C2CCCC(C3CCC4CCCCC4C3)C2)CC1
+   135× C1CCC(C2CCCCC2)CC1
+   130× C1CCC(C2CCC3CCCCC3C2)CC1
+   125× C1CCC(C2CC3CCCCC3CC2C2CCCCC2)CC1
+    97× C1CCC(CC2CCC3CCCCC3C2)CC1
+    95× C1CCC(CC2CCCCC2)CC1
+    94× C1CCC(C2CCC(C3CCCCC3)CC2)CC1
+    81× C1CCC(C2CCC(C3CCC4CCCCC4C3)CC2)CC1
+    73× C1CCC(C2CCCC(C3CCCC(C4CCCCC4)C3)C2)CC1
+
+[Scaffold diversity index]
+  Murcko diversity: 0.116 (272/2336)
+  Generic diversity: 0.067
+  Top-1 Murcko cluster fraction: 0.045

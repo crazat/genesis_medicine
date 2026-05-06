@@ -1,0 +1,11 @@
+[18:16:04] === ABFE chain wait start ===
+[18:28:04] R4 boltz chain done
+-rw-r--r-- 1 crazat crazat 121652 Apr 27 18:27 pilot/cpu_meaningful/all_boltz2_affinity_consolidated_r4.csv
+24197 MiB
+[18:28:14] Starting EMB-3 ABFE openmmtools (12h) on r3_6 × TGFB1
+[18:28:14] ABFE PID 351391 started
+[18:28:14] Estimated completion: 2026-04-28_06:28
+[18:28:14] === ABFE chain master done ===
+ 351391 started
+[18:28:14] Estimated completion: 2026-04-28_06:28
+[18:28:14] === ABFE chain master done ===

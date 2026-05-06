@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018329
+zenodo_url: https://zenodo.org/record/20018329
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/2026/722483 rejected 2026-05-03 (scope mismatch)
+---
+
 # Embelia ribes (Vidanga, Jadan) revisited: from traditional Ayurvedic and East Asian use to AI-augmented scaffold-hopping for skin fibrosis with embelin parent and EMB-3 derivative case study
 
 **HanCheongWoo ¹,²,³**

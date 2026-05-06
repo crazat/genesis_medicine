@@ -1,0 +1,109 @@
+-I: Adding /home/crazat/miniforge3/envs/genesis-md/dat/leap/prep to search path.
+-I: Adding /home/crazat/miniforge3/envs/genesis-md/dat/leap/lib to search path.
+-I: Adding /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm to search path.
+-I: Adding /home/crazat/miniforge3/envs/genesis-md/dat/leap/cmd to search path.
+-f: Source tleap_complex.in.
+
+Welcome to LEaP!
+(no leaprc in search path)
+Sourcing: ./tleap_complex.in
+----- Source: /home/crazat/miniforge3/envs/genesis-md/dat/leap/cmd/leaprc.protein.ff14SB
+----- Source of /home/crazat/miniforge3/envs/genesis-md/dat/leap/cmd/leaprc.protein.ff14SB done
+Log file: ./leap.log
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/parm10.dat
+Reading title:
+PARM99 + frcmod.ff99SB + frcmod.parmbsc0 + OL3 for RNA
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/frcmod.ff14SB
+Reading force field modification type file (frcmod)
+Reading title:
+ff14SB protein backbone and sidechain parameters
+Loading library: /home/crazat/miniforge3/envs/genesis-md/dat/leap/lib/amino12.lib
+Loading library: /home/crazat/miniforge3/envs/genesis-md/dat/leap/lib/aminoct12.lib
+Loading library: /home/crazat/miniforge3/envs/genesis-md/dat/leap/lib/aminont12.lib
+----- Source: /home/crazat/miniforge3/envs/genesis-md/dat/leap/cmd/leaprc.water.tip3p
+----- Source of /home/crazat/miniforge3/envs/genesis-md/dat/leap/cmd/leaprc.water.tip3p done
+Loading library: /home/crazat/miniforge3/envs/genesis-md/dat/leap/lib/atomic_ions.lib
+Loading library: /home/crazat/miniforge3/envs/genesis-md/dat/leap/lib/solvents.lib
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/frcmod.tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+This is the additional/replacement parameter set for TIP3P water
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/frcmod.ions1lm_126_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of monovalent ions for TIP3P water model (12-6 normal usage set)
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/frcmod.ionsjc_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Monovalent ion parameters for Ewald and TIP3P water from Joung & Cheatham JPCB (2008)
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/frcmod.ions234lm_126_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of divalent to tetravalent ions for TIP3P water model (12-6 normal usage set)
+----- Source: /home/crazat/miniforge3/envs/genesis-md/dat/leap/cmd/leaprc.gaff2
+----- Source of /home/crazat/miniforge3/envs/genesis-md/dat/leap/cmd/leaprc.gaff2 done
+Log file: ./leap.log
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/gaff2.dat
+Reading title:
+AMBER General Force Field for organic molecules (Version 2.2.20, March 2021)
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/frcmod.ions234lm_126_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of divalent to tetravalent ions for TIP3P water model (12-6 normal usage set)
+Loading parameters: ./lig.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Remark line goes here
+Loading Mol2 file: ./lig.mol2
+Reading MOLECULE named LIG
+Loading PDB file: ./mmp1_holo.pdb
+  total atoms in file: 28943
+  Solute vdw bounding box:              72.535 72.006 69.110
+  Total bounding box for atom centers:  96.535 96.006 93.110
+  Solvent unit box:                     18.774 18.774 18.774
+  Total vdw box size:                   99.831 98.943 96.120 angstroms.
+  Volume: 949436.513 A^3 
+  Total mass 449808.146 amu,  Density 0.787 g/cc
+  Added 15105 residues.
+1 Na+ ion required to neutralize.
+Adding 1 counter ions to "complex" using 1A grid
+Grid extends from solute vdw + 1.37  to  7.65
+Resolution:      1.00 Angstrom.
+Solvent present: replacing closest with ion
+	 when steric overlaps occur
+Calculating grid charges
+(Replacing solvent molecule)
+Placed Na+ in complex at (-7.63, 24.16, 6.93).
+
+Done adding ions.
+
+/home/crazat/miniforge3/envs/genesis-md/bin/teLeap: Warning!
+addIons: 1st Ion & target unit have charges of the same sign:
+     unit charge = -3.55271e-15; ion1 charge = -1;
+     can't neutralize.
+Checking Unit.
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 554 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	CSER	1
+	LIG	1
+	NPRO	1
+	WAT	23952
+  )
+ (no restraints)
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 1; Notes = 0.

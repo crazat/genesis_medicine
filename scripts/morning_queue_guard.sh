@@ -10,6 +10,8 @@ QUEUE_TRIGGER="/tmp/genesis_auto_queue_enabled"
 CURATOR_TRIGGER="/tmp/genesis_codex_curator_enabled"
 DRAIN="$ROOT/pilot/QUEUE_DRAIN_MODE"
 
+export PATH="/usr/lib/wsl/lib:${PATH}"
+
 mkdir -p "$ROOT/pilot"
 cd "$ROOT"
 if [[ -f "$DRAIN" ]]; then

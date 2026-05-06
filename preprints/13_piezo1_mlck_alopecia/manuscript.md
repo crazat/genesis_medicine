@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018378
+zenodo_url: https://zenodo.org/record/20018378
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/? rejected 2026-05-03 (scope mismatch)
+---
+
 # Mechanotransduction in Androgenetic Alopecia: An *In Silico* Repositioning Study of PIEZO1 + MLCK Axis Using Cofolding and Pilosebaceous Single-Cell Atlas Constraints
 
 **HanCheongWoo ¹,²,³**

@@ -1,0 +1,24 @@
+Info: acdoctor mode is on: check and diagnose problems in the input file.
+Info: The atom type is set to gaff2; the options available to the -at flag are
+      gaff, gaff2, amber, bcc, abcg2, and sybyl.
+
+-- Check Format for sdf File --
+   Status: pass
+Info: Determining atomic numbers from atomic symbols which are case sensitive.
+Running: /home/crazat/miniforge3/envs/genesis-md/bin/bondtype -j full -i ANTECHAMBER_BOND_TYPE.AC0 -o ANTECHAMBER_BOND_TYPE.AC -f ac
+Warning: The assigned bond types may be wrong, please :
+(1) double check the structure (the connectivity) and/or 
+(2) adjust atom valence penalty parameters in APS.DAT, and/or 
+(3) increase PSCUTOFF in define.h and recompile bondtype.c
+    (be cautious, using a large value of PSCUTOFF (>100) will 
+    significantly increase the computation time).
+
+Running: /home/crazat/miniforge3/envs/genesis-md/bin/atomtype -i ANTECHAMBER_AC.AC0 -o ANTECHAMBER_AC.AC -p gaff2
+Info: Total number of electrons: 212; net charge: -1
+
+Running: /home/crazat/miniforge3/envs/genesis-md/bin/sqm -O -i sqm.in -o sqm.out
+
+Running: /home/crazat/miniforge3/envs/genesis-md/bin/am1bcc -i ANTECHAMBER_AM1BCC_PRE.AC -o ANTECHAMBER_AM1BCC.AC -f ac -t bcc -p /home/crazat/miniforge3/envs/genesis-md/dat/antechamber/BCCPARM.DAT -s 2 -j 1
+
+Running: /home/crazat/miniforge3/envs/genesis-md/bin/atomtype -f ac -p bcc -o ANTECHAMBER_AM1BCC.AC -i ANTECHAMBER_AM1BCC_PRE.AC
+

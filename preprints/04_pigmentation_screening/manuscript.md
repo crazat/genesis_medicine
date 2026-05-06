@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018337
+zenodo_url: https://zenodo.org/record/20018337
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/2026/722471 rejected 2026-05-03 (scope mismatch)
+---
+
 # Multi-target evaluation of Korean herbal compounds against the tyrosinase / TYRP1 / DCT axis for topical hyperpigmentation: Boltz-2 cofold, ChEMBL-anchored ranking, ADMET-AI 107-endpoint safety panel, and 30 ns molecular dynamics validation of oxyresveratrol and curcumin leads
 
 **HanCheongWoo ¹,²,³**

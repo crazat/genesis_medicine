@@ -1,0 +1,27 @@
+========================================================================
+Round 4 REINVENT-style fragment design (CPU-only)
+========================================================================
+
+[Stage 1: BRICS recombination from 6 seeds]
+  BRICS pool: 52 unique
+
+[Stage 2: Bioisostere swap]
+  Bioisostere pool: 24 unique
+
+[Stage 3: Drug-likeness filter on 76 mol]
+  Drug-like: 20
+
+✅ round4_candidates.csv (20 mol)
+✅ round4_top100.csv (100 mol)
+
+[Round 4 top 10]
+  score=0.608 QED=0.768 logKp=-2.53 MW=264.2 | CCCCC1=C(O)C(=O)C(O)=C(C(F)(F)F)C1=O
+  score=0.608 QED=0.726 logKp=-2.11 MW=226.3 | CCCCC1=C(O)C(=S)C(O)=C(C)C1=O
+  score=0.600 QED=0.731 logKp=-2.30 MW=212.2 | CCCCC1=C(F)C(=O)C(O)=C(C)C1=O
+  score=0.586 QED=0.736 logKp=-2.63 MW=219.2 | CCCCC1=C(C#N)C(=O)C(O)=C(C)C1=O
+  score=0.547 QED=0.585 logKp=-1.92 MW=240.3 | CCCCCC1=C(O)C(=S)C(O)=C(C)C1=O
+  score=0.544 QED=0.688 logKp=-3.00 MW=209.2 | CCCCC1=C(N)C(=O)C(O)=C(C)C1=O
+  score=0.540 QED=0.592 logKp=-2.11 MW=226.2 | CCCCCC1=C(F)C(=O)C(O)=C(C)C1=O
+  score=0.539 QED=0.612 logKp=-2.33 MW=278.2 | CCCCCC1=C(O)C(=O)C(O)=C(C(F)(F)F)C1=O
+  score=0.526 QED=0.597 logKp=-2.44 MW=233.3 | CCCCCC1=C(C#N)C(=O)C(O)=C(C)C1=O
+  score=0.490 QED=0.562 logKp=-2.81 MW=223.3 | CCCCCC1=C(N)C(=O)C(O)=C(C)C1=O

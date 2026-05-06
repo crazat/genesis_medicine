@@ -1,0 +1,12 @@
+# cmd: /home/crazat/miniforge3/envs/genesis-md/bin/obabel /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/_shared/receptor.pdb -O /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/_shared/receptor.pdbqt -xr
+# rc: 0
+
+## stdout
+
+
+## stderr
+==============================
+*** Open Babel Warning  in PerceiveBondOrders
+  Failed to kekulize aromatic bonds in OBMol::PerceiveBondOrders (title is /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/_shared/receptor.pdb)
+
+1 molecule converted

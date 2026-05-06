@@ -1,0 +1,39 @@
+{
+  "phase": "top-K consensus Boltz vs xtb",
+  "n": 500,
+  "results": {
+    "top_10": {
+      "overlap_energy": 0,
+      "overlap_gap": 0,
+      "overlap_homo": 1,
+      "iou_energy": 0.0,
+      "iou_gap": 0.0,
+      "iou_homo": 0.053
+    },
+    "top_25": {
+      "overlap_energy": 0,
+      "overlap_gap": 4,
+      "overlap_homo": 3,
+      "iou_energy": 0.0,
+      "iou_gap": 0.087,
+      "iou_homo": 0.064
+    },
+    "top_50": {
+      "overlap_energy": 0,
+      "overlap_gap": 10,
+      "overlap_homo": 12,
+      "iou_energy": 0.0,
+      "iou_gap": 0.111,
+      "iou_homo": 0.136
+    },
+    "top_100": {
+      "overlap_energy": 3,
+      "overlap_gap": 36,
+      "overlap_homo": 37,
+      "iou_energy": 0.015,
+      "iou_gap": 0.22,
+      "iou_homo": 0.227
+    }
+  },
+  "note": "low IoU = methods disagree on top binders; high IoU = methods agree"
+}

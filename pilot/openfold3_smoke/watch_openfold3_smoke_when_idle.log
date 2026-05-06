@@ -1,0 +1,4 @@
+[2026-05-03T00:33:39+09:00] watcher start util<=20% mem<=4500MiB
+[2026-05-03T00:33:39+09:00] gpu util=5% mem=1868MiB
+[2026-05-03T00:33:39+09:00] idle condition met; running OpenFold3 smoke
+[2026-05-03T00:35:21+09:00] OpenFold3 smoke finished with exit=0

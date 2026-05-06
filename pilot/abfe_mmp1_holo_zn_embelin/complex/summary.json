@@ -1,0 +1,18 @@
+{
+  "phase": "Phase 4 complex builder",
+  "complex_atoms": 87769,
+  "complex_residues": 28610,
+  "zn_atoms": 1,
+  "lig_residues": 1,
+  "box_A": [
+    105.118445,
+    103.979629,
+    99.545195
+  ],
+  "outputs": {
+    "complex_parm7": "pilot/abfe_mmp1_holo_zn_embelin/complex/complex.parm7",
+    "complex_rst7": "pilot/abfe_mmp1_holo_zn_embelin/complex/complex.rst7",
+    "embelin_mol2": "pilot/abfe_mmp1_holo_zn_embelin/complex/embelin.mol2",
+    "embelin_frcmod": "pilot/abfe_mmp1_holo_zn_embelin/complex/embelin.frcmod"
+  }
+}

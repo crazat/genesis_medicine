@@ -1,0 +1,5 @@
+hetero10 input (ok): 1066 mol
+launching 1066 mol on 22 subprocess workers, num_confs=672
+  30/1066 (1.9 min, ETA 65.3 min)
+  60/1066 (3.8 min, ETA 64.1 min)
+  90/1066 (7.1 min, ETA 76.6 min)

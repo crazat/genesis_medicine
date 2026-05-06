@@ -1,0 +1,74 @@
+-I: Adding /home/crazat/miniforge3/envs/genesis-md/dat/leap/prep to search path.
+-I: Adding /home/crazat/miniforge3/envs/genesis-md/dat/leap/lib to search path.
+-I: Adding /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm to search path.
+-I: Adding /home/crazat/miniforge3/envs/genesis-md/dat/leap/cmd to search path.
+-f: Source /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415_rep2/abfe_production_mss/solvent_leg/tleap_solvent.in.
+
+Welcome to LEaP!
+(no leaprc in search path)
+Sourcing: /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415_rep2/abfe_production_mss/solvent_leg/tleap_solvent.in
+----- Source: /home/crazat/miniforge3/envs/genesis-md/dat/leap/cmd/leaprc.water.tip3p
+----- Source of /home/crazat/miniforge3/envs/genesis-md/dat/leap/cmd/leaprc.water.tip3p done
+Loading library: /home/crazat/miniforge3/envs/genesis-md/dat/leap/lib/atomic_ions.lib
+Loading library: /home/crazat/miniforge3/envs/genesis-md/dat/leap/lib/solvents.lib
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/frcmod.tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+This is the additional/replacement parameter set for TIP3P water
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/frcmod.ions1lm_126_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of monovalent ions for TIP3P water model (12-6 normal usage set)
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/frcmod.ionsjc_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Monovalent ion parameters for Ewald and TIP3P water from Joung & Cheatham JPCB (2008)
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/frcmod.ions234lm_126_tip3p
+Reading force field modification type file (frcmod)
+Reading title:
+Li/Merz ion parameters of divalent to tetravalent ions for TIP3P water model (12-6 normal usage set)
+----- Source: /home/crazat/miniforge3/envs/genesis-md/dat/leap/cmd/leaprc.gaff2
+----- Source of /home/crazat/miniforge3/envs/genesis-md/dat/leap/cmd/leaprc.gaff2 done
+Log file: ./leap.log
+Loading parameters: /home/crazat/miniforge3/envs/genesis-md/dat/leap/parm/gaff2.dat
+Reading title:
+AMBER General Force Field for organic molecules (Version 2.2.20, March 2021)
+Loading parameters: /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415_rep2/complex/lig.frcmod
+Reading force field modification type file (frcmod)
+Reading title:
+Remark line goes here
+Loading Mol2 file: /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415_rep2/complex/lig.mol2
+Reading MOLECULE named LIG
+  Solute vdw bounding box:              9.983 15.265 12.639
+  Total bounding box for atom centers:  33.983 39.265 36.639
+  Solvent unit box:                     18.774 18.774 18.774
+  Total vdw box size:                   36.592 42.118 39.561 angstroms.
+  Volume: 60970.296 A^3 
+  Total mass 26268.272 amu,  Density 0.715 g/cc
+  Added 1437 residues.
+Checking Unit.
+Building topology.
+Building atom parameters.
+Building bond parameters.
+Building angle parameters.
+Building proper torsion parameters.
+Building improper torsion parameters.
+ total 12 improper torsions applied
+Building H-Bond parameters.
+Incorporating Non-Bonded adjustments.
+Not Marking per-residue atom chain types.
+Marking per-residue atom chain types.
+  (Residues lacking connect0/connect1 - 
+   these don't have chain types marked:
+
+	res	total affected
+
+	LIG	1
+	WAT	1437
+  )
+ (no restraints)
+	Quit
+
+Exiting LEaP: Errors = 0; Warnings = 0; Notes = 0.
+
+--- stderr ---

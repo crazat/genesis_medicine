@@ -1,0 +1,25 @@
+{
+  "xtb_energy_au": {
+    "ef_1pct": 7.311,
+    "ef_5pct": 6.854,
+    "ef_10pct": 4.798,
+    "auc_roc": 0.884,
+    "bedroc": 0.429,
+    "mw_bias_warning": "energy is mass-dependent; actives heavier may inflate metric"
+  },
+  "xtb_gap_eV": {
+    "ef_1pct": 0.0,
+    "ef_5pct": 5.483,
+    "ef_10pct": 4.112,
+    "auc_roc": 0.846,
+    "bedroc": 0.277,
+    "note": "mass-independent metric, more conservative signal"
+  },
+  "mean_heavy_atoms": {
+    "actives": 24.9,
+    "decoys": 30.9
+  },
+  "n_actives": 15,
+  "n_decoys": 314,
+  "n_total": 329
+}

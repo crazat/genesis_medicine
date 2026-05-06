@@ -1,0 +1,10 @@
+[21:00:04] === R5 phase 2 (AR/SIRT1/LOX/MITF) start ===
+[21:00:04] R5 ar cofold start
+[21:45:07] R5 ar cofold done
+[21:45:07] R5 sirt1 cofold start
+[22:07:07] R5 sirt1 cofold done
+[22:07:07] R5 lox cofold start
+[22:24:46] R5 lox cofold done
+[22:24:46] R5 mitf cofold start
+[22:45:02] R5 mitf cofold done
+[22:45:02] === R5 phase 2 done ===

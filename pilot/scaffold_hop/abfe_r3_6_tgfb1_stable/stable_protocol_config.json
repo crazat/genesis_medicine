@@ -1,0 +1,45 @@
+{
+  "compound": "r3_6",
+  "smiles": "CCCCCC1=C(O)C(=O)C(O)=C(C)C1=O",
+  "target": "TGFB1",
+  "receptor_pdb": "/home/crazat/genesis_medicine/pilot/scaffold_hop/abfe_emb3_tgfb1_v3/receptor.pdb",
+  "force_field": "GAFF2.11",
+  "water_model": "TIP3P",
+  "equilibration_ns": 5,
+  "production_ns_per_lambda": 4,
+  "n_lambda_windows": 17,
+  "lambda_schedule_electrostatic": [
+    0.0,
+    0.25,
+    0.5,
+    0.75,
+    1.0
+  ],
+  "lambda_schedule_steric": [
+    0.0,
+    0.1,
+    0.25,
+    0.4,
+    0.55,
+    0.7,
+    0.85,
+    0.95,
+    1.0
+  ],
+  "timestep_fs": 1.0,
+  "soft_core_alpha": 0.5,
+  "soft_core_beta": 12.0,
+  "harmonic_restraint_kj_mol_nm2": 300,
+  "barostat": "MonteCarloBarostat 1 atm 300K",
+  "thermostat": "LangevinMiddle 300K 1/ps",
+  "checkpoint_every_ps": 100,
+  "expected_runtime_h": 12,
+  "target_gpu": "RTX 5090",
+  "known_failure_modes": [
+    "openff-toolkit PyPI yanked (use GAFF2 fallback)",
+    "MMP-1 zinc \u2192 ZAFF needed (use TGFB1 instead, no metal)",
+    "EMB-3 polyphenol partial charges (use AM1-BCC + ESP fallback)",
+    "Replica state 7 NaN (use longer equilibration + softer core)"
+  ],
+  "note": "This is the planned stable protocol. Actual launch requires GPU free + full implementation merge with run_emb3_abfe_openmmtools.py"
+}

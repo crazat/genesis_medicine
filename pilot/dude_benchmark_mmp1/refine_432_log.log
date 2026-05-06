@@ -1,0 +1,13 @@
+actives n=15, decoys n=314
+total tasks: 329, num_confs=432
+  30/329 (2.3 min, ETA 22.9 min)
+  60/329 (4.0 min, ETA 18.1 min)
+  90/329 (5.9 min, ETA 15.6 min)
+  120/329 (7.8 min, ETA 13.6 min)
+  150/329 (9.7 min, ETA 11.5 min)
+  180/329 (11.5 min, ETA 9.5 min)
+  210/329 (13.1 min, ETA 7.4 min)
+  240/329 (15.1 min, ETA 5.6 min)
+  270/329 (17.0 min, ETA 3.7 min)
+  300/329 (18.8 min, ETA 1.8 min)
+done 329 in 20.7 min, 329 ok

@@ -1,0 +1,46 @@
+========================================================================
+3D Pharmacophore from MD ensemble
+========================================================================
+[MD validation log summary]
+  === tgfb1 × embelin_emb1 ===
+  CIF: /home/crazat/genesis_medicine/pilot/scaffold_hop/boltz2_validation/output/boltz_results_inputs/predictions/tgfb1__embelin_emb1/tgfb1__embelin_emb1_model_0.cif
+  ✅ 10.0 ns in 6.7분, RMSD mean=1.17 Å, max=2.26 Å, final=1.44 Å
+  === mmp1 × embelin_emb1 ===
+  CIF: /home/crazat/genesis_medicine/pilot/scaffold_hop/boltz2_validation/output/boltz_results_inputs/predictions/mmp1__embelin_emb1/mmp1__embelin_emb1_model_0.cif
+  ✅ 10.0 ns in 6.6분, RMSD mean=2.12 Å, max=3.13 Å, final=2.43 Å
+  === tgfb1 × embelin_emb3 ===
+  CIF: /home/crazat/genesis_medicine/pilot/scaffold_hop/boltz2_validation/output/boltz_results_inputs/predictions/tgfb1__embelin_emb3/tgfb1__embelin_emb3_model_0.cif
+  ✅ 10.0 ns in 6.8분, RMSD mean=1.31 Å, max=2.20 Å, final=1.89 Å
+  === mmp1 × embelin_emb3 ===
+  CIF: /home/crazat/genesis_medicine/pilot/scaffold_hop/boltz2_validation/output/boltz_results_inputs/predictions/mmp1__embelin_emb3/mmp1__embelin_emb3_model_0.cif
+  ✅ 10.0 ns in 6.7분, RMSD mean=0.79 Å, max=1.38 Å, final=0.81 Å
+  tgfb1 embelin_emb1     ok      6.67         1.17        2.26          1.44
+  mmp1 embelin_emb1     ok      6.64         2.12        3.13          2.43
+  tgfb1 embelin_emb3     ok      6.80         1.31        2.20          1.89
+  mmp1 embelin_emb3     ok      6.69         0.79        1.38          0.81
+  TGFB1 seed Embelin: 1.59 Å mean (skin_scar/md_top_hits/summary.json)
+  MMP1  seed Embelin: 1.70 Å mean
+
+[Pharmacophore features (top 45)]
+  rows: 45
+  cols: ['target', 'compound', 'smiles', 'n_confs', 'mw', 'logp', 'tpsa', 'hbd', 'hba', 'feat_Donor', 'feat_Acceptor', 'feat_Aromatic', 'feat_Hydrophobe', 'feat_LumpedHydrophobe']
+
+  Top 5 by sum of features:
+    608.0 | COC(=O)C1Cc2c(O)cc(O)cc2OC1C1COc2cc(O)ccc2C1
+    608.0 | COC(=O)C1Cc2c(O)cc(O)cc2OC1C1COc2cc(O)ccc2C1
+    591.8 | C=CC(C)(C)C1Cc2c(O)cc(O)cc2OC1C1COc2cc(O)ccc2C1
+    589.9 | COC1Oc2cc(O)cc(O)c2CC1C=CC1COc2cc(O)ccc2C1
+    580.9 | COC(=O)C1Oc2cc(O)cc(O)c2CC1c1cc(OC)ccc1O
+
+✅ md_pharmacophore_consensus.json
+
+[Cross-system pharmacophore consensus]
+  CONSERVED features (in 3+ systems):
+    - 2,5-dihydroxy-1,4-benzoquinone Zn²⁺/H-bond chelation
+    - 6-position alkyl chain hydrophobic occupancy
+    - 3-position substitutent SAR-tunable
+
+  EMB-3 specific gain:
+    - 5-methyl group reduces RotB (12→6)
+    - Reduced N_eff conformer entropy → preorganized for binding
+    - MMP-1 RMSD 0.79 Å (vs 2.12 baseline) = 2.7x more stable

@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018370
+zenodo_url: https://zenodo.org/record/20018370
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/? rejected 2026-05-03 (scope mismatch)
+---
+
 # In silico screening of Korean herbal compounds against the SRD5A2 / AR sebaceous-androgen axis for inflammatory acne: real Boltz-2 data identifies Baicalein as top topical-friendly candidate; Berberine carries a critical hERG safety flag
 
 **HanCheongWoo ¹,²,³**

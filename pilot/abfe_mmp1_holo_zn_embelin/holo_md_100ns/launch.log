@@ -1,0 +1,70 @@
+[Phase3] loading mmp1_holo.parm7
+  total atoms: 28943
+  Zn idx 2388; coord-shell idxs [1731, 1873, 1789]
+[Phase3] building OpenMM system
+  position restraint on 4 atoms (Zn + 3 His-NE2), k=10.0 kcal/mol/A^2
+[Phase3] minimization
+  done in 3.7s
+[Phase3] equilibration: 0.4 ns total (0.2 NVT + 0.2 NPT)
+[Phase3] production: 100.0 ns NPT
+  production done in 503.9 min
+[Phase3] analyzing Zn-NE2 distances
+dcdplugin) detected standard 32-bit DCD file of native endianness
+dcdplugin) CHARMM format DCD file (also NAMD 2.1 and later)
+{
+  "phase": "Phase 3 sanity MD",
+  "wallclock_minutes": 503.9,
+  "ns_simulated": 100.0,
+  "n_atoms": 28943,
+  "zn_atom_idx": 2388,
+  "coord_atoms": [
+    {
+      "atom_idx": 1731,
+      "resname": "HID",
+      "resnum": 111,
+      "name": "NE2",
+      "distance_A": 1.88
+    },
+    {
+      "atom_idx": 1873,
+      "resname": "HID",
+      "resnum": 121,
+      "name": "NE2",
+      "distance_A": 2.02
+    },
+    {
+      "atom_idx": 1789,
+      "resname": "HID",
+      "resnum": 115,
+      "name": "NE2",
+      "distance_A": 2.08
+    }
+  ],
+  "starting_distances_A": [
+    2.25,
+    2.136,
+    2.093
+  ],
+  "last_third_mean_distances_A": [
+    2.188,
+    2.208,
+    2.137
+  ],
+  "drift_A": [
+    -0.062,
+    0.073,
+    0.044
+  ],
+  "drift_within_0.5A": [
+    true,
+    true,
+    true
+  ],
+  "pass": true,
+  "pass_criterion": "all 3 Zn-NE2 distances drift < 0.5 A in last third",
+  "outputs": {
+    "trajectory": "pilot/abfe_mmp1_holo_zn_embelin/holo_md_100ns/traj.dcd",
+    "final_pdb": "pilot/abfe_mmp1_holo_zn_embelin/holo_md_100ns/final.pdb",
+    "log_csv": "pilot/abfe_mmp1_holo_zn_embelin/holo_md_100ns/log.csv"
+  }
+}

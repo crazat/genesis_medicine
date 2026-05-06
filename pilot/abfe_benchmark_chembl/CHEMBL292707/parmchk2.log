@@ -1,0 +1,7 @@
+# cmd: /home/crazat/miniforge3/envs/genesis-md/bin/parmchk2 -i /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL292707/lig.mol2 -f mol2 -o /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL292707/lig.frcmod -s 2
+# rc: 0
+
+## stdout
+
+
+## stderr

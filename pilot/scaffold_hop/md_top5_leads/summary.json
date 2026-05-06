@@ -1,0 +1,47 @@
+[
+  {
+    "name": "tgfb1__r3_6",
+    "status": "ok",
+    "wall_min": 13.77,
+    "rmsd_mean_A": 0.86,
+    "rmsd_max_A": 1.49,
+    "rmsd_final_A": 1.28,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "ar__beta-sitosterol",
+    "status": "ok",
+    "wall_min": 17.64,
+    "rmsd_mean_A": 0.88,
+    "rmsd_max_A": 1.91,
+    "rmsd_final_A": 1.7,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "ctgf__shikonin",
+    "status": "ok",
+    "wall_min": 9.01,
+    "rmsd_mean_A": 1.24,
+    "rmsd_max_A": 1.86,
+    "rmsd_final_A": 1.28,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "sirt1__chlorogenic_acid",
+    "status": "ok",
+    "wall_min": 13.24,
+    "rmsd_mean_A": 1.61,
+    "rmsd_max_A": 2.67,
+    "rmsd_final_A": 1.57,
+    "ns_simulated": 10.0
+  },
+  {
+    "name": "tyrp1__azelaic_acid",
+    "status": "ok",
+    "wall_min": 9.18,
+    "rmsd_mean_A": 1.71,
+    "rmsd_max_A": 2.76,
+    "rmsd_final_A": 1.68,
+    "ns_simulated": 10.0
+  }
+]

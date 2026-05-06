@@ -1,0 +1,6 @@
+[2026-05-04T15:12:49+09:00] === embelin ABFE launcher started ===
+[2026-05-04T15:12:49+09:00]   waiting for EMB-3 Phase 5 to finish (/home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn/abfe_production/PHASE5_OK or /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn/abfe_production/PHASE5_INCONCLUSIVE)
+[2026-05-04T15:12:49+09:00] EMB-3 Phase 5 INCONCLUSIVE detected — proceeding with embelin anyway
+[2026-05-04T15:12:49+09:00]   GPU compute apps still active: 0
+[2026-05-04T15:12:49+09:00] ==> launching embelin orchestrator
+[2026-05-04T15:12:49+09:00]   embelin orchestrator PID=3643410, log=/home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn_embelin/orchestrator_stdout.log

@@ -1,0 +1,33 @@
+========================================================================
+Cross-target selectivity matrix (top 50 × 14 targets)
+========================================================================
+Cofold rows: 1042
+Targets with cofold data: 20
+  ['ar', 'ctgf', 'ctnnb1', 'dct', 'fgf2', 'jun', 'lox', 'mmp1', 'pdgfrb', 'ptgs2', 'sirt1', 'smad3', 'srd5a2', 'tgfb1', 'tgfb1_pocket2', 'tgfb1full', 'tyr', 'tyrp1', 'unknown', 'vegfa']
+Cofold with SMILES: 78
+
+[Computing fingerprints for training data]
+  Valid: 78
+
+Query: refined_top20 fallback (20 mol)
+Final query: 17 mol
+
+[Computing fingerprints for query]
+
+[Predicting 17 × 20 = 340 affinities]
+
+✅ selectivity_matrix.csv (17 × 20)
+✅ off_target_warnings.csv (1 mol with ≥3 off-target hits)
+✅ selectivity_top20.csv (20 mol)
+
+[Top 10 most selective candidates]
+  best=sirt1    aff=0.696 sel_idx=0.211 | OCc1ccc(C=CC2COc3cc(O)ccc3C2)c(O)c1
+  best=ctgf     aff=0.692 sel_idx=0.207 | COc1cc(C=CC2COc3cc(O)ccc3C2)ccc1O
+  best=sirt1    aff=0.669 sel_idx=0.194 | OCc1ccc(O)c(C2COc3cc(O)ccc3C2)c1
+  best=ctgf     aff=0.657 sel_idx=0.181 | COc1cc(OC2Oc3cc(O)cc(O)c3CC2OC)ccc1
+  best=sirt1    aff=0.648 sel_idx=0.178 | C=CC(C)(C)c1ccc(O)c(C2COc3cc(O)ccc3
+  best=ctgf     aff=0.635 sel_idx=0.159 | COc1ccc(O)c(OC2Oc3cc(O)cc(O)c3CC2OC
+  best=sirt1    aff=0.635 sel_idx=0.156 | COC(=O)C1Cc2c(O)cc(O)cc2OC1C1COc2cc
+  best=sirt1    aff=0.627 sel_idx=0.150 | COc1cc(OC2COc3cc(O)ccc3C2)ccc1O
+  best=ctgf     aff=0.616 sel_idx=0.142 | OCc1ccc(O)c(OC2COc3cc(O)ccc3C2)c1
+  best=sirt1    aff=0.590 sel_idx=0.123 | COC(=O)c1cc(-c2ccc(O)c(OC)c2)ccc1O

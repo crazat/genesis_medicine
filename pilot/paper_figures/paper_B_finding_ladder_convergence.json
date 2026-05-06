@@ -1,0 +1,14 @@
+{
+  "phase": "paper #B finding: xtb refine ladder convergence",
+  "critical_threshold": "432 conformers per molecule",
+  "pairwise_spearman_vs_528": {
+    "432": 0.9999,
+    "480": 0.9999
+  },
+  "interpretation": "beyond 432 conf, xtb HOMO-LUMO gap ranking is identical (Spearman > 0.9998). recommend 432 as standard for screening.",
+  "wall_time_per_mol": {
+    "432conf": "2 sec/mol on 22 cores",
+    "interpretation": "432-conf full screen of 9997 mol = ~50 min compute"
+  },
+  "fig": "fig4_xtb_ladder_convergence.png"
+}

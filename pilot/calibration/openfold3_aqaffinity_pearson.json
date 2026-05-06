@@ -1,0 +1,14 @@
+{
+  "mode": "execute",
+  "stamp": "2026-05-03T09:54:03+00:00",
+  "rows_total": 93,
+  "rows_predicted": 93,
+  "rows_failed": 0,
+  "boltz2_pearson_r": -0.4534818612361926,
+  "boltz2_spearman_rho": -0.4639521351198114,
+  "aqaffinity_pearson_r": -0.2916792792325494,
+  "aqaffinity_spearman_rho": -0.3274148786965474,
+  "cross_engine_agreement_pearson": 0.10883401976150682,
+  "predictions_csv": "pilot/calibration/openfold3_aqaffinity_predictions.csv",
+  "failures_sample": []
+}

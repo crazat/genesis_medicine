@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018376
+zenodo_url: https://zenodo.org/record/20018376
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/? rejected 2026-05-03 (scope mismatch)
+---
+
 # Chronotherapy of topical Korean medicine: a quantitative framework integrating 자오류주(子午流注) twelve-meridian timing with circadian molecular biology and topical pharmacokinetics
 
 **HanCheongWoo ¹,²,³**

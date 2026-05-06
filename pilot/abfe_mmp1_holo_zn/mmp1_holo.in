@@ -1,0 +1,7 @@
+original_pdb 1HFC_amber.pdb
+group_name MMP1_zn
+cut_off 2.8
+ion_ids 2388
+ion_mol2files ZN.mol2
+software_version g16
+gaff 2

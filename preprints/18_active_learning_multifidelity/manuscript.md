@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018356
+zenodo_url: https://zenodo.org/record/20018356
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/2026/722486 rejected 2026-05-03 (scope mismatch)
+---
+
 # Cost-Aware Multi-Fidelity Bayesian Optimization with Runtime-Gated Cascading Tiers for Autonomous in silico Dermatology Discovery
 
 **HanCheongWoo ¹,²,³**

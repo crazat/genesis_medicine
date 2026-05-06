@@ -1,0 +1,41 @@
+Genesis D drive cleanup manifest
+timestamp=20260502_212846
+preserve=/mnt/d/WSL
+preserve=/mnt/d/genesis_archive
+preserve=/mnt/d/System Volume Information
+
+Before df:
+Filesystem     Type  Size  Used Avail Use% Mounted on
+D:\            9p    1.9T  374G  1.5T  21% /mnt/d
+
+Delete candidates:
+/mnt/d/$RECYCLE.BIN/*
+/mnt/d/steam
+/mnt/d/.GamingRoot
+/mnt/d/WUDownloadCache
+/mnt/d/XboxGames
+/mnt/d/WpSystem
+/mnt/d/WindowsApps
+/mnt/d/Program Files
+/mnt/d/Google Drive
+/mnt/d/Projects
+/mnt/d/*.url
+/mnt/d/*.parts
+
+Candidate sizes:
+44G	/mnt/d/$RECYCLE.BIN
+1.7G	/mnt/d/steam
+0	/mnt/d/.GamingRoot
+0	/mnt/d/WUDownloadCache
+0	/mnt/d/XboxGames
+0	/mnt/d/WpSystem
+0	/mnt/d/WindowsApps
+0	/mnt/d/Program Files
+0	/mnt/d/Google Drive
+0	/mnt/d/Projects
+0	/mnt/d/Gemini.url
+0	/mnt/d/Perplexity.url
+0	/mnt/d/YouTube.url
+0	/mnt/d/서울사이버대학교.url
+0	/mnt/d/쿠팡!.url
+0	/mnt/d/클로바노트.url

@@ -1,0 +1,134 @@
+========================================================================
+R4 full integration — 1877 cofold rows
+========================================================================
+Cofold rows: 1877
+Targets: 20
+
+[Per-target top 5 by affinity_prob_binary]
+
+  [ar] (n=87)
+    beta-sitosterol prob=0.825
+    Baicalein       prob=0.820
+    Emodin          prob=0.768
+    top009          prob=0.751
+    Physcion        prob=0.750
+
+  [ctgf] (n=176)
+    curcumin        prob=0.752
+    acetylshikonin  prob=0.733
+    top054          prob=0.726
+    top006          prob=0.724
+    shikonin        prob=0.718
+
+  [ctnnb1] (n=54)
+    avenanthramide_b prob=0.675
+    spirulina-derived_phycocyanin prob=0.648
+    procyanidin_b2  prob=0.638
+    baicalein       prob=0.634
+    embelin         prob=0.634
+
+  [dct] (n=142)
+    top009          prob=0.784
+    top026          prob=0.783
+    top040          prob=0.780
+    top054          prob=0.765
+    Oxyresveratrol  prob=0.742
+
+  [jun] (n=153)
+    aloe-emodin     prob=0.690
+    rhein           prob=0.666
+    emodin          prob=0.659
+    retinol         prob=0.653
+    top016          prob=0.652
+
+  [lox] (n=103)
+    top054          prob=0.786
+    top026          prob=0.785
+    top081          prob=0.785
+    top005          prob=0.773
+    top009          prob=0.761
+
+  [mmp1] (n=351)
+    CHEMBL279785    prob=1.000
+    CHEMBL310649    prob=0.997
+    CHEMBL327621    prob=0.995
+    CHEMBL77505     prob=0.995
+    CHEMBL78299     prob=0.994
+
+  [ptgs2] (n=145)
+    top025          prob=0.667
+    top070          prob=0.665
+    retinol         prob=0.652
+    top024          prob=0.647
+    top038          prob=0.644
+
+  [sirt1] (n=166)
+    top003          prob=0.795
+    top054          prob=0.769
+    top026          prob=0.758
+    top016          prob=0.743
+    top076          prob=0.720
+
+  [srd5a2] (n=175)
+    top040          prob=0.777
+    top003          prob=0.776
+    top026          prob=0.765
+    top005          prob=0.754
+    Saponin_Re      prob=0.746
+
+  [tgfb1] (n=94)
+    emb3            prob=0.749
+    r4_004          prob=0.724
+    r4_011          prob=0.719
+    embelin_emb1    prob=0.710
+    embelin_emb3    prob=0.706
+
+  [tyr] (n=142)
+    Oxyresveratrol  prob=0.750
+    Glabridin       prob=0.715
+    Licochalcone_A  prob=0.677
+    Curcumin        prob=0.670
+    ellagic_acid    prob=0.668
+
+  [tyrp1] (n=42)
+    Oxyresveratrol  prob=0.782
+    Glabridin       prob=0.730
+    Curcumin        prob=0.704
+    ellagic_acid    prob=0.688
+    Kazinol_B       prob=0.678
+
+✅ r4_per_target_top5.csv (65 rows)
+
+[Promiscuous (active ≥3 targets, prob > 0.5): 139]
+  egcg               active in 17 targets
+  embelin            active in 15 targets
+  top016             active in 10 targets
+  top009             active in 10 targets
+  emb3               active in 9 targets
+  top022             active in 9 targets
+  top003             active in 9 targets
+  top026             active in 9 targets
+  top099             active in 9 targets
+  top054             active in 9 targets
+  top006             active in 8 targets
+  top038             active in 8 targets
+  top076             active in 8 targets
+  top090             active in 8 targets
+  top096             active in 8 targets
+
+[Selective (best > 0.55, gap > 0.15): 71]
+  beta-sitosterol → ar       prob=0.825 sel_idx=0.563
+  azelaic_acid    → tyrp1    prob=0.575 sel_idx=0.317
+  top070          → ptgs2    prob=0.665 sel_idx=0.307
+  top041          → lox      prob=0.758 sel_idx=0.298
+  chlorogenic_acid → sirt1    prob=0.688 sel_idx=0.293
+  sulforaphane    → mmp1     prob=0.597 sel_idx=0.282
+  top011          → lox      prob=0.756 sel_idx=0.281
+  top025          → ptgs2    prob=0.667 sel_idx=0.278
+  andrographolide → sirt1    prob=0.597 sel_idx=0.269
+  top007          → lox      prob=0.758 sel_idx=0.261
+  top047          → lox      prob=0.713 sel_idx=0.260
+  top043          → lox      prob=0.735 sel_idx=0.249
+  top081          → lox      prob=0.785 sel_idx=0.248
+  shikonin        → ctgf     prob=0.718 sel_idx=0.247
+  imperatorin     → ctgf     prob=0.616 sel_idx=0.247

@@ -15,23 +15,33 @@ from typing import Any
 
 from .alphafold_db_adapter import AlphaFoldDBAdapter
 from .base import (
+    CovalentBondSpec,
     LigandSpec,
     StructurePredictionRequest,
     StructurePredictionResult,
     StructurePredictor,
 )
 from .boltz2_adapter import Boltz2Adapter
+from .cofactor_registry import (
+    CofactorRegistry,
+    TargetCofactors,
+    augment_request_with_cofactors,
+    get_cofactors,
+    load_registry,
+)
 from .consensus import ConsensusPredictor, ConsensusRequest, ConsensusResult
 from .neuralplexer3_adapter import NeuralPLexer3Adapter
-from .openfold3_adapter import OpenFold3Adapter
+from .openfold3_adapter import OpenFold3Adapter, build_openfold3_query_payload
 from .protenix_adapter import ProtenixAdapter
 
 __all__ = [
     "AlphaFoldDBAdapter",
     "Boltz2Adapter",
+    "CofactorRegistry",
     "ConsensusPredictor",
     "ConsensusRequest",
     "ConsensusResult",
+    "CovalentBondSpec",
     "LigandSpec",
     "NeuralPLexer3Adapter",
     "OpenFold3Adapter",
@@ -39,7 +49,12 @@ __all__ = [
     "StructurePredictionRequest",
     "StructurePredictionResult",
     "StructurePredictor",
+    "TargetCofactors",
+    "augment_request_with_cofactors",
+    "build_openfold3_query_payload",
+    "get_cofactors",
     "get_predictor",
+    "load_registry",
 ]
 
 
@@ -74,6 +89,7 @@ def get_predictor(cfg: Any) -> StructurePredictor:
             num_recycles=cfg.get("num_recycles", 10),
             num_samples=cfg.get("num_samples", 5),
             use_msa=cfg.get("use_msa", True),
+            use_templates=cfg.get("use_templates", False),
         )
     if engine == "neuralplexer3":
         # research-only — LicenseGate가 commercial 빌드에서 차단해야 함

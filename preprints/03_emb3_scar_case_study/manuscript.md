@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018333
+zenodo_url: https://zenodo.org/record/20018333
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/2026/722476 rejected 2026-05-03 (scope mismatch)
+---
+
 # AI-driven scaffold-hopping of *Embelia ribes* embelin yields a topical-friendly anti-fibrotic candidate (EMB-3): an in silico case study for skin scar regeneration
 
 **HanCheongWoo ¹,²,³**

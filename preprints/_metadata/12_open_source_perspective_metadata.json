@@ -7,9 +7,10 @@
   "subject_area": "Bioinformatics",
   "license": "CC-BY 4.0",
   "version_at_submission": "v0.4",
-  "doi": null,
-  "doi_issued_date": null,
+  "doi": "10.5281/zenodo.20018343",
+  "doi_issued_date": "2026-05-04",
   "prior_history": "ChemRxiv rejected 2026-04-30 (scope mismatch); title and abstract expanded in v0.4 with 7-tool active core + 40+ adapter scaffold + multi-fidelity BO scheduler; resubmitted to bioRxiv 2026-05-03.",
   "manuscript_path": "preprints/12_open_source_perspective/manuscript.md",
-  "pdf_path": "preprints/12_open_source_perspective/manuscript.pdf"
+  "pdf_path": "preprints/12_open_source_perspective/manuscript.pdf",
+  "zenodo_url": "https://zenodo.org/record/20018343"
 }

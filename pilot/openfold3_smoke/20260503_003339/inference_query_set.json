@@ -1,0 +1,34 @@
+{
+    "seeds": [
+        42
+    ],
+    "queries": {
+        "ubiquitin": {
+            "query_name": "ubiquitin",
+            "chains": [
+                {
+                    "molecule_type": "PROTEIN",
+                    "chain_ids": [
+                        "A"
+                    ],
+                    "description": null,
+                    "sequence": "MQIFVKTLTGKTITLEVEPSDTIENVKAKIQDKEGIPPDQQRLIFAGKQLEDGRTLSDYNIQKESTLHLVLRLRGG",
+                    "non_canonical_residues": null,
+                    "smiles": null,
+                    "ccd_codes": null,
+                    "paired_msa_file_paths": null,
+                    "main_msa_file_paths": [
+                        "/tmp/of3-of-crazat/colabfold_msas/dummy/233b4b0b8c4616095bc3249f9375fc345d32af7deaef07117d0383c51d6f19aa.npz"
+                    ],
+                    "template_alignment_file_path": null,
+                    "template_entry_chain_ids": null,
+                    "sdf_file_path": null
+                }
+            ],
+            "use_msas": true,
+            "use_paired_msas": true,
+            "use_main_msas": true,
+            "covalent_bonds": null
+        }
+    }
+}

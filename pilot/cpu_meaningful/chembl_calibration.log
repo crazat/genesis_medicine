@@ -1,0 +1,16 @@
+========================================================================
+ChEMBL pIC50 vs Boltz-2 affinity calibration (paper #8)
+========================================================================
+ChEMBL MMP-1 inhibitors (with pIC50): 95
+Boltz-2 affinity predictions found: 1719
+Matched ChEMBL × Boltz-2: 93
+
+[Boltz-2 affinity_pred_value vs pIC50]
+  Pearson R = -0.453 (p = 5.00e-06)
+  Spearman ρ = -0.458 (p = 3.86e-06)
+
+[Boltz-2 affinity_prob_binary vs pIC50]
+  Pearson R = 0.178 (p = 8.73e-02)
+
+✅ /home/crazat/genesis_medicine/pilot/cpu_meaningful/chembl_boltz2_calibration_scatter.png
+✅ chembl_boltz2_calibration_summary.json

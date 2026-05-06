@@ -1,0 +1,28 @@
+========================================================================
+Quantum-corrected ranking (5000-conformer × xtb GFN2)
+========================================================================
+5000-conformer rows: 200
+  cols: ['idx', 'smi', 'n_confs', 'min_E', 'median_E', 'energy_range', 'n_within_2kcal', 'n_within_5kcal', 'boltzmann_eff_confs']
+xtb GFN2 rows: 1500
+  cols: ['idx', 'smi', 'energy_eh', 'n_atoms']
+Merged (both conformer + xtb): 200
+
+[Conformational rigidity stats]
+  Mean N_eff: 13.3
+  Min N_eff (most rigid): 1.0
+  Max N_eff (most flexible): 86.1
+
+✅ quantum_corrected_ranking.csv (200 mol)
+✅ quantum_top20.csv (20 mol)
+
+[Top 10 quantum-corrected candidates]
+  q_score=1.939 N_eff=57 | OCC1Cc2c(O)cc(O)cc2OC1OC1COc2cc(O)ccc2C1
+  q_score=1.934 N_eff=86 | C=CC(C)(C)C1Cc2c(O)cc(O)cc2OC1OC1COc2cc(
+  q_score=1.934 N_eff=62 | C=CC(C)(C)c1ccc(O)c(C=CC2COc3cc(O)ccc3C2
+  q_score=1.910 N_eff=63 | C=CC(C)(C)C1Cc2c(O)cc(O)cc2OC1C=CC1COc2c
+  q_score=1.885 N_eff=45 | O=C(OC(=O)C1COc2cc(O)ccc2C1)C1COc2cc(O)c
+  q_score=1.876 N_eff=74 | OCC1Cc2c(O)cc(O)cc2OC1C=CC1COc2cc(O)ccc2
+  q_score=1.849 N_eff=53 | COC1Oc2cc(O)cc(O)c2CC1C=CC1COc2cc(O)ccc2
+  q_score=1.831 N_eff=51 | COC1Cc2c(O)cc(O)cc2OC1C=CC1COc2cc(O)ccc2
+  q_score=1.831 N_eff=49 | C=CC(C)(C)c1cc(C=CC2COc3cc(O)ccc3C2)ccc1
+  q_score=1.731 N_eff=44 | COc1cc(-c2ccc(O)c(OC3COc4cc(O)ccc4C3)c2)

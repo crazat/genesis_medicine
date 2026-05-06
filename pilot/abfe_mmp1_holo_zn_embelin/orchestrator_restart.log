@@ -1,0 +1,9 @@
+[2026-05-04 16:06:16] === ZAFF orchestrator started ===
+[2026-05-04 16:06:16]   cwd: /home/crazat/genesis_medicine
+[2026-05-04 16:06:16]   poll cadence: 600 s
+[2026-05-04 16:06:16]   skip 60ns wait: True
+[2026-05-04 16:06:16] Phase 3 already complete (PHASE3_PASS exists) — skipping
+[2026-05-04 16:06:16] Phase 4 already complete (PHASE4_OK exists) — skipping
+[2026-05-04 16:06:16] ==> Phase5 launching complex + solvent legs in parallel
+[2026-05-04 16:06:16]   launching complex leg, stdout -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn_embelin/abfe_production/phase5_complex.log
+[2026-05-04 16:06:16]   launching solvent leg, stdout -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn_embelin/abfe_production/phase5_solvent.log

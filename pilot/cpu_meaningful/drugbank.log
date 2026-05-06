@@ -1,0 +1,25 @@
+========================================================================
+DrugBank repurposing — known drugs × 14 skin targets
+========================================================================
+Cofold rows with smiles: 282
+
+[Computing query FPs for 31 known drugs]
+
+[Predicting 31 drugs × 10 targets]
+
+✅ drugbank_repurposing_matrix.csv (290 drug × target pairs)
+
+[High-affinity repurposing (pred > 0.55, with similarity > 0.3)]
+  Valid hits: 10
+
+[Top 15 repurposing candidates]
+  Pterostilbene      → lox      pred=0.695 sim=0.316 [polyphenol]
+  Curcumin           → ar       pred=0.679 sim=0.407 [polyphenol]
+  Nintedanib         → lox      pred=0.673 sim=0.312 [anti-fibrotic]
+  Curcumin           → lox      pred=0.657 sim=0.432 [polyphenol]
+  Pterostilbene      → srd5a2   pred=0.656 sim=0.316 [polyphenol]
+  Pterostilbene      → dct      pred=0.652 sim=0.316 [polyphenol]
+  Pterostilbene      → sirt1    pred=0.616 sim=0.316 [polyphenol]
+  Pterostilbene      → ctgf     pred=0.599 sim=0.316 [polyphenol]
+  Curcumin           → dct      pred=0.583 sim=0.432 [polyphenol]
+  Curcumin           → srd5a2   pred=0.578 sim=0.432 [polyphenol]

@@ -112,38 +112,101 @@ class ConsensusPredictor:
             },
         )
 
-    def _pairwise_rmsd(self, cif_paths: list[Path]) -> np.ndarray:
+    def _pairwise_rmsd(
+        self,
+        cif_paths: list[Path],
+        ligand_weight: float = 0.4,
+    ) -> np.ndarray:
+        """Compute pairwise distance combining backbone CA RMSD and ligand
+        heavy-atom RMSD.
+
+        For pose-quality clustering, ligand heavy atoms must contribute —
+        otherwise two predictions that agree on the protein backbone but
+        place the ligand in different pockets get clustered together.
+
+        distance = (1 - ligand_weight) * CA_RMSD + ligand_weight * LIG_RMSD
+
+        If a structure has no ligand heavy atoms (apo), the ligand term is
+        skipped and distance = CA_RMSD. ``ligand_weight`` is in [0, 1].
+        """
         n = len(cif_paths)
         matrix = np.zeros((n, n))
         try:
             from Bio.PDB import MMCIFParser, Superimposer
-            parser = MMCIFParser(QUIET=True)
-            structures = []
-            for p in cif_paths:
-                try:
-                    s = parser.get_structure("s", str(p))
-                    atoms = [a for a in s.get_atoms() if a.get_name() == "CA"]
-                    structures.append(atoms)
-                except Exception as e:
-                    logger.debug("CIF 파싱 실패 {}: {}", p, e)
-                    structures.append([])
-            for i in range(n):
-                for j in range(i + 1, n):
-                    if not structures[i] or not structures[j]:
-                        matrix[i, j] = matrix[j, i] = 999.0
-                        continue
-                    n_atoms = min(len(structures[i]), len(structures[j]))
-                    if n_atoms == 0:
-                        matrix[i, j] = matrix[j, i] = 999.0
-                        continue
-                    try:
-                        sup = Superimposer()
-                        sup.set_atoms(structures[i][:n_atoms], structures[j][:n_atoms])
-                        matrix[i, j] = matrix[j, i] = float(sup.rms)
-                    except Exception:
-                        matrix[i, j] = matrix[j, i] = 999.0
         except ImportError:
             logger.debug("Biopython 미설치 — RMSD 0 반환")
+            return matrix
+
+        parser = MMCIFParser(QUIET=True)
+        ca_atoms: list[list] = []
+        lig_atoms: list[list] = []
+        for p in cif_paths:
+            try:
+                s = parser.get_structure("s", str(p))
+                ca = [a for a in s.get_atoms() if a.get_name() == "CA"]
+                # Ligand heavy atoms = HETATM whose residue name is not a
+                # standard amino acid / nucleotide / common ion. Approximate
+                # via Biopython hetflag and exclude waters + lone metal ions.
+                lig = []
+                for a in s.get_atoms():
+                    res = a.get_parent()
+                    hetflag = res.get_id()[0]
+                    if hetflag.strip() and hetflag != "W":
+                        # Exclude pure metal-ion entries (single-atom CCDs).
+                        resname = res.get_resname().strip()
+                        if resname in {"ZN", "CU", "FE", "CA", "MG", "MN",
+                                       "NI", "CO", "K", "NA", "HOH"}:
+                            continue
+                        if a.element != "H":
+                            lig.append(a)
+                ca_atoms.append(ca)
+                lig_atoms.append(lig)
+            except Exception as e:
+                logger.debug("CIF 파싱 실패 {}: {}", p, e)
+                ca_atoms.append([])
+                lig_atoms.append([])
+
+        for i in range(n):
+            for j in range(i + 1, n):
+                ca_i, ca_j = ca_atoms[i], ca_atoms[j]
+                if not ca_i or not ca_j:
+                    matrix[i, j] = matrix[j, i] = 999.0
+                    continue
+                k = min(len(ca_i), len(ca_j))
+                ca_rms = 999.0
+                try:
+                    sup = Superimposer()
+                    sup.set_atoms(ca_i[:k], ca_j[:k])
+                    ca_rms = float(sup.rms)
+                except Exception:
+                    pass
+
+                lig_i, lig_j = lig_atoms[i], lig_atoms[j]
+                w = float(ligand_weight)
+                if lig_i and lig_j:
+                    m = min(len(lig_i), len(lig_j))
+                    try:
+                        # Apply the same superposition (already fitted on CA)
+                        # to ligand atoms by recomputing on CA frame:
+                        sup = Superimposer()
+                        sup.set_atoms(ca_i[:k], ca_j[:k])
+                        rot, tran = sup.rotran
+                        # Transform ligand_j onto i's frame
+                        diffs = []
+                        for a_i, a_j in zip(lig_i[:m], lig_j[:m]):
+                            xj = a_j.coord @ rot + tran
+                            diffs.append(((a_i.coord - xj) ** 2).sum())
+                        if diffs:
+                            lig_rms = float(np.sqrt(sum(diffs) / len(diffs)))
+                        else:
+                            lig_rms = 999.0
+                    except Exception:
+                        lig_rms = 999.0
+                    dist = (1.0 - w) * ca_rms + w * lig_rms
+                else:
+                    dist = ca_rms
+
+                matrix[i, j] = matrix[j, i] = dist
         return matrix
 
     def _cluster_by_rmsd(self, matrix: np.ndarray, threshold: float = 2.0) -> list[int]:

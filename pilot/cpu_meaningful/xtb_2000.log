@@ -1,0 +1,10 @@
+========================================================================
+xtb GFN2 progressive — slice 2000-2240 (final 240 mol)
+========================================================================
+BRICS pool: 2241
+Slice 2000+: 241
+
+✅ xtb_progressive_slice_2000.csv (241 success / 0 fail)
+  Wall: 6.3 min
+
+✅ xtb_progressive_all.csv (1741 unique mol total)

@@ -1,0 +1,39 @@
+========================================================================
+Bayesian Active Learning — round 4 candidate prediction
+========================================================================
+Training set: 20 mol (r1 + r2 + r3)
+Mean target: 0.535 ± 0.063
+Best so far: 0.650
+Train shape: (20, 2048), target range: 0.410 - 0.650
+
+Test pool: 2336 mol
+Pool valid: (2336, 2048)
+
+Reducing to 100 PCA components...
+Reduced: (20, 19), (2336, 19)
+
+Fitting GP regression (Matern 5/2 kernel)...
+  GP score (train): 1.000
+  Final kernel: 0.999**2 * Matern(length_scale=0.000363, nu=2.5) + WhiteKernel(noise_level=0.000363)
+
+Predicting on 2336 pool...
+  Mean pred: 0.535 ± 0.061
+  Max pred: 0.535
+  Mean uncertainty: 0.061
+
+✅ bayesian_round4_candidates.csv (100 mol)
+
+[Top 10 EI candidates]
+  EI=0.0007 pred=0.535±0.061 UCB=0.657 | Oc1ccc2c(c1)OCC(C=CC1COc3cc(O)ccc3C1)C2
+  EI=0.0007 pred=0.535±0.061 UCB=0.657 | Oc1ccc2c(c1)OCC(C=Cc1cc(O)c(O)c(O)c1)C2
+  EI=0.0007 pred=0.535±0.061 UCB=0.657 | Oc1ccc2c(c1)OCC(C=Cc1ccc(C3COc4cc(O)ccc4
+  EI=0.0007 pred=0.535±0.061 UCB=0.657 | OCc1ccc(C=CC2COc3cc(O)ccc3C2)c(O)c1O
+  EI=0.0007 pred=0.535±0.061 UCB=0.657 | C=CC(C)(C)c1ccc(C=CC2COc3cc(O)ccc3C2)c(O
+  EI=0.0007 pred=0.535±0.061 UCB=0.657 | Oc1ccc2c(c1)OCC(C=Cc1ccc(-c3cc(O)c(O)c(O
+  EI=0.0007 pred=0.535±0.061 UCB=0.657 | COc1ccc(C=CC2COc3cc(O)ccc3C2)c(O)c1O
+  EI=0.0007 pred=0.535±0.061 UCB=0.657 | Oc1ccc2c(c1)OCC(C=Cc1cc(C3COc4cc(O)ccc4C
+  EI=0.0007 pred=0.535±0.061 UCB=0.657 | OCc1ccc(O)c(C=CC2COc3cc(O)ccc3C2)c1
+  EI=0.0007 pred=0.535±0.061 UCB=0.657 | C=CC(C)(C)c1ccc(O)c(C=CC2COc3cc(O)ccc3C2
+✅ bayesian_pool_predictions.csv (2336 mol)
+
+✅ bayesian_active_learning_summary.json

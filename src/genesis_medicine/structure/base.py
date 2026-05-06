@@ -23,6 +23,23 @@ class LigandSpec(BaseModel):
     )
 
 
+class CovalentBondSpec(BaseModel):
+    """OpenFold3-style explicit covalent bond between two atom locators.
+
+    각 atom locator는 ``(chain_id, residue_index_or_ligand_index, atom_name)``
+    문자열 또는 dict로 표현된다. 한약 cyclic peptide의 head-to-tail bond,
+    quinone Michael acceptor의 covalent docking 등에 사용한다.
+    """
+
+    atom1_chain: str
+    atom1_residue: int | str
+    atom1_name: str
+    atom2_chain: str
+    atom2_residue: int | str
+    atom2_name: str
+    bond_type: str | None = None  # "covalent" | "disulfide" | "amide" 등 free-form
+
+
 class StructurePredictionRequest(BaseModel):
     protein_sequences: list[str]
     ligands: list[LigandSpec] = Field(default_factory=list)
@@ -33,6 +50,14 @@ class StructurePredictionRequest(BaseModel):
     num_recycles: int = 10
     num_samples: int = 5
     use_msa: bool = True
+    # --- Holo / cofactor 확장 (2026-05-03) ----------------------------------
+    # CCD ion codes (ZN, CU, FE, CA, MG, MN, NI, CO, …). 각 항목은 한 chain
+    # 으로 추가된다. 같은 ion이 여러 자리면 list에 같은 코드를 반복.
+    metal_ions: list[str] = Field(default_factory=list)
+    # 비-ion cofactor CCD code (NDP, NAP, FAD, FMN, HEM, SAM, ATP, GTP, …).
+    cofactor_ccds: list[str] = Field(default_factory=list)
+    # 명시 covalent bond — cyclic peptide / quinone covalent inhibitor 용.
+    covalent_bonds: list[CovalentBondSpec] = Field(default_factory=list)
 
 
 class StructurePredictionResult(BaseModel):

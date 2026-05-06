@@ -1,0 +1,23 @@
+✅ 1042 unique cofold affinity rows extracted
+target
+mmp1             238
+ctgf             156
+sirt1             96
+ar                75
+srd5a2            75
+tgfb1             74
+ctnnb1            54
+jun               53
+ptgs2             45
+dct               42
+tyr               42
+tyrp1             42
+unknown           29
+pdgfrb             3
+fgf2               3
+lox                3
+smad3              3
+tgfb1_pocket2      3
+tgfb1full          3
+vegfa              3
+dtype: int64

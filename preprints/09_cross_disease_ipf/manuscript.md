@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018374
+zenodo_url: https://zenodo.org/record/20018374
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/? rejected 2026-05-03 (scope mismatch)
+---
+
 # From skin scar to systemic fibrosis: Open Targets evidence and the limits of canonical anti-fibrotic axis-based cross-disease hypothesis (an EMB-3 in silico case)
 
 **HanCheongWoo ¹,²,³**

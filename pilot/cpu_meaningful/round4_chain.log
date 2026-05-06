@@ -1,0 +1,31 @@
+[18:07:54] === R4 cofold chain start ===
+[18:07:54] Round 4 mmp1 cofold start
+[18:18:19] Round 4 mmp1 cofold done
+[18:18:19] Round 4 tgfb1 cofold start
+[18:23:30] Round 4 tgfb1 cofold done
+[18:23:30] Round 4 ctgf cofold start
+[18:27:47] Round 4 ctgf cofold done
+[18:27:47] === R4 chain done ===
+CONSOLIDATED R4: 1877 cofold rows
+target
+mmp1             351
+ctgf             176
+srd5a2           175
+sirt1            166
+jun              153
+ptgs2            145
+dct              142
+tyr              142
+lox              103
+tgfb1             94
+ar                87
+ctnnb1            54
+tyrp1             42
+unknown           29
+fgf2               3
+pdgfrb             3
+smad3              3
+tgfb1_pocket2      3
+tgfb1full          3
+vegfa              3
+dtype: int64

@@ -1,0 +1,33 @@
+========================================================================
+Bayesian AL v2 — combined R1-R5 training (~2077 cofold rows)
+========================================================================
+Training (per-compound max): 31 mol
+Train shape: (31, 2048), target 0.563-0.795
+
+Test pool (ADMET + R4): 2529
+/home/crazat/genesis_medicine/.venv/lib/python3.11/site-packages/sklearn/gaussian_process/kernels.py:442: ConvergenceWarning: The optimal value found for dimension 0 of parameter k2__noise_level is close to the specified lower bound 1e-05. Decreasing the bound and calling fit again may find a better value.
+  warnings.warn(
+Pool valid: (2529, 2048)
+
+SVD reduction 2048 → 150 components...
+
+Fitting GP regression (Matern 5/2)...
+  GP score (train): 1.000
+
+Predicting on pool...
+  Mean pred: 0.685 ± 0.041
+  Max pred: 0.795
+
+✅ bayesian_v2_round6_candidates.csv (top 200)
+
+[Top 10 EI candidates]
+  EI=0.0081 pred=0.774±0.041 | OCc1cc(-c2ccc(OC3COc4cc(O)ccc4C3)c(O)c2O)ccc1O
+  EI=0.0079 pred=0.770±0.044 | OCc1cc(-c2cc(OC3COc4cc(O)ccc4C3)ccc2O)ccc1O
+  EI=0.0077 pred=0.771±0.042 | OCc1ccc(-c2ccc(OC3COc4cc(O)ccc4C3)c(O)c2O)c(O)c1O
+  EI=0.0074 pred=0.771±0.042 | OCc1ccc(OC2COc3cc(O)ccc3C2)c(O)c1O
+  EI=0.0067 pred=0.764±0.045 | OCc1ccc(-c2cc(OC3COc4cc(O)ccc4C3)ccc2O)c(O)c1O
+  EI=0.0065 pred=0.766±0.043 | OCc1cc(OC2COc3cc(O)ccc3C2)ccc1O
+  EI=0.0063 pred=0.767±0.042 | OCc1ccc(C2OC(OC3COc4cc(O)ccc4C3)C(O)C(O)C2O)c(O)c1O
+  EI=0.0060 pred=0.780±0.030 | Oc1ccc2c(c1)OCC(C=Cc1ccc(-c3cc(O)c(O)c(O)c3)c(O)c1O)C2
+  EI=0.0057 pred=0.777±0.032 | COc1ccc(-c2cc(OC3COc4cc(O)ccc4C3)ccc2O)c(O)c1O
+  EI=0.0056 pred=0.772±0.036 | Oc1ccc2c(c1)OCC(C=Cc1ccc(C3COc4cc(O)ccc4C3)c(O)c1O)C2

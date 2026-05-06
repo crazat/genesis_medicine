@@ -53,7 +53,7 @@ CPU_TIERS = [
     (9000, 9),
     (9997, 10),
 ]
-DEFAULT_CPU_CONF_LADDER = [36, 48, 72, 96, 120, 144, 168, 192, 240]
+DEFAULT_CPU_CONF_LADDER = [36, 48, 72, 96, 120, 144, 168, 192, 240, 288, 336, 384]
 CPU_WORKERS = int(os.environ.get("GENESIS_CPU_XTB_WORKERS", "12"))
 MIN_FREE_GB = float(os.environ.get("GENESIS_MIN_FREE_GB", "80"))
 WARN_FREE_GB = float(os.environ.get("GENESIS_WARN_FREE_GB", "200"))

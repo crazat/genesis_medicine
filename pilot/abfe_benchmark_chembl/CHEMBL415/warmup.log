@@ -1,0 +1,69 @@
+[warmup-complex] loading /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415/complex/complex.parm7
+[warmup-complex] system: 74292 atoms
+[warmup-complex] restraining 1246 protein heavy atoms
+[warmup-complex] minimizing 10000 iters
+  PE: -1231874.3877926366 kJ/mol  (0.2 min)
+[warmup-complex] heating 0K -> 310K over 100 ps
+  done 3.4 min
+[warmup-complex] NPT 100 ps with restraints
+  done 1.8 min
+[warmup-complex] NPT 100 ps unrestrained
+  done 1.8 min
+[warmup-complex] wrote warmed rst7 -> /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415/complex/complex.rst7
+[warmup-solvent] loading /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415/abfe_production/solvent_leg/solvent.parm7
+[warmup-solvent] system: 4345 atoms
+[warmup-solvent] minimizing 10000 iters
+  PE: -71052.25539707398 kJ/mol  (0.2 min)
+[warmup-solvent] heating 0K -> 310K over 100 ps
+  done 3.0 min
+[warmup-solvent] NPT 100 ps with restraints
+  done 1.3 min
+[warmup-solvent] wrote warmed rst7 -> /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415/abfe_production/solvent_leg/solvent.rst7
+[warmup-complex] loading /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415/complex/complex.parm7
+[warmup-complex] system: 74292 atoms
+[warmup-complex] restraining 1246 protein heavy atoms
+[warmup-complex] minimizing 10000 iters
+  PE: -1232121.3039406184 kJ/mol  (0.2 min)
+[warmup-complex] heating 0K -> 310K over 100 ps
+  done 2.8 min
+[warmup-complex] NPT 100 ps with restraints
+  done 1.4 min
+[warmup-complex] NPT 100 ps unrestrained
+  done 1.4 min
+[warmup-complex] wrote warmed rst7 -> /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415/complex/complex.rst7
+[warmup-solvent] loading /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415/abfe_production/solvent_leg/solvent.parm7
+[warmup-solvent] system: 4345 atoms
+[warmup-solvent] minimizing 10000 iters
+  PE: -71151.73522378222 kJ/mol  (0.2 min)
+[warmup-solvent] heating 0K -> 310K over 100 ps
+  done 2.6 min
+[warmup-solvent] NPT 100 ps with restraints
+  done 1.3 min
+[warmup-solvent] wrote warmed rst7 -> /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415/abfe_production/solvent_leg/solvent.rst7
+
+# /home/crazat/miniforge3/envs/genesis-md/bin/python /home/crazat/genesis_medicine/scripts/zaff_phase5_warmup_generic.py --work /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415 --leg all
+# started 2026-05-04T21:29:49
+[warmup-complex] loading /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415/complex/complex.parm7
+[warmup-complex] system: 74292 atoms
+[warmup-complex] restraining 1246 protein heavy atoms
+[warmup-complex] minimizing 10000 iters
+  PE: -1232058.5798438261 kJ/mol  (0.1 min)
+[warmup-complex] heating 0K -> 310K over 100 ps
+  done 0.9 min
+[warmup-complex] NPT 100 ps with restraints
+  done 0.5 min
+[warmup-complex] NPT 100 ps unrestrained
+  done 0.5 min
+[warmup-complex] wrote warmed rst7 -> /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415/complex/complex.rst7
+[warmup-solvent] loading /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415/abfe_production/solvent_leg/solvent.parm7
+[warmup-solvent] system: 4345 atoms
+[warmup-solvent] minimizing 10000 iters
+  PE: -71127.57782119076 kJ/mol  (0.0 min)
+[warmup-solvent] heating 0K -> 310K over 100 ps
+  done 0.5 min
+[warmup-solvent] NPT 100 ps with restraints
+  done 0.3 min
+[warmup-solvent] wrote warmed rst7 -> /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415/abfe_production/solvent_leg/solvent.rst7
+
+# /home/crazat/miniforge3/envs/genesis-md/bin/python /home/crazat/genesis_medicine/scripts/zaff_phase5_warmup_generic.py --work /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415 --leg all
+# started 2026-05-05T04:48:14

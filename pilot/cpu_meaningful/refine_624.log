@@ -1,0 +1,6 @@
+top500: 442 mol
+launching 442 mol on 22 subprocess workers, num_confs=624
+  30/442 (16.4 min, ETA 225.9 min)
+  60/442 (28.1 min, ETA 178.7 min)
+  90/442 (37.8 min, ETA 147.8 min)
+  120/442 (44.3 min, ETA 118.8 min)

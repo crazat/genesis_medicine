@@ -1,0 +1,34 @@
+[2026-05-04 15:12:49] === ZAFF orchestrator started ===
+[2026-05-04 15:12:49]   cwd: /home/crazat/genesis_medicine
+[2026-05-04 15:12:49]   poll cadence: 600 s
+[2026-05-04 15:12:49]   skip 60ns wait: True
+[2026-05-04 15:12:49] Phase 3 already complete (PHASE3_PASS exists) — skipping
+[2026-05-04 15:12:49] ==> launching Phase4 complex builder: /home/crazat/miniforge3/envs/genesis-md/bin/python /home/crazat/genesis_medicine/scripts/zaff_phase4_build_complex_embelin.py
+[2026-05-04 15:13:21] <== Phase4 complex builder rc=0 duration_min=0.5
+[2026-05-04 15:13:21] ==> Phase5 launching complex + solvent legs in parallel
+[2026-05-04 15:13:21]   launching complex leg, stdout -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn_embelin/abfe_production/phase5_complex.log
+[2026-05-04 15:13:21]   launching solvent leg, stdout -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn_embelin/abfe_production/phase5_solvent.log
+[2026-05-04 15:14:32]   complex leg rc=1
+[2026-05-04 16:06:16] === ZAFF orchestrator started ===
+[2026-05-04 16:06:16]   cwd: /home/crazat/genesis_medicine
+[2026-05-04 16:06:16]   poll cadence: 600 s
+[2026-05-04 16:06:16]   skip 60ns wait: True
+[2026-05-04 16:06:16] Phase 3 already complete (PHASE3_PASS exists) — skipping
+[2026-05-04 16:06:16] Phase 4 already complete (PHASE4_OK exists) — skipping
+[2026-05-04 16:06:16] ==> Phase5 launching complex + solvent legs in parallel
+[2026-05-04 16:06:16]   launching complex leg, stdout -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn_embelin/abfe_production/phase5_complex.log
+[2026-05-04 16:06:16]   launching solvent leg, stdout -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn_embelin/abfe_production/phase5_solvent.log
+[2026-05-04 16:09:02] === ZAFF orchestrator started ===
+[2026-05-04 16:09:02]   cwd: /home/crazat/genesis_medicine
+[2026-05-04 16:09:02]   poll cadence: 600 s
+[2026-05-04 16:09:02]   skip 60ns wait: True
+[2026-05-04 16:09:02] Phase 3 already complete (PHASE3_PASS exists) — skipping
+[2026-05-04 16:09:02] Phase 4 already complete (PHASE4_OK exists) — skipping
+[2026-05-04 16:09:02] ==> Phase5 launching complex + solvent legs in parallel
+[2026-05-04 16:09:02]   launching complex leg, stdout -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn_embelin/abfe_production/phase5_complex.log
+[2026-05-04 16:09:02]   launching solvent leg, stdout -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn_embelin/abfe_production/phase5_solvent.log
+[2026-05-04 22:07:28]   complex leg rc=-15
+[2026-05-04 22:07:28]   solvent leg rc=-15
+[2026-05-04 22:07:28] <== Phase5 parallel legs duration_min=358.4
+[2026-05-04 22:07:28] Phase5 parallel legs FAILED gates A=False B=False rcs={'complex': -15, 'solvent': -15}
+[2026-05-04 22:07:28] Phase 5 FAILED — see logs

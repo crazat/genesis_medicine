@@ -1,0 +1,13 @@
+{
+  "phase": "C1 active learning round",
+  "train_csv": "pilot/cpu_meaningful/xtb_npass_top9000_hetero9_refine_36conf.csv",
+  "n_train": 1390,
+  "model_stats": {
+    "cv_r2_mean": 0.8312637208697453,
+    "cv_r2_std": 0.25373644935702255,
+    "train_spearman": 0.9998532493885424,
+    "train_r2": 0.999827709197442
+  },
+  "predictions": null,
+  "wallclock_minutes": 0.14
+}

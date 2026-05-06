@@ -1,0 +1,16 @@
+{
+  "preprint_number": 16,
+  "slug": "r15_chromanol_safety_triage",
+  "title": "R15 Chromanol Safety-First Fragment Triage: 14-Target Cofolding, ADMET/xTB Filtering, and 30 ns MD Separates Systemic-Safety and Topical-Lead Paths",
+  "submission_id": "BIORXIV/2026/722464",
+  "submission_date": "2026-05-03",
+  "subject_area": "Pharmacology and Toxicology",
+  "license": "CC-BY 4.0",
+  "version_at_submission": "v0.3",
+  "doi": "10.5281/zenodo.20018351",
+  "doi_issued_date": "2026-05-04",
+  "prior_history": "bioRxiv submission BIORXIV/2026/722464 rejected 2026-05-03 (not complete research with new data); deposited to Zenodo as open-access record.",
+  "manuscript_path": "preprints/16_r15_chromanol_safety_triage/manuscript.md",
+  "pdf_path": "preprints/16_r15_chromanol_safety_triage/manuscript.pdf",
+  "zenodo_url": "https://zenodo.org/record/20018351"
+}

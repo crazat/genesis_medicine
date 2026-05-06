@@ -1,0 +1,31 @@
+# AQAffinity — SandboxAQ structure-free affinity head on top of OpenFold3
+# https://huggingface.co/SandboxAQ/AQAffinity
+# License: Apache-2.0 (code + weights, with HF contact-info acknowledgement).
+# Reuses OpenFold3 query JSON + checkpoint; emits pKd-style score.
+
+engine: aqaffinity
+model_version: "0.1.x-of3p2"
+
+# Same low-mem runner as OpenFold3.
+use_msa_server: false                  # smoke baseline
+use_templates: false
+
+# Pixi / external tool layout
+pixi_bin: ${oc.env:PIXI_BIN,/home/crazat/.pixi/bin/pixi}
+pixi_env: openfold3-cuda12
+openfold3_root: ${oc.env:GENESIS_OPENFOLD3_ROOT,external_tools/openfold-3}
+aqaffinity_root: ${oc.env:GENESIS_AQAFFINITY_ROOT,external_tools/aqaffinity}
+openfold_cache: ${oc.env:OPENFOLD_CACHE,.cache/openfold3}
+inference_ckpt_path: ${oc.env:OPENFOLD3_INFERENCE_CKPT,.cache/openfold3/of3-p2-155k.pt}
+binding_head_ckpt: ${oc.env:AQAFFINITY_BINDING_CKPT,.cache/openfold3/aqaffinity_binding_head.pt}
+runner_yaml: external_tools/openfold-3/examples/example_runner_yamls/low_mem.yml
+
+# Holo cofactors — same registry as OpenFold3.
+holo_cofactors: conf/skin_targets/holo_cofactors.yaml
+
+# CLI binary on the pixi env. Set to "aqaffinity" once installed; until then
+# scripts that reference this config fall back to "needs_adapter" gracefully.
+cli_binary: aqaffinity
+
+device: cuda:0
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/aqaffinity

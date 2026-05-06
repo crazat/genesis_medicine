@@ -1,0 +1,10 @@
+merged: 95 mol with both pIC50 and xtb refine
+  pIC50 vs energy_au_min: Spearman=-0.1199 (p=2.47e-01), Pearson=-0.1626
+  pIC50 vs energy_kcal_min: Spearman=-0.1199 (p=2.47e-01), Pearson=-0.1626
+  pIC50 vs HOMO_eV: Spearman=+0.0374 (p=7.19e-01), Pearson=+0.0582
+  pIC50 vs LUMO_eV: Spearman=+0.0629 (p=5.45e-01), Pearson=+0.1235
+  pIC50 vs gap_eV_min: Spearman=+0.1563 (p=1.31e-01), Pearson=+0.0933
+  pIC50 vs gap_eV_mean: Spearman=+0.1223 (p=2.38e-01), Pearson=+0.1055
+  pIC50 vs gap_eV_max: Spearman=+0.0510 (p=6.23e-01), Pearson=+0.0957
+saved: pilot/cpu_meaningful/chembl_pic50_xtb_correlation.json
+saved: pilot/cpu_meaningful/chembl_pic50_xtb_correlation.png

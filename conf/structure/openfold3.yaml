@@ -1,0 +1,36 @@
+# OpenFold3-preview2 — Apache-2.0 (code + weights)
+# https://github.com/aqlaboratory/openfold-3
+# Used as a structure-only consensus engine alongside Boltz-2 and Protenix.
+
+engine: openfold3
+model_version: "0.4.x-preview2"        # ckpt: of3-p2-155k.pt
+
+# Inference defaults (low-mem profile fits RTX 5090 32GB).
+num_recycles: 10
+num_samples: 1
+num_diffusion_samples: 1
+num_model_seeds: 1
+
+# MSA + templates: per-target driven via cofactor / template hit registry.
+# Default to OFF for the smoke baseline; flip to True after the MSA cache
+# builder (scripts/build_of3_msa_template_cache.py) populates per-target
+# precomputed alignments.
+use_msa: false
+use_msa_server: colabfold              # only when use_msa=true
+use_templates: false                   # flip after template hit cache exists
+template_hit_set: ${oc.env:GENESIS_OF3_TEMPLATE_HIT_SET,null}
+
+# Holo cofactor registry — when set, cofactor_registry.augment_request_with_cofactors
+# is called per (target_key) before submitting the query JSON.
+holo_cofactors: conf/skin_targets/holo_cofactors.yaml
+
+# Pixi runtime
+pixi_bin: ${oc.env:PIXI_BIN,/home/crazat/.pixi/bin/pixi}
+pixi_env: openfold3-cuda12
+openfold3_root: ${oc.env:GENESIS_OPENFOLD3_ROOT,external_tools/openfold-3}
+openfold_cache: ${oc.env:OPENFOLD_CACHE,.cache/openfold3}
+checkpoint_path: ${oc.env:OPENFOLD3_INFERENCE_CKPT,.cache/openfold3/of3-p2-155k.pt}
+runner_yaml: external_tools/openfold-3/examples/example_runner_yamls/low_mem.yml
+
+device: cuda:0
+cache_dir: ${oc.env:GENESIS_CACHE,./.cache}/openfold3

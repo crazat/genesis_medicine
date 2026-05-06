@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018254
+zenodo_url: https://zenodo.org/record/20018254
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/2026/722479 rejected 2026-05-03 (scope mismatch)
+---
+
 # A calibrated absolute binding free energy pipeline with flat-bottom centroid restraint and analytical standard-state correction for natural-product scaffold-hopping in OpenMM 8 / openmmtools 0.26
 
 **HanCheongWoo ¹,²,³**

@@ -1,0 +1,40 @@
+[2026-05-03 20:49:41] === ZAFF orchestrator started ===
+[2026-05-03 20:49:41]   cwd: /home/crazat/genesis_medicine
+[2026-05-03 20:49:41]   poll cadence: 600 s
+[2026-05-03 20:49:41]   skip 60ns wait: False
+[2026-05-03 20:49:41] waiting for 60ns MD to complete...
+[2026-05-03 22:55:05] === ZAFF orchestrator started ===
+[2026-05-03 22:55:05]   cwd: /home/crazat/genesis_medicine
+[2026-05-03 22:55:05]   poll cadence: 600 s
+[2026-05-03 22:55:05]   skip 60ns wait: False
+[2026-05-03 22:55:05] waiting for 60ns MD to complete...
+[2026-05-04 00:11:12] 60ns MD complete — all 4 systems status=ok
+[2026-05-04 00:11:12] ==> launching Phase3 sanity MD: /home/crazat/miniforge3/envs/genesis-md/bin/python /home/crazat/genesis_medicine/scripts/zaff_phase3_sanity_md.py
+[2026-05-04 00:34:47] <== Phase3 sanity MD rc=0 duration_min=23.6
+[2026-05-04 00:34:47] ==> launching Phase4 complex builder: /home/crazat/miniforge3/envs/genesis-md/bin/python /home/crazat/genesis_medicine/scripts/zaff_phase4_build_complex.py
+[2026-05-04 00:35:02] <== Phase4 complex builder rc=0 duration_min=0.3
+[2026-05-04 00:35:02] ==> Phase5 launching complex + solvent legs in parallel
+[2026-05-04 00:35:02]   launching complex leg, stdout -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn/abfe_production/phase5_complex.log
+[2026-05-04 00:35:02]   launching solvent leg, stdout -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn/abfe_production/phase5_solvent.log
+[2026-05-04 00:35:16]   complex leg rc=1
+[2026-05-04 00:35:16]   solvent leg rc=1
+[2026-05-04 00:35:16] <== Phase5 parallel legs duration_min=0.2
+[2026-05-04 00:35:16] Phase5 parallel legs FAILED gates A=False B=False rcs={'complex': 1, 'solvent': 1}
+[2026-05-04 00:35:16] Phase 5 FAILED — see logs
+[2026-05-04 00:37:55] === ZAFF orchestrator started ===
+[2026-05-04 00:37:55]   cwd: /home/crazat/genesis_medicine
+[2026-05-04 00:37:55]   poll cadence: 600 s
+[2026-05-04 00:37:55]   skip 60ns wait: False
+[2026-05-04 00:37:55] waiting for 60ns MD to complete...
+[2026-05-04 00:37:55] 60ns MD complete — all 4 systems status=ok
+[2026-05-04 00:37:55] Phase 3 already complete (PHASE3_PASS exists) — skipping
+[2026-05-04 00:37:55] Phase 4 already complete (PHASE4_OK exists) — skipping
+[2026-05-04 00:37:55] ==> Phase5 launching complex + solvent legs in parallel
+[2026-05-04 00:37:55]   launching complex leg, stdout -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn/abfe_production/phase5_complex.log
+[2026-05-04 00:37:55]   launching solvent leg, stdout -> /home/crazat/genesis_medicine/pilot/abfe_mmp1_holo_zn/abfe_production/phase5_solvent.log
+[2026-05-04 15:08:17]   complex leg rc=0
+[2026-05-04 15:08:17]   solvent leg rc=0
+[2026-05-04 15:08:17] <== Phase5 parallel legs duration_min=870.4
+[2026-05-04 15:08:17] ==> launching Phase5 combine: /home/crazat/miniforge3/envs/genesis-md/bin/python /home/crazat/genesis_medicine/scripts/zaff_phase5_abfe_production.py --leg combine
+[2026-05-04 15:08:19] <== Phase5 combine rc=1 duration_min=0.0
+[2026-05-04 15:08:19] Phase 5 INCONCLUSIVE — see dG_bind.json

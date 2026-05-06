@@ -1,0 +1,26 @@
+# cmd: /home/crazat/miniforge3/envs/genesis-md/bin/antechamber -i /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL2105729/lig.sdf -fi sdf -o /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL2105729/lig.mol2 -fo mol2 -c bcc -s 2 -rn LIG -pf y -at gaff2
+# rc: 0
+
+## stdout
+Info: acdoctor mode is on: check and diagnose problems in the input file.
+Info: The atom type is set to gaff2; the options available to the -at flag are
+      gaff, gaff2, amber, bcc, abcg2, and sybyl.
+
+-- Check Format for sdf File --
+   Status: pass
+Info: Determining atomic numbers from atomic symbols which are case sensitive.
+Running: /home/crazat/miniforge3/envs/genesis-md/bin/bondtype -j full -i ANTECHAMBER_BOND_TYPE.AC0 -o ANTECHAMBER_BOND_TYPE.AC -f ac
+Info: Bond types are assigned for valence state (21) with penalty (2).
+
+Running: /home/crazat/miniforge3/envs/genesis-md/bin/atomtype -i ANTECHAMBER_AC.AC0 -o ANTECHAMBER_AC.AC -p gaff2
+Info: Total number of electrons: 120; net charge: 0
+
+Running: /home/crazat/miniforge3/envs/genesis-md/bin/sqm -O -i sqm.in -o sqm.out
+
+Running: /home/crazat/miniforge3/envs/genesis-md/bin/am1bcc -i ANTECHAMBER_AM1BCC_PRE.AC -o ANTECHAMBER_AM1BCC.AC -f ac -t bcc -p /home/crazat/miniforge3/envs/genesis-md/dat/antechamber/BCCPARM.DAT -s 2 -j 1
+
+Running: /home/crazat/miniforge3/envs/genesis-md/bin/atomtype -f ac -p bcc -o ANTECHAMBER_AM1BCC.AC -i ANTECHAMBER_AM1BCC_PRE.AC
+
+
+
+## stderr

@@ -1,0 +1,64 @@
+{
+  "cmaup": {
+    "Embelia ribes": 0,
+    "Glycyrrhiza uralensis": 0,
+    "Coptis chinensis": 0,
+    "Scutellaria baicalensis": 0,
+    "Lithospermum erythrorhizon": 0,
+    "Polygonum multiflorum": 0,
+    "Astragalus membranaceus": 0,
+    "Panax ginseng": 0,
+    "Camellia sinensis": 0,
+    "Centella asiatica": 0,
+    "Morus alba": 0,
+    "Pueraria lobata": 0,
+    "Curcuma longa": 0
+  },
+  "imppat": {
+    "Embelia ribes": 0,
+    "Glycyrrhiza uralensis": 0,
+    "Coptis chinensis": 0,
+    "Scutellaria baicalensis": 0,
+    "Lithospermum erythrorhizon": 0,
+    "Polygonum multiflorum": 0,
+    "Astragalus membranaceus": 0,
+    "Panax ginseng": 0,
+    "Camellia sinensis": 0,
+    "Centella asiatica": 0,
+    "Morus alba": 0,
+    "Pueraria lobata": 0,
+    "Curcuma longa": 0
+  },
+  "errors": {
+    "cmaup": [
+      "Embelia ribes",
+      "Glycyrrhiza uralensis",
+      "Coptis chinensis",
+      "Scutellaria baicalensis",
+      "Lithospermum erythrorhizon",
+      "Polygonum multiflorum",
+      "Astragalus membranaceus",
+      "Panax ginseng",
+      "Camellia sinensis",
+      "Centella asiatica",
+      "Morus alba",
+      "Pueraria lobata",
+      "Curcuma longa"
+    ],
+    "imppat": [
+      "Embelia ribes",
+      "Glycyrrhiza uralensis",
+      "Coptis chinensis",
+      "Scutellaria baicalensis",
+      "Lithospermum erythrorhizon",
+      "Polygonum multiflorum",
+      "Astragalus membranaceus",
+      "Panax ginseng",
+      "Camellia sinensis",
+      "Centella asiatica",
+      "Morus alba",
+      "Pueraria lobata",
+      "Curcuma longa"
+    ]
+  }
+}

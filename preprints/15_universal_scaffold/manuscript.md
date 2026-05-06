@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018349
+zenodo_url: https://zenodo.org/record/20018349
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/2026/722463 rejected 2026-05-03 (scope mismatch)
+---
+
 # A Universal Pterocarpan-Vinyl-Polyphenol Scaffold for Multi-Target Skin Therapeutics: Six-Cycle Bayesian Active Learning Identifies Six Multi-Target Leaders Across 14 Skin-Disease Targets
 
 **HanCheongWoo ¹,²,³**
@@ -8,7 +15,7 @@
 
 **ORCID**: [0009-0004-4805-8815](https://orcid.org/0009-0004-4805-8815)
 
-**Date**: 2026-04-30 (v1.3 — all five universal scaffolds 14/14 + extended 30 ns × 5 sub-Å validation + ADMET-AI v2 (107 endpoints) + Dancik skin PBPK 4 vehicles + GFN2-xTB HOMO-LUMO + Korean herbal Tanimoto top-1: R14_5 ↔ ferulic acid 0.42, R12_23 ↔ EGCG 0.34, R12_4 ↔ EGCG 0.30, R12_11 ↔ glabridin 0.28, R13_13 ↔ glabridin 0.26)
+**Date**: 2026-05-01 (v1.8 — all five universal scaffolds 14/14 + extended 30 ns × 10 validation + R15 systemic-safety chromanol top-3 30 ns validation + R16 topical chromanol 18-pair 30 ns matrix + R16 TGFB1 top-6 60 ns robustness + Figure 9/10 visual integration + ADMET-AI v2 (107 endpoints) + Dancik skin PBPK 4 vehicles + GFN2-xTB HOMO-LUMO + Korean herbal Tanimoto top-1: R14_5 ↔ ferulic acid 0.42, R12_23 ↔ EGCG 0.34, R12_4 ↔ EGCG 0.30, R12_11 ↔ glabridin 0.28, R13_13 ↔ glabridin 0.26)
 
 **License**: This is in silico work; IRB approval pending. Manuscript released under CC-BY 4.0.
 
@@ -16,7 +23,7 @@
 
 ## Abstract
 
-We report the discovery of a **pterocarpan-vinyl-polyphenol scaffold family** that acts as a universal molecular template across six independent skin-disease verticals (scar regeneration, pigmentation, alopecia, acne, photoaging, fibrosis cross-disease). Six members of this family were identified through six rounds of Bayesian active learning (R9–R14, 4,597 cofold predictions integrated, 14 protein targets, 200-candidate pool size). All six leaders satisfy the multi-target leadership criterion (top-5 in 8+ of 14 targets) and demonstrate paper-tier 10 ns molecular dynamics stability (RMSD < 2.0 Å) on RTX 5090 GPU. The expected-improvement (EI) acquisition function reached saturation at R12 (EI=0.0077), confirmed across three additional cycles (R13 EI=0.0077, R14 EI not greater than R13). The R12_4/R12_11/R14_5 hydroxymethyl/methoxy variants, R12_23 methyl ester (TYR/TYRP1 selective), R13_13 prenyl variant (R11_0 + lipophilicity enhancement), and R11_0 trihydroxy parent constitute a structure–activity relationship rich enough to support multi-vertical formulation strategies. We discuss the six-leader family as in silico-validated lead candidates for Recover Korean Medicine Clinic's universal-skin-care vertical and define wet-lab follow-up via Tier 1 contract research organization (CRO).
+We report the discovery of a **pterocarpan-vinyl-polyphenol scaffold family** that acts as a universal molecular template across six independent skin-disease verticals (scar regeneration, pigmentation, alopecia, acne, photoaging, fibrosis cross-disease). Six members of this family were identified through six rounds of Bayesian active learning (R9–R14, 4,597 cofold predictions integrated, 14 protein targets, 200-candidate pool size). All six leaders satisfy the multi-target leadership criterion (top-5 in 8+ of 14 targets) and demonstrate paper-tier 10 ns molecular dynamics stability (RMSD < 2.0 Å) on RTX 5090 GPU. The expected-improvement (EI) acquisition function reached saturation at R12 (EI=0.0077), confirmed across three additional cycles (R13 EI=0.0077, R14 EI not greater than R13). The R12_4/R12_11/R14_5 hydroxymethyl/methoxy variants, R12_23 methyl ester (TYR/TYRP1 selective), R13_13 prenyl variant (R11_0 + lipophilicity enhancement), and R11_0 trihydroxy parent constitute a structure–activity relationship rich enough to support multi-vertical formulation strategies. R15/R16 chromanol follow-up separates a systemic-safety fragment path from a topical-optimized analog path; the R15 triple-safe chromanol fragment remained dynamically stable across its top-3 cofold targets in 30 ns MD, while an 18-pair R16 topical chromanol 30 ns matrix across TGFB1, DCT, and TYR remained paper-tier stable, and the TGFB1 top-6 subset remained stable in 60 ns follow-up (max RMSD 1.22 Å, max last-third mean 0.96 Å). We discuss the six-leader family as in silico-validated lead candidates for Recover Korean Medicine Clinic's universal-skin-care vertical and define wet-lab follow-up via Tier 1 contract research organization (CRO).
 
 **Keywords**: Bayesian active learning, multi-target drug discovery, pterocarpan, skin therapeutics, Boltz-2, OpenMM molecular dynamics, scaffold hopping, Korean herbal medicine
 
@@ -410,21 +417,28 @@ For Recover Korean Medicine Clinic's vertical-specific formulations:
 
 Each lead is differentiated by H-bond geometry of its polyphenol arm decoration (hydroxymethyl/methoxy/methyl ester/prenyl). The five-lead family thus enables **vertical-specific in vivo testing** while sharing the same scaffold (single-syntheis CRO friendly).
 
-### 4.19 Extended-time kinetic validation (30 ns × top-5 sub-Å pairs)
+### 4.19 Extended-time kinetic validation (30 ns × 10 priority pairs)
 
-10 ns MD demonstrates initial complex stability but is short of the timescale at which conformational drift typically emerges. To strengthen reviewer rigor, we extended the top 5 sub-Å pairs (selected from the 70-simulation 14/14 × 5 leader matrix) to **30 ns** and report both full-trajectory mean and last-10ns mean (steady-state proxy):
+10 ns MD demonstrates initial complex stability but is short of the timescale at which conformational drift typically emerges. To strengthen reviewer rigor, we extended two sequential batches of priority pairs to **30 ns** and report both full-trajectory mean and last-10ns mean (steady-state proxy). Batch 1 covered the original top-5 kinetic-stability set; batch 2 added the next five clinically important sub-Å or near-sub-Å discovery pairs, including redundant MMP1/SIRT1 checks and the scar-relevant TGFB1 × R12_11 pair.
 
 | Pair | mean RMSD (full 30 ns) | last-10ns mean | max RMSD | Verdict |
 |---|---|---|---|---|
 | **MMP1 × R14_5** | **0.69 Å** | **0.69 Å** | 1.11 Å | sub-Å steady-state ✅ |
+| **MMP1 × R12_4** | **0.67 Å** | **0.65 Å** | 1.17 Å | sub-Å steady-state ✅ |
 | **AR × R12_23** | 0.77 Å | **0.85 Å** | 1.76 Å | sub-Å steady-state ✅ |
 | **SIRT1 × R12_23** | **0.72 Å** | **0.79 Å** | 1.44 Å | sub-Å steady-state ✅ |
+| SIRT1 × R12_4 | **0.92 Å** | 1.11 Å | 1.90 Å | sub-Å full trajectory; mild late drift |
+| SREBP1 × R12_23 | 1.08 Å | 1.11 Å | 1.61 Å | paper-tier stable |
 | CTGF × R14_5 | 1.34 Å | 1.76 Å | 2.51 Å | paper-tier with drift |
 | PTGS2 × R12_23 | 1.38 Å | 1.76 Å | 2.16 Å | paper-tier with mild drift |
+| TGFB1 × R12_11 | 1.44 Å | 1.15 Å | 2.53 Å | paper-tier stable, scar-primary |
+| SREBP1 × R14_5 | 1.94 Å | 2.08 Å | 2.54 Å | borderline late drift; deprioritize for acne |
 
-**3 of 5 pairs maintain sub-Å steady-state RMSD across the entire 30 ns trajectory**, including the entire last-10ns window. This is a strong indication that the binding poses observed at 10 ns are not transient artifacts of equilibration but represent kinetically stable complexes. The two pairs that exhibit some drift (CTGF and PTGS2) remain well within the paper-tier threshold (mean < 2.0 Å) but suggest that those targets may benefit from longer ABFE-class sampling for definitive ΔG quantification.
+**5 of 10 extended pairs maintain sub-Å full-trajectory RMSD**, and **4 of 10 maintain sub-Å last-10ns steady-state RMSD**. All 10 remain within the paper-tier full-trajectory threshold (mean < 2.0 Å). The strongest kinetic evidence is now redundant across both the best global lead (MMP1 × R14_5) and the second MMP1 lead (MMP1 × R12_4), with two independent 30 ns runs at 0.69 Å and 0.67 Å full-trajectory mean RMSD. The SIRT1 pair is similarly redundant: R12_23 remains sub-Å through the last-10ns window, while R12_4 is sub-Å over the full trajectory with mild late drift.
 
-The total wall time for the 5 × 30 ns extended campaign was ~3 h on RTX 5090 (1210 ns/day average for the larger ar/sirt1/ptgs2 systems, ~1500 ns/day for mmp1/ctgf), executed in an unattended overnight orchestrator (`scripts/overnight_chain.sh` + `scripts/run_extended_30ns_top5.py`).
+The key caveat is explicit: **SREBP1 × R14_5 drifts above the paper-tier late-window threshold** (last-10ns 2.08 Å, max 2.54 Å). We therefore do not use R14_5 as the acne primary despite its 10 ns discovery score. The acne recommendation remains R12_23, whose 30 ns SREBP1 trajectory stays stable (1.08 Å full mean, 1.11 Å last-10ns). The CTGF and PTGS2 pairs also show drift but remain acceptable as paper-tier kinetic support rather than definitive ΔG evidence.
+
+The extended-time campaign was executed in two unattended GPU batches (`scripts/run_extended_30ns_top5.py`, `scripts/run_extended_30ns_batch2.py`) and demonstrates that the universal-scaffold claim is not driven by transient 10 ns equilibration artifacts.
 
 ### 4.20 Universal scaffold ADMET, skin PBPK, and Korean herbal alignment
 
@@ -491,17 +505,100 @@ For Recover Korean Medicine Clinic's **legal-safe marketing positioning** (CLAUD
 
 This statement is fully literal (Tanimoto evidence in `pilot/universal_scaffold_admet/tanimoto_korean_herbal.csv`) and avoids the medical-claim ambiguity flagged in CLAUDE.md §marketing.
 
-### 4.3 Comparison to embelin (PAINS-class) and EMB-3
+### 4.21 R15 next-round triage: safety-first chromanol fragment vs topical optimization path
+
+The R15 round was designed as a conservative next-step triage rather than a brute-force affinity chase. We decomposed the five universal-scaffold leaders through two BRICS rounds and obtained **38 unique R15 candidates** after deduplication (R12_11: 20, R12_23: 11, R12_4: 3, R13_13: 4). The R12_11 and R14_5 neighborhoods collapsed to the same methoxy chromanol chemical space, giving a useful negative result: the two apparent methoxy leaders are not independent scaffold families but positional variants of the same chemical neighborhood.
+
+The R15 pool remained electronically stable by GFN2-xTB: HOMO-LUMO gap mean 3.61 eV, range 2.90-4.36 eV. The ADMET-AI safety filter was intentionally strict: AMES < 0.3, hERG < 0.3, and DILI < 0.3. Only one molecule passed all three filters:
+
+| Candidate | Seed | MW | logP | QED | AMES | hERG | DILI | gap | skin window | composite rank |
+|---|---|---:|---:|---:|---:|---:|---:|---:|---|---:|
+| `OCC1COc2cc(O)ccc2C1` | R12_4 chromanol fragment | 180.2 | 0.94 | 0.676 | 0.18 | 0.17 | 0.21 | 4.03 eV | no | 11/38 |
+
+This is the cleanest **systemic-safety fragment** in the entire R15 pool, but it is not the best immediate topical lead. Its logP 0.94 falls below the topical skin-window threshold used in this paper (approximately logP 1.5-3.5), so the composite score ranks it only 11th despite its triple-safe toxicology profile. The top three composite-score candidates all sit inside the skin window, but their hERG probabilities are moderate (0.58-0.70), making them unacceptable as systemic-safety claims without patch-clamp validation:
+
+| Rank | Seed | Candidate class | logP | AMES | hERG | DILI | gap | Interpretation |
+|---:|---|---|---:|---:|---:|---:|---:|---|
+| 1 | R12_4 | chromanol dimer-like fragment | 1.97 | 0.10 | 0.62 | 0.41 | 3.99 | topical-like but hERG caution |
+| 2 | R13_13 | prenyl chromanol | 2.91 | 0.26 | 0.58 | 0.20 | 3.99 | topical-like, systemic caution |
+| 3 | R13_13 | propyl/prenyl chromanol | 3.30 | 0.22 | 0.70 | 0.17 | 4.05 | topical-like, hERG caution |
+
+We therefore split R15 into two honest development paths. **Path A (external/topical)** should not advance the triple-safe fragment directly; it should use the fragment as a clean core and raise logP through small substitutions. A focused RDKit + xTB analog scan found that chloro- and dimethyl-chromanol analogs move into the skin window while retaining clean RDKit PAINS/Brenk status and high electronic gaps:
+
+| Analog class | Example SMILES | MW | logP | QED | gap | Rationale |
+|---|---|---:|---:|---:|---:|---|
+| chloro chromanol | `OCC1COc2cc(O)cc(Cl)c2C1` | 214.7 | 1.59 | 0.747 | 3.96 eV | skin-window lift, small core |
+| dimethyl chromanol | `Cc1cc(O)c(C)c2c1CC(CO)CO2` | 208.3 | 1.55 | 0.736 | 4.14 eV | skin-window lift, PAINS/Brenk clean |
+
+**Path B (systemic/safety-first)** keeps `OCC1COc2cc(O)ccc2C1` as the reference fragment because it is the only triple-safe molecule, but treats it as a fragment hit rather than a topical formulation lead. Its 14-target Boltz-2 cofold profile is moderate rather than decisive: TGFB1 0.594, TYR 0.536, and DCT 0.502 are the top three affinity probabilities. These three were selected for immediate 10 ns MD follow-up, and all three remained paper-tier stable:
+
+| Target | Boltz-2 affinity probability | 10 ns mean RMSD | last-third mean | max RMSD | Interpretation |
+|---|---:|---:|---:|---:|---|
+| TGFB1 | 0.594 | **0.76 Å** | **0.64 Å** | 1.24 Å | sub-Å scar-path fragment hit |
+| TYR | 0.536 | **0.62 Å** | **0.62 Å** | **0.88 Å** | sub-Å pigment-path fragment hit |
+| DCT | 0.502 | **0.91 Å** | 1.03 Å | 1.24 Å | paper-tier pigment-path fragment hit |
+
+We then extended the same top-3 systemic-safety fragment poses to 30 ns. All three remained stable under the paper-tier RMSD criterion, with DCT becoming sub-Å over both the full trajectory and last-third window:
+
+| Target | Boltz-2 affinity probability | 30 ns mean RMSD | 30 ns last-third mean | 30 ns max RMSD | Interpretation |
+|---|---:|---:|---:|---:|---|
+| TGFB1 | 0.594 | **0.51 Å** | **0.72 Å** | 0.91 Å | sub-Å scar-path fragment hit |
+| TYR | 0.536 | **0.92 Å** | 1.06 Å | 1.33 Å | paper-tier pigment-path fragment hit |
+| DCT | 0.502 | **0.47 Å** | **0.50 Å** | 0.69 Å | sub-Å pigment-path fragment hit |
+
+The moderate classifier probabilities are therefore not pose-instability artifacts; the fragment can maintain stable binding poses against the selected top-3 targets through 30 ns. The result is still a fragment-hit result, not a replacement for the larger R12/R14 universal leads.
+
+The limitation is central to the interpretation. ADMET-AI and Boltz-2 are model outputs, not wet-lab toxicology or IC50 measurements. The R15 result does not supersede the R12/R14 universal scaffold leaders; it defines the next safer chemical-space direction. For Recover Korean Medicine Clinic, the topical path is the relevant one: small chromanol substitutions that restore skin-window logP while preserving the triple-safe core should be prioritized for R16 ADMET and MD validation.
+
+### 4.22 R16 topical chromanol validation: skin-window analogs with 30 ns stability
+
+R16 tested the immediate implication of the R15 split-path result: can the triple-safe chromanol core be moved into the topical logP window without losing dynamic pose stability? The answer is provisionally yes for small chloro and dimethyl substitutions. The R16 topical chromanol 30 ns matrix now covers 18 analog-target pairs across TGFB1, DCT, and TYR; all 18 completed successfully, with maximum RMSD 1.38 Å and maximum last-third mean 1.17 Å (Figure 9).
+
+| Target | 30 ns pairs | Max affinity probability | Max last-third mean | Max RMSD | Interpretation |
+|---|---:|---:|---:|---:|---|
+| TGFB1 | 6 | 0.682 | 1.17 Å | 1.38 Å | strongest topical scar/fibrosis signal |
+| DCT | 6 | 0.546 | 1.00 Å | 1.25 Å | pigment-path positional coverage stable |
+| TYR | 6 | 0.525 | 0.72 Å | 0.93 Å | pigment-path coverage stable but lower classifier support |
+
+![Figure 9. R16 topical chromanol 18-pair 30 ns matrix. The panel summarizes TGFB1/DCT/TYR analog-target pairs by Boltz-2 affinity probability, logP, QED, mean RMSD, last-third mean RMSD, and maximum RMSD. All 18 pairs remain under the 2.0 Å paper-tier threshold; TGFB1 provides the strongest scar/fibrosis signal and R15_chromanol_Cl_pos9 is the current topical lead.](figures/fig9_r16_topical_chromanol_30ns_matrix.png){#fig:r16-topical-matrix width=95%}
+
+| Analog | Target | SMILES | logP | QED | Boltz-2 affinity probability | 30 ns mean RMSD | last-third mean | max RMSD |
+|---|---|---|---:|---:|---:|---:|---:|---:|
+| R15_chromanol_Cl_pos9 | TGFB1 | `OCC1COc2cc(O)c(Cl)cc2C1` | 1.589 | 0.747 | 0.682 | 0.81 Å | 1.17 Å | 1.38 Å |
+| R15_chromanol_Cl_pos9 | DCT | `OCC1COc2cc(O)c(Cl)cc2C1` | 1.589 | 0.747 | 0.546 | 0.38 Å | 0.67 Å | 1.00 Å |
+| R15_chromanol_Cl_pos6 | TYR | `OCC1COc2c(ccc(O)c2Cl)C1` | 1.589 | 0.747 | 0.525 | 0.69 Å | 0.72 Å | 0.91 Å |
+| R15_chromanol_Me6_Me9 | TGFB1 | `Cc1cc2c(c(C)c1O)OCC(CO)C2` | 1.552 | 0.736 | 0.636 | 0.68 Å | 0.71 Å | 0.89 Å |
+| R15_chromanol_Me6_Me10 | TGFB1 | `Cc1cc(O)c(C)c2c1CC(CO)CO2` | 1.552 | 0.736 | 0.616 | 0.99 Å | 1.04 Å | 1.24 Å |
+| R15_chromanol_Me9_Me10 | TGFB1 | `Cc1c(O)cc2c(c1C)CC(CO)CO2` | 1.552 | 0.736 | 0.615 | 0.54 Å | 0.53 Å | 0.81 Å |
+
+This makes **R15_chromanol_Cl_pos9** the current R16 topical preprint lead: it combines the highest topical follow-up score, skin-window logP 1.589, QED 0.747, and the strongest TGFB1 affinity probability (0.682), while also maintaining stable DCT and TYR 30 ns trajectories in the positional-isomer matrix. The dimethyl analogs remain backup topical candidates with similarly clean skin-window logP and consistently stable 30 ns kinetics, although their DCT/TYR classifier support is weaker than the chloro lead.
+
+Because TGFB1 is the strongest R16 scar/fibrosis signal, the top-six TGFB1 analogs were then extended to 60 ns. All six remained stable under the same paper-tier RMSD criterion (Figure 10). `R15_chromanol_Cl_pos9` remained the strongest single topical lead by the combined affinity/stability profile (affinity probability 0.682, 60 ns mean RMSD 0.55 Å, last-third mean 0.55 Å, max RMSD 0.70 Å). The lower-ranked TGFB1 positional isomers were also stable, but they do not overturn the ranking because their affinity probabilities are lower.
+
+| Analog | TGFB1 affinity probability | 60 ns mean RMSD | 60 ns last-third mean | 60 ns max RMSD | Interpretation |
+|---|---:|---:|---:|---:|---|
+| R15_chromanol_Cl_pos9 | 0.682 | 0.55 Å | 0.55 Å | 0.70 Å | lead positional isomer |
+| R15_chromanol_Me6_Me9 | 0.636 | 0.48 Å | 0.47 Å | 0.72 Å | stable dimethyl backup |
+| R15_chromanol_Me6_Me10 | 0.616 | 0.50 Å | 0.47 Å | 1.18 Å | stable dimethyl backup |
+| R15_chromanol_Me9_Me10 | 0.615 | 0.52 Å | 0.50 Å | 0.70 Å | stable dimethyl backup |
+| R15_chromanol_Cl_pos6 | 0.612 | 0.75 Å | 0.96 Å | 1.22 Å | stable chloro backup |
+| R15_chromanol_Cl_pos10 | 0.587 | 0.83 Å | 0.75 Å | 1.21 Å | stable but lower classifier support |
+
+![Figure 10. R16 TGFB1 top-six 60 ns robustness follow-up. The panel tracks mean, last-third mean, and maximum ligand RMSD over 60 ns for the six highest-priority TGFB1 topical chromanol analogs. All six remain below 1.22 Å maximum RMSD; R15_chromanol_Cl_pos9 retains the highest classifier score and the best combined affinity/stability profile.](figures/fig10_r16_tgfb1_60ns_progress.png){#fig:r16-tgfb1-60ns width=95%}
+
+This does not convert the R16 analogs into demonstrated medicines. The R16 evidence is a computational prioritization layer: RDKit/xTB/ADMET-style filters, Boltz-2 affinity classifier output, and OpenMM pose-stability simulations. hERG, AMES, DILI, skin irritation, Franz-cell permeability, and target IC50/SPR remain wet-lab requirements before any efficacy or safety claim.
+
+### 4.23 Comparison to embelin (PAINS-class) and EMB-3
 
 Embelin, the parent of our previous lead EMB-3, was identified as a 1,4-benzoquinone-2,5-diol PAINS class (Round 1–4 audit, see preprint #1 v0.3). The pterocarpan-vinyl scaffold is **PAINS-free** (verified across the leaders by RDKit Brenk + PAINS_A/B/C filters), making it preferable for clinical translation. EMB-3 retains a niche role for MMP-1 (single-target IC₅₀ measurement context) but does not match the scaffold-level multi-target universality of R11_0 / R12_4 / R12_11.
 
-### 4.4 Limitations
+### 4.24 Limitations
 
 This work is **in silico only**. Boltz-2 affinity is a binary classifier proxy for IC₅₀, not a quantitative ΔG; pearson correlation against ChEMBL ground truth is r = -0.453 (preprint #8). 10 ns MD does not sample binding-unbinding events; absolute binding free energy (ABFE) requires 100+ ns alchemical schemes, which we have not yet implemented in production (preprint #8). All affinities are therefore upper-bound estimates of in vivo binding potential, and require Tier 1 CRO validation: HaCaT cytotoxicity, surface-plasmon-resonance (SPR) IC₅₀ measurement, Franz cell skin permeability. A budget of ₩15.6M (KIT, 켐온, or 바이오톡스텍 RFQ) over 6–10 weeks would convert these in silico leaders into wet-lab IC₅₀ values.
 
 The MMP-1 zinc-coordination ABFE failed to converge in our previous campaign (Phase E, ZAFF zinc model pending — preprint #8 §3.5). We retract the earlier ABFE -32.90 kcal/mol value reported in v0.1 and rely instead on the affinity-classifier + MD-stability paradigm reported here.
 
-### 4.5 Implications for Recover Korean Medicine Clinic
+### 4.25 Implications for Recover Korean Medicine Clinic
 
 Recover Korean Medicine Clinic's universal-skin-care vertical (clinic launch 2026-08-15) will reference these six leaders in the RESEARCH page (recover-clinic.kr/research). Marketing copy must use the **DOI-cited, in-silico-disclaimer** standard (Korean Medical Practice Act §56 four-layer defense): all claims to be hedged as "research activity, IRB pending, in silico predictions" rather than "efficacy demonstrated". Wet-lab validation is mandatory before any "treatment" claim.
 
@@ -509,7 +606,7 @@ Recover Korean Medicine Clinic's universal-skin-care vertical (clinic launch 202
 
 ## 5. Conclusion
 
-Six rounds of Bayesian active learning (R9–R14, 4,597 cofold predictions) across 14 skin-disease targets identified a **pterocarpan-vinyl-polyphenol scaffold family** with six multi-target leaders (R11_0, R12_4, R12_11, R12_23, R14_5, R13_13). 17 of 17 completed 10-ns MD simulations satisfy paper-tier RMSD criteria (mean < 2.0 Å). The methoxy variant R12_11 was independently re-discovered in three rounds — the strongest possible saturation evidence. Bayesian EI plateaued at R12 and remained unchanged through R13–R14, confirming that further computational rounds will not yield additional family members at our pool size.
+Six rounds of Bayesian active learning (R9–R14, 4,597 cofold predictions) across 14 skin-disease targets identified a **pterocarpan-vinyl-polyphenol scaffold family** with six multi-target leaders (R11_0, R12_4, R12_11, R12_23, R14_5, R13_13). The core scaffold has now been stress-tested by full 14-target 10 ns coverage, 10 extended 30 ns priority simulations, a R15 systemic-safety chromanol top-3 30 ns validation, an 18-pair R16 topical chromanol 30 ns matrix, and a six-analog R16 TGFB1 60 ns robustness follow-up. The methoxy variant R12_11 was independently re-discovered in three rounds — the strongest possible saturation evidence. Bayesian EI plateaued at R12 and remained unchanged through R13–R14, confirming that further computational rounds will not yield additional family members at our pool size.
 
 These six leaders are now ready for **Tier 1 CRO** validation at ₩15.6M / 6–10 weeks for SPR IC₅₀, HaCaT cytotoxicity, and Franz cell permeability. They will be referenced in Recover Korean Medicine Clinic's RESEARCH page (recover-clinic.kr/research) under the in-silico-disclaimer standard.
 
@@ -517,7 +614,7 @@ These six leaders are now ready for **Tier 1 CRO** validation at ₩15.6M / 6–
 
 ## Data and Code Availability
 
-All code, data, and analysis scripts are available at: <https://github.com/crazat/genesis_medicine> (Apache-2.0 License). Bayesian active-learning candidate CSVs (`bayesian_v7..v9_round11..13_candidates.csv`), affinity consolidations (`r11..r14_affinity_consolidated.csv`), and MD summary JSONs (`pilot/md_r11_0_*.summary.json`, `pilot/md_r12_super_leaders/summary.json`, `pilot/md_r14_5_r13_13/summary.json`) are in `pilot/cpu_meaningful/` and `pilot/md_*/`.
+All code, data, and analysis scripts are available at: <https://github.com/crazat/genesis_medicine> (Apache-2.0 License). Bayesian active-learning candidate CSVs (`bayesian_v7..v9_round11..13_candidates.csv`), affinity consolidations (`r11..r14_affinity_consolidated.csv`), R15 triage tables (`r15_master_triage.csv`, `r15_chromanol_cofold_14targets.csv`, `r15_chromanol_analog_scan.csv`), R16 topical tables (`r16_chromanol_topical_manifest.csv`, `r16_chromanol_topical_cofold.csv`), and MD summary JSONs (`pilot/md_r11_0_*.summary.json`, `pilot/md_r12_super_leaders/summary.json`, `pilot/md_r14_5_r13_13/summary.json`, `pilot/md_extended_30ns*/summary.json`, `pilot/md_r15_chromanol_top3_10ns/summary.json`, `pilot/md_r15_chromanol_top3_30ns/summary.json`, `pilot/md_r16_chromanol_topical_*30ns/summary.json`, `pilot/md_r16_chromanol_topical_tgfb1_top6_60ns/summary.json`) are in `pilot/cpu_meaningful/` and `pilot/md_*/`.
 
 ## Conflicts of Interest
 

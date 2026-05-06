@@ -1,0 +1,14 @@
+Cofold: 2077 rows, 20 targets
+High binders (prob>0.6): 659
+target
+mmp1      122
+tgfb1      84
+lox        75
+ctgf       73
+srd5a2     73
+dct        59
+sirt1      43
+ar         26
+tyr        25
+ptgs2      19
+dtype: int64

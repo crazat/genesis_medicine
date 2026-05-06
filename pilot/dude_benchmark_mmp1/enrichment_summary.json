@@ -1,0 +1,9 @@
+{
+  "n_total": 329,
+  "n_actives": 15,
+  "ef_1pct": 7.311,
+  "ef_5pct": 6.854,
+  "ef_10pct": 4.798,
+  "auc_roc": 0.884,
+  "bedroc_alpha20": 0.429
+}

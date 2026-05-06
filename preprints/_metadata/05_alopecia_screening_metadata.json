@@ -7,9 +7,10 @@
   "subject_area": "Pharmacology and Toxicology",
   "license": "CC-BY 4.0",
   "version_at_submission": "v0.3",
-  "doi": null,
-  "doi_issued_date": null,
+  "doi": "10.5281/zenodo.20018339",
+  "doi_issued_date": "2026-05-04",
   "prior_history": "ChemRxiv rejected 2026-04-30 (scope); bioRxiv rejected 2026-04-28 as BIORXIV/2026/721248 ('not a complete research paper'); reframed in v0.3 with same 4-layer framework + pilosebaceous single-cell atlas constraint and resubmitted 2026-05-03.",
   "manuscript_path": "preprints/05_alopecia_screening/manuscript.md",
-  "pdf_path": "preprints/05_alopecia_screening/manuscript.pdf"
+  "pdf_path": "preprints/05_alopecia_screening/manuscript.pdf",
+  "zenodo_url": "https://zenodo.org/record/20018339"
 }

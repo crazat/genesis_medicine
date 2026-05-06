@@ -1,0 +1,16 @@
+{
+  "preprint_number": 43,
+  "slug": "r17_chromanol_generative_atlas",
+  "title": "R17 Constrained Generative Chromanol Analog Atlas: Photosafety-Gated Boltz-2 Cofolding and 10-60 ns MD Robustness",
+  "submission_id": "BIORXIV/2026/722468",
+  "submission_date": "2026-05-03",
+  "subject_area": "Bioinformatics",
+  "license": "CC-BY 4.0",
+  "version_at_submission": "v0.3",
+  "doi": "10.5281/zenodo.20018359",
+  "doi_issued_date": "2026-05-04",
+  "prior_history": "bioRxiv submission BIORXIV/2026/722468 rejected 2026-05-03 (not complete research with new data); deposited to Zenodo as open-access record.",
+  "manuscript_path": "preprints/43_r17_chromanol_generative_atlas/manuscript.md",
+  "pdf_path": "preprints/43_r17_chromanol_generative_atlas/manuscript.pdf",
+  "zenodo_url": "https://zenodo.org/record/20018359"
+}

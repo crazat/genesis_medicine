@@ -1,0 +1,7 @@
+source leaprc.water.tip3p
+source leaprc.gaff2
+loadAmberParams lig.frcmod
+LIG = loadMol2 lig.mol2
+solvateBox LIG TIP3PBOX 12.0
+saveAmberParm LIG solvent.parm7 solvent.rst7
+quit

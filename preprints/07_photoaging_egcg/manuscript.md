@@ -1,3 +1,10 @@
+---
+zenodo_doi: 10.5281/zenodo.20018372
+zenodo_url: https://zenodo.org/record/20018372
+zenodo_deposit_date: 2026-05-04
+prior_history: bioRxiv BIORXIV/? rejected 2026-05-03 (scope mismatch)
+---
+
 # In silico screening of 15 polyphenols and reference compounds against MMP-1 + SIRT1 for topical photoaging: real Boltz-2 data positions EMB-3 at the top of the panel; Resveratrol leads SIRT1 axis; classical references (vitamin C, niacinamide, ferulic acid) rank low
 
 **HanCheongWoo ¹,²,³**

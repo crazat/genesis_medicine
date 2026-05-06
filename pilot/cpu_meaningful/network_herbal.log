@@ -1,0 +1,24 @@
+========================================================================
+Network pharmacology — lead × Korean herbal overlap
+========================================================================
+Korean herbal compounds: 102
+Total unique leads: 68
+
+✅ lead_herbal_network.csv (68 leads)
+
+[Network connectivity — Korean herbal]
+  Leads with herbal T > 0.5: 0/68
+  Leads with herbal T > 0.7: 0/68
+  Mean best T: 0.260
+
+[Top 10 leads × Korean herbal connections]
+  T=0.398 → EGCG                      (녹차        ) | O=C(Oc1cc(O)c(O)c(O)c1)C1Oc2cc(O)cc(O)c2
+  T=0.383 → Embelin                   (-         ) | CCCCCCC1=C(O)C(=S)C(C)(C)C(=O)C1=O
+  T=0.371 → Embelin                   (-         ) | CCCCCCC1=C(O)C(=O)C(C)(C(F)(F)F)C(=O)C1=
+  T=0.365 → Ferulic acid              (당귀/천궁     ) | COc1cc(C=CC2COc3cc(O)ccc3C2)ccc1O
+  T=0.360 → EGCG                      (녹차        ) | O=C(Oc1cc(O)c(O)c(O)c1)C1Oc2cc(O)cc(O)c2
+  T=0.339 → Embelin                   (-         ) | CCCCCC1=C(O)C(=S)C(O)=C(C)C1=O
+  T=0.333 → Embelin                   (-         ) | CCCCCC1=C(O)C(=O)C(O)=C(C(F)(F)F)C1=O
+  T=0.333 → Ferulic acid              (당귀/천궁     ) | COc1cc(Oc2ccc(O)c(OC)c2)ccc1O
+  T=0.327 → EGCG                      (녹차        ) | COC(=O)C1Oc2cc(O)cc(O)c2CC1c1ccc(-c2cc(O
+  T=0.323 → Curcumin                  (울금        ) | COC(=O)c1cc(-c2ccc(O)c(OC)c2)ccc1O

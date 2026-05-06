@@ -1,0 +1,27 @@
+{
+  "phase": "Phase 5 ABFE production (MultiStateSampler, no replica exchange)",
+  "system": "CHEMBL2105729_rep3 + holo MMP-1 (ZAFF, MSS)",
+  "complex_leg": {
+    "leg": "complex",
+    "dG": 111.57440236616931,
+    "dG_err": 0.3481597767630625,
+    "ns_prod": 8.0
+  },
+  "solvent_leg": {
+    "leg": "solvent",
+    "dG": 116.1514703650858,
+    "dG_err": 0.38936611645593977,
+    "ns_prod": 5.0
+  },
+  "dG_R_standard_state_correction": -0.158,
+  "dG_bind_kcal_mol": 4.735,
+  "dG_bind_err_kcal_mol": 0.522,
+  "pass_dG_neg_with_uncertainty": false,
+  "n_lambda": 16,
+  "ns_prod_complex": 8.0,
+  "ns_prod_solvent": 5.0,
+  "temperature_K": 310,
+  "flat_bottom_k_kcal_per_mol_A2": 10.0,
+  "flat_bottom_r_max_A": 8.0,
+  "sampler": "openmmtools.multistate.MultiStateSampler (no replica exchange)"
+}

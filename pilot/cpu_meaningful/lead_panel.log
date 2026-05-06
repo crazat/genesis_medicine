@@ -1,0 +1,28 @@
+========================================================================
+Final lead panel — paper-tier consolidated summary
+========================================================================
+  refined: 17 mol from refined_top20.csv
+  ⚠️ pareto: pareto_top50.csv missing
+  bayesian_AL: 100 mol from bayesian_round4_candidates.csv
+  selectivity: 17 mol from selectivity_top20.csv
+  quantum: 20 mol from quantum_top20.csv
+  round4_design: 20 mol from round4_top100.csv
+  per_target: 31 mol from integrated_top_candidates_per_target.csv
+
+Total unique mol across all rankers: 155
+
+✅ paper_tier_lead_panel.csv (155 unique mol)
+✅ multi_ranker_leaders.csv (2 mol in ≥4 rankers)
+
+[Top 10 mol by # rankers in top]
+  n=4/7 | OCc1ccc(C=CC2COc3cc(O)ccc3C2)c(O)c1O
+  n=4/7 | COc1cc(C=CC2COc3cc(O)ccc3C2)ccc1O
+
+[Ranker overlap distribution]
+  appears in exactly 1 rankers: 122
+  appears in exactly 2 rankers: 18
+  appears in exactly 3 rankers: 13
+  appears in exactly 4 rankers: 2
+  appears in exactly 5 rankers: 0
+  appears in exactly 6 rankers: 0
+  appears in exactly 7 rankers: 0

@@ -1,0 +1,37 @@
+[2026-05-05 03:27:42] === OVERNIGHT GPU CHAIN START ===
+[2026-05-05 03:27:42] waiting for embelin Phase 5 (--leg all) to complete...
+[2026-05-05 03:30:25] === OVERNIGHT GPU CHAIN START ===
+[2026-05-05 03:30:25] waiting for embelin Phase 5 parallel legs (complex + solvent) to complete...
+[2026-05-05 04:48:10] embelin Phase 5 finished — running combine
+Warning on use of the timeseries module: If the inherent timescales of the system are long compared to those being analyzed, this statistical inefficiency may be an underestimate.  The estimate presumes the use of many statistically independent samples.  Tests should be performed to assess whether this condition is satisfied.   Be cautious in the interpretation of the data.
+
+****** PyMBAR will use 64-bit JAX! *******
+* JAX is currently set to 32-bit bitsize *
+* which is its default.                  *
+*                                        *
+* PyMBAR requires 64-bit mode and WILL   *
+* enable JAX's 64-bit mode when called.  *
+*                                        *
+* This MAY cause problems with other     *
+* Uses of JAX in the same code.          *
+******************************************
+
+FAIL: missing leg results — complex=False solvent=False
+[2026-05-05 04:48:13] combine rc=7
+[2026-05-05 04:48:13] embelin Phase 5 unclear (no gate file) — proceeding anyway
+[2026-05-05 04:48:13] >>> Stage 1: ABFE benchmark Tier-1 orchestrator (~8 days wall)
+manifest: 6/15 compounds prepared OK
+running ABFE on 6 compounds: ['CHEMBL415', 'CHEMBL94487', 'CHEMBL257077', 'CHEMBL301236', 'CHEMBL292707', 'CHEMBL2105729']
+
+=== CHEMBL415 warmup ===
+  $ /home/crazat/miniforge3/envs/genesis-md/bin/python /home/crazat/genesis_medicine/scripts/zaff_phase5_warmup_generic.py --work /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415 --leg...
+=== CHEMBL415 Phase 5 production ===
+  $ /home/crazat/miniforge3/envs/genesis-md/bin/python /home/crazat/genesis_medicine/scripts/zaff_phase5_abfe_production_generic.py --work /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL415 --leg...
+  CHEMBL415: phase5_fail dG=n/a wall=3.51min
+
+=== CHEMBL94487 warmup ===
+  $ /home/crazat/miniforge3/envs/genesis-md/bin/python /home/crazat/genesis_medicine/scripts/zaff_phase5_warmup_generic.py --work /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL94487 --leg...
+=== CHEMBL94487 Phase 5 production ===
+  $ /home/crazat/miniforge3/envs/genesis-md/bin/python /home/crazat/genesis_medicine/scripts/zaff_phase5_abfe_production_generic.py --work /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL94487 --leg...
+[2026-05-05 05:45:01] <<< Stage 1 done rc=143
+[2026-05-05 05:45:01] === OVERNIGHT GPU CHAIN COMPLETE ===

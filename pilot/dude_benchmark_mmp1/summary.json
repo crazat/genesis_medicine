@@ -1,0 +1,6 @@
+{
+  "phase": "F3 DUD-E decoy benchmark setup",
+  "n_actives": 15,
+  "n_decoys": 314,
+  "decoys_csv": "pilot/dude_benchmark_mmp1/decoys.csv"
+}

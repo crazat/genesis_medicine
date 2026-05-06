@@ -4,200 +4,221 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>09_cross_disease_ipf</title>
+  <title>Genesis_Medicine — 09_cross_disease_ipf</title>
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      white-space: pre-wrap;
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      border: none;
-      border-top: 1px solid #1a1a1a;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  </style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+</style>
+  
+  <style>
+@page { size: A4; margin: 1.6cm 1.2cm; }
+body { font-family: "DejaVu Sans", sans-serif; font-size: 10pt; line-height: 1.45; }
+h1 { font-size: 16pt; margin-top: 0.6em; }
+h2 { font-size: 13pt; margin-top: 1.0em; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+h3 { font-size: 11pt; margin-top: 0.8em; }
+code, pre { font-family: "DejaVu Sans Mono", monospace; font-size: 8.5pt; }
+pre { background: #f5f5f5; padding: 6px 8px; overflow-wrap: break-word; white-space: pre-wrap; }
+table {
+border-collapse: collapse;
+width: 100%;
+table-layout: auto;
+font-size: 8.5pt;
+margin: 0.6em 0;
+page-break-inside: auto;
+}
+th, td {
+border: 1px solid #bbb;
+padding: 3px 5px;
+vertical-align: top;
+word-break: break-word;
+overflow-wrap: anywhere;
+hyphens: auto;
+max-width: 18em;
+}
+th { background: #eee; font-weight: 600; }
+img { max-width: 100%; height: auto; page-break-inside: avoid; }
+figure { page-break-inside: avoid; margin: 0.8em 0; }
+blockquote { border-left: 3px solid #ccc; margin: 0.6em 0; padding: 0.2em 0.8em; color: #444; }
+</style>
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">09_cross_disease_ipf</h1>
+<h1 class="title">Genesis_Medicine — 09_cross_disease_ipf</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a
-href="#from-skin-scar-to-systemic-fibrosis-open-targets-evidence-and-the-limits-of-canonical-anti-fibrotic-axis-based-cross-disease-hypothesis-an-emb-3-in-silico-case"
-id="toc-from-skin-scar-to-systemic-fibrosis-open-targets-evidence-and-the-limits-of-canonical-anti-fibrotic-axis-based-cross-disease-hypothesis-an-emb-3-in-silico-case">From
+<li><a href="#from-skin-scar-to-systemic-fibrosis-open-targets-evidence-and-the-limits-of-canonical-anti-fibrotic-axis-based-cross-disease-hypothesis-an-emb-3-in-silico-case" id="toc-from-skin-scar-to-systemic-fibrosis-open-targets-evidence-and-the-limits-of-canonical-anti-fibrotic-axis-based-cross-disease-hypothesis-an-emb-3-in-silico-case">From
 skin scar to systemic fibrosis: Open Targets evidence and the limits of
 canonical anti-fibrotic axis-based cross-disease hypothesis (an EMB-3 in
 silico case)</a>
 <ul>
 <li><a href="#abstract-250-words" id="toc-abstract-250-words">Abstract
 (250 words)</a></li>
-<li><a href="#plain-language-summary"
-id="toc-plain-language-summary">Plain-language summary</a></li>
-<li><a href="#background-and-version-note"
-id="toc-background-and-version-note">1. Background and version
+<li><a href="#plain-language-summary" id="toc-plain-language-summary">Plain-language summary</a></li>
+<li><a href="#background-and-version-note" id="toc-background-and-version-note">1. Background and version
 note</a></li>
-<li><a href="#the-pan-fibrotic-master-switch-literature-claim"
-id="toc-the-pan-fibrotic-master-switch-literature-claim">2. The
+<li><a href="#the-pan-fibrotic-master-switch-literature-claim" id="toc-the-pan-fibrotic-master-switch-literature-claim">2. The
 pan-fibrotic master-switch literature claim</a></li>
-<li><a href="#emb-3-candidate-profile-recap-from-companion-preprint"
-id="toc-emb-3-candidate-profile-recap-from-companion-preprint">3. EMB-3
+<li><a href="#emb-3-candidate-profile-recap-from-companion-preprint" id="toc-emb-3-candidate-profile-recap-from-companion-preprint">3. EMB-3
 candidate profile (recap from companion preprint)</a></li>
-<li><a href="#open-targets-query-forward-direction-disease-targets"
-id="toc-open-targets-query-forward-direction-disease-targets">4. Open
+<li><a href="#open-targets-query-forward-direction-disease-targets" id="toc-open-targets-query-forward-direction-disease-targets">4. Open
 Targets query: forward direction (disease → targets)</a>
 <ul>
 <li><a href="#method" id="toc-method">4.1 Method</a></li>
@@ -205,65 +226,47 @@ Targets query: forward direction (disease → targets)</a>
 <li><a href="#honest-interpretation" id="toc-honest-interpretation">4.3
 Honest interpretation</a></li>
 </ul></li>
-<li><a href="#open-targets-query-reverse-direction-target-diseases"
-id="toc-open-targets-query-reverse-direction-target-diseases">5. Open
+<li><a href="#open-targets-query-reverse-direction-target-diseases" id="toc-open-targets-query-reverse-direction-target-diseases">5. Open
 Targets query: reverse direction (target → diseases)</a>
 <ul>
 <li><a href="#method-1" id="toc-method-1">5.1 Method</a></li>
 <li><a href="#results-1" id="toc-results-1">5.2 Results</a></li>
-<li><a href="#honest-interpretation-1"
-id="toc-honest-interpretation-1">5.3 Honest interpretation</a></li>
+<li><a href="#honest-interpretation-1" id="toc-honest-interpretation-1">5.3 Honest interpretation</a></li>
 </ul></li>
-<li><a href="#the-rentosertib-precedent"
-id="toc-the-rentosertib-precedent">6. The Rentosertib precedent</a></li>
-<li><a href="#restated-cross-disease-hypothesis-v0.2"
-id="toc-restated-cross-disease-hypothesis-v0.2">7. Restated
+<li><a href="#the-rentosertib-precedent" id="toc-the-rentosertib-precedent">6. The Rentosertib precedent</a></li>
+<li><a href="#restated-cross-disease-hypothesis-v0.2" id="toc-restated-cross-disease-hypothesis-v0.2">7. Restated
 cross-disease hypothesis (v0.2)</a></li>
 <li><a href="#limitations" id="toc-limitations">8. Limitations</a></li>
 <li><a href="#conclusions" id="toc-conclusions">9. Conclusions</a></li>
-<li><a
-href="#acknowledgments-contributions-competing-interests-data-availability"
-id="toc-acknowledgments-contributions-competing-interests-data-availability">Acknowledgments
+<li><a href="#acknowledgments-contributions-competing-interests-data-availability" id="toc-acknowledgments-contributions-competing-interests-data-availability">Acknowledgments
 / Contributions / Competing interests / Data availability</a></li>
 <li><a href="#figures" id="toc-figures">Figures</a></li>
 <li><a href="#references" id="toc-references">References</a></li>
-<li><a
-href="#round-5-application-data-skin-fibroblast-atlas-evidence-2026-04-27"
-id="toc-round-5-application-data-skin-fibroblast-atlas-evidence-2026-04-27">Round
+<li><a href="#round-5-application-data-skin-fibroblast-atlas-evidence-2026-04-27" id="toc-round-5-application-data-skin-fibroblast-atlas-evidence-2026-04-27">Round
 5 application data — Skin Fibroblast Atlas evidence
 (2026-04-27)</a></li>
-<li><a
-href="#round-7-causal-mr-tahoe-100m-anti-fibrotic-perturbation-atlas-2026-04-27"
-id="toc-round-7-causal-mr-tahoe-100m-anti-fibrotic-perturbation-atlas-2026-04-27">Round
+<li><a href="#round-7-causal-mr-tahoe-100m-anti-fibrotic-perturbation-atlas-2026-04-27" id="toc-round-7-causal-mr-tahoe-100m-anti-fibrotic-perturbation-atlas-2026-04-27">Round
 7 — Causal MR + Tahoe-100M anti-fibrotic perturbation atlas
 (2026-04-27)</a></li>
-<li><a
-href="#round-8-kinetics-for-cross-disease-mmptgfb1-leads-2026-04-27"
-id="toc-round-8-kinetics-for-cross-disease-mmptgfb1-leads-2026-04-27">Round
+<li><a href="#round-8-kinetics-for-cross-disease-mmptgfb1-leads-2026-04-27" id="toc-round-8-kinetics-for-cross-disease-mmptgfb1-leads-2026-04-27">Round
 8 — Kinetics for cross-disease MMP/TGFB1 leads (2026-04-27)</a></li>
-<li><a href="#r12-5-open-targets-reverse-evidence"
-id="toc-r12-5-open-targets-reverse-evidence">R12 §5 — Open Targets
+<li><a href="#r12-5-open-targets-reverse-evidence" id="toc-r12-5-open-targets-reverse-evidence">R12 §5 — Open Targets
 reverse evidence</a></li>
-<li><a href="#use-of-ai-tools-in-writing-icmje-2024-disclosure"
-id="toc-use-of-ai-tools-in-writing-icmje-2024-disclosure">Use of AI
+<li><a href="#use-of-ai-tools-in-writing-icmje-2024-disclosure" id="toc-use-of-ai-tools-in-writing-icmje-2024-disclosure">Use of AI
 tools in writing (ICMJE 2024 disclosure)</a></li>
 </ul></li>
 </ul>
 </nav>
-<h1
-id="from-skin-scar-to-systemic-fibrosis-open-targets-evidence-and-the-limits-of-canonical-anti-fibrotic-axis-based-cross-disease-hypothesis-an-emb-3-in-silico-case">From
+<h1 id="from-skin-scar-to-systemic-fibrosis-open-targets-evidence-and-the-limits-of-canonical-anti-fibrotic-axis-based-cross-disease-hypothesis-an-emb-3-in-silico-case">From
 skin scar to systemic fibrosis: Open Targets evidence and the limits of
 canonical anti-fibrotic axis-based cross-disease hypothesis (an EMB-3 in
 silico case)</h1>
 <p><strong>HanCheongWoo ¹,²,³</strong></p>
-<p><strong>ORCID</strong>: <a
-href="https://orcid.org/0009-0004-4805-8815">0009-0004-4805-8815</a></p>
+<p><strong>ORCID</strong>: <a href="https://orcid.org/0009-0004-4805-8815">0009-0004-4805-8815</a></p>
 <p>¹ Genesis_Medicine Lab, Seoul, Republic of Korea ² HAN PREDICT, Inc.;
 <a href="https://hanpredict.com" class="uri">https://hanpredict.com</a>
-³ Recover Korean Medicine Clinic; <a href="https://recover-clinic.kr"
-class="uri">https://recover-clinic.kr</a></p>
-<p>Code: <a href="https://github.com/crazat/genesis_medicine"
-class="uri">https://github.com/crazat/genesis_medicine</a> ·
+³ Recover Korean Medicine Clinic; <a href="https://recover-clinic.kr" class="uri">https://recover-clinic.kr</a></p>
+<p>Code: <a href="https://github.com/crazat/genesis_medicine" class="uri">https://github.com/crazat/genesis_medicine</a> ·
 Correspondence: admin@hanpredict.com</p>
 <p><strong>Manuscript type</strong>: Cross-disease hypothesis paper with
 Open Targets evidence audit; <strong>Target preprint</strong>: bioRxiv;
@@ -657,15 +660,12 @@ models in the primary skin indication first, (v) cross-disease
 evaluation in IPF lung-fibroblast models only after primary-indication
 signals are established.</p>
 <hr />
-<h2
-id="acknowledgments-contributions-competing-interests-data-availability">Acknowledgments
+<h2 id="acknowledgments-contributions-competing-interests-data-availability">Acknowledgments
 / Contributions / Competing interests / Data availability</h2>
 <p>Same standard text. Open Targets queries:
 <code>scripts/query_open_targets.py</code>,
 <code>scripts/query_target_to_diseases.py</code>. Raw OT JSON +
-processed CSVs: <code>pilot/open_targets/</code> at <a
-href="https://github.com/crazat/genesis_medicine"
-class="uri">https://github.com/crazat/genesis_medicine</a>.</p>
+processed CSVs: <code>pilot/open_targets/</code> at <a href="https://github.com/crazat/genesis_medicine" class="uri">https://github.com/crazat/genesis_medicine</a>.</p>
 <hr />
 <h2 id="figures">Figures</h2>
 <p><strong>Figure 1.</strong> EMB-3 multi-target predicted affinity
@@ -675,8 +675,7 @@ are highlighted; PDGFRB at 0.640 (the only canonical anti-fibrotic
 target with consistent Open Targets fibrotic-disease association — see
 Figure 2) is anchored within the multi-target profile.</p>
 <figure>
-<img src="figures/fig1_emb3_target_profile.png"
-alt="Figure 1: EMB-3 target profile" />
+<img role="img" aria-label="Figure 1: EMB-3 target profile" src="figures/fig1_emb3_target_profile.png" alt="Figure 1: EMB-3 target profile" />
 <figcaption aria-hidden="true">Figure 1: EMB-3 target
 profile</figcaption>
 </figure>
@@ -690,8 +689,7 @@ canonical targets (TGFB1, MMP1, CTGF, SMAD3, MMP3/9, LOX, COL1A1) have ≤
 between medicinal-chemistry literature framing and Open Targets
 genetic-evidence-weighted scoring.</p>
 <figure>
-<img src="figures/fig2_target_disease_overlap.png"
-alt="Figure 2: Target × disease overlap" />
+<img role="img" aria-label="Figure 2: Target × disease overlap" src="figures/fig2_target_disease_overlap.png" alt="Figure 2: Target × disease overlap" />
 <figcaption aria-hidden="true">Figure 2: Target × disease
 overlap</figcaption>
 </figure>
@@ -706,16 +704,13 @@ fibrosis: therapeutic translation for fibrotic disease. <em>Nat Med</em>
 2012, 18, 1028–1040. [5] Insilico Medicine. Rentosertib (INS018_055)
 Phase 2 IPF interim data. NCT05497284, 2024. [6] HanCheongWoo.
 Calibrated absolute binding free energy pipeline. ChemRxiv preprint,
-2026. [7] Open Targets Platform v4 GraphQL API. <a
-href="https://platform.opentargets.org/api"
-class="uri">https://platform.opentargets.org/api</a></p>
+2026. [7] Open Targets Platform v4 GraphQL API. <a href="https://platform.opentargets.org/api" class="uri">https://platform.opentargets.org/api</a></p>
 <hr />
 <p><em>v0.3 — Skin Fibroblast Atlas evidence appended, 2026-04-27 ·
 ~3,100 words · CC-BY 4.0</em> <em>v0.1 (fabricated cross-disease
 percentages) explicitly retracted in §1</em></p>
 <hr />
-<h2
-id="round-5-application-data-skin-fibroblast-atlas-evidence-2026-04-27">Round
+<h2 id="round-5-application-data-skin-fibroblast-atlas-evidence-2026-04-27">Round
 5 application data — Skin Fibroblast Atlas evidence (2026-04-27)</h2>
 <p>The cross-disease IPF↔︎scar claim in this preprint was previously
 supported by Open Targets v4 forward queries (PDGFRB only at the
@@ -865,8 +860,7 @@ TGF-β1/mTORC1 + ERJ 2025 lipofibroblast plasticity + Ann Rheum Dis 2025
 SSc spatial + Open Targets PDGFRB + 8 cross-tissue conserved targets.
 <strong>6 paper-tier sources</strong> spanning skin / lung / SSc /
 mechanistic / spatial.</p>
-<h2
-id="round-7-causal-mr-tahoe-100m-anti-fibrotic-perturbation-atlas-2026-04-27">Round
+<h2 id="round-7-causal-mr-tahoe-100m-anti-fibrotic-perturbation-atlas-2026-04-27">Round
 7 — Causal MR + Tahoe-100M anti-fibrotic perturbation atlas
 (2026-04-27)</h2>
 <p>Three protein → fibrosis MR results from peer-reviewed
@@ -927,8 +921,7 @@ MMP_down=3.8</p>
 <p>Niclosamide downregulates the same anti-fibrotic markers (TGFB1,
 MMP9, CTNNB1) we target with EMB-3 — orthogonal validation that the
 pathway selection is mechanistically sound.</p>
-<h2
-id="round-8-kinetics-for-cross-disease-mmptgfb1-leads-2026-04-27">Round
+<h2 id="round-8-kinetics-for-cross-disease-mmptgfb1-leads-2026-04-27">Round
 8 — Kinetics for cross-disease MMP/TGFB1 leads (2026-04-27)</h2>
 <p><strong>Compound × target residence time ranking</strong> (τRAMD
 literature-validated; lower fast-off, higher slow-off):</p>

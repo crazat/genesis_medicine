@@ -1,0 +1,16 @@
+========================================================================
+Multi-descriptor PCA + DBSCAN clustering
+========================================================================
+Druglikeness pool: 2336
+Valid: 2336
+PCA explained var: [0.5183964  0.23910521]
+DBSCAN clusters: 2 (noise: 47)
+
+✅ descriptor_cluster_medoids.csv (2)
+✅ descriptor_pca_clusters.csv (2336)
+
+✅ figures_r13/chemical_space_pca.png
+
+[Top 10 cluster medoids by size]
+  C 0 (n=2277) QED=0.390 SA=3.54 | OCc1cc(-c2cc(C3Cc4c(O)cc(O)cc4OC3CO)ccc2O)ccc1O
+  C 1 (n= 12) QED=0.134 SA=3.04 | C=CC(C)(C)c1ccc(-c2ccc(O)c(-c3cc(-c4cc(O)c(O)c(O)c

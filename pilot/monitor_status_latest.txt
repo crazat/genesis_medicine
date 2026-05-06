@@ -1,0 +1,90 @@
+timestamp=2026-05-06T12:48:53+09:00
+uptime= 12:48:53 up 7 days,  2:43,  1 user,  load average: 2.99, 2.93, 2.21
+
+[gpu]
+utilization.gpu [%], memory.used [MiB]
+1 %, 25234 MiB
+658, [Not Found], [N/A]
+
+[cpu]
+procs -----------memory---------- ---swap-- -----io---- -system-- -------cpu-------
+ r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st gu
+ 0  0   8012 10000960  99164 3882440    0    0  1189  1597 8542   20 62  5 33  0  0  0
+ 0  0   8012 10536216  99164 3882484    0    0     0     0 19150 38315  7  1 93  0  0  0
+
+[queue]
+77605 bash /home/crazat/genesis_medicine/scripts/codex_curator_loop.sh
+2512206 bash /home/crazat/genesis_medicine/scripts/auto_queue_cpu_gpu_daemon.sh
+
+[curator]
+-rw-r--r-- 1 crazat crazat 352623 May  6 12:47 /home/crazat/genesis_medicine/pilot/codex_curator_context.md
+-rw-r--r-- 1 crazat crazat   5344 May  2 21:31 /home/crazat/genesis_medicine/pilot/codex_curator_decision.md
+-rw-r--r-- 1 crazat crazat    748 May  2 21:32 /home/crazat/genesis_medicine/pilot/codex_curator_last.md
+[2026-05-06T11:43:27+09:00] curator failed rc=127
+2026-05-06T11:43:34+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T11:45:28+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T11:47:22+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T11:49:17+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
+2026-05-06T11:51:11+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
+2026-05-06T11:53:05+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+[2026-05-06T11:53:56+09:00] curator failed rc=127
+2026-05-06T11:54:59+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T11:57:19+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+2026-05-06T11:59:13+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T12:01:49+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
+2026-05-06T12:03:43+09:00 CPU_IDLE_GAP_UNRESOLVED idle=92% active_refines=0 planner=none
+[2026-05-06T12:04:26+09:00] curator failed rc=127
+2026-05-06T12:05:36+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T12:07:32+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T12:09:26+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
+2026-05-06T12:11:39+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+2026-05-06T12:13:39+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
+[2026-05-06T12:15:06+09:00] curator failed rc=127
+2026-05-06T12:15:50+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T12:17:59+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
+2026-05-06T12:19:53+09:00 CPU_IDLE_GAP_UNRESOLVED idle=94% active_refines=0 planner=none
+2026-05-06T12:22:11+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+2026-05-06T12:24:10+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+[2026-05-06T12:25:40+09:00] curator failed rc=127
+2026-05-06T12:26:03+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
+2026-05-06T12:27:59+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T12:29:53+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
+2026-05-06T12:31:46+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T12:33:40+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T12:35:35+09:00 CPU_IDLE_GAP_UNRESOLVED idle=82% active_refines=0 planner=none
+[2026-05-06T12:36:31+09:00] curator failed rc=127
+2026-05-06T12:37:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+2026-05-06T12:39:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=97% active_refines=0 planner=none
+2026-05-06T12:41:53+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
+2026-05-06T12:43:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
+2026-05-06T12:46:11+09:00 CPU_IDLE_GAP_UNRESOLVED idle=67% active_refines=0 planner=none
+[2026-05-06T12:47:02+09:00] curator failed rc=127
+2026-05-06T12:48:05+09:00 CPU_IDLE_GAP_UNRESOLVED idle=93% active_refines=0 planner=none
+
+[latest-md]
+2026-05-02 03:24 pilot/md_r17_chromanol_generative_top_green_10ns/summary.json
+2026-05-02 04:50 pilot/md_r17_chromanol_generative_top_green_30ns/summary.json
+2026-05-02 07:38 pilot/md_r17_chromanol_generative_top_green_60ns/summary.json
+2026-05-02 08:12 pilot/md_r17_chromanol_generative_next_green_10ns/summary.json
+2026-05-02 09:56 pilot/md_r17_chromanol_generative_next_green_30ns/summary.json
+2026-05-02 12:43 pilot/md_r17_chromanol_generative_next_green_60ns/summary.json
+2026-05-02 14:34 pilot/md_r17_chromanol_generative_expanded_green_10ns/summary.json
+2026-05-02 15:58 pilot/md_r17_chromanol_generative_expanded_green_30ns/summary.json
+2026-05-02 18:44 pilot/md_r17_chromanol_generative_expanded_green_60ns/summary.json
+2026-05-03 17:24 pilot/md_r17_chromanol_generative_green_120ns/summary.json
+2026-05-04 00:10 pilot/md_r14_5_r12_23_herbal_xref_60ns/summary.json
+2026-05-05 03:03 pilot/mmp1_apo_zn_md_100ns/summary.json
+
+[latest-xtb]
+-rw-r--r-- 1 crazat crazat   18917 May  6 07:50 pilot/cpu_meaningful/xtb_npass_top9997_hetero10_refine_672conf.csv
+-rw-r--r-- 1 crazat crazat  281632 May  6 05:33 pilot/cpu_meaningful/xtb_npass_top9997_hetero10_refine_576conf.csv
+-rw-r--r-- 1 crazat crazat  281662 May  6 03:18 pilot/cpu_meaningful/xtb_npass_top9997_hetero10_refine_480conf.csv
+-rw-r--r-- 1 crazat crazat  289514 May  6 01:49 pilot/cpu_meaningful/xtb_npass_top9997_hetero10_refine_816conf.csv
+-rw-r--r-- 1 crazat crazat  281663 May  6 00:49 pilot/cpu_meaningful/xtb_npass_top9997_hetero10_refine_528conf.csv
+-rw-r--r-- 1 crazat crazat  284702 May  5 19:09 pilot/cpu_meaningful/xtb_npass_top9997_hetero10_refine_720conf.csv
+-rw-r--r-- 1 crazat crazat  284745 May  5 15:48 pilot/cpu_meaningful/xtb_npass_top9997_hetero10_refine_624conf.csv
+-rw-r--r-- 1 crazat crazat  289422 May  5 12:47 pilot/cpu_meaningful/xtb_npass_top9997_hetero10_refine_432conf.csv
+-rw-r--r-- 1 crazat crazat   22109 May  5 10:39 pilot/cpu_meaningful/xtb_npass_top500_refine_624conf.csv
+-rw-r--r-- 1 crazat crazat   82257 May  5 09:58 pilot/cpu_meaningful/xtb_npass_top500_refine_576conf.csv
+-rw-r--r-- 1 crazat crazat   82235 May  5 08:13 pilot/cpu_meaningful/xtb_npass_top500_refine_528conf.csv
+-rw-r--r-- 1 crazat crazat   82272 May  5 06:33 pilot/cpu_meaningful/xtb_npass_top500_refine_480conf.csv

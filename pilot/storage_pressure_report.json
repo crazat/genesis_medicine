@@ -1,0 +1,208 @@
+{
+  "timestamp": "2026-05-02T19:50:01+09:00",
+  "status": "ok",
+  "thresholds": {
+    "warn_free_gb": 200.0,
+    "hard_hold_free_gb": 80.0
+  },
+  "disks": {
+    "wsl_root": {
+      "path": "/",
+      "exists": true,
+      "total_gb": 1006.9,
+      "used_gb": 554.5,
+      "free_gb": 401.1,
+      "used_pct": 55.1
+    },
+    "windows_c": {
+      "path": "/mnt/c",
+      "exists": true,
+      "total_gb": 1906.9,
+      "used_gb": 1441.6,
+      "free_gb": 465.2,
+      "used_pct": 75.6
+    },
+    "windows_d": {
+      "path": "/mnt/d",
+      "exists": true,
+      "total_gb": 1863.0,
+      "used_gb": 634.2,
+      "free_gb": 1228.9,
+      "used_pct": 34.0
+    }
+  },
+  "project_top": [
+    {
+      "path": "pilot",
+      "gb": 252.96
+    },
+    {
+      "path": ".venv",
+      "gb": 17.74
+    },
+    {
+      "path": ".cache",
+      "gb": 7.9
+    },
+    {
+      "path": "external",
+      "gb": 1.29
+    },
+    {
+      "path": "external_tools",
+      "gb": 0.16
+    },
+    {
+      "path": ".git",
+      "gb": 0.1
+    },
+    {
+      "path": "scripts",
+      "gb": 0.06
+    },
+    {
+      "path": "data",
+      "gb": 0.04
+    },
+    {
+      "path": "ner_results.csv",
+      "gb": 0.04
+    },
+    {
+      "path": "preprints",
+      "gb": 0.03
+    },
+    {
+      "path": "Genesis_Medicine.code-workspace",
+      "gb": 0.0
+    },
+    {
+      "path": "Dockerfile",
+      "gb": 0.0
+    },
+    {
+      "path": "co_occurring_genes_cleaned.png",
+      "gb": 0.0
+    },
+    {
+      "path": ".claude",
+      "gb": 0.0
+    },
+    {
+      "path": "requirements.txt",
+      "gb": 0.0
+    },
+    {
+      "path": "README.md",
+      "gb": 0.0
+    },
+    {
+      "path": "conf",
+      "gb": 0.0
+    },
+    {
+      "path": "proteins",
+      "gb": 0.0
+    },
+    {
+      "path": "dvc.yaml",
+      "gb": 0.0
+    },
+    {
+      "path": "pyproject.toml",
+      "gb": 0.0
+    }
+  ],
+  "pilot_top": [
+    {
+      "path": "pilot/md_r16_chromanol_anchor_triad_200ns",
+      "gb": 25.47
+    },
+    {
+      "path": "pilot/md_r16_chromanol_anchor_triad_100ns",
+      "gb": 12.74
+    },
+    {
+      "path": "pilot/md_r16_chromanol_topical_tgfb1_top6_60ns",
+      "gb": 12.64
+    },
+    {
+      "path": "pilot/cpu_meaningful",
+      "gb": 12.21
+    },
+    {
+      "path": "pilot/md_pains_free_4leaders",
+      "gb": 11.14
+    },
+    {
+      "path": "pilot/md_r13_13_full14",
+      "gb": 8.58
+    },
+    {
+      "path": "pilot/md_r12_11_full14",
+      "gb": 8.38
+    },
+    {
+      "path": "pilot/md_r12_23_full14",
+      "gb": 8.34
+    },
+    {
+      "path": "pilot/md_r17_chromanol_generative_expanded_green_60ns",
+      "gb": 8.32
+    },
+    {
+      "path": "pilot/md_r17_chromanol_generative_top_green_60ns",
+      "gb": 8.32
+    },
+    {
+      "path": "pilot/md_r16_chromanol_topical_dimethyl_pigment_30ns",
+      "gb": 8.31
+    },
+    {
+      "path": "pilot/md_r17_chromanol_generative_next_green_60ns",
+      "gb": 8.29
+    },
+    {
+      "path": "pilot/md_r16_chromanol_topical_pigment_representative_60ns",
+      "gb": 8.29
+    },
+    {
+      "path": "pilot/md_extended_30ns",
+      "gb": 7.97
+    },
+    {
+      "path": "pilot/md_r14_5_full14",
+      "gb": 7.12
+    },
+    {
+      "path": "pilot/md_r12_4_full14",
+      "gb": 7.07
+    },
+    {
+      "path": "pilot/scaffold_hop",
+      "gb": 6.95
+    },
+    {
+      "path": "pilot/md_r12_super_leaders",
+      "gb": 6.55
+    },
+    {
+      "path": "pilot/md_r14_5_r13_13",
+      "gb": 6.22
+    },
+    {
+      "path": "pilot/md_r16_chromanol_topical_chloro_pigment_30ns",
+      "gb": 5.54
+    }
+  ],
+  "policy": {
+    "active_compute": "keep on native WSL ext4 for Boltz/OpenMM/xTB performance",
+    "archive_target": "/mnt/d/genesis_archive for completed heavy outputs",
+    "best_long_term_fix": "export/import the Ubuntu WSL distro to D: so ext4.vhdx grows on D: instead of C:",
+    "do_not_move_while_running": [
+      "pilot/cpu_meaningful",
+      "currently active MD/cofold output directories",
+      "protected NPASS queue outputs"
+    ]
+  }
+}

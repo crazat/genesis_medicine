@@ -1,0 +1,112 @@
+# Holo cofactor registry for OpenFold3 / AQAffinity / Boltz-2 cofold inputs.
+#
+# When a target is metal-/cofactor-dependent, the apo-form prediction
+# misplaces the catalytic residues (e.g. zinc-coordinating histidines in
+# MMPs) and any downstream MD/ABFE on the apo pose is unreliable.
+#
+# This file is consumed by:
+#   - src/genesis_medicine/structure/cofactor_registry.py (loader)
+#   - scripts/build_of3_msa_template_cache.py (template recommendations)
+#   - scripts/run_openfold3_metal_smoke.sh (MMP1 smoke + Zn)
+#
+# Schema (per entry):
+#   <UNIPROT_KEY>:
+#     metal_ions: [CCD codes — repeated per coordination site]
+#     cofactor_ccds: [non-ion CCD codes (NAD, NDP, FAD, HEM, ATP, GTP, …)]
+#     holo_pdb_examples: [PDB IDs that demonstrate the holo state]
+#     note: free-form rationale
+#
+# CCD ion codes follow PDB conventions: ZN, CU, FE, CA, MG, MN, NI, CO,
+# K, NA. Cofactor CCDs follow PDB ligand dictionary: NAD (NAD+ oxidized),
+# NDP (NADPH), FAD (FAD+), FMN, HEM (heme b), HEC (heme c), SAM, SAH,
+# COA, ATP, GTP, BGC.
+#
+# Add a new entry whenever a target's catalytic site requires a metal/
+# cofactor for accurate cofold. Scaffolds without cofactor (TFs without
+# metal, GPCRs, kinases without ATP-bound state) should be omitted.
+
+schema_version: 1
+generated_at: "2026-05-03"
+
+cofactors:
+
+  # === Scar / fibrosis ===
+  MMP1:
+    metal_ions: [ZN, ZN, CA, CA, CA]   # 1 catalytic + 1 structural Zn + 3 Ca
+    cofactor_ccds: []
+    holo_pdb_examples: ["1HFC", "966C", "2CLT", "1SU3"]
+    note: "Catalytic Zn coordinates HEXXHXXGXXH motif; structural Zn + 3 Ca stabilize loops."
+
+  MMP3:
+    metal_ions: [ZN, ZN, CA, CA, CA]
+    cofactor_ccds: []
+    holo_pdb_examples: ["1B8Y", "1D7X", "1G05"]
+    note: "Same metal stoichiometry as MMP1."
+
+  MMP9:
+    metal_ions: [ZN, ZN, CA, CA, CA]
+    cofactor_ccds: []
+    holo_pdb_examples: ["1L6J", "1GKC", "4XCT"]
+    note: "Same metal stoichiometry as MMP1; gelatinase B."
+
+  LOX:
+    metal_ions: [CU]
+    cofactor_ccds: []
+    holo_pdb_examples: ["5ZE3"]
+    note: "Cu²⁺ + LTQ (lysine tyrosylquinone) at active site. LTQ is a post-translational modification — emit as protein covalent bond once supported, until then represent only Cu."
+
+  # === Pigmentation ===
+  TYR:
+    metal_ions: [CU, CU]
+    cofactor_ccds: []
+    holo_pdb_examples: ["5M8L", "5I38", "5I3B"]
+    note: "Binuclear copper (CuA + CuB) center. Classical kojic-acid / arbutin pocket."
+
+  TYRP1:
+    metal_ions: [CU, CU]
+    cofactor_ccds: []
+    holo_pdb_examples: ["5M8O", "5M8P"]
+    note: "Same binuclear copper architecture as TYR."
+
+  DCT:
+    metal_ions: [CU, CU]
+    cofactor_ccds: []
+    holo_pdb_examples: []
+    note: "TRP-2 (DCT) shares TYR family CuA/CuB; no public holo PDB at writing — predict via OF3 template hit on TYR."
+
+  # === Alopecia / acne (steroid metabolism) ===
+  SRD5A1:
+    metal_ions: []
+    cofactor_ccds: [NDP]
+    holo_pdb_examples: ["7C83"]
+    note: "5α-reductase type 1, NADPH-dependent."
+
+  SRD5A2:
+    metal_ions: []
+    cofactor_ccds: [NDP]
+    holo_pdb_examples: ["7BW1", "7C83"]
+    note: "5α-reductase type 2, NADPH-dependent (finasteride/dutasteride pocket)."
+
+  # === Photoaging / longevity ===
+  SIRT1:
+    metal_ions: [ZN]
+    cofactor_ccds: [NAD]
+    holo_pdb_examples: ["4I5I", "4ZZH"]
+    note: "Catalytic Zn²⁺ (CCH-CC zinc-binding loop) + NAD+ substrate. Activator (SRT1720, resveratrol) binds STAC pocket distinct from NAD pocket."
+
+  # === Acne / inflammation ===
+  PTGS2:
+    metal_ions: []
+    cofactor_ccds: [HEM]
+    holo_pdb_examples: ["5KIR", "5F19"]
+    note: "COX-2 contains heme b; both COX and POX activities require Fe-heme."
+
+  RARG:
+    metal_ions: []
+    cofactor_ccds: []
+    holo_pdb_examples: ["1FCY", "1FCZ"]
+    note: "Nuclear receptor LBD; ligand IS the agonist (tretinoin/adapalene), no separate cofactor."
+
+  # === Channels / transcription factors without small-molecule cofactor ===
+  # PIEZO1, MYLK, AR, MITF, TLR2, NLRP3, SREBF1, TGFB1, CTGF, VEGFA, FGF2,
+  # WNT10B, CTNNB1, JUN — emitted apo (no metal_ions / cofactor_ccds).

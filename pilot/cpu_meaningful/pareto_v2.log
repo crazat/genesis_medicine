@@ -1,0 +1,21 @@
+========================================================================
+Pareto v2 — strict 6-objective filter
+========================================================================
+After quality filter: 347
+Valid for Pareto v2: 347
+Computing strict Pareto on (347, 6)...
+
+✅ Pareto v2 strict front 1: 101 mol (vs v1 = 1000)
+   → 29.1% of valid pool
+
+[Top 10 Pareto v2 composite]
+  comp=0.786 QED=0.736 SA=1.72 hERG=0.109 | COC(=O)c1ccc(O)c(C(=O)OC)c1
+  comp=0.784 QED=0.886 SA=1.83 hERG=0.449 | COc1ccc(O)c(Oc2ccc(O)c(OC)c2)c1
+  comp=0.783 QED=0.886 SA=1.87 hERG=0.463 | COc1ccc(O)c(Oc2cc(OC)ccc2O)c1
+  comp=0.778 QED=0.886 SA=1.79 hERG=0.479 | COc1cc(Oc2ccc(O)c(OC)c2)ccc1O
+  comp=0.764 QED=0.788 SA=1.96 hERG=0.243 | COc1cc(Oc2cc(CO)ccc2O)ccc1O
+  comp=0.760 QED=0.788 SA=2.00 hERG=0.269 | COc1ccc(O)c(Oc2cc(CO)ccc2O)c1
+  comp=0.758 QED=0.874 SA=1.74 hERG=0.501 | COc1cc(-c2ccc(O)c(OC)c2)ccc1O
+  comp=0.751 QED=0.841 SA=1.86 hERG=0.446 | COC(=O)c1cc(-c2ccc(O)c(OC)c2)ccc1O
+  comp=0.727 QED=0.777 SA=1.95 hERG=0.342 | COc1cc(-c2cc(CO)ccc2O)ccc1O
+  comp=0.722 QED=0.788 SA=1.96 hERG=0.419 | COc1cc(Oc2ccc(O)c(CO)c2)ccc1O

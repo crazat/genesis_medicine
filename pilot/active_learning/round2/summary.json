@@ -1,0 +1,12 @@
+{
+  "phase": "C1 active learning round 2",
+  "train_csv": "xtb_npass_top9997_hetero10_refine_432conf.csv",
+  "n_train": 80,
+  "target": "composite",
+  "cv_r2_mean": 0.8065470934198025,
+  "cv_r2_std": 0.08693489625071686,
+  "train_spearman": 0.9915493618749732,
+  "n_predicted": 9728,
+  "top_K_saved": 50,
+  "wallclock_min": 0.2
+}

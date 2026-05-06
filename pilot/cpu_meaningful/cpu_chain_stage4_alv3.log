@@ -1,0 +1,21 @@
+NPAtlas hetero10 ok: 1066 mol
+  features: X=(1066, 2058), y=(1066,)
+  Task A (NPAtlas gap_eV_mean): held-out R²=0.958, Spearman ρ=0.827
+ChEMBL pIC50 + 432-refine merged: 95 mol
+  Task B (ChEMBL pIC50): held-out R²=0.490, Spearman ρ=0.731
+{
+  "task_a_npatlas_gap_eV_mean": {
+    "n_train": 852,
+    "n_test": 214,
+    "held_out_r2": 0.9577,
+    "held_out_spearman": 0.8271,
+    "model": "XGBoost (n_estimators=400, max_depth=6)"
+  },
+  "task_b_chembl_pic50": {
+    "n_train": 66,
+    "n_test": 29,
+    "held_out_r2": 0.4895,
+    "held_out_spearman": 0.7305,
+    "model": "XGBoost (n_estimators=300, max_depth=4)"
+  }
+}

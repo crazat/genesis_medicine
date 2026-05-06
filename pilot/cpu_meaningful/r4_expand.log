@@ -1,0 +1,27 @@
+========================================================================
+Round 4 EXPANDED (relaxed filter, 200+ target)
+========================================================================
+
+[Stage 1: Deep BRICS recombination from 10 seeds]
+  BRICS pool: 0 unique
+
+[Stage 2: Extensive bioisostere swap]
+  Bioisostere pool: 212 unique
+
+[Stage 3: Relaxed drug-likeness filter on 212 mol]
+  Drug-like (relaxed): 193
+
+✅ round4_expanded.csv (193 mol)
+✅ round4_top200.csv (top 200)
+
+[Round 4 expanded top 10]
+  score=0.894 QED=0.900 MW=332 | N#Cc1ccc2c(c1)OCC(C=Cc1ccc(CO)c(O)c1C#N)C2
+  score=0.875 QED=0.911 MW=318 | OCc1ccc(C=CC2COc3cc(F)ccc3C2)c(F)c1O
+  score=0.854 QED=0.693 MW=236 | CCCCC1=C(CN)C(=O)C(CN)=C(C)C1=O
+  score=0.845 QED=0.695 MW=250 | CCCCC1=C(CN)C(=O)C(CN)=C(CC)C1=O
+  score=0.843 QED=0.704 MW=226 | CCOCC1=C(O)C(=O)C(O)=C(CC)C1=O
+  score=0.843 QED=0.704 MW=226 | CCC1=C(O)C(=O)C(O)=C(CCOC)C1=O
+  score=0.841 QED=0.676 MW=212 | CCOCC1=C(O)C(=O)C(O)=C(C)C1=O
+  score=0.841 QED=0.676 MW=212 | COCCC1=C(O)C(=O)C(O)=C(C)C1=O
+  score=0.841 QED=0.699 MW=222 | CCCCC1=C(N)C(=O)C(N)=C(CC)C1=O
+  score=0.839 QED=0.671 MW=208 | CCCCC1=C(N)C(=O)C(N)=C(C)C1=O

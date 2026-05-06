@@ -1,0 +1,5 @@
+5000 confs × R4 top 20 mol
+Wall: 1.4 min
+✅ conformers_5000_r4.csv (20 success)
+  Energy range: 8.3-20.9 mean 14.8
+  Boltzmann eff confs: 4.3-107.9 mean 39.4

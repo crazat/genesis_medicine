@@ -4,308 +4,299 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>02_recover_workflow</title>
+  <title>Genesis_Medicine — 02_recover_workflow</title>
   <style>
-    /* Default styles provided by pandoc.
-    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-    */
-    html {
-      color: #1a1a1a;
-      background-color: #fdfdfd;
-    }
-    body {
-      margin: 0 auto;
-      max-width: 36em;
-      padding-left: 50px;
-      padding-right: 50px;
-      padding-top: 50px;
-      padding-bottom: 50px;
-      hyphens: auto;
-      overflow-wrap: break-word;
-      text-rendering: optimizeLegibility;
-      font-kerning: normal;
-    }
-    @media (max-width: 600px) {
-      body {
-        font-size: 0.9em;
-        padding: 12px;
-      }
-      h1 {
-        font-size: 1.8em;
-      }
-    }
-    @media print {
-      html {
-        background-color: white;
-      }
-      body {
-        background-color: transparent;
-        color: black;
-        font-size: 12pt;
-      }
-      p, h2, h3 {
-        orphans: 3;
-        widows: 3;
-      }
-      h2, h3, h4 {
-        page-break-after: avoid;
-      }
-    }
-    p {
-      margin: 1em 0;
-    }
-    a {
-      color: #1a1a1a;
-    }
-    a:visited {
-      color: #1a1a1a;
-    }
-    img {
-      max-width: 100%;
-    }
-    svg {
-      height: auto;
-      max-width: 100%;
-    }
-    h1, h2, h3, h4, h5, h6 {
-      margin-top: 1.4em;
-    }
-    h5, h6 {
-      font-size: 1em;
-      font-style: italic;
-    }
-    h6 {
-      font-weight: normal;
-    }
-    ol, ul {
-      padding-left: 1.7em;
-      margin-top: 1em;
-    }
-    li > ol, li > ul {
-      margin-top: 0;
-    }
-    blockquote {
-      margin: 1em 0 1em 1.7em;
-      padding-left: 1em;
-      border-left: 2px solid #e6e6e6;
-      color: #606060;
-    }
-    code {
-      white-space: pre-wrap;
-      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-      font-size: 85%;
-      margin: 0;
-      hyphens: manual;
-    }
-    pre {
-      margin: 1em 0;
-      overflow: auto;
-    }
-    pre code {
-      padding: 0;
-      overflow: visible;
-      overflow-wrap: normal;
-    }
-    .sourceCode {
-     background-color: transparent;
-     overflow: visible;
-    }
-    hr {
-      border: none;
-      border-top: 1px solid #1a1a1a;
-      height: 1px;
-      margin: 1em 0;
-    }
-    table {
-      margin: 1em 0;
-      border-collapse: collapse;
-      width: 100%;
-      overflow-x: auto;
-      display: block;
-      font-variant-numeric: lining-nums tabular-nums;
-    }
-    table caption {
-      margin-bottom: 0.75em;
-    }
-    tbody {
-      margin-top: 0.5em;
-      border-top: 1px solid #1a1a1a;
-      border-bottom: 1px solid #1a1a1a;
-    }
-    th {
-      border-top: 1px solid #1a1a1a;
-      padding: 0.25em 0.5em 0.25em 0.5em;
-    }
-    td {
-      padding: 0.125em 0.5em 0.25em 0.5em;
-    }
-    header {
-      margin-bottom: 4em;
-      text-align: center;
-    }
-    #TOC li {
-      list-style: none;
-    }
-    #TOC ul {
-      padding-left: 1.3em;
-    }
-    #TOC > ul {
-      padding-left: 0;
-    }
-    #TOC a:not(:hover) {
-      text-decoration: none;
-    }
-    span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    /* The extra [class] is a hack that increases specificity enough to
-       override a similar rule in reveal.js */
-    ul.task-list[class]{list-style: none;}
-    ul.task-list li input[type="checkbox"] {
-      font-size: inherit;
-      width: 0.8em;
-      margin: 0 0.8em 0.2em -1.6em;
-      vertical-align: middle;
-    }
-  </style>
+
+html {
+color: #1a1a1a;
+background-color: #fdfdfd;
+}
+body {
+margin: 0 auto;
+max-width: 36em;
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 50px;
+padding-bottom: 50px;
+hyphens: auto;
+overflow-wrap: break-word;
+text-rendering: optimizeLegibility;
+font-kerning: normal;
+}
+@media (max-width: 600px) {
+body {
+font-size: 0.9em;
+padding: 12px;
+}
+h1 {
+font-size: 1.8em;
+}
+}
+@media print {
+html {
+background-color: white;
+}
+body {
+background-color: transparent;
+color: black;
+font-size: 12pt;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+}
+p {
+margin: 1em 0;
+}
+a {
+color: #1a1a1a;
+}
+a:visited {
+color: #1a1a1a;
+}
+img {
+max-width: 100%;
+}
+svg {
+height: auto;
+max-width: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+margin-top: 1.4em;
+}
+h5, h6 {
+font-size: 1em;
+font-style: italic;
+}
+h6 {
+font-weight: normal;
+}
+ol, ul {
+padding-left: 1.7em;
+margin-top: 1em;
+}
+li > ol, li > ul {
+margin-top: 0;
+}
+blockquote {
+margin: 1em 0 1em 1.7em;
+padding-left: 1em;
+border-left: 2px solid #e6e6e6;
+color: #606060;
+}
+code {
+white-space: pre-wrap;
+font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+font-size: 85%;
+margin: 0;
+hyphens: manual;
+}
+pre {
+margin: 1em 0;
+overflow: auto;
+}
+pre code {
+padding: 0;
+overflow: visible;
+overflow-wrap: normal;
+}
+.sourceCode {
+background-color: transparent;
+overflow: visible;
+}
+hr {
+border: none;
+border-top: 1px solid #1a1a1a;
+height: 1px;
+margin: 1em 0;
+}
+table {
+margin: 1em 0;
+border-collapse: collapse;
+width: 100%;
+overflow-x: auto;
+display: block;
+font-variant-numeric: lining-nums tabular-nums;
+}
+table caption {
+margin-bottom: 0.75em;
+}
+tbody {
+margin-top: 0.5em;
+border-top: 1px solid #1a1a1a;
+border-bottom: 1px solid #1a1a1a;
+}
+th {
+border-top: 1px solid #1a1a1a;
+padding: 0.25em 0.5em 0.25em 0.5em;
+}
+td {
+padding: 0.125em 0.5em 0.25em 0.5em;
+}
+header {
+margin-bottom: 4em;
+text-align: center;
+}
+#TOC li {
+list-style: none;
+}
+#TOC ul {
+padding-left: 1.3em;
+}
+#TOC > ul {
+padding-left: 0;
+}
+#TOC a:not(:hover) {
+text-decoration: none;
+}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+</style>
+  
+  <style>
+@page { size: A4; margin: 1.6cm 1.2cm; }
+body { font-family: "DejaVu Sans", sans-serif; font-size: 10pt; line-height: 1.45; }
+h1 { font-size: 16pt; margin-top: 0.6em; }
+h2 { font-size: 13pt; margin-top: 1.0em; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+h3 { font-size: 11pt; margin-top: 0.8em; }
+code, pre { font-family: "DejaVu Sans Mono", monospace; font-size: 8.5pt; }
+pre { background: #f5f5f5; padding: 6px 8px; overflow-wrap: break-word; white-space: pre-wrap; }
+table {
+border-collapse: collapse;
+width: 100%;
+table-layout: auto;
+font-size: 8.5pt;
+margin: 0.6em 0;
+page-break-inside: auto;
+}
+th, td {
+border: 1px solid #bbb;
+padding: 3px 5px;
+vertical-align: top;
+word-break: break-word;
+overflow-wrap: anywhere;
+hyphens: auto;
+max-width: 18em;
+}
+th { background: #eee; font-weight: 600; }
+img { max-width: 100%; height: auto; page-break-inside: avoid; }
+figure { page-break-inside: avoid; margin: 0.8em 0; }
+blockquote { border-left: 3px solid #ccc; margin: 0.6em 0; padding: 0.2em 0.8em; color: #444; }
+</style>
 </head>
 <body>
 <header id="title-block-header">
-<h1 class="title">02_recover_workflow</h1>
+<h1 class="title">Genesis_Medicine — 02_recover_workflow</h1>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li><a
-href="#an-integrated-ai-workflow-for-a-korean-medicine-clinic-3d-facial-diagnostics-rag-based-electronic-medical-records-and-computational-molecular-prescription"
-id="toc-an-integrated-ai-workflow-for-a-korean-medicine-clinic-3d-facial-diagnostics-rag-based-electronic-medical-records-and-computational-molecular-prescription">An
+<li><a href="#an-integrated-ai-workflow-for-a-korean-medicine-clinic-3d-facial-diagnostics-rag-based-electronic-medical-records-and-computational-molecular-prescription" id="toc-an-integrated-ai-workflow-for-a-korean-medicine-clinic-3d-facial-diagnostics-rag-based-electronic-medical-records-and-computational-molecular-prescription">An
 integrated AI workflow for a Korean medicine clinic: 3D facial
 diagnostics, RAG-based electronic medical records, and computational
 molecular prescription</a>
 <ul>
 <li><a href="#abstract-250-words" id="toc-abstract-250-words">Abstract
 (250 words)</a></li>
-<li><a href="#plain-language-summary"
-id="toc-plain-language-summary">Plain-language summary</a></li>
+<li><a href="#plain-language-summary" id="toc-plain-language-summary">Plain-language summary</a></li>
 <li><a href="#introduction" id="toc-introduction">1. Introduction</a>
 <ul>
-<li><a href="#korean-medicine-and-the-molecular-medicine-gap"
-id="toc-korean-medicine-and-the-molecular-medicine-gap">1.1 Korean
+<li><a href="#korean-medicine-and-the-molecular-medicine-gap" id="toc-korean-medicine-and-the-molecular-medicine-gap">1.1 Korean
 medicine and the molecular-medicine gap</a></li>
-<li><a href="#the-three-entity-design"
-id="toc-the-three-entity-design">1.2 The three-entity design</a></li>
-<li><a href="#what-this-paper-does-and-does-not-claim"
-id="toc-what-this-paper-does-and-does-not-claim">1.3 What this paper
+<li><a href="#the-three-entity-design" id="toc-the-three-entity-design">1.2 The three-entity design</a></li>
+<li><a href="#what-this-paper-does-and-does-not-claim" id="toc-what-this-paper-does-and-does-not-claim">1.3 What this paper
 does and does not claim</a></li>
 </ul></li>
 <li><a href="#system-architecture" id="toc-system-architecture">2.
 System architecture</a>
 <ul>
-<li><a href="#layer-a-3d-facial-diagnostic-capture-han-predict"
-id="toc-layer-a-3d-facial-diagnostic-capture-han-predict">2.1 Layer A:
+<li><a href="#layer-a-3d-facial-diagnostic-capture-han-predict" id="toc-layer-a-3d-facial-diagnostic-capture-han-predict">2.1 Layer A:
 3D facial diagnostic capture (HAN PREDICT)</a></li>
-<li><a
-href="#layer-b-smart-charts-ai-electronic-medical-record-han-predict"
-id="toc-layer-b-smart-charts-ai-electronic-medical-record-han-predict">2.2
+<li><a href="#layer-b-smart-charts-ai-electronic-medical-record-han-predict" id="toc-layer-b-smart-charts-ai-electronic-medical-record-han-predict">2.2
 Layer B: Smart Charts AI electronic medical record (HAN
 PREDICT)</a></li>
-<li><a href="#layer-c-genesis_medicine-molecular-prescription-engine"
-id="toc-layer-c-genesis_medicine-molecular-prescription-engine">2.3
+<li><a href="#layer-c-genesis_medicine-molecular-prescription-engine" id="toc-layer-c-genesis_medicine-molecular-prescription-engine">2.3
 Layer C: Genesis_Medicine molecular prescription engine</a></li>
-<li><a href="#cross-layer-data-and-feedback-flows"
-id="toc-cross-layer-data-and-feedback-flows">2.4 Cross-layer data and
+<li><a href="#cross-layer-data-and-feedback-flows" id="toc-cross-layer-data-and-feedback-flows">2.4 Cross-layer data and
 feedback flows</a></li>
 </ul></li>
 <li><a href="#regulatory-framework" id="toc-regulatory-framework">3.
 Regulatory framework</a>
 <ul>
-<li><a href="#personal-information-protection-act-pipa-23-23-2"
-id="toc-personal-information-protection-act-pipa-23-23-2">3.1 Personal
+<li><a href="#personal-information-protection-act-pipa-23-23-2" id="toc-personal-information-protection-act-pipa-23-23-2">3.1 Personal
 Information Protection Act (PIPA) §23 / §23-2</a></li>
-<li><a href="#korea-ai-basic-act-인공지능-기본법"
-id="toc-korea-ai-basic-act-인공지능-기본법">3.2 Korea AI Basic Act
+<li><a href="#korea-ai-basic-act-인공지능-기본법" id="toc-korea-ai-basic-act-인공지능-기본법">3.2 Korea AI Basic Act
 (인공지능 기본법)</a></li>
-<li><a href="#medical-service-act-의료법-17-and-56"
-id="toc-medical-service-act-의료법-17-and-56">3.3 Medical Service Act
+<li><a href="#medical-service-act-의료법-17-and-56" id="toc-medical-service-act-의료법-17-and-56">3.3 Medical Service Act
 (의료법) §17 and §56</a></li>
-<li><a href="#international-alignment"
-id="toc-international-alignment">3.4 International alignment</a></li>
+<li><a href="#international-alignment" id="toc-international-alignment">3.4 International alignment</a></li>
 </ul></li>
-<li><a href="#worked-example-a-scar-revision-patient-encounter"
-id="toc-worked-example-a-scar-revision-patient-encounter">4. Worked
+<li><a href="#worked-example-a-scar-revision-patient-encounter" id="toc-worked-example-a-scar-revision-patient-encounter">4. Worked
 example: a scar-revision patient encounter</a>
 <ul>
 <li><a href="#pre-visit" id="toc-pre-visit">4.1 Pre-visit</a></li>
-<li><a href="#in-clinic-layer-a-capture"
-id="toc-in-clinic-layer-a-capture">4.2 In-clinic, Layer A
+<li><a href="#in-clinic-layer-a-capture" id="toc-in-clinic-layer-a-capture">4.2 In-clinic, Layer A
 capture</a></li>
-<li><a href="#consultation-layer-b-capture"
-id="toc-consultation-layer-b-capture">4.3 Consultation, Layer B
+<li><a href="#consultation-layer-b-capture" id="toc-consultation-layer-b-capture">4.3 Consultation, Layer B
 capture</a></li>
-<li><a href="#molecular-co-reasoning-layer-c-surface"
-id="toc-molecular-co-reasoning-layer-c-surface">4.4 Molecular
+<li><a href="#molecular-co-reasoning-layer-c-surface" id="toc-molecular-co-reasoning-layer-c-surface">4.4 Molecular
 co-reasoning, Layer C surface</a></li>
-<li><a href="#decision-and-informed-consent"
-id="toc-decision-and-informed-consent">4.5 Decision and informed
+<li><a href="#decision-and-informed-consent" id="toc-decision-and-informed-consent">4.5 Decision and informed
 consent</a></li>
-<li><a href="#follow-up-and-outcome-capture"
-id="toc-follow-up-and-outcome-capture">4.6 Follow-up and outcome
+<li><a href="#follow-up-and-outcome-capture" id="toc-follow-up-and-outcome-capture">4.6 Follow-up and outcome
 capture</a></li>
 </ul></li>
-<li><a href="#limitations-and-ethical-considerations"
-id="toc-limitations-and-ethical-considerations">5. Limitations and
+<li><a href="#limitations-and-ethical-considerations" id="toc-limitations-and-ethical-considerations">5. Limitations and
 ethical considerations</a>
 <ul>
-<li><a href="#limitations-of-this-report"
-id="toc-limitations-of-this-report">5.1 Limitations of this
+<li><a href="#limitations-of-this-report" id="toc-limitations-of-this-report">5.1 Limitations of this
 report</a></li>
-<li><a href="#ethical-considerations"
-id="toc-ethical-considerations">5.2 Ethical considerations</a></li>
-<li><a href="#correction-of-one-earlier-internal-claim"
-id="toc-correction-of-one-earlier-internal-claim">5.3 Correction of one
+<li><a href="#ethical-considerations" id="toc-ethical-considerations">5.2 Ethical considerations</a></li>
+<li><a href="#correction-of-one-earlier-internal-claim" id="toc-correction-of-one-earlier-internal-claim">5.3 Correction of one
 earlier internal claim</a></li>
 </ul></li>
-<li><a href="#conclusions-and-forward-path"
-id="toc-conclusions-and-forward-path">6. Conclusions and forward
+<li><a href="#conclusions-and-forward-path" id="toc-conclusions-and-forward-path">6. Conclusions and forward
 path</a></li>
-<li><a href="#acknowledgments"
-id="toc-acknowledgments">Acknowledgments</a></li>
+<li><a href="#acknowledgments" id="toc-acknowledgments">Acknowledgments</a></li>
 <li><a href="#author-contributions" id="toc-author-contributions">Author
 contributions</a></li>
-<li><a href="#competing-interests"
-id="toc-competing-interests">Competing interests</a></li>
-<li><a href="#data-and-code-availability"
-id="toc-data-and-code-availability">Data and code availability</a></li>
+<li><a href="#competing-interests" id="toc-competing-interests">Competing interests</a></li>
+<li><a href="#data-and-code-availability" id="toc-data-and-code-availability">Data and code availability</a></li>
 <li><a href="#figures" id="toc-figures">Figures</a></li>
 <li><a href="#references" id="toc-references">References</a></li>
-<li><a
-href="#round-89-pipeline-maturity-audit-recover-d-110-deployment-plan-2026-04-27"
-id="toc-round-89-pipeline-maturity-audit-recover-d-110-deployment-plan-2026-04-27">Round
+<li><a href="#round-89-pipeline-maturity-audit-recover-d-110-deployment-plan-2026-04-27" id="toc-round-89-pipeline-maturity-audit-recover-d-110-deployment-plan-2026-04-27">Round
 8+9 — Pipeline maturity audit + Recover D-110 deployment plan
 (2026-04-27)</a></li>
-<li><a href="#use-of-ai-tools-in-writing-icmje-2024-disclosure"
-id="toc-use-of-ai-tools-in-writing-icmje-2024-disclosure">Use of AI
+<li><a href="#use-of-ai-tools-in-writing-icmje-2024-disclosure" id="toc-use-of-ai-tools-in-writing-icmje-2024-disclosure">Use of AI
 tools in writing (ICMJE 2024 disclosure)</a></li>
 </ul></li>
 </ul>
 </nav>
-<h1
-id="an-integrated-ai-workflow-for-a-korean-medicine-clinic-3d-facial-diagnostics-rag-based-electronic-medical-records-and-computational-molecular-prescription">An
+<h1 id="an-integrated-ai-workflow-for-a-korean-medicine-clinic-3d-facial-diagnostics-rag-based-electronic-medical-records-and-computational-molecular-prescription">An
 integrated AI workflow for a Korean medicine clinic: 3D facial
 diagnostics, RAG-based electronic medical records, and computational
 molecular prescription</h1>
 <p><strong>HanCheongWoo ¹,²,³</strong></p>
-<p><strong>ORCID</strong>: <a
-href="https://orcid.org/0009-0004-4805-8815">0009-0004-4805-8815</a></p>
+<p><strong>ORCID</strong>: <a href="https://orcid.org/0009-0004-4805-8815">0009-0004-4805-8815</a></p>
 <p>¹ Genesis_Medicine Lab — AI in silico drug discovery R&amp;D
 division, Seoul, Republic of Korea ² HAN PREDICT, Inc. — AI healthcare
-technology platform; <a href="https://hanpredict.com"
-class="uri">https://hanpredict.com</a> ³ Recover Korean Medicine Clinic
+technology platform; <a href="https://hanpredict.com" class="uri">https://hanpredict.com</a> ³ Recover Korean Medicine Clinic
 — affiliated Korean medicine clinic specializing in skin regeneration
-(강남, opening 2026-08-15); <a href="https://recover-clinic.kr"
-class="uri">https://recover-clinic.kr</a></p>
-<p>Code repository: <a href="https://github.com/crazat/genesis_medicine"
-class="uri">https://github.com/crazat/genesis_medicine</a> ·
+(강남, opening 2026-08-15); <a href="https://recover-clinic.kr" class="uri">https://recover-clinic.kr</a></p>
+<p>Code repository: <a href="https://github.com/crazat/genesis_medicine" class="uri">https://github.com/crazat/genesis_medicine</a> ·
 Correspondence: admin@hanpredict.com</p>
 <p><strong>Manuscript type</strong>: Technical workflow / clinical
 informatics report <strong>Target preprint server</strong>: medRxiv
@@ -389,8 +380,7 @@ affiliated entities, organized so that traditional-pattern diagnosis and
 molecular hypothesis-generation feed into each other through a shared
 electronic medical record:</p>
 <ul>
-<li><strong>HAN PREDICT, Inc.</strong> (<a
-href="https://hanpredict.com">hanpredict.com</a>) — the AI healthcare
+<li><strong>HAN PREDICT, Inc.</strong> (<a href="https://hanpredict.com">hanpredict.com</a>) — the AI healthcare
 technology platform, providing the patient-facing front end (Clinic CRM
 with appointment scheduling and CTI call monitoring), the AI electronic
 health record (Smart Charts, RAG-based with InBody integration), the
@@ -410,8 +400,7 @@ Korean herbal natural products against a panel of skin-relevant
 molecular targets (TGF-β1, MMP-1, MMP-3, MMP-9, CTGF, SMAD3, COL1A1,
 LOX, PDGFRB and related fibrotic and pigment / hair-cycle / sebaceous
 targets).</li>
-<li><strong>Recover Korean Medicine Clinic</strong> (<a
-href="https://recover-clinic.kr">recover-clinic.kr</a>) — the affiliated
+<li><strong>Recover Korean Medicine Clinic</strong> (<a href="https://recover-clinic.kr">recover-clinic.kr</a>) — the affiliated
 한방 clinical practice, specializing in skin regeneration
 (post-traumatic scar revision, keloid management, post-procedural
 healing, photoaging, alopecia, melasma). Recover provides the patient
@@ -467,8 +456,7 @@ markers).</p>
 <p>Outputs are written as both a structured JSON record (for downstream
 EMR consumption) and as an interactive HTML report (Three.js viewer) for
 clinician review.</p>
-<h3
-id="layer-b-smart-charts-ai-electronic-medical-record-han-predict">2.2
+<h3 id="layer-b-smart-charts-ai-electronic-medical-record-han-predict">2.2
 Layer B: Smart Charts AI electronic medical record (HAN PREDICT)</h3>
 <p>The clinician’s work surface is <strong>Smart Charts</strong>, a
 retrieval-augmented EMR with the following features:</p>
@@ -497,8 +485,7 @@ record retention) and §56 (advertising-claim substantiation).</li>
 <h3 id="layer-c-genesis_medicine-molecular-prescription-engine">2.3
 Layer C: Genesis_Medicine molecular prescription engine</h3>
 <p>Genesis_Medicine is a research-grade in silico drug-discovery
-pipeline maintained as an open-source repository (<a
-href="https://github.com/crazat/genesis_medicine">github.com/crazat/genesis_medicine</a>,
+pipeline maintained as an open-source repository (<a href="https://github.com/crazat/genesis_medicine">github.com/crazat/genesis_medicine</a>,
 Apache-2.0 license). Its role in the workflow is
 <strong>hypothesis-generation only</strong> — to provide the prescribing
 한의사 with a molecular-level lens onto which Korean herbal
@@ -819,14 +806,10 @@ presented as a system design and is openly documented under CC-BY
 4.0.</p>
 <h2 id="data-and-code-availability">Data and code availability</h2>
 <ul>
-<li>Genesis_Medicine pipeline (open source, Apache-2.0): <a
-href="https://github.com/crazat/genesis_medicine"
-class="uri">https://github.com/crazat/genesis_medicine</a></li>
-<li>HAN PREDICT platform: described at <a href="https://hanpredict.com"
-class="uri">https://hanpredict.com</a>; specific clinic-facing
+<li>Genesis_Medicine pipeline (open source, Apache-2.0): <a href="https://github.com/crazat/genesis_medicine" class="uri">https://github.com/crazat/genesis_medicine</a></li>
+<li>HAN PREDICT platform: described at <a href="https://hanpredict.com" class="uri">https://hanpredict.com</a>; specific clinic-facing
 components are not open-source.</li>
-<li>Recover Korean Medicine Clinic: <a href="https://recover-clinic.kr"
-class="uri">https://recover-clinic.kr</a></li>
+<li>Recover Korean Medicine Clinic: <a href="https://recover-clinic.kr" class="uri">https://recover-clinic.kr</a></li>
 <li>IRB protocol documentation will be released after IRB approval, with
 appropriate patient-information redaction.</li>
 </ul>
@@ -839,8 +822,7 @@ practice). Patient data flows from Recover via HAN PREDICT (Smart
 Charts) to Genesis_Medicine for molecular-level reasoning, and molecular
 hypotheses return to inform the prescribing 한의사’s decision.</p>
 <figure>
-<img src="figures/fig1_three_pillar.png"
-alt="Figure 1: Three-pillar integration" />
+<img role="img" aria-label="Figure 1: Three-pillar integration" src="figures/fig1_three_pillar.png" alt="Figure 1: Three-pillar integration" />
 <figcaption aria-hidden="true">Figure 1: Three-pillar
 integration</figcaption>
 </figure>
@@ -851,14 +833,12 @@ engine). All AI recommendations are advisory; the licensed 한의사
 retains full clinical authority. Outcome data feeds back to Layer C for
 compound-library re-prioritization.</p>
 <figure>
-<img src="figures/fig2_patient_workflow.png"
-alt="Figure 2: Patient workflow" />
+<img role="img" aria-label="Figure 2: Patient workflow" src="figures/fig2_patient_workflow.png" alt="Figure 2: Patient workflow" />
 <figcaption aria-hidden="true">Figure 2: Patient workflow</figcaption>
 </figure>
 <h2 id="references">References</h2>
 <p>[1] Korea Health Industry Development Institute (KHIDI). Korean
-medicine workforce statistics, 2024. <a href="https://www.khidi.or.kr/"
-class="uri">https://www.khidi.or.kr/</a></p>
+medicine workforce statistics, 2024. <a href="https://www.khidi.or.kr/" class="uri">https://www.khidi.or.kr/</a></p>
 <p>[2] Sorokina M, Merseburger P, Rajan K, et al. COCONUT online:
 Collection of Open Natural Products database. <em>J Cheminform</em>
 2021, 13, 2. doi:10.1186/s13321-020-00478-9</p>
@@ -875,9 +855,7 @@ learning ADMET platform for evaluation of large-scale chemical
 libraries. <em>Bioinformatics</em> 2024, 40, btae416.
 doi:10.1093/bioinformatics/btae416</p>
 <p>[7] Wohlwend J, Corso G, Passaro S, et al. Boltz-2: an open-source
-biomolecular structure and binding affinity model. Preprint, 2024. <a
-href="https://github.com/jwohlwend/boltz"
-class="uri">https://github.com/jwohlwend/boltz</a></p>
+biomolecular structure and binding affinity model. Preprint, 2024. <a href="https://github.com/jwohlwend/boltz" class="uri">https://github.com/jwohlwend/boltz</a></p>
 <p>[8] Chodera JD, et al. openmmtools: a batteries-included Python
 toolkit for OpenMM (v0.26). 2026. doi:10.5281/zenodo.4248373</p>
 <p>[9] Mobley DL, Chodera JD, Dill KA. Confine-and-release method:
@@ -901,8 +879,7 @@ references) <em>Submission target</em>: medRxiv (immediate); a Korean
 Medicine / clinical-informatics peer-reviewed venue (anticipated
 2026-Q3) <em>Version</em>: 0.1 draft, 2026-04-26 <em>License</em>: CC-BY
 4.0 (preprint); platform code licenses as noted in §6</p>
-<h2
-id="round-89-pipeline-maturity-audit-recover-d-110-deployment-plan-2026-04-27">Round
+<h2 id="round-89-pipeline-maturity-audit-recover-d-110-deployment-plan-2026-04-27">Round
 8+9 — Pipeline maturity audit + Recover D-110 deployment plan
 (2026-04-27)</h2>
 <p><strong>System inventory after Rounds 5+7+8</strong> (3 audit

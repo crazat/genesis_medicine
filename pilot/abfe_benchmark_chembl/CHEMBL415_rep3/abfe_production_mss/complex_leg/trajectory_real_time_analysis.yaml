@@ -1,0 +1,60 @@
+- iteration: 200
+  percent_complete: 25.0
+  mbar_analysis:
+    free_energy_in_kT: 51.86342509473145
+    standard_error_in_kT: 0.6275781547530284
+    number_of_uncorrelated_samples: 167.1853790283203
+    n_equilibrium_iterations: 3
+    statistical_inefficiency: 1.1902954578399658
+  timing_data:
+    iteration_seconds: 8.522226572036743
+    average_seconds_per_iteration: 7.823551910007419
+    estimated_time_remaining: '1:18:21.954698'
+    estimated_localtime_finish_date: 2026-May-06-09:09:11
+    estimated_total_time: '1:44:18.841528'
+    ns_per_day: 1766.9723622996821
+- iteration: 400
+  percent_complete: 50.0
+  mbar_analysis:
+    free_energy_in_kT: 48.27821729590819
+    standard_error_in_kT: 0.9753710280437154
+    number_of_uncorrelated_samples: 337.1750183105469
+    n_equilibrium_iterations: 5
+    statistical_inefficiency: 1.1774300336837769
+  timing_data:
+    iteration_seconds: 6.8748085498809814
+    average_seconds_per_iteration: 8.015399187131036
+    estimated_time_remaining: '0:53:34.175074'
+    estimated_localtime_finish_date: 2026-May-06-09:11:45
+    estimated_total_time: '1:46:52.319350'
+    ns_per_day: 1724.680165922971
+- iteration: 600
+  percent_complete: 75.0
+  mbar_analysis:
+    free_energy_in_kT: 46.87579321300499
+    standard_error_in_kT: 0.5491226771697401
+    number_of_uncorrelated_samples: 446.1291809082031
+    n_equilibrium_iterations: 13
+    statistical_inefficiency: 1.320245385169983
+  timing_data:
+    iteration_seconds: 8.796441555023193
+    average_seconds_per_iteration: 8.172032636075665
+    estimated_time_remaining: '0:27:22.578560'
+    estimated_localtime_finish_date: 2026-May-06-09:13:50
+    estimated_total_time: '1:48:57.626109'
+    ns_per_day: 1691.623200202795
+- iteration: 800
+  percent_complete: 100.0
+  mbar_analysis:
+    free_energy_in_kT: 42.35393301613296
+    standard_error_in_kT: 0.9671604857635887
+    number_of_uncorrelated_samples: 663.9554443359375
+    n_equilibrium_iterations: 9
+    statistical_inefficiency: 1.1943572759628296
+  timing_data:
+    iteration_seconds: 8.723320007324219
+    average_seconds_per_iteration: 8.213743959708566
+    estimated_time_remaining: '0:00:08.213744'
+    estimated_localtime_finish_date: 2026-May-06-09:14:23
+    estimated_total_time: '1:49:30.995168'
+    ns_per_day: 1683.0327397362034

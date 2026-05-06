@@ -1,0 +1,15 @@
+========================================================================
+PAINS + REOS + Brenk + NIH structural alerts
+========================================================================
+Total unique mol: 2356
+
+Valid: 2356
+
+[Filter-fail breakdown]
+  PAINS alerts: 1323/2356
+  Brenk alerts: 1796/2356
+  NIH alerts: 1306/2356
+  REOS fails (any): 1375/2356
+
+[Clean (all 4 filters pass): 347/2356 = 14.7%]
+  PAINS-flagged: 1323 mol — manual review recommended

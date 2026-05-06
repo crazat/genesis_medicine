@@ -140,3 +140,73 @@ pilot/**/checkpoint*
 
 # External tool clones (Tier B SOTA integration 2026-04-27)
 external_tools/
+
+# Large MD trajectory output dirs (regen-able, 50GB+ each) — 2026-05-06
+pilot/md_*/
+pilot/md_*.log
+
+# ABFE nan-error-logs (regen-able diagnostic XMLs, 30MB+ each)
+pilot/**/nan-error-logs/
+
+# Codex curator log (continuous append, ~90MB)
+pilot/codex_curator_loop.log
+pilot/codex_curator_loop.*.log
+
+# Snakemake cache
+.snakemake/
+
+# CPU meaningful intermediate caches (regen from SMILES)
+pilot/cpu_meaningful/**/*.npy
+pilot/cpu_meaningful/**/*.npz
+pilot/cpu_meaningful/**/*.pkl
+pilot/cpu_meaningful/**/*.cif
+pilot/cpu_meaningful/**/*.json
+pilot/cpu_meaningful/**/*.yaml
+pilot/cpu_meaningful/**/*.pdb
+pilot/cpu_meaningful/**/*.sdf
+pilot/cpu_meaningful/tanimoto_*.npy
+
+# Boltz2 / chai1 outputs (regen-able, large)
+pilot/boltz2_top500_mmp1/
+pilot/chai1_ensemble/chai1_runs/
+
+# Cofold queue intermediate batches (regen-able)
+pilot/gpu_queue/
+pilot/screen/
+pilot/cpu_queue_v*/
+pilot/scaffold_hop_round3/
+pilot/of3_aqaff_tier1/
+
+# ABFE per-compound large parameter files (regen via abfe_benchmark_prepare.py)
+pilot/abfe_benchmark_chembl/**/complex/complex.parm7
+pilot/abfe_benchmark_chembl/**/complex/complex.rst7
+pilot/abfe_benchmark_chembl/**/complex_leg/*.parm7
+pilot/abfe_benchmark_chembl/**/complex_leg/*.rst7
+pilot/abfe_benchmark_chembl/**/solvent_leg/*.parm7
+pilot/abfe_benchmark_chembl/**/solvent_leg/*.rst7
+pilot/abfe_benchmark_chembl/**/phase5*.log
+pilot/abfe_benchmark_chembl/**/abfe_*.log
+pilot/abfe_benchmark_chembl/**/warmup_*.log
+pilot/abfe_mmp1_holo_zn*/complex/complex.parm7
+pilot/abfe_mmp1_holo_zn*/complex/complex.rst7
+pilot/abfe_mmp1_holo_zn*/abfe_production/*.log
+pilot/**/*.preminim
+pilot/**/*.parm7
+pilot/**/*.rst7
+pilot/**/holo_md_*ns/final.pdb
+pilot/**/sanity_md/final.pdb
+pilot/abfe_benchmark_chembl/**/mmp1_holo.pdb
+pilot/abfe_mmp1_holo_zn*/complex/mmp1_holo.pdb
+pilot/abfe_mmp1_holo_zn*/mmp1_holo.parm7
+pilot/mmp1_apo_zn_md_*ns/final.pdb
+
+# Active learning batches (regen-able CSV manifests)
+pilot/active_learning_next_cofold_batch*.csv
+pilot/cpu_meaningful/active_learning_next_cofold_batch*.csv
+pilot/cpu_meaningful/active_learning_next_cofold_batch*_manifest.csv
+
+# Generic log noise
+pilot/*.log
+pilot/**/*.launch.log
+pilot/**/*.outer.log
+pilot/**/*.restart.log

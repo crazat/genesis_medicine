@@ -1,0 +1,50 @@
+# cmd: /home/crazat/miniforge3/envs/genesis-md/bin/vina --receptor /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/_shared/receptor.pdbqt --ligand /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL2105729/lig.pdbqt --out /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL2105729/docked.pdbqt --center_x 40.32 --center_y 27.89 --center_z 36.94 --size_x 25.0 --size_y 25.0 --size_z 25.0 --num_modes 5 --exhaustiveness 16 --cpu 2 --seed 42
+# rc: 0
+
+## stdout
+AutoDock Vina 7ac2999-mod
+#################################################################
+# If you used AutoDock Vina in your work, please cite:          #
+#                                                               #
+# J. Eberhardt, D. Santos-Martins, A. F. Tillack, and S. Forli  #
+# AutoDock Vina 1.2.0: New Docking Methods, Expanded Force      #
+# Field, and Python Bindings, J. Chem. Inf. Model. (2021)       #
+# DOI 10.1021/acs.jcim.1c00203                                  #
+#                                                               #
+# O. Trott, A. J. Olson,                                        #
+# AutoDock Vina: improving the speed and accuracy of docking    #
+# with a new scoring function, efficient optimization and       #
+# multithreading, J. Comp. Chem. (2010)                         #
+# DOI 10.1002/jcc.21334                                         #
+#                                                               #
+# Please see https://github.com/ccsb-scripps/AutoDock-Vina for  #
+# more information.                                             #
+#################################################################
+
+Scoring function : vina
+Rigid receptor: /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/_shared/receptor.pdbqt
+Ligand: /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL2105729/lig.pdbqt
+Grid center: X 40.32 Y 27.89 Z 36.94
+Grid size  : X 25 Y 25 Z 25
+Grid space : 0.375
+Exhaustiveness: 16
+CPU: 2
+Verbosity: 1
+
+Computing Vina grid ... done.
+Performing docking (random seed: 42) ... 
+0%   10   20   30   40   50   60   70   80   90   100%
+|----|----|----|----|----|----|----|----|----|----|
+***************************************************
+
+mode |   affinity | dist from best mode
+     | (kcal/mol) | rmsd l.b.| rmsd u.b.
+-----+------------+----------+----------
+   1       -4.562          0          0
+   2       -4.191      3.922      6.229
+   3       -4.123      2.168      2.829
+   4       -4.078      3.353      5.985
+   5       -4.018      3.558      4.407
+
+
+## stderr

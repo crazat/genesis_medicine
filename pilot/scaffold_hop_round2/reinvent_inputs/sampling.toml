@@ -1,0 +1,11 @@
+run_type = "sampling"
+device = "cuda:0"
+[parameters]
+model_file = "/home/crazat/genesis_medicine/external/REINVENT4/priors/mol2mol_medium_similarity.prior"
+smiles_file = "/home/crazat/genesis_medicine/pilot/scaffold_hop_round2/reinvent_inputs/seed.smi"
+sample_strategy = "multinomial"
+temperature = 1.0
+output_file = "/home/crazat/genesis_medicine/pilot/scaffold_hop_round2/reinvent_outputs/sampled.csv"
+num_smiles = 100
+unique_molecules = true
+randomize_smiles = true

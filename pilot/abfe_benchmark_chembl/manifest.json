@@ -1,0 +1,224 @@
+{
+  "compounds": [
+    {
+      "chembl_id": "CHEMBL443684",
+      "smiles": "CC(C)CC(NC(=O)C(NC(=O)C(O)CC(C)C)C(C)(C)C)C(=O)NC",
+      "ic50_nm": 5.0,
+      "reference": "Marimastat (BB-2516); Drummond 1999",
+      "notes": "hydroxamate broad-spectrum MMP inhibitor",
+      "step": "antechamber",
+      "rc": 1,
+      "wall_min": 0.6,
+      "status": "fail_antechamber"
+    },
+    {
+      "chembl_id": "CHEMBL415",
+      "smiles": "CC(C)CC(NC(=O)C(CC1=CC=CC=C1)NC(=O)C(O)CC(C)C)C(=O)NO",
+      "ic50_nm": 4.0,
+      "reference": "Batimastat (BB-94); Brown 1995",
+      "notes": "hydroxamate",
+      "complex_atoms": 74292,
+      "complex_residues": 24122,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 1.89,
+      "status": "ok"
+    },
+    {
+      "chembl_id": "CHEMBL292707",
+      "smiles": "CC(C)CC(=O)NC(CC(=O)NO)C(=O)N(C)C",
+      "ic50_nm": 200.0,
+      "reference": "Ilomastat (GM6001); Galardy 1994",
+      "notes": "zinc-chelating",
+      "complex_atoms": 74279,
+      "complex_residues": 24122,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 0.57,
+      "status": "ok"
+    },
+    {
+      "chembl_id": "CHEMBL259829",
+      "smiles": "CC1=CC2=C(C=C1)N(CC2=O)C1=CC=C(S(=O)(=O)NC(=O)C2=CC=CC=C2)C=C1",
+      "ic50_nm": 310.0,
+      "reference": "CGS27023A; MacPherson 1997",
+      "notes": "non-hydroxamate sulfonamide",
+      "step": "antechamber",
+      "rc": 1,
+      "wall_min": 0.36,
+      "status": "fail_antechamber"
+    },
+    {
+      "chembl_id": "CHEMBL94487",
+      "smiles": "O=C(NO)CC(C(=O)NC(C)c1ccccc1)Cc1ccc(Oc2ccc(F)cc2)cc1",
+      "ic50_nm": 12.0,
+      "reference": "RS-130830; Henderson 2003",
+      "notes": "carboxylate",
+      "complex_atoms": 74293,
+      "complex_residues": 24122,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 1.91,
+      "status": "ok"
+    },
+    {
+      "chembl_id": "CHEMBL412",
+      "smiles": "CC(C)C[C@H](NC(=O)[C@H](CC1=CN=CC=C1)NC(=O)[C@H](O)CC(C)C)C(=O)NO",
+      "ic50_nm": 8.0,
+      "reference": "Trocade-like; Cherney 1998",
+      "notes": "hydroxamate",
+      "step": "antechamber",
+      "rc": 1,
+      "wall_min": 0.92,
+      "status": "fail_antechamber"
+    },
+    {
+      "chembl_id": "CHEMBL98",
+      "smiles": "CC(C)CC(=O)C1=CC=C(C=C1)S(=O)(=O)NCC(=O)NO",
+      "ic50_nm": 2400.0,
+      "reference": "non-hydroxamate aryl sulfone; Gowravaram 1995",
+      "notes": "weak inhibitor",
+      "step": "antechamber",
+      "rc": 1,
+      "wall_min": 0.33,
+      "status": "fail_antechamber"
+    },
+    {
+      "chembl_id": "CHEMBL257077",
+      "smiles": "CC(C)CC(NC(=O)C(NC(=O)C(O)CC(C)C)C(=O)NC)C(=O)NO",
+      "ic50_nm": 15.0,
+      "reference": "prinomastat-like; Steward 2004",
+      "notes": "hydroxamate",
+      "complex_atoms": 74290,
+      "complex_residues": 24122,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 1.44,
+      "status": "ok"
+    },
+    {
+      "chembl_id": "CHEMBL406",
+      "smiles": "O=C(NO)C(CCCC1CCCCC1)NS(=O)(=O)C1=CC=C(C=C1)OC1=CC=CC=C1",
+      "ic50_nm": 3.0,
+      "reference": "prinomastat (AG3340); Shalinsky 1999",
+      "notes": "sulfonamide hydroxamate",
+      "step": "antechamber",
+      "rc": 1,
+      "wall_min": 0.99,
+      "status": "fail_antechamber"
+    },
+    {
+      "chembl_id": "CHEMBL2105729",
+      "smiles": "CCC(=O)NC(CCCNC(=N)N)C(=O)NO",
+      "ic50_nm": 18000.0,
+      "reference": "weak hydroxamate; Lovejoy 1999",
+      "notes": "positive control low-potency",
+      "complex_atoms": 74282,
+      "complex_residues": 24122,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 0.71,
+      "status": "ok"
+    },
+    {
+      "chembl_id": "CHEMBL93146",
+      "smiles": "O=C(NO)C(C(C)C)CC(=O)NC1CCCCC1",
+      "ic50_nm": 820.0,
+      "reference": "medium-potency; Beckett 1996",
+      "notes": "carboxylate",
+      "step": "antechamber",
+      "rc": 1,
+      "wall_min": 0.27,
+      "status": "fail_antechamber"
+    },
+    {
+      "chembl_id": "CHEMBL3036",
+      "smiles": "O=C(NO)C(CC1=CC=CC=C1)NC(=O)C(C)NC(=O)OCC1=CC=CC=C1",
+      "ic50_nm": 28.0,
+      "reference": "broad-spectrum hydroxamate; Whittaker 1999",
+      "notes": "",
+      "step": "antechamber",
+      "rc": 1,
+      "wall_min": 0.8,
+      "status": "fail_antechamber"
+    },
+    {
+      "chembl_id": "CHEMBL57058",
+      "smiles": "CC(C)C[C@H](NS(=O)(=O)C1=CC=C(C=C1)C1=CC=CC=C1)C(=O)NO",
+      "ic50_nm": 15.0,
+      "reference": "Mobashery 1999",
+      "notes": "sulfonamide hydroxamate",
+      "step": "antechamber",
+      "rc": 1,
+      "wall_min": 0.4,
+      "status": "fail_antechamber"
+    },
+    {
+      "chembl_id": "CHEMBL1207",
+      "smiles": "CC(C)CC(C(=O)NO)Sc1ccc(C(=O)NC2CCCCC2)cc1",
+      "ic50_nm": 55.0,
+      "reference": "thiol-based; Schultz 1998",
+      "notes": "thiol zinc-chelate",
+      "step": "antechamber",
+      "rc": 1,
+      "wall_min": 0.41,
+      "status": "fail_antechamber"
+    },
+    {
+      "chembl_id": "CHEMBL301236",
+      "smiles": "CC(C)C[C@H](NS(=O)(=O)c1ccc(F)cc1)C(=O)NO",
+      "ic50_nm": 42.0,
+      "reference": "fluoro-aryl hydroxamate; Yamamoto 2003",
+      "notes": "",
+      "complex_atoms": 74281,
+      "complex_residues": 24122,
+      "zn_atoms": 1,
+      "lig_residues": 1,
+      "box_A": [
+        99.831155,
+        98.943462,
+        96.119772
+      ],
+      "wall_min": 0.62,
+      "status": "ok"
+    }
+  ],
+  "common": {
+    "receptor_pdbqt": "pilot/abfe_benchmark_chembl/_shared/receptor.pdbqt",
+    "zn_center": [
+      40.32,
+      27.89,
+      36.94
+    ],
+    "grid_size": [
+      25.0,
+      25.0,
+      25.0
+    ]
+  }
+}

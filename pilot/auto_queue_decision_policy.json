@@ -1,0 +1,205 @@
+{
+  "timestamp": "2026-05-06T12:46:37+09:00",
+  "matrix_csv": "pilot/cpu_meaningful/world_class_gap_closure_matrix.csv",
+  "matrix_doc": "docs/WORLD_CLASS_GAP_CLOSURE.md",
+  "readiness_counts": {
+    "cheap_compute_or_paper_with_fto_caveat": 378,
+    "triage_accumulating": 1193,
+    "hold_or_benchmark_only": 757
+  },
+  "heavy_compute_permission_counts": {
+    "short_triage_only": 378,
+    "cheap_compute_only": 1193,
+    "hold": 757
+  },
+  "paper_permission_counts": {
+    "in_silico_with_fto_caveat": 378,
+    "supplement_or_atlas_only": 1193,
+    "methods_or_caveated_only": 757
+  },
+  "mmp1_zaff_status": "blocked_zaff_not_integrated",
+  "r17_expanded_green_60ns_ok": 3,
+  "r17_expanded_green_60ns_total": 3,
+  "creative_discovery_status_counts": {
+    "implemented_running": 1,
+    "gap_detected": 1,
+    "partial_post_filter_only": 1,
+    "partial_chromanol_constrained_only": 1,
+    "static_pocket_gate_only": 1,
+    "roadmap_only": 1,
+    "partial_decoy_gate_only": 1,
+    "partial_gate_only": 1,
+    "planned_gate_only": 1,
+    "partial_deterministic_curator": 1
+  },
+  "creative_discovery_gate_counts": {
+    "short_triage_allowed_only": 1,
+    "block_target_specific_cofold_for_missing_msa": 1,
+    "generation_requires_route_or_building_block_guard": 1,
+    "new_scaffold_requires_novelty_synthesis_uncertainty_gate": 1,
+    "ensemble_pocket_required_before_pocket_specific_generation": 1,
+    "license_storage_stage1_required": 1,
+    "new_generator_requires_benchmark_and_decoys": 1,
+    "phenotype_objective_required_for_moa_claim": 1,
+    "high_risk_modality_requires_separate_safety_ip_gate": 1,
+    "curator_must_read_creative_matrix_each_tick": 1
+  },
+  "target_msa_missing_count": 14,
+  "global_queue_policy": {
+    "finish_already_running_r17_expanded_60ns": false,
+    "allow_cpu_cheap_atlas": true,
+    "no_new_chromanol_100_200ns_or_fe_or_synthesis_until_markush_fto": true,
+    "no_mmp1_abfe_confirmed_claim_until_zaff_gate_pass": true,
+    "emb3_quinone_requires_wetlab_safety_package": true,
+    "boltz_only_claims_require_cross_model_decoy_or_plif_before_strong_language": true,
+    "wetlab_first_when_dmtl_or_ivpt_ready": true,
+    "creative_generation_requires_synthesis_or_prior_art_guard": true,
+    "active_learning_short_cofold_fallback_enabled": true,
+    "cryptic_pocket_generation_requires_ensemble_pocket_gate": true,
+    "phenomics_generation_requires_signature_or_assay_gate": true,
+    "target_msa_coverage_gap_blocks_target_queue": true,
+    "new_scaffold_gpu_followup_requires_uncertainty_and_benchmark_gate": true
+  },
+  "top_next_actions": [
+    {
+      "candidate_id": "R15_chromanol_Cl_pos10",
+      "target": "dct",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Cl_pos10",
+      "target": "tgfb1",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Cl_pos10",
+      "target": "tyr",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Cl_pos6",
+      "target": "dct",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Cl_pos6",
+      "target": "tgfb1",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Cl_pos6",
+      "target": "tyr",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Cl_pos9",
+      "target": "dct",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Cl_pos9",
+      "target": "tgfb1",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Cl_pos9",
+      "target": "tyr",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Me6_Me10",
+      "target": "dct",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Me6_Me10",
+      "target": "tgfb1",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Me6_Me10",
+      "target": "tyr",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Me6_Me9",
+      "target": "dct",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Me6_Me9",
+      "target": "tgfb1",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Me6_Me9",
+      "target": "tyr",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Me9_Me10",
+      "target": "dct",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Me9_Me10",
+      "target": "tgfb1",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "R15_chromanol_Me9_Me10",
+      "target": "tyr",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "chromanol_arom10_CN_dct",
+      "target": "dct",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    },
+    {
+      "candidate_id": "chromanol_arom10_CN_tgfb1",
+      "target": "tgfb1",
+      "readiness": "cheap_compute_or_paper_with_fto_caveat",
+      "heavy_compute_permission": "short_triage_only",
+      "next_best_action": "prepare Markush/FTO package; use only completed data for caveated papers"
+    }
+  ]
+}

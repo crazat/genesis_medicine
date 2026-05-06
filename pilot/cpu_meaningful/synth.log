@@ -1,0 +1,29 @@
+========================================================================
+Synthesizability + retrosynthetic route analysis
+========================================================================
+Total unique mol to analyze: 71
+
+✅ synth_route_analysis.csv (71 mol)
+
+[Synthesis class distribution]
+  E_easy: 50
+  M_medium: 21
+
+[Top 10 easiest synthesis (SA < 3.5, < 6 steps)]
+  SA=1.72 steps=2 | COC(=O)c1ccc(O)c(C(=O)OC)c1
+  SA=1.74 steps=4 | COc1cc(-c2ccc(O)c(OC)c2)ccc1O
+  SA=1.79 steps=4 | COc1cc(Oc2ccc(O)c(OC)c2)ccc1O
+  SA=1.83 steps=4 | COc1ccc(O)c(Oc2ccc(O)c(OC)c2)c1
+  SA=1.86 steps=4 | COC(=O)c1cc(-c2ccc(O)c(OC)c2)ccc1O
+  SA=1.87 steps=4 | COc1ccc(O)c(Oc2cc(OC)ccc2O)c1
+  SA=1.95 steps=4 | COc1cc(-c2cc(CO)ccc2O)ccc1O
+  SA=1.96 steps=4 | COc1cc(Oc2ccc(O)c(CO)c2)ccc1O
+  SA=1.96 steps=4 | COc1cc(Oc2cc(CO)ccc2O)ccc1O
+  SA=2.00 steps=4 | COc1ccc(O)c(Oc2cc(CO)ccc2O)c1
+
+[SA score distribution]
+  Mean: 2.78
+  Min: 1.72
+  Max: 3.95
+  < 3.5 (drug-like easy): 65
+  >= 5 (synth challenge): 0

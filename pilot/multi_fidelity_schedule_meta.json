@@ -1,0 +1,157 @@
+{
+  "generated_at": "2026-05-03T10:46:32+00:00",
+  "rows": 752,
+  "ledger_input": "pilot/evidence_ledger.csv",
+  "tiers": [
+    {
+      "id": "T1_boltz2",
+      "cost_min": 2
+    },
+    {
+      "id": "T1b_openfold3",
+      "cost_min": 4
+    },
+    {
+      "id": "T1c_aqaffinity",
+      "cost_min": 0.5
+    },
+    {
+      "id": "T2_admet",
+      "cost_min": 0.5
+    },
+    {
+      "id": "T3_xtb",
+      "cost_min": 1
+    },
+    {
+      "id": "T4_md_short",
+      "cost_min": 60
+    },
+    {
+      "id": "T5_md_long",
+      "cost_min": 720
+    },
+    {
+      "id": "T6_abfe",
+      "cost_min": 4320
+    },
+    {
+      "id": "T7_wetlab",
+      "cost_min": 20000
+    }
+  ],
+  "tier_runtime_status": {
+    "T1b_openfold3": {
+      "present": true,
+      "missing": [],
+      "reason": "ok"
+    },
+    "T1c_aqaffinity": {
+      "present": true,
+      "missing": [],
+      "reason": "ok"
+    }
+  },
+  "top_recommendations": [
+    {
+      "compound_key": "OCC1COc2cc(O)c(Cl)cc2C1",
+      "target": "TGFB1",
+      "leader_seed": "",
+      "current_tier": "T1_boltz2",
+      "next_tier": "T1b_openfold3",
+      "next_cost_min": 4,
+      "next_fidelity_class": "cheap",
+      "boltz2_aff_prob_bin": "0.6822030544281006",
+      "boltz2_aff_value": "1.2207756042480469",
+      "md_rmsd_mean_A_best": "0.27",
+      "admet_herg": "",
+      "admet_ames": "",
+      "qed": "",
+      "skin_window": "",
+      "blocked_by_gate": false,
+      "blocked_reason": "",
+      "acquisition_score": 0.9372,
+      "recommend_action": "advance_to_T1b_openfold3"
+    },
+    {
+      "compound_key": "OCC1COc2cc(O)cc(Cl)c2C1",
+      "target": "TGFB1",
+      "leader_seed": "",
+      "current_tier": "T1_boltz2",
+      "next_tier": "T1b_openfold3",
+      "next_cost_min": 4,
+      "next_fidelity_class": "cheap",
+      "boltz2_aff_prob_bin": "0.5867519378662109",
+      "boltz2_aff_value": "1.0125867128372192",
+      "md_rmsd_mean_A_best": "0.21",
+      "admet_herg": "",
+      "admet_ames": "",
+      "qed": "",
+      "skin_window": "",
+      "blocked_by_gate": false,
+      "blocked_reason": "",
+      "acquisition_score": 0.8804,
+      "recommend_action": "advance_to_T1b_openfold3"
+    },
+    {
+      "compound_key": "Cc1cc2c(c(C)c1O)OCC(CO)C2",
+      "target": "TGFB1",
+      "leader_seed": "",
+      "current_tier": "T1_boltz2",
+      "next_tier": "T1b_openfold3",
+      "next_cost_min": 4,
+      "next_fidelity_class": "cheap",
+      "boltz2_aff_prob_bin": "0.6364059448242188",
+      "boltz2_aff_value": "0.6152913570404053",
+      "md_rmsd_mean_A_best": "0.42",
+      "admet_herg": "",
+      "admet_ames": "",
+      "qed": "",
+      "skin_window": "",
+      "blocked_by_gate": false,
+      "blocked_reason": "",
+      "acquisition_score": 0.8759,
+      "recommend_action": "advance_to_T1b_openfold3"
+    },
+    {
+      "compound_key": "Cc1cc(O)c(C)c2c1CC(CO)CO2",
+      "target": "TGFB1",
+      "leader_seed": "",
+      "current_tier": "T1_boltz2",
+      "next_tier": "T1b_openfold3",
+      "next_cost_min": 4,
+      "next_fidelity_class": "cheap",
+      "boltz2_aff_prob_bin": "0.6156794428825378",
+      "boltz2_aff_value": "1.0828746557235718",
+      "md_rmsd_mean_A_best": "0.46",
+      "admet_herg": "",
+      "admet_ames": "",
+      "qed": "",
+      "skin_window": "",
+      "blocked_by_gate": false,
+      "blocked_reason": "",
+      "acquisition_score": 0.8534,
+      "recommend_action": "advance_to_T1b_openfold3"
+    },
+    {
+      "compound_key": "Cc1c(O)cc2c(c1C)CC(CO)CO2",
+      "target": "TGFB1",
+      "leader_seed": "",
+      "current_tier": "T1_boltz2",
+      "next_tier": "T1b_openfold3",
+      "next_cost_min": 4,
+      "next_fidelity_class": "cheap",
+      "boltz2_aff_prob_bin": "0.6153576970100403",
+      "boltz2_aff_value": "1.0456148386001587",
+      "md_rmsd_mean_A_best": "0.52",
+      "admet_herg": "",
+      "admet_ames": "",
+      "qed": "",
+      "skin_window": "",
+      "blocked_by_gate": false,
+      "blocked_reason": "",
+      "acquisition_score": 0.8417,
+      "recommend_action": "advance_to_T1b_openfold3"
+    }
+  ]
+}

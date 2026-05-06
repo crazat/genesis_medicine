@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 import subprocess
 from datetime import datetime
 from pathlib import Path
@@ -13,6 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 PILOT = ROOT / "pilot"
 CPU_OUT = PILOT / "cpu_meaningful"
 OUT = PILOT / "live_status_report.md"
+
+os.environ["PATH"] = f"/usr/lib/wsl/lib:{os.environ.get('PATH', '')}"
 
 
 def run(cmd: list[str]) -> str:
