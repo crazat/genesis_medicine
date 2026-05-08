@@ -1,0 +1,55 @@
+{
+  "paper_id": "paper_A_zaff_abfe_limitations",
+  "title": "Limitations of ZAFF-AMBER absolute binding free energy calculation for zinc metalloenzyme inhibitors: a replicate-pair analysis on MMP-1",
+  "abstract": "Absolute binding free energy (ABFE) calculations on zinc metalloenzymes present a stress test for non-bonded zinc force fields such as ZAFF-AMBER: the catalytic Zn binding chemistry of hydroxamate, sulfonamide, and thiol inhibitors must be reproduced from a fixed-charge, restraint-based description of the metal coordination shell. We benchmark the ZAFF-AMBER + GAFF-2 + AM1-BCC ABFE protocol on fourteen ChEMBL MMP-1 inhibitors spanning sub-nanomolar to micromolar potency (4--18000 nM, six scaffold classes including hydroxamate, non-hydroxamate sulfonamide, aryl sulfone, carboxylate, fluoro-aryl), each computed with up to three independent replicates using the openmmtools MultiStateSampler. Our central observation is that reproducibility is not accuracy: replicates of the same compound agree to within 0.06 kcal/mol for some compounds yet are systematically biased by 4--18 kcal/mol from the experimental affinity, while other compounds give catastrophic 18.8 kcal/mol replicate variance whose mean nonetheless lands within 1 kcal/mol of experiment. Four of fourteen compounds sign-flip their predicted binding direction; five over-bind by 8--18 kcal/mol; three high-potency hydroxamates under-bind by 8--10 kcal/mol. We additionally document two pipeline pitfalls — ReplicaExchangeSampler swap-all deadlock at the first exchange iteration and ABFE production NaN crashes on medium-sized ligands without explicit minimization+heating+NPT warmup — and recommend at least 3-replicate ABFE with explicit per-class error budgeting for ZAFF-AMBER metalloenzyme inhibitor ranking. Keywords: ABFE, ZAFF-AMBER, zinc metalloenzyme, MMP-1, hydroxamate, MultiStateSampler, replicate variance, openmmtools.",
+  "keywords": [
+    "ABFE",
+    "ZAFF-AMBER",
+    "MMP-1",
+    "hydroxamate",
+    "MultiStateSampler",
+    "replicate variance",
+    "openmmtools"
+  ],
+  "target_server": "OSF Preprints",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "0009-0004-4805-8815",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "Biochemistry, Biophysics, and Structural Biology",
+  "subcategory": "Biophysics",
+  "manuscript_path": "preprints/paper_A_zaff_abfe_limitations/manuscript.tex",
+  "html_path": "preprints/paper_A_zaff_abfe_limitations/manuscript.html",
+  "figures_path": "preprints/paper_A_zaff_abfe_limitations/figures/",
+  "n_figures": 3,
+  "submission_status": "net_new_no_prior_submission",
+  "prior_history": "Net-new manuscript drafted 2026-05-04 through 2026-05-08; not previously submitted to any venue. Direct OSF deposit as the canonical preprint record.",
+  "version_at_submission": "v1.0",
+  "n_compounds_benchmarked": 14,
+  "n_replicates_total": 38,
+  "disclaimer": "In silico only. No wet-lab data. IRB caveat does not apply (no human subjects).",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results.",
+  "ai_disclosure": {
+    "used": true,
+    "tool": "Claude (Anthropic, Opus 4.7)",
+    "role": "drafting + table generation + figure scripts",
+    "icmje_compliant": true,
+    "note": "Author verified all claims and ran all simulations; AI assisted with prose and code structure only."
+  },
+  "osf_doi": "10.17605/OSF.IO/Q4Z6W",
+  "osf_url": "https://osf.io/q4z6w/",
+  "osf_guid": "q4z6w",
+  "osf_published": "2026-05-08 04:17:43Z"
+}

@@ -49,10 +49,13 @@ Switching the GFN parameter set from GFN2-xTB to GFN1-xTB on $432$
 conformers preserves total-energy ranks at $\rho = +0.993$ and
 gap-mean ranks at $\rho = +0.978$ ($n = 1050$ paired molecules).
 Across-method top-50 intersection is $44/50$ on gap-mean.
-Switching the implicit solvent model among water, methanol, DMSO, and
-hexane (four ALPB dielectrics spanning $\epsilon \approx 1.9$--$78$)
-preserves ranks at $\rho \geq \todo{values from running solvent
-matrix}$. Together, these results justify a single-method-single-conformer-count-single-solvent
+Switching the implicit solvent model among nine ALPB dielectrics
+spanning $\epsilon \approx 1.9$--$78$ (hexane, chloroform, THF,
+octanol, ethanol, methanol, acetonitrile, DMSO, water) preserves
+gap-mean ranks at pairwise $\rho \geq 0.988$ in all 36 pairs (median
+$\rho = 0.997$, $n = 1050$ paired molecules per pair) and total-energy
+ranks at $\rho = 1.0000$ in every pair, with a 9-way top-50
+intersection of $45/50 = 90\%$ on the gap channel. Together, these results justify a single-method-single-conformer-count-single-solvent
 xtb screening rank as a stable population-level quantity, while
 characterizing the conditions under which finer-grained screening
 distinctions (top-10 cutoffs, mass-corrected energy, single-conformer
@@ -261,33 +264,52 @@ no rank-distinguishing signal at any level we measured. We were unable
 to identify a single rank inversion attributable to ladder choice
 within the upper-triangle of pairs.
 
-\subsection{Cross-method ranks are preserved at $\rho > 0.92$}
+\subsection{Cross-method ranks: GFN1$\leftrightarrow$GFN2 are interchangeable; GFN-FF is not}
 \label{sec:results-cross-method}
 
 Switching from GFN2-xTB to GFN1-xTB at fixed $N = 432$ and ALPB water
 yields the cross-method correlations in Table~\ref{tab:cross-method}.
-All four xtb output channels preserve rank order with Spearman
-$\rho \geq 0.928$. Total energy is the most rank-stable
-($\rho = 0.9934$); HOMO is the most method-sensitive
-($\rho = 0.9278$, still strong).
+GFN1 and GFN2 are interchangeable for ranking purposes: all four xtb
+output channels preserve rank order with Spearman $\rho \geq 0.928$,
+and total energy is the most rank-stable ($\rho = 0.9934$). The
+top-50 intersection on energy is $38/50 = 76\%$. By contrast,
+GFN-FF (the force-field tier of the xtb suite) is a substantially
+weaker ranker at the top of the list: GFN1 vs.\ GFN-FF
+$\rho_{\text{energy}} = 0.908$, top-$50$ $\cap = 6/50 = 12\%$;
+GFN2 vs.\ GFN-FF $\rho_{\text{energy}} = 0.919$,
+top-$50$ $\cap = 4/50 = 8\%$. Since GFN-FF does not compute electronic
+structure, it has no HOMO-LUMO gap channel and cannot be used for
+photophysical or frontier-orbital screening at all. We conclude that
+GFN-FF should be reserved for ultra-fast bulk filtering at the
+$\geq 10^4$-molecule scale and that the operational xtb tier for
+hit-list screening is GFN1-xTB or GFN2-xTB at the user's discretion.
 
 \begin{table}[ht]
 \centering
-\caption{Cross-method rank preservation: GFN1-xTB vs GFN2-xTB at
-$N = 432$ conformers, ALPB water, $n = 1050$ paired molecules.}
+\caption{Cross-method rank preservation at $N = 432$ conformers,
+ALPB water. GFN1 vs.\ GFN2 on $n = 1050$ paired molecules; GFN-FF
+comparisons on $n = 821$ paired (GFN-FF success-rate is lower for
+some larger natural products). Energy column: Spearman $\rho$ on
+\texttt{energy\_kcal\_min}; gap column: Spearman $\rho$ on
+\texttt{gap\_eV\_mean} (--- not computed for GFN-FF, which lacks
+electronic-structure output).}
 \label{tab:cross-method}
 \small
-\begin{tabular}{lrr}
+\begin{tabular}{lrrr}
 \toprule
-xtb feature & Spearman $\rho$ & Pearson $r$ \\
+Method pair         & $\rho_{\text{energy}}$ & $\rho_{\text{gap}}$ & top-$50$ $\cap$ (energy) \\
 \midrule
-energy (kcal mol$^{-1}$, lowest-conformer) & $+0.9934$ & $+0.583$ \\
-HOMO--LUMO gap (eV, mean over conformers)  & $+0.9781$ & $+0.978$ \\
-HOMO (eV, lowest-conformer)                & $+0.9278$ & $+0.859$ \\
-LUMO (eV, lowest-conformer)                & $+0.9488$ & $+0.959$ \\
+GFN1 vs.\ GFN2      & $+0.9934$ & $+0.9781$ & $38/50$ \\
+GFN1 vs.\ GFN-FF    & $+0.9081$ & ---       & $6/50$  \\
+GFN2 vs.\ GFN-FF    & $+0.9191$ & ---       & $4/50$  \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+Within GFN1 vs.\ GFN2 specifically, the four xtb output channels
+preserve rank order at $\rho \geq 0.928$. HOMO is the most
+method-sensitive ($\rho = 0.9278$, still strong); HOMO--LUMO gap
+mean is $\rho = 0.9781$.
 
 The Pearson correlations on total energy are weak ($r = +0.583$)
 because GFN1 and GFN2 disagree on the absolute energy zero by
@@ -298,16 +320,58 @@ quantity for screening.
 \subsection{Solvent-axis robustness}
 \label{sec:results-solvent}
 
-\todo{Insert pairwise Spearman matrix across the
-water/methanol/DMSO/hexane four-solvent variation. Currently in
-progress; methanol $\sim 25\%$ complete as of 2026-05-06 18:25.
-Expected delivery 2026-05-06 22:00 KST.}
+We re-ran the GFN2 single-point + ALPB implicit solvation pipeline at
+$N = 432$ conformers across nine ALPB solvent models spanning more
+than a 40-fold dielectric range: hexane ($\epsilon \approx 1.9$),
+chloroform ($\epsilon \approx 4.8$), THF ($\epsilon \approx 7.4$),
+octanol ($\epsilon \approx 10$), ethanol ($\epsilon \approx 24.6$),
+methanol ($\epsilon \approx 33$), acetonitrile ($\epsilon \approx 37$),
+DMSO ($\epsilon \approx 47$), and water ($\epsilon \approx 78$).
+Each solvent run yielded $n = 1050$ molecules with status \texttt{ok}.
+We computed all $\binom{9}{2} = 36$ pairwise Spearman rank correlations
+on the gap-mean channel (the solvent-sensitive observable; total
+energy ranks are preserved at $\rho = 1.0000$ across all solvent pairs
+because ALPB enters as an additive correction that monotonically
+shifts the total-energy ordering).
 
-The four-solvent matrix is computed at $N = 432$ conformers. We
-expect rank preservation at $\rho > 0.95$ across solvent pairs based
-on the limited prior literature \citep{neese2023solvent} and the
-observation that the dominant signal is molecular geometry-determined
-(not solvent dielectric).
+\begin{table}[ht]
+\centering
+\caption{Pairwise Spearman rank correlation $\rho$ on
+\texttt{gap\_eV\_mean} across nine ALPB solvent models, $n = 1050$
+NPAtlas natural-product molecules. Solvents ordered by dielectric
+constant ascending. Lower triangle only; full matrix is symmetric.}
+\label{tab:solvent-rho}
+\small
+\begin{tabular}{lccccccccc}
+\toprule
+        & hex & CHCl$_3$ & THF & oct & EtOH & MeOH & MeCN & DMSO & H$_2$O \\
+\midrule
+hexane          & 1.0000 & & & & & & & & \\
+chloroform      & 0.9956 & 1.0000 & & & & & & & \\
+THF             & 0.9949 & 0.9965 & 1.0000 & & & & & & \\
+octanol         & 0.9950 & 0.9990 & 0.9973 & 1.0000 & & & & & \\
+ethanol         & 0.9926 & 0.9968 & 0.9993 & 0.9974 & 1.0000 & & & & \\
+methanol        & 0.9915 & 0.9971 & 0.9987 & 0.9975 & 0.9997 & 1.0000 & & & \\
+acetonitrile    & 0.9954 & 0.9954 & 0.9988 & 0.9965 & 0.9983 & 0.9971 & 1.0000 & & \\
+DMSO            & 0.9951 & 0.9948 & 0.9989 & 0.9961 & 0.9981 & 0.9969 & 0.9999 & 1.0000 & \\
+water           & 0.9880 & 0.9952 & 0.9972 & 0.9961 & 0.9990 & 0.9994 & 0.9956 & 0.9954 & 1.0000 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The solvent ranking is statistically indistinguishable across the
+entire $\epsilon \in [1.9, 78]$ range tested: median pairwise
+$\rho = 0.9969$, minimum $\rho = 0.9880$ (water vs.\ hexane, the
+two extreme dielectrics), maximum $\rho = 0.9999$ (DMSO vs.\
+acetonitrile, both polar aprotic with $\epsilon \approx 37$--$47$).
+The 9-way intersection of the top-50 lowest-gap molecules
+(i.e.\ the molecules every solvent agrees are most photochemically
+active) is $45/50 = 90\%$. We conclude that the choice of ALPB
+solvent has essentially no effect on the screening rank produced by
+xtb GFN2 single-point gap on a chemically diverse natural-product
+corpus, supporting the practical recommendation to use a single
+default solvent (water for biological screening, gas-phase for fast
+triage) without loss of ranking signal.
 
 \subsection{Boltz-2 cross-engine consensus and the size-bias diagnosis}
 \label{sec:results-boltz}
@@ -419,8 +483,16 @@ xtb gap.
     drug-like, peptidomimetic) is not tested.
   \item ALPB does not model competitive Zn$^{2+}$ binding; the xtb
     ranking is a ligand-only score and does not predict binding.
-  \item GFN0-xTB and GFN-FF are not benchmarked here. The cross-method
-    axis covers GFN1 vs GFN2 only.
+  \item GFN-FF is benchmarked at $N = 432$ conformers and ranks
+    poorly against GFN1/GFN2 on this corpus (energy-channel
+    $\rho_{\text{GFN1,FF}} = 0.91$, $\rho_{\text{GFN2,FF}} = 0.92$;
+    top-50 intersection only $4$--$6$/$50$). GFN-FF is therefore
+    suitable as a fast triage filter at $\geq 1$ kcal/mol resolution
+    but should not be substituted for GFN1/GFN2 at the top-list cutoff.
+    GFN0-xTB was attempted but is unsupported in the xtb~6.7.1 conda
+    distribution we used (parameter file \texttt{param\_gfn0-xtb.txt}
+    missing, all $1050$ molecules fail at calculator setup); GFN0
+    benchmarking awaits a binary upgrade.
   \item Boltz-2 cross-engine analysis is on $n = 500$, smaller than
     the within-xtb robustness sample.
 \end{itemize}

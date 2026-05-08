@@ -12,5 +12,9 @@
   "prior_history": "ChemRxiv rejected 2026-04-30 (scope mismatch, curator letter); manuscript type expanded in v0.4 with REINVENT 4 + 7-compound SAR panel + ABFE protocol; resubmitted to bioRxiv 2026-05-03.",
   "manuscript_path": "preprints/03_emb3_scar_case_study/manuscript.md",
   "pdf_path": "preprints/03_emb3_scar_case_study/manuscript.pdf",
-  "zenodo_url": "https://zenodo.org/record/20018333"
+  "zenodo_url": "https://zenodo.org/record/20018333",
+  "osf_doi": "10.17605/OSF.IO/VK5E9",
+  "osf_url": "https://osf.io/vk5e9/",
+  "osf_guid": "vk5e9",
+  "osf_published": "2026-05-08 04:05:19Z"
 }

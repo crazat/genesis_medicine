@@ -12,5 +12,9 @@
   "prior_history": "ChemRxiv rejected 2026-04-30 (scope mismatch); title and abstract expanded in v0.4 with 7-tool active core + 40+ adapter scaffold + multi-fidelity BO scheduler; resubmitted to bioRxiv 2026-05-03.",
   "manuscript_path": "preprints/12_open_source_perspective/manuscript.md",
   "pdf_path": "preprints/12_open_source_perspective/manuscript.pdf",
-  "zenodo_url": "https://zenodo.org/record/20018343"
+  "zenodo_url": "https://zenodo.org/record/20018343",
+  "osf_doi": "10.17605/OSF.IO/EH2F7",
+  "osf_url": "https://osf.io/eh2f7/",
+  "osf_guid": "eh2f7",
+  "osf_published": "2026-05-08 04:07:04Z"
 }

@@ -1,0 +1,51 @@
+{
+  "paper_id": "19_korean_herbal_scaffold_xref",
+  "title": "Korean herbal medicine scaffold cross-reference: a literature-grounded scaffold atlas linking 동의보감 and 향약집성방 monographs to modern target classes via 60 ns molecular dynamics evidence",
+  "abstract": "Korean traditional medicine texts (동의보감 1610, 향약집성방 1433) catalog hundreds of herbal monographs with empirical clinical use across centuries, but systematic cross-reference between these monographs and contemporary molecular target classes is fragmentary. We assemble a scaffold-level atlas mapping 동의보감 / 향약집성방 monograph entries to (i) the principal natural-product scaffold(s) reported in modern phytochemistry, (ii) target classes implicated in skin-fibrosis, pigmentation, alopecia, and acne pathways from public databases (ChEMBL, Open Targets), and (iii) molecular-dynamics evidence at the 60 ns timescale for the top scaffold-target pair in each disease class. Cross-references are framed as hypothesis-generating only — no clinical efficacy claim is made. The atlas is published as supplementary material to the Genesis_Medicine preprint series (DOIs 10.5281/zenodo.20018254 through 20018378). Keywords: Korean traditional medicine, 동의보감, 향약집성방, scaffold atlas, natural products, molecular dynamics, MMP-1, target class.",
+  "keywords": [
+    "Korean traditional medicine",
+    "동의보감",
+    "scaffold atlas",
+    "natural products",
+    "molecular dynamics"
+  ],
+  "target_server": "OSF Preprints",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "0009-0004-4805-8815",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "Alternative and Complementary Medicine",
+  "subcategory": "Korean medicine",
+  "manuscript_path": "preprints/19_korean_herbal_scaffold_xref/manuscript.md",
+  "html_path": "preprints/19_korean_herbal_scaffold_xref/manuscript.html",
+  "n_figures": 0,
+  "word_count_md": 4500,
+  "submission_status": "net_new_no_prior_submission",
+  "prior_history": "v0.2 still being finalized 2026-05-08; previously held back from Zenodo deposit pending 60 ns MD evidence completion. Releasing on OSF as v0.2 in current state.",
+  "version_at_submission": "v0.2",
+  "disclaimer": "In silico only. No clinical claim. Wet-lab and IRB pending.",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results.",
+  "ai_disclosure": {
+    "used": true,
+    "tool": "Claude (Anthropic, Opus 4.7)",
+    "role": "drafting + literature cross-reference + tables",
+    "icmje_compliant": true,
+    "note": "Author verified all claims; AI not used for data or hypotheses."
+  },
+  "osf_doi": "10.17605/OSF.IO/78WY5",
+  "osf_url": "https://osf.io/78wy5/",
+  "osf_guid": "78wy5",
+  "osf_published": "2026-05-08 04:17:31Z"
+}

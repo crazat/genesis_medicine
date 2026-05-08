@@ -12,5 +12,9 @@
   "prior_history": "ChemRxiv rejected 2026-04-30 (scope mismatch); title romanized to ASCII (Vidanga, Jadan) in v0.3 and resubmitted to bioRxiv 2026-05-03.",
   "manuscript_path": "preprints/01_embelia_ribes_review/manuscript.md",
   "pdf_path": "preprints/01_embelia_ribes_review/manuscript.pdf",
-  "zenodo_url": "https://zenodo.org/record/20018329"
+  "zenodo_url": "https://zenodo.org/record/20018329",
+  "osf_doi": "10.17605/OSF.IO/XBP4J",
+  "osf_url": "https://osf.io/xbp4j/",
+  "osf_guid": "xbp4j",
+  "osf_published": "2026-05-08 04:05:06Z"
 }

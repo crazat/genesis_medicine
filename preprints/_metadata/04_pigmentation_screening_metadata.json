@@ -12,5 +12,9 @@
   "prior_history": "ChemRxiv rejected 2026-04-30 (scope mismatch, curator letter); bioRxiv rejected 2026-04-28 as BIORXIV/2026/721241 ('not a complete research paper, just a screening report'); reframed in v0.3 emphasizing 4 analytical layers (Boltz-2 cofold + ChEMBL pIC50 anchor + 30 ns MD + ADMET-AI 107-endpoint) and resubmitted 2026-05-03.",
   "manuscript_path": "preprints/04_pigmentation_screening/manuscript.md",
   "pdf_path": "preprints/04_pigmentation_screening/manuscript.pdf",
-  "zenodo_url": "https://zenodo.org/record/20018337"
+  "zenodo_url": "https://zenodo.org/record/20018337",
+  "osf_doi": "10.17605/OSF.IO/HDXV3",
+  "osf_url": "https://osf.io/hdxv3/",
+  "osf_guid": "hdxv3",
+  "osf_published": "2026-05-08 04:05:33Z"
 }

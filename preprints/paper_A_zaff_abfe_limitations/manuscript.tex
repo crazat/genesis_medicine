@@ -47,14 +47,16 @@ present a stress test for non-bonded zinc force fields such as ZAFF-AMBER:
 the catalytic Zn$^{2+}$ binding chemistry of hydroxamate, sulfonamide, and
 thiol inhibitors must be reproduced from a fixed-charge, restraint-based
 description of the metal coordination shell. We benchmark the
-ZAFF-AMBER + GAFF-2 + AM1-BCC ABFE protocol on seven ChEMBL MMP-1
+ZAFF-AMBER + GAFF-2 + AM1-BCC ABFE protocol on ten ChEMBL MMP-1
 inhibitors spanning sub-nanomolar to micromolar potency
-(\SIrange{4}{18000}{\nano\Molar}, four scaffold classes), each computed
+(\SIrange{4}{18000}{\nano\Molar}, six scaffold classes including
+hydroxamate, non-hydroxamate sulfonamide, aryl sulfone, carboxylate,
+fluoro-aryl), each computed
 with up to three independent replicates using the openmmtools
 MultiStateSampler. Our central observation is that
 \textbf{reproducibility is not accuracy}: replicates of the same compound
-agree to within \SI{0.12}{\kcalmol} for some compounds yet are systematically
-biased by 8--14 \unit{\kcalmol} from the experimental affinity, while
+agree to within \SI{0.06}{\kcalmol} for some compounds yet are systematically
+biased by 4--18 \unit{\kcalmol} from the experimental affinity, while
 other compounds give catastrophic
 \SI{18.8}{\kcalmol} replicate variance whose mean nonetheless lands
 within \SI{1}{\kcalmol} of experiment. Accuracy is also stratified by
@@ -289,7 +291,7 @@ internal-consistency check independent of ABFE.
 Table~\ref{tab:abfe} and Figure~\ref{fig:replicate-scatter} report
 the binding free energy estimate, within-run statistical error,
 between-replicate dispersion $\Delta_{\text{rep}}$, replicate-mean
-$\langle\dGbind\rangle$, and deviation from experiment for the seven
+$\langle\dGbind\rangle$, and deviation from experiment for the nine
 compounds.
 
 \begin{figure}[ht]
@@ -306,7 +308,7 @@ values span $\sim 19\,\unit{\kcalmol}$ but the mean lands at
 $-10.7\,\unit{\kcalmol}$ near experiment, while CHEMBL94487 and
 CHEMBL443684 replicates fall systematically far from $\dGexp$.}
 \label{fig:replicate-scatter}
-\end{figure>
+\end{figure}
 
 \begin{table}[ht]
 \centering
@@ -320,24 +322,44 @@ $T = \SI{310}{\kelvin}$ assuming $K_i = $ IC$_{50}$.}
 ChEMBL ID & IC$_{50}$ (nM) & $\dGexp$ & rep1 & rep2 & rep3 & $\langle\dGbind\rangle$ & $\Delta\dGexp$ \\
 \midrule
 CHEMBL415 (Batimastat)       &     4 & $-11.9$ & $-19.7 \pm 0.7$ & $-0.9 \pm 0.8$ & $-11.5 \pm 0.7$ & $-10.7$ & $+1.2$ \\
-CHEMBL443684 (Marimastat)    &     5 & $-11.8$ & $-2.9 \pm 0.7$  & ---            & ---             & $-2.9$  & $+8.9$ \\
-CHEMBL94487 (RS-130830)      &    12 & $-11.2$ & $-20.9 \pm 0.6$ & $-21.0 \pm 0.6$ & ---            & $-21.0$ & $-9.7$ \\
-CHEMBL257077 (prinomastat-l) &    15 & $-11.1$ & $+8.6 \pm 0.6$  & $+3.2 \pm 0.8$  & ---            & $+5.9$  & $+17.0$ \\
-CHEMBL301236 (fluoro-aryl)   &    42 & $-10.5$ & $-7.5 \pm 0.4$  & $-11.2 \pm 0.7$ & ---            & $-9.4$  & $+1.1$ \\
-CHEMBL292707 (Ilomastat)     &   200 & $-9.5$  & $+4.9 \pm 0.7$  & $+4.6 \pm 0.5$  & ---            & $+4.8$  & $+14.3$ \\
-CHEMBL2105729                & 18000 & $-6.7$  & $+0.4 \pm 0.8$  & $+7.2 \pm 0.6$  & $+4.7 \pm 0.5$ & $+4.1$  & $+10.8$ \\
+CHEMBL443684 (Marimastat)    &     5 & $-11.8$ & $-2.9 \pm 0.7$  & $-0.1 \pm 0.8$ & $-2.3 \pm 0.5$  & $-1.8$  & $+10.0$ \\
+CHEMBL412 (Trocade-like)     &     8 & $-11.5$ & $-1.1 \pm 0.7$  & $-5.3 \pm 0.7$ & $+0.4 \pm 0.6$  & $-2.0$  & $+9.5$ \\
+CHEMBL94487 (RS-130830)      &    12 & $-11.2$ & $-20.9 \pm 0.6$ & $-21.0 \pm 0.6$ & $-24.9 \pm 0.6$ & $-22.3$ & $-11.1$ \\
+CHEMBL257077 (prinomastat-l) &    15 & $-11.1$ & $+8.6 \pm 0.6$  & $+6.0 \pm 0.6$  & ---             & $+7.3$  & $+18.4$ \\
+CHEMBL57058 (sulfonamide-HX) &    15 & $-11.1$ & $-19.5 \pm 0.7$ & $-11.8 \pm 0.7$ & $-20.7 \pm 0.9$ & $-17.3$ & $-6.2$ \\
+CHEMBL3036 (broad-HX)        &    28 & $-10.7$ & $-20.4 \pm 0.6$ & $-26.8 \pm 0.7$ & $-30.5 \pm 0.8$ & $-25.9$ & $-15.2$ \\
+CHEMBL301236 (fluoro-aryl)   &    42 & $-10.5$ & $-7.5 \pm 0.4$  & $-11.2 \pm 0.7$ & ---             & $-9.4$  & $+1.1$ \\
+CHEMBL1207 (thiol-chelate)   &    55 & $-10.3$ & $-14.8 \pm 0.8$ & $-14.8 \pm 0.9$ & ---             & $-14.8$ & $-4.5$ \\
+CHEMBL292707 (Ilomastat)     &   200 & $-9.5$  & $+4.9 \pm 0.7$  & $+4.6 \pm 0.5$  & $+1.8 \pm 0.5$  & $+3.8$  & $+13.3$ \\
+CHEMBL259829 (CGS27023A)     &   310 & $-9.2$  & $-10.1 \pm 0.5$ & $-22.3 \pm 0.6$ & $-20.1 \pm 0.8$ & $-17.5$ & $-8.3$ \\
+CHEMBL93146 (carboxylate)    &   820 & $-8.6$  & $+4.5 \pm 0.8$  & $+10.8 \pm 0.9$ & $+6.0 \pm 0.8$  & $+7.1$  & $+15.7$ \\
+CHEMBL98 (aryl sulfone)      &  2400 & $-8.0$  & $-29.7 \pm 0.8$ & $-23.4 \pm 0.9$ & $-24.9 \pm 0.8$ & $-26.0$ & $-18.1$ \\
+CHEMBL2105729                & 18000 & $-6.7$  & $+0.4 \pm 0.8$  & $+5.4 \pm 0.6$  & $+1.2 \pm 0.6$  & $+2.3$  & $+9.1$ \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The experimental ordering of the seven compounds spans
+The experimental ordering of the fourteen compounds spans
 $\dGexp = -11.9$ to $-6.7$ \unit{\kcalmol} (i.e.\ a 5.2-\unit{\kcalmol}
-window). The replicate-mean ABFE estimates span $-21.0$ to $+5.9$
-\unit{\kcalmol} (a 27-\unit{\kcalmol} window) --- an unphysically wide
+window). The replicate-mean ABFE estimates span $-26.0$ to $+7.3$
+\unit{\kcalmol} (a 33-\unit{\kcalmol} window) --- an unphysically wide
 spread relative to the underlying chemistry. Pearson and Spearman
-correlations between $\langle\dGbind\rangle$ and $\dGexp$ on this seven
-compound set are uninformative: the predictor produces sign-flipped
-values for three of seven compounds.
+correlations between $\langle\dGbind\rangle$ and $\dGexp$ on this
+fourteen-compound set are uninformative: the predictor produces
+sign-flipped binding signs for four of fourteen compounds
+(CHEMBL257077, CHEMBL292707/Ilomastat, CHEMBL93146/carboxylate,
+CHEMBL2105729) and over-binds five compounds by 8--18~\unit{\kcalmol}
+(CHEMBL94487, CHEMBL57058, CHEMBL3036, CHEMBL259829, CHEMBL98). It
+under-binds three high-potency hydroxamates by 8--10~\unit{\kcalmol}
+(CHEMBL443684/Marimastat $\langle\dGbind\rangle = -1.8$ vs.\
+$\dGexp = -11.8$; CHEMBL412/Trocade-like $-2.0$ vs.\ $-11.5$;
+CHEMBL415/Batimastat $-10.7$ vs.\ $-11.9$, with rep1/rep2 spread of
+$18.8$~\unit{\kcalmol}). Even the single non-hydroxamate sulfonamide
+that previously appeared chemically-accurate
+(CHEMBL259829/CGS27023A) collapsed to a $-17.5$~\unit{\kcalmol}
+three-replicate mean once additional replicates were added,
+demonstrating that single-replicate accuracy claims are unreliable
+across the entire ZAFF-AMBER hydroxamate/sulfonamide chemistry.
 
 \subsection{Reproducibility is decoupled from accuracy}
 \label{sec:reproducibility-vs-accuracy}
@@ -346,18 +368,24 @@ The most striking finding of this benchmark is that within-replicate
 agreement and accuracy are statistically uncorrelated:
 
 \begin{itemize}[leftmargin=*]
-  \item \textbf{CHEMBL94487} (RS-130830) is the most reproducible
-    compound: $\Delta_{\text{rep}} = 0.12$ \unit{\kcalmol} between rep1
-    ($-20.9$) and rep2 ($-21.0$). Yet the replicate mean is
-    9.7~\unit{\kcalmol} more negative than experimental.
+  \item \textbf{CHEMBL1207} (thiol-chelate hydroxamate) is the most
+    reproducible compound: $\Delta_{\text{rep}} = 0.06$ \unit{\kcalmol}
+    between rep1 ($-14.77$) and rep2 ($-14.83$). Yet the replicate
+    mean is 4.5~\unit{\kcalmol} more negative than experimental.
+  \item \textbf{CHEMBL94487} (RS-130830) is also tightly reproducible
+    at $\Delta_{\text{rep}}^{(\max)} = 4.0$ \unit{\kcalmol} across
+    three replicates ($-20.9, -21.0, -24.9$, $\sigma = 2.2$). Yet the
+    replicate mean is 11.1~\unit{\kcalmol} more negative than
+    experimental --- the worst absolute over-bind in the corpus
+    once 3-replicate means are computed.
   \item \textbf{CHEMBL415} (Batimastat) is the least reproducible:
     $\Delta_{\text{rep}}^{(\max)} = 18.8$ \unit{\kcalmol} between rep1
     ($-19.7$) and rep2 ($-0.9$). Yet the three-replicate mean
     ($-10.7$ \unit{\kcalmol}) lands within 1.2~\unit{\kcalmol} of the
     experimental value.
   \item Compounds with intermediate $\Delta_{\text{rep}}$
-    (3--5 \unit{\kcalmol}) are split between accurate (CHEMBL301236)
-    and sign-flip-failing (CHEMBL257077).
+    (3--7 \unit{\kcalmol}) are split between accurate (CHEMBL301236)
+    and sign-flip-failing (CHEMBL257077, CHEMBL93146).
 \end{itemize}
 
 This pattern argues against using single-run within-run statistical
@@ -366,8 +394,9 @@ Reporting an ABFE result with an error bar of \SI{0.6}{\kcalmol}
 \emph{can be misleading} if the actual replicate-mean uncertainty is
 4--10$\times$ larger. Figure~\ref{fig:repdisp-vs-accuracy} plots the
 replicate dispersion $\Delta_{\text{rep}}$ against the accuracy gap
-$|\langle\dGbind\rangle - \dGexp|$ for the six compounds with $\geq 2$
-replicates: there is no monotonic relationship between the two.
+$|\langle\dGbind\rangle - \dGexp|$ for the eleven compounds with
+$\geq 3$ replicates: there is no monotonic relationship between the
+two.
 
 \begin{figure}[ht]
 \centering
@@ -383,7 +412,7 @@ sits 9.7 $\unit{\kcalmol}$ above the chemical-accuracy band, while
 CHEMBL415 has the highest $\Delta_{\text{rep}}$ but its mean falls
 within the band.}
 \label{fig:repdisp-vs-accuracy}
-\end{figure>
+\end{figure}
 
 \subsection{Three-replicate mean recovers strong inhibitors}
 \label{sec:results-three-rep}
@@ -449,7 +478,7 @@ within the band: CHEMBL415 (Batimastat, 3-rep mean) and CHEMBL301236
 (fluoro-aryl HX). Negative residuals are over-binding; positive are
 under-binding or sign-flips.}
 \label{fig:potency-residuals}
-\end{figure>
+\end{figure}
 
 \subsection{Cross-method ranking robustness on the screening corpus}
 \label{sec:results-xtb}
@@ -512,11 +541,20 @@ free energy without per-class error budgeting.
 
 \subsection{What ZAFF-AMBER ABFE can be used for}
 
-The benchmark above is harsh: 3 of 7 compounds sign-flip their
+The benchmark above is harsh: 4 of 14 compounds sign-flip their
 predicted binding direction relative to experiment, replicate dispersion
 is unphysically large for some compounds, and protocol failure is
 not predictable from molecular features (size, charge, scaffold).
-Nevertheless, two findings are usable:
+Notably, even compounds that initially appeared chemically-accurate
+on a single replicate fail to remain so when additional replicates
+are added: CHEMBL259829/CGS27023A, the non-hydroxamate sulfonamide
+whose rep1 was within \SI{1}{\kcalmol} of experiment
+($-10.1$ vs.\ $\dGexp = -9.2$), collapsed to a 3-replicate mean of
+$-17.5$ once rep2/rep3 were obtained ($-22.3, -20.1$). This rebuts
+the hypothesis that ZAFF-AMBER failure is confined to hydroxamate
+zinc chelation; even non-hydroxamate sulfonamides over-bind by
+\SI{8}{\kcalmol} on replicate-averaging. Nevertheless, two findings
+remain usable:
 
 \begin{enumerate}[leftmargin=*]
   \item \textbf{Three-replicate means are quantitatively useful for the

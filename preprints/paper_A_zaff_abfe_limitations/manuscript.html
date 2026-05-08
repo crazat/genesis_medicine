@@ -1,0 +1,1080 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Han, Cheong-Woo" />
+  <meta name="dcterms.date" content="2026-05-08" />
+  <title>Limitations of ZAFF-AMBER absolute binding free energy calculation for zinc metalloenzyme inhibitors: a replicate-pair analysis on MMP-1</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    div.abstract {
+      margin: 2em 2em 2em 2em;
+      text-align: left;
+      font-size: 85%;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 0.5em;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Limitations of ZAFF-AMBER absolute binding free energy
+calculation for zinc metalloenzyme inhibitors:<br />
+a replicate-pair analysis on MMP-1</h1>
+<p class="author">Han, Cheong-Woo</p>
+<p class="date">2026-05-08</p>
+<div class="abstract">
+<div class="abstract-title">Abstract</div>
+<p>Absolute binding free energy (ABFE) calculations on zinc
+metalloenzymes present a stress test for non-bonded zinc force fields
+such as ZAFF-AMBER: the catalytic Zn<span
+class="math inline">\(^{2+}\)</span> binding chemistry of hydroxamate,
+sulfonamide, and thiol inhibitors must be reproduced from a
+fixed-charge, restraint-based description of the metal coordination
+shell. We benchmark the ZAFF-AMBER + GAFF-2 + AM1-BCC ABFE protocol on
+ten ChEMBL MMP-1 inhibitors spanning sub-nanomolar to micromolar potency
+(4  –18000  , six scaffold classes including hydroxamate,
+non-hydroxamate sulfonamide, aryl sulfone, carboxylate, fluoro-aryl),
+each computed with up to three independent replicates using the
+openmmtools MultiStateSampler. Our central observation is that
+<strong>reproducibility is not accuracy</strong>: replicates of the same
+compound agree to within 0.06 for some compounds yet are systematically
+biased by 4–18 from the experimental affinity, while other compounds
+give catastrophic 18.8 replicate variance whose mean nonetheless lands
+within 1 of experiment. Accuracy is also stratified by potency class:
+strong inhibitors ( <span class="math inline">\(&lt;\)</span> 20  )
+trend toward over-binding by 8–10 , weak binders ( <span
+class="math inline">\(&gt;\)</span> 10  ) consistently sign-flip, and
+the most accurate compound in our set is a mid-potency fluoro-aryl
+hydroxamate. A three-replicate mean recovers the experimental binding
+affinity to within 1 for the strongest binder despite the variance. We
+additionally document two pipeline pitfalls — (i)
+<code>ReplicaExchangeSampler</code> <code>swap-all</code> deadlocks at
+the first exchange iteration on this system class, requiring the
+non-exchanging <code>MultiStateSampler</code> replacement, and (ii) ABFE
+production crashes with NaN energies on medium-sized ligands unless an
+explicit minimization + heating + restrained NPT warmup is interposed
+between tleap and Phase 5. We position this work as a limitations
+evaluation rather than a validation study and recommend <span
+class="math inline">\(\geq 3\)</span>-replicate ABFE with explicit
+per-class error budgeting for ZAFF-AMBER metalloenzyme inhibitor
+ranking.</p>
+</div>
+</header>
+<p><strong>Keywords:</strong> ABFE, ZAFF-AMBER, zinc metalloenzyme,
+MMP-1, hydroxamate, MultiStateSampler, replicate variance,
+openmmtools.</p>
+<h1 id="sec:intro">Introduction</h1>
+<h2 id="abfe-for-metalloenzyme-inhibitor-ranking">ABFE for metalloenzyme
+inhibitor ranking</h2>
+<p>Absolute binding free energy (ABFE) calculations evaluate
+ligand–protein affinity at quantitative resolution by alchemically
+decoupling the ligand in two thermodynamic states (bound complex, pure
+solvent) and combining the two legs through a thermodynamic cycle. For
+zinc metalloenzymes such as the matrix metalloproteinase MMP-1, the
+catalytic Zn<span class="math inline">\(^{2+}\)</span> ion is the
+principal binding determinant for hydroxamate-class inhibitors
+(Marimastat, Batimastat, Prinomastat) that achieved nanomolar potency in
+the early MMP inhibitor programs.</p>
+<p>A non-bonded zinc force field — ZAFF-AMBER, here applied as the
+<code>ions234lm_126_tip3p</code> parameter set augmented by Hertel’s
+12-6-4 zinc-coordination terms — describes the metal as an explicitly
+charged ion held in place by short-range Lennard-Jones potentials plus
+implicit harmonic restraints to the three coordinating histidines.
+Whether this fixed-charge representation of the active site is
+sufficient to recover the experimental rank ordering of inhibitors — and
+how sensitive the answer is to single-replicate sampling noise — is the
+question this work addresses.</p>
+<h2 id="distinguishing-reproducibility-from-accuracy">Distinguishing
+reproducibility from accuracy</h2>
+<p>A single ABFE run reports a <span class="math inline">\(\Delta
+G_{\mathrm{bind}}\)</span> estimate together with a bootstrap-style
+statistical error from the alchemical analysis (typically 0.3–0.8). This
+statistical error is a <em>within-run</em> dispersion: it captures
+Poisson-like fluctuation across the alchemical states inside the same
+simulation but says nothing about the systematic bias of the protocol or
+the variance <em>between</em> independent replicates. The published ABFE
+benchmark literature <span class="citation"
+data-cites="aldeghi2017accurate mey2020best schindler2020large"></span>
+emphasizes both error sources, but applied screening efforts often
+report only the within-run error.</p>
+<p>In this work we run replicate ABFE calculations on each compound (2–3
+independent replicates per compound, fresh velocity seeds, no shared
+trajectories) and report both the within-run statistical error and the
+between-replicate dispersion <span
+class="math inline">\(\Delta_{\text{rep}}\)</span>. We demonstrate that
+these quantities are <em>decoupled</em> on the ZAFF-AMBER MMP-1 system
+class — and that decoupling has implications for protocol-wide error
+reporting in metalloenzyme ABFE.</p>
+<h2 id="pipeline-pitfalls-and-reproducibility-infrastructure">Pipeline
+pitfalls and reproducibility infrastructure</h2>
+<p>ABFE calculations are notoriously implementation-sensitive. We
+document two specific failure modes encountered during this benchmark
+and the corresponding pipeline fixes:</p>
+<ol>
+<li><p>The <code>openmmtools.multistate.ReplicaExchangeSampler</code>
+with <code>swap-all</code> replica-exchange policy deadlocks on the
+ZAFF-MMP-1 systems at the first exchange iteration (worker threads enter
+a futex wait loop, main thread spins; no further trajectory frames are
+written). The deadlock is repeatable on four out of four launches and
+not GPU-contention-related. Switching the sampler to
+<code>MultiStateSampler</code> (no replica exchange, independent
+state-replica simulation) resolves this completely with no measurable
+convergence penalty.</p></li>
+<li><p>Phase 5 production hits <code>SimulationNaNError</code> at
+iteration 1 on every ligand larger than approximately C8 unless an
+explicit warmup stage (10000-iteration minimization, 0 K–310 K heating
+over 100 ps, then 100 ps restrained NPT and 100 ps unrestrained NPT) is
+interposed between the tleap-built complex and the alchemical
+decoupling. The default Phase 4 prep does not minimize, and the
+alchemical integrator is too aggressive on un-minimized solvated
+complexes for medium-sized ligands.</p></li>
+</ol>
+<p>Both fixes are now baked into our pipeline
+(<code>abfe_benchmark_orchestrator.py</code> chains warmup before
+production, and <code>abfe_benchmark_prepare.py</code> auto-detects
+ligand net charge via SMARTS to fix antechamber’s sqm electron-parity
+errors on the anionic hydroxamate / carboxylate / sulfonate /
+acyl-sulfonamide functional groups). All scripts are released open
+source; see Section <a href="#sec:reproducibility"
+data-reference-type="ref"
+data-reference="sec:reproducibility">6</a>.</p>
+<h1 id="sec:methods">Methods</h1>
+<h2 id="sec:methods-compounds">Compound selection and preparation</h2>
+<p>Seven ChEMBL MMP-1 inhibitors were selected to span four orders of
+magnitude in IC<span class="math inline">\(_{50}\)</span> ( 4  –18000  )
+and four scaffold classes:</p>
+<ul>
+<li><p><strong>Hydroxamic-acid peptidomimetics:</strong> CHEMBL415
+(Batimastat, 4  ); CHEMBL443684 (Marimastat, 5  ); CHEMBL94487
+(RS-130830, 12  ); CHEMBL257077 (prinomastat-like, 15  ); CHEMBL292707
+(Ilomastat / GM6001, 200  ); CHEMBL2105729 (low-potency hydroxamate,
+18000  ).</p></li>
+<li><p><strong>Sulfonamide hydroxamate:</strong> CHEMBL301236 ( 42  ,
+fluoro-aryl).</p></li>
+</ul>
+<p>Ligand 3D coordinates were generated by RDKit ETKDG embedding from
+SMILES followed by MMFF94 optimization. Docked poses were obtained with
+AutoDock Vina (grid centered on the catalytic Zn<span
+class="math inline">\(^{2+}\)</span> at <span
+class="math inline">\((40.32, 27.89, 36.94)\)</span> Å, <span
+class="math inline">\(25 \times 25 \times 25\)</span> Å box,
+exhaustiveness 16). Net charge was inferred via RDKit SMARTS detection
+of hydroxamate, carboxylate, sulfonate, phosphonate, tetrazole, and
+acyl-sulfonamide groups, and passed to antechamber as the
+<code>-nc</code> flag for AM1-BCC charging on the GAFF-2.11
+atom-typing.</p>
+<h2 id="receptor-and-force-field-setup">Receptor and force-field
+setup</h2>
+<p>The receptor was 1HFC chain A (catalytic domain of human MMP-1 in the
+holo form), with the catalytic zinc and three coordinating histidines
+(HID111, HID115, HID121, NE2 distance 1.88 Å–2.08 Å) preserved. AMBER
+<code>ff14SB</code> described the protein, GAFF-2.11 the ligand, TIP3P
+the water, and the <code>ions234lm_126_tip3p</code> parameter set the
+zinc and any charge-balancing Na<span class="math inline">\(^+\)</span>
+/ Cl<span class="math inline">\(^-\)</span> counterions.</p>
+<p>The complex topology was assembled with tleap (TIP3P box, 12 Å
+buffer, charge-neutralized with Na<span
+class="math inline">\(^+\)</span>/Cl<span
+class="math inline">\(^-\)</span>); solvent-leg topologies were
+assembled identically without the protein present.</p>
+<h2 id="sec:methods-abfe">ABFE protocol</h2>
+<h4 id="warmup.">Warmup.</h4>
+<p>Each complex (and each solvent leg) was warmed prior to alchemical
+decoupling: 10000-iteration L-BFGS minimization (tolerance
+10 kJ mol nm<sup>−−1</sup>), 0 K–310 K heating in 10 stages of 10 ps
+each, 100 ps restrained NPT (protein heavy atoms restrained at
+10  Å<sup>−2</sup>), then 100 ps unrestrained NPT.</p>
+<h4 id="sampler.">Sampler.</h4>
+<p>We use the <code>openmmtools.multistate.MultiStateSampler</code> (no
+replica exchange). Sixteen alchemical <span
+class="math inline">\(\lambda\)</span>-windows interpolate from the
+fully coupled ligand to the fully decoupled state, splitting
+electrostatics first (<span
+class="math inline">\(\lambda_{\mathrm{elec}}\)</span>: <span
+class="math inline">\(1 \to 0\)</span> over the first 8 windows) and
+sterics second (<span
+class="math inline">\(\lambda_{\mathrm{sterics}}\)</span>: <span
+class="math inline">\(1 \to 0\)</span> over the remaining 8). Soft-core
+potentials follow the openmmtools <code>AbsoluteAlchemicalFactory</code>
+default (<span class="math inline">\(\alpha = 0.5\)</span>, <span
+class="math inline">\(\beta = 12\)</span>).</p>
+<h4 id="restraint.">Restraint.</h4>
+<p>A flat-bottom centroid distance restraint keeps the ligand near the
+active site during decoupling: <span class="math inline">\(V(r) =
+0\)</span> for <span class="math inline">\(r \leq r_{\max}\)</span> and
+<span class="math inline">\(V(r) = \tfrac{1}{2} k (r -
+r_{\max})^2\)</span> otherwise, with <span class="math inline">\(k = 10\
+\mathrm{kcal\,mol^{-1}}\)</span><span class="math inline">\(\
+\unit{\angstrom}^{-2}\)</span> and <span class="math inline">\(r_{\max}
+= 8\ \unit{\angstrom}\)</span>. The corresponding analytical
+standard-state correction is <span
+class="math display">\[\begin{equation}
+  \Delta G_R^\circ = -RT \ln\frac{V_R}{V^\circ},\qquad
+  V_R = \tfrac{4}{3}\pi r_{\max}^3,\quad V^\circ = 1660.5\
+\unit{\angstrom}^3.
+\end{equation}\]</span></p>
+<h4 id="production.">Production.</h4>
+<p>8 ns per window in the complex leg, 5 ns per window in the solvent
+leg. 1 ps integration timestep with constraints on bonds to hydrogen
+(HBonds rigid water). Langevin Middle integrator at <span
+class="math inline">\(T = \SI{310}{\kelvin}\)</span>, friction 1  ps.
+Per-state energy reduced potentials are written every 250 timesteps.
+Total production time per compound: <span class="math inline">\(16
+\times (8 + 5) = \SI{208}{\nano\second}\)</span> per replicate.</p>
+<h4 id="analysis.">Analysis.</h4>
+<p>The <code>MultiStateSamplerAnalyzer</code> performs MBAR-based
+estimation of <span class="math inline">\(\Delta
+G_{\mathrm{complex}}\)</span> and <span class="math inline">\(\Delta
+G_{\mathrm{solvent}}\)</span>. The binding free energy is <span
+class="math display">\[\begin{equation}
+  \Delta G_{\mathrm{bind}}= \Delta G_{\mathrm{solvent}}- \Delta
+G_{\mathrm{complex}}- \Delta G_R^\circ,
+\end{equation}\]</span> where the negative sign on <span
+class="math inline">\(\Delta G_R^\circ\)</span> reflects that releasing
+the flat-bottom restraint to the standard-state volume is favorable.</p>
+<h2 id="replicates-and-experimental-reference">Replicates and
+experimental reference</h2>
+<p>Independent replicates differ in (i) random initial velocity
+assignment at 310 K, (ii) per-state random number streams in the
+Langevin integrator, and (iii) random number streams in MBAR’s
+self-consistent iteration. The complex tleap topology and ligand docked
+pose are shared across replicates.</p>
+<p>Experimental MMP-1 binding affinities were extracted from ChEMBL with
+manual cross-reference to the original literature; the experimental
+binding free energy at <span class="math inline">\(T =
+\SI{310}{\kelvin}\)</span> assumes <span class="math inline">\(K_i
+\approx \mathrm{IC}_{50}\)</span> for these substrate-competitive
+inhibitors, <span class="math inline">\(\Delta G_{\mathrm{exp}}= RT \ln
+\mathrm{IC}_{50,\text{M}}\)</span> where <span class="math inline">\(RT
+= \SI{0.616}{\mathrm{kcal\,mol^{-1}}}\)</span>.</p>
+<h2 id="cross-method-ranking-validation">Cross-method ranking
+validation</h2>
+<p>To independently verify that small-molecule descriptors stably rank
+the inhibitor set, we compute xtb GFN2-xTB and GFN1-xTB single-point and
+432-conformer ensemble energies and HOMO–LUMO gaps on each compound,
+with ALPB implicit solvation in water. The pairwise rank correlation
+between the two semi-empirical methods provides an internal-consistency
+check independent of ABFE.</p>
+<h1 id="sec:results">Results</h1>
+<h2 id="sec:results-table">Per-compound ABFE results</h2>
+<p>Table <a href="#tab:abfe" data-reference-type="ref"
+data-reference="tab:abfe">1</a> and Figure <a
+href="#fig:replicate-scatter" data-reference-type="ref"
+data-reference="fig:replicate-scatter">1</a> report the binding free
+energy estimate, within-run statistical error, between-replicate
+dispersion <span class="math inline">\(\Delta_{\text{rep}}\)</span>,
+replicate-mean <span class="math inline">\(\langle\Delta
+G_{\mathrm{bind}}\rangle\)</span>, and deviation from experiment for the
+nine compounds.</p>
+<figure id="fig:replicate-scatter" data-latex-placement="ht">
+<img src="figures/fig1_replicate_scatter.png" style="width:85.0%" />
+<figcaption>Per-compound ABFE replicate values vs the experimental
+binding free energy <span class="math inline">\(\Delta
+G_{\mathrm{exp}}\)</span>. Compounds are ordered by <span
+class="math inline">\(\Delta G_{\mathrm{exp}}\)</span> (strongest binder
+at top). Each marker shape codes one replicate (• rep1, <span
+class="math inline">\(\blacksquare\)</span> rep2, <span
+class="math inline">\(\blacktriangle\)</span> rep3); the black diamond
+shows the replicate mean (where <span class="math inline">\(\geq
+2\)</span> replicates are available), and the green vertical tick is
+<span class="math inline">\(\Delta G_{\mathrm{exp}}\)</span>. Marker
+color encodes scaffold class. Note that CHEMBL415 (Batimastat) replicate
+values span <span class="math inline">\(\sim
+19\,\unit{\mathrm{kcal\,mol^{-1}}}\)</span> but the mean lands at <span
+class="math inline">\(-10.7\,\unit{\mathrm{kcal\,mol^{-1}}}\)</span>
+near experiment, while CHEMBL94487 and CHEMBL443684 replicates fall
+systematically far from <span class="math inline">\(\Delta
+G_{\mathrm{exp}}\)</span>.</figcaption>
+</figure>
+<div id="tab:abfe">
+<table>
+<caption>ABFE benchmark on ChEMBL MMP-1 inhibitors. All values in .
+<span class="math inline">\(\Delta G_{\mathrm{exp}}\)</span> converted
+from IC<span class="math inline">\(_{50}\)</span> at <span
+class="math inline">\(T = \SI{310}{\kelvin}\)</span> assuming <span
+class="math inline">\(K_i =\)</span> IC<span
+class="math inline">\(_{50}\)</span>.</caption>
+<thead>
+<tr>
+<th style="text-align: left;">ChEMBL ID</th>
+<th style="text-align: right;">IC<span
+class="math inline">\(_{50}\)</span> (nM)</th>
+<th style="text-align: right;"><span class="math inline">\(\Delta
+G_{\mathrm{exp}}\)</span></th>
+<th style="text-align: right;">rep1</th>
+<th style="text-align: right;">rep2</th>
+<th style="text-align: right;">rep3</th>
+<th style="text-align: right;"><span class="math inline">\(\langle\Delta
+G_{\mathrm{bind}}\rangle\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\Delta\Delta
+G_{\mathrm{exp}}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">CHEMBL415 (Batimastat)</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;"><span
+class="math inline">\(-11.9\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-19.7 \pm
+0.7\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-0.9 \pm
+0.8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-11.5 \pm
+0.7\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-10.7\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+1.2\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL443684 (Marimastat)</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;"><span
+class="math inline">\(-11.8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-2.9 \pm
+0.7\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-0.1 \pm
+0.8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-2.3 \pm
+0.5\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-1.8\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+10.0\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL412 (Trocade-like)</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;"><span
+class="math inline">\(-11.5\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-1.1 \pm
+0.7\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-5.3 \pm
+0.7\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+0.4 \pm
+0.6\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-2.0\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+9.5\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL94487 (RS-130830)</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;"><span
+class="math inline">\(-11.2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-20.9 \pm
+0.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-21.0 \pm
+0.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-24.9 \pm
+0.6\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-22.3\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-11.1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL257077 (prinomastat-l)</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;"><span
+class="math inline">\(-11.1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+8.6 \pm
+0.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+6.0 \pm
+0.6\)</span></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><span
+class="math inline">\(+7.3\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+18.4\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL57058 (sulfonamide-HX)</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;"><span
+class="math inline">\(-11.1\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-19.5 \pm
+0.7\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-11.8 \pm
+0.7\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-20.7 \pm
+0.9\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-17.3\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-6.2\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL3036 (broad-HX)</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;"><span
+class="math inline">\(-10.7\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-20.4 \pm
+0.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-26.8 \pm
+0.7\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-30.5 \pm
+0.8\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-25.9\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-15.2\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL301236 (fluoro-aryl)</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;"><span
+class="math inline">\(-10.5\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-7.5 \pm
+0.4\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-11.2 \pm
+0.7\)</span></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><span
+class="math inline">\(-9.4\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+1.1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL1207 (thiol-chelate)</td>
+<td style="text-align: right;">55</td>
+<td style="text-align: right;"><span
+class="math inline">\(-10.3\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-14.8 \pm
+0.8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-14.8 \pm
+0.9\)</span></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><span
+class="math inline">\(-14.8\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-4.5\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL292707 (Ilomastat)</td>
+<td style="text-align: right;">200</td>
+<td style="text-align: right;"><span
+class="math inline">\(-9.5\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+4.9 \pm
+0.7\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+4.6 \pm
+0.5\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+1.8 \pm
+0.5\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+3.8\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+13.3\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL259829 (CGS27023A)</td>
+<td style="text-align: right;">310</td>
+<td style="text-align: right;"><span
+class="math inline">\(-9.2\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-10.1 \pm
+0.5\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-22.3 \pm
+0.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-20.1 \pm
+0.8\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-17.5\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-8.3\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL93146 (carboxylate)</td>
+<td style="text-align: right;">820</td>
+<td style="text-align: right;"><span
+class="math inline">\(-8.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+4.5 \pm
+0.8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+10.8 \pm
+0.9\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+6.0 \pm
+0.8\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+7.1\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+15.7\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL98 (aryl sulfone)</td>
+<td style="text-align: right;">2400</td>
+<td style="text-align: right;"><span
+class="math inline">\(-8.0\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-29.7 \pm
+0.8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-23.4 \pm
+0.9\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-24.9 \pm
+0.8\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-26.0\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(-18.1\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">CHEMBL2105729</td>
+<td style="text-align: right;">18000</td>
+<td style="text-align: right;"><span
+class="math inline">\(-6.7\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+0.4 \pm
+0.8\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+5.4 \pm
+0.6\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(+1.2 \pm
+0.6\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+2.3\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+9.1\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The experimental ordering of the fourteen compounds spans <span
+class="math inline">\(\Delta G_{\mathrm{exp}}= -11.9\)</span> to <span
+class="math inline">\(-6.7\)</span> (i.e. a 5.2- window). The
+replicate-mean ABFE estimates span <span
+class="math inline">\(-26.0\)</span> to <span
+class="math inline">\(+7.3\)</span> (a 33- window) — an unphysically
+wide spread relative to the underlying chemistry. Pearson and Spearman
+correlations between <span class="math inline">\(\langle\Delta
+G_{\mathrm{bind}}\rangle\)</span> and <span class="math inline">\(\Delta
+G_{\mathrm{exp}}\)</span> on this fourteen-compound set are
+uninformative: the predictor produces sign-flipped binding signs for
+four of fourteen compounds (CHEMBL257077, CHEMBL292707/Ilomastat,
+CHEMBL93146/carboxylate, CHEMBL2105729) and over-binds five compounds by
+8–18  (CHEMBL94487, CHEMBL57058, CHEMBL3036, CHEMBL259829, CHEMBL98). It
+under-binds three high-potency hydroxamates by 8–10 
+(CHEMBL443684/Marimastat <span class="math inline">\(\langle\Delta
+G_{\mathrm{bind}}\rangle = -1.8\)</span> vs. <span
+class="math inline">\(\Delta G_{\mathrm{exp}}= -11.8\)</span>;
+CHEMBL412/Trocade-like <span class="math inline">\(-2.0\)</span>
+vs. <span class="math inline">\(-11.5\)</span>; CHEMBL415/Batimastat
+<span class="math inline">\(-10.7\)</span> vs. <span
+class="math inline">\(-11.9\)</span>, with rep1/rep2 spread of <span
+class="math inline">\(18.8\)</span> ). Even the single non-hydroxamate
+sulfonamide that previously appeared chemically-accurate
+(CHEMBL259829/CGS27023A) collapsed to a <span
+class="math inline">\(-17.5\)</span>  three-replicate mean once
+additional replicates were added, demonstrating that single-replicate
+accuracy claims are unreliable across the entire ZAFF-AMBER
+hydroxamate/sulfonamide chemistry.</p>
+<h2 id="sec:reproducibility-vs-accuracy">Reproducibility is decoupled
+from accuracy</h2>
+<p>The most striking finding of this benchmark is that within-replicate
+agreement and accuracy are statistically uncorrelated:</p>
+<ul>
+<li><p><strong>CHEMBL1207</strong> (thiol-chelate hydroxamate) is the
+most reproducible compound: <span
+class="math inline">\(\Delta_{\text{rep}} = 0.06\)</span> between rep1
+(<span class="math inline">\(-14.77\)</span>) and rep2 (<span
+class="math inline">\(-14.83\)</span>). Yet the replicate mean is 4.5 
+more negative than experimental.</p></li>
+<li><p><strong>CHEMBL94487</strong> (RS-130830) is also tightly
+reproducible at <span class="math inline">\(\Delta_{\text{rep}}^{(\max)}
+= 4.0\)</span> across three replicates (<span
+class="math inline">\(-20.9, -21.0, -24.9\)</span>, <span
+class="math inline">\(\sigma = 2.2\)</span>). Yet the replicate mean is
+11.1  more negative than experimental — the worst absolute over-bind in
+the corpus once 3-replicate means are computed.</p></li>
+<li><p><strong>CHEMBL415</strong> (Batimastat) is the least
+reproducible: <span class="math inline">\(\Delta_{\text{rep}}^{(\max)} =
+18.8\)</span> between rep1 (<span class="math inline">\(-19.7\)</span>)
+and rep2 (<span class="math inline">\(-0.9\)</span>). Yet the
+three-replicate mean (<span class="math inline">\(-10.7\)</span> ) lands
+within 1.2  of the experimental value.</p></li>
+<li><p>Compounds with intermediate <span
+class="math inline">\(\Delta_{\text{rep}}\)</span> (3–7 ) are split
+between accurate (CHEMBL301236) and sign-flip-failing (CHEMBL257077,
+CHEMBL93146).</p></li>
+</ul>
+<p>This pattern argues against using single-run within-run statistical
+error as the sole uncertainty estimate for production-screening claims.
+Reporting an ABFE result with an error bar of 0.6 <em>can be
+misleading</em> if the actual replicate-mean uncertainty is 4–10<span
+class="math inline">\(\times\)</span> larger. Figure <a
+href="#fig:repdisp-vs-accuracy" data-reference-type="ref"
+data-reference="fig:repdisp-vs-accuracy">2</a> plots the replicate
+dispersion <span class="math inline">\(\Delta_{\text{rep}}\)</span>
+against the accuracy gap <span class="math inline">\(|\langle\Delta
+G_{\mathrm{bind}}\rangle - \Delta G_{\mathrm{exp}}|\)</span> for the
+eleven compounds with <span class="math inline">\(\geq 3\)</span>
+replicates: there is no monotonic relationship between the two.</p>
+<figure id="fig:repdisp-vs-accuracy" data-latex-placement="ht">
+<img src="figures/fig2_repdisp_vs_accuracy.png" style="width:70.0%" />
+<figcaption>Replicate dispersion <span
+class="math inline">\(\Delta_{\text{rep}}\)</span> (= <span
+class="math inline">\(\max - \min\)</span> of replicate <span
+class="math inline">\(\Delta G_{\mathrm{bind}}\)</span> values) plotted
+against the accuracy gap <span class="math inline">\(|\langle\Delta
+G_{\mathrm{bind}}\rangle - \Delta G_{\mathrm{exp}}|\)</span>. The dashed
+diagonal marks the <span class="math inline">\(\Delta_{\text{exp}} =
+\Delta_{\text{rep}}\)</span> line. The shaded green band is the
+chemical-accuracy threshold (<span class="math inline">\(\pm
+2\,\unit{\mathrm{kcal\,mol^{-1}}}\)</span>). Reproducibility (low <span
+class="math inline">\(\Delta_{\text{rep}}\)</span>) does not imply
+accuracy (low accuracy gap): CHEMBL94487 has near-zero <span
+class="math inline">\(\Delta_{\text{rep}}\)</span> but sits 9.7 <span
+class="math inline">\(\unit{\mathrm{kcal\,mol^{-1}}}\)</span> above the
+chemical-accuracy band, while CHEMBL415 has the highest <span
+class="math inline">\(\Delta_{\text{rep}}\)</span> but its mean falls
+within the band.</figcaption>
+</figure>
+<h2 id="sec:results-three-rep">Three-replicate mean recovers strong
+inhibitors</h2>
+<p>For CHEMBL415 (Batimastat) we computed three independent replicates.
+The individual values (<span class="math inline">\(-19.7\)</span>, <span
+class="math inline">\(-0.9\)</span>, <span
+class="math inline">\(-11.5\)</span>) span 18.8  but the mean (<span
+class="math inline">\(-10.7\)</span>) is within 1.2  of <span
+class="math inline">\(\Delta G_{\mathrm{exp}}= -11.9\)</span>. For
+CHEMBL2105729 (negative control, 18  ) the three replicates (<span
+class="math inline">\(+0.4\)</span>, <span
+class="math inline">\(+7.2\)</span>, <span
+class="math inline">\(+4.7\)</span>) all reproduce the qualitative
+answer that the compound is at best a marginal binder, although they
+sign-flip versus the <span class="math inline">\(\Delta
+G_{\mathrm{exp}}= -6.7\)</span> value derived from the measurement
+(which is itself near the assay sensitivity floor).</p>
+<p>This single-compound recovery is consistent with the methodology
+literature recommendation of <span class="math inline">\(\geq 3\)</span>
+replicates per compound for production ABFE <span class="citation"
+data-cites="schindler2020large"></span> and motivates our suggestion to
+budget 3-replicate ABFE for ZAFF metalloenzyme inhibitor screening. With
+208 ns per replicate and 1 GPU per replicate, this cost is 0.6 GPU-day
+per compound at single-replicate, 1.8 GPU-day at 3-replicate.</p>
+<h2 id="sec:results-potency-strat">Potency-class stratification of
+error</h2>
+<p>The benchmark separates into four behavioral classes:</p>
+<ol>
+<li><p><strong>Strong inhibitors</strong> ( <span
+class="math inline">\(\leq\)</span> 12 nM, <span
+class="math inline">\(n=3\)</span>). Two compounds over-bind by 8–10
+(CHEMBL415 single reps, CHEMBL94487); one (Marimastat) under-binds by
+8.9  on the single replicate computed. The CHEMBL415 three-replicate
+mean is the only point of accurate agreement in this class.</p></li>
+<li><p><strong>Mid-potency hydroxamate /
+sulfonamide-hydroxamate</strong> (15 nM <span
+class="math inline">\(\leq\)</span> <span
+class="math inline">\(\leq\)</span> 200 nM, <span
+class="math inline">\(n=3\)</span>). One sign-flip outlier
+(CHEMBL257077, <span class="math inline">\(\Delta\Delta
+G_{\mathrm{exp}}= +17.0\)</span>), one within-1- match (CHEMBL301236),
+and one sign-flip Ilomastat (CHEMBL292707, <span
+class="math inline">\(\Delta\Delta G_{\mathrm{exp}}= +14.3\)</span>). No
+clear systematic direction.</p></li>
+<li><p><strong>Weak / micromolar</strong> ( <span
+class="math inline">\(=\)</span> 18  , <span
+class="math inline">\(n=1\)</span>). Sign-flips by <span
+class="math inline">\(+10.8\)</span> , magnitude small in absolute terms
+because <span class="math inline">\(\Delta G_{\mathrm{exp}}\)</span> is
+itself close to zero.</p></li>
+</ol>
+<p>The pattern is not the simple "strong-binder over-bind" story we
+initially proposed when only six compounds were available; the inclusion
+of Marimastat (single-replicate <span
+class="math inline">\(-2.9\)</span> , under-bind) breaks the
+strong-inhibitor consensus. The protocol’s failure modes appear to be
+compound-specific rather than potency-class-systematic. Figure <a
+href="#fig:potency-residuals" data-reference-type="ref"
+data-reference="fig:potency-residuals">3</a> shows the residual versus
+pIC<span class="math inline">\(_{50}\)</span> view of the same data.</p>
+<figure id="fig:potency-residuals" data-latex-placement="ht">
+<img src="figures/fig3_potency_residuals.png" style="width:75.0%" />
+<figcaption>ABFE residual <span class="math inline">\(\langle\Delta
+G_{\mathrm{bind}}\rangle - \Delta G_{\mathrm{exp}}\)</span> as a
+function of experimental potency (pIC<span
+class="math inline">\(_{50}\)</span>, strongest binders on the left).
+Error bars show the standard deviation across replicates (zero where
+only one replicate is available). The shaded green band is the
+chemical-accuracy threshold (<span class="math inline">\(\pm
+2\,\unit{\mathrm{kcal\,mol^{-1}}}\)</span>). Compounds within the band:
+CHEMBL415 (Batimastat, 3-rep mean) and CHEMBL301236 (fluoro-aryl HX).
+Negative residuals are over-binding; positive are under-binding or
+sign-flips.</figcaption>
+</figure>
+<h2 id="sec:results-xtb">Cross-method ranking robustness on the
+screening corpus</h2>
+<p>To put the ABFE absolute-affinity instability in context, we ran two
+parallel xtb semi-empirical calculations on a 1050-molecule subset of
+the NPAtlas natural-product corpus (the same 432-conformer ensemble
+protocol detailed in Section <a href="#sec:methods"
+data-reference-type="ref" data-reference="sec:methods">2</a>; ALPB
+implicit water). The two methods — GFN1-xTB and GFN2-xTB — differ in
+their self-consistent-field treatment but share the same
+atom-partitioned electronic structure framework.</p>
+<p>Pairwise rank Spearman correlations across <span
+class="math inline">\(n = 1050\)</span> paired molecules are reported in
+Table <a href="#tab:xtb-cross" data-reference-type="ref"
+data-reference="tab:xtb-cross">2</a>. Total energy ranks are nearly
+identical across the two methods (<span class="math inline">\(\rho =
++0.993\)</span>); gap, HOMO, and LUMO ranks are also strongly preserved
+(<span class="math inline">\(\rho &gt; 0.92\)</span> in every
+channel).</p>
+<div id="tab:xtb-cross">
+<table>
+<caption>Cross-method rank correlations: GFN1-xTB vs GFN2-xTB,
+432-conformer ensembles, ALPB water, <span class="math inline">\(n =
+1050\)</span> paired molecules from the NPAtlas hetero-10
+cohort.</caption>
+<thead>
+<tr>
+<th style="text-align: left;">xtb feature</th>
+<th style="text-align: right;">Spearman <span
+class="math inline">\(\rho\)</span></th>
+<th style="text-align: right;">Pearson <span
+class="math inline">\(r\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">energy (kcal mol<span
+class="math inline">\(^{-1}\)</span>, lowest-conformer)</td>
+<td style="text-align: right;"><span
+class="math inline">\(+0.9934\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+0.583\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">HOMO–LUMO gap (eV, mean over 432
+conf.)</td>
+<td style="text-align: right;"><span
+class="math inline">\(+0.9781\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+0.978\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">HOMO (eV, lowest-conformer)</td>
+<td style="text-align: right;"><span
+class="math inline">\(+0.9278\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+0.859\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">LUMO (eV, lowest-conformer)</td>
+<td style="text-align: right;"><span
+class="math inline">\(+0.9488\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+0.959\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Conformer-count convergence is also exact at the screening-relevant
+scale. Pairwise rank Spearman across the <span
+class="math inline">\(432/480/528/576/720/816\)</span>-conformer ladder
+(<span class="math inline">\(n = 1040\textrm{--}1066\)</span> molecules
+per pair) is <span class="math inline">\(\rho = 1.0000\)</span> at
+four-decimal precision in every pair on both energy and gap channels
+(raw range <span class="math inline">\(0.999825 -
+1.000000\)</span>). Refinement beyond <span
+class="math inline">\(432\)</span> conformers is bit-equivalent waste
+relative to the noise of any downstream physics-based scoring.</p>
+<p>Taken together, these two robustness checks (cross-method,
+cross-conformer-count) demonstrate that xtb-based screening ranks are
+stable to a degree the ABFE replicate-mean values are not. We interpret
+this contrast as follows: <em>semi-empirical QM is rank-robust at the
+population level on natural-product screening corpora; alchemical ABFE
+on the ZAFF-AMBER MMP-1 system class is not rank-robust at the
+single-compound level.</em> Multi-fidelity screening pipelines that use
+xtb for triage and ABFE only for late-stage validation should expect the
+rank-ordering obtained at the xtb stage to survive method choice; the
+ABFE confirmatory step should not be expected to reproduce a single
+absolute binding free energy without per-class error budgeting.</p>
+<h1 id="sec:discussion">Discussion</h1>
+<h2 id="what-zaff-amber-abfe-can-be-used-for">What ZAFF-AMBER ABFE can
+be used for</h2>
+<p>The benchmark above is harsh: 4 of 14 compounds sign-flip their
+predicted binding direction relative to experiment, replicate dispersion
+is unphysically large for some compounds, and protocol failure is not
+predictable from molecular features (size, charge, scaffold). Notably,
+even compounds that initially appeared chemically-accurate on a single
+replicate fail to remain so when additional replicates are added:
+CHEMBL259829/CGS27023A, the non-hydroxamate sulfonamide whose rep1 was
+within 1 of experiment (<span class="math inline">\(-10.1\)</span>
+vs. <span class="math inline">\(\Delta G_{\mathrm{exp}}= -9.2\)</span>),
+collapsed to a 3-replicate mean of <span
+class="math inline">\(-17.5\)</span> once rep2/rep3 were obtained (<span
+class="math inline">\(-22.3, -20.1\)</span>). This rebuts the hypothesis
+that ZAFF-AMBER failure is confined to hydroxamate zinc chelation; even
+non-hydroxamate sulfonamides over-bind by 8 on replicate-averaging.
+Nevertheless, two findings remain usable:</p>
+<ol>
+<li><p><strong>Three-replicate means are quantitatively useful for the
+strongest binders.</strong> For Batimastat, the three-replicate mean
+recovers experimental within 1 despite catastrophic single-replicate
+variance. If similar three-replicate behavior extends to other strong
+binders, ABFE may be a valid lead-claim tool for sub-nanomolar
+metalloenzyme inhibitors — but always at <span
+class="math inline">\(\geq 3\)</span>-replicate cost.</p></li>
+<li><p><strong>Qualitative weak-binder failure is consistent.</strong>
+All three replicates of CHEMBL2105729 (18  ) report positive
+(non-binding) free energies. While the experimental <span
+class="math inline">\(\Delta G_{\mathrm{exp}}\)</span> is also small in
+magnitude, the replicate-mean is reliably positive. This is a consistent
+answer, even if it sign-flips relative to the IC<span
+class="math inline">\(_{50}\)</span>-derived experimental
+affinity.</p></li>
+</ol>
+<p>We do <em>not</em> support using ZAFF-AMBER ABFE in single-replicate
+mode for mid-potency MMP-1 ranking, where sign-flips dominate.</p>
+<h2
+id="why-might-zaff-amber-systematically-misrank-these-inhibitors">Why
+might ZAFF-AMBER systematically misrank these inhibitors?</h2>
+<p>The non-bonded zinc parameter set (<code>ions234lm_126_tip3p</code>)
+was originally developed for divalent cations in solution and
+bulk-protein contexts, not for the strongly ionic Zn–ligand interactions
+present in MMP-1’s hydroxamate inhibitor binding mode. Several
+mechanisms could explain the observed errors:</p>
+<ul>
+<li><p><strong>Charge-transfer underestimation.</strong> A fixed-charge
+description cannot capture the partial charge transfer between the
+deprotonated hydroxamate oxygen anion and the Zn<span
+class="math inline">\(^{2+}\)</span>, which is estimated from QM at
+<span class="math inline">\(\sim 0.2\)</span>–<span
+class="math inline">\(0.4 e\)</span>. This is a systematic issue, not a
+sampling issue.</p></li>
+<li><p><strong>Restraint-induced over-stabilization.</strong> The
+implicit restraints holding Zn in coordination during alchemical
+decoupling can produce artifacts when the ligand approaches the
+decoupled state, particularly for the <span
+class="math inline">\(\lambda_{\mathrm{sterics}}\)</span>
+phase.</p></li>
+<li><p><strong>Ligand-conformer trapping.</strong> Single-replicate ABFE
+samples one initial Vina-docked pose; with insufficient sampling time
+per window, alternate ligand poses do not interconvert and the result is
+anchored by the initial pose.</p></li>
+</ul>
+<h2
+id="pipeline-reliability-and-the-replicaexchangesampler-issue">Pipeline
+reliability and the ReplicaExchangeSampler issue</h2>
+<p>We document the <code>ReplicaExchangeSampler</code>
+<code>swap-all</code> deadlock pattern (Section <a href="#sec:intro"
+data-reference-type="ref" data-reference="sec:intro">1</a>) because it
+consumed substantial debugging time before identification. The
+diagnostic signature is unambiguous: trajectory.nc and checkpoint.nc are
+written at iteration 1 and never again; the main thread shows
+<code>State R</code>, <code>wchan = 0</code> (user-space spinning);
+worker threads show <code>S</code>,
+<code>wchan = futex_wait_queue_me</code>; process VmPeak grows to 100+  
+(mmap-heavy) but no forward progress is made. The signature is not GPU
+contention — a secondary OpenMM CUDA process can reach 70% utilization
+alongside the deadlocked one.</p>
+<p>We have not localized the bug to a specific openmmtools commit. The
+<code>MultiStateSampler</code> replacement is a five-line edit and
+restores forward progress with no measurable convergence penalty on this
+system class.</p>
+<h1 id="sec:limitations">Limitations</h1>
+<ul>
+<li><p><strong>Sample size.</strong> Seven compounds is too small for
+quantitative correlation analysis. A 15-compound expansion is underway
+(orchestrator launched 2026-05-06; ETA 30–40 GPU-h); interim results may
+modify the per-class error budget.</p></li>
+<li><p><strong>Single ligand pose per replicate.</strong> All replicates
+start from the same Vina-docked pose. Pose re-sampling (e.g., 3 Vina
+solutions <span class="math inline">\(\times\)</span> 3 replicates) is a
+logical next study but was not budgeted here.</p></li>
+<li><p><strong>No reference benchmark for ZAFF-MMP-1
+specifically.</strong> Published ABFE benchmarks on T4-lysozyme/benzene
+<span class="citation" data-cites="mobley2007predictions"></span> or
+kinase inhibitors do not stress fixed-charge zinc handling. Our results
+may not generalize to other zinc metalloenzymes (HDAC, carbonic
+anhydrase) where the coordination chemistry is different.</p></li>
+<li><p><strong>No alternative force field tested.</strong> A 12-6-4
+modified zinc parameter set, or polarizable AMOEBA, or QM/MM-corrected
+classical FEP, could in principle give different answers. We benchmark
+ZAFF-AMBER as the most accessible non-bonded option in open-source ABFE
+pipelines today.</p></li>
+</ul>
+<h1 id="sec:reproducibility">Reproducibility</h1>
+<p>All code, prepared topologies (<code>complex.parm7</code> /
+<code>rst7</code>), and per-replicate trajectory analysis are released
+under Apache-2.0 at <a href="https://github.com/crazat/genesis_medicine"
+class="uri">https://github.com/crazat/genesis_medicine</a>. The relevant
+scripts are <code>scripts/abfe_benchmark_prepare.py</code>,
+<code>scripts/abfe_benchmark_orchestrator.py</code>,
+<code>scripts/zaff_phase5_warmup_generic.py</code>, and
+<code>scripts/zaff_phase5_abfe_production_mss.py</code>. Zenodo code-DOI
+snapshot: <span style="color: red">[TODO: TBD on submission]</span>.</p>
+<h1 class="unnumbered" id="acknowledgements">Acknowledgements</h1>
+<p>We thank the openmmtools, OpenMM, and AmberTools communities for
+software infrastructure. Computation was performed on a single NVIDIA
+RTX 5090 (32 GB VRAM) workstation under WSL2 Ubuntu 24.04.</p>
+</body>
+</html>

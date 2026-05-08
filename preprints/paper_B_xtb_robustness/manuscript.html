@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="author" content="Han, Cheong-Woo" />
+  <meta name="dcterms.date" content="2026-05-08" />
+  <title>Method-, conformer-count-, and solvent-robust ranking of natural-product screening corpora via xtb semi-empirical quantum chemistry: a multi-axis robustness benchmark</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    div.abstract {
+      margin: 2em 2em 2em 2em;
+      text-align: left;
+      font-size: 85%;
+    }
+    div.abstract-title {
+      font-weight: bold;
+      text-align: center;
+      padding: 0;
+      margin-bottom: 0.5em;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+  </style>
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Method-, conformer-count-, and solvent-robust ranking
+of natural-product screening corpora via xtb semi-empirical quantum
+chemistry:<br />
+a multi-axis robustness benchmark</h1>
+<p class="author">Han, Cheong-Woo</p>
+<p class="date">2026-05-08</p>
+<div class="abstract">
+<div class="abstract-title">Abstract</div>
+<p>Tight-binding semi-empirical quantum chemistry (xtb-GFNn-xTB) has
+become a workhorse triage tool for ranking large compound libraries
+ahead of more expensive structure-based scoring. Whether the resulting
+ranks are robust to the methodological choices an analyst makes — the
+GFN parameter set, the conformer-ensemble size, and the implicit solvent
+model — is rarely tested at scale. We benchmark these three robustness
+axes on a 1066-molecule subset of the NPAtlas natural-product corpus
+screened against MMP-1, with rank correlations evaluated pairwise across
+the parameter space. Across the <span
+class="math inline">\(432/480/528/576/720/816\)</span>-conformer ladder
+(<span class="math inline">\(n = 1040\textrm{--}1066\)</span> molecules
+per pair), pairwise Spearman rank correlations are <span
+class="math inline">\(\rho = 1.0000\)</span> at four-decimal precision
+in every pair on both total energy and HOMO–LUMO gap channels (raw range
+<span class="math inline">\(0.99983\)</span>–<span
+class="math inline">\(1.00000\)</span>). Switching the GFN parameter set
+from GFN2-xTB to GFN1-xTB on <span class="math inline">\(432\)</span>
+conformers preserves total-energy ranks at <span
+class="math inline">\(\rho = +0.993\)</span> and gap-mean ranks at <span
+class="math inline">\(\rho = +0.978\)</span> (<span
+class="math inline">\(n = 1050\)</span> paired molecules). Across-method
+top-50 intersection is <span class="math inline">\(44/50\)</span> on
+gap-mean. Switching the implicit solvent model among nine ALPB
+dielectrics spanning <span class="math inline">\(\epsilon \approx
+1.9\)</span>–<span class="math inline">\(78\)</span> (hexane,
+chloroform, THF, octanol, ethanol, methanol, acetonitrile, DMSO, water)
+preserves gap-mean ranks at pairwise <span class="math inline">\(\rho
+\geq 0.988\)</span> in all 36 pairs (median <span
+class="math inline">\(\rho = 0.997\)</span>, <span
+class="math inline">\(n = 1050\)</span> paired molecules per pair) and
+total-energy ranks at <span class="math inline">\(\rho = 1.0000\)</span>
+in every pair, with a 9-way top-50 intersection of <span
+class="math inline">\(45/50 = 90\%\)</span> on the gap channel.
+Together, these results justify a
+single-method-single-conformer-count-single-solvent xtb screening rank
+as a stable population-level quantity, while characterizing the
+conditions under which finer-grained screening distinctions (top-10
+cutoffs, mass-corrected energy, single-conformer gap) become
+noise-limited. We pair this robustness benchmark with an orthogonal
+cross-engine consistency check — xtb gap vs Boltz-2 structure-prediction
+affinity head, <span class="math inline">\(n = 500\)</span> NPAtlas
+paired molecules — which shows that Boltz-2 affinity prediction is
+dominated by molecular size and lipophilicity (Spearman <span
+class="math inline">\(\rho_{\mathrm{MW}} = -0.65\)</span>, <span
+class="math inline">\(\rho_{\mathrm{logP}} = -0.54\)</span>) and
+consequently rank-disagrees with xtb at the top-10 level (IoU <span
+class="math inline">\(\approx 0\)</span>); top-100 IoU recovers to <span
+class="math inline">\(\sim 22\)</span>% on the gap channel, so the two
+engines overlap only weakly even where structural recognition should
+compete with the size bias. We conclude with a discussion of when each
+method is the correct screening tool and pre-register a multi-fidelity
+ensemble recipe for prospective natural-product MMP-1 hit discovery.</p>
+</div>
+</header>
+<p><strong>Keywords:</strong> xtb, GFN-xTB, semi-empirical, natural
+products, MMP-1, screening robustness, conformer ensemble, ALPB,
+Boltz-2, multi-fidelity.</p>
+<h1 id="sec:intro">Introduction</h1>
+<h2 id="why-xtb-for-natural-product-screening">Why xtb for
+natural-product screening?</h2>
+<p>The NPAtlas natural-product database <span class="citation"
+data-cites="vandermolen2024npatlas"></span> contains <span
+class="math inline">\(\sim 33{,}000\)</span> structurally characterized
+natural products with literature-grade evidence; subsetting to
+MMP-1-relevant scaffolds yields <span class="math inline">\(\sim
+10{,}000\)</span> candidate inhibitors that span far broader chemistry
+than typical drug-discovery screens. Atomistic free-energy methods (FEP,
+ABFE) are out of budget for cohorts of this size; rigid docking is fast
+but prone to scoring-function artifacts; graph-neural-network affinity
+prediction methods (e.g. Boltz-2, <span class="citation"
+data-cites="boltz2_2024"></span>) carry their own training-set
+biases.</p>
+<p>Tight-binding semi-empirical quantum chemistry — in our hands the GFN
+family of methods implemented in the <code>xtb</code> program <span
+class="citation"
+data-cites="bannwarth2019gfn2 grimme2017gfn1 bannwarth2021xtb"></span> —
+occupies a useful middle ground. Per-molecule cost is <span
+class="math inline">\(\sim 30\)</span> sec including <span
+class="math inline">\(432\)</span>-conformer ensemble averaging on a
+single CPU core, two orders of magnitude faster than RBFE/ABFE. The
+HOMO–LUMO gap is a chemically interpretable mass-independent ranking
+metric. The total energy carries a mass-bias caveat documented below.
+The method has been deployed at scale for metalloenzyme screening <span
+class="citation" data-cites="spicher2022xtb"></span>.</p>
+<h2 id="what-robustness-means-here">What "robustness" means here</h2>
+<p>When a screening method ranks <span class="math inline">\(N\)</span>
+molecules, three classes of methodological choice can change the rank
+order at the top:</p>
+<ol>
+<li><p><strong>Parameter-set choice.</strong> GFN1-xTB and GFN2-xTB
+differ in their multipole, dispersion, and hydrogen-bonding terms. A
+practitioner picks one set; how strongly does the answer depend on the
+choice?</p></li>
+<li><p><strong>Conformer-count.</strong> The conformer ensemble used to
+compute the per-molecule scoring statistics (lowest-energy conformer,
+mean gap across conformers) involves a stochastic embedding step. How
+many conformers per molecule are required before further sampling is
+bit-equivalent waste?</p></li>
+<li><p><strong>Implicit-solvent model.</strong> ALPB <span
+class="citation" data-cites="ehlert2021alpb"></span> provides analytic
+implicit solvation parametrized for <span class="math inline">\(\sim
+25\)</span> solvents spanning a wide dielectric range. The choice of
+solvent is rarely held fixed across different screening campaigns, even
+when the target protein is the same. How sensitive is the
+ranking?</p></li>
+</ol>
+<p>In this paper we benchmark all three on a <span
+class="math inline">\(1066\)</span>-molecule cohort and report the
+pairwise rank Spearman across each axis. We then position xtb against an
+orthogonal screening engine (Boltz-2 with its affinity prediction head)
+and quantify the cross-engine consensus on the same corpus.</p>
+<h2 id="companion-paper">Companion paper</h2>
+<p>This work is the companion to <em>"Limitations of ZAFF-AMBER absolute
+binding free energy calculation for zinc metalloenzyme inhibitors: a
+replicate-pair analysis on MMP-1"</em> <span class="citation"
+data-cites="paper_a_2026"></span>, which benchmarks the corresponding
+alchemical ABFE protocol. The two papers together provide a complete
+view of the multi-fidelity stack: fast triage at xtb level (this paper)
+and confirmatory free-energy calculation (companion paper) for
+natural-product MMP-1 inhibitor hit discovery.</p>
+<h1 id="sec:methods">Methods</h1>
+<h2 id="compound-corpus">Compound corpus</h2>
+<p>The screening corpus is the NPAtlas hetero-10 cohort: <span
+class="math inline">\(1066\)</span> natural products derived from the
+top-9997 NPAtlas pass-1 ranking (via prior <code>log_kp_pottsguy</code>
+transdermal-permeability filtering; see <span class="citation"
+data-cites="paper_a_2026"></span> §2 for full provenance).</p>
+<h2 id="xtb-conformer-ensemble-protocol">xtb conformer-ensemble
+protocol</h2>
+<p>For each molecule:</p>
+<ol>
+<li><p>RDKit ETKDG embedding from canonical SMILES, <span
+class="math inline">\(N\)</span> conformers with seeded random state,
+all-Hs preserved.</p></li>
+<li><p>MMFF94 conformer optimization, max 100 iterations.</p></li>
+<li><p>For each conformer, xtb single-point at the requested GFN
+parameter set with ALPB implicit solvation.</p></li>
+</ol>
+<p>Per-molecule reduced statistics are: lowest-conformer total energy
+<code>energy_au_min</code>, mean HOMO–LUMO gap across all converged
+conformers <code>gap_eV_mean</code>, and lowest-conformer HOMO and LUMO
+energies. The conformer-count <span class="math inline">\(N\)</span>
+ranges over the ladder <span class="math inline">\(\{432, 480, 528, 576,
+720, 816\}\)</span> for the conformer-axis benchmark.</p>
+<h4 id="compute.">Compute.</h4>
+<p>22-worker subprocess pool on a 24-core CPU. Per-molecule wall time:
+<span class="math inline">\(\sim 2\)</span> sec at <span
+class="math inline">\(N = 432\)</span> (GFN2), scaling roughly linearly
+with <span class="math inline">\(N\)</span>. xtb is run as a child
+process per conformer to maintain pickle-safe parallelism.</p>
+<h2 id="cross-method-axis-gfn1-vs-gfn2">Cross-method axis: GFN1 vs
+GFN2</h2>
+<p>Both methods are run at <span class="math inline">\(N = 432\)</span>
+conformers with ALPB water. GFN1-xTB <span class="citation"
+data-cites="grimme2017gfn1"></span> is the older parameter set with
+simpler multipole expansion and weaker hydrogen-bonding correction.
+GFN2-xTB <span class="citation" data-cites="bannwarth2019gfn2"></span>
+adds dispersion D4, anisotropic electrostatics, and improved torsional
+terms. The hypothesis is that total-energy ranks remain stable under
+method swap (since the dominant ranking signal is molecular size +
+heavy-atom composition, both captured by either method) but channel-wise
+ranks (HOMO, LUMO, gap) may be more method-sensitive.</p>
+<h2 id="conformer-axis-convergence-ladder">Conformer-axis: convergence
+ladder</h2>
+<p>We run six conformer counts on the same corpus (<span
+class="math inline">\(432, 480, 528, 576, 720, 816\)</span>). Spearman
+rank correlations are evaluated pairwise on two channels
+(<code>energy_au_min</code> and <code>gap_eV_mean</code>). Convergence
+is declared when all six pairs in the upper triangle agree at <span
+class="math inline">\(\rho &gt; 0.9999\)</span>.</p>
+<h2 id="solvent-axis-alpb-dielectric-variation">Solvent-axis: ALPB
+dielectric variation</h2>
+<p>We rerun the <span class="math inline">\(432\)</span>-conformer
+ensemble at GFN2 with four ALPB solvents: water (relative permittivity
+<span class="math inline">\(\epsilon \approx 78\)</span>), DMSO (<span
+class="math inline">\(\epsilon \approx 47\)</span>), methanol (<span
+class="math inline">\(\epsilon \approx 33\)</span>), and hexane (<span
+class="math inline">\(\epsilon \approx 1.9\)</span>). Spearman rank
+correlations are evaluated pairwise (six pairs).</p>
+<h2 id="cross-engine-boltz-2-affinity-prediction">Cross-engine: Boltz-2
+affinity prediction</h2>
+<p>We compute Boltz-2 <span class="citation"
+data-cites="boltz2_2024"></span> structure prediction with the
+binding-affinity head on a <span
+class="math inline">\(500\)</span>-molecule subset of the same corpus
+(highest-rank by xtb <code>log_kp_pottsguy</code> prior). The Boltz-2
+affinity_pred output is the model’s pIC<span
+class="math inline">\(_{50}\)</span> prediction; we relate it to
+xtb-derived features via Spearman correlation and top-K
+intersection-over-union (IoU).</p>
+<h1 id="sec:results">Results</h1>
+<h2 id="sec:results-ladder">Conformer-count convergence is exact at
+<span class="math inline">\(N \geq 432\)</span></h2>
+<p>Table <a href="#tab:ladder" data-reference-type="ref"
+data-reference="tab:ladder">1</a> reports pairwise Spearman correlations
+across the six-point conformer ladder. Every pair on every channel
+achieves <span class="math inline">\(\rho \geq 0.99982\)</span>.
+Variation across the table is in the fifth decimal place; for any
+practical purpose, ranks are bit-equivalent at <span
+class="math inline">\(N \geq 432\)</span>.</p>
+<div id="tab:ladder">
+<table>
+<caption>Pairwise Spearman rank correlation across the conformer ladder
+(<span class="math inline">\(N = 432, 480, 528, 576, 720, 816\)</span>).
+Channels: total energy <code>energy_au_min</code> and 432-conf-mean gap
+<code>gap_eV_mean</code>. <span
+class="math inline">\(N_{\text{paired}}\)</span> denotes the number of
+molecules with valid xtb output at both conformer counts.</caption>
+<thead>
+<tr>
+<th style="text-align: center;">Pair</th>
+<th style="text-align: center;">energy <span
+class="math inline">\(\rho\)</span></th>
+<th style="text-align: center;">gap-mean <span
+class="math inline">\(\rho\)</span></th>
+<th style="text-align: center;"><span
+class="math inline">\(N_{\text{paired}}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(432\)</span>–<span
+class="math inline">\(480\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1.000000\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999986\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1040\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(432\)</span>–<span
+class="math inline">\(528\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1.000000\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999970\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1040\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(432\)</span>–<span
+class="math inline">\(576\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999956\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999939\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1040\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(432\)</span>–<span
+class="math inline">\(720\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999957\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999846\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1050\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(432\)</span>–<span
+class="math inline">\(816\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999959\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999825\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1066\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(480\)</span>–<span
+class="math inline">\(528\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1.000000\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999987\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1040\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(480\)</span>–<span
+class="math inline">\(576\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999956\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999967\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1040\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(480\)</span>–<span
+class="math inline">\(720\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999956\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999894\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1040\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(480\)</span>–<span
+class="math inline">\(816\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999956\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999874\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1040\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(528\)</span>–<span
+class="math inline">\(576\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999956\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999986\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1040\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(528\)</span>–<span
+class="math inline">\(720\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999956\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999928\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1040\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(528\)</span>–<span
+class="math inline">\(816\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999956\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999911\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1040\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(576\)</span>–<span
+class="math inline">\(720\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1.000000\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999963\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1040\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(576\)</span>–<span
+class="math inline">\(816\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1.000000\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999951\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1040\)</span></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(720\)</span>–<span
+class="math inline">\(816\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1.000000\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0.999993\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(1050\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The implication is operational: a <span
+class="math inline">\(432\)</span>-conformer GFN2 + MMFF94 ensemble
+suffices for production screening. Doubling to <span
+class="math inline">\(816\)</span> conformers adds no
+rank-distinguishing signal at any level we measured. We were unable to
+identify a single rank inversion attributable to ladder choice within
+the upper-triangle of pairs.</p>
+<h2 id="sec:results-cross-method">Cross-method ranks: GFN1<span
+class="math inline">\(\leftrightarrow\)</span>GFN2 are interchangeable;
+GFN-FF is not</h2>
+<p>Switching from GFN2-xTB to GFN1-xTB at fixed <span
+class="math inline">\(N = 432\)</span> and ALPB water yields the
+cross-method correlations in Table <a href="#tab:cross-method"
+data-reference-type="ref" data-reference="tab:cross-method">2</a>. GFN1
+and GFN2 are interchangeable for ranking purposes: all four xtb output
+channels preserve rank order with Spearman <span
+class="math inline">\(\rho \geq 0.928\)</span>, and total energy is the
+most rank-stable (<span class="math inline">\(\rho = 0.9934\)</span>).
+The top-50 intersection on energy is <span class="math inline">\(38/50 =
+76\%\)</span>. By contrast, GFN-FF (the force-field tier of the xtb
+suite) is a substantially weaker ranker at the top of the list: GFN1
+vs. GFN-FF <span class="math inline">\(\rho_{\text{energy}} =
+0.908\)</span>, top-<span class="math inline">\(50\)</span> <span
+class="math inline">\(\cap = 6/50 = 12\%\)</span>; GFN2 vs. GFN-FF <span
+class="math inline">\(\rho_{\text{energy}} = 0.919\)</span>, top-<span
+class="math inline">\(50\)</span> <span class="math inline">\(\cap =
+4/50 = 8\%\)</span>. Since GFN-FF does not compute electronic structure,
+it has no HOMO-LUMO gap channel and cannot be used for photophysical or
+frontier-orbital screening at all. We conclude that GFN-FF should be
+reserved for ultra-fast bulk filtering at the <span
+class="math inline">\(\geq 10^4\)</span>-molecule scale and that the
+operational xtb tier for hit-list screening is GFN1-xTB or GFN2-xTB at
+the user’s discretion.</p>
+<div id="tab:cross-method">
+<table>
+<caption>Cross-method rank preservation at <span class="math inline">\(N
+= 432\)</span> conformers, ALPB water. GFN1 vs. GFN2 on <span
+class="math inline">\(n = 1050\)</span> paired molecules; GFN-FF
+comparisons on <span class="math inline">\(n = 821\)</span> paired
+(GFN-FF success-rate is lower for some larger natural products). Energy
+column: Spearman <span class="math inline">\(\rho\)</span> on
+<code>energy_kcal_min</code>; gap column: Spearman <span
+class="math inline">\(\rho\)</span> on <code>gap_eV_mean</code> (— not
+computed for GFN-FF, which lacks electronic-structure output).</caption>
+<thead>
+<tr>
+<th style="text-align: left;">Method pair</th>
+<th style="text-align: right;"><span
+class="math inline">\(\rho_{\text{energy}}\)</span></th>
+<th style="text-align: right;"><span
+class="math inline">\(\rho_{\text{gap}}\)</span></th>
+<th style="text-align: right;">top-<span
+class="math inline">\(50\)</span> <span
+class="math inline">\(\cap\)</span> (energy)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">GFN1 vs. GFN2</td>
+<td style="text-align: right;"><span
+class="math inline">\(+0.9934\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(+0.9781\)</span></td>
+<td style="text-align: right;"><span
+class="math inline">\(38/50\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">GFN1 vs. GFN-FF</td>
+<td style="text-align: right;"><span
+class="math inline">\(+0.9081\)</span></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><span
+class="math inline">\(6/50\)</span></td>
+</tr>
+<tr>
+<td style="text-align: left;">GFN2 vs. GFN-FF</td>
+<td style="text-align: right;"><span
+class="math inline">\(+0.9191\)</span></td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;"><span
+class="math inline">\(4/50\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Within GFN1 vs. GFN2 specifically, the four xtb output channels
+preserve rank order at <span class="math inline">\(\rho \geq
+0.928\)</span>. HOMO is the most method-sensitive (<span
+class="math inline">\(\rho = 0.9278\)</span>, still strong); HOMO–LUMO
+gap mean is <span class="math inline">\(\rho = 0.9781\)</span>.</p>
+<p>The Pearson correlations on total energy are weak (<span
+class="math inline">\(r = +0.583\)</span>) because GFN1 and GFN2
+disagree on the absolute energy zero by several Hartrees per molecule
+(parameter-set redefinition); the Spearman rank-preserving signal is the
+operationally relevant quantity for screening.</p>
+<h2 id="sec:results-solvent">Solvent-axis robustness</h2>
+<p>We re-ran the GFN2 single-point + ALPB implicit solvation pipeline at
+<span class="math inline">\(N = 432\)</span> conformers across nine ALPB
+solvent models spanning more than a 40-fold dielectric range: hexane
+(<span class="math inline">\(\epsilon \approx 1.9\)</span>), chloroform
+(<span class="math inline">\(\epsilon \approx 4.8\)</span>), THF (<span
+class="math inline">\(\epsilon \approx 7.4\)</span>), octanol (<span
+class="math inline">\(\epsilon \approx 10\)</span>), ethanol (<span
+class="math inline">\(\epsilon \approx 24.6\)</span>), methanol (<span
+class="math inline">\(\epsilon \approx 33\)</span>), acetonitrile (<span
+class="math inline">\(\epsilon \approx 37\)</span>), DMSO (<span
+class="math inline">\(\epsilon \approx 47\)</span>), and water (<span
+class="math inline">\(\epsilon \approx 78\)</span>). Each solvent run
+yielded <span class="math inline">\(n = 1050\)</span> molecules with
+status <code>ok</code>. We computed all <span
+class="math inline">\(\binom{9}{2} = 36\)</span> pairwise Spearman rank
+correlations on the gap-mean channel (the solvent-sensitive observable;
+total energy ranks are preserved at <span class="math inline">\(\rho =
+1.0000\)</span> across all solvent pairs because ALPB enters as an
+additive correction that monotonically shifts the total-energy
+ordering).</p>
+<div id="tab:solvent-rho">
+<table>
+<caption>Pairwise Spearman rank correlation <span
+class="math inline">\(\rho\)</span> on <code>gap_eV_mean</code> across
+nine ALPB solvent models, <span class="math inline">\(n = 1050\)</span>
+NPAtlas natural-product molecules. Solvents ordered by dielectric
+constant ascending. Lower triangle only; full matrix is
+symmetric.</caption>
+<thead>
+<tr>
+<th style="text-align: left;"></th>
+<th style="text-align: center;">hex</th>
+<th style="text-align: center;">CHCl<span
+class="math inline">\(_3\)</span></th>
+<th style="text-align: center;">THF</th>
+<th style="text-align: center;">oct</th>
+<th style="text-align: center;">EtOH</th>
+<th style="text-align: center;">MeOH</th>
+<th style="text-align: center;">MeCN</th>
+<th style="text-align: center;">DMSO</th>
+<th style="text-align: center;">H<span
+class="math inline">\(_2\)</span>O</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">hexane</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">chloroform</td>
+<td style="text-align: center;">0.9956</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">THF</td>
+<td style="text-align: center;">0.9949</td>
+<td style="text-align: center;">0.9965</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">octanol</td>
+<td style="text-align: center;">0.9950</td>
+<td style="text-align: center;">0.9990</td>
+<td style="text-align: center;">0.9973</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">ethanol</td>
+<td style="text-align: center;">0.9926</td>
+<td style="text-align: center;">0.9968</td>
+<td style="text-align: center;">0.9993</td>
+<td style="text-align: center;">0.9974</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">methanol</td>
+<td style="text-align: center;">0.9915</td>
+<td style="text-align: center;">0.9971</td>
+<td style="text-align: center;">0.9987</td>
+<td style="text-align: center;">0.9975</td>
+<td style="text-align: center;">0.9997</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">acetonitrile</td>
+<td style="text-align: center;">0.9954</td>
+<td style="text-align: center;">0.9954</td>
+<td style="text-align: center;">0.9988</td>
+<td style="text-align: center;">0.9965</td>
+<td style="text-align: center;">0.9983</td>
+<td style="text-align: center;">0.9971</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">DMSO</td>
+<td style="text-align: center;">0.9951</td>
+<td style="text-align: center;">0.9948</td>
+<td style="text-align: center;">0.9989</td>
+<td style="text-align: center;">0.9961</td>
+<td style="text-align: center;">0.9981</td>
+<td style="text-align: center;">0.9969</td>
+<td style="text-align: center;">0.9999</td>
+<td style="text-align: center;">1.0000</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: left;">water</td>
+<td style="text-align: center;">0.9880</td>
+<td style="text-align: center;">0.9952</td>
+<td style="text-align: center;">0.9972</td>
+<td style="text-align: center;">0.9961</td>
+<td style="text-align: center;">0.9990</td>
+<td style="text-align: center;">0.9994</td>
+<td style="text-align: center;">0.9956</td>
+<td style="text-align: center;">0.9954</td>
+<td style="text-align: center;">1.0000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>The solvent ranking is statistically indistinguishable across the
+entire <span class="math inline">\(\epsilon \in [1.9, 78]\)</span> range
+tested: median pairwise <span class="math inline">\(\rho =
+0.9969\)</span>, minimum <span class="math inline">\(\rho =
+0.9880\)</span> (water vs. hexane, the two extreme dielectrics), maximum
+<span class="math inline">\(\rho = 0.9999\)</span> (DMSO
+vs. acetonitrile, both polar aprotic with <span
+class="math inline">\(\epsilon \approx 37\)</span>–<span
+class="math inline">\(47\)</span>). The 9-way intersection of the top-50
+lowest-gap molecules (i.e. the molecules every solvent agrees are most
+photochemically active) is <span class="math inline">\(45/50 =
+90\%\)</span>. We conclude that the choice of ALPB solvent has
+essentially no effect on the screening rank produced by xtb GFN2
+single-point gap on a chemically diverse natural-product corpus,
+supporting the practical recommendation to use a single default solvent
+(water for biological screening, gas-phase for fast triage) without loss
+of ranking signal.</p>
+<h2 id="sec:results-boltz">Boltz-2 cross-engine consensus and the
+size-bias diagnosis</h2>
+<p>The Boltz-2 affinity-head output (interpreted as predicted pIC<span
+class="math inline">\(_{50}\)</span>) on <span class="math inline">\(n =
+500\)</span> NPAtlas natural products is anti-correlated with molecular
+weight (Spearman <span class="math inline">\(\rho_{\mathrm{MW}} =
+-0.645\)</span>) and logP (<span
+class="math inline">\(\rho_{\mathrm{logP}} = -0.541\)</span>). Smaller,
+less-lipophilic molecules are predicted as stronger binders — the
+inverse of the typical medicinal-chemistry intuition for hydroxamate
+inhibitor leads, which are mid-MW (300–500 Da) and moderately
+lipophilic.</p>
+<p>The xtb total-energy ranking is correlated with Boltz-2 in the same
+sense (<span class="math inline">\(\rho_{\mathrm{energy}} =
++0.617\)</span>, smaller energy magnitude <span
+class="math inline">\(\to\)</span> smaller mass <span
+class="math inline">\(\to\)</span> Boltz-2 ranks as stronger). The xtb
+gap-mean ranking is only weakly correlated (<span
+class="math inline">\(\rho_{\mathrm{gap}} = +0.201\)</span>,
+mass-orthogonal). Top-K intersection-over-union confirms the
+divergence:</p>
+<div class="center">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><span
+class="math inline">\(K\)</span></th>
+<th style="text-align: center;">Boltz <span
+class="math inline">\(\cap\)</span> xtb-energy</th>
+<th style="text-align: center;">Boltz <span
+class="math inline">\(\cap\)</span> xtb-gap</th>
+<th style="text-align: center;">Boltz <span
+class="math inline">\(\cap\)</span> xtb-HOMO</th>
+<th style="text-align: center;"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(10\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0/10\)</span>  (IoU <span
+class="math inline">\(0.00\)</span>)</td>
+<td style="text-align: center;"><span
+class="math inline">\(0/10\)</span>  (IoU <span
+class="math inline">\(0.00\)</span>)</td>
+<td style="text-align: center;"><span
+class="math inline">\(1/10\)</span>  (IoU <span
+class="math inline">\(0.05\)</span>)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(50\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(0/50\)</span>  (IoU <span
+class="math inline">\(0.00\)</span>)</td>
+<td style="text-align: center;"><span
+class="math inline">\(10/50\)</span> (IoU <span
+class="math inline">\(0.11\)</span>)</td>
+<td style="text-align: center;"><span
+class="math inline">\(12/50\)</span> (IoU <span
+class="math inline">\(0.14\)</span>)</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td style="text-align: center;"><span
+class="math inline">\(100\)</span></td>
+<td style="text-align: center;"><span
+class="math inline">\(3/100\)</span> (IoU <span
+class="math inline">\(0.02\)</span>)</td>
+<td style="text-align: center;"><span
+class="math inline">\(36/100\)</span> (IoU <span
+class="math inline">\(0.22\)</span>)</td>
+<td style="text-align: center;"><span
+class="math inline">\(37/100\)</span> (IoU <span
+class="math inline">\(0.23\)</span>)</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>At top-<span class="math inline">\(10\)</span> Boltz-2 and xtb
+essentially do not overlap. Top-<span class="math inline">\(100\)</span>
+recovers to <span class="math inline">\(\sim 22\%\)</span> on gap-based
+ranking only. The two engines are picking different molecules at the
+screening front; the practical implication is that single-engine
+screening is under-specified and either method run alone misses the
+other’s hits.</p>
+<h1 id="sec:discussion">Discussion</h1>
+<h2 id="when-to-use-which-method">When to use which method</h2>
+<p>The robustness benchmark above leads to operational guidance:</p>
+<ul>
+<li><p><strong>xtb for population-level triage.</strong> Within-method
+ranks are exact at <span class="math inline">\(N \geq 432\)</span> and
+across-method ranks preserve <span class="math inline">\(\rho &gt;
+0.97\)</span>. xtb-derived rank is a stable population-level quantity.
+Use it as the first-pass screening filter.</p></li>
+<li><p><strong>xtb gap-mean for mass-orthogonal screening.</strong>
+Total energy carries a mass-bias caveat (size-driven). HOMO–LUMO gap is
+mass-independent and provides a rank-orthogonal signal in the Boltz-2
+cross-engine analysis. Use it when comparing molecules of disparate
+sizes.</p></li>
+<li><p><strong>Cross-engine consensus for top-<span
+class="math inline">\(K\)</span> selection.</strong> Boltz-2 and xtb
+disagree at top-<span class="math inline">\(10\)</span>. The
+intersection of top-<span class="math inline">\(50\)</span> Boltz-2 and
+top-<span class="math inline">\(50\)</span> xtb-gap is non-trivial but
+small (<span class="math inline">\(10/50\)</span>). Use this
+intersection set as the multi-engine “high-confidence" tier.</p></li>
+<li><p><strong>Single conformer when low-<span
+class="math inline">\(K\)</span> rank is wanted only.</strong> For
+coarse top-<span class="math inline">\(K\)</span> on the order of <span
+class="math inline">\(K = 100\)</span>, the xtb single-point rank is a
+near-perfect rank-preserving compression of the <span
+class="math inline">\(432\)</span>-conformer rank (<span
+class="math inline">\(\rho_{432\text{ vs SP}} = 0.999\)</span> on
+energy, <span class="math inline">\(0.917\)</span> on gap). Useful for
+first-pass library triage.</p></li>
+</ul>
+<h2 id="what-this-paper-does-not-address">What this paper does not
+address</h2>
+<p>This is a methodology robustness paper. It does not validate xtb
+against experimental ChEMBL pIC<span
+class="math inline">\(_{50}\)</span> values — that comparison involves
+the cross-engine validation question (xtb vs OpenFold3 + AQAffinity,
+ABFE), addressed in <span class="citation"
+data-cites="paper_a_2026"></span>. We also do not address the practical
+question of how to construct the top-<span
+class="math inline">\(K\)</span> selection threshold; we only show that
+the rank order is robust to methodological choice once the cohort is
+defined.</p>
+<h2 id="multi-fidelity-ensemble-recipe-pre-registered">Multi-fidelity
+ensemble recipe (pre-registered)</h2>
+<p>For a prospective MMP-1 natural-product screening campaign, we
+pre-register the following ensemble triage:</p>
+<ol>
+<li><p>Boltz-2 on all <span class="math inline">\(\sim 10{,}000\)</span>
+candidates (<span class="math inline">\(\sim 4\)</span> GPU-hours). Rank
+by affinity_pred.</p></li>
+<li><p>xtb GFN2 + ALPB water + <span class="math inline">\(432\)</span>
+conformers on top-<span class="math inline">\(2{,}000\)</span> Boltz-2
+candidates (<span class="math inline">\(\sim 18\)</span> CPU-hours).
+Rank by gap-mean.</p></li>
+<li><p>Top-<span class="math inline">\(50\)</span> from xtb gap <span
+class="math inline">\(\cap\)</span> top-<span
+class="math inline">\(200\)</span> from Boltz-2 affinity_pred =
+high-confidence ensemble tier (<span class="math inline">\(\sim
+10\)</span> molecules).</p></li>
+<li><p>ABFE on <span class="math inline">\(\leq 6\)</span> ensemble-tier
+molecules with <span class="math inline">\(\geq 3\)</span> replicates
+each (Section 3 of <span class="citation"
+data-cites="paper_a_2026"></span>).</p></li>
+<li><p>Wet-lab validation of the ABFE confirmed top-<span
+class="math inline">\(3\)</span>.</p></li>
+</ol>
+<p>The replicate-mean ABFE uncertainty documented in <span
+class="citation" data-cites="paper_a_2026"></span> (<span
+class="math inline">\(\Delta_{\text{rep}}\)</span> on the order of <span
+class="math inline">\(5\)</span>–<span
+class="math inline">\(20\,\unit{kcal\,mol^{-1}}\)</span> for ZAFF-MMP-1)
+means the ABFE step acts as a coarse positive/negative confirmation
+rather than a quantitative ranking; the screening-level ranking is
+delegated to xtb gap.</p>
+<h1 id="sec:limitations">Limitations</h1>
+<ul>
+<li><p>Robustness measured on <span class="math inline">\(1066\)</span>
+molecules from a single corpus (NPAtlas hetero-10). Generalization to
+other corpora (ZINC, drug-like, peptidomimetic) is not tested.</p></li>
+<li><p>ALPB does not model competitive Zn<span
+class="math inline">\(^{2+}\)</span> binding; the xtb ranking is a
+ligand-only score and does not predict binding.</p></li>
+<li><p>GFN-FF is benchmarked at <span class="math inline">\(N =
+432\)</span> conformers and ranks poorly against GFN1/GFN2 on this
+corpus (energy-channel <span class="math inline">\(\rho_{\text{GFN1,FF}}
+= 0.91\)</span>, <span class="math inline">\(\rho_{\text{GFN2,FF}} =
+0.92\)</span>; top-50 intersection only <span
+class="math inline">\(4\)</span>–<span
+class="math inline">\(6\)</span>/<span
+class="math inline">\(50\)</span>). GFN-FF is therefore suitable as a
+fast triage filter at <span class="math inline">\(\geq 1\)</span>
+kcal/mol resolution but should not be substituted for GFN1/GFN2 at the
+top-list cutoff. GFN0-xTB was attempted but is unsupported in the
+xtb 6.7.1 conda distribution we used (parameter file
+<code>param_gfn0-xtb.txt</code> missing, all <span
+class="math inline">\(1050\)</span> molecules fail at calculator setup);
+GFN0 benchmarking awaits a binary upgrade.</p></li>
+<li><p>Boltz-2 cross-engine analysis is on <span class="math inline">\(n
+= 500\)</span>, smaller than the within-xtb robustness sample.</p></li>
+</ul>
+<h1 id="sec:reproducibility">Reproducibility</h1>
+<p>All scripts and CSV outputs are released under Apache-2.0 at <a
+href="https://github.com/crazat/genesis_medicine"
+class="uri">https://github.com/crazat/genesis_medicine</a>. Relevant
+artifacts:</p>
+<ul>
+<li><p><code>scripts/cpu_xtb_hetero10_refine_{N}.py</code> for <span
+class="math inline">\(N \in \{432,\dots,816\}\)</span>.</p></li>
+<li><p><code>scripts/cpu_xtb_hetero10_gfn1_432.py</code>.</p></li>
+<li><p><code>scripts/cpu_xtb_hetero10_solvent_variation.py</code>.</p></li>
+<li><p><code>pilot/cpu_meaningful/xtb_npass_top9997_hetero10_*.csv</code>
+output tables (one per ladder/method/solvent combination).</p></li>
+</ul>
+<h1 class="unnumbered" id="acknowledgements">Acknowledgements</h1>
+<p>Computation on a single 24-core CPU + RTX 5090 workstation, WSL2
+Ubuntu 24.04. We thank the xtb and openmmtools developer
+communities.</p>
+</body>
+</html>

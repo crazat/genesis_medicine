@@ -12,5 +12,9 @@
   "prior_history": "ChemRxiv rejected 2026-04-30 (scope mismatch); manuscript type expanded in v0.8 with full T4 lysozyme L99A . benzene calibration; resubmitted to bioRxiv 2026-05-03.",
   "manuscript_path": "preprints/08_abfe_methodology/manuscript.md",
   "pdf_path": "preprints/08_abfe_methodology/manuscript.pdf",
-  "zenodo_url": "https://zenodo.org/record/20018254"
+  "zenodo_url": "https://zenodo.org/record/20018254",
+  "osf_doi": "10.17605/OSF.IO/TMHEV",
+  "osf_url": "https://osf.io/tmhev/",
+  "osf_guid": "tmhev",
+  "osf_published": "2026-05-08 04:06:23Z"
 }

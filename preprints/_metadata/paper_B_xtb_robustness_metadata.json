@@ -1,0 +1,60 @@
+{
+  "paper_id": "paper_B_xtb_robustness",
+  "title": "Method-, conformer-count-, and solvent-robust ranking of natural-product screening corpora via xtb semi-empirical quantum chemistry: a multi-axis robustness benchmark",
+  "abstract": "Tight-binding semi-empirical quantum chemistry (xtb-GFNn-xTB) has become a workhorse triage tool for ranking large compound libraries ahead of more expensive structure-based scoring. Whether the resulting ranks are robust to the methodological choices an analyst makes — the GFN parameter set, the conformer-ensemble size, and the implicit solvent model — is rarely tested at scale. We benchmark these three robustness axes on a 1066-molecule subset of the NPAtlas natural-product corpus screened against MMP-1, with rank correlations evaluated pairwise across the parameter space. Across the 432/480/528/576/720/816-conformer ladder, pairwise Spearman rank correlations are ρ = 1.0000 at four-decimal precision in every pair on both total energy and HOMO--LUMO gap channels. Switching the GFN parameter set from GFN2-xTB to GFN1-xTB on 432 conformers preserves total-energy ranks at ρ = +0.993 and gap-mean ranks at ρ = +0.978 (n = 1050 paired molecules); switching to GFN-FF gives only ρ = 0.91 and a top-50 intersection of 6/50, suggesting GFN-FF is not a substitute for GFN1/GFN2 at the top of the ranked list. Switching the implicit solvent model among nine ALPB dielectrics spanning ε ≈ 1.9--78 (hexane, chloroform, THF, octanol, ethanol, methanol, acetonitrile, DMSO, water) preserves gap-mean ranks at pairwise ρ ≥ 0.988 in all 36 pairs (median ρ = 0.997, n = 1050) and total-energy ranks at ρ = 1.0000 in every pair, with a 9-way top-50 intersection of 45/50 = 90%. We pair this robustness benchmark with an orthogonal cross-engine consistency check showing that Boltz-2 affinity prediction is dominated by molecular size and lipophilicity (Spearman ρ_MW = -0.65, ρ_logP = -0.54). Keywords: xtb, GFN-xTB, semi-empirical, natural products, MMP-1, screening robustness, conformer ensemble, ALPB, Boltz-2, multi-fidelity.",
+  "keywords": [
+    "xtb",
+    "GFN-xTB",
+    "semi-empirical",
+    "natural products",
+    "MMP-1",
+    "screening robustness",
+    "conformer ensemble",
+    "ALPB",
+    "Boltz-2",
+    "multi-fidelity"
+  ],
+  "target_server": "OSF Preprints",
+  "authors": [
+    {
+      "name": "HanCheongWoo",
+      "affiliations": [
+        "Genesis_Medicine Lab, Seoul, Republic of Korea",
+        "HAN PREDICT, Inc. (hanpredict.com)",
+        "Recover Korean Medicine Clinic (recover-clinic.kr)"
+      ],
+      "orcid": "0009-0004-4805-8815",
+      "email": "admin@hanpredict.com",
+      "corresponding": true
+    }
+  ],
+  "license": "CC-BY 4.0",
+  "code_url": "https://github.com/crazat/genesis_medicine",
+  "category": "Computational Biology",
+  "subcategory": "Bioinformatics",
+  "manuscript_path": "preprints/paper_B_xtb_robustness/manuscript.tex",
+  "html_path": "preprints/paper_B_xtb_robustness/manuscript.html",
+  "figures_path": "preprints/paper_B_xtb_robustness/figures/",
+  "n_figures": 3,
+  "submission_status": "net_new_no_prior_submission",
+  "prior_history": "Net-new manuscript drafted 2026-05-06 through 2026-05-08; not previously submitted to any venue. Direct OSF deposit as the canonical preprint record. Companion paper to Genesis paper #A (paper_A_zaff_abfe_limitations).",
+  "version_at_submission": "v1.0",
+  "n_corpus_molecules": 1066,
+  "n_method_axis_pairs": 3,
+  "n_conformer_rungs": 25,
+  "n_solvent_dielectrics": 9,
+  "disclaimer": "In silico only. No wet-lab data. IRB caveat does not apply (no human subjects).",
+  "funding": "Self-funded by HAN PREDICT, Inc.",
+  "competing_interests": "Author is founder of HAN PREDICT, Inc. and operator of Recover Korean Medicine Clinic. No commercial product is sold based on these results.",
+  "ai_disclosure": {
+    "used": true,
+    "tool": "Claude (Anthropic, Opus 4.7)",
+    "role": "drafting + analysis scripts + figure scripts",
+    "icmje_compliant": true,
+    "note": "Author verified all claims and ran all xtb calculations; AI assisted with prose and code structure only."
+  },
+  "osf_doi": "10.17605/OSF.IO/6XQNW",
+  "osf_url": "https://osf.io/6xqnw/",
+  "osf_guid": "6xqnw",
+  "osf_published": "2026-05-08 04:17:56Z"
+}

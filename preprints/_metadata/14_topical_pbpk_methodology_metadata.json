@@ -12,5 +12,9 @@
   "prior_history": "ChemRxiv rejected 2026-04-30 (scope mismatch); title and methodology expanded in v0.3 with Dancik 4-layer ODE + LightGBM logKp head + 102-compound 4-vehicle evaluation; resubmitted to bioRxiv 2026-05-03.",
   "manuscript_path": "preprints/14_topical_pbpk_methodology/manuscript.md",
   "pdf_path": "preprints/14_topical_pbpk_methodology/manuscript.pdf",
-  "zenodo_url": "https://zenodo.org/record/20018345"
+  "zenodo_url": "https://zenodo.org/record/20018345",
+  "osf_doi": "10.17605/OSF.IO/CNWAU",
+  "osf_url": "https://osf.io/cnwau/",
+  "osf_guid": "cnwau",
+  "osf_published": "2026-05-08 04:07:34Z"
 }

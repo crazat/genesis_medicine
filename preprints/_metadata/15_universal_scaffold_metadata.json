@@ -12,5 +12,9 @@
   "prior_history": "ChemRxiv cross-post 2026-04-30 rejected; bioRxiv submission BIORXIV/2026/722463 rejected 2026-05-03 (not complete research with new data); deposited to Zenodo as open-access record.",
   "manuscript_path": "preprints/15_universal_scaffold/manuscript.md",
   "pdf_path": "preprints/15_universal_scaffold/manuscript.pdf",
-  "zenodo_url": "https://zenodo.org/record/20018349"
+  "zenodo_url": "https://zenodo.org/record/20018349",
+  "osf_doi": "10.17605/OSF.IO/RNXS9",
+  "osf_url": "https://osf.io/rnxs9/",
+  "osf_guid": "rnxs9",
+  "osf_published": "2026-05-08 04:07:48Z"
 }
