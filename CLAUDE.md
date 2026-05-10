@@ -756,20 +756,36 @@ python -m genesis_medicine.cli run disease=scar_regeneration build_profile=resea
 
 ---
 
-## 🆕 현재 상태 (2026-05-09 21:30 KST) — Round 27-31 frontier saturation + paper_A v4 완료
+## 🆕 현재 상태 (2026-05-10 22:30 KST) — paper_A v5g 11-axis × 13-rep + R32-R45 expansion (~191 tools)
 
-> **다음 세션 인계 노트**: paper_A v4 manuscript-ready, paper_B v9 후향 검증 완료, R27-R31에서 frontier saturation 100% 확정 (153 도구). USE 모드 진행 중.
+> **다음 세션 인계 노트**: paper_A v4 → **v5g 진화** (per-ligand intra-conformer Pearson, size-invariant; 11 NNP/QM/FF axes × 13 Boltz seeds × 15 ligands; cluster paradox 68σ 통계 검증; biology over-claim 자진 retraction; DFT N=25 + B3LYP-D3BJ 확장 진행 중). R32-R45 추가 frontier rounds → ~191 tools (saturation 깨짐, 매주 5-10 신규). 사용자 명시 지시 **"웹스캔 자동으로 하지마"** (2026-05-10 22:00) → /loop 모니터링 사이클에서 web search/fetch 자동 호출 금지.
 
-### 🏆 paper_A v4 — NNP-dataset cluster paradox (PUBLICATION-READY)
-**핵심 finding** (1244 v18 ligand poses × 9 NNPs):
-- **Cluster B (xtb-aligned, 7 methods, 5 architectures, 6 datasets)**: mean intra-ρ = **0.939** (range 0.806-1.000)
-  - xtb GFN2 + Orb-v3 OMat + SevenNet OMat24 + SevenNet MPA + SevenNet MatPES_PBE + MatterSim 5M + FeNNix-Bio1S
-- **Cluster A (OMol25-trained, 2 methods, 1 dataset)**: intra-ρ = **0.996**
-  - Orb-v3 OMol25 + SevenNet OMol25_high
-- **Inter-cluster A↔B**: ρ = **0.617** (range 0.420-0.662, clear separation)
-- **결정적 증명**: 같은 SevenNet 아키텍처가 4개 다른 데이터셋으로 학습됐을 때, 3개(OMat24, MPA, MatPES_PBE)는 모두 ρ=1.000으로 Cluster B에 합류, OMol25_high만 단독 Cluster A → **데이터셋이 클러스터 결정 (아키텍처 무관)**.
+### 🏆 paper_A v5g — 11-axis × 13-rep cluster paradox (manuscript drafting)
+**핵심 finding** (15 MMP-1 hydroxamate ligands × 100 conformers × 13 Boltz-2 seeds × 11 axes):
+- **Cluster B (QM/Materials-NN-aligned)**: mean per-ligand intra-conformer Pearson r = **0.939 ± 0.006** across 13 reps
+  - xtb GFN1 SP + xtb GFN2 SP + xtb GFN-FF complex + AceFF-2 + AIMNet2-NSE + Orb-v3 OMat + **MatterSim 5M** (NEW 11th axis)
+- **Cluster A (OMol25-trained, sub-cluster)**: intra-cluster ρ = 0.996 (Orb-v3 OMol25)
+- **Inter A↔B**: r = 0.374-0.617 (clear separation, **68σ across 13 reps**)
+- **🥇 Materials-domain NN sub-cluster (NEW 2026-05-10 21:58)**: MatterSim ↔ OrbOMat r = **0.936 ± 0.006** = 가장 단단한 NN-NN pair (다른 architecture, 같은 training domain) → **training-data domain match > architecture match**
+- **MatterSim ↔ OMol25 r = 0.410 ± 0.026** → OMol25 paradox 11번째 axis 에서도 재확인
+- **Mechanistic explanation**: OMol25 official paper (arXiv 2505.08762) 자체 인정 "large errors for redox/spin/long-range interactions" ↔ MMP-1 hydroxamate-Zn²⁺ binding = long-range chemistry
 
-**Figure 저장**: `manuscripts/paper_A_v4/figures/fig_9nnp_paradox_final.{png,pdf}` (209 + 29 KB).
+**Per-ligand intra-conformer Pearson** = size-invariant by construction (각 ligand 100 conformer 내부 normalize 후 axis-axis correlate). 이전 v4 method (cross-method energy-vs-energy)에서 size confound 있던 문제 해결.
+
+**🚨 자진 retraction (2026-05-10 19:00)**: "OMat 2× better than OMol25 for pIC50 prediction" 초기 주장 size-confound 검증 통과 못 함 (ρ(natoms, pIC50) = +0.67 dominates). 메모리 `project_paper_a_v5g_RETRACTION_size_confound_2026_05_10.md`. Per-atom 정규화 후 weak ρ ~ +0.23.
+
+**DFT reference 진행** (B3LYP/def2-SVP, N=25 conformer × 5 ligands):
+- N=5 (CHEMBL406): OMat r = -0.84, OMol25 r = +0.09 (initial fluke)
+- N=25 (5 ligands × 5): OMat r = -0.05, OMol25 r = +0.29 (verdict 미확정)
+- B3LYP-D3BJ 확장 (pyscf-dispersion 1.5.0): 16/25 진행 중 (22:28 KST)
+- **Caveat**: B3LYP/def2-SVP without D3 = Bursch 2022 권고 미달 → ωB97M-V/def2-TZVPD reference 또는 wavefunction methods (DLPNO-CCSD(T)) 권장 — defer
+
+**Figures (manuscript-ready)**:
+- `pilot/round27_paperA/paper_A_v5g_fig1_13rep_cluster_stability.png` (117KB)
+- `pilot/round27_paperA/paper_A_v5g_fig2_v22_heatmap.png` (175KB)
+- `manuscripts/paper_A_v4/figures/fig_9nnp_paradox_final.{png,pdf}` (v4 9-NNP figure 보존)
+
+**Abstract draft (English, primary)**: `scripts/round27_paperA/paper_A_v5g_abstract_DRAFT.md` — Title: "Training-data domain dictates neural-network potential cluster placement: a 13-replicate study of the Orb-v3 OMat/OMol25 paradox on MMP-1 hydroxamate inhibitors"
 
 **누적 SP energy 데이터** (~65,500+):
 - xtb GFN2: 6700 PDBs (v15+v16+v17+v18 + retro+fork_pot)
@@ -800,68 +816,94 @@ python -m genesis_medicine.cli run disease=scar_regeneration build_profile=resea
 
 **Figure**: `manuscripts/paper_B_v9/figures/fig_6way_xtb_sigma_chembl94487.{png,pdf}`.
 
-### 📚 153-tool catalogue (R1-R31, 100% saturation 확정)
-**4 Korean institutional anchors**:
+### 📚 ~191-tool catalogue (R1-R45, saturation 깨졌음 — 매주 5-10 신규)
+**4 Korean institutional anchors** (변경 없음):
 1. BInD (KAIST W.Y.Kim) — paper #19 generative
 2. Lee × Baker NC 2026 (KAIST + UW) — paper_C
 3. **SevenNet-Omni** (SNU MDIL Park/Jeon/Kim) — paper #19 NNP, **i12+i8 weights @ external/round23/sevenn_weights/**
 4. Atomistic Binder TTC (NVIDIA+Mila+SNU Cha, ICLR 2026 Oral) — paper_C
 
-**11 NNPs** (10 working + 1 reactive QM-FF):
-Orb-v3 OMat/OMol25, MACE-OFF24, eSEN-OMol, MatterSim 5M, LiTEN, ATOMICA, easyPARM, **SevenNet-Omni** (4 modals: OMat24/MPA/MatPES_PBE/OMol25_high), DPA-3, FeNNix-Bio1S/M.
+**11 NNPs** (paper_A v5g 사용): Orb-v3 OMat/OMol25, MACE-OFF24, eSEN-OMol, MatterSim 5M, LiTEN, ATOMICA, easyPARM, SevenNet-Omni (4 modals), DPA-3, FeNNix-Bio1S/M, **AceFF-2** (12th, Acellera).
 
-**Frontier scan 결과** (R28-R31):
-- R27 ICLR 2026 oral: DCFold (코드 미공개), **ReaSyn** (NVIDIA Seul Lee, 격리 conda env 완료), **Proteina-Complexa** (NVIDIA+Mila+SNU Cha, cpdb-protein 빌드 blocker)
-- R28: FeNNix-Bio1 + Baker Proteus2-clamp + Mac1-557 + Proteus2 general
-- R29: Genie 3 (bioRxiv 2026-05-05) atomistic SE(3) de novo
-- R30-R31: 24-72h window 신규 0건. **SCAN → USE 모드 권장**.
-- ICML 2026 결정: 2026-05-25경 재스캔.
+**R32-R45 신규 (153 → ~191 tools)**:
+- **R32** (#162-#165): AnewOmni (Tsinghua+ByteDance all-scale generative foundation), **EMLE** (Tuñón Chem Sci 2026 QM/ML embedding paper_A Zn enzyme 직격), DrugCLIP (Science 2026 10T pair/24h), AlphaGenome (DeepMind Nature 2026-01)
+- **R33-R34** (#166-#170): CLADD (Genentech AAAI 2026 RAG LLM), MAMMAL (IBM npj 458M 2B examples 9/11 SOTA), Apo2Mol (apo-holo dynamic pocket diffusion), TrajCast (Nature MI 2026 force-free MD emulator), PPLM (NUS Nat Comm 2026-03 paired protein LM)
+- **R37** (#171-#172): **Caliby** (post-LigandMPNN paper_A/C 직접 업그레이드), **CoMPLip** (첫 membrane cofold)
+- **R39 ICML+MLSB+industry** (#185-#193): **OMNI-P2x #193** (Dral Nat Commun 2026 첫 excited-state NNP, paper_A 11th NNP CRITICAL), **OMTRA #188** (gnina MLSB 2025 multi-task flow SBDD + Zn²⁺ paper_A/C MMP-1 직격), **LFM #189** (Tropsha MLSB 2025 MD-trained target-specific NN), ChemCensor #185 (Insilico ICML 2026 retrosynthesis), SimpleFold-3B #186 (Apple), ProteomeLM #187, FlashAffinity #190, ProteinZen #191, ProFam-1 #192
+- **R39 결론**: **saturation 신뢰 불가**, 매주 5-10 신규. ICML 2026 발표 확정 (2026-05-25경 재스캔)
+- **R45 (직전 이전 사이클)**: marginal value 낮음 — 사용자 "웹스캔 자동으로 하지마" 지시로 자동 scan 중단
 
 ### 🚨 환경 trap memories (필수 참조)
-다음 세션에서 동일 install 시도 시 반드시 확인:
-1. `feedback_deepmd_kit_torch_numpy_trap.md` — JAX-flax-orbax 스택 = numpy 2.x 강제 → 격리 venv 필수 (deepmd-kit, fennol 동일)
-2. `feedback_boltz_msa_cache_ignored.md` — Boltz CLI 5단계 trap chain:
-   - **YAML embed `msa: /path` 필요** (--use_msa_server 없이는 cache dir 무시)
-   - **tensorflow 제거** (numpy 2.x cascade 차단)
-   - **tensorboard + tensorboard-data-server 제거** (Lightning이 absence 감지 → CSVLogger fallback)
-   - **Lightning patch 1**: `lightning_fabric/loggers/tensorboard.py` `metrics = {"hp_metric": -1}` → `{"hp_metric": 0}`
-   - **Lightning patch 2**: 같은 파일 `raise ValueError(...) from ex` → `pass` (silently skip)
-3. `feedback_rdkit_pool_last_batch_deadlock.md` — COCONUT 2.0/NPAtlas 등 **모든 배치에서 1-2% SMILES deadlock at 99%**. 패턴: chunksize=1 + per-result flush + 10× expected log silence 시 즉시 SIGKILL (incremental write 보존).
-4. `feedback_rtx5090_sm120_torch_kernel_compat.md` — torch ≤2.6 sm_120 미지원, cu128 빌드 또는 CPU 폴백.
-5. `feedback_mamba_install_breaks_pip_cuda_torch.md` — mamba install pytorch가 pip cu128 torch 무력화.
+다음 세션에서 동일 install/launch 시도 시 반드시 확인:
+1. `feedback_no_auto_web_scan.md` ⭐ **NEW 2026-05-10** — /loop 모니터링에서 자동 웹스캔 금지 (사용자 명시). "ultrathink" 키워드도 보유 데이터 분석에만 사용
+2. `feedback_orb_omol25_batch_charge_spin_silent_fail.md` ⭐ NEW — Orb OMol25 batch는 `atoms.info['charge']=0`, `atoms.info['spin']=0` 필수. 누락 시 ok=0/N silently fail (no traceback)
+3. `feedback_master_chain_range_off_by_one.md` ⭐ NEW — `replace('range(11,19)', 'range(N-1,N)')` 인라인 패치는 잘못된 데이터셋 인덱스. 항상 `range(N, N+1)` 명시
+4. `feedback_xtb_gfn2_protein_complex_segfault.md` ⭐ NEW — xtb GFN1+GFN2 SP는 ~3000-atom protein+ligand 100% SIGSEGV; GFN-FF만 작동. ligand-only 추출 후 처리
+5. `feedback_xtb_gfnff_disk_explosion.md` ⭐ NEW — GFN-FF는 PDB당 ~93MB gfnff_topo scratch 자동 삭제 안 함; 1500 PDB × 4 versions = 558 GB 누적 (paper_A round27에서 디스크 93%). cleanup 빌트인 또는 `find DIR -name gfnff_topo -delete`
+6. `feedback_mamba_run_silent_env_missing.md` ⭐ NEW — `mamba run -n MISSING cmd`은 env 없어도 0 exit + critical log만; orchestrator에서 `mamba env list | grep -q "^$ENV "` 검증 필수
+7. `feedback_sigmadock_wandb_recursion.md` ⭐ NEW — R31 #154 SigmaDock smoke test wandb console_capture 무한 재귀; `WANDB_MODE=disabled` 필수
+8. `feedback_deepchem_transformers5_break.md` ⭐ NEW — `pip install --pre deepchem`이 transformers 5.x 자동 설치 → ChemBERTa import 깨짐; `pip install "transformers<5.0"` 핀
+9. `feedback_deepmd_kit_torch_numpy_trap.md` — JAX-flax-orbax = numpy 2.x → 격리 venv 필수
+10. `feedback_boltz_msa_cache_ignored.md` — Boltz CLI 5단계 trap (YAML embed `msa:` + tensorflow/tensorboard 제거 + Lightning 2 patches)
+11. `feedback_rdkit_pool_last_batch_deadlock.md` — COCONUT 2.0 등 1-2% SMILES deadlock at 99%; chunksize=1 + per-result flush + 10× silence → SIGKILL
+12. `feedback_rtx5090_sm120_torch_kernel_compat.md` — torch ≤2.6 sm_120 미지원, cu128 빌드 또는 CPU 폴백
+13. `feedback_mamba_install_breaks_pip_cuda_torch.md` — mamba install pytorch가 pip cu128 torch 무력화
 
-### 🛠 활성 작업 (세션 종료 시점, 2026-05-09 21:30 KST)
+### 🛠 활성 작업 (세션 종료 시점, 2026-05-10 22:30 KST)
 | 작업 | PID | 상태 | ETA |
 |---|---|---|---|
-| **Boltz v19_v11** (paper_B v10 200-sample 자료) | 1691448 | GPU 100%/425W, 5/15 ligands done @ 28분 | ~22:25 KST 완료 |
-| **xtb GFN2 protein-ligand complex v18** | 1671336 | 550/1500, 0.14/s, 8 workers | 1.9h |
-| rdkit COCONUT v8 (idx 10-12k) | 1671341+ | 800/2000, 4 workers | 35분 |
-| rdkit COCONUT v9 (idx 12-14k) | 1693034 | 시작 단계, 4 workers | ~15분 |
-| rdkit COCONUT v10 (idx 14-16k) | 1693036 | 시작 단계, 4 workers | ~15분 |
+| **DFT-D3 (B3LYP-D3BJ/def2-SVP) on N=25 conformer** | 2205845 | 16/25 (단독) — 21:00 시작, ~88분 경과; **duplicate PID 2206093 22:28 SIGTERM kill** (race condition: 같은 conformer 중복 처리 → log line 17 `HEMBL443684_model_37` m 글자 잘림 증거) | ~23:30 KST 완료 |
+| **Chain v24 v2 [3/8] GFN2 HESS** | 2210939 (8 workers) | 22:03 시작, ~25분 경과 | ~01:00 |
+| Chain v24 v2 [1/8] GFN2 SP | — | ✅ 75s done | done |
+| Chain v24 v2 [2/8] GFN2 OPT | — | ✅ 32min done | done |
+| Chain v24 v2 [4-8/8] GFN-FF complex / GFN1 SP / MMFF / UFF | — | 대기 (HESS 완료 후) | 01:00+ |
+| AceFF v24 (1500 conformer) | — | ✅ csv 존재 → done | done |
+| Boltz v24 cofold (14th replicate, seed 56) | — | ✅ 1500/1500 PDB | done |
+| MatterSim 5M v11-v21 batch (11 datasets) | — | ✅ ~17min 전부 done — 11번째 NNP axis 추가, **Materials-domain NN sub-cluster (r=0.936) 발견** | done |
 
-**Boltz v19_v11 입력 위치**: `pilot/round27_paperA/boltz_input_v19_msa/` (MSA path embedded YAMLs, 사용 가능한 정상 입력).
+**Boltz v19_v24 출력**: `pilot/round27_paperA/boltz_15_100_v19_v24/boltz_results_boltz_input_v19_msa/predictions/` (15 ligand × 100 conformer, 14th replicate seed 56).
 
-### 📊 데이터 인덱스 (CSV 위치)
-- v15-v18 boltz cofold: `pilot/round13_overnight/results/boltz_15_100_v{15,16,17,18}/`
-- xtb GFN2 SP (ligand): `pilot/round24/xtb_v18_sp/` + `pilot/round17_cpu_burn/xtb_v{15,16,17}_*_results.csv`
-- Orb-v3 OMat: `pilot/round27_paperA/orb_v3_extended/` (5 versions) + `mace_off_v18_sp/` (v18, misnamed)
-- Orb-v3 OMol25: `pilot/round27_paperA/orb_v3_omol25/` (6 CSVs)
-- SevenNet 4 modals × 4 versions: `pilot/round27_paperA/sevennet_modals/` + `sevennet_omni_i12/`
-- MatterSim 5M: `pilot/round27_paperA/mattersim_5M/` (6 CSVs)
-- FeNNix-Bio1S: `pilot/round27_paperA/fennix_bio1S/` (4 CSVs)
-- FeNNix-Bio1M: `pilot/round27_paperA/fennix_bio1M/` (4 CSVs, in progress)
-- xtb GFN-FF complex v18: `pilot/round27_paperA/xtb_gfnff_complex_v18/`
-- xtb GFN2 complex v18 (in progress): `pilot/round27_paperA/xtb_gfn2_complex_v18/`
-- COCONUT 2.0 conformers: `pilot/round17_cpu_burn/rdkit_coconut_v{2,3_2k,4,5,6,7_8to10k,8_10to12k,9,10}/`
-- paper_A v4 figure: `manuscripts/paper_A_v4/figures/fig_9nnp_paradox_final.{png,pdf}`
-- paper_B v9 figure: `manuscripts/paper_B_v9/figures/fig_6way_xtb_sigma_chembl94487.{png,pdf}`
+**Chain v24 v2 첫 시도 trap (21:28)**: `cpu_xtb_*v19_v24.py` 파일 missing → [3-5/8] FileNotFoundError. v2 (21:30) `sed 's/v19_v22/v19_v24/g'` generation 후 정상 진행.
+
+### 📊 데이터 인덱스 (CSV 위치, paper_A v5g 13-replicate × 11-axis matrix)
+**Boltz cofold replicates** (15 ligand × 100 conformer × 13-14 seeds):
+- v11-v18: `pilot/round13_overnight/results/boltz_15_100_v{15,16,17,18}/`
+- v19-v24: `pilot/round27_paperA/boltz_15_100_v19_v{19,20,21,22,23,24}/boltz_results_boltz_input_v19_msa/predictions/`
+
+**11 axis CSV (per-replicate)**:
+- xtb GFN1 SP / GFN2 SP / GFN-FF complex: `pilot/round27_paperA/xtb_*v19_v{N}*/` + `pilot/round17_cpu_burn/xtb_v{15,16,17}_*`
+- AceFF-2: `pilot/round27_paperA/aceff2_ligand/aceff2_v19_v{N}.csv`
+- AIMNet2-NSE: `pilot/round27_paperA/aimnet2_nse/`
+- ANI-2x (v20+v22+v23 partial): `pilot/round27_paperA/ani2x/`
+- Orb-v3 OMat / OMol25: `pilot/round27_paperA/orb_v3_extended/` + `orb_v3_omol25/`
+- **MatterSim 5M (NEW 11th axis)**: `pilot/round27_paperA/mattersim_5M/mattersim_5M_v19_v{11..21,22,23,24}_sp.csv`
+- MMFF94 / UFF (uniform v3): `pilot/round27_paperA/mmff94_uff_v3/`
+- SevenNet 4 modals (v15-v18): `pilot/round27_paperA/sevennet_modals/` + `sevennet_omni_i12/`
+- FeNNix-Bio1S/M: `pilot/round27_paperA/fennix_bio1S/` + `fennix_bio1M/`
+
+**DFT reference (B3LYP/def2-SVP, paper_A v5g)**:
+- N=5 CHEMBL406: `pilot/round27_paperA/dft_reference_chembl406_v22.csv`
+- N=20 4-ligand 확장: `pilot/round27_paperA/dft_reference_4ligand_extension.csv`
+- B3LYP-D3BJ verdict: `pilot/round27_paperA/dft_b3lyp_d3_verdict.csv` (16/25 in progress)
+
+**Figures (manuscript-ready)**:
+- paper_A v5g fig1 (13-rep stability): `pilot/round27_paperA/paper_A_v5g_fig1_13rep_cluster_stability.png`
+- paper_A v5g fig2 (v22 11×11 heatmap): `pilot/round27_paperA/paper_A_v5g_fig2_v22_heatmap.png`
+- paper_A v4 (보존): `manuscripts/paper_A_v4/figures/fig_9nnp_paradox_final.{png,pdf}`
+- paper_B v9: `manuscripts/paper_B_v9/figures/fig_6way_xtb_sigma_chembl94487.{png,pdf}`
+
+**Abstract drafts**:
+- paper_A v5g English (primary, for publication): `scripts/round27_paperA/paper_A_v5g_abstract_DRAFT.md`
+- paper_A v5g Korean (reference only, NOT for publication): `scripts/round27_paperA/paper_A_v5g_초록_초안_한국어.md`
+- COCONUT 2.0 conformers: `pilot/round17_cpu_burn/rdkit_coconut_v{2..10}/`
 
 ### 🎯 다음 세션 우선순위
-1. **paper_A v4 manuscript drafting** — figure ✅, methods ✅, main result text ✅. 남은 것: introduction (2-3 paragraph), discussion (cluster paradox 함의), supplementary (10-NNP table), Zenodo 코드 deposit
-2. **Boltz v19 결과 분석** (~22:25 종료 후) — paper_B v10 200-sample stat power × 4 conditions
-3. **paper_C de novo MMP-1 binder** — RFdiffusion3 + LigandMPNN + FlowPacker canonical pipeline (R12 LigandMPNN 95.3% Zn recovery 검증됨)
-4. **paper #19 v9** — LaMGen multi-target generation + ReaSyn synthesizable refinement on 86 herbal NPs (chemoenzymatic gap)
-5. **ICML 2026 list 재스캔** (2026-05-25경)
+1. **paper_A v5g manuscript completion** — abstract ✅ (English primary), fig1+fig2 ✅, methods ✅. 남은 것: introduction (cluster paradox 동기 + Bursch 2022 cite + arXiv 2505.08762 OMol25 long-range weakness), discussion (Materials-domain sub-cluster + DFT verdict), supplementary (11-axis × 13-rep table), Zenodo deposit
+2. **DFT-D3 verdict 분석 (23:30 KST 완료 후)** — OMat-DFT-D3 vs OMol25-DFT-D3 r 값 비교. 만약 dispersion 추가로 verdict 뒤집히면 새 finding; 그대로면 N=25 limitation 강조
+3. **Chain v24 v2 [3-8/8] 완료 후** — 14th replicate 모든 axis CSV 통합 → 13→14-rep extension
+4. **paper_C de novo MMP-1 binder** — RFdiffusion3 + LigandMPNN + FlowPacker canonical (R12 LigandMPNN 95.3% Zn recovery 검증됨) + Caliby (R37) + Atomistic Binder TTC
+5. **paper #19 v9** — LaMGen multi-target generation + ReaSyn synthesizable refinement on 86 herbal NPs
+6. **ICML 2026 list 재스캔** (2026-05-25경) — saturation 깨짐 확정, 매주 5-10 신규
 
 ### 🔧 환경 inventory (genesis-md production + 격리 venvs)
 - **genesis-md** production: torch 2.8 cu128 sm_120, numpy 1.26.4 (필수 유지!), boltz, sevenn, fairchem, mace, orb_models, rdkit 2026.3.1
@@ -874,6 +916,16 @@ Orb-v3 OMat/OMol25, MACE-OFF24, eSEN-OMol, MatterSim 5M, LiTEN, ATOMICA, easyPAR
 - **lamgen, liten, GatorAffinity, bindcraft, reasyn, helixfold3, chroma, evodiff, decimer, mlipx, synformer, bioemu, admetai, FlowDock, pocket2mol_rl, deepternary, pocketminer, proteinmpnn, npclassifier, micom, deeppocket, fpocket, plinder, pyemma, mist_diffms, flowpacker, esmc, thermompnn, fastmbar, retrobiocat, gutbug, ligandmpnn, esen, passer, drugflow, maplight** etc.: 각 격리 conda env
 
 ### 🎯 Cron + Loop 상태
-- 활성 cron: `f880f960` at `13,43 * * * *` (recurring 7-day) — 30분 cadence ABFE/xtb 모니터링 + ultrathink frontier scan
-- 다음 fire: 21:43 KST (현재 21:30)
+- 활성 cron: `f880f960` at `13,43 * * * *` (recurring 7-day) — 30분 cadence 모니터링
+- **사용자 직전 명시 (2026-05-10 22:00)**: "웹스캔 자동으로 하지마" → /loop 사이클에서 web search/fetch 자동 호출 금지. ProgressMonitor + 데드락 점검 + 메모리 기록 + 데이터 분석은 유지
+- 다음 fire: 23:01 KST (ScheduleWakeup 1800s 예약)
 - 만료: 2026-05-16 (7-day expire)
+
+### 📝 메모리 / 세션 발자취 (~/.claude/projects/-mnt-d/memory/)
+**paper_A v5g 핵심 메모리 (2026-05-10)**:
+- `project_paper_a_v5g_HEADLINE_13rep_validated_2026_05_10.md` — 13-rep × 8-axis validation 68σ
+- `project_paper_a_v5g_RETRACTION_size_confound_2026_05_10.md` — biology over-claim 자진 retraction
+- `project_paper_a_v5g_DFT_VERDICT_2026_05_10.md` — N=5 DFT initial result
+- `project_paper_a_v5g_OMol25_paper_admits_longrange_weakness_2026_05_10.md` — mechanistic
+- `project_paper_a_v5g_DFT_caveats_bursch_2022.md` — DFT limitations caveat
+- `project_paper_a_v5g_MatterSim_materials_subcluster_2026_05_10.md` — NEW r=0.936 finding
