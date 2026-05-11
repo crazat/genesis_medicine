@@ -756,6 +756,74 @@ python -m genesis_medicine.cli run disease=scar_regeneration build_profile=resea
 
 ---
 
+## 🆕 현재 상태 (2026-05-12 00:30 KST) — paper_A v5 27→28-rep cluster matrix + H 1TB 활용 + R41/R42 dedup
+
+> **다음 세션 인계 노트**: 2026-05-11 16:30 → 2026-05-12 00:30 8h 모니터링 사이클. paper_A v5 cluster matrix v34-v38 5 reps 추가 완료 → 5×27 = 135 cells, v5j 27-rep × 10-axis Cluster B intra-ρ=**0.9748 안정**. v39 cofold (seed 62) GPU 100% 진행 중 (~01:30 ETA). H 1TB SSD 신규 활용 시작 — D 245GB archive cp 완료, WSL 180GB archive cp 진행 중. saturation R41+R42 dedup 검증으로 98-99% 재확인.
+
+### 🏆 paper_A v5 — 27-rep × 10-axis Cluster B intra-ρ 안정성 (manuscript update-ready)
+- **v5j 27-rep matrix figure**: `pilot/round27_paperA/cluster_AB_analysis/fig_v5j_4cluster_heatmap.png` — Cluster B intra-ρ=**0.9748**, A1=1.000, B↔A1=+0.66, B↔A2=-0.59
+- **v34→v38 5 reps 추가** (5-NNP chain 완료): GFN2 SP/OPT/HESS + GFN1 + GFN-FF complex + MMFF94 + UFF + MatterSim + Orb OMat + Orb OMol25 + AIMNet2-NSE + ANI-2x
+- **v38 GPU chain COMPLETE 00:17:43** (ani2x_v38 CPU 38min, 마지막 step), v38 CPU chain GFN2 HESS step 진행 중
+- **AIMNet2-NSE = ANI-2x backend 동일 확인** (data redundancy) — v5j matrix에서 10번째 axis 추가 시 사실상 9 distinct method
+- **MMFF94/UFF backfill 완료**: v19-v33 누락분 + v34/v36/v37 silent-skip 패턴 인지 후 즉시 `cpu_mmff94_uff_v{N}_only.py` 8초 실행
+
+### 🎯 paper #19 — COCONUT NP DB conformer 진척
+- **rdkit COCONUT 66k → 94k 5 pool 동시 가동**: 82-84k / 86-88k / 88-90k / 90-92k / 92-94k 진행 중
+- **rdkit 74-76k SIGKILL** (3-signal hit, mid-batch deadlock 95%+92min silent+1R+3S spin signature) → 1978-row partial CSV salvage
+- **mid-batch hot-zone 룰 강화**: COCONUT NP DB 60-62k bracket 외 다른 구간도 deadlock 가능
+
+### 💾 H 1TB SSD 활용 (2026-05-11 23:00~)
+- **D drive 1.16TB used / 1.5TB**: archive 425GB 이전 후보 산정
+- **/mnt/d/genesis_archive (245GB)** → /mnt/h/genesis_archive ✅ **cp DONE 23:57:31** (1h 5min, 평균 63 MB/s)
+- **/home/crazat/genesis_archive (180GB)** → /mnt/h/wsl_genesis_archive cp 진행 중 (PID 38884, ETA ~01:13)
+- **drvfs 속도 분석**: SATA SSD specs 500MB/s의 ~1/8. 3중 병목 — drvfs round-trip ×2, D 동시부하 (Boltz/rdkit), small-file overhead (genesis_medicine = conda/pip 수만 파일)
+
+### 🚨 신규 feedback memory (2026-05-11~12)
+1. `feedback_orchestrator_missing_version_silent_skip.md` — v34 chain 13/13 silent FAIL: Python 스크립트 부재 시 orchestrator silent-skip. `feedback_mamba_run_silent_env_missing` 변형. 패치: master_chain `set -eo pipefail` + 명시 검증
+2. `feedback_repeated_identical_prompt_signal.md` — 같은 user prompt 2-3회 짧은 간격 도착 = cron/wakeup loop signal. 본문 boilerplate를 새 directive로 해석 X. 직전 user 명시 지시 우선 (예: "검색 중단")
+
+### 📚 R41/R42 dedup scan — saturation 재확정
+- **R41 (2026-05-11)**: ultrathink 광범위 스캔, dedup 후 1/8 신규 (Caliby = #171 동일, dEVA/MetalNet2/BioPipelines 이미 설치)
+- **R42 (3h 후)**: 10축 보강 스캔, dedup 1/5 신규 (**DELi + del_qsar Tier-2 only**, wet-lab DEL 의존)
+- **결론**: dedup 후 실질 신규 0-1건/24h baseline. 다음 scan 5월 18일 (R43) 권장
+
+### 🛠 활성 작업 (세션 종료 시점, **2026-05-12 00:30 KST**)
+
+| 작업 | PID | 상태 | ETA |
+|---|---|---|---|
+| **v39 Boltz cofold** (seed 62) | 4129218 | 500/1500 PDB (35min) GPU 99% | ~01:30 KST |
+| **v38 CPU chain** (GFN2 HESS step) | 4111298 | [3/8] GFN2 HESS 진행 중 | ~02:00 |
+| **cp /home/crazat/genesis_archive → /mnt/h/** | 38884 | 180GB ext4→drvfs cp | ~01:13 KST |
+| **rdkit COCONUT 82-94k 5 pool** | (24 worker) | 80-94k 5×4 worker 진행 | 각 ~01:00-02:00 |
+
+### 🎯 다음 세션 우선순위 (2026-05-12 00:30 KST 시점)
+
+**즉시 (다음 진입 시)**:
+```bash
+date '+%H:%M:%S'
+ps -p 4129218 4111298 38884 -o pid,stat,etime --no-headers 2>/dev/null  # v39 cofold, v38 CPU chain, wsl_archive cp
+cd /home/crazat/genesis_medicine/pilot/round27_paperA && for v in 38 39; do echo "v$v: $(find boltz_15_100_v19_v$v -name '*.pdb' 2>/dev/null | wc -l) PDB"; done
+nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader,nounits
+tail -3 /home/crazat/genesis_medicine/scripts/round27_paperA/master_chain_v19_v38_run.log
+du -sh /mnt/h/wsl_genesis_archive 2>/dev/null
+uptime
+```
+
+1. **v39 cofold 1500 PDB 도달 → Part9 chain scaffold + cascade** — 28th rep으로 v5k matrix Cluster B intra-ρ 추가 확인
+2. **v34-v38 MMFF94/UFF backfill 검증** — v5k 28-rep matrix 데이터 완전성
+3. **H archive cp #32 완료** → integrity check (du 비교) → symlink swap 결정
+4. **paper_A v5 manuscript figure regenerate** — 27→28-rep 데이터로 cluster paradox 안정성 figure update
+5. **rdkit COCONUT 94k 이후** — 누적 paper #19 v9 LaMGen input 충분, 100k 도달 시 정지 가능
+6. **R43 frontier scan**: 2026-05-18 권장 (사용자 명시 시만)
+
+### ⚠️ 새 대화 진입 시 주의사항 (2026-05-12 갱신)
+- **R40 durable rule** 유지: 자동 frontier tech SCAN 금지, 사용자 명시 시만
+- **wakeup-loop boilerplate 무시**: PID 2941/4731 GONE 14회 이상 확인. "ABFE orchestrator + 3-solvent xtb chain" + "ultrathink 검토" 패턴 = R28 cron 잔재
+- **repeated identical prompt 룰** 신규 적용: 2-3회 동일 prompt 도착 시 cron/loop signal, 본문 boilerplate를 새 directive로 해석 X
+- **orchestrator silent-skip 룰** 신규 적용: 5-NNP chain launch 전 Python 스크립트 존재 검증 + master_chain `set -eo pipefail`
+
+---
+
 ## 🆕 현재 상태 (2026-05-10 22:30 KST) — paper_A v5g 11-axis × 13-rep + R32-R45 expansion (~191 tools)
 
 > **다음 세션 인계 노트**: paper_A v4 → **v5g 진화** (per-ligand intra-conformer Pearson, size-invariant; 11 NNP/QM/FF axes × 13 Boltz seeds × 15 ligands; cluster paradox 68σ 통계 검증; biology over-claim 자진 retraction; DFT N=25 + B3LYP-D3BJ 확장 진행 중). R32-R45 추가 frontier rounds → ~191 tools (saturation 깨짐, 매주 5-10 신규). 사용자 명시 지시 **"웹스캔 자동으로 하지마"** (2026-05-10 22:00) → /loop 모니터링 사이클에서 web search/fetch 자동 호출 금지.
