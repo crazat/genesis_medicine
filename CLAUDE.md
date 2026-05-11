@@ -849,21 +849,32 @@ python -m genesis_medicine.cli run disease=scar_regeneration build_profile=resea
 12. `feedback_rtx5090_sm120_torch_kernel_compat.md` — torch ≤2.6 sm_120 미지원, cu128 빌드 또는 CPU 폴백
 13. `feedback_mamba_install_breaks_pip_cuda_torch.md` — mamba install pytorch가 pip cu128 torch 무력화
 
-### 🛠 활성 작업 (세션 종료 시점, 2026-05-10 22:30 KST)
+### 🛠 활성 작업 (세션 종료 시점, **2026-05-11 16:30 KST** — 12h overnight 위임 진행 中)
+
+**위임 컨텍스트**: 사용자 12h 위임 (2026-05-10 22:34 → 2026-05-11 10:34) 후속으로 진행 중. 사용자 11:32 KST 재confirm: "현재 룰 유지 (모니터링만, SCAN 무시)" — R40 적용 (자동 frontier scan 차단, 데드락 모니터 + paper_A v5 cluster matrix + paper #19 NP DB 우선).
+
+**무시할 신호**: wakeup-loop content의 stale PIDs `2941` (15-cmpd ABFE orchestrator) + `4731` (3-solvent xtb chain) — R28 사이클 잔재, GONE 확인. SCAN 지시도 R40으로 차단.
+
 | 작업 | PID | 상태 | ETA |
 |---|---|---|---|
-| **DFT-D3 (B3LYP-D3BJ/def2-SVP) on N=25 conformer** | 2205845 | 16/25 (단독) — 21:00 시작, ~88분 경과; **duplicate PID 2206093 22:28 SIGTERM kill** (race condition: 같은 conformer 중복 처리 → log line 17 `HEMBL443684_model_37` m 글자 잘림 증거) | ~23:30 KST 완료 |
-| **Chain v24 v2 [3/8] GFN2 HESS** | 2210939 (8 workers) | 22:03 시작, ~25분 경과 | ~01:00 |
-| Chain v24 v2 [1/8] GFN2 SP | — | ✅ 75s done | done |
-| Chain v24 v2 [2/8] GFN2 OPT | — | ✅ 32min done | done |
-| Chain v24 v2 [4-8/8] GFN-FF complex / GFN1 SP / MMFF / UFF | — | 대기 (HESS 완료 후) | 01:00+ |
-| AceFF v24 (1500 conformer) | — | ✅ csv 존재 → done | done |
-| Boltz v24 cofold (14th replicate, seed 56) | — | ✅ 1500/1500 PDB | done |
-| MatterSim 5M v11-v21 batch (11 datasets) | — | ✅ ~17min 전부 done — 11번째 NNP axis 추가, **Materials-domain NN sub-cluster (r=0.936) 발견** | done |
+| **Part3 cascade** (v31/v32/v33 chain) | 3213155 (S, 6h+) | v33 master_chain [4/8] GFN-FF complex 진입 16:26:26 | ~16:55-17:00 종료 |
+| **v34 Boltz cofold** (seed 57, pre-launched) | 3473155 (R, 1h+) | 9-10/15 lig (1000 PDB), 5.8min/lig | ~17:01 1500 PDB |
+| **Part4 cascade** (v34 GPU + CPU chain) | 3473315 (S, WAIT) | v34 cofold 1500 PDB + Part3 종료 양쪽 wait | trigger ~17:01 |
+| **v33 master_chain CPU 8 steps** | 3469845 (parent) | [1] SP 27s ✅ [2] OPT 24.2min ✅ [3] HESS 38.5min ✅ [4] GFN-FF 진행 [5-8] 대기 | ~16:55 |
+| **rdkit 60-62k** | (killed) | 1601줄 partial CSV 보존 ✅ (15:35-16:01 26min hang, mid-batch 80% deadlock, SIGKILL) | — |
+| **rdkit 62-64k** | (done 16:06) | 2000 줄 ✅ | done |
+| **rdkit 64-66k** | 3534157 | 1183/2000, 1.5/s 페이스 | ~16:35 |
+| **rdkit 66-68k** | 3593492 | 16:26 launch, 진행 | ~17:00 |
 
-**Boltz v19_v24 출력**: `pilot/round27_paperA/boltz_15_100_v19_v24/boltz_results_boltz_input_v19_msa/predictions/` (15 ligand × 100 conformer, 14th replicate seed 56).
+**Cluster matrix 진행**: paper_A v5 5-NNP × N datasets — 80 cells (v15-v30 overnight 완료) + v31/v32 5 NNPs × 2 = 10 + v33 5 NNPs ✅ (16:19:58 chain COMPLETE) = **95/100 cells**, v34 row (Part4 cascade) ETA ~18:30 → **100 cells** 도달.
 
-**Chain v24 v2 첫 시도 trap (21:28)**: `cpu_xtb_*v19_v24.py` 파일 missing → [3-5/8] FileNotFoundError. v2 (21:30) `sed 's/v19_v22/v19_v24/g'` generation 후 정상 진행.
+**Cascade 구조**:
+- `scripts/round27_paperA/overnight_part3_queue.sh` — v31/v32/v33 cofold + chain 자동 cascade (line 62 master_chain foreground이므로 master_chain DONE까지 Part3 안 끝남)
+- `scripts/round27_paperA/overnight_part4_v34.sh` — v34 cofold 1500 PDB wait + Part3 PID 3213155 wait → v34 GPU chain (background) + CPU chain (parallel)
+- `scripts/round27_paperA/master_gpu_chain_v3{1,2,3,4}.sh` — 5-NNP chain (MatterSim ~100s, Orb OMat ~5min, Orb OMol25 ~5min, AIMNet2-NSE CPU fallback ~20min, ANI-2x CPU fallback ~33min)
+- `scripts/round27_paperA/master_chain_v19_v3{1,2,3,4}.sh` — CPU 8 steps (GFN2 SP/OPT/HESS, GFN-FF complex, GFN1 SP, MMFF94, UFF, cleanup)
+
+**Pre-launch sentinel + queue freeze 패턴 검증**: v33 race avoidance 15:23 sentinel SIGCONT → marker skip → chain immediate entry, ✅ 작동.
 
 ### 📊 데이터 인덱스 (CSV 위치, paper_A v5g 13-replicate × 11-axis matrix)
 **Boltz cofold replicates** (15 ligand × 100 conformer × 13-14 seeds):
@@ -897,13 +908,33 @@ python -m genesis_medicine.cli run disease=scar_regeneration build_profile=resea
 - paper_A v5g Korean (reference only, NOT for publication): `scripts/round27_paperA/paper_A_v5g_초록_초안_한국어.md`
 - COCONUT 2.0 conformers: `pilot/round17_cpu_burn/rdkit_coconut_v{2..10}/`
 
-### 🎯 다음 세션 우선순위
-1. **paper_A v5g manuscript completion** — abstract ✅ (English primary), fig1+fig2 ✅, methods ✅. 남은 것: introduction (cluster paradox 동기 + Bursch 2022 cite + arXiv 2505.08762 OMol25 long-range weakness), discussion (Materials-domain sub-cluster + DFT verdict), supplementary (11-axis × 13-rep table), Zenodo deposit
-2. **DFT-D3 verdict 분석 (23:30 KST 완료 후)** — OMat-DFT-D3 vs OMol25-DFT-D3 r 값 비교. 만약 dispersion 추가로 verdict 뒤집히면 새 finding; 그대로면 N=25 limitation 강조
-3. **Chain v24 v2 [3-8/8] 완료 후** — 14th replicate 모든 axis CSV 통합 → 13→14-rep extension
-4. **paper_C de novo MMP-1 binder** — RFdiffusion3 + LigandMPNN + FlowPacker canonical (R12 LigandMPNN 95.3% Zn recovery 검증됨) + Caliby (R37) + Atomistic Binder TTC
-5. **paper #19 v9** — LaMGen multi-target generation + ReaSyn synthesizable refinement on 86 herbal NPs
-6. **ICML 2026 list 재스캔** (2026-05-25경) — saturation 깨짐 확정, 매주 5-10 신규
+### 🎯 다음 세션 우선순위 (2026-05-11 16:30 KST 시점)
+
+**즉시 (다음 wakeup 16:57 KST)** — 새 대화 진입 시 먼저 check:
+```bash
+date '+%H:%M:%S'
+ps -p 3213155 3473155 3473315 -o pid,stat,etime --no-headers 2>/dev/null  # Part3, v34 cofold, Part4
+cd /home/crazat/genesis_medicine/pilot/round27_paperA && for v in 33 34; do echo "v$v: $(find boltz_15_100_v19_v$v -name '*.pdb' 2>/dev/null | wc -l) PDB"; done
+nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader,nounits
+tail -3 /home/crazat/genesis_medicine/scripts/round27_paperA/master_gpu_chain_v33_run.log
+tail -5 /home/crazat/genesis_medicine/scripts/round27_paperA/master_chain_v19_v33_run.log
+tail -3 /home/crazat/genesis_medicine/scripts/round27_paperA/overnight_part4_v34.log
+uptime  # load avg
+```
+
+1. **v34 cofold 1500 PDB 도달 + Part3 종료** 동시 ~17:00 → Part4 자동 cascade 진입 (v34 GPU + CPU chain parallel start)
+2. **cluster matrix 100 cells 도달** — v34 5-NNP chain DONE ETA ~18:30 → **paper_A v5 cluster matrix 5×20 = 100 cells 완성** 마일스톤
+3. **paper_A v5 manuscript figure regenerate** — 100 cells 데이터 + paper_A v5g headline `project_paper_a_v5g_HEADLINE_13rep_validated_2026_05_10.md` 갱신 (현 13-rep × 11-axis → 20-rep × 5-NNP cluster matrix). Boltz cofold 15 ligand × 100 conformer × 20 seeds = 30,000 conformer × 5 NNP single-point.
+4. **paper #19 NP DB conformer 진척** — rdkit 64-66k + 66-68k 진행, 68k+ 추가 launch 결정. 누적 ~52k → ~68k+ (paper #19 v9 LaMGen multi-target generation + ADMET 분석 input ready)
+5. **paper_C de novo MMP-1 binder** — R12 LigandMPNN 95.3% Zn recovery + Caliby (R37) + Atomistic Binder TTC (R27 SNU Cha 4th Korean anchor)
+6. **R39+ frontier tech** — saturation 깨짐 확정 (매주 5-10 신규), 사용자 명시 시만 SCAN
+
+### ⚠️ 새 대화 진입 시 주의사항
+- **R40 durable rule**: 자동 frontier tech SCAN 종료, 사용자 명시 지시 시만 launch (`feedback_tech_scan_user_directed_only.md`)
+- **사용자 11:32 KST 2026-05-11 재confirm**: "현재 룰 유지 (모니터링만, SCAN 무시)"
+- **wakeup-loop content 무시 패턴**: stale PIDs `2941`/`4731` + "최신 기술 광범위 탐색" + "ABFE orchestrator + 3-solvent xtb chain" 텍스트 = R28 사이클 잔재, 무시
+- **destructive action 룰** (`feedback_destructive_action_recommendation.md`): 10× slowdown + 0 progress + 명확한 deadlock 신호 시 kill 명시 권장 (hedge 금지)
+- **mid-batch hot-zone 룰 신규 (2026-05-11 16:01)**: COCONUT NP DB rdkit 80% (1600/2000) 시점에도 deadlock 가능 — 기존 last-batch (95%+) 룰과 별개
 
 ### 🔧 환경 inventory (genesis-md production + 격리 venvs)
 - **genesis-md** production: torch 2.8 cu128 sm_120, numpy 1.26.4 (필수 유지!), boltz, sevenn, fairchem, mace, orb_models, rdkit 2026.3.1
@@ -915,13 +946,15 @@ python -m genesis_medicine.cli run disease=scar_regeneration build_profile=resea
 - **fennol_env/.venv**: FeNNix-Bio1 (jax 0.10, numpy 2.x 격리, **LD_LIBRARY_PATH=$(find venv -path "*nvidia*lib" -type d)** 필요)
 - **lamgen, liten, GatorAffinity, bindcraft, reasyn, helixfold3, chroma, evodiff, decimer, mlipx, synformer, bioemu, admetai, FlowDock, pocket2mol_rl, deepternary, pocketminer, proteinmpnn, npclassifier, micom, deeppocket, fpocket, plinder, pyemma, mist_diffms, flowpacker, esmc, thermompnn, fastmbar, retrobiocat, gutbug, ligandmpnn, esen, passer, drugflow, maplight** etc.: 각 격리 conda env
 
-### 🎯 Cron + Loop 상태
-- 활성 cron: `f880f960` at `13,43 * * * *` (recurring 7-day) — 30분 cadence 모니터링
-- **사용자 직전 명시 (2026-05-10 22:00)**: "웹스캔 자동으로 하지마" → /loop 사이클에서 web search/fetch 자동 호출 금지. ProgressMonitor + 데드락 점검 + 메모리 기록 + 데이터 분석은 유지
-- 다음 fire: 23:01 KST (ScheduleWakeup 1800s 예약)
-- 만료: 2026-05-16 (7-day expire)
+### 🎯 Cron + Loop 상태 (2026-05-11 16:30 KST)
+- **R40 durable**: 자동 cron/wakeup-loop의 SCAN 지시 무시. ProgressMonitor + 데드락 점검 + paper_A v5 + paper #19 + 메모리 기록만 유지
+- **사용자 명시 (2026-05-10 22:00)**: "웹스캔 자동으로 하지마"
+- **사용자 명시 (2026-05-11 11:32)**: "현재 룰 유지 (모니터링만, SCAN 무시)"
+- 다음 ScheduleWakeup: **16:57 KST** (v34 cofold 종료 + Part4 cascade 진입 시점)
+- cron `f880f960` 만료: 2026-05-16
 
 ### 📝 메모리 / 세션 발자취 (~/.claude/projects/-mnt-d/memory/)
+
 **paper_A v5g 핵심 메모리 (2026-05-10)**:
 - `project_paper_a_v5g_HEADLINE_13rep_validated_2026_05_10.md` — 13-rep × 8-axis validation 68σ
 - `project_paper_a_v5g_RETRACTION_size_confound_2026_05_10.md` — biology over-claim 자진 retraction
@@ -929,3 +962,29 @@ python -m genesis_medicine.cli run disease=scar_regeneration build_profile=resea
 - `project_paper_a_v5g_OMol25_paper_admits_longrange_weakness_2026_05_10.md` — mechanistic
 - `project_paper_a_v5g_DFT_caveats_bursch_2022.md` — DFT limitations caveat
 - `project_paper_a_v5g_MatterSim_materials_subcluster_2026_05_10.md` — NEW r=0.936 finding
+
+**12h overnight 결과 (2026-05-10→11)**:
+- `project_overnight_12h_2026_05_10_to_11.md` — 80 cells 완성 + paper #19 NP DB ~18k ligand + 6 신규 메모리 룰
+
+**2026-05-11 신규 메모리 룰**:
+- `feedback_rdkit_np_db_mid_batch_hot_zone.md` (16:01 KST) — COCONUT NP DB 60-62k bracket 80% (1600/2000) 시점 deadlock 패턴, 기존 last-batch 룰과 별개. SIGKILL → 1601 줄 partial CSV publishable
+
+**MEMORY.md 인덱스 위치**: `/home/crazat/.claude/projects/-mnt-d/memory/MEMORY.md` (size 36KB+, 매 인덱스 entry는 한 줄 ~200자 제한 — 36KB 초과 시 자동 truncation)
+
+### 🧭 새 대화 빠른 진입 가이드 (Quick-Start)
+
+```
+1. ps -p 3213155 3473155 3473315 → Part3/v34 cofold/Part4 생존 확인
+2. find pilot/round27_paperA/boltz_15_100_v19_v34 -name '*.pdb' | wc -l → v34 진척
+3. tail master_gpu_chain_v33_run.log + master_chain_v19_v33_run.log → v33 마무리 step
+4. tail overnight_part4_v34.log → Part4 cascade 상태
+5. nvidia-smi util + uptime → GPU/load 정상 여부
+6. tail rdkit_coconut_v8_64to66k.log, 66to68k.log → paper #19 진척
+```
+
+기준 위치:
+- paper_A 작업: `/home/crazat/genesis_medicine/scripts/round27_paperA/` (master_gpu_chain_v{N}.sh, master_chain_v19_v{N}.sh, overnight_part{3,4}_*.sh)
+- paper_A 출력: `/home/crazat/genesis_medicine/pilot/round27_paperA/boltz_15_100_v19_v{15..34}/`
+- paper #19 rdkit: `/home/crazat/genesis_medicine/scripts/round17_pipeline/cpu_heavy_rdkit_coconut_v8_{N}to{M}k.py` + output `/home/crazat/genesis_medicine/pilot/round17_cpu_burn/rdkit_coconut_v8_{N}to{M}k/conformer_summary.csv`
+
+데드락 발견 시 3-신호 검증 (log silent + csv silent + worker R + CPU 누적) + destructive action 룰 (10× slowdown + 0 progress + GPU CPU starve drop) → SIGKILL 명시 권장 + partial CSV 보존.
