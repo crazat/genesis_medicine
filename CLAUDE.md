@@ -111,9 +111,62 @@
 - Open Targets v4 GraphQL forward + reverse queries 실측
 - 모든 preprint v0.2에서 fabricated 값 **0개**, retraction 명시
 
-### 🔄 진행 중 (백그라운드)
-- **T4L99A·benzene ABFE calibration** (PID 112376, ~14:39 시작 / ~22:00 완료 예상)
-- Monitor `bkm98s108` armed → 결과 도착 시 #8 자동 정정 + ABFE convergence figure 추가
+### 🔄 진행 중 (백그라운드) — **2026-05-12 10:32 KST 작업 핸드오프 (정확 정보, 다음 세션 즉시 참조)**
+
+> 이 섹션은 대화 핸드오프용. 새 세션 시작 시 가장 먼저 확인. 활성 PID는 시간 지나면 stale 가능 → 항상 `ps -eo pid,etime` + 메모리 룰 재확인.
+
+#### A. paper_A v_index cascade — 자율 진행 중
+- **Supervisor**: `bash master_cascade_supervisor_v40_onwards.sh` (PID 121656 기준 ~3h elapsed, v40~v55 16-cycle phase-split, 종료 ETA 2026-05-13 06:00 KST 부근)
+- 스크립트 위치: `/home/crazat/genesis_medicine/scripts/round27_paperA/master_cascade_supervisor_v40_onwards.sh`
+- 패턴: Boltz vN 1500 PDBs 도달 → v19_vN xtb chain bg (nice 19, **GPU starvation 방지 필수**) + GPU phase 1 (mattersim → orb_omat → orb_omol25) fg + CPU phase 2 (aimnet + ani2x) bg + Boltz v(N+1) fg parallel
+- 현재 cycle: **Boltz v42 진행** (~300/1500 PDBs 20%, GPU 99%/29% swap dip 정상)
+- 데이터 위치: `/home/crazat/genesis_medicine/pilot/round27_paperA/boltz_15_100_v19_v{N}/`
+- 자동 trigger 룰: `feedback_paper_a_vindex_cascade_pattern.md` (Boltz vN done = pre-authorized launch, idle 금지)
+
+#### B. H 드라이브 백업 + D 정리 (이번 세션 핵심 작업)
+- ✅ **D:\genesis_archive\ 244 GB 정리 완료** (10:00:30 KST): D 79% → **66%**, 1.5T → 1.2T, sha256+size+spot-check 1:1 검증 후 안전 삭제
+- ✅ md_r14_5_r12_23_herbal_xref_60ns 20GB 백업 완료 (10:17:30, src=dst match=True)
+- ⏳ md_r17_chromanol_generative_green_120ns 50GB 백업 진행 중 (PID 307318, ~35분째, wsl 9p→H ~26MB/s)
+- 🔄 secondary 13 dirs (round13_overnight, md_r17_*_30ns, md_r15_*_30ns, md_emb3, md_cms19 등 ~83GB) 진행 중
+- 후행 task #6: 백업 검증 후 D 측 원본 삭제 → 추가 ~133GB 절약 예정 (총 ~377GB)
+- 후행 task #5: H 내부 wsl_genesis_archive 중복 정리 (백업 끝나면 180GB 추가 회수)
+- WSL `/mnt/h`는 stale 자주 발생 → **PowerShell 우회 필수** (`/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -Command "..."`)
+- 메모리: `project_h_drive_archive_status.md`
+
+#### C. paper #19 COCONUT NP DB conformer 진행
+- 5 신규 batches (100to102k, 102to104k, 104to106k, 106to108k, 108to110k) py19=30 정상 진행 (csv 178-198 KB, mtime <30min)
+- ⚠️ **96to98k batch는 R40 slow-mol last-batch** (3h+ stale): 5 workers 중 4 idle + 1 active (PID 51934 state=R utime Δ=+1288 jiffies/15s vctx=744 syscall yield 없음 = pure CPU bound 마지막 mol). **kill 금지** — 메모리 룰 `feedback_rdkit_pool_lastbatch_slowdown_not_deadlock.md` + `feedback_rdkit_etkdg_extreme_macrocyclic_slowmol.md` (macrocyclic 6h+/mol 정상)
+- D 위치: `/home/crazat/genesis_medicine/pilot/round17_pipeline/np_db/coconut_v8_{NtoMk}/conformer_summary.csv`
+
+#### D. Round-38 frontier scan 결과 (2026-05-12 10:05 KST 완료, 172 → 176 tools)
+- **NaFM #173** (NMI s42256-026-01226-8, Peking) NP-specific foundation model — **paper #19 KILLER**
+- **CoCoGraph #174** (NMI s42256-026-01229-5, URV) 100% chem-valid graph diffusion
+- **MolDL-edge #175** (NMI s42256-026-01216-w, TU/e) OOD detector — paper_B/#19
+- **Polarizable multipoles MLIP #176** (arXiv 2605.05746, Chicago) — **paper_A OMol25 paradox 직접 fix 후보** (long-range electrostatics 부재가 원인 가설)
+- SNU density-diversity MLIP rule (arXiv 2605.05733, Won Bo Lee, SNU Chem Eng) — 🇰🇷 5th anchor 후보 (cite-only, not a tool)
+- bioRxiv `10.64898/` prefix 2건 (BioDesignBench/PUREdrop) hallucination 룰로 reject
+- R39 scan은 7-14일 후 ICML 2026 5월말 wave까지 **USE 모드 유지**
+- 메모리: `project_round38_frontier_tech_2026_05_12.md`
+
+#### E. 활성 메모리 룰 (다음 세션에서 override default behavior)
+- **🚨 KST 22:00-10:00 12h 자율 큐잉**: 사용자 명시 지시 없어도 ROI 순 cascade 자동 launch (feedback_overnight_22to10_autonomous_queue.md). 7h GPU idle 2026-05-12 사건 재발 방지
+- **paper_A v_index cascade auto-trigger**: Boltz vN done = pre-authorized chain (feedback_paper_a_vindex_cascade_pattern.md). idle/결정 대기 금지
+- **xtb chain nice 19 의무**: 16+ nice=0 워커 → Boltz GPU 82% → 45% drop 발생 (feedback_boltz2_cpu_starvation_rule.md). cascade clone 시 `nice -n 19` propagate 필수
+- **WSL /mnt/h stale → PowerShell 우회** (project_h_drive_archive_status.md)
+- **bioRxiv `10.64898/` = hallucination** (real prefix는 `10.1101/`, feedback_web_research_doi_verification.md)
+- **96to98k류 slow-mol = R40 false-positive 패턴** (csv >100KB + worker R utime Δ +1000j/10s + vctx <1000 = NOT deadlock, kill 금지)
+
+#### F. 활성 backup watcher / monitor
+- `b8ig0qrmj` (Bash run_in_background) — 120ns + secondary backup 완료 신호 대기 중
+- `bgackokko` (Monitor) — 10-min cadence compute heartbeat (GPU/load/Boltz/xtb/py19)
+- 백업 완료 시 task #6 진행 (D 측 원본 삭제), 그 후 task #5 진행 (H 내부 중복 정리)
+
+#### G. 이번 세션에서 새로 작성된 메모리 (5건)
+- `project_h_drive_archive_status.md` — H 드라이브 활성 백업 현황 (이번 세션 발견 + 검증)
+- `project_round38_frontier_tech_2026_05_12.md` — R38 4 Tier-1 + SNU anchor 후보
+- (paper_A/B/C 3 draft manuscripts already in `preprints/20/`, `21/`, `22/` from prior session)
+
+**🚫 STALE 주의**: 메모리에 기록된 "PID 2941 ABFE orchestrator" + "PID 4731 xtb chain"은 옛 /loop 패턴이 verbatim 반복 firing하는 것 — 실제 작업 아님. 실제 활성 워크로드는 위 A/B/C/D.
 
 ### 📋 Quality 검증 통과 항목
 - TRIPOD-AI 호환 limitation sections
