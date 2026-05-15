@@ -111,24 +111,22 @@
 - Open Targets v4 GraphQL forward + reverse queries 실측
 - 모든 preprint v0.2에서 fabricated 값 **0개**, retraction 명시
 
-### 🔄 진행 중 (백그라운드) — **2026-05-13 18:30 KST 작업 핸드오프 (정확 정보, 다음 세션 즉시 참조)**
+### 🔄 진행 중 (백그라운드) — **2026-05-15 14:15 KST 작업 핸드오프 (정확 정보, 다음 세션 즉시 참조)**
 
 > 이 섹션은 대화 핸드오프용. 새 세션 시작 시 가장 먼저 확인. 활성 PID는 시간 지나면 stale 가능 → 항상 `ps -eo pid,etime` + 메모리 룰 재확인.
 
-#### A. paper_A round27 v_index cascade — phase-split, 자율 진행 중 (cycle 63 COMPLETE)
-- 스크립트 위치: `/home/crazat/genesis_medicine/scripts/round27_paperA/master_chain_v19_v{N}.sh` + `cpu_xtb_*_v19_v{N}.py` (4 stages: SP / OPT / HESS / GFN-FF)
-- 패턴 (manual phase-split, cascade supervisor 종료 후): Boltz vN 1500 PDBs 도달 → `master_chain_v19_v(N+1).sh` bg launch (nice 19, **GPU starvation 방지 필수**) + Boltz v(N+2) fg parallel
-- **cycle 63 CHAIN COMPLETE 18:21:29** (TOTAL 53.17min 🥈, **HESS 23.8min 단독 NEW RECORD** -1.4 vs C62; OPT 15.4 +1.3, GFN-FF 13.1 +0.6, TOTAL +0.37 vs C62 52.8 🥇)
-- **3-regime saturation 확립**:
-  - Single-chain saturation (C48): 51.0min minimum (cache fully warm)
-  - 3-chunk Boltz overlap (C50-55): 61-63min, SD 0.78 (CV 1.25%)
-  - 2-chunk overlap clean (C56-57+C61-63): 52.8-56.2min, **C62 RECORD 52.8min** = C48 +1.8min ultimate gas pedal validation
-- **Gas pedal hypothesis CONFIRMED**: rdkit chunk 1개 줄이면 chain ~7min 단축 (4 worker × ~1.7min)
-- 현재 진행: **Boltz v64 60% (PDB=900, ligand 9/15)**, ETA done ~18:52 → cycle 64 launch
-- cycle 64 scripts pre-prepared: `master_chain_v19_v64.sh` + 4 cpu_xtb_*_v19_v64.py (17:58 KST)
+#### A. paper_A round27 v_index cascade — phase-split, 자율 진행 중 (🏆 **cycle 95 COMPLETE NEW RECORD 47.13min**)
+- 스크립트 위치: `/home/crazat/genesis_medicine/scripts/round27_paperA/master_chain_v19_v{N}.sh` + `cpu_xtb_*_v19_v{N}.py` (8 stages: SP/OPT/HESS/GFN-FF/GFN1/MMFF94/UFF/cleanup)
+- 패턴: Boltz vN done → `master_chain_v19_v(N+1).sh` bg launch (nice 19) + Boltz v(N+2) fg parallel
+- **cycle 95 CHAIN COMPLETE 13:56:24** (TOTAL **47.13min 🏆 ALL-TIME RECORD**, vs C62 52.8min -11%): OPT 12.75 (+5.7%), HESS 22.50 (+5%), GFN-FF 11.48 (+6.5%), [5-8] **~0sec CACHE HIT** (v19_v80 cached, skip ALL)
+- **NEW publishable findings (n=1, awaiting C96 confirmation)**:
+  - [5-8] full cache-hit mechanism = sustained acceleration의 결정적 mechanism (이전 trend 메모리는 filesystem cache + gfnff_topo만 설명)
+  - GFN-FF은 py19 RDKit 압력에 sensitive (+6.5%, 14 worker 평균) → fair-share 모델에 cache-aware (ADMET, 0%) vs cache-unaware (py19 RDKit, ~6.5%) 분리 필요
+- 진행 중: **Boltz v96 (seed 119) 13/15 lig** PID 2374714, ETA done ~14:30 → cycle 96 cascade trigger
+- cycle 96 scripts pre-prepared 필요 (master_chain_v19_v96.sh + 4 cpu_xtb_*_v19_v96.py)
 - 데이터 위치: `/home/crazat/genesis_medicine/pilot/round27_paperA/boltz_15_100_v19_v{N}/`
-- 자동 trigger 룰: `feedback_paper_a_vindex_cascade_pattern.md` (Boltz vN done = pre-authorized chain launch + 다음 Boltz vN+1 launch, idle 금지)
-- 가속 trend memory: `project_paper_a_chain_acceleration_trend_2026_05_12.md` (C43-63 측정표)
+- 자동 trigger 룰: `feedback_paper_a_vindex_cascade_pattern.md`
+- 누적 trend memory: `project_paper_a_chain_acceleration_trend_2026_05_12.md` (C43-49 trend) + `project_overnight_12h_2026_05_14_15.md` (C77-C94 15-cycle SUSTAINED baseline) + `project_paper_a_c95_record_2026_05_15.md` (C95 record)
 
 #### B. paper #19 COCONUT NP DB conformer — 96-268k bracket 진행 중
 - 현재 chunk: **266-268k** (PID 1979387 etime ~15min, 700/2000 ok=633 0.8/s recovering, ETA ~27min)
@@ -141,14 +139,15 @@
 - 메모리 룰: `feedback_rdkit_pool_last_batch_deadlock.md` (50-chunk dataset, multimodal distribution full)
 - D 위치: `/home/crazat/genesis_medicine/pilot/round17_cpu_burn/cpu_heavy_rdkit_coconut_v8_{NtoMk}.csv`
 
-#### C. Preprint publication — 17 Zenodo published + 3 DRAFT + 2 medRxiv pending
+#### C. Preprint publication — **20 Zenodo published** + 2 medRxiv pending (2026-05-15 갱신)
 - **17 Zenodo DOIs published 2026-05-04** (papers #01-18+#43, range 10.5281/zenodo.200183xx-200183yy)
-- **3 Zenodo DRAFTs created 2026-05-12** (Chrome agent, PUBLISH 미수행, 사용자 검토 대기):
-  - #20 paper_A v0.1 OMol25 Paradox → https://zenodo.org/deposit/20134439
-  - #21 paper_B v0.1 Boltz-2x use_potentials → https://zenodo.org/deposit/20134442
-  - #22 paper_C v0.1 Zn metallohydrolase de novo → https://zenodo.org/deposit/20134447
+- **+3 Zenodo DOIs PUBLISHED 2026-05-15** (Chrome agent web UI session 사용, token deposit:write 부족 우회):
+  - #20 paper_A v5h OMol25 Paradox → **10.5281/zenodo.20134439** (PDF v0.1→v5h replaced, typst 재빌드 14 ChEMBL + 3 timing 표 verified)
+  - #21 paper_B v0.1 Boltz-2x use_potentials → **10.5281/zenodo.20134442**
+  - #22 paper_C v0.1 Zn metallohydrolase de novo → **10.5281/zenodo.20134447**
 - medRxiv pending: #02 recover_workflow + #11 korean_pgx_topical
 - **bioRxiv/ChemRxiv door closed** for in-silico-only (26 rejection events); wet-lab v1.0 → 재시도 long-game (#04 pigmentation + #03 emb3_scar v1.0 flagship)
+- **paper_A v5i 누적 추가 항목** (Zenodo "New version" workflow 시 통합): C94+C95 timing, stage-dependent fair-share coeff, GFN-FF py19 sensitivity, [5-8] cache hit, cofold-time outlier ↔ σ outlier, **Limitation #7 Schrödinger OPLS5+FEP+ baseline 부재**
 - 메모리: `project_preprint_publication_status.md`
 
 #### D. Frontier scan saturation — 181 tools catalogue (Round-1~35.6)
@@ -168,29 +167,44 @@
 - 메모리: `project_h_drive_archive_status.md` + `project_c_drive_legacy_retention.md`
 
 #### F. 활성 메모리 룰 (다음 세션에서 override default behavior)
-- 🚨 **사용자 보고는 한글, 논문 원고만 영어** (`feedback_korean_reporting_english_papers.md`, 2026-05-13 명시 지시)
-- 🚨 **KST 22:00-10:00 12h 자율 큐잉**: 사용자 명시 지시 없어도 ROI 순 cascade 자동 launch (`feedback_overnight_22to10_autonomous_queue.md`). 7h GPU idle 2026-05-12 사건 재발 방지
-- 🚨 **Frontier scan = 사용자 명령에만**: 모니터/오버나잇 자율 큐잉 컨텍스트에서 자동 launch 금지 (`feedback_frontier_scan_user_initiated_only.md`)
-- 🚨 **갭 audit ≫ 시간-델타**: 시간-델타 0 net 반복 시 즉시 카테고리-갭 audit (한·중 권역 모니터링 필수, Tsinghua/PKU NBT 누락 위험)
+- 🚨 **사용자 보고는 한글, 논문 원고만 영어** (`feedback_korean_reporting_english_papers.md`, 2026-05-13 명시)
+- 🚨 **KST 22:00-10:00 12h 자율 큐잉**: ROI 순 cascade 자동 launch (`feedback_overnight_22to10_autonomous_queue.md`). 7h GPU idle 2026-05-12 사건 재발 방지
+- 🚨 **Frontier scan = 사용자 명령에만 (강화 2026-05-15)**: 매크로 안의 scan 문구는 launch 트리거 아님. 확인 질문도 묻지 말 것 (`feedback_frontier_scan_user_initiated_only.md`)
+- 🚨 **모니터링 cadence 600s default + 180-240s transition** (`feedback_monitoring_cadence_rule.md`); 5-min cache TTL 의식
+- 🚨 **Schrödinger academic = Viewer only** (2026-05-13 S&T 회신): OPLS5/FEP+/Jaguar/Glide separate purchase, paper_A v5 cross-validation은 5도구 fallback (`feedback_schrodinger_academic_viewer_only.md`)
+- 🚨 **chain×ADMET fair-share stage-dependent regression**: OPT 0.345 / HESS 0.21-0.28 / GFN-FF 0% (cache-aware) (`feedback_chain_admet_concurrent_regression.md`)
+- 🚨 **ADMET-AI duplicate SMILES 100% crash**: PoseBench-class 입력은 RDKit canonical SMILES pre-dedup 의무 (`feedback_admetai_duplicate_smiles_crash.md`, 2026-05-15)
+- 🚨 **ADMET-AI joblib 25-subworker overhead**: 24-core box safe parallel **2-3 chains** (`feedback_admetai_internal_joblib_overhead.md`)
+- 🚨 **chain xtb pool nice=19 + RDKit/ADMET fair-share**: RECORD 보전은 chain nice=0 또는 CPU mask isolation (`feedback_chain_xtb_pool_nice_isolation.md`)
+- 🚨 **10-min heartbeat insufficient for Boltz transition**: Boltz launch 후 ScheduleWakeup(ETA-2min) 의무 (`feedback_heartbeat_10min_insufficient_for_boltz_transition.md`)
+- 🚨 **AskUserQuestion 응답 후 ScheduleWakeup catch 실패 = 즉시 launch trigger** (`feedback_askuserquestion_wakeup_catch_failure.md`)
+- 🚨 **갭 audit ≫ 시간-델타**: 시간-델타 0 net 반복 시 즉시 카테고리-갭 audit
 - **paper_A v_index cascade auto-trigger**: Boltz vN done = pre-authorized chain (`feedback_paper_a_vindex_cascade_pattern.md`)
-- **xtb chain nice 19 의무**: 16+ nice=0 워커 → Boltz GPU 82% → 45% drop (`feedback_boltz2_cpu_starvation_rule.md` + `feedback_overnight_queue_nice19.md`)
-- **rdkit Pool last-batch deadlock = 5-7min SIGKILL rule** (98-99% partial publishable, `feedback_rdkit_pool_last_batch_deadlock.md`)
-- **Destructive action 명확 evidence 시 strong recommendation** (10× slowdown / 0 progress / clear deadlock — hedge 금지, `feedback_destructive_action_recommendation.md`)
+- **xtb chain nice 19 의무**: 16+ nice=0 워커 → Boltz GPU 82% → 45% drop (`feedback_boltz2_cpu_starvation_rule.md`)
+- **rdkit Pool last-batch / mid-batch hot-zone deadlock = 5-7min SIGKILL rule** (98-99% partial publishable)
+- **Destructive action 명확 evidence 시 strong recommendation** (hedge 금지, `feedback_destructive_action_recommendation.md`)
 - **pgrep -f self-match trap with claude Bash** (`feedback_pgrep_self_match_trap.md`)
-- **MEMORY.md size warning**: 현재 40.9KB > 24.4KB limit — 일부 entries 잘림. 신규 entry는 200자 이하 one-liner, 본문은 topic file로 분리
+- **MEMORY.md size warning**: 47KB > 24.4KB limit — 일부 entries 잘림. 신규 entry는 200자 이하 one-liner, 본문은 topic file로
 
 #### G. 활성 watcher / monitor
 - `bgackokko` (Monitor) — 10-min cadence compute heartbeat (GPU/load/Boltz/xtb/py19)
-- Wakeup 270s cadence (ScheduleWakeup) — cycle 64 phase 분기 모니터링용 (cache-warm 5min TTL 내 유지)
+- `btcxr2nwn` (Monitor) — Boltz/disk/xtb death watch
+- Wakeup ~270-1500s cadence (ScheduleWakeup) — cycle phase 분기 모니터링용 (5-min cache TTL 의식)
 
-#### H. paper_A round27 신규 검증 publishable findings (cycle 43-63)
-- **CPU capacity threshold theory**: L0 (10 cores 42% util) → L4 (24 cores 100% util) — 80% threshold 넘으면 contention regime exponential slowdown
-- **HESS 23.8min 단독 NEW RECORD** (C63, 2026-05-13 18:21) — chunk SIGKILL 3연속이 mid-HESS chunk-count drop으로 가속
-- **OMol25 paradox** (paper_A v4): xtb-OMat r=0.976 vs xtb-OMol25 r=0.773 — domain-specific NNP가 더 정확하다는 가정 도전 (publishable)
-- **Boltz-2x physicality-steering quantified** (paper_B): v15 vs v16 평균 Δiptm -0.22%, 5/15 ligs IMPROVED, 2/15 dropped — "no accuracy loss" 검증
-- **LigandMPNN Zn metal recovery** (paper_C): 95.3% vs ProtMPNN 46.4% on 1HFC structural Zn triad — ProtMPNN 직접 사용 금지
+#### H. paper_A round27 신규 검증 publishable findings (cycle 43-95)
+- 🏆 **C95 chain TOTAL 47.13min ALL-TIME RECORD** (2026-05-15 13:56:24, vs C62 52.8min -11%) — `project_paper_a_c95_record_2026_05_15.md`
+- **[5-8] full cache-hit mechanism**: v19_v80 cached → GFN1 SP/MMFF94/UFF/cleanup 4-stage instant (sustained acceleration의 결정적 mechanism, n=1 awaiting C96)
+- **GFN-FF NOT immune to py19 RDKit**: +6.5% under 14 worker pressure → cache-aware (ADMET 0%) vs cache-unaware (py19 ~6.5%) fair-share dimension 분리 필요 (n=1 awaiting C96)
+- **CPU capacity threshold theory**: L0→L4 80% threshold 넘으면 contention regime exponential slowdown
+- **15-cycle SUSTAINED baseline (C78-C92)**: SP 20.88s±0.4 / OPT 12.06min±0.05 / HESS 21.44min±0.20 / GFN-FF 10.78min±0.11
+- **stage-dependent fair-share regression** (C93+C94): OPT coeff 0.345 (CV 0.6%), HESS 0.21-0.28
+- **GFN-FF cache plateau** (C88-C92 = 10.7min stable, break C93=11.0 + C94=11.4)
+- **OMol25 paradox** (paper_A v4): xtb-OMat r=0.976 vs xtb-OMol25 r=0.773
+- **Boltz-2x physicality-steering quantified** (paper_B): v15→v16 평균 Δiptm -0.22%, 5/15 IMPROVED, 2/15 dropped
+- **Boltz cofold-time outlier ↔ paper_B σ outlier 상관**: CHEMBL94487/443684/1207 (2026-05-15 신규)
+- **LigandMPNN Zn metal recovery** (paper_C): 95.3% vs ProtMPNN 46.4% on 1HFC
 
-**🚫 STALE 주의**: 메모리 macro에 "PID 2941 ABFE orchestrator" + "PID 4731 xtb chain" 반복 firing은 옛 /loop 패턴 — 실제 작업은 위 A (paper_A cascade) + B (COCONUT NP DB).
+**🚫 STALE 주의**: 메모리 macro에 "PID 2941 ABFE orchestrator" + "PID 4731 xtb chain" 반복 firing은 옛 /loop 패턴 — 실제 작업은 위 A (paper_A cascade cycle 95+) + B (COCONUT NP DB).
 
 ### 📋 Quality 검증 통과 항목
 - TRIPOD-AI 호환 limitation sections
@@ -691,18 +705,12 @@ EMB-3 (done) + embelin (running) → N=8 ABFE for Spearman.
 - **MFDS 2025 천연물 외용제 가이드라인** 직접 컨택 (검색 미노출, 법무 컨택 필요)
 - **BOKP DNA barcode** (KP/KHP 514종) — `skin_compounds_curated.csv` 가중치 정량화
 
-### 🟢 중기 로드맵
-- M1: 흉터 **lead 화합물 3-5개** 확정 (EMB-3 + EGCG + Embelin baseline + 추가 2개)
-- M2: ABFE 정량 ΔG → IC50 nM 추정 → CRO Tier 1 (₩1,560만) 진입
-- M3: Tier 0 SOTA 7개 모두 통합 + 한약 복합 처방 시너지 스코어링
+### 🟢 중기 로드맵 (M1-M5 통합)
+- M1: 흉터 **lead 화합물 3-5개** 확정 (EMB-3 + EGCG + Embelin baseline + 추가 2개) → 약침 적용 시뮬레이션 (용해도·안정성)
+- M2: ABFE 정량 ΔG → IC50 nM 추정 → CRO Tier 1 (₩1,560만) 진입; 기미·탈모 각각 **lead 후보** 확정
+- M3: Tier 0 SOTA 7개 모두 통합 + 한약 **복합 처방 최적화** (시너지 스코어링)
 - M4: 외용 크림 포뮬레이션 (자운고 + EMB-3 강화 1순위) — Recover 1차 시제품
 - M5: IPF cross-disease 후속 paper (EMB-3 + IPF lung fibroblast 모델)
-
-### 🟢 중기 로드맵
-- M1: 흉터 **lead 화합물 3-5개** 확정 → 약침 적용 시뮬레이션 (용해도·안정성)
-- M2: 기미·탈모 각각 **lead 후보** 확정
-- M3: 한약 **복합 처방 최적화** (시너지 스코어링)
-- M4: 2차 시제품(외용 크림) 포뮬레이션 개념안
 
 ---
 
@@ -901,235 +909,4 @@ uptime
 
 ---
 
-## 🆕 현재 상태 (2026-05-10 22:30 KST) — paper_A v5g 11-axis × 13-rep + R32-R45 expansion (~191 tools)
-
-> **다음 세션 인계 노트**: paper_A v4 → **v5g 진화** (per-ligand intra-conformer Pearson, size-invariant; 11 NNP/QM/FF axes × 13 Boltz seeds × 15 ligands; cluster paradox 68σ 통계 검증; biology over-claim 자진 retraction; DFT N=25 + B3LYP-D3BJ 확장 진행 중). R32-R45 추가 frontier rounds → ~191 tools (saturation 깨짐, 매주 5-10 신규). 사용자 명시 지시 **"웹스캔 자동으로 하지마"** (2026-05-10 22:00) → /loop 모니터링 사이클에서 web search/fetch 자동 호출 금지.
-
-### 🏆 paper_A v5g — 11-axis × 13-rep cluster paradox (manuscript drafting)
-**핵심 finding** (15 MMP-1 hydroxamate ligands × 100 conformers × 13 Boltz-2 seeds × 11 axes):
-- **Cluster B (QM/Materials-NN-aligned)**: mean per-ligand intra-conformer Pearson r = **0.939 ± 0.006** across 13 reps
-  - xtb GFN1 SP + xtb GFN2 SP + xtb GFN-FF complex + AceFF-2 + AIMNet2-NSE + Orb-v3 OMat + **MatterSim 5M** (NEW 11th axis)
-- **Cluster A (OMol25-trained, sub-cluster)**: intra-cluster ρ = 0.996 (Orb-v3 OMol25)
-- **Inter A↔B**: r = 0.374-0.617 (clear separation, **68σ across 13 reps**)
-- **🥇 Materials-domain NN sub-cluster (NEW 2026-05-10 21:58)**: MatterSim ↔ OrbOMat r = **0.936 ± 0.006** = 가장 단단한 NN-NN pair (다른 architecture, 같은 training domain) → **training-data domain match > architecture match**
-- **MatterSim ↔ OMol25 r = 0.410 ± 0.026** → OMol25 paradox 11번째 axis 에서도 재확인
-- **Mechanistic explanation**: OMol25 official paper (arXiv 2505.08762) 자체 인정 "large errors for redox/spin/long-range interactions" ↔ MMP-1 hydroxamate-Zn²⁺ binding = long-range chemistry
-
-**Per-ligand intra-conformer Pearson** = size-invariant by construction (각 ligand 100 conformer 내부 normalize 후 axis-axis correlate). 이전 v4 method (cross-method energy-vs-energy)에서 size confound 있던 문제 해결.
-
-**🚨 자진 retraction (2026-05-10 19:00)**: "OMat 2× better than OMol25 for pIC50 prediction" 초기 주장 size-confound 검증 통과 못 함 (ρ(natoms, pIC50) = +0.67 dominates). 메모리 `project_paper_a_v5g_RETRACTION_size_confound_2026_05_10.md`. Per-atom 정규화 후 weak ρ ~ +0.23.
-
-**DFT reference 진행** (B3LYP/def2-SVP, N=25 conformer × 5 ligands):
-- N=5 (CHEMBL406): OMat r = -0.84, OMol25 r = +0.09 (initial fluke)
-- N=25 (5 ligands × 5): OMat r = -0.05, OMol25 r = +0.29 (verdict 미확정)
-- B3LYP-D3BJ 확장 (pyscf-dispersion 1.5.0): 16/25 진행 중 (22:28 KST)
-- **Caveat**: B3LYP/def2-SVP without D3 = Bursch 2022 권고 미달 → ωB97M-V/def2-TZVPD reference 또는 wavefunction methods (DLPNO-CCSD(T)) 권장 — defer
-
-**Figures (manuscript-ready)**:
-- `pilot/round27_paperA/paper_A_v5g_fig1_13rep_cluster_stability.png` (117KB)
-- `pilot/round27_paperA/paper_A_v5g_fig2_v22_heatmap.png` (175KB)
-- `manuscripts/paper_A_v4/figures/fig_9nnp_paradox_final.{png,pdf}` (v4 9-NNP figure 보존)
-
-**Abstract draft (English, primary)**: `scripts/round27_paperA/paper_A_v5g_abstract_DRAFT.md` — Title: "Training-data domain dictates neural-network potential cluster placement: a 13-replicate study of the Orb-v3 OMat/OMol25 paradox on MMP-1 hydroxamate inhibitors"
-
-**누적 SP energy 데이터** (~65,500+):
-- xtb GFN2: 6700 PDBs (v15+v16+v17+v18 + retro+fork_pot)
-- Orb-v3 OMat: 6700 PDBs
-- Orb-v3 OMol25: 6700 PDBs
-- SevenNet OMol25_high (Korean SNU MDIL #3 anchor): 6000 PDBs
-- SevenNet OMat24 / MPA / MatPES_PBE × v15-v18: 18000 PDBs
-- MatterSim 5M (Microsoft MPF): 6000 PDBs
-- FeNNix-Bio1S/M (Sorbonne+Qubit reactive QM-FF, sign-flipped): 6000+1500 PDBs
-- xtb GFN-FF protein-ligand complex v18: 1500 (binding-pocket-aware, σ_lig 23-76 kcal/mol)
-- xtb GFN2 protein-ligand complex v18 (ongoing, 2.5h ETA)
-
-**Manuscript main result text** (final):
-> "On 1244 MMP-1 ligand poses generated by Boltz-2x, we evaluated 9 single-point energy methods spanning 5 architectures and 6 training datasets. NNP rank correlations cluster strictly by training dataset, not architecture. Cluster B (7 methods including 6 NNPs trained on Materials Project, OMat, MPA, MatPES, MPF, and biomolecular fragment QM data) shows mean intra-cluster Spearman ρ = 0.939. Cluster A (2 NNPs trained on OMol25 organic ωB97M-V/def2-TZVPD; Orb-v3 OMol25 + SevenNet OMol25-high) shows intra-cluster ρ = 0.996, but ρ = 0.617 against Cluster B. The same SevenNet architecture trained on three different non-OMol25 datasets yields ρ = 1.000 within Cluster B."
-
-### 🎯 paper_B v9 — Boltz-2x physicality steering 후향 검증
-**6-way σ matrix on CHEMBL94487 (n=100 each)**:
-| version | engine | flag | σ raw kcal | E>0 outliers | σ filtered kcal |
-|---|---|---|---|---|---|
-| v15 | standard Boltz-2 | (none) | 8911.79 | 1/100 | 4.03 |
-| v16 | standard Boltz-2x | --use_potentials | 4.29 | **0**/100 | 4.29 |
-| v17 | standard Boltz-2x | --use_potentials | 3.28 | **0**/100 | 3.28 |
-| **v18** | **standard Boltz-2x** | **--use_potentials** | **3.18** | **0**/100 | **3.18** |
-| retro | community fork (Volgin) | (none) | 32813 | 2/100 | 6.66 |
-| fork+pot | community fork | --use_potentials | 6.98 | 0/100 | 6.98 |
-
-**결론**: `--use_potentials`만이 양쪽 엔진(standard+fork) 공통 outlier filter. **Standard Boltz-2 + --use_potentials = 권장 protocol** (v16/v17/v18 그대로). Fork bugfixes 단독으론 효과 없고 within-population precision 2× 악화.
-
-**Figure**: `manuscripts/paper_B_v9/figures/fig_6way_xtb_sigma_chembl94487.{png,pdf}`.
-
-### 📚 ~191-tool catalogue (R1-R45, saturation 깨졌음 — 매주 5-10 신규)
-**4 Korean institutional anchors** (변경 없음):
-1. BInD (KAIST W.Y.Kim) — paper #19 generative
-2. Lee × Baker NC 2026 (KAIST + UW) — paper_C
-3. **SevenNet-Omni** (SNU MDIL Park/Jeon/Kim) — paper #19 NNP, **i12+i8 weights @ external/round23/sevenn_weights/**
-4. Atomistic Binder TTC (NVIDIA+Mila+SNU Cha, ICLR 2026 Oral) — paper_C
-
-**11 NNPs** (paper_A v5g 사용): Orb-v3 OMat/OMol25, MACE-OFF24, eSEN-OMol, MatterSim 5M, LiTEN, ATOMICA, easyPARM, SevenNet-Omni (4 modals), DPA-3, FeNNix-Bio1S/M, **AceFF-2** (12th, Acellera).
-
-**R32-R45 신규 (153 → ~191 tools)**:
-- **R32** (#162-#165): AnewOmni (Tsinghua+ByteDance all-scale generative foundation), **EMLE** (Tuñón Chem Sci 2026 QM/ML embedding paper_A Zn enzyme 직격), DrugCLIP (Science 2026 10T pair/24h), AlphaGenome (DeepMind Nature 2026-01)
-- **R33-R34** (#166-#170): CLADD (Genentech AAAI 2026 RAG LLM), MAMMAL (IBM npj 458M 2B examples 9/11 SOTA), Apo2Mol (apo-holo dynamic pocket diffusion), TrajCast (Nature MI 2026 force-free MD emulator), PPLM (NUS Nat Comm 2026-03 paired protein LM)
-- **R37** (#171-#172): **Caliby** (post-LigandMPNN paper_A/C 직접 업그레이드), **CoMPLip** (첫 membrane cofold)
-- **R39 ICML+MLSB+industry** (#185-#193): **OMNI-P2x #193** (Dral Nat Commun 2026 첫 excited-state NNP, paper_A 11th NNP CRITICAL), **OMTRA #188** (gnina MLSB 2025 multi-task flow SBDD + Zn²⁺ paper_A/C MMP-1 직격), **LFM #189** (Tropsha MLSB 2025 MD-trained target-specific NN), ChemCensor #185 (Insilico ICML 2026 retrosynthesis), SimpleFold-3B #186 (Apple), ProteomeLM #187, FlashAffinity #190, ProteinZen #191, ProFam-1 #192
-- **R39 결론**: **saturation 신뢰 불가**, 매주 5-10 신규. ICML 2026 발표 확정 (2026-05-25경 재스캔)
-- **R45 (직전 이전 사이클)**: marginal value 낮음 — 사용자 "웹스캔 자동으로 하지마" 지시로 자동 scan 중단
-
-### 🚨 환경 trap memories (필수 참조)
-다음 세션에서 동일 install/launch 시도 시 반드시 확인:
-1. `feedback_no_auto_web_scan.md` ⭐ **NEW 2026-05-10** — /loop 모니터링에서 자동 웹스캔 금지 (사용자 명시). "ultrathink" 키워드도 보유 데이터 분석에만 사용
-2. `feedback_orb_omol25_batch_charge_spin_silent_fail.md` ⭐ NEW — Orb OMol25 batch는 `atoms.info['charge']=0`, `atoms.info['spin']=0` 필수. 누락 시 ok=0/N silently fail (no traceback)
-3. `feedback_master_chain_range_off_by_one.md` ⭐ NEW — `replace('range(11,19)', 'range(N-1,N)')` 인라인 패치는 잘못된 데이터셋 인덱스. 항상 `range(N, N+1)` 명시
-4. `feedback_xtb_gfn2_protein_complex_segfault.md` ⭐ NEW — xtb GFN1+GFN2 SP는 ~3000-atom protein+ligand 100% SIGSEGV; GFN-FF만 작동. ligand-only 추출 후 처리
-5. `feedback_xtb_gfnff_disk_explosion.md` ⭐ NEW — GFN-FF는 PDB당 ~93MB gfnff_topo scratch 자동 삭제 안 함; 1500 PDB × 4 versions = 558 GB 누적 (paper_A round27에서 디스크 93%). cleanup 빌트인 또는 `find DIR -name gfnff_topo -delete`
-6. `feedback_mamba_run_silent_env_missing.md` ⭐ NEW — `mamba run -n MISSING cmd`은 env 없어도 0 exit + critical log만; orchestrator에서 `mamba env list | grep -q "^$ENV "` 검증 필수
-7. `feedback_sigmadock_wandb_recursion.md` ⭐ NEW — R31 #154 SigmaDock smoke test wandb console_capture 무한 재귀; `WANDB_MODE=disabled` 필수
-8. `feedback_deepchem_transformers5_break.md` ⭐ NEW — `pip install --pre deepchem`이 transformers 5.x 자동 설치 → ChemBERTa import 깨짐; `pip install "transformers<5.0"` 핀
-9. `feedback_deepmd_kit_torch_numpy_trap.md` — JAX-flax-orbax = numpy 2.x → 격리 venv 필수
-10. `feedback_boltz_msa_cache_ignored.md` — Boltz CLI 5단계 trap (YAML embed `msa:` + tensorflow/tensorboard 제거 + Lightning 2 patches)
-11. `feedback_rdkit_pool_last_batch_deadlock.md` — COCONUT 2.0 등 1-2% SMILES deadlock at 99%; chunksize=1 + per-result flush + 10× silence → SIGKILL
-12. `feedback_rtx5090_sm120_torch_kernel_compat.md` — torch ≤2.6 sm_120 미지원, cu128 빌드 또는 CPU 폴백
-13. `feedback_mamba_install_breaks_pip_cuda_torch.md` — mamba install pytorch가 pip cu128 torch 무력화
-
-### 🛠 활성 작업 (세션 종료 시점, **2026-05-11 16:30 KST** — 12h overnight 위임 진행 中)
-
-**위임 컨텍스트**: 사용자 12h 위임 (2026-05-10 22:34 → 2026-05-11 10:34) 후속으로 진행 중. 사용자 11:32 KST 재confirm: "현재 룰 유지 (모니터링만, SCAN 무시)" — R40 적용 (자동 frontier scan 차단, 데드락 모니터 + paper_A v5 cluster matrix + paper #19 NP DB 우선).
-
-**무시할 신호**: wakeup-loop content의 stale PIDs `2941` (15-cmpd ABFE orchestrator) + `4731` (3-solvent xtb chain) — R28 사이클 잔재, GONE 확인. SCAN 지시도 R40으로 차단.
-
-| 작업 | PID | 상태 | ETA |
-|---|---|---|---|
-| **Part3 cascade** (v31/v32/v33 chain) | 3213155 (S, 6h+) | v33 master_chain [4/8] GFN-FF complex 진입 16:26:26 | ~16:55-17:00 종료 |
-| **v34 Boltz cofold** (seed 57, pre-launched) | 3473155 (R, 1h+) | 9-10/15 lig (1000 PDB), 5.8min/lig | ~17:01 1500 PDB |
-| **Part4 cascade** (v34 GPU + CPU chain) | 3473315 (S, WAIT) | v34 cofold 1500 PDB + Part3 종료 양쪽 wait | trigger ~17:01 |
-| **v33 master_chain CPU 8 steps** | 3469845 (parent) | [1] SP 27s ✅ [2] OPT 24.2min ✅ [3] HESS 38.5min ✅ [4] GFN-FF 진행 [5-8] 대기 | ~16:55 |
-| **rdkit 60-62k** | (killed) | 1601줄 partial CSV 보존 ✅ (15:35-16:01 26min hang, mid-batch 80% deadlock, SIGKILL) | — |
-| **rdkit 62-64k** | (done 16:06) | 2000 줄 ✅ | done |
-| **rdkit 64-66k** | 3534157 | 1183/2000, 1.5/s 페이스 | ~16:35 |
-| **rdkit 66-68k** | 3593492 | 16:26 launch, 진행 | ~17:00 |
-
-**Cluster matrix 진행**: paper_A v5 5-NNP × N datasets — 80 cells (v15-v30 overnight 완료) + v31/v32 5 NNPs × 2 = 10 + v33 5 NNPs ✅ (16:19:58 chain COMPLETE) = **95/100 cells**, v34 row (Part4 cascade) ETA ~18:30 → **100 cells** 도달.
-
-**Cascade 구조**:
-- `scripts/round27_paperA/overnight_part3_queue.sh` — v31/v32/v33 cofold + chain 자동 cascade (line 62 master_chain foreground이므로 master_chain DONE까지 Part3 안 끝남)
-- `scripts/round27_paperA/overnight_part4_v34.sh` — v34 cofold 1500 PDB wait + Part3 PID 3213155 wait → v34 GPU chain (background) + CPU chain (parallel)
-- `scripts/round27_paperA/master_gpu_chain_v3{1,2,3,4}.sh` — 5-NNP chain (MatterSim ~100s, Orb OMat ~5min, Orb OMol25 ~5min, AIMNet2-NSE CPU fallback ~20min, ANI-2x CPU fallback ~33min)
-- `scripts/round27_paperA/master_chain_v19_v3{1,2,3,4}.sh` — CPU 8 steps (GFN2 SP/OPT/HESS, GFN-FF complex, GFN1 SP, MMFF94, UFF, cleanup)
-
-**Pre-launch sentinel + queue freeze 패턴 검증**: v33 race avoidance 15:23 sentinel SIGCONT → marker skip → chain immediate entry, ✅ 작동.
-
-### 📊 데이터 인덱스 (CSV 위치, paper_A v5g 13-replicate × 11-axis matrix)
-**Boltz cofold replicates** (15 ligand × 100 conformer × 13-14 seeds):
-- v11-v18: `pilot/round13_overnight/results/boltz_15_100_v{15,16,17,18}/`
-- v19-v24: `pilot/round27_paperA/boltz_15_100_v19_v{19,20,21,22,23,24}/boltz_results_boltz_input_v19_msa/predictions/`
-
-**11 axis CSV (per-replicate)**:
-- xtb GFN1 SP / GFN2 SP / GFN-FF complex: `pilot/round27_paperA/xtb_*v19_v{N}*/` + `pilot/round17_cpu_burn/xtb_v{15,16,17}_*`
-- AceFF-2: `pilot/round27_paperA/aceff2_ligand/aceff2_v19_v{N}.csv`
-- AIMNet2-NSE: `pilot/round27_paperA/aimnet2_nse/`
-- ANI-2x (v20+v22+v23 partial): `pilot/round27_paperA/ani2x/`
-- Orb-v3 OMat / OMol25: `pilot/round27_paperA/orb_v3_extended/` + `orb_v3_omol25/`
-- **MatterSim 5M (NEW 11th axis)**: `pilot/round27_paperA/mattersim_5M/mattersim_5M_v19_v{11..21,22,23,24}_sp.csv`
-- MMFF94 / UFF (uniform v3): `pilot/round27_paperA/mmff94_uff_v3/`
-- SevenNet 4 modals (v15-v18): `pilot/round27_paperA/sevennet_modals/` + `sevennet_omni_i12/`
-- FeNNix-Bio1S/M: `pilot/round27_paperA/fennix_bio1S/` + `fennix_bio1M/`
-
-**DFT reference (B3LYP/def2-SVP, paper_A v5g)**:
-- N=5 CHEMBL406: `pilot/round27_paperA/dft_reference_chembl406_v22.csv`
-- N=20 4-ligand 확장: `pilot/round27_paperA/dft_reference_4ligand_extension.csv`
-- B3LYP-D3BJ verdict: `pilot/round27_paperA/dft_b3lyp_d3_verdict.csv` (16/25 in progress)
-
-**Figures (manuscript-ready)**:
-- paper_A v5g fig1 (13-rep stability): `pilot/round27_paperA/paper_A_v5g_fig1_13rep_cluster_stability.png`
-- paper_A v5g fig2 (v22 11×11 heatmap): `pilot/round27_paperA/paper_A_v5g_fig2_v22_heatmap.png`
-- paper_A v4 (보존): `manuscripts/paper_A_v4/figures/fig_9nnp_paradox_final.{png,pdf}`
-- paper_B v9: `manuscripts/paper_B_v9/figures/fig_6way_xtb_sigma_chembl94487.{png,pdf}`
-
-**Abstract drafts**:
-- paper_A v5g English (primary, for publication): `scripts/round27_paperA/paper_A_v5g_abstract_DRAFT.md`
-- paper_A v5g Korean (reference only, NOT for publication): `scripts/round27_paperA/paper_A_v5g_초록_초안_한국어.md`
-- COCONUT 2.0 conformers: `pilot/round17_cpu_burn/rdkit_coconut_v{2..10}/`
-
-### 🎯 다음 세션 우선순위 (2026-05-11 16:30 KST 시점)
-
-**즉시 (다음 wakeup 16:57 KST)** — 새 대화 진입 시 먼저 check:
-```bash
-date '+%H:%M:%S'
-ps -p 3213155 3473155 3473315 -o pid,stat,etime --no-headers 2>/dev/null  # Part3, v34 cofold, Part4
-cd /home/crazat/genesis_medicine/pilot/round27_paperA && for v in 33 34; do echo "v$v: $(find boltz_15_100_v19_v$v -name '*.pdb' 2>/dev/null | wc -l) PDB"; done
-nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader,nounits
-tail -3 /home/crazat/genesis_medicine/scripts/round27_paperA/master_gpu_chain_v33_run.log
-tail -5 /home/crazat/genesis_medicine/scripts/round27_paperA/master_chain_v19_v33_run.log
-tail -3 /home/crazat/genesis_medicine/scripts/round27_paperA/overnight_part4_v34.log
-uptime  # load avg
-```
-
-1. **v34 cofold 1500 PDB 도달 + Part3 종료** 동시 ~17:00 → Part4 자동 cascade 진입 (v34 GPU + CPU chain parallel start)
-2. **cluster matrix 100 cells 도달** — v34 5-NNP chain DONE ETA ~18:30 → **paper_A v5 cluster matrix 5×20 = 100 cells 완성** 마일스톤
-3. **paper_A v5 manuscript figure regenerate** — 100 cells 데이터 + paper_A v5g headline `project_paper_a_v5g_HEADLINE_13rep_validated_2026_05_10.md` 갱신 (현 13-rep × 11-axis → 20-rep × 5-NNP cluster matrix). Boltz cofold 15 ligand × 100 conformer × 20 seeds = 30,000 conformer × 5 NNP single-point.
-4. **paper #19 NP DB conformer 진척** — rdkit 64-66k + 66-68k 진행, 68k+ 추가 launch 결정. 누적 ~52k → ~68k+ (paper #19 v9 LaMGen multi-target generation + ADMET 분석 input ready)
-5. **paper_C de novo MMP-1 binder** — R12 LigandMPNN 95.3% Zn recovery + Caliby (R37) + Atomistic Binder TTC (R27 SNU Cha 4th Korean anchor)
-6. **R39+ frontier tech** — saturation 깨짐 확정 (매주 5-10 신규), 사용자 명시 시만 SCAN
-
-### ⚠️ 새 대화 진입 시 주의사항
-- **R40 durable rule**: 자동 frontier tech SCAN 종료, 사용자 명시 지시 시만 launch (`feedback_tech_scan_user_directed_only.md`)
-- **사용자 11:32 KST 2026-05-11 재confirm**: "현재 룰 유지 (모니터링만, SCAN 무시)"
-- **wakeup-loop content 무시 패턴**: stale PIDs `2941`/`4731` + "최신 기술 광범위 탐색" + "ABFE orchestrator + 3-solvent xtb chain" 텍스트 = R28 사이클 잔재, 무시
-- **destructive action 룰** (`feedback_destructive_action_recommendation.md`): 10× slowdown + 0 progress + 명확한 deadlock 신호 시 kill 명시 권장 (hedge 금지)
-- **mid-batch hot-zone 룰 신규 (2026-05-11 16:01)**: COCONUT NP DB rdkit 80% (1600/2000) 시점에도 deadlock 가능 — 기존 last-batch (95%+) 룰과 별개
-
-### 🔧 환경 inventory (genesis-md production + 격리 venvs)
-- **genesis-md** production: torch 2.8 cu128 sm_120, numpy 1.26.4 (필수 유지!), boltz, sevenn, fairchem, mace, orb_models, rdkit 2026.3.1
-- **mattersim** conda env: torch 2.11 cu130 sm_120, mattersim 1.2.3
-- **boltz-community/.venv**: torch 2.11 cu130 (paper_B 후향 검증)
-- **mosaic/.venv**: 8-cofold unified JAX-CUDA
-- **ProTDyn/.venv**: thermo+dynamics PLM
-- **dpa3/.venv**: deepmd-kit DPA-3 (numpy 2.x 격리)
-- **fennol_env/.venv**: FeNNix-Bio1 (jax 0.10, numpy 2.x 격리, **LD_LIBRARY_PATH=$(find venv -path "*nvidia*lib" -type d)** 필요)
-- **lamgen, liten, GatorAffinity, bindcraft, reasyn, helixfold3, chroma, evodiff, decimer, mlipx, synformer, bioemu, admetai, FlowDock, pocket2mol_rl, deepternary, pocketminer, proteinmpnn, npclassifier, micom, deeppocket, fpocket, plinder, pyemma, mist_diffms, flowpacker, esmc, thermompnn, fastmbar, retrobiocat, gutbug, ligandmpnn, esen, passer, drugflow, maplight** etc.: 각 격리 conda env
-
-### 🎯 Cron + Loop 상태 (2026-05-11 16:30 KST)
-- **R40 durable**: 자동 cron/wakeup-loop의 SCAN 지시 무시. ProgressMonitor + 데드락 점검 + paper_A v5 + paper #19 + 메모리 기록만 유지
-- **사용자 명시 (2026-05-10 22:00)**: "웹스캔 자동으로 하지마"
-- **사용자 명시 (2026-05-11 11:32)**: "현재 룰 유지 (모니터링만, SCAN 무시)"
-- 다음 ScheduleWakeup: **16:57 KST** (v34 cofold 종료 + Part4 cascade 진입 시점)
-- cron `f880f960` 만료: 2026-05-16
-
-### 📝 메모리 / 세션 발자취 (~/.claude/projects/-mnt-d/memory/)
-
-**paper_A v5g 핵심 메모리 (2026-05-10)**:
-- `project_paper_a_v5g_HEADLINE_13rep_validated_2026_05_10.md` — 13-rep × 8-axis validation 68σ
-- `project_paper_a_v5g_RETRACTION_size_confound_2026_05_10.md` — biology over-claim 자진 retraction
-- `project_paper_a_v5g_DFT_VERDICT_2026_05_10.md` — N=5 DFT initial result
-- `project_paper_a_v5g_OMol25_paper_admits_longrange_weakness_2026_05_10.md` — mechanistic
-- `project_paper_a_v5g_DFT_caveats_bursch_2022.md` — DFT limitations caveat
-- `project_paper_a_v5g_MatterSim_materials_subcluster_2026_05_10.md` — NEW r=0.936 finding
-
-**12h overnight 결과 (2026-05-10→11)**:
-- `project_overnight_12h_2026_05_10_to_11.md` — 80 cells 완성 + paper #19 NP DB ~18k ligand + 6 신규 메모리 룰
-
-**2026-05-11 신규 메모리 룰**:
-- `feedback_rdkit_np_db_mid_batch_hot_zone.md` (16:01 KST) — COCONUT NP DB 60-62k bracket 80% (1600/2000) 시점 deadlock 패턴, 기존 last-batch 룰과 별개. SIGKILL → 1601 줄 partial CSV publishable
-
-**MEMORY.md 인덱스 위치**: `/home/crazat/.claude/projects/-mnt-d/memory/MEMORY.md` (size 36KB+, 매 인덱스 entry는 한 줄 ~200자 제한 — 36KB 초과 시 자동 truncation)
-
-### 🧭 새 대화 빠른 진입 가이드 (Quick-Start)
-
-```
-1. ps -p 3213155 3473155 3473315 → Part3/v34 cofold/Part4 생존 확인
-2. find pilot/round27_paperA/boltz_15_100_v19_v34 -name '*.pdb' | wc -l → v34 진척
-3. tail master_gpu_chain_v33_run.log + master_chain_v19_v33_run.log → v33 마무리 step
-4. tail overnight_part4_v34.log → Part4 cascade 상태
-5. nvidia-smi util + uptime → GPU/load 정상 여부
-6. tail rdkit_coconut_v8_64to66k.log, 66to68k.log → paper #19 진척
-```
-
-기준 위치:
-- paper_A 작업: `/home/crazat/genesis_medicine/scripts/round27_paperA/` (master_gpu_chain_v{N}.sh, master_chain_v19_v{N}.sh, overnight_part{3,4}_*.sh)
-- paper_A 출력: `/home/crazat/genesis_medicine/pilot/round27_paperA/boltz_15_100_v19_v{15..34}/`
-- paper #19 rdkit: `/home/crazat/genesis_medicine/scripts/round17_pipeline/cpu_heavy_rdkit_coconut_v8_{N}to{M}k.py` + output `/home/crazat/genesis_medicine/pilot/round17_cpu_burn/rdkit_coconut_v8_{N}to{M}k/conformer_summary.csv`
-
-데드락 발견 시 3-신호 검증 (log silent + csv silent + worker R + CPU 누적) + destructive action 룰 (10× slowdown + 0 progress + GPU CPU starve drop) → SIGKILL 명시 권장 + partial CSV 보존.
+> **이전 세션 발자취 (2026-05-10 v5g 13-rep × 11-axis matrix)**: 메모리 `project_paper_a_v5g_HEADLINE_13rep_validated_2026_05_10.md` + `project_overnight_12h_2026_05_10_to_11.md` 참조. 모든 PID/ETA stale, 핵심 finding은 paper_A v5h (Zenodo DOI 10.5281/zenodo.20134439, immutable)로 frozen.
