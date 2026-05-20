@@ -111,100 +111,146 @@
 - Open Targets v4 GraphQL forward + reverse queries 실측
 - 모든 preprint v0.2에서 fabricated 값 **0개**, retraction 명시
 
-### 🔄 진행 중 (백그라운드) — **2026-05-15 14:15 KST 작업 핸드오프 (정확 정보, 다음 세션 즉시 참조)**
+### 🔄 진행 중 (백그라운드) — **2026-05-20 16:15 KST 작업 핸드오프 (정확 정보, 다음 세션 즉시 참조)**
 
 > 이 섹션은 대화 핸드오프용. 새 세션 시작 시 가장 먼저 확인. 활성 PID는 시간 지나면 stale 가능 → 항상 `ps -eo pid,etime` + 메모리 룰 재확인.
+> **현재 D-10 paper_A v6 publish countdown** (Zenodo deposit 2026-05-30). 5/30까지 publishing-blocker 0, polish/cross-ref만 남음.
 
-#### A. paper_A round27 v_index cascade — phase-split, 자율 진행 중 (🏆 **cycle 95 COMPLETE NEW RECORD 47.13min**)
-- 스크립트 위치: `/home/crazat/genesis_medicine/scripts/round27_paperA/master_chain_v19_v{N}.sh` + `cpu_xtb_*_v19_v{N}.py` (8 stages: SP/OPT/HESS/GFN-FF/GFN1/MMFF94/UFF/cleanup)
-- 패턴: Boltz vN done → `master_chain_v19_v(N+1).sh` bg launch (nice 19) + Boltz v(N+2) fg parallel
-- **cycle 95 CHAIN COMPLETE 13:56:24** (TOTAL **47.13min 🏆 ALL-TIME RECORD**, vs C62 52.8min -11%): OPT 12.75 (+5.7%), HESS 22.50 (+5%), GFN-FF 11.48 (+6.5%), [5-8] **~0sec CACHE HIT** (v19_v80 cached, skip ALL)
-- **NEW publishable findings (n=1, awaiting C96 confirmation)**:
-  - [5-8] full cache-hit mechanism = sustained acceleration의 결정적 mechanism (이전 trend 메모리는 filesystem cache + gfnff_topo만 설명)
-  - GFN-FF은 py19 RDKit 압력에 sensitive (+6.5%, 14 worker 평균) → fair-share 모델에 cache-aware (ADMET, 0%) vs cache-unaware (py19 RDKit, ~6.5%) 분리 필요
-- 진행 중: **Boltz v96 (seed 119) 13/15 lig** PID 2374714, ETA done ~14:30 → cycle 96 cascade trigger
-- cycle 96 scripts pre-prepared 필요 (master_chain_v19_v96.sh + 4 cpu_xtb_*_v19_v96.py)
-- 데이터 위치: `/home/crazat/genesis_medicine/pilot/round27_paperA/boltz_15_100_v19_v{N}/`
-- 자동 trigger 룰: `feedback_paper_a_vindex_cascade_pattern.md`
-- 누적 trend memory: `project_paper_a_chain_acceleration_trend_2026_05_12.md` (C43-49 trend) + `project_overnight_12h_2026_05_14_15.md` (C77-C94 15-cycle SUSTAINED baseline) + `project_paper_a_c95_record_2026_05_15.md` (C95 record)
+#### A. paper_A v6 D-10 publish-ready — `preprints/23_paper_A_v6_mmp1_5nnp_xtb/` (Zenodo 2026-05-30)
+- **manuscript_v0.2.md** 329 lines (Round-3 proofread 완료) — 0 placeholder, 0 broken xref, 5/5 figures cited, 79 references canonical (Wan vs Wang 정정 + ref 18 stale duplicate 제거 → v0.3.1)
+- **핵심 narrative**: 3-NNP cross-val (Orb-v2 + MACE-OMol25 + Orb-v3) Pearson r=0.9146 [0.817, 0.973] top-4 identical rank (Indapamide→57058→94487→Vorinostat); 25-cycle Boltz-2 cofold ensemble (37,500 structures) PoseBusters v2 94.5% > PDBBind 89.2%; CHEMBL94487 σ_E 14.27→0.007 kcal/mol 2068× collapse; xtb GFN2 3-mode (gas/water-ALPB/ε=4.0)
+- **sulfonamide-diuretic n=17 class extension** (Section 5.4): 0/17 quantitative MMP-1 IC50/Ki across thiazide/loop/CA-inhibitor subclasses; **Xipamide CHEMBL517199 top wet-lab candidate**; patent FTO (Lens+Google+Espacenet+USPTO 2026-05-19)
+- **Open Targets Platform 26.03 EMA+PMDA cross-validation** (P0 audit 2026-05-20): 6-source independent corroboration of n=17 0/17 MMP-1; Zidapamide CHEMBL6378 OT absent flag; refs 77-79 추가
+- **HDAC class extension** (Section 5.6): Belinostat + Givinostat (DMD axis, Bettica 2024 PMID 38508835) class-wide 0 MMP-1 quantitative + Mocetinostat/Entinostat benzamide negative controls
+- 보조: cover_letter_zenodo_v0.1.md + references.md (v0.3.1, 79 refs) + figures/figure{1-5}.{png,pdf} + SI/Table_S5_README.md + SI/Table_S6_4engine_matrix_v19_vN.csv
+- D-7 (5/23) co-author confirmation gate: SNUH Chung Jin Ho + Amorepacific NBRI + KAIST Kim Woo-Youn — single-author Zenodo fallback per memory #20-22 precedent if no response
+- D-3 (5/27) figures final review · D-1 (5/29) InChI cross-check + Zenodo metadata · D-0 (5/30) Zenodo upload
+- 메모리: `project_paper_a_v6_proofread_round1/round2/round3_2026_05_20.md` + `project_paper_a_v6_open_targets_audit_2026_05_20.md` + `project_sulfonamide_diuretic_n17_extension_2026_05_19.md`
 
-#### B. paper #19 COCONUT NP DB conformer — 96-268k bracket 진행 중
-- 현재 chunk: **266-268k** (PID 1979387 etime ~15min, 700/2000 ok=633 0.8/s recovering, ETA ~27min)
-- **80.0% 평균 deadlock rate** (50 chunks tested, 40 deadlock + 10 clean; 220-266k bracket 19/23 = 82.6%)
-- **5 clean exceptions** at 240/244/250/254/262 (post-260k oscillating 25% clean rate)
-- **Plateau zone 1801-1998 (197 width 확장)**: 1953-1990 dominant + lower edge 1900/1801 + upper edge 1995-1998 + NEW super-early 200 (258-260k) + 1101 deepest pre-plateau (238-240k)
-- Recovery-then-restall 패턴 (248-250k 1900→1979) — 동일 chunk 내 hard-cluster 다중
-- **Multi-stall recovery normal**: 1500/1700/1800/1900 통과 후 plateau 정지 (260-262k 1801 stalled은 lower-lower edge 이상치)
-- 5-7min SIGKILL rule + replacement chunk launch (보통 99% partial publishable)
-- 메모리 룰: `feedback_rdkit_pool_last_batch_deadlock.md` (50-chunk dataset, multimodal distribution full)
-- D 위치: `/home/crazat/genesis_medicine/pilot/round17_cpu_burn/cpu_heavy_rdkit_coconut_v8_{NtoMk}.csv`
+#### B. paper_A v_index cascade — Boltz cofold v161→v180 widening (자율 진행 중, watcher PID 2900617)
+- 패턴: Boltz vN done → chain v_v(N) cp+sed pattern v3 trigger (~12s cascade gap, [5-8] cache-hit ~0sec) → Boltz v(N+1) launch
+- **현재 진행**: v174 PID 3154818 seed=1278 @~50min (8/15 ligands, GPU 100% 23GiB MEM), ETA done ~16:46 → cascade v175 fire
+- **watcher**: `boltz_v171_v180_extension_watcher.sh` PID 2900617 elapsed 5h+, log at `scripts/round27_paperA/boltz_v171_v180_extension_watcher.log`
+- **완료된 cycles 2026-05-20**: v171 (116.63min +44% contention outlier 9-chunk rdkit-Pool SIGKILL cleanup) / v172 (89.8min clean) / v173 (84.5min clean) → publishable: dedicated-envelope reproducibility 권장
+- **paper_B σ_iptm n=28 dataset 완성** (v143-v170): 420-row CSV at `preprints/24_paper_B_v1_boltz_xtb_rescue_zn_mmp1/sigma_iptm_v143_v170.csv`
+- **chain script gap discovery v130-v170 (41 cycles)**: `cpu_xtb_*_v19_v{N}.py` built only thru v129; v130-v170 chain master scripts silently NO-OP [1/8]-[4/8] = 41 cycles ran CONTENTION-FREE → -8.2% acceleration plateau = pure-Boltz reliability baseline (paper_B v0.2 narrative 핵심). 메모리: `project_paper_b_chain_script_gap_v130_v170.md`
+- 자동 trigger 룰: `feedback_paper_a_vindex_cascade_pattern.md` + `feedback_cascade_watcher_robust_pattern.md`
 
-#### C. Preprint publication — **20 Zenodo published** + 2 medRxiv pending (2026-05-15 갱신)
-- **17 Zenodo DOIs published 2026-05-04** (papers #01-18+#43, range 10.5281/zenodo.200183xx-200183yy)
-- **+3 Zenodo DOIs PUBLISHED 2026-05-15** (Chrome agent web UI session 사용, token deposit:write 부족 우회):
-  - #20 paper_A v5h OMol25 Paradox → **10.5281/zenodo.20134439** (PDF v0.1→v5h replaced, typst 재빌드 14 ChEMBL + 3 timing 표 verified)
-  - #21 paper_B v0.1 Boltz-2x use_potentials → **10.5281/zenodo.20134442**
-  - #22 paper_C v0.1 Zn metallohydrolase de novo → **10.5281/zenodo.20134447**
+#### C. xtb GFN2 SP batch v130-v170 41-cycle extension (paper_A SI Table_S6 보강, 자율 진행 중)
+- 스크립트: `scripts/round27_paperA/xtb_batch_v130_v170_launcher.sh` PID 2903544 (3h+), MAX_CONCURRENT=6 rotation
+- **wave-1 v130-v135 done** (1501 rows each, mtime 14:55-14:58) — 6/41 = 14.6%
+- **wave-2 v136-v141 진행 중** (CSV flush 401 rows = 26% 표시, 실제 work-dirs 548+ = 37% 진짜 진행률; CSV flush every 200 rows lag)
+- xtb 48 active procs (6 cycles × 8 workers), each xtb ~60-110s under wave-2 contention
+- ETA full v130-v170 done: ~next day 08:30 (7 waves × ~3.3h each)
+- 데이터: `pilot/round27_paperA/xtb_gfn2_ligand_v19_v{N}/xtb_gfn2_ligand_v19_v{N}.csv`
+- Boltz cycle wall impact <+2% (v172=90min/v173=85min clean baseline preserved despite xtb batch)
+- aggregator: `scripts/round27_paperA/aggregate_paperA_v6_SI_4engine_matrix.py` (107/119 full coverage from v19-v129, v130+ SP-only re-run pending)
+
+#### D. paper_B v1 dual-axis σ-outlier rescue framework — 95% sprint readiness (post-D14 sprint, D14+0 = 2026-06-13)
+- 위치: `preprints/24_paper_B_v1_boltz_xtb_rescue_zn_mmp1/manuscript_skeleton_v0.1.md` 240 lines
+- **핵심 NEW finding**: dual-axis σ-outlier — **CHEMBL94487 σ_E** (xtb GFN2 SP energy) 14.27 kcal/mol → 0.007 (2068× collapse via xtb-OPT) + **CHEMBL259829 σ_iptm** (Boltz confidence) 0.0629 (35× spread vs CHEMBL57058 best 0.0018) — **orthogonal axes**, single-axis auditing misses one class
+- 5-step protocol: aggregate r → per-ligand σ_E → per-ligand σ_iptm → axis-targeted rescue (σ_E → xtb-OPT, σ_iptm → PLACER+GatorAffinity triage) → wall CV baseline
+- **완성 sections (D-10 자율 작성 분량)**: Abstract dual-axis precision + §1.1 Motivation (340w) + §1.2 Related Work (Wan UCL canonical) + §1.3 dual-axis correction + §2.9 chain gap methodological transparency + §3.2 σ_iptm 15-ligand rank table + §3.3 dual outlier case studies (3.3.1 CHEMBL94487 / 3.3.2 CHEMBL259829 / 3.3.3 framework table) + §3.5 plateau + v171 contention outlier footnote + §4.1 metalloprotein amp (330w) + §4.2 upstream QM (430w) + §4.3 reliability literature 4-strand positioning (580w) + §4.4 limitations (6 bullets 480w) + §5 5-step protocol
+- 남은 placeholder (post-D14 sprint): §3.1 aggregate Pearson r table (ΔG_Boltz extraction script 필요) + §3.4 external validator data (GatorAffinity + PLACER runs 미시작)
+- **prior art**: Wan S, Zhang X, Xue X, Coveney PV (UCL CCS) arXiv:2603.05532 38,482-compound 3CLPro+TNKS2 N=2 r=0.913/0.962 — paper_B = 14× deeper reseed (N=28) + Zn²⁺ metalloprotease + σ_iptm dimension + causal rescue
+- 메모리: `project_paper_b_dual_axis_framework_2026_05_20.md` + `project_paper_b_sigma_iptm_n28_2026_05_20.md` + `project_paper_b_arxiv_2603_05532_prior_art.md` + `project_paper_b_section43_2026_05_20.md`
+
+#### E. paper #19 v2 outline v0.1 — KMCRIC outreach 첨부 (2026-05-20 작성)
+- 위치: `preprints/45_paper_19_v2_outline_kmcric/paper_19_v2_outline_v0.1.md`
+- 4-layer analytical pipeline:
+  1. **ADMET-AI 41-endpoint**: 86 Korean Pharmacopoeia herbal NP × paper_A v6 MMP-1 117-hydroxamate comparator (herbal QED 0.51 vs MMP-1 0.39; herbal AMES 0.37 vs MMP-1 0.77)
+  2. **Claude-LLM 33-retron retrosynthesis**: 34/86 = 40% solved vs AiZynthFinder USPTO 0/86 (14/86 chemoenzymatic)
+  3. **KIOM KORE-Map 1.1 transcriptomics**: 1,075 bulk RNA-seq × 4 cell × 4 dyspepsia 처방 + 단방 한약재; **KMCRIC alumni leverage path** via 이향숙 교수님 (사용자 석사 지도교수, KMCRIC 센터장)
+  4. **MMP-1 mechanism overlay**: paper_A v6 framework cross-ref (Boltz-2 + xtb + 3-NNP)
+- target: D14+14 (2026-06-13) Zenodo v0.2 skeleton, D14+30 (2026-06-29) v1.0 Journal of Ethnopharmacology
+- KMCRIC outreach 한글 formal draft: `preprints/23_paper_A_v6_mmp1_5nnp_xtb/outreach/kmcric_lee_hyangsook_kore_map_intro_draft_2026_05_20.md` (D-9/-8 발송 권장, 95%+ success rate per 사용자 alumni 룰)
+- 메모리: `user_kmcric_alumni_lee_hyangsook.md` + `project_round26_frontier_tech_2026_05_20.md` (#4 KORE-Map KILLER)
+
+#### F. R26 frontier-tech scan 11 Tier-1 picks (2026-05-20, 사용자 직접 명령)
+- **P0 완료**: Open Targets Platform 26.03 (paper_A v6 §5.4 Section + refs 78-80 + cover letter + SI README 통합 ✓)
+- **P1 자율 진행 중**: KORE-Map 1.1 (paper_19 v2 outline 작성 ✓ + KMCRIC outreach draft ✓)
+- **나머지 9 Tier-1 picks 대기**: Carterra Vega + ALiCE (wet-lab) + Prot2Chat (task #5 closure) + Boltz-2 MD vs AlphaFlow (task #4 closure) + Property Cliffs / AgenticPosesRanker / AMP-BMS-MM / HIRA K-OMOP / KRIBB K-Reverse Aging
+- **사용자 명시 규칙**: "frontier-tech 신규기술 스캔은 사용자 명령에만" — overnight/auto 큐잉에서 자동 launch 금지 (`feedback_frontier_scan_user_initiated_only.md`)
+- 메모리: `project_round26_frontier_tech_2026_05_20.md`
+
+#### G. 활성 watcher / monitor / cascade infrastructure
+- `bgackokko` (Monitor) — 10-min cadence compute heartbeat (GPU/load/Boltz/xtb/py19) — 정상
+- `btcxr2nwn` (Monitor) — Boltz/disk/xtb death watch — 정상
+- `boltz_v171_v180_extension_watcher.sh` PID 2900617 (5h+) — Boltz cascade v171→v180 sequential launcher (현재 v174 phase)
+- `xtb_batch_v130_v170_launcher.sh` PID 2903544 (3h+) — xtb GFN2 SP wave rotation
+- Wakeup cadence: 600-1800s (memory rule `feedback_monitoring_cadence_rule.md` 적용)
+- **load 880-1000 = WSL2 thread-counting artifact** — actual progress 정상이면 무시 (`feedback_wsl2_load_thread_artifact.md`)
+
+#### H. 활성 메모리 룰 (2026-05-20 신규 우선 + 기존 핵심)
+- 🚨🚨 **자율 ROI 순 무중단 운영 = 본인 핵심 역할** (`feedback_autonomous_role_priority_2026_05_20.md`, 사용자 직접 명시): "너의 역할은 나의 지시를 기다리는게 아니라 ROI높은 순으로 계속 연산력 쉬지않고 운영"; default behavior 변경 (지시 대기 → 자율 launch); GPU<80% sustained 30s+ OR CPU load<nproc×0.85 catch 시 즉시 next ROI; 사용자 개입 시 즉시 조정
+- 🚨 **GPU idle ≥10min autonomous cascade launch** (`feedback_gpu_idle_autonomous_launch.md`, 2026-05-20 10:14-23 사건): wake/overnight 무관 GPU 0% ≥10min 시 next cascade launch 의무 (paper_B n+10 extension 우선)
+- 🚨 **WSL2 load thread-counting artifact** (`feedback_wsl2_load_thread_artifact.md`): load 988 보고 시 actual usage 정상 가능 (D state 0 + memory OK + workload progress 확인). load 단독으로 SIGKILL 금지
+- 🚨 **사용자 보고는 한글, 논문 원고만 영어** (`feedback_korean_reporting_english_papers.md`, 2026-05-13)
+- 🚨 **KST 22:00-10:00 12h 자율 큐잉**: ROI 순 cascade 자동 launch (`feedback_overnight_22to10_autonomous_queue.md`)
+- 🚨 **사용자 "자동 스캔 정지" scope = frontier-tech만** (`feedback_user_scan_stop_scope.md`, 2026-05-17): Boltz cascade + 데드락 SIGKILL + chunks rolling은 별개 pre-authorized
+- 🚨 **모니터링 cadence 600s default + 180-240s transition** (`feedback_monitoring_cadence_rule.md`); 5-min cache TTL 의식
+- 🚨 **Schrödinger academic = Viewer only** (2026-05-13): paper_A v6 cross-validation 5도구 fallback
+- 🚨 **fairchem 2.x API + HF gated repo 차단** (`feedback_fairchem_2x_api_hf_gated_2026_05_20.md`): facebook/OMol25/UMA HF gated 401, OCPCalculator → FAIRChemCalculator + pretrained_mlip; Meta FAIR access request 24-72h 대기
+- 🚨 **AskUserQuestion 보수적 사용** (`feedback_autonomous_decision_priority.md`, 2026-05-15 명시): 메모리 룰 + 직전 사용자 의도 + 객관 evidence로 자율 진행; 외부 자원 1주+ 변화 / destructive action 직전 / 사용자 직접 의도 필수 / 메모리 룰 충돌 시에만
+- 🚨 **cascade watcher 검증 의무 + setsid robust 패턴** (`feedback_cascade_watcher_robust_pattern.md`, 2026-05-16 v106 duplicate launch 사건)
+- 🚨 **stale/phantom PID claim 검증 의무** (`feedback_stale_pid_claim_verification.md`, 2026-05-15)
+- 🚨 **동일 status macro 4-time+ 1-line format** (`feedback_repeated_status_macro_1line.md`)
+- 🚨 **ADMET-AI duplicate SMILES 100% crash** + **joblib 25-subworker overhead** + **chain×ADMET fair-share stage-dependent regression** (OPT 0.345 / HESS 0.21-0.28 / GFN-FF 0% cache-aware)
+- 🚨 **10-min heartbeat insufficient for Boltz transition**: Boltz launch 후 ScheduleWakeup(ETA-2min) 의무
+- 🚨 **MatterSim conda env path = miniforge3 NOT miniconda3** (`feedback_mattersim_conda_env_path.md`, 2026-05-18)
+- 🚨 **chain xtb pool nice=19 + RDKit/ADMET fair-share** (RECORD 보전은 chain nice=0 또는 CPU mask isolation)
+- 🚨 **rdkit Pool last-batch / mid-batch hot-zone deadlock = 5-7min SIGKILL rule** (98-99% partial publishable)
+- 🚨 **cpu_heavy_rdkit_coconut SKIP range 검증 의무**: SKIP < csv total lines (lite-05-2026=738,828), 740-744k 사건 재발 방지
+- **paper_A v_index cascade auto-trigger**: Boltz vN done = pre-authorized chain (`feedback_paper_a_vindex_cascade_pattern.md`)
+- **Destructive action 명확 evidence 시 strong recommendation** (hedge 금지)
+- **MEMORY.md size warning**: 110KB > 200줄 limit — 신규 entry는 200자 이하 one-liner, 본문은 topic file로
+
+#### I. Preprint publication 누적 (2026-05-20 기준)
+- **20 Zenodo DOIs published 2026-05-04+05-15** (papers #01-18+#43, #20 paper_A v5h, #21 paper_B v0.1, #22 paper_C v0.1)
+- **paper_A v6 (#23) Zenodo D-10 2026-05-30 publish-ready** ✓
+- **paper_B v1 (#24) post-D14 sprint 2026-06-13 target** (95% sprint readiness)
+- **paper #19 v2 outline (#45) — KMCRIC outreach 첨부** ✓ (2026-05-20 작성)
 - medRxiv pending: #02 recover_workflow + #11 korean_pgx_topical
-- **bioRxiv/ChemRxiv door closed** for in-silico-only (26 rejection events); wet-lab v1.0 → 재시도 long-game (#04 pigmentation + #03 emb3_scar v1.0 flagship)
-- **paper_A v5i 누적 추가 항목** (Zenodo "New version" workflow 시 통합): C94+C95 timing, stage-dependent fair-share coeff, GFN-FF py19 sensitivity, [5-8] cache hit, cofold-time outlier ↔ σ outlier, **Limitation #7 Schrödinger OPLS5+FEP+ baseline 부재**
+- **bioRxiv/ChemRxiv door closed** for in-silico-only (26 rejection events); wet-lab v1.0 → 재시도 long-game
 - 메모리: `project_preprint_publication_status.md`
 
-#### D. Frontier scan saturation — 181 tools catalogue (Round-1~35.6)
-- **R29-R34 progression**: 153 → 165 → 170 (R34에서 1건 추가 = saturation 도달)
-- **R35 brief 4-day scan (2026-05-09~12)**: 0 net Tier-1, 170-tool stable
-- **R35.5 broader-angle gap-audit (2026-05-12)**: 170 → 175 (시간-델타 → 카테고리-갭 audit 전환 ROI 5-10×)
-- **R35.6 supplier/modality-axis (2026-05-12)**: 175 → 181 — DORA / **LFM2-2.6B-MMAI #177** / 🇰🇷 **R-DM KAIST 6th anchor #178** / EVA / RoboChem-Flex / **Schrödinger OPLS5 Zn #181 paper_A ABFE 4th engine**
-- ✅ R35.6 install 완료 (lfm2, neural_opt master, eva env); Chrome agent prompt 발송 OPLS5
-- **Korean anchors 6**: BInD (KAIST) + Lee×Baker NC + SevenNet (SNU) + Cha (NVIDIA+SNU) + GPCRact 후보 + **R-DM KAIST 추가**
-- 9 NNPs + 13 cofold options (Boltz-2/Boltz-2x/Protenix v1+v2/HelixFold3/AF3/Chai-1/NeuralPLexer3/RF3/AbLang/mosaic 통합)
-- **🚨 R29-R35.x 동안 hallucination 5종 재확인 부재**: Boltz-3 / AF4 / AF3.1 / Protenix v3 / RFdiff4 / ChemProp 3.0 / AiZynth5 — 메모리에 verbatim citation 시 verification 필수
-- 메모리: `project_round35_5_frontier_tech_2026_05_12.md` + `project_round35_6_frontier_tech_2026_05_12.md` + `project_round35_6_install_complete_2026_05_12.md`
+#### J. Recover 한의원 홈페이지 (recover-clinic.kr/research) 업데이트 권장 (사용자 2026-05-20 검토 요청)
+- 현재 표 25건 (Preprint 11 + Tech Report 9 + Framework 4 + In Prep 1), 마지막 업데이트 "2026년" 막연
+- **Tier-1 즉시 추가**: paper_A v6 (D-0 5/30 publish) + paper_B v1 (post-D14) + paper #19 v2 outline
+- **Tier-2 누락 publish papers**: IX/X/XI/XII/XIII/XVIII/XIX (paper #09/10/11/12/13/18/19) — Roman numeral gap 있음
+- **Tier-3 narrative 보강**: Program A에 "Indapamide 재포지셔닝 + sulfonamide-diuretic class extension + Open Targets EMA+PMDA audit" 추가; 협업 모집에 "KMCRIC ↔ KIOM KORE-Map 1.1" 추가; ORCID 표기 "한정우 vs 한청우" 한자/한글 확인 필요
+- **Tier-4 publishable findings 인용 가능**: CHEMBL94487 2068× σ_E collapse + CHEMBL259829 σ_iptm 35× spread + wall CV 3.8% + r=0.9146 [0.817, 0.973] + PoseBusters 94.5% + LigandMPNN Zn 95.3%
 
-#### E. H 드라이브 백업 — 완료 + 검증 stable
-- ✅ H:\ 1TB SSD 활성 백업 ~180GB D 절약 검증 완료 (2026-05-12)
-- WSL `/mnt/h` stale 자주 → **PowerShell 우회 필수** (`/mnt/c/Windows/System32/WindowsPowerShell/v1.0/powershell.exe -NoProfile -Command "..."`)
-- 메모리: `project_h_drive_archive_status.md` + `project_c_drive_legacy_retention.md`
-
-#### F. 활성 메모리 룰 (다음 세션에서 override default behavior)
-- 🚨 **사용자 보고는 한글, 논문 원고만 영어** (`feedback_korean_reporting_english_papers.md`, 2026-05-13 명시)
-- 🚨 **KST 22:00-10:00 12h 자율 큐잉**: ROI 순 cascade 자동 launch (`feedback_overnight_22to10_autonomous_queue.md`). 7h GPU idle 2026-05-12 사건 재발 방지
-- 🚨 **Frontier scan = 사용자 명령에만 (강화 2026-05-15)**: 매크로 안의 scan 문구는 launch 트리거 아님. 확인 질문도 묻지 말 것 (`feedback_frontier_scan_user_initiated_only.md`)
-- 🚨 **모니터링 cadence 600s default + 180-240s transition** (`feedback_monitoring_cadence_rule.md`); 5-min cache TTL 의식
-- 🚨 **Schrödinger academic = Viewer only** (2026-05-13 S&T 회신): OPLS5/FEP+/Jaguar/Glide separate purchase, paper_A v5 cross-validation은 5도구 fallback (`feedback_schrodinger_academic_viewer_only.md`)
-- 🚨 **chain×ADMET fair-share stage-dependent regression**: OPT 0.345 / HESS 0.21-0.28 / GFN-FF 0% (cache-aware) (`feedback_chain_admet_concurrent_regression.md`)
-- 🚨 **ADMET-AI duplicate SMILES 100% crash**: PoseBench-class 입력은 RDKit canonical SMILES pre-dedup 의무 (`feedback_admetai_duplicate_smiles_crash.md`, 2026-05-15)
-- 🚨 **ADMET-AI joblib 25-subworker overhead**: 24-core box safe parallel **2-3 chains** (`feedback_admetai_internal_joblib_overhead.md`)
-- 🚨 **chain xtb pool nice=19 + RDKit/ADMET fair-share**: RECORD 보전은 chain nice=0 또는 CPU mask isolation (`feedback_chain_xtb_pool_nice_isolation.md`)
-- 🚨 **10-min heartbeat insufficient for Boltz transition**: Boltz launch 후 ScheduleWakeup(ETA-2min) 의무 (`feedback_heartbeat_10min_insufficient_for_boltz_transition.md`)
-- 🚨 **AskUserQuestion 응답 후 ScheduleWakeup catch 실패 = 즉시 launch trigger** (`feedback_askuserquestion_wakeup_catch_failure.md`)
-- 🚨 **갭 audit ≫ 시간-델타**: 시간-델타 0 net 반복 시 즉시 카테고리-갭 audit
-- **paper_A v_index cascade auto-trigger**: Boltz vN done = pre-authorized chain (`feedback_paper_a_vindex_cascade_pattern.md`)
-- **xtb chain nice 19 의무**: 16+ nice=0 워커 → Boltz GPU 82% → 45% drop (`feedback_boltz2_cpu_starvation_rule.md`)
-- **rdkit Pool last-batch / mid-batch hot-zone deadlock = 5-7min SIGKILL rule** (98-99% partial publishable)
-- **Destructive action 명확 evidence 시 strong recommendation** (hedge 금지, `feedback_destructive_action_recommendation.md`)
-- **pgrep -f self-match trap with claude Bash** (`feedback_pgrep_self_match_trap.md`)
-- **MEMORY.md size warning**: 47KB > 24.4KB limit — 일부 entries 잘림. 신규 entry는 200자 이하 one-liner, 본문은 topic file로
-
-#### G. 활성 watcher / monitor
-- `bgackokko` (Monitor) — 10-min cadence compute heartbeat (GPU/load/Boltz/xtb/py19)
-- `btcxr2nwn` (Monitor) — Boltz/disk/xtb death watch
-- Wakeup ~270-1500s cadence (ScheduleWakeup) — cycle phase 분기 모니터링용 (5-min cache TTL 의식)
-
-#### H. paper_A round27 신규 검증 publishable findings (cycle 43-95)
-- 🏆 **C95 chain TOTAL 47.13min ALL-TIME RECORD** (2026-05-15 13:56:24, vs C62 52.8min -11%) — `project_paper_a_c95_record_2026_05_15.md`
-- **[5-8] full cache-hit mechanism**: v19_v80 cached → GFN1 SP/MMFF94/UFF/cleanup 4-stage instant (sustained acceleration의 결정적 mechanism, n=1 awaiting C96)
-- **GFN-FF NOT immune to py19 RDKit**: +6.5% under 14 worker pressure → cache-aware (ADMET 0%) vs cache-unaware (py19 ~6.5%) fair-share dimension 분리 필요 (n=1 awaiting C96)
-- **CPU capacity threshold theory**: L0→L4 80% threshold 넘으면 contention regime exponential slowdown
+#### K. paper_A round27 신규 검증 publishable findings (cycle 43-174+)
+- 🏆 **C95 chain TOTAL 47.13min ALL-TIME RECORD** (2026-05-15, vs C62 -11%) — `project_paper_a_c95_record_2026_05_15.md`
+- **[5-8] full cache-hit mechanism**: v19_v80 cached → GFN1 SP/MMFF94/UFF/cleanup 4-stage instant
+- **GFN-FF NOT immune to py19 RDKit**: +6.5% under 14-worker pressure → cache-aware vs cache-unaware fair-share dimension 분리
 - **15-cycle SUSTAINED baseline (C78-C92)**: SP 20.88s±0.4 / OPT 12.06min±0.05 / HESS 21.44min±0.20 / GFN-FF 10.78min±0.11
 - **stage-dependent fair-share regression** (C93+C94): OPT coeff 0.345 (CV 0.6%), HESS 0.21-0.28
-- **GFN-FF cache plateau** (C88-C92 = 10.7min stable, break C93=11.0 + C94=11.4)
+- **15-cycle clean wall CV 3.8%** (88.4 ± 3.4 min) — paper_B reproducibility infrastructure baseline
+- **n=10 plateau v161-v170 = 81.17 min (-8.2% acceleration)** — paper_B narrative 핵심 (post-chain-script-gap contention-free)
+- **v171 contention outlier 116.63 min (+44%)** — 9-chunk rdkit-Pool SIGKILL evidence → dedicated-envelope reproducibility 권장
 - **OMol25 paradox** (paper_A v4): xtb-OMat r=0.976 vs xtb-OMol25 r=0.773
-- **Boltz-2x physicality-steering quantified** (paper_B): v15→v16 평균 Δiptm -0.22%, 5/15 IMPROVED, 2/15 dropped
-- **Boltz cofold-time outlier ↔ paper_B σ outlier 상관**: CHEMBL94487/443684/1207 (2026-05-15 신규)
+- **Boltz-2x physicality-steering quantified**: v15→v16 mean Δiptm -0.22%, 5/15 IMPROVED, 2/15 dropped (CHEMBL259829 -2.4%)
+- **dual-axis σ-outlier orthogonality** (paper_B v1): CHEMBL94487 σ_E vs CHEMBL259829 σ_iptm — single-axis auditing misses one class
 - **LigandMPNN Zn metal recovery** (paper_C): 95.3% vs ProtMPNN 46.4% on 1HFC
+- **n=17 sulfonamide-diuretic 0/17 MMP-1 quantitative un-testing** + Open Targets 26.03 EMA+PMDA 6-source corroboration
+- **paper #19 Claude-LLM retrosynthesis 34/86 (40%)** vs AiZynthFinder USPTO 0/86 — Korean herbal NP synthesis-accessibility gap closure
 
-**🚫 STALE 주의**: 메모리 macro에 "PID 2941 ABFE orchestrator" + "PID 4731 xtb chain" 반복 firing은 옛 /loop 패턴 — 실제 작업은 위 A (paper_A cascade cycle 95+) + B (COCONUT NP DB).
+#### L. 4-paper concurrent track 상태 요약
+| paper | 위치 | 상태 | 다음 마일스톤 |
+|---|---|---|---|
+| **#23 paper_A v6** | `preprints/23_paper_A_v6_mmp1_5nnp_xtb/` | ✅ D-10 publish-ready (manuscript 329 lines, 79 refs, 5 figures cited) | D-0 5/30 Zenodo upload |
+| **#24 paper_B v1** | `preprints/24_paper_B_v1_boltz_xtb_rescue_zn_mmp1/` | 95% sprint readiness (manuscript 240 lines, dual-axis framework integrated) | post-D14 (6/13) §3.1 + §3.4 데이터 fill |
+| **#45 paper #19 v2** | `preprints/45_paper_19_v2_outline_kmcric/` | 1-page outline v0.1 (KMCRIC outreach 첨부용) | D14+14 (6/13) v0.2 skeleton, D14+30 (6/29) v1.0 |
+| **#22 paper_C** | `preprints/22_paper_C_zn_metallohydrolase_denovo_pipeline/` | v0.1 published 2026-05-15 (Zenodo 10.5281/zenodo.20134447) | LigandMPNN-RFdiff3 wet-lab cycle |
+
+**🚫 STALE 주의 (이전 세션 macro 패턴)**:
+- "cycle 95/96" — 현재는 cycle 174+ (paper_A v_index Boltz v161→v180 widening)
+- "PID 2941 / 4731" — 옛 ABFE/chain PID 환각, 현재 cascade는 PID 2900617 (watcher) + 2903544 (xtb batch) + 3154818 (v174)
+- "COCONUT NP DB 96-268k" — 그 phase 종료, 현재는 paper_B σ_iptm n=28 + xtb batch v130-v170
+- "Chrome agent Zenodo Web UI" — 새 paper_A v6 deposit는 D-0 5/30에 사용자 직접 진행
+- "20 Zenodo published" — 곧 23 (paper_A v6 add)
 
 ### 📋 Quality 검증 통과 항목
 - TRIPOD-AI 호환 limitation sections
