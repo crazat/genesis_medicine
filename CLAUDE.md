@@ -956,3 +956,72 @@ uptime
 ---
 
 > **이전 세션 발자취 (2026-05-10 v5g 13-rep × 11-axis matrix)**: 메모리 `project_paper_a_v5g_HEADLINE_13rep_validated_2026_05_10.md` + `project_overnight_12h_2026_05_10_to_11.md` 참조. 모든 PID/ETA stale, 핵심 finding은 paper_A v5h (Zenodo DOI 10.5281/zenodo.20134439, immutable)로 frozen.
+
+---
+
+## 🗄 Archive Backup 정책 (2026-05-25 변경)
+
+**Primary backup 경로 전환**:
+- **이전**: `I:\genesis_archive\` + `I:\wsl_genesis_archive\` (ORICO CNM2-U4 외장 SSD)
+- **신규**: `gdrive:Projects/Genesis_medicine/genesis_archive/` + `gdrive:Projects/Genesis_medicine/wsl_genesis_archive/`
+
+**변경 사유**: ORICO CNM2-U4 enclosure 의 ASMedia ASM2464PD 가 sustained read 5-7분 후 self-reset. 6시간 이상 재시도 (tar 우회 포함) 모두 같은 dropout 패턴. Scientific archive 가치는 GDrive 현 상태로 100% 충족.
+
+**누락 데이터 (수용)**: ~10K Boltz inference cache 파일 (npz/pdb/json/msa). 위치 패턴 `wsl_genesis_archive/genesis_medicine/pilot/round13_overnight/results/boltz_*_v##/`. 재생성 가능 — Boltz weights + ChEMBL list + 코드 모두 보존됨, GPU 1대로 분~일 단위.
+
+**신규 sync 명령** (WSL → GDrive):
+```bash
+rclone sync /home/crazat/genesis_medicine/<subdir> \
+  gdrive:Projects/Genesis_medicine/genesis_archive/genesis_medicine/<subdir> \
+  --transfers 4 --tpslimit 10 --fast-list
+```
+
+**NAS Z: + I:\ 새 역할**:
+- **NAS Z:** (DS115j 1-bay): secondary cold storage, SMB 2.0.2 한계로 large file 부적합
+- **I:\ 외장 SSD**: 게임/단발 파일 보관 한정. Sustained 5분+ workload 금지
+
+**핸드오프 문서 + manifest** (GDrive + WSL `/home/crazat/genesis_medicine/` 양쪽 보존):
+- `ARCHIVE_HANDOFF_2026-05-25.md` (10.9 KB) — 전체 정책 + 경로 + 운영 방침
+- `MISSING_FILES_MANIFEST_2026-05-25.txt` (15.6 MB) — 누락 93,724개 파일 path + size 리스트
+- `MISSING_FILES_MANIFEST_summary_2026-05-25.log` (2 KB) — 카테고리별 요약
+
+**Source disk + enclosure spec** (향후 hardware 추적용): ORICO CNM2-U4 / ASMedia ASM2464PD chipset.
+
+---
+
+## 🛠 활성 작업 (세션 종료 시점, **2026-05-25 11:35 KST**)
+
+### paper_A v6 SI ULTIMATE matrix 14,265+ cohort CSVs
+
+| 작업 | 상태 |
+|---|---|
+| **paper_A v6 manuscript** | v0.3.23, refs 239 (R49+R50+R51+R52 통합) D-5 publish-ready |
+| **paper_A v6 SI cross-Hamiltonian matrix** | GFN0/1/2 × SP+OPT+OHESS × 117-cycle × 24-ALPB × 15-lig ≈ 14,265 cohort CSVs |
+| **paper_B σ_E + σ_iptm dual-axis** | GFN0+1+2 OHESS × 22-cycle × 4-ALPB × 15-lig ≈ 4,000 entries |
+| **Boltz cascade** | v251-v260 watcher (paper_B widening n=98→n=108), v252 cycle 2/10 진행 중 |
+| **GFN0+1+2 OHESS dense20** | GFN0 done (1700 batches 166min), GFN1+2 continued |
+| **GFN0 OPT dense20** | 추가 launch (8 worker fill) |
+
+### R31-R34 frontier-tech scan cumulative (64 Tier-1 hits, 38 truly-new integrations)
+
+- **R31** (modality split): A=Foundation models + B=Wet-lab + C=Clinical/RWE + D=Multi-omics → 14 Tier-1, 4 integrations (R49 v0.3.20)
+- **R32** (layer split): E=QM/MD + F=Korean + G=AI/LLM + H=Delivery → 14 Tier-1, 9 integrations (R50 v0.3.21)
+- **R33** (angle/cross-section): J=Cross-organ + K=Stat UQ + L=Open Science + M=Manufacturing → 17 Tier-1, 17 integrations (R51 v0.3.22)
+- **R34** (relational/structural): N=Multi-scale + O=KG-network + P=Cross-species + Q=Adversarial AI → 16 Tier-1, 8 integrations (R52 v0.3.23)
+
+### 🎯 다음 세션 우선순위 (2026-05-25 11:35 KST 시점)
+
+**즉시 (다음 진입 시)**:
+```bash
+date '+%H:%M:%S'
+ls /home/crazat/genesis_medicine/preprints/23_paper_A_v6_mmp1_5nnp_xtb/SI/xtb_gfn*cohort*.csv | wc -l
+tail -3 /home/crazat/genesis_medicine/scripts/round27_paperA/boltz_v251_v260_nonblock_watcher.log
+nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader,nounits
+uptime
+```
+
+1. **paper_A v6 D-5 publish trigger** — manuscript_v0.2.md + references.md (239) + cover_letter Zenodo deposit 2026-05-30
+2. **paper_B σ_iptm cross-cycle 22-cycle ULTIMATE dataset** integration 검증 + manuscript figure 추가
+3. **paper #19 v0.2 sprint** (KMCRIC outreach 첨부 PDF candidate, D14+14 days = 2026-06-13)
+4. **ARPA-H IGoR Solution Summary 2026-06-25 D+33** grant 응모 결정 (ref 239)
+5. **추가 frontier-tech scan**: 사용자 명시 시만 (R35 권장)
