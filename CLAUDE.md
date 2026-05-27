@@ -1025,3 +1025,51 @@ uptime
 3. **paper #19 v0.2 sprint** (KMCRIC outreach 첨부 PDF candidate, D14+14 days = 2026-06-13)
 4. **ARPA-H IGoR Solution Summary 2026-06-25 D+33** grant 응모 결정 (ref 239)
 5. **추가 frontier-tech scan**: 사용자 명시 시만 (R35 권장)
+
+---
+
+## 🛠 활성 작업 (세션 종료 시점, **2026-05-27 19:01 KST**) — D-3
+
+### paper_A v6 SI v212_v275 unified 통합 cohort + 1755 baseline + odd-cycle (18,000+ CSVs)
+
+| 작업 | 상태 |
+|---|---|
+| **paper_A v6 manuscript** | v0.3.23 manuscript_v0.2.md publish-ready, **5개 표 검증 0건** (check_tables.py 0 issue) |
+| **paper_A v6 SI v212_v262 sept-matrix** | GFN0/1/2 × SP+OPT+OHESS × {GBSA 13-16, ALPB 23} × 765 SDFs **FULLY COMPLETE** (18/18 cells × 16,065 entries) |
+| **paper_A v6 SI v263_v270 sept-matrix** | 120 SDFs (8 cycles × 15 lig) **FULLY COMPLETE** 18/18 cells |
+| **paper_A v6 SI v271_v273 partial cohort** | 45 SDFs **18 cells COMPLETE** |
+| **paper_A v6 SI v274 + v275 single-cycle** | 15 SDFs each, 18 cells each **COMPLETE** |
+| **paper_A v6 SI unified v212_v275** | symlink 960 SDFs merged dir. GFN0 OHESS ALPB+GBSA done. GFN1/2 multi-hour 진행 중. |
+| **paper_B σ_iptm unified v143-v274** | 132 cycles × 15 lig = 1,980 entries 단일 paper-grade CSV consolidated |
+| **paper_B σ_E v212_v274 consolidation** | 1,710 cells × 63 cycles. Top σ outliers CHEMBL257077 (σ=98.17 kcal) / CHEMBL94487 (σ=85.34) / CHEMBL412 (σ=82.55) |
+| **Boltz v261-v270 cascade COMPLETE** | paper_B n=108→n=118 (Task #61) |
+| **Boltz v271-v280 cascade COMPLETE** | paper_B n=118→n=128 (Task #78) |
+| **Boltz v281-v290 cascade IN PROGRESS** | watcher PID 291263, v282 cycle 진행 중 (Task #82). n=128→n=138 ETA ~05:00 다음 날 |
+| **check_tables.py prevention logic** | /preprints/23_paper_A_v6.../tools/check_tables.py (4-cat 검증) + Makefile (`make check-all`) + README. 5/30 publish 직전 자동 실행 의무 |
+
+### 2-day 누적 성취 (2026-05-25 → 2026-05-27)
+
+- **v212_v275 unified cohort** 새로 구축: 5 disjoint sub-cohorts (v212_v262/v263_v270/v271_v273/v274/v275) symlink merge → 960 SDFs 단일 sept-matrix 입력
+- **v263_v270+v271_v273+v274+v275** 4 새 cohort 18 cells each fully complete (5,400+ new CSVs)
+- **2 Boltz cascade complete** (n=128 도달) + 3rd cascade ongoing
+- **σ_E/σ_iptm consolidation scripts** 영구 설치 (`consolidate_paper_a_sigma_e_v212_v274.py`, `consolidate_paper_b_sigma_iptm_unified.py`)
+- **check_tables.py prevention logic** 영구 설치 — 향후 모든 manuscript publish 직전 자동 검증
+- **GPU 일시정지/재개 SIGCONT/SIGSTOP** rule 발견 + 메모리 영구 저장 (`feedback_sigstop_setsid_child_target.md`)
+
+### 🎯 다음 세션 우선순위 (2026-05-27 19:01 KST 시점) — **D-3 publish countdown**
+
+**즉시 (다음 진입 시)**:
+```bash
+date '+%H:%M:%S'
+nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader
+uptime
+tail -3 /home/crazat/genesis_medicine/scripts/round27_paperA/boltz_v281_v290_nonblock_watcher.log
+ps -p 291263 -o pid,stat --no-headers  # watcher Ss = running, Ts = SIGSTOPped
+ls /home/crazat/genesis_medicine/preprints/23_paper_A_v6_mmp1_5nnp_xtb/SI/xtb_gfn?_ohess_*_v212_v275_*.csv | wc -l
+```
+
+1. **paper_A v6 D-3 publish trigger 2026-05-30** — Zenodo deposit. **publish 직전 `make check-all` 실행 의무** (`/preprints/23_paper_A_v6.../tools/check_tables.py`)
+2. **paper_B σ_iptm/σ_E 통합 dataset** narrative integration → manuscript_skeleton_v0.1 → v0.2 sprint
+3. **paper #19 v0.2 sprint** (KMCRIC outreach attachment PDF, D14+ = 2026-06-13)
+4. **Boltz cascade continuation**: v281-v290 → v291-v300 (필요 시 새 watcher 생성, 패턴은 boltz_v281_v290_nonblock_watcher.sh 참조)
+5. **GPU 일시정지** 요청 시: `kill -STOP 291263` (script PID — eval wrapper PID 아님), 재개 `kill -CONT 291263`
