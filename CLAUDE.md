@@ -1073,3 +1073,50 @@ ls /home/crazat/genesis_medicine/preprints/23_paper_A_v6_mmp1_5nnp_xtb/SI/xtb_gf
 3. **paper #19 v0.2 sprint** (KMCRIC outreach attachment PDF, D14+ = 2026-06-13)
 4. **Boltz cascade continuation**: v281-v290 → v291-v300 (필요 시 새 watcher 생성, 패턴은 boltz_v281_v290_nonblock_watcher.sh 참조)
 5. **GPU 일시정지** 요청 시: `kill -STOP 291263` (script PID — eval wrapper PID 아님), 재개 `kill -CONT 291263`
+
+---
+
+## 🛠 활성 작업 (세션 종료 시점, **2026-05-29 11:13 KST**) — D-1
+
+> paper_A v6 publish countdown **D-1** (Zenodo deposit 2026-05-30, 내일). 야간 22:00-10:00 자율 ROI 무중단 운영 지속 — Boltz widening cascade + σ_E dense-cycle backfill CPU floor 병렬 포화.
+
+### Boltz widening cascade (paper_B σ_iptm n 확장)
+
+| 작업 | 상태 |
+|---|---|
+| **Boltz v291-v300 cascade COMPLETE** | paper_B n=138→n=148 (Task #94) |
+| **Boltz v301-v310 cascade IN PROGRESS** | watcher `boltz_v301_v310_nonblock_watcher.sh`, seed=N+1104. v308 done @09:50 (**n=156**), v309 진행 중. **watcher v310에서 종료 → ~13:00 완료 시 v311-v320 새 watcher launch 의무** (GPU idle 방지) |
+
+### paper_A v6 SI σ_E dense-cycle backfill — CPU-floor 전략 (구조적 신규)
+
+> Boltz는 ~1.5hr/cycle인데 CPU는 15-SDF sept-matrix를 ~25min에 처리 → CPU duty-cycle gap. 해법: **미처리 cycle 범위를 큰 240-300 SDF backfill "floor"로 launch** → CPU를 GPU pace와 decouple하며 σ_E 데이터도 densify (σ_iptm n=161 수준으로 수렴).
+
+| cohort | SDF | 상태 |
+|---|---|---|
+| **v291_v300 / v301_v302 / v304_v305 / v306** incremental | 150/30/30/15 | 18-cell sept-matrix **COMPLETE** (Task #98/#100/#102) |
+| **v196_v211 backfill floor #1** | 240 | 18-cell **COMPLETE 342/342** (Task #101) |
+| **v176_v195 backfill floor #2** | 300 | 18-cell 진행 중 ~76% (현재 CPU 주력, ~2hr runway, Task #103) |
+| **v156_v175 backfill floor #3** | 300 | scripts + SDFs **준비 완료**, v176 winddown(~6 cells) 시 SP+OPT launch 후 OHESS defer (≤18-cell thrash 회피, Task #104) |
+
+### consolidation 데이터셋 (paper-grade)
+
+- **paper_B σ_iptm unified v143-v303**: 161 cycles × 15 lig = 2,415 per-cycle rows. **CHEMBL259829 TRUE outlier** (σ_inter 최대), CHEMBL57058 most reliable. COLMAP 정규화 (v143-v211 `iptm_*`/`n_samples` vs v212+ `mean`/`std`/`n`) — uniform-0.49 artifact 영구 해결. Builder: `consolidate_paper_b_sigma_iptm_v143_v303.py`
+- **paper_A σ_E unified v212_v303**: 1,755 cells × n=92 cycles/cell. Top σ_G outlier CHEMBL257077 GFN1 alpb/phenol σ=100.45 kcal / CHEMBL94487 GFN2 alpb/ethylacetate σ=86.12. Builder: `consolidate_paper_a_sigma_e_v212_v303_unified.py`
+- v176_v195 / v156_v175 floor 완료 시 COHORTS 리스트에 추가하여 σ_E 재consolidation 권장
+
+### 🎯 다음 세션 우선순위 (2026-05-29 11:13 KST 시점) — **D-1 publish countdown**
+
+**즉시 (다음 진입 시)**:
+```bash
+date '+%H:%M:%S'
+nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader
+tail -4 /home/crazat/genesis_medicine/scripts/round27_paperA/boltz_v301_v310_nonblock_watcher.log
+ls /home/crazat/genesis_medicine/preprints/23_paper_A_v6_mmp1_5nnp_xtb/SI/xtb_gfn?_*_v176_v195.csv | wc -l  # /342
+ps -eo state | grep -c '^D'  # D-state 데드락 체크 (load는 WSL2 thread artifact, 단독 SIGKILL 금지)
+```
+
+1. **🔥 paper_A v6 D-0 publish 2026-05-30 (내일)** — Zenodo deposit. **직전 `make check-all` 의무** (`/preprints/23_paper_A_v6.../tools/check_tables.py`). co-author 무응답 시 single-author fallback (memory #20-22 precedent)
+2. **Boltz v310 완료(~13:00) 시 v311-v320 새 watcher launch** — `boltz_v301_v310_nonblock_watcher.sh` 클론, `seq 311 320`, seed=N+1104 동일 패턴. GPU idle 방지
+3. **v176_v195 floor winddown 시 v156_v175 floor launch** (준비 완료, SP+OPT 먼저 12 cells, OHESS defer)
+4. **σ_E unified 재consolidation** (v176_v195 + v156_v175 cohort 추가) → paper_A SI / paper_B σ_E narrative densify
+5. **paper_B σ_iptm v304-v310 extension** (cascade 산출 시) + manuscript_skeleton_v0.1 → v0.2 sprint
