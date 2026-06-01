@@ -1120,3 +1120,46 @@ ps -eo state | grep -c '^D'  # D-state 데드락 체크 (load는 WSL2 thread art
 3. **v176_v195 floor winddown 시 v156_v175 floor launch** (준비 완료, SP+OPT 먼저 12 cells, OHESS defer)
 4. **σ_E unified 재consolidation** (v176_v195 + v156_v175 cohort 추가) → paper_A SI / paper_B σ_E narrative densify
 5. **paper_B σ_iptm v304-v310 extension** (cascade 산출 시) + manuscript_skeleton_v0.1 → v0.2 sprint
+
+## 🛠 활성 작업 (세션 종료 시점, **2026-06-01 20:26 KST**) — 🛑 GPU+CPU 전면 PAUSE (사용자 재부팅)
+
+> **현재 상태: 모든 연산 정지.** 사용자가 GPU(Boltz cascade) → CPU(σ_E sept-matrix) 순으로 명시 일시정지 요청 후 컴퓨터 재부팅. 재부팅 후 idle은 **정상** — autonomous tick이 자동 relaunch하면 안 됨 (memory `feedback-gpu-paused-2026-06-01`). 사용자가 직접 "재개" 요청할 때까지 모든 launch 침묵.
+
+### Boltz widening cascade (paper_B σ_iptm) — v351에서 PAUSE
+
+| 작업 | 상태 |
+|---|---|
+| **v311-v320 / v321-v330 cascade** | COMPLETE (paper_B n 확장 지속) |
+| **v327-v340 cascade RESUMED** | post-GPU-pause gap-fill + forward, v326→v340 contiguous (Task #120) |
+| **v341-v350 cascade** | COMPLETE (Task #125) |
+| **v351** | 🛑 마지막 cycle — 1500/1500 PDB 완료 후 GPU PAUSE. v351-v360 watcher 정지, v352+ 미launch. 재개 시 v352부터 |
+
+### paper_A v6 SI σ_E sept-matrix — 2개 cohort 동시 진행 중 PAUSE
+
+| cohort | SDF | 상태 |
+|---|---|---|
+| **v11_v18 ~ v336_v337 backfill floors #1-#13** | dense | 18-cell sept-matrix **COMPLETE** (historical v11→ + rolling v327_v335/v336_v337, Task #101-#124) |
+| **v212_v290 UNIFIED** (대형) | 1185 | 18-cell barrier-free gate=3. 🛑 PAUSE 시점 = OHESS GBSA cell `ether 9/16` (SP/OPT 전부 + OHESS ALPB 완료). `master_floor_v212_v290.sh` (Task #126) |
+| **v338_v351 NEW cohort** | 210 | 🆕 v290 이후 미처리 14 cycle × 15 lig. CPU headroom 충당용 launch. 🛑 PAUSE 시점 = **282 CSV 저장** (SP/OPT 완료, OHESS 진입). `master_floor_v338_v351.sh` (Task #128) |
+
+> **재개 방법**: 두 master 모두 per-solvent CSV **SKIP 로직** 보유 → `setsid nohup bash master_floor_v212_v290.sh` / `master_floor_v338_v351.sh` 재실행하면 완료 CSV는 건너뛰고 미완 cell부터 이어감. 데이터 손상 없음 (CSV는 solvent 완결 시 원자적 기록).
+
+### 신뢰성 reframe 산출물 (R53-R56)
+
+- **Conformal reliability layer** (R53 P1): σ_iptm/σ_E → guaranteed-coverage interval (normalized split-conformal), 200-split empirical coverage ≈ nominal. `conformal_reliability_layer.py` + `DRAFT_conformal_section.md` (manuscript 삽입 사용자 확인 대기)
+- **R54/R55/R56**: multiverse/G-theory 분산분해 + killer figure + numerical-floor 2-arm control + scoring-rules(CRPS/PIT) + descriptor→σ error model + indapamide-lead safety §6.6.2 (dermal Kp computed)
+
+### 🎯 다음 세션 우선순위 (2026-06-01 시점)
+
+**즉시 (다음 진입 시)** — ⚠️ **사용자 "재개" 요청 전까지 연산 launch 금지**:
+```bash
+TZ=Asia/Seoul date '+%H:%M %Z'
+pgrep -c xtb; pgrep -af "boltz predict" | grep -v 'bash -c'   # 0 / none 이면 PAUSE 유지 정상
+nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader
+```
+
+1. **🛑 PAUSE 유지** — 사용자가 직접 "재개" 말할 때까지 GPU(Boltz)·CPU(σ_E master_floor) 자동 relaunch 금지. 재개 시 memory `feedback-gpu-paused-2026-06-01` 삭제
+2. **재개 시 CPU**: `master_floor_v212_v290.sh` (ether 9/16 이어서) + `master_floor_v338_v351.sh` (282 CSV 이후) 재실행 (SKIP 로직으로 이어감)
+3. **재개 시 GPU**: v352부터 `boltz_v351_v360_nonblock_watcher.sh` 재launch (또는 새 decade watcher 클론)
+4. **paper_A v6 제출 결정** = 최고 ROI 레버, **사용자 보류 중** (저널 타깃 미정). 결정 시 R56 freeze + cleanup pass(R-tag/corridor 제거, citation 정규화) + 저널 포맷
+5. **σ_E unified 재consolidation** (v338_v351 cohort 추가) + paper_B σ_iptm v327-v351 extension
