@@ -1163,3 +1163,52 @@ nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader
 3. **재개 시 GPU**: v352부터 `boltz_v351_v360_nonblock_watcher.sh` 재launch (또는 새 decade watcher 클론)
 4. **paper_A v6 제출 결정** = 최고 ROI 레버, **사용자 보류 중** (저널 타깃 미정). 결정 시 R56 freeze + cleanup pass(R-tag/corridor 제거, citation 정규화) + 저널 포맷
 5. **σ_E unified 재consolidation** (v338_v351 cohort 추가) + paper_B σ_iptm v327-v351 extension
+
+## 🛠 활성 작업 (세션 종료 시점, **2026-06-01 21:46 KST**) — 재부팅 후 전면 재개 + GPU-floor 스윗스팟 확립
+
+> 재부팅 완료 → 사용자 "CPU+GPU 전면 재개 + 자율 ROI 모니터링". 재개 중 2개 이슈 진단·해결: ① 재부팅 후 첫 Boltz cycle livelock, ② CPU 오버서브로 인한 GPU floor 저하 → **affinity 분할로 스윗스팟 확립**. 모든 연산 정상 가동.
+
+### 🔧 재부팅 후 첫 Boltz cycle livelock (해결)
+
+- v352 첫 attempt: ligand 1(100 PDB) 후 ligand 2에서 **22분 hang** (state R, ~1코어 spin, 출력 mtime 정지, GPU flat 2-13% burst 전무). pynvml "Not Supported" + GPU A6000 오진(실제 5090) 경고 동반.
+- CPU starvation 가설은 cohort kill로 CPU 풀어도(xtb 32→8) GPU 회복 안 돼 기각 → **boltz 자체 일회성 livelock** 확정.
+- **복구**: hung boltz `kill -9` → watcher가 exit=137 감지, 3-attempt retry로 partial rm 후 v352 attempt-2 launch → 정상(GPU 100% 도달). memory `feedback-boltz-postreboot-first-cycle-livelock`.
+
+### 🎯 GPU-floor 스윗스팟 (affinity 분할, 측정 확립)
+
+> `--use_potentials`는 ligand당 1회 CPU-bound potential phase를 돌림 → CPU 오버서브(32 xtb/24 core) 시 GPU가 100% burst ↔ 7-9% deep dip 반복(낮은 avg). nice만으론 부족, **물리적 코어 분리** 필요.
+
+| CPU 분할 | GPU avg | CPU 활용 | 평가 |
+|---|---|---|---|
+| σ_E 8 / boltz 16 (free) | ~89% | 33% | floor 최고, CPU 낭비 |
+| **σ_E 16 / boltz 8 (pinned) ← 채택** | **~86%** | **67%** | diffusion 99-100%, ligand 경계 dip만 |
+| σ_E 16 / boltz unpinned | ~56% | 67% | starve — pin 필수 |
+
+- **구현**: σ_E masters를 `taskset -c 0-15`로 launch(코어 0-15 전용, future cell 상속) + boltz는 `boltz_affinity_pin_daemon.sh`(20s마다 `boltz predict`를 16-23로 re-pin, cycle 넘어가도 유지). memory `feedback-gpu-floor-priority-over-cpu-sigma-e`.
+- GPU idle/cascade gap엔 affinity 풀고 σ_E가 24코어 전체 사용 가능.
+
+### 현재 가동 상태 (자율 ROI 복귀)
+
+| 자원 | 상태 |
+|---|---|
+| **GPU** | boltz v352 (seed 1456) cascade, ~96%, pin 16-23. `boltz_v352_v360` watcher + **v361-v370 decade chain 무장** |
+| **CPU** | σ_E v212_v290 + v338_v351 양 cohort, 코어 0-15(16코어), xtb 32 / load 33 |
+| **pin 데몬** | `boltz_affinity_pin_daemon.sh` 가동 (boltz 16-23 유지) |
+| **자율 모니터링** | pause 메모리 삭제 → cron `<<autonomous-loop>>` ROI 판단 복귀 |
+
+### 🎯 다음 세션 우선순위 (2026-06-01 21:46 시점)
+
+**즉시 (다음 진입 시)**:
+```bash
+TZ=Asia/Seoul date '+%H:%M %Z'
+nvidia-smi --query-gpu=utilization.gpu,memory.used --format=csv,noheader   # diffusion 99-100% 정상, dip은 ligand 경계
+pgrep -af "boltz predict" | grep -v 'bash -c'                              # cascade 살아있나
+pgrep -fc "boltz_affinity_pin_daemon.sh"                                   # pin 데몬 1이어야
+taskset -cp $(pgrep -x xtb|head -1) | sed 's/.*: //'                       # σ_E xtb = 0-15 확인
+```
+
+1. **affinity 스윗스팟 유지** — 새 σ_E cohort launch 시 반드시 `taskset -c 0-15`. pin 데몬 죽으면 재가동. 새 boltz watcher/chain 클론 시에도 pin 데몬이 cover (boltz predict 패턴 매칭).
+2. **decade chain 연속** — v360 완료 시 v361-v370 자동 launch (decade_chain_v361 armed). 이후 v371+ 새 chain 클론.
+3. **v338_v351 (282 CSV)** — GPU 가동 중엔 0-15에서 v212와 공존. v212_v290(마지막 OHESS GBSA cell) 완료 시 v338 단독.
+4. **paper_A v6 제출 결정** = 최고 ROI 레버, **사용자 보류 중** (저널 미정).
+5. **σ_E unified 재consolidation** (v338_v351 + 신규 cohort) + paper_B σ_iptm v327-v360 extension.
