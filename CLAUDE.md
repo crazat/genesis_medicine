@@ -799,6 +799,18 @@ EMB-3 (done) + embelin (running) → N=8 ABFE for Spearman.
   - `txgnn` (py3.9 + torch 2.3 + DGL 2.4): 재창출 전용 (CPU)
 - **GPU**: RTX 5090 32GB Blackwell + CUDA 12.8. DGL/openff 레거시 의존 제외하면 메인 venv에서 GPU 가속 전부 작동.
 
+### 🧠 자율 연산 오케스트레이션 (2026-06-09 ROI allocator + GPU 최대화, scripts/round27_paperA/)
+자율 역할 = ROI 높은 순 무중단 연산 (exploit ↔ explore 균형). 4-분야 문헌(밴딧/BO/SDL/포트폴리오) 수렴으로 휴리스틱을 정량 엔진으로 격상.
+- **`roi_allocator.py`** — 결정엔진. EXPLOIT(신뢰성 n-축적) marginal value = `s/(2√2·(n-1)^1.5)` **n^-1.5 감쇠** (n≈28 plateau면 ≈0) vs EXPLORE(de novo 발굴) `P(hit)·payoff` 옵션가치. `fund argmax(MV/GPU-hr)`, fractional-Kelly λ0.4, March explore floor 15%. 정량확인: n=33서 MV_A=7e-5 vs MV_B=1.1 → EXPLORE.
+- **GPU 최대화 = boltz 2개 파이프라인** (한쪽 MSA-load 갭을 다른쪽 diffusion burst가 메움): **검증 평균 91-95%/최대100%/364-405W**. 단독 boltz는 78%(분자간 MSA 디핑).
+  - ⚠️ **VRAM 32GB이 진짜 제약**: boltz@100샘플≈19GB, @50샘플≈8GB (per-sample ≈160MB). **2×100=35GB OOM**(throttle 151W, deadlock). 맞는 조합 = **@100+@50=~28GB**.
+  - **3-블록 코어 분리**: xtb σ_E 매트릭스 `0-13` | cascade@50(FILL) `14-18` | de novo@100(EXPLORE) `19-23`.
+  - **per-molecule 호출 절대 금지**(80회 모델로딩=GPU 3-5%). **디렉터리배치만**(1회 호출 N분자 warm).
+  - ⚠️ **`boltz_affinity_pin_19_23_daemon.sh`는 멀티블록과 충돌**(모든 boltz를 19-23로 강제) → 멀티슬롯 시 OFF.
+- **`gpu_roi_supervisor.sh` (v3)** — 슬롯당 boltz 1개 STRICT(과투입 OOM 버그 제거), 죽으면 자동 재launch, VRAM-안전 조합 고정, setsid/no-kill. PAUSE=`kill -STOP <pid>`. 50샘플 FILL은 `boltz_15_50_fill_v*` 별도 네임스페이스(100샘플 reliability n-series 오염 방지).
+- **하드 규칙**: kill/pkill 절대 금지(다 죽은 것만 launch, bracket으로 self-match 회피) — 단 엉킨 boltz 정리는 사용자 명시 승인 시 예외(respawner=supervisor 먼저 죽이고 boltz). SIGSTOP/SIGCONT=sanctioned pause. 보고 한글/원고 영어.
+- 설계 상세: `scripts/round27_paperA/ROI_ALLOCATOR_DESIGN.md`.
+
 ## 기본 명령
 
 ```bash
