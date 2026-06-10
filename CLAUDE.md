@@ -807,9 +807,14 @@ EMB-3 (done) + embelin (running) → N=8 ABFE for Spearman.
   - **3-블록 코어 분리**: xtb σ_E 매트릭스 `0-13` | cascade@50(FILL) `14-18` | de novo@100(EXPLORE) `19-23`.
   - **per-molecule 호출 절대 금지**(80회 모델로딩=GPU 3-5%). **디렉터리배치만**(1회 호출 N분자 warm).
   - ⚠️ **`boltz_affinity_pin_19_23_daemon.sh`는 멀티블록과 충돌**(모든 boltz를 19-23로 강제) → 멀티슬롯 시 OFF.
-- **`gpu_roi_supervisor.sh` (v3)** — 슬롯당 boltz 1개 STRICT(과투입 OOM 버그 제거), 죽으면 자동 재launch, VRAM-안전 조합 고정, setsid/no-kill. PAUSE=`kill -STOP <pid>`. 50샘플 FILL은 `boltz_15_50_fill_v*` 별도 네임스페이스(100샘플 reliability n-series 오염 방지).
-- **하드 규칙**: kill/pkill 절대 금지(다 죽은 것만 launch, bracket으로 self-match 회피) — 단 엉킨 boltz 정리는 사용자 명시 승인 시 예외(respawner=supervisor 먼저 죽이고 boltz). SIGSTOP/SIGCONT=sanctioned pause. 보고 한글/원고 영어.
-- 설계 상세: `scripts/round27_paperA/ROI_ALLOCATOR_DESIGN.md`.
+- **`gpu_roi_supervisor.sh` (v4, 2026-06-10 큐기반 자동회전)** — v3는 슬롯마다 tier 하드코딩 → resume-skip 트랩마다 사람/LLM이 파일 편집 필요였음. v4는 각 슬롯에 `tier_state/slot_{E,F}.{current,queue}`(현재 tier + 대기 큐)를 두고, 현재 tier 완료(트랩: d≥N 또는 near-done+boltz exit, 또는 stall STALL_SKIP=16폴) 시 **SIGKILL→큐 다음 tier로 자동 회전**(편집·재시작·idle대기 없음). 2-layer: 이 셸=기계적 무중단 회전, `tier_planner.py`(via `tier_autopilot.sh` 10분 loop)=phase8 sweet-spot으로 다음 tier TYPE(ACQUISITION vs GENERATION) 결정+큐 사전 refill. SLOT-E 19-23/7041 + SLOT-F 14-18/8107.
+  - ⚠️ **VRAM config = `--max_parallel_samples 1`**(2026-06-10): mp=2는 양슬롯 fresh 동시로드 시 ~31.6GB로 32GB 초과→watchdog kill-loop(throughput 0)였음. mp=1 = peak ~16.6GB/free ~16GB/util 90-99% 안정. `gpu_vram_watchdog.sh`(free<6GB→boltz SIGKILL→supervisor resume) = OOM 하드백스톱. **OOM 절대금지 1순위**: watchdog 잦은 SIGKILL(분당)은 transient 아닌 "config가 카드에 안 들어감" 신호 → 즉시 mp 낮춰라(loosen 금지). 상세 `memory/feedback_boltz_vram_driven_by_num_workers.md`.
+- **LLM 모니터링 = event-driven (2026-06-10 ROI 재설계, `autonomous_watcher.sh` + 시간당 cron)** — 고정 25분 cron 폴링은 비효율: 5분 캐시TTL 초과로 매 tick 컨텍스트 uncached 재독 + 95% no-op + 시간임계 장애는 데몬이 초단위 self-heal(폴링주기 무관). 해법:
+  - **`autonomous_watcher.sh`**(주): 45s cheap shell 체크, 실 anomaly(supervisor/vram_watchdog/boltz/xtb 死·VRAM<6GB·GPU idle·양큐 동시고갈) 지속(anti-flap 카운터) 시에만 **exit→harness가 LLM 재호출**. healthy면 LLM 0발화. **`Bash run_in_background:true`로 launch必**(setsid 아님 — exit 재호출 hook). exit 재호출 실증됨.
+  - **cron backstop**(보조): `13 * * * *`(시간당, `<<autonomous-loop>>`). watcher 死(Gemini 외부kill) 시 relaunch + 시간당 전략점검. **매 tick watcher alive 확인→死면 재launch**(idempotent).
+  - 효과: LLM 발화 ~58→~24/일 + 장애지연 ≤25min→~1min(Pareto). regime: HEALTHY=watcher+hourly, INCIDENT=in-turn(캐시warm), OVERNIGHT=더 길게. 상세 `memory/feedback_autonomous_monitoring_cadence_roi_2026_06_10.md`.
+- **하드 규칙**: kill/pkill 절대 금지(다 죽은 것만 launch, bracket으로 self-match 회피) — 단 엉킨 boltz 정리는 사용자 명시 승인 시 예외(respawner/supervisor 먼저 죽이고 boltz, numeric SIGKILL). watcher kill엔 per-PID 정확prefix 검증必(`pgrep -f`가 내 명령 cmdline 자기-kill 함정). SIGSTOP/SIGCONT=sanctioned pause(단 외부kill엔 무방비→디스크 resumable이 본질). 보고 한글/원고 영어.
+- 설계 상세: `scripts/round27_paperA/ROI_ALLOCATOR_DESIGN.md` + `ROI_BALANCE_DESIGN.md`.
 
 ## 기본 명령
 
