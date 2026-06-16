@@ -111,10 +111,48 @@
 - Open Targets v4 GraphQL forward + reverse queries 실측
 - 모든 preprint v0.2에서 fabricated 값 **0개**, retraction 명시
 
-### 🔄 진행 중 (백그라운드) — **2026-05-20 16:15 KST 작업 핸드오프 (정확 정보, 다음 세션 즉시 참조)**
+### 🔄 진행 중 (백그라운드) — **2026-06-16 KST 작업 핸드오프 (현재 상태, 다음 세션 즉시 참조)**
 
-> 이 섹션은 대화 핸드오프용. 새 세션 시작 시 가장 먼저 확인. 활성 PID는 시간 지나면 stale 가능 → 항상 `ps -eo pid,etime` + 메모리 룰 재확인.
-> **현재 D-10 paper_A v6 publish countdown** (Zenodo deposit 2026-05-30). 5/30까지 publishing-blocker 0, polish/cross-ref만 남음.
+> 이 섹션은 대화 핸드오프용. 새 세션 시작 시 가장 먼저 확인. 활성 PID/task-ID는 시간 지나면 stale → 항상 데몬 alive를 cmdline-exact 매칭으로 재검증(아래 self-match trap 룰).
+> **현재 = 완전 자율 24/7 ROI 운영**(paper_A/B publish 완료, de novo MMP-1 발굴=paper4 active). 사용자 지시 대기 아님 — floor·explore·GPU 무중단 가동이 본인 핵심 역할.
+
+#### ★ 자율 운영 데몬 스택 (2026-06-16, 모두 setsid-detached, **재부팅 relaunch 순서 = watchdog→supervisor→autopilot→sweetspot→feeder→watcher**)
+경로: `scripts/round27_paperA/`. 각 데몬 alive 확인은 PID 순회 + `/proc/$p/cmdline` exact-prefix 매칭(`*"/bin/bash -c"*` 래퍼 제외 = self-match trap 방지).
+1. **gpu_vram_watchdog.sh** — OOM hard-backstop. `free<6GB`를 **torch.cuda.mem_get_info(드라이버 ground-truth)로 confirm 후에만** boltz resume 재시작(numeric SIGKILL). nvidia-smi `memory.free`는 WSL2 artifact라 단독 신뢰 금지.
+2. **gpu_roi_supervisor.sh (v4)** — queue-driven tier rotation, 2-explore boltz cofold 회전.
+3. **tier_autopilot.sh** — slot E/F 큐 refill(ACQ/GEN planner).
+4. **sweetspot_ledger_loop.sh** — ROI sweet-spot 컨트롤러(advisory, R11; [[project_roi_controller_r11_2026_06_13]]).
+5. **floor_sigma_feeder.sh** — exploit floor(cores 0-18) **σ_E/σ_G 32-조건 robustness 그리드**(아래 ★★ = floor never-idle durable fix).
+6. **autonomous_watcher.sh** — event-driven incident detector. `Bash run_in_background:true`로 launch(EXIT→harness가 LLM 재호출). 45s cheap 체크, 실 anomaly 지속 or 6h self-refresh에만 exit. healthy면 LLM 0발화. 죽으면(6h heartbeat 포함) exit reason 읽고 **중복 가드 후 재기동**. backstop = 시간당 cron `<<autonomous-loop>>`.
+
+#### ★ GPU (explore, cores 19-23) — de novo MMP-1 cofold 캐스케이드
+- 현재 tier **t127/t128**(slot E/F), `diffusion_samples 32 --num_workers 0 --max_parallel_samples 1 --use_potentials`.
+- **OOM 방어**: env `PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True,garbage_collection_threshold:0.8`. 검증 시 used ~1.7GB/free ~30GB headroom(2-explore라 여유 큼). 단편화 누적이 진짜 OOM 원인이므로 expandable_segments 필수([[feedback_boltz_vram_driven_by_num_workers]]).
+- GPU resume = **지속 상태**: PAUSE만 명시 필요, CONTINUE 재허락 불요([[feedback_gpu_resume_is_standing_state_2026_06_07]]).
+
+#### ★★ Floor (exploit, cores 0-18) — floor_sigma_feeder.sh = **32-조건 σ_E/σ_G robustness 그리드** (floor never-idle durable fix)
+- 사용자 "cpu 노나" 6회 끝에 도달한 근본 해법. 교훈: **rung 깊이(SP→OPT→OHESS)도, 조건 width-4도 GPU 율속을 못 이겨 유한 cohort 결국 소진→floor idle**.
+- 해법 = paper_A §4.13이 실제 요구하는 **전체 매트릭스**: `{GFN2,GFN1}×{GBSA,ALPB}×{8 solvent: water·dmso·methanol·acetonitrile·acetone·thf·chcl3·toluene, ε 2.4~80} = 32 셀`. 전부 진짜 robustness 표 셀(GBSA↔ALPB 교차검증 + GFN level-of-theory + solvent 극성 강건성), **NOT Goodhart**.
+- 셀별 3-stage ASHA: SP-survivor(σ_E≤2.0) → OPT σ_E → OHESS σ_G(tight cohort σ_E≤0.5, 자유에너지=paper4 열역학 신규축). water 4셀=legacy 파일명 보존, non-water=`phase2_denovo_sigmaE_{opt,ohess}_gfn{G}_{solv}_{sm}.shard*.csv`. SOLVMODEL env(gbsa/alpb).
+- self-sustaining: GPU가 신규후보 cofold→SP 게이팅→survivor↑→32셀 자동 fresh work. **feeder PID 2개 정상**(메인루프 + `cell=$(run_cell)` command-subst 서브셸=부모자식, 중복 아님 — 죽이지 말 것).
+- watcher 의미: floor 건강도 = **feeder 데몬 alive**(순간 xtb=0은 burst 사이 정상). 상세 [[project_claim_ledger_noisefloor_r12_2026_06_13]].
+
+#### ★ Paper 상태 (2026-06-16)
+- **paper_A v6 (#23)**: publish 완료. R12 claim-ledger σ_E 방어 통합 — §4.12 numeric-reproducibility floor(signal/floor 7M–813M×), §4.13 GBSA↔ALPB cross-val(pooled ρ 0.889·GFN2 11셀 ρ≥0.92), §4.14 optimizer's-curse(DEFUSED).
+- **paper_B v1 (#24)**: σ_iptm reliability + dual-axis outlier; §3.7 conformal + §3.8 ICC + §3.9 optimizer's-curse 3-footing 방어.
+- **paper4 (de novo MMP-1 발굴, active)**: REINVENT 생성→ADMET 필터→Boltz σ_iptm + xtb σ_E/σ_G 신뢰성 게이팅. exploit-explore 균형의 explore 트랙([[project_denovo_mmp1_discovery_2026_06_08]]).
+- 의사결정 = `scripts/round27_paperA/paper_claim_ledger.py`(proxy 아닌 Σ P(채택)×impact 최적화).
+
+#### ★ 최우선 standing 룰 (위반 시 사용자 강한 불만 이력)
+- 🚨🚨 **OOM 절대금지 = #1**. nvidia-smi 단독 kill 금지, 항상 torch.cuda.mem_get_info 교차검증([[feedback_wsl2_nvidia_smi_memory_artifact_2026_06_12]]).
+- 🚨🚨 **자율 24/7 ROI 무중단 = 본인 핵심 역할**(지시 대기 아님). floor **절대 idle 금지**(condition-grid로 채움), 소진 시 "뭐 돌릴까" park-ask 금지·자율 ROI 선택. exploit(σ 매트릭스)+exploration(신규 분자 생성·스크리닝) 둘 다 가동([[feedback_exploit_explore_balance_2026_06_08]] [[feedback_autonomous_role_priority_2026_05_20]]).
+- 🚨 **kill/pkill 금지**(자기 just-launched 예외, SIGTERM 내성 boltz엔 numeric -9). pgrep self-match trap: PID 순회+cmdline exact match.
+- 🚨 보고 **한글**, 원고만 **영어**. frontier-tech 스캔은 **사용자 명령에만**(자율 큐잉 금지).
+- 🚨 co-author 없음, 단독저자 Cheongwoo Han 자체제출, outreach 재제안 금지([[feedback_no_coauthors_solo_submit_2026_06_02]]).
+
+---
+
+> ⬇️ **아래 A–L 블록은 2026-05-20 핸드오프(historical, superseded)** — paper_A D-10/Boltz v161-180/PID 2900617 등은 모두 과거. 맥락 참조용으로만 보존.
 
 #### A. paper_A v6 D-10 publish-ready — `preprints/23_paper_A_v6_mmp1_5nnp_xtb/` (Zenodo 2026-05-30)
 - **manuscript_v0.2.md** 329 lines (Round-3 proofread 완료) — 0 placeholder, 0 broken xref, 5/5 figures cited, 79 references canonical (Wan vs Wang 정정 + ref 18 stale duplicate 제거 → v0.3.1)
