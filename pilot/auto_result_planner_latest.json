@@ -129,7 +129,7 @@
   },
   "storage_pressure": {
     "status": "ok",
-    "min_free_gb": 450.0,
+    "min_free_gb": 449.9,
     "min_free_gb_required": 80.0,
     "warn_free_gb": 200.0,
     "disks": {
@@ -138,15 +138,15 @@
         "exists": true,
         "total_gb": 1770.7,
         "used_gb": 441.4,
-        "free_gb": 1247.1,
+        "free_gb": 1247.0,
         "used_pct": 24.9
       },
       "windows_c": {
         "path": "/mnt/c",
         "exists": true,
         "total_gb": 1906.9,
-        "used_gb": 1456.9,
-        "free_gb": 450.0,
+        "used_gb": 1457.0,
+        "free_gb": 449.9,
         "used_pct": 76.4
       },
       "windows_d": {

@@ -5,6 +5,10 @@ zenodo_deposit_date: 2026-05-04
 prior_history: bioRxiv BIORXIV/2026/722476 rejected 2026-05-03 (scope mismatch)
 ---
 
+> **Correction addendum (2026-07-21) — withdrawn-panel forward reference.** A residual forward-looking item in §4.5 still promised a "Boltz-2 calibration on the 15-compound ChEMBL MMP-1 inhibitor panel (in progress)". That panel is the one withdrawn for fabricated annotations, so the promise is void; the item now states that any replacement calibration must be built from a recorded, scripted retrieval. This supplements the 2026-07-18 correction below and changes no result. Full scope of the underlying finding: `preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md`; citation audit: `preprints/_metadata/DANGLING_CITATION_AUDIT_2026_07_21.md`.
+>
+> <!-- correction-2026-07-21 -->
+
 # AI-driven scaffold-hopping of *Embelia ribes* embelin yields a topical-friendly anti-fibrotic candidate (EMB-3): an in silico case study for skin scar regeneration
 
 **HanCheongWoo ¹,²,³**
@@ -80,7 +84,7 @@ Candidates passing the physicochemical filter were submitted to ADMET-AI v2.0.1 
 
 ### 2.3 Boltz-2 protein–ligand co-folding
 
-Boltz-2 (v0.6.1) [17] was used with `--sampling_steps 25 --diffusion_samples 1 --recycling_steps 3 --sampling_steps_affinity 200 --diffusion_samples_affinity 5 --affinity_mw_correction --devices 1`. Target sequences were drawn from UniProt for TGF-β1 (P01137), MMP-1 (P03956), MMP-3 (P08254), MMP-9 (P14780), CTGF (P29279), SMAD3 (P84022), LOX (P28300), and PDGFRB (P09619), with multiple-sequence alignments precomputed and cached locally. We report the `affinity_probability_binary` metric (binary classifier probability that the ligand is a sub-µM binder) and note that this is a ranking metric, not an absolute IC₅₀ prediction; calibration on a 15-compound MMP-1 ChEMBL inhibitor set is the subject of our companion methodology preprint.
+Boltz-2 (v0.6.1) [17] was used with `--sampling_steps 25 --diffusion_samples 1 --recycling_steps 3 --sampling_steps_affinity 200 --diffusion_samples_affinity 5 --affinity_mw_correction --devices 1`. Target sequences were drawn from UniProt for TGF-β1 (P01137), MMP-1 (P03956), MMP-3 (P08254), MMP-9 (P14780), CTGF (P29279), SMAD3 (P84022), LOX (P28300), and PDGFRB (P09619), with multiple-sequence alignments precomputed and cached locally. We report the `affinity_probability_binary` metric (binary classifier probability that the ligand is a sub-µM binder) and note that this is a ranking metric, not an absolute IC₅₀ prediction. (A companion 15-compound MMP-1 calibration was subsequently withdrawn after that panel was found to carry fabricated potencies (2026-07-16 audit); the metric is therefore used here purely as a relative-ranking signal.)
 
 ### 2.4 Molecular dynamics validation
 
@@ -190,7 +194,7 @@ Pirfenidone (5-methyl-1-phenyl-2-(1H)-pyridone) is approved for IPF and has been
 
 The present results are entirely in silico. Specific limitations:
 
-1. **No experimental binding data.** All affinity predictions are Boltz-2 outputs (binary classifier probability). Spearman correlation against held-out experimental measurements is approximately 0.55 – 0.65 [17]; absolute IC₅₀ values are not predicted. Calibration on a 15-compound MMP-1 ChEMBL inhibitor set is in progress and will be reported in the companion methodology preprint [13].
+1. **No experimental binding data.** All affinity predictions are Boltz-2 outputs (binary classifier probability). Spearman correlation against held-out experimental measurements is approximately 0.55 – 0.65 [17]; absolute IC₅₀ values are not predicted. A planned 15-compound MMP-1 calibration was withdrawn after that panel was found to carry fabricated potencies (2026-07-16 audit); affinity predictions here are used only as a relative ranking, consistent with that held-out Spearman range.
 2. **No corrected ABFE results in this preprint.** Initial ABFE attempts on EMB-3 / Embelin · MMP-1 used an incomplete protocol (complex-leg only, no solvent leg, no Boresch / restraint, no analytical standard-state correction); those earlier numbers should not be interpreted as physical binding free energies. The corrected protocol is the subject of [13].
 3. **MMP-1 zinc handling.** MMP-1 is a zinc metalloprotease; the catalytic Zn²⁺ is essential for hydroxamate-class inhibitor binding (e.g., Marimastat) and for natural-substrate turnover. The Boltz-2 receptor model and the GAFF-2.11 / ff14SB MD/ABFE protocol used here do not include explicit zinc-bonded modeling. Predicted EMB-3 / MMP-1 affinity values should be interpreted as a "MMP-1 minus zinc" model. ZAFF [22] integration is a planned follow-up.
 
@@ -218,7 +222,7 @@ The present results are entirely in silico. Specific limitations:
 We outline the experimental work, in priority order:
 
 1. **Synthesis** of EMB-3 (50 mg, ≥ 98% purity) at a Korean CRO (Daewoong DT&CRO; RFQ pending).
-2. **Boltz-2 calibration** on the 15-compound ChEMBL MMP-1 inhibitor panel (in progress).
+2. **Boltz-2 potency calibration** — the previously planned 15-compound ChEMBL MMP-1 panel is withdrawn (its annotations were found to be fabricated; 2026-07-16 audit). Any replacement must be built from a recorded, scripted retrieval before it can serve as a calibration reference.
 3. **Cell-based TGF-β1 / Smad reporter assay** on embelin and EMB-3 (HEK293-SBE4 luciferase; Korean CRO Tier 1 package).
 4. **MMP-1 enzymatic FRET inhibition** with explicit zinc handling.
 5. **EpiDerm RhE skin irritation** (OECD TG 439).

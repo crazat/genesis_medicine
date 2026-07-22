@@ -1,6 +1,6 @@
 # Structure Consensus Calibration
 
-- timestamp: `2026-05-06T12:46:10+09:00`
+- timestamp: `2026-05-06T15:23:50+09:00`
 - rows: `32`
 - class_counts: `{'high_confidence': 6, 'usable_with_caveat': 18, 'review_before_claim': 8}`
 - purpose: Boltz affinity만으로 claim하지 않고 pose sanity와 MD 안정성을 합쳐 confidence를 보정한다.

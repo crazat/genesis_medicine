@@ -1,6 +1,6 @@
 # Model Card: admet_ai
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - component: `ADMET-AI predictors`
 - context_of_use: `AMES/hERG/DILI/skin reaction prefiltering`
 - decision_influence: `medium`

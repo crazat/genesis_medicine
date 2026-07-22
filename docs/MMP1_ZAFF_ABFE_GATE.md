@@ -1,6 +1,6 @@
 # MMP-1 ZAFF ABFE Gate
 
-- timestamp: `2026-05-06T12:46:32+09:00`
+- timestamp: `2026-05-06T15:24:09+09:00`
 - gate: `MMP1_ZAFF_ABFE_MUST_PASS`
 - status: `blocked_zaff_not_integrated`
 - current receptor: `pilot/scaffold_hop/abfe_emb3_mmp1/receptor.pdb`

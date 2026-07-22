@@ -6,318 +6,254 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
   <title>Genesis_Medicine — 08_abfe_methodology</title>
   <style>
-
-html {
-color: #1a1a1a;
-background-color: #fdfdfd;
-}
-body {
-margin: 0 auto;
-max-width: 36em;
-padding-left: 50px;
-padding-right: 50px;
-padding-top: 50px;
-padding-bottom: 50px;
-hyphens: auto;
-overflow-wrap: break-word;
-text-rendering: optimizeLegibility;
-font-kerning: normal;
-}
-@media (max-width: 600px) {
-body {
-font-size: 0.9em;
-padding: 12px;
-}
-h1 {
-font-size: 1.8em;
-}
-}
-@media print {
-html {
-background-color: white;
-}
-body {
-background-color: transparent;
-color: black;
-font-size: 12pt;
-}
-p, h2, h3 {
-orphans: 3;
-widows: 3;
-}
-h2, h3, h4 {
-page-break-after: avoid;
-}
-}
-p {
-margin: 1em 0;
-}
-a {
-color: #1a1a1a;
-}
-a:visited {
-color: #1a1a1a;
-}
-img {
-max-width: 100%;
-}
-svg {
-height: auto;
-max-width: 100%;
-}
-h1, h2, h3, h4, h5, h6 {
-margin-top: 1.4em;
-}
-h5, h6 {
-font-size: 1em;
-font-style: italic;
-}
-h6 {
-font-weight: normal;
-}
-ol, ul {
-padding-left: 1.7em;
-margin-top: 1em;
-}
-li > ol, li > ul {
-margin-top: 0;
-}
-blockquote {
-margin: 1em 0 1em 1.7em;
-padding-left: 1em;
-border-left: 2px solid #e6e6e6;
-color: #606060;
-}
-code {
-white-space: pre-wrap;
-font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
-font-size: 85%;
-margin: 0;
-hyphens: manual;
-}
-pre {
-margin: 1em 0;
-overflow: auto;
-}
-pre code {
-padding: 0;
-overflow: visible;
-overflow-wrap: normal;
-}
-.sourceCode {
-background-color: transparent;
-overflow: visible;
-}
-hr {
-border: none;
-border-top: 1px solid #1a1a1a;
-height: 1px;
-margin: 1em 0;
-}
-table {
-margin: 1em 0;
-border-collapse: collapse;
-width: 100%;
-overflow-x: auto;
-display: block;
-font-variant-numeric: lining-nums tabular-nums;
-}
-table caption {
-margin-bottom: 0.75em;
-}
-tbody {
-margin-top: 0.5em;
-border-top: 1px solid #1a1a1a;
-border-bottom: 1px solid #1a1a1a;
-}
-th {
-border-top: 1px solid #1a1a1a;
-padding: 0.25em 0.5em 0.25em 0.5em;
-}
-td {
-padding: 0.125em 0.5em 0.25em 0.5em;
-}
-header {
-margin-bottom: 4em;
-text-align: center;
-}
-#TOC li {
-list-style: none;
-}
-#TOC ul {
-padding-left: 1.3em;
-}
-#TOC > ul {
-padding-left: 0;
-}
-#TOC a:not(:hover) {
-text-decoration: none;
-}
-span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
-div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-
-ul.task-list[class]{list-style: none;}
-ul.task-list li input[type="checkbox"] {
-font-size: inherit;
-width: 0.8em;
-margin: 0 0.8em 0.2em -1.6em;
-vertical-align: middle;
-}
-</style>
-  
-  <style>
-@page { size: A4; margin: 1.6cm 1.2cm; }
-body { font-family: "DejaVu Sans", sans-serif; font-size: 10pt; line-height: 1.45; }
-h1 { font-size: 16pt; margin-top: 0.6em; }
-h2 { font-size: 13pt; margin-top: 1.0em; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
-h3 { font-size: 11pt; margin-top: 0.8em; }
-code, pre { font-family: "DejaVu Sans Mono", monospace; font-size: 8.5pt; }
-pre { background: #f5f5f5; padding: 6px 8px; overflow-wrap: break-word; white-space: pre-wrap; }
-table {
-border-collapse: collapse;
-width: 100%;
-table-layout: auto;
-font-size: 8.5pt;
-margin: 0.6em 0;
-page-break-inside: auto;
-}
-th, td {
-border: 1px solid #bbb;
-padding: 3px 5px;
-vertical-align: top;
-word-break: break-word;
-overflow-wrap: anywhere;
-hyphens: auto;
-max-width: 18em;
-}
-th { background: #eee; font-weight: 600; }
-img { max-width: 100%; height: auto; page-break-inside: avoid; }
-figure { page-break-inside: avoid; margin: 0.8em 0; }
-blockquote { border-left: 3px solid #ccc; margin: 0.6em 0; padding: 0.2em 0.8em; color: #444; }
-</style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
 </head>
 <body>
 <header id="title-block-header">
 <h1 class="title">Genesis_Medicine — 08_abfe_methodology</h1>
 </header>
-<nav id="TOC" role="doc-toc">
-<ul>
-<li><a href="#a-calibrated-absolute-binding-free-energy-pipeline-with-flat-bottom-centroid-restraint-and-analytical-standard-state-correction-for-natural-product-scaffold-hopping-in-openmm-8-openmmtools-0.26" id="toc-a-calibrated-absolute-binding-free-energy-pipeline-with-flat-bottom-centroid-restraint-and-analytical-standard-state-correction-for-natural-product-scaffold-hopping-in-openmm-8-openmmtools-0.26">A
-calibrated absolute binding free energy pipeline with flat-bottom
-centroid restraint and analytical standard-state correction for
-natural-product scaffold-hopping in OpenMM 8 / openmmtools 0.26</a>
-<ul>
-<li><a href="#abstract" id="toc-abstract">Abstract</a></li>
-<li><a href="#plain-language-summary" id="toc-plain-language-summary">Plain-language summary</a></li>
-<li><a href="#introduction" id="toc-introduction">1. Introduction</a>
-<ul>
-<li><a href="#abfe-in-drug-discovery" id="toc-abfe-in-drug-discovery">1.1 ABFE in drug discovery</a></li>
-<li><a href="#the-boresch-vs-flat-bottom-choice" id="toc-the-boresch-vs-flat-bottom-choice">1.2 The Boresch vs
-flat-bottom choice</a></li>
-<li><a href="#cycle-and-sign-conventions" id="toc-cycle-and-sign-conventions">1.3 Cycle and sign
-conventions</a></li>
-</ul></li>
-<li><a href="#implementation" id="toc-implementation">2.
-Implementation</a>
-<ul>
-<li><a href="#stack" id="toc-stack">2.1 Stack</a></li>
-<li><a href="#system-setup-complex-leg" id="toc-system-setup-complex-leg">2.2 System setup (complex
-leg)</a></li>
-<li><a href="#flat-bottom-restraint" id="toc-flat-bottom-restraint">2.3
-Flat-bottom restraint</a></li>
-<li><a href="#alchemical-decoupling-16-window-replica-exchange" id="toc-alchemical-decoupling-16-window-replica-exchange">2.4 Alchemical
-decoupling (16-window replica exchange)</a></li>
-<li><a href="#solvent-leg-setup" id="toc-solvent-leg-setup">2.5
-Solvent-leg setup</a></li>
-<li><a href="#analytical-standard-state-correction" id="toc-analytical-standard-state-correction">2.6 Analytical
-standard-state correction</a></li>
-<li><a href="#final-assembly" id="toc-final-assembly">2.7 Final
-assembly</a></li>
-</ul></li>
-<li><a href="#calibration-on-t4-lysozyme-l99a-benzene" id="toc-calibration-on-t4-lysozyme-l99a-benzene">3. Calibration on T4
-lysozyme L99A · benzene</a>
-<ul>
-<li><a href="#benchmark-choice" id="toc-benchmark-choice">3.1 Benchmark
-choice</a></li>
-<li><a href="#calibration-setup" id="toc-calibration-setup">3.2
-Calibration setup</a></li>
-<li><a href="#pass-criterion-and-partial-result-honest-disclosure" id="toc-pass-criterion-and-partial-result-honest-disclosure">3.3 Pass
-criterion and partial-result honest disclosure</a></li>
-<li><a href="#independent-companion-calibration-boltz-2-vs-chembl-mmp-1-15-hydroxamate-sulfonamide-carboxylate-inhibitors" id="toc-independent-companion-calibration-boltz-2-vs-chembl-mmp-1-15-hydroxamate-sulfonamide-carboxylate-inhibitors">3.6
-Independent companion calibration: Boltz-2 vs ChEMBL MMP-1 (15
-hydroxamate / sulfonamide / carboxylate inhibitors)</a></li>
-<li><a href="#two-model-structural-ensemble-validation-boltz-2-vs-chai-1" id="toc-two-model-structural-ensemble-validation-boltz-2-vs-chai-1">3.7
-Two-model structural ensemble validation: Boltz-2 vs Chai-1</a></li>
-<li><a href="#posebusters-geometric-steric-validation-across-149-cofold-poses" id="toc-posebusters-geometric-steric-validation-across-149-cofold-poses">3.8
-PoseBusters geometric / steric validation across 149 cofold
-poses</a></li>
-<li><a href="#lessons-from-earlier-iterations" id="toc-lessons-from-earlier-iterations">3.4 Lessons from earlier
-iterations</a></li>
-<li><a href="#earlier-reported-abfe-on-emb-3-embelin-retracted" id="toc-earlier-reported-abfe-on-emb-3-embelin-retracted">3.5 Earlier
-reported ABFE on EMB-3 / Embelin (retracted)</a></li>
-</ul></li>
-<li><a href="#application-context-skin-fibrosis-natural-products" id="toc-application-context-skin-fibrosis-natural-products">4.
-Application context: skin-fibrosis natural products</a>
-<ul>
-<li><a href="#mmp-1-catalytic-zinc-handling" id="toc-mmp-1-catalytic-zinc-handling">4.1 MMP-1 catalytic zinc
-handling</a></li>
-<li><a href="#tgf-β1-no-zinc" id="toc-tgf-β1-no-zinc">4.2 TGF-β1 (no
-zinc)</a></li>
-</ul></li>
-<li><a href="#limitations-and-forward-path" id="toc-limitations-and-forward-path">5. Limitations and forward
-path</a></li>
-<li><a href="#conclusions" id="toc-conclusions">6. Conclusions</a></li>
-<li><a href="#acknowledgments-contributions-competing-interests-data-availability" id="toc-acknowledgments-contributions-competing-interests-data-availability">Acknowledgments
-/ Contributions / Competing interests / Data availability</a></li>
-<li><a href="#references" id="toc-references">References</a>
-<ul>
-<li><a href="#revision-history" id="toc-revision-history">Revision
-history</a></li>
-</ul></li>
-<li><a href="#kinetics-abfe-roadmap-extension-round-8-2026-04-27" id="toc-kinetics-abfe-roadmap-extension-round-8-2026-04-27">§3.9 —
-Kinetics + ABFE roadmap extension (Round 8, 2026-04-27)</a>
-<ul>
-<li><a href="#τramd-random-acceleration-md" id="toc-τramd-random-acceleration-md">τRAMD (random acceleration
-MD)</a></li>
-<li><a href="#seekr2-milestoning-kon-koff-δg-joint" id="toc-seekr2-milestoning-kon-koff-δg-joint">SEEKR2 milestoning (kon +
-koff + ΔG joint)</a></li>
-<li><a href="#forward-roadmap-preprint-13-candidate" id="toc-forward-roadmap-preprint-13-candidate">Forward roadmap (preprint
-#13 candidate)</a></li>
-</ul></li>
-<li><a href="#first-applied-abfe-emb-3-mmp-1-2026-04-27" id="toc-first-applied-abfe-emb-3-mmp-1-2026-04-27">§3.10 — First applied
-ABFE: EMB-3 × MMP-1 (2026-04-27)</a></li>
-<li><a href="#use-of-ai-tools-in-writing-icmje-2024-disclosure" id="toc-use-of-ai-tools-in-writing-icmje-2024-disclosure">Use of AI
-tools in writing (ICMJE 2024 disclosure)</a></li>
-</ul></li>
-</ul>
-</nav>
-<h1 id="a-calibrated-absolute-binding-free-energy-pipeline-with-flat-bottom-centroid-restraint-and-analytical-standard-state-correction-for-natural-product-scaffold-hopping-in-openmm-8-openmmtools-0.26">A
+<blockquote>
+<p><strong>Correction addendum (2026-07-21) — residual self-citation of
+the withdrawn §3.6.</strong> The 2026-07-18 correction withdrew §3.6
+(the Boltz-2-vs-pIC50 potency calibration) but left one sentence in the
+ensemble-validation discussion that still justified retaining downstream
+claims on the ground that “the Boltz-2-alone signal is still calibrated
+against ChEMBL (§3.6)”. That ground is withdrawn with §3.6 itself, whose
+potency axis was fabricated; the sentence now says so, and rests only on
+the weaker claim that the classifier is a relative ranking signal within
+a chemotype-target class. No result changes. Full scope of the
+underlying finding:
+<code>preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md</code>;
+citation audit:
+<code>preprints/_metadata/DANGLING_CITATION_AUDIT_2026_07_21.md</code>.</p>
+<!-- correction-2026-07-21 -->
+</blockquote>
+<blockquote>
+<p>Correction (version 2, 2026-07-21) — fabricated ligand-panel
+annotations. After this record was first deposited (2026-05-04), a
+primary-source audit (2026-07-16) established that the 15-ligand
+calibration panel used in Section 3.6
+(<code>data/chembl_mmp1_calibration.csv</code>) carries fabricated
+compound names, potency values, and literature attributions. A
+structure-first PubChem lookup
+(<code>scripts/round27_paperA/verify_panel_identity_pubchem.py</code>)
+finds that all seven entries naming a specific drug are a different
+molecule than named — e.g. the entry labelled prinomastat is C23H30N2O5S
+against prinomastat’s C18H21N3O5S2 (PubChem CID 466151) — and 14 of the
+15 structures are unknown to PubChem (~119 M compounds); comparison uses
+the InChIKey connectivity block, so stereochemistry and salt form cannot
+account for it. No script in the repository generates the file and it
+carries no retrieval record; a previous automated session produced it
+and the circumstances are not recoverable. This version withdraws
+Section 3.6 in full — the Boltz-2-versus-pIC50 potency calibration,
+being a correlation against fabricated potency, has no verified ground
+truth — and removes every compound-identity and potency claim derived
+from that panel. What is unaffected: the absolute binding free energy
+pipeline itself and its T4 lysozyme L99A / benzene benchmark, which do
+not use the panel, and the EMB-3 natural-product application; the ABFE
+protocol is a statement about a computational method and stands
+independent of what any ligand is named or how potent it is. Full scope
+and correction map:
+<code>preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md</code>.</p>
+</blockquote>
+<h1
+id="a-calibrated-absolute-binding-free-energy-pipeline-with-flat-bottom-centroid-restraint-and-analytical-standard-state-correction-for-natural-product-scaffold-hopping-in-openmm-8-openmmtools-0.26">A
 calibrated absolute binding free energy pipeline with flat-bottom
 centroid restraint and analytical standard-state correction for
 natural-product scaffold-hopping in OpenMM 8 / openmmtools 0.26</h1>
 <p><strong>HanCheongWoo ¹,²,³</strong></p>
-<p><strong>ORCID</strong>: <a href="https://orcid.org/0009-0004-4805-8815">0009-0004-4805-8815</a></p>
+<p><strong>ORCID</strong>: <a
+href="https://orcid.org/0009-0004-4805-8815">0009-0004-4805-8815</a></p>
 <p>¹ Genesis_Medicine Lab, Seoul, Republic of Korea ² HAN PREDICT, Inc.;
 <a href="https://hanpredict.com" class="uri">https://hanpredict.com</a>
-³ Recover Korean Medicine Clinic; <a href="https://recover-clinic.kr" class="uri">https://recover-clinic.kr</a></p>
-<p>Code: <a href="https://github.com/crazat/genesis_medicine" class="uri">https://github.com/crazat/genesis_medicine</a> ·
+³ Recover Korean Medicine Clinic; <a href="https://recover-clinic.kr"
+class="uri">https://recover-clinic.kr</a></p>
+<p>Code: <a href="https://github.com/crazat/genesis_medicine"
+class="uri">https://github.com/crazat/genesis_medicine</a> ·
 Correspondence: admin@hanpredict.com</p>
-<p><strong>Manuscript type</strong>: Methodology paper; <strong>Target
-preprint</strong>: ChemRxiv (immediate); <strong>Peer-review
-target</strong>: J Cheminform; <strong>License</strong>: CC-BY 4.0
-<strong>Status</strong>: v0.7 — <strong>calibrated cycle
-T4L99A·benzene</strong> ΔG_bind = −4.006 ± 0.183 kcal/mol (vs lit −5.18,
-|Δ|=1.17, passes ±2 criterion, 8.89 h GPU) <strong>+ first applied ABFE
-on EMB-3 × MMP-1</strong> ΔG_bind = +0.55 ± 0.38 kcal/mol (8.53 h GPU).
-Applied result is statistically indistinguishable from zero —
-quantitatively confirms the “MMP-1 minus zinc” caveat (§4.1) and
+<p><strong>Manuscript type</strong>: Methodology paper with calibration
+benchmark and applied case study; <strong>Target preprint</strong>:
+bioRxiv (Biophysics) — migrated from ChemRxiv per scope-rejection letter
+2026-04-30; <strong>Peer-review target</strong>: J Cheminform;
+<strong>License</strong>: CC-BY 4.0 <strong>Status</strong>: v0.8
+(2026-05-03) — bioRxiv resubmission of v0.7 ABFE methodology.
+<strong>Calibrated cycle T4L99A * benzene</strong> delta-G_bind = -4.006
++/- 0.183 kcal/mol (vs literature -5.18, abs-difference 1.17, passes
++/-2 criterion, 8.89 h GPU). <strong>First applied ABFE on EMB-3 *
+MMP-1</strong> delta-G_bind = +0.55 +/- 0.38 kcal/mol (8.53 h GPU).
+Applied result is statistically indistinguishable from zero,
+quantitatively confirms the MMP-1-minus-zinc caveat (Section 4.1), and
 elevates ZAFF / AToM-OpenMM integration from optional to
-release-blocking for any quantitative MMP-1 affinity claim. Plus
-<strong>ChEMBL Boltz-2 calibration</strong> (ρ = −0.724) +
-<strong>Boltz-2/Chai-1 ensemble</strong> + <strong>PoseBusters 149
-poses</strong> + <strong>τRAMD/SEEKR2 kinetics scaffolds</strong>.</p>
+release-blocking for any quantitative MMP-1 affinity claim. Plus Boltz-2
+/ Chai-1 ensemble, PoseBusters 149-pose validation, and tau-RAMD /
+SEEKR2 kinetics scaffolds. (The former Section 3.6 Boltz-2-vs-ChEMBL
+potency calibration is withdrawn: it correlated against fabricated pIC50
+— see the disclosure above.) Section 3.10 (EMB-3 * MMP-1 applied ABFE)
+and Section 3.9 (kinetics roadmap) promoted from appendix to main
+results for bioRxiv editorial readability.</p>
 <hr />
 <h2 id="abstract">Abstract</h2>
 <p>Absolute binding free energy (ABFE) calculation is increasingly used
@@ -591,207 +527,26 @@ this constraint.</li>
 <li>For non-zinc targets (TGF-β1, SIRT1, AR), the present protocol
 applies straightforwardly and quantitative ABFE is publishable.</li>
 </ol>
-<h3 id="independent-companion-calibration-boltz-2-vs-chembl-mmp-1-15-hydroxamate-sulfonamide-carboxylate-inhibitors">3.6
-Independent companion calibration: Boltz-2 vs ChEMBL MMP-1 (15
-hydroxamate / sulfonamide / carboxylate inhibitors)</h3>
-<p>While the OpenMM-ABFE cycle awaits closure, we performed a
-<em>complementary</em>, fast calibration of the
-<strong>structure-prediction front-end</strong> (Boltz-2 cofold +
-affinity head) used in companion preprints, on a curated set of 15
-published MMP-1 inhibitors from ChEMBL
-(<code>data/chembl_mmp1_calibration.csv</code>). The set spans pIC50 ∈
-[4.74, 8.52] (≈ 18 µM → 3 nM, four orders of magnitude in potency) and
-chemotype-diverse: Marimastat / Batimastat / Prinomastat / Trocade /
-Ilomastat hydroxamates, sulfonamides (CGS27023A), thiol-zinc-chelators,
-carboxylates, and a low-potency positive control. Cofolds were run with
-<code>boltz predict</code> (sampling_steps=25, diffusion_samples=1,
-recycling_steps=3, sampling_steps_affinity=200,
-diffusion_samples_affinity=5, <code>--affinity_mw_correction</code>);
-4.3 minutes wall-clock total on 1 × RTX 5090.</p>
-<p><strong>Calibration results.</strong></p>
-<table>
-<thead>
-<tr>
-<th>Metric</th>
-<th>Value</th>
-<th>p</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Spearman ρ (pIC50 ↔︎ Boltz-2 affinity_pred)</td>
-<td><strong>−0.724</strong></td>
-<td>0.0023</td>
-</tr>
-<tr>
-<td>Pearson r (pIC50 ↔︎ Boltz-2 affinity_pred)</td>
-<td><strong>−0.762</strong></td>
-<td>0.00097</td>
-</tr>
-<tr>
-<td>Spearman ρ (pIC50 ↔︎ Boltz-2 affinity_prob_binary)</td>
-<td>+0.592</td>
-<td>0.020</td>
-</tr>
-<tr>
-<td>n compounds</td>
-<td>15</td>
-<td>—</td>
-</tr>
-</tbody>
-</table>
-<p>The negative sign of the affinity_pred-vs-pIC50 correlation is the
-<strong>physically expected</strong> direction: Boltz-2’s
-<code>affinity_pred_value</code> output is dimensioned as log-affinity
-in the IC50 sign convention (lower is more potent), the inverse of
-pIC50, so a strong-binder pIC50 ≈ 8.5 corresponds to affinity_pred ≈ −2
-to −3, while a weak binder pIC50 ≈ 4.7 gives affinity_pred ≈ +1.9. The
-script’s automated “weak ranking” interpretation flag is RMSE-based (and
-the RMSE units are not physically commensurate); the Spearman / Pearson
-correlations are the methodologically meaningful indicators and they are
-excellent (|ρ| = 0.72, p &lt; 0.005).</p>
-<p>Representative individual predictions (sorted by pIC50,
-descending):</p>
-<table>
-<thead>
-<tr>
-<th>Compound</th>
-<th style="text-align: right;">IC50 (nM)</th>
-<th style="text-align: right;">pIC50</th>
-<th style="text-align: right;">Boltz-2 affinity_pred</th>
-<th style="text-align: right;">prob_binary</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Prinomastat (CHEMBL406)</td>
-<td style="text-align: right;">3</td>
-<td style="text-align: right;">8.52</td>
-<td style="text-align: right;"><strong>−2.49</strong></td>
-<td style="text-align: right;">0.99</td>
-</tr>
-<tr>
-<td>Batimastat (CHEMBL415)</td>
-<td style="text-align: right;">4</td>
-<td style="text-align: right;">8.40</td>
-<td style="text-align: right;">−1.46</td>
-<td style="text-align: right;">0.90</td>
-</tr>
-<tr>
-<td>Marimastat (CHEMBL443684)</td>
-<td style="text-align: right;">5</td>
-<td style="text-align: right;">8.30</td>
-<td style="text-align: right;">−0.17</td>
-<td style="text-align: right;">0.94</td>
-</tr>
-<tr>
-<td>Trocade-like (CHEMBL412)</td>
-<td style="text-align: right;">8</td>
-<td style="text-align: right;">8.10</td>
-<td style="text-align: right;">−1.39</td>
-<td style="text-align: right;">0.92</td>
-</tr>
-<tr>
-<td>RS-130830 (CHEMBL94487)</td>
-<td style="text-align: right;">12</td>
-<td style="text-align: right;">7.92</td>
-<td style="text-align: right;">−0.69</td>
-<td style="text-align: right;">0.93</td>
-</tr>
-<tr>
-<td>Mobashery 1999 (CHEMBL57058)</td>
-<td style="text-align: right;">15</td>
-<td style="text-align: right;">7.82</td>
-<td style="text-align: right;">−1.92</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr>
-<td>Yamamoto 2003 (CHEMBL301236)</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">7.38</td>
-<td style="text-align: right;">−1.14</td>
-<td style="text-align: right;">0.97</td>
-</tr>
-<tr>
-<td>Schultz 1998 (CHEMBL1207)</td>
-<td style="text-align: right;">55</td>
-<td style="text-align: right;">7.26</td>
-<td style="text-align: right;">+0.22</td>
-<td style="text-align: right;">0.78</td>
-</tr>
-<tr>
-<td>Ilomastat (CHEMBL292707)</td>
-<td style="text-align: right;">200</td>
-<td style="text-align: right;">6.70</td>
-<td style="text-align: right;">+1.08</td>
-<td style="text-align: right;">0.79</td>
-</tr>
-<tr>
-<td>CGS27023A (CHEMBL259829)</td>
-<td style="text-align: right;">310</td>
-<td style="text-align: right;">6.51</td>
-<td style="text-align: right;">−0.19</td>
-<td style="text-align: right;">0.21</td>
-</tr>
-<tr>
-<td>Beckett 1996 (CHEMBL93146)</td>
-<td style="text-align: right;">820</td>
-<td style="text-align: right;">6.09</td>
-<td style="text-align: right;">+0.79</td>
-<td style="text-align: right;">0.89</td>
-</tr>
-<tr>
-<td>Gowravaram 1995 (CHEMBL98)</td>
-<td style="text-align: right;">2400</td>
-<td style="text-align: right;">5.62</td>
-<td style="text-align: right;">−0.27</td>
-<td style="text-align: right;">0.90</td>
-</tr>
-<tr>
-<td>Lovejoy 1999 (CHEMBL2105729)</td>
-<td style="text-align: right;">18000</td>
-<td style="text-align: right;">4.74</td>
-<td style="text-align: right;"><strong>+1.94</strong></td>
-<td style="text-align: right;">0.71</td>
-</tr>
-</tbody>
-</table>
-<p><strong>Figure 1</strong>: Boltz-2 affinity_pred_value vs
-experimental pIC50 for the 15-compound MMP-1 calibration set (axes
-inverted on the y-axis so that “stronger predicted binder” is upward;
-color = prob_binary). Notable compounds annotated. Spearman ρ = −0.724
-(p = 0.0023). See
-<code>preprints/08_abfe_methodology/figures/calibration_boltz2_chembl_mmp1.png</code>.</p>
-<p>The strongest binder (Prinomastat, 3 nM) and the weakest (Lovejoy
-1999, 18 µM) are correctly placed at the extremes of the prediction. Two
-notable outliers — CGS27023A (non-hydroxamate sulfonamide, 310 nM but
-predicted in the moderate range) and CHEMBL98 (weak inhibitor at 2.4 µM
-but predicted as moderately active) — are both <em>non-hydroxamate</em>
-chemotypes. This pattern is consistent with Boltz-2’s affinity head
-being trained on a chemotype distribution where hydroxamate
-metalloprotease inhibitors are common; it correctly ranks within-class
-but is less reliable on chemotype-mismatched cases. We retain this in
-the data table without filtering, as removing them would inflate the
-apparent calibration.</p>
-<p><strong>Implication for companion application preprints.</strong> The
-Boltz-2 cofold + affinity head, used as the <em>first-stage</em>
-high-throughput screen for natural-product compound libraries (centella,
-glycyrrhiza, embelia, etc.), is calibrated against MMP-1 ground truth at
-|Spearman ρ| ≈ 0.72 over four orders of magnitude in potency. This is
-sufficient quality to use Boltz-2 affinity_pred / prob_binary as a
-<em>ranking</em> / <em>prioritization</em> signal — but not as a
-<em>quantitative ΔG</em> surrogate. The application preprints (#3 EMB-3
-/ MMP-1, #4 pigmentation, #5 alopecia, #6 acne, #7 photoaging)
-accordingly report Boltz-2 affinity quantities as ranking metrics
-only.</p>
-<p>The complete output (15 × {SMILES, IC50, pIC50, affinity_pred,
-prob_binary}) is in
-<code>pilot/calibration/boltz2_mmp1/calibration_predictions.csv</code>;
-the summary statistics are in <code>calibration_stats.json</code>. The 8
-hydroxamate SMILES in the source CSV had a textual encoding error
-(<code>C(=O)NHO</code> instead of <code>C(=O)NO</code> for the
-hydroxamic-acid nitrogen) that initially prevented RDKit parsing; this
-was patched in the same commit (<code>bc97aa1</code>).</p>
+<h3 id="boltz-2-vs-chembl-potency-calibration-withdrawn-2026-07-18">3.6
+Boltz-2 vs ChEMBL potency calibration — withdrawn (2026-07-18)</h3>
+<p>This section previously reported a calibration of the Boltz-2
+affinity head against the 15-ligand ChEMBL MMP-1 panel
+(<code>data/chembl_mmp1_calibration.csv</code>), including a Spearman
+correlation against pIC50 and a per-compound prediction table. That
+panel’s potency annotations were found to be fabricated (see the
+disclosure at the head of this document): the compound names, IC50 and
+pIC50 values do not correspond to real compounds and cannot serve as
+ground truth, and 14 of the 15 structures are unknown to PubChem. The
+correlation therefore has no verified reference and is withdrawn in
+full, together with its table, figure, and interpretation. The Boltz-2
+affinity_pred and prob_binary values were honest computations on the
+structures, but they cannot be presented as calibrated against potency;
+any future calibration must use a panel with recorded, verifiable
+potencies (a replacement is available at
+<code>data/mmp1_panel_pubchem.csv</code>, 121 compounds with per-row
+PubChem CID, assay AID and retrieval timestamp). This withdrawal does
+not affect the ABFE pipeline, its T4 lysozyme L99A / benzene benchmark,
+or the EMB-3 application, none of which use this panel.</p>
 <h3 id="two-model-structural-ensemble-validation-boltz-2-vs-chai-1">3.7
 Two-model structural ensemble validation: Boltz-2 vs Chai-1</h3>
 <p>A second, <em>qualitatively different</em> check is the
@@ -901,13 +656,18 @@ call</em>: a pair is “ensemble-validated” only when both Boltz-2
 prob_binary and Chai-1 aggregate exceed their respective thresholds
 (≥0.55 / ≥0.55) and disagree by less than 0.10. By that criterion only
 EMB-3 × MMP1 passes among our six top pairs. We deliberately do not
-retroactively delete the other application-preprint claims, because: (i)
-the Boltz-2-alone signal is still calibrated against ChEMBL (§3.6) and
-remains a useful ranking signal <em>within</em> a chemotype-target
-class; (ii) the additional honest disclosure is more useful to the
-reader than retraction. Future top-hit selection in this pipeline will
-require ensemble agreement.</p>
-<h3 id="posebusters-geometric-steric-validation-across-149-cofold-poses">3.8
+retroactively delete the other application-preprint claims, because the
+additional honest disclosure is more useful to the reader than
+retraction. An earlier version of this passage rested that choice partly
+on a second ground — that “the Boltz-2-alone signal is still calibrated
+against ChEMBL (§3.6)”. <strong>That ground is withdrawn with
+§3.6</strong>: its potency axis was fabricated, so it certified nothing.
+What survives is the weaker claim that the Boltz-2 binary classifier is
+a <em>relative</em> ranking signal within a chemotype-target class,
+which does not depend on the withdrawn calibration. Future top-hit
+selection in this pipeline will require ensemble agreement.</p>
+<h3
+id="posebusters-geometric-steric-validation-across-149-cofold-poses">3.8
 PoseBusters geometric / steric validation across 149 cofold poses</h3>
 <p>Beyond affinity ranking, every cofold pose used downstream (MD, ABFE,
 scaffold-hop selection) must pass geometric / steric sanity checks. We
@@ -1116,14 +876,14 @@ notes:</p>
 <h3 id="mmp-1-catalytic-zinc-handling">4.1 MMP-1 catalytic zinc
 handling</h3>
 <p>MMP-1 is a zinc metalloprotease; the catalytic Zn²⁺ is essential for
-substrate turnover and for hydroxamate-class inhibitor binding
-(Marimastat, IC₅₀ ≈ 5 nM). The current GAFF-2.11 / ff14SB protocol does
-not include explicit zinc-bonded modeling; the Boltz-2 cofold receptor
-used as the starting structure does not include the zinc ion.
-<strong>Predicted MMP-1 binding free energies under the present protocol
-should be interpreted as a “MMP-1 minus zinc” model</strong>, useful for
-comparative ranking among non-zinc-coordinating compounds but not for
-direct comparison to literature hydroxamate IC₅₀ values.</p>
+substrate turnover and for hydroxamate-class inhibitor binding. The
+current GAFF-2.11 / ff14SB protocol does not include explicit
+zinc-bonded modeling; the Boltz-2 cofold receptor used as the starting
+structure does not include the zinc ion. <strong>Predicted MMP-1 binding
+free energies under the present protocol should be interpreted as a
+“MMP-1 minus zinc” model</strong>, useful for comparative ranking among
+non-zinc-coordinating compounds but not for direct comparison to
+literature hydroxamate IC₅₀ values.</p>
 <p>A planned follow-up integrates the Zinc Amber Force Field (ZAFF [7])
 with explicit zinc bonded to coordinating residues (His218, His222,
 His228 in MMP-1 catalytic domain) and re-runs ABFE on the same compound
@@ -1166,16 +926,21 @@ OpenMM 8 + openmmtools 0.26, using a flat-bottom centroid distance
 restraint and analytical standard-state correction. The protocol
 assembles a thermodynamic cycle across complex and solvent decoupling
 legs and is calibrated against the T4L99A · benzene benchmark. The
-protocol is open-source under Apache-2.0 at <a href="https://github.com/crazat/genesis_medicine" class="uri">https://github.com/crazat/genesis_medicine</a>. Earlier
+protocol is open-source under Apache-2.0 at <a
+href="https://github.com/crazat/genesis_medicine"
+class="uri">https://github.com/crazat/genesis_medicine</a>. Earlier
 protocol iterations (Boresch 6-DOF, complex-leg-only, COM-placement) are
 documented for failure-mode reproducibility, and earlier EMB-3 / Embelin
 ABFE numbers are explicitly retracted. The protocol’s principal current
 limitation in our application context is MMP-1 catalytic-zinc handling,
 which is the subject of a planned ZAFF-integration follow-up.</p>
 <hr />
-<h2 id="acknowledgments-contributions-competing-interests-data-availability">Acknowledgments
+<h2
+id="acknowledgments-contributions-competing-interests-data-availability">Acknowledgments
 / Contributions / Competing interests / Data availability</h2>
-<p>Same standard text. Code: <a href="https://github.com/crazat/genesis_medicine" class="uri">https://github.com/crazat/genesis_medicine</a>. Specific
+<p>Same standard text. Code: <a
+href="https://github.com/crazat/genesis_medicine"
+class="uri">https://github.com/crazat/genesis_medicine</a>. Specific
 scripts: <code>scripts/run_abfe_corrected.py</code>,
 <code>scripts/abfe_calibrate_t4l.py</code>,
 <code>scripts/boltz2_calibration_mmp1.py</code>.</p>
@@ -1200,10 +965,14 @@ field (ZAFF). <em>J Chem Theory Comput</em> 2010, 6, 2935–2947. [8]
 Hinck AP. Structural studies of the TGF-β superfamily of cytokines.
 <em>FEBS Lett</em> 2012, 586, 1860–1870. [9] Chai Discovery. Chai-1:
 decoding the molecular interactions of life. Technical report 2024-2025;
-Apache-2.0 release Q4-2025. <a href="https://github.com/chaidiscovery/chai-lab" class="uri">https://github.com/chaidiscovery/chai-lab</a>. [10]
+Apache-2.0 release Q4-2025. <a
+href="https://github.com/chaidiscovery/chai-lab"
+class="uri">https://github.com/chaidiscovery/chai-lab</a>. [10]
 Buttenschoen M, Morris GM, Deane CM. PoseBusters: AI-based docking
 methods fail to generate physically valid poses or generalise to novel
-sequences. <em>Chem Sci</em> 2024, 15, 3130–3139. <a href="https://github.com/maabuu/posebusters" class="uri">https://github.com/maabuu/posebusters</a>.</p>
+sequences. <em>Chem Sci</em> 2024, 15, 3130–3139. <a
+href="https://github.com/maabuu/posebusters"
+class="uri">https://github.com/maabuu/posebusters</a>.</p>
 <hr />
 <p><em>v0.6 — final closed-cycle revision, 2026-04-27 · ~5,800 words ·
 CC-BY 4.0</em></p>
@@ -1218,9 +987,9 @@ calibration: complex leg ΔG_decouple = 2.695 ± 0.146 kcal/mol completed
 protein removal; fix committed, re-run pending. No final ΔG_bind
 reported.</li>
 <li><strong>v0.3 (2026-04-26 evening)</strong> — added §3.6 ChEMBL MMP-1
-calibration (n=15, Spearman ρ = −0.724, p = 0.002, Pearson r = −0.762).
-Correctly ranks Prinomastat (3 nM) and Lovejoy 1999 (18 µM) at extremes.
-Front-end validated as a ranking signal.</li>
+calibration. Withdrawn 2026-07-18: the panel’s potency values were found
+to be fabricated, so the calibration had no verified ground truth (see
+the disclosure at the head of this document).</li>
 <li><strong>v0.4 (2026-04-26 night)</strong> — added §3.7 Boltz-2 /
 Chai-1 two-way structural ensemble on 6 top pairs. Only EMB-3 × MMP1
 shows strong agreement (Boltz-2 0.674 / Chai-1 0.696). AR-targeted

@@ -1,6 +1,6 @@
 # IP FTO Watchlist
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - rows: `752`
 - risk_counts: `{'high_review': 0, 'medium_review': 11, 'baseline_watch': 741}`
 - manual_review_template: `data/ip_fto_manual_review_template.csv`

@@ -1,6 +1,6 @@
 # Photosafety Sensitization V2
 
-- timestamp: `2026-05-06T12:46:12+09:00`
+- timestamp: `2026-05-06T15:23:52+09:00`
 - rows: `1082`
 - gate_counts: `{'green': 366, 'yellow': 716, 'red': 0}`
 - purpose: topical lead claim 전에 OECD TG497 skin sensitization과 ICH S10 photosafety 관점의 assay package를 자동 지정한다.

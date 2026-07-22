@@ -1,6 +1,6 @@
 # Hydration and Kinetics Gate
 
-- timestamp: `2026-05-06T12:46:33+09:00`
+- timestamp: `2026-05-06T15:24:10+09:00`
 - rows: `32`
 - counts: `{'hydration_priority': 32, 'residence_proxy': 6}`
 - purpose: RMSD 안정성만으로는 부족한 water displacement/residence-time follow-up 우선순위를 정한다.

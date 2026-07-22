@@ -1,6 +1,6 @@
 # Structure Benchmark Decoy Gate
 
-- timestamp: `2026-05-06T12:46:31+09:00`
+- timestamp: `2026-05-06T15:24:09+09:00`
 - rows: `32`
 - gate_counts: `{'benchmark_decoys_required_before_strong_claim': 0, 'benchmark_ready_as_caveat': 8, 'cross_model_first': 5, 'benchmark_low_priority': 19}`
 - purpose: PoseBench-style claim discipline을 local candidate에 적용해 decoy, negative-control, PLIF, cross-model requirement를 명시한다.

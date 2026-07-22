@@ -1,21 +1,21 @@
 {
   "phase": "Phase 5 ABFE production (MultiStateSampler, no replica exchange)",
-  "system": "CHEMBL2105729_rep2 + holo MMP-1 (ZAFF, MSS)",
+  "system": "CHEMBL2105729_rep2 + holo MMP-1 (ZAFF, MSS, parallel)",
   "complex_leg": {
     "leg": "complex",
-    "dG": 111.25601444508905,
-    "dG_err": 0.4684592160917425,
+    "dG": 110.96099123164865,
+    "dG_err": 0.434593078635198,
     "ns_prod": 8.0
   },
   "solvent_leg": {
     "leg": "solvent",
-    "dG": 118.29598321259617,
-    "dG_err": 0.3007611522704452,
+    "dG": 116.2463096643472,
+    "dG_err": 0.3786935971902042,
     "ns_prod": 5.0
   },
   "dG_R_standard_state_correction": -0.158,
-  "dG_bind_kcal_mol": 7.198,
-  "dG_bind_err_kcal_mol": 0.557,
+  "dG_bind_kcal_mol": 5.443,
+  "dG_bind_err_kcal_mol": 0.576,
   "pass_dG_neg_with_uncertainty": false,
   "n_lambda": 16,
   "ns_prod_complex": 8.0,

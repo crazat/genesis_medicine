@@ -1,6 +1,6 @@
 # Skin Spatial Atlas Gate
 
-- timestamp: `2026-05-06T12:46:28+09:00`
+- timestamp: `2026-05-06T15:24:06+09:00`
 - rows: `32`
 - gate_counts: `{'spatially_anchorable': 2, 'atlas_review': 9, 'spatial_context_missing': 21}`
 - purpose: 피부 target claim을 세포 상태뿐 아니라 anatomic site, niche, reconstructed model로 연결한다.

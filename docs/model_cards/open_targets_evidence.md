@@ -1,6 +1,6 @@
 # Model Card: open_targets_evidence
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - component: `Open Targets / evidence gates`
 - context_of_use: `target prioritization and claim strength limitation`
 - decision_influence: `high`

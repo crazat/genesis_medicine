@@ -1,6 +1,6 @@
 # Pharmacovigilance Signal Gate
 
-- timestamp: `2026-05-06T12:46:30+09:00`
+- timestamp: `2026-05-06T15:24:08+09:00`
 - rows: `442`
 - gate_counts: `{'pv_signal_review': 240, 'pv_class_caveat': 140, 'pv_signal_not_mapped': 62}`
 - purpose: FDA AEMS/FAERS 또는 class analog safety signal을 논문 safety caveat와 systemic/topical path 분리에 연결한다.

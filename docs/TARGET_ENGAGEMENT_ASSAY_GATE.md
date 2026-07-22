@@ -1,6 +1,6 @@
 # Target Engagement Assay Gate
 
-- timestamp: `2026-05-06T12:46:28+09:00`
+- timestamp: `2026-05-06T15:24:06+09:00`
 - rows: `32`
 - gate_counts: `{'engagement_assay_ready': 1, 'cellular_engagement_preferred': 5, 'deconvolution_first': 13, 'assay_materials_review': 13}`
 - purpose: in-silico binding hypothesis를 CETSA/TPP/SPR/reporter/phenotype assay로 넘길 수 있는지 평가한다.

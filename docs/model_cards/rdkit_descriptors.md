@@ -1,6 +1,6 @@
 # Model Card: rdkit_descriptors
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - component: `RDKit physicochemical descriptors`
 - context_of_use: `skin-window, CMC, novelty, scaffold and formulation heuristics`
 - decision_influence: `medium`

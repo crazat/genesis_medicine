@@ -1,6 +1,6 @@
 # Metabolite Reactive Risk Gate
 
-- timestamp: `2026-05-06T12:46:29+09:00`
+- timestamp: `2026-05-06T15:24:07+09:00`
 - rows: `1082`
 - gate_counts: `{'low_reactive_alert': 720, 'metabolism_caveat': 352, 'reactive_metabolite_review': 10, 'structure_fix': 0}`
 - purpose: BioTransformer/FAME류 대사체 예측 전 단계로 phenol/redox/quinone/aryl-halogen/reactive-metabolite risk를 표시한다.

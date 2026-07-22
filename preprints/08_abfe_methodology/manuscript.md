@@ -1,3 +1,28 @@
+> # ⛔ CONTAMINATED — DO NOT SUBMIT OR DEPOSIT (2026-07-16)
+>
+> **Every compound name and IC50 value below is fabricated.** This manuscript's ligand panel comes from
+> `data/chembl_mmp1_calibration.csv`, whose annotations a primary-source audit refuted on 2026-07-16: all seven
+> of its named entries are a **different molecule** than the drug they name (e.g. the entry labelled prinomastat
+> is C23H30N2O5S; real prinomastat is C18H21N3O5S2, PubChem CID 466151), and **14 of its 15 structures are
+> unknown to PubChem's ~119 M compounds** — they are not published chemistry. The file has no generating script
+> and no retrieval record. See `preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md`; reproduce with
+> `scripts/round27_paperA/verify_panel_identity_pubchem.py`.
+>
+> **What this means for this draft.** Any statement here about compound identity, potency, structure–activity
+> or repositioning is void. Computational results *on those structures* remain valid as reproducibility
+> measurements — whether a computation repeats on a fixed input does not depend on what the input is called —
+> but they cannot be attributed to the named drugs and cannot be transferred to the real ones.
+>
+> **Before this draft goes anywhere** it needs the same decision paper_A took: either restate it as a pure
+> methodology paper that claims no identity or potency (see `23_paper_A_v6_mmp1_5nnp_xtb/manuscript_v0.3_reproducibility.md`,
+> which survived this finding by design), or re-run on the real panel now available at
+> `data/mmp1_panel_pubchem.csv` (121 compounds, IC50 0.78 nM–98 µM, every row carrying its PubChem CID, assay
+> AID and retrieval timestamp). That choice is the author's.
+>
+> Disclosure on the calibration panel (added 2026-07-18). The 15-ligand set used for the Boltz-2 front-end calibration in Section 3.6, and referenced in the Section 4.1 zinc caveat, was taken from `data/chembl_mmp1_calibration.csv`. A primary-source audit completed on 2026-07-16 established that this file's annotations are fabricated: every named entry is a different molecule than the drug it names, its IC50 and pIC50 values do not correspond to those compounds and are not verifiable, and 14 of its 15 structures are unknown to PubChem's roughly 119 million compounds. The file carries no generating script and no retrieval record. Consequently every compound name, ChEMBL identifier, potency value, and any structure-activity or known-inhibitor statement in this draft that derives from this panel is void, and the Section 3.6 correlation between Boltz-2 output and pIC50, being a correlation against fabricated potency, has no verified ground truth and is withdrawn. Only the structures themselves are used, purely as chemistry that parses under RDKit. The ABFE protocol and its T4 lysozyme L99A / benzene calibration do not use this panel at all and are unaffected, as is the EMB-3 application, EMB-3 being a natural-product lead rather than a panel compound. Scope and correction map: `preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md`; reproduce with `scripts/round27_paperA/verify_panel_identity_pubchem.py`.
+
+---
+
 ---
 zenodo_doi: 10.5281/zenodo.20018254
 zenodo_url: https://zenodo.org/record/20018254
@@ -18,7 +43,7 @@ prior_history: bioRxiv BIORXIV/2026/722479 rejected 2026-05-03 (scope mismatch)
 Code: <https://github.com/crazat/genesis_medicine> · Correspondence: admin@hanpredict.com
 
 **Manuscript type**: Methodology paper with calibration benchmark and applied case study; **Target preprint**: bioRxiv (Biophysics) — migrated from ChemRxiv per scope-rejection letter 2026-04-30; **Peer-review target**: J Cheminform; **License**: CC-BY 4.0
-**Status**: v0.8 (2026-05-03) — bioRxiv resubmission of v0.7 ABFE methodology. **Calibrated cycle T4L99A * benzene** delta-G_bind = -4.006 +/- 0.183 kcal/mol (vs literature -5.18, abs-difference 1.17, passes +/-2 criterion, 8.89 h GPU). **First applied ABFE on EMB-3 * MMP-1** delta-G_bind = +0.55 +/- 0.38 kcal/mol (8.53 h GPU). Applied result is statistically indistinguishable from zero, quantitatively confirms the MMP-1-minus-zinc caveat (Section 4.1), and elevates ZAFF / AToM-OpenMM integration from optional to release-blocking for any quantitative MMP-1 affinity claim. Plus ChEMBL Boltz-2 calibration (Spearman rho = -0.724), Boltz-2 / Chai-1 ensemble, PoseBusters 149-pose validation, and tau-RAMD / SEEKR2 kinetics scaffolds. Section 3.10 (EMB-3 * MMP-1 applied ABFE) and Section 3.9 (kinetics roadmap) promoted from appendix to main results for bioRxiv editorial readability.
+**Status**: v0.8 (2026-05-03) — bioRxiv resubmission of v0.7 ABFE methodology. **Calibrated cycle T4L99A * benzene** delta-G_bind = -4.006 +/- 0.183 kcal/mol (vs literature -5.18, abs-difference 1.17, passes +/-2 criterion, 8.89 h GPU). **First applied ABFE on EMB-3 * MMP-1** delta-G_bind = +0.55 +/- 0.38 kcal/mol (8.53 h GPU). Applied result is statistically indistinguishable from zero, quantitatively confirms the MMP-1-minus-zinc caveat (Section 4.1), and elevates ZAFF / AToM-OpenMM integration from optional to release-blocking for any quantitative MMP-1 affinity claim. Plus Boltz-2 / Chai-1 ensemble, PoseBusters 149-pose validation, and tau-RAMD / SEEKR2 kinetics scaffolds. (The former Section 3.6 Boltz-2-vs-ChEMBL potency calibration is withdrawn: it correlated against fabricated pIC50 — see the disclosure above.) Section 3.10 (EMB-3 * MMP-1 applied ABFE) and Section 3.9 (kinetics roadmap) promoted from appendix to main results for bioRxiv editorial readability.
 
 ---
 
@@ -204,47 +229,9 @@ With the cycle now closed and calibrated to within 1.17 kcal/mol of the canonica
 2. For zinc-coordinating MMP-1 inhibitors, the protocol still does not include explicit zinc force-field treatment (§4.1) — this introduces an *additional* uncertainty above the 0.18 kcal/mol benchmark error. ABFE numbers on hydroxamate or thiol-class inhibitors are reported with that caveat. The ZAFF / AToM-OpenMM follow-up (`src/genesis_medicine/md/atom_openmm_adapter.py`) will lift this constraint.
 3. For non-zinc targets (TGF-β1, SIRT1, AR), the present protocol applies straightforwardly and quantitative ABFE is publishable.
 
-### 3.6 Independent companion calibration: Boltz-2 vs ChEMBL MMP-1 (15 hydroxamate / sulfonamide / carboxylate inhibitors)
+### 3.6 Boltz-2 vs ChEMBL potency calibration — withdrawn (2026-07-18)
 
-While the OpenMM-ABFE cycle awaits closure, we performed a *complementary*, fast calibration of the **structure-prediction front-end** (Boltz-2 cofold + affinity head) used in companion preprints, on a curated set of 15 published MMP-1 inhibitors from ChEMBL (`data/chembl_mmp1_calibration.csv`). The set spans pIC50 ∈ [4.74, 8.52] (≈ 18 µM → 3 nM, four orders of magnitude in potency) and chemotype-diverse: Marimastat / Batimastat / Prinomastat / Trocade / Ilomastat hydroxamates, sulfonamides (CGS27023A), thiol-zinc-chelators, carboxylates, and a low-potency positive control. Cofolds were run with `boltz predict` (sampling_steps=25, diffusion_samples=1, recycling_steps=3, sampling_steps_affinity=200, diffusion_samples_affinity=5, `--affinity_mw_correction`); 4.3 minutes wall-clock total on 1 × RTX 5090.
-
-**Calibration results.**
-
-| Metric | Value | p |
-|---|---|---|
-| Spearman ρ (pIC50 ↔ Boltz-2 affinity_pred) | **−0.724** | 0.0023 |
-| Pearson r (pIC50 ↔ Boltz-2 affinity_pred) | **−0.762** | 0.00097 |
-| Spearman ρ (pIC50 ↔ Boltz-2 affinity_prob_binary) | +0.592 | 0.020 |
-| n compounds | 15 | — |
-
-The negative sign of the affinity_pred-vs-pIC50 correlation is the **physically expected** direction: Boltz-2's `affinity_pred_value` output is dimensioned as log-affinity in the IC50 sign convention (lower is more potent), the inverse of pIC50, so a strong-binder pIC50 ≈ 8.5 corresponds to affinity_pred ≈ −2 to −3, while a weak binder pIC50 ≈ 4.7 gives affinity_pred ≈ +1.9. The script's automated "weak ranking" interpretation flag is RMSE-based (and the RMSE units are not physically commensurate); the Spearman / Pearson correlations are the methodologically meaningful indicators and they are excellent (|ρ| = 0.72, p < 0.005).
-
-Representative individual predictions (sorted by pIC50, descending):
-
-| Compound | IC50 (nM) | pIC50 | Boltz-2 affinity_pred | prob_binary |
-|---|---:|---:|---:|---:|
-| Prinomastat (CHEMBL406) | 3 | 8.52 | **−2.49** | 0.99 |
-| Batimastat (CHEMBL415) | 4 | 8.40 | −1.46 | 0.90 |
-| Marimastat (CHEMBL443684) | 5 | 8.30 | −0.17 | 0.94 |
-| Trocade-like (CHEMBL412) | 8 | 8.10 | −1.39 | 0.92 |
-| RS-130830 (CHEMBL94487) | 12 | 7.92 | −0.69 | 0.93 |
-| Mobashery 1999 (CHEMBL57058) | 15 | 7.82 | −1.92 | 0.97 |
-| Yamamoto 2003 (CHEMBL301236) | 42 | 7.38 | −1.14 | 0.97 |
-| Schultz 1998 (CHEMBL1207) | 55 | 7.26 | +0.22 | 0.78 |
-| Ilomastat (CHEMBL292707) | 200 | 6.70 | +1.08 | 0.79 |
-| CGS27023A (CHEMBL259829) | 310 | 6.51 | −0.19 | 0.21 |
-| Beckett 1996 (CHEMBL93146) | 820 | 6.09 | +0.79 | 0.89 |
-| Gowravaram 1995 (CHEMBL98) | 2400 | 5.62 | −0.27 | 0.90 |
-| Lovejoy 1999 (CHEMBL2105729) | 18000 | 4.74 | **+1.94** | 0.71 |
-
-**Figure 1**: Boltz-2 affinity_pred_value vs experimental pIC50 for the 15-compound MMP-1 calibration set (axes inverted on the y-axis so that "stronger predicted binder" is upward; color = prob_binary). Notable compounds annotated. Spearman ρ = −0.724 (p = 0.0023). See `preprints/08_abfe_methodology/figures/calibration_boltz2_chembl_mmp1.png`.
-
-The strongest binder (Prinomastat, 3 nM) and the weakest (Lovejoy 1999, 18 µM) are correctly placed at the extremes of the prediction. Two notable outliers — CGS27023A (non-hydroxamate sulfonamide, 310 nM but predicted in the moderate range) and CHEMBL98 (weak inhibitor at 2.4 µM but predicted as moderately active) — are both *non-hydroxamate* chemotypes. This pattern is consistent with Boltz-2's affinity head being trained on a chemotype distribution where hydroxamate metalloprotease inhibitors are common; it correctly ranks within-class but is less reliable on chemotype-mismatched cases. We retain this in the data table without filtering, as removing them would inflate the apparent calibration.
-
-**Implication for companion application preprints.**
-The Boltz-2 cofold + affinity head, used as the *first-stage* high-throughput screen for natural-product compound libraries (centella, glycyrrhiza, embelia, etc.), is calibrated against MMP-1 ground truth at |Spearman ρ| ≈ 0.72 over four orders of magnitude in potency. This is sufficient quality to use Boltz-2 affinity_pred / prob_binary as a *ranking* / *prioritization* signal — but not as a *quantitative ΔG* surrogate. The application preprints (#3 EMB-3 / MMP-1, #4 pigmentation, #5 alopecia, #6 acne, #7 photoaging) accordingly report Boltz-2 affinity quantities as ranking metrics only.
-
-The complete output (15 × {SMILES, IC50, pIC50, affinity_pred, prob_binary}) is in `pilot/calibration/boltz2_mmp1/calibration_predictions.csv`; the summary statistics are in `calibration_stats.json`. The 8 hydroxamate SMILES in the source CSV had a textual encoding error (`C(=O)NHO` instead of `C(=O)NO` for the hydroxamic-acid nitrogen) that initially prevented RDKit parsing; this was patched in the same commit (`bc97aa1`).
+This section previously reported a calibration of the Boltz-2 affinity head against the 15-ligand ChEMBL MMP-1 panel (`data/chembl_mmp1_calibration.csv`), including a Spearman correlation against pIC50 and a per-compound prediction table. That panel's potency annotations were found to be fabricated (see the disclosure at the head of this document): the compound names, IC50 and pIC50 values do not correspond to real compounds and cannot serve as ground truth, and 14 of the 15 structures are unknown to PubChem. The correlation therefore has no verified reference and is withdrawn in full, together with its table, figure, and interpretation. The Boltz-2 affinity_pred and prob_binary values were honest computations on the structures, but they cannot be presented as calibrated against potency; any future calibration must use a panel with recorded, verifiable potencies (a replacement is available at `data/mmp1_panel_pubchem.csv`, 121 compounds with per-row PubChem CID, assay AID and retrieval timestamp). This withdrawal does not affect the ABFE pipeline, its T4 lysozyme L99A / benzene benchmark, or the EMB-3 application, none of which use this panel.
 
 ### 3.7 Two-model structural ensemble validation: Boltz-2 vs Chai-1
 
@@ -267,7 +254,7 @@ A second, *qualitatively different* check is the **structural-pose ensemble agre
 2. **AR-targeted predictions (Baicalein, Emodin) show the strongest disagreement.** Boltz-2 reports prob ≈ 0.77–0.82 (very high) but Chai-1 returns aggregate ≈ 0.145 (very low). Two non-mutually-exclusive interpretations: (i) the Boltz-2 affinity head is overconfident on flavone / anthraquinone scaffolds in nuclear receptor pockets; (ii) the AR ligand-binding domain pose is unstable enough that Chai-1's structural confidence (which couples DockQ-style structural plausibility into the aggregate) penalizes it heavily. Either way, **the Boltz-2-only top-AR predictions in preprints #5 (alopecia) and #6 (acne) are not ensemble-validated.** We add this as an explicit limitation in those preprints' v0.3 revisions.
 3. **Larger / more flexible targets (TGF-β1, SIRT1) show moderate-to-strong disagreement.** TGF-β1 is a homodimeric cytokine with cysteine-knot fold and a large allosteric / surface-binding regime; SIRT1 is a multi-domain HDAC with NAD⁺-cofactor coupling — both regimes where the two models' training distributions plausibly differ. Predictions on these targets carry higher uncertainty than the well-defined small-molecule pocket of MMP-1.
 
-**Methodological lesson for the pipeline.** Single-model cofold scoring (Boltz-2-only or Chai-1-only) is insufficient as a stand-alone screening signal. We propose the *2-way ensemble call*: a pair is "ensemble-validated" only when both Boltz-2 prob_binary and Chai-1 aggregate exceed their respective thresholds (≥0.55 / ≥0.55) and disagree by less than 0.10. By that criterion only EMB-3 × MMP1 passes among our six top pairs. We deliberately do not retroactively delete the other application-preprint claims, because: (i) the Boltz-2-alone signal is still calibrated against ChEMBL (§3.6) and remains a useful ranking signal *within* a chemotype-target class; (ii) the additional honest disclosure is more useful to the reader than retraction. Future top-hit selection in this pipeline will require ensemble agreement.
+**Methodological lesson for the pipeline.** Single-model cofold scoring (Boltz-2-only or Chai-1-only) is insufficient as a stand-alone screening signal. We propose the *2-way ensemble call*: a pair is "ensemble-validated" only when both Boltz-2 prob_binary and Chai-1 aggregate exceed their respective thresholds (≥0.55 / ≥0.55) and disagree by less than 0.10. By that criterion only EMB-3 × MMP1 passes among our six top pairs. We deliberately do not retroactively delete the other application-preprint claims, because the additional honest disclosure is more useful to the reader than retraction. An earlier version of this passage rested that choice partly on a second ground — that "the Boltz-2-alone signal is still calibrated against ChEMBL (§3.6)". **That ground is withdrawn with §3.6**: its potency axis was fabricated, so it certified nothing. What survives is the weaker claim that the Boltz-2 binary classifier is a *relative* ranking signal within a chemotype-target class, which does not depend on the withdrawn calibration. Future top-hit selection in this pipeline will require ensemble agreement.
 
 ### 3.8 PoseBusters geometric / steric validation across 149 cofold poses
 
@@ -332,7 +319,7 @@ The corrected ABFE protocol is intended for application in our broader pipeline 
 
 ### 4.1 MMP-1 catalytic zinc handling
 
-MMP-1 is a zinc metalloprotease; the catalytic Zn²⁺ is essential for substrate turnover and for hydroxamate-class inhibitor binding (Marimastat, IC₅₀ ≈ 5 nM). The current GAFF-2.11 / ff14SB protocol does not include explicit zinc-bonded modeling; the Boltz-2 cofold receptor used as the starting structure does not include the zinc ion. **Predicted MMP-1 binding free energies under the present protocol should be interpreted as a "MMP-1 minus zinc" model**, useful for comparative ranking among non-zinc-coordinating compounds but not for direct comparison to literature hydroxamate IC₅₀ values.
+MMP-1 is a zinc metalloprotease; the catalytic Zn²⁺ is essential for substrate turnover and for hydroxamate-class inhibitor binding. The current GAFF-2.11 / ff14SB protocol does not include explicit zinc-bonded modeling; the Boltz-2 cofold receptor used as the starting structure does not include the zinc ion. **Predicted MMP-1 binding free energies under the present protocol should be interpreted as a "MMP-1 minus zinc" model**, useful for comparative ranking among non-zinc-coordinating compounds but not for direct comparison to literature hydroxamate IC₅₀ values.
 
 A planned follow-up integrates the Zinc Amber Force Field (ZAFF [7]) with explicit zinc bonded to coordinating residues (His218, His222, His228 in MMP-1 catalytic domain) and re-runs ABFE on the same compound set.
 
@@ -386,7 +373,7 @@ Same standard text. Code: <https://github.com/crazat/genesis_medicine>. Specific
 
 - **v0.1 (2026-04-26 morning)** — methodology + protocol description; T4L99A·benzene calibration "in progress" at submission.
 - **v0.2 (2026-04-26 afternoon)** — partial OpenMM-ABFE calibration: complex leg ΔG_decouple = 2.695 ± 0.146 kcal/mol completed (5.71 h GPU); solvent leg blocked by 1.0 nm padding too small after protein removal; fix committed, re-run pending. No final ΔG_bind reported.
-- **v0.3 (2026-04-26 evening)** — added §3.6 ChEMBL MMP-1 calibration (n=15, Spearman ρ = −0.724, p = 0.002, Pearson r = −0.762). Correctly ranks Prinomastat (3 nM) and Lovejoy 1999 (18 µM) at extremes. Front-end validated as a ranking signal.
+- **v0.3 (2026-04-26 evening)** — added §3.6 ChEMBL MMP-1 calibration. Withdrawn 2026-07-18: the panel's potency values were found to be fabricated, so the calibration had no verified ground truth (see the disclosure at the head of this document).
 - **v0.4 (2026-04-26 night)** — added §3.7 Boltz-2 / Chai-1 two-way structural ensemble on 6 top pairs. Only EMB-3 × MMP1 shows strong agreement (Boltz-2 0.674 / Chai-1 0.696). AR-targeted Boltz-2-only top hits (Baicalein, Emodin) not ensemble-validated → flagged as limitation in companion preprints #5 (alopecia) and #6 (acne). Two-model agreement (≥0.55 / ≥0.55, |Δ|<0.10) proposed as the pipeline's go-forward selection rule for top hits.
 - **v0.5 (2026-04-26 late-night)** — added §3.8 PoseBusters geometric/steric validation across 149 cofold poses. Mean per-pose pass-rate 95.2 %, strict-full-pass 28.9 % (43/149) — the gap dominated by `minimum_distance_to_protein` and quinoid-ring `non-aromatic_ring_non-flatness` (chemotype-expected). EMB-3 × MMP-1 1/5 strict full-pass; AR top hits Baicalein/Emodin 2/5 and 3/5 strict full-pass — Boltz-2 / Chai-1 affinity-head disagreement on AR is therefore not explained by PB pose failure.
 - **v0.6 (2026-04-27 00:11 KST)** — **OpenMM-ABFE cycle CLOSED on T4L99A·benzene**. Solvent leg completed in 3.18 h GPU after padding fix; ΔG_solvent_decouple = −1.469 ± 0.111 kcal/mol. Final ΔG_bind = −4.006 ± 0.183 kcal/mol vs literature −5.18 ± 0.18 (Mobley 2007). |Δ| = 1.17 kcal/mol passes the preregistered ±2 kcal/mol criterion. Methodology validated for downstream application ABFE on natural-product · skin-target systems.

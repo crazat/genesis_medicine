@@ -1,6 +1,6 @@
 # Target Evidence Gate
 
-- timestamp: `2026-05-06T12:46:04+09:00`
+- timestamp: `2026-05-06T15:23:44+09:00`
 - targets: `31`
 - gate_counts: `{'green': 13, 'red': 8, 'yellow': 10}`
 - purpose: 계산 큐를 질병/피부 근거, tractability, modality에 연결해 무의미한 docking 확장을 줄인다.

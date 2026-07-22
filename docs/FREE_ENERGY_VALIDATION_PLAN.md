@@ -1,6 +1,6 @@
 # Free-energy Validation Plan
 
-- timestamp: `2026-05-06T12:46:32+09:00`
+- timestamp: `2026-05-06T15:24:09+09:00`
 - rows: `32`
 - existing_rbfe_edge_rows: `15`
 - method_counts: `{'RBFE_network': 5, 'ABFE_scout': 1, 'ABFE_or_CBFE_scout': 6, 'defer': 20}`

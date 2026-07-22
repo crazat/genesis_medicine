@@ -5,6 +5,10 @@ zenodo_deposit_date: 2026-05-04
 prior_history: bioRxiv BIORXIV/? rejected 2026-05-03 (scope mismatch)
 ---
 
+> **Correction (2026-07-21) — calibration-anchor provenance.** The methods summary cited a "ChEMBL pIC50 calibration carried over from MMP-1 study (Pearson R = -0.453, n=93)" without identifying which MMP-1 dataset. It is the real 93-compound ChEMBL cohort of preprint #18, not the 15-ligand panel withdrawn in 2026-07 for fabricated annotations; the figure is sound and reproduces. The wording now names the source and notes that the figure was measured on Boltz-2 `affinity_pred_value` and is not a calibration of `prob_binary`. No result changes. Full scope of the underlying finding: `preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md`; citation audit: `preprints/_metadata/DANGLING_CITATION_AUDIT_2026_07_21.md`.
+>
+> <!-- correction-2026-07-21 -->
+
 # Mechanotransduction in Androgenetic Alopecia: An *In Silico* Repositioning Study of PIEZO1 + MLCK Axis Using Cofolding and Pilosebaceous Single-Cell Atlas Constraints
 
 **HanCheongWoo ¹,²,³**
@@ -62,7 +66,7 @@ Source: AlphaFold DB v6.
 ### 2.3 Cofolding
 - Boltz-2 (MIT, RTX 5090, ~3.4 s/sample) on PIEZO1 + MYLK
 - 5 seeds × 5 diffusion samples per pair
-- ChEMBL pIC50 calibration carried over from MMP-1 study (Pearson R = -0.453, n=93)
+- ChEMBL pIC50 reference anchor carried over from the 93-compound MMP-1 cohort of preprint #18 (Pearson R = -0.453, measured on Boltz-2 affinity_pred_value). This is the real ChEMBL-derived cohort, not the 15-ligand panel withdrawn in 2026-07 for fabricated annotations; and it is not a calibration of prob_binary.
 
 ### 2.4 Skin PBPK
 - Dancik 4-layer (SC + VE + dermis + systemic)

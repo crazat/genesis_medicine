@@ -1,0 +1,9 @@
+R55 #1a xtb numerical-floor control — v212_mmp1_CHEMBL259829_model_0.sdf (GFN2 SP, N=12 each)
+  OMP_NUM_THREADS=1: n=12  meanE=-71.1141816431 Eh
+     σ = 0.000e+00 Eh = 0.000e+00 kcal/mol | range = 0.000e+00 Eh
+  OMP_NUM_THREADS=8: n=12  meanE=-71.1141816431 Eh
+     σ = 0.000e+00 Eh = 0.000e+00 kcal/mol | range = 0.000e+00 Eh
+  SCF convergence floor ≈ 1e-7 Eh = 6.275e-05 kcal/mol
+  → INTERPRETATION: σ at fixed input is the numerical floor. Our reported σ_E (reseed,
+    typ. 15-100 kcal/mol per cell) is many orders above this floor ⇒ σ_E is genuine
+    conformer/seed signal, not thread-reduction-order numerical noise.

@@ -58,3 +58,63 @@
     estimated_localtime_finish_date: 2026-May-05-22:51:20
     estimated_total_time: '1:32:12.636827'
     ns_per_day: 1998.9022133364558
+- iteration: 200
+  percent_complete: 25.0
+  mbar_analysis:
+    free_energy_in_kT: 104.80356977444575
+    standard_error_in_kT: 0.837380563937931
+    number_of_uncorrelated_samples: 199.0
+    n_equilibrium_iterations: 3
+    statistical_inefficiency: 1.0
+  timing_data:
+    iteration_seconds: 10.712268114089966
+    average_seconds_per_iteration: 9.843921678150119
+    estimated_time_remaining: '1:38:36.196929'
+    estimated_localtime_finish_date: 2026-May-07-05:24:31
+    estimated_total_time: '2:11:15.137343'
+    ns_per_day: 1404.3183653811661
+- iteration: 400
+  percent_complete: 50.0
+  mbar_analysis:
+    free_energy_in_kT: 105.49658542787387
+    standard_error_in_kT: 0.8387763177762616
+    number_of_uncorrelated_samples: 397.0
+    n_equilibrium_iterations: 5
+    statistical_inefficiency: 1.0
+  timing_data:
+    iteration_seconds: 9.598300457000732
+    average_seconds_per_iteration: 10.215489118021532
+    estimated_time_remaining: '1:08:16.411136'
+    estimated_localtime_finish_date: 2026-May-07-05:29:29
+    estimated_total_time: '2:16:12.391294'
+    ns_per_day: 1353.239168510547
+- iteration: 600
+  percent_complete: 75.0
+  mbar_analysis:
+    free_energy_in_kT: 105.90205264802836
+    standard_error_in_kT: 0.8392797177098978
+    number_of_uncorrelated_samples: 595.0
+    n_equilibrium_iterations: 7
+    statistical_inefficiency: 1.0
+  timing_data:
+    iteration_seconds: 11.143467426300049
+    average_seconds_per_iteration: 10.448277296725418
+    estimated_time_remaining: '0:35:00.103737'
+    estimated_localtime_finish_date: 2026-May-07-05:32:35
+    estimated_total_time: '2:19:18.621837'
+    ns_per_day: 1323.0889272370828
+- iteration: 800
+  percent_complete: 100.0
+  mbar_analysis:
+    free_energy_in_kT: 106.18971880899765
+    standard_error_in_kT: 0.8395170348922414
+    number_of_uncorrelated_samples: 793.0
+    n_equilibrium_iterations: 9
+    statistical_inefficiency: 1.0
+  timing_data:
+    iteration_seconds: 10.600080490112305
+    average_seconds_per_iteration: 10.479459352875233
+    estimated_time_remaining: '0:00:10.479459'
+    estimated_localtime_finish_date: 2026-May-07-05:33:00
+    estimated_total_time: '2:19:43.567482'
+    ns_per_day: 1319.152022495047

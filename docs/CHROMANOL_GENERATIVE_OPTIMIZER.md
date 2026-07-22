@@ -1,6 +1,6 @@
 # Chromanol Generative Optimizer
 
-- timestamp: `2026-05-06T12:46:11+09:00`
+- timestamp: `2026-05-06T15:23:51+09:00`
 - rows: `330`
 - action_counts: `{'Boltz-2_next_when_GPU_free': 240, 'keep_for_route_or_safety_review': 82, 'archive_low_priority': 8}`
 - purpose: R15/R16 chromanol core 주변에서 valid RDKit analog를 만들어 다음 Boltz/route/safety 큐 후보를 넓힌다.

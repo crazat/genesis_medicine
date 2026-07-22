@@ -210,3 +210,19 @@ pilot/*.log
 pilot/**/*.launch.log
 pilot/**/*.outer.log
 pilot/**/*.restart.log
+
+# --- 2026-07-21: large data/model/output/binary — GitHub 100MB limit; backed by DVC + Google Drive archive ---
+.venv/
+.cache/
+external/
+external_tools/
+round4/gnina/
+*.ckpt
+*.pt
+*.pth
+*.safetensors
+*.dcd
+*.nc
+*.so
+*.zip
+*.pkl

@@ -1,0 +1,22 @@
+R55 #4 scoring rules — σ_iptm reseed ensemble, 15 ligands
+ligand                    mean    sigma      CRPS spread/skill
+mmp1_CHEMBL259829       0.8468  0.00569  0.003207        0.997
+mmp1_CHEMBL3036         0.8987  0.00189  0.001075        0.997
+mmp1_CHEMBL2105729      0.9428  0.00147  0.000829        0.997
+mmp1_CHEMBL415          0.9161  0.00127  0.000718        0.997
+mmp1_CHEMBL443684       0.9770  0.00063  0.000171        0.996
+mmp1_CHEMBL1207         0.9658  0.00062  0.000316        0.997
+mmp1_CHEMBL94487        0.9596  0.00061  0.000335        0.997
+mmp1_CHEMBL98           0.9771  0.00051  0.000287        0.997
+mmp1_CHEMBL257077       0.9601  0.00038  0.000206        0.997
+mmp1_CHEMBL412          0.9676  0.00035  0.000199        0.997
+mmp1_CHEMBL292707       0.9666  0.00035  0.000196        0.997
+mmp1_CHEMBL406          0.9734  0.00034  0.000186        0.997
+mmp1_CHEMBL93146        0.9759  0.00028  0.000153        0.997
+mmp1_CHEMBL301236       0.9754  0.00024  0.000134        0.997
+mmp1_CHEMBL57058        0.9770  0.00022  0.000121        0.997
+
+Pooled LOO rank histogram (10 bins, n=2415): [240, 240, 255, 225, 240, 256, 239, 225, 240, 255]
+  shape verdict: ≈flat (well-dispersed)
+  mean spread-skill ratio = 0.997  (1.0 = ideally dispersed)
+  mean CRPS = 0.000542  (lower = sharper+calibrated; proper score, unlike raw σ)

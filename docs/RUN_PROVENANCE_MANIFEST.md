@@ -1,8 +1,8 @@
 # Run Provenance Manifest
 
-- timestamp: `2026-05-06T12:46:36+09:00`
-- git_head: `b8c1de4c58341dd4a88862c7befc0e26253593ee`
-- git_status_short_count: `1366`
+- timestamp: `2026-05-06T15:24:13+09:00`
+- git_head: `80a5634bc5c57c4a284ede15a85794414c884f7e`
+- git_status_short_count: `73`
 - python_venv: `Python 3.11.15`
 - python_genesis_md: `Python 3.11.15`
 - purpose: 논문/규제/재현성 관점에서 주요 산출물의 file hash와 생성 상태를 고정한다.
@@ -28,7 +28,7 @@
 | pilot/cpu_meaningful/skin_cell_state_evidence_gate.csv | True | 9367 | `732f1556b0b17a4a` |
 | pilot/cpu_meaningful/photosafety_sensitization_v2.csv | True | 284240 | `8cda16f54097d71d` |
 | pilot/cpu_meaningful/quinone_safety_gate.csv | True | 721724 | `94c9798bff5688e3` |
-| pilot/cpu_meaningful/quinone_safety_gate_summary.json | True | 425 | `0fa4c11ae2cb4aae` |
+| pilot/cpu_meaningful/quinone_safety_gate_summary.json | True | 425 | `bd7ebbf6e5ecabbd` |
 | pilot/cpu_meaningful/dmtl_experiment_cards.csv | True | 6809 | `1d04e1b75b056026` |
 | pilot/cpu_meaningful/skin_spatial_atlas_gate.csv | True | 11127 | `32515e47ec3dc65b` |
 | pilot/cpu_meaningful/target_engagement_assay_gate.csv | True | 11176 | `a26b6f6ce7943e9e` |
@@ -51,7 +51,7 @@
 | pilot/cpu_meaningful/fair_assay_dictionary.csv | True | 2202 | `bf5b90baf3940ebb` |
 | pilot/cpu_meaningful/wetlab_feedback_ingested.csv | True | 225 | `2fa743aafaae75af` |
 | pilot/cpu_meaningful/wetlab_queue_decisions.csv | True | 0 | `e3b0c44298fc1c14` |
-| pilot/cpu_meaningful/wetlab_result_ingestor_summary.json | True | 144 | `4b7e09373a418faa` |
+| pilot/cpu_meaningful/wetlab_result_ingestor_summary.json | True | 144 | `1d7982a2e4f0bc3e` |
 | pilot/cpu_meaningful/ai_model_governance_registry.csv | True | 2278 | `b8890519c6e8aa74` |
 | pilot/cpu_meaningful/rbfe_r16_edge_plan.csv | True | 4177 | `f3a12901920df7d9` |
 | pilot/cpu_meaningful/r17_chromanol_generative_batch01_rank001_032_cofold.csv | True | 7779 | `f6820dd9fb40a293` |
@@ -65,47 +65,47 @@
 | pilot/md_r16_chromanol_anchor_triad_200ns/summary.json | True | 1787 | `5e44dd34cc51afa3` |
 | pilot/md_r17_chromanol_generative_top_green_10ns/summary.json | True | 2160 | `0b0bb441d7ff3245` |
 | pilot/md_extended_30ns_batch2/summary.json | True | 1074 | `28e477cc71f75ae7` |
-| docs/PAPER_FACTORY_QUEUE.md | True | 22431 | `157e43e73a7c5a15` |
+| docs/PAPER_FACTORY_QUEUE.md | True | 22431 | `62db675f42e42ca7` |
 | docs/CODEX_CURATOR_LOOP_PROMPT.md | True | 19740 | `b1f223c8ca3efff7` |
-| docs/TARGET_EVIDENCE_GATE.md | True | 5051 | `7bf13ee322d3b7d6` |
-| docs/SYNTHESIS_RETROSYNTHESIS_GATE.md | True | 3343 | `1666dfaf713beafb` |
-| docs/ACTIVE_LEARNING_DOCKING_SURROGATE.md | True | 3417 | `ac0ff3e05c855678` |
-| docs/MULTI_FIDELITY_BO_PLANNER.md | True | 4677 | `efd61f8debb07fc2` |
-| docs/POCKET_EVIDENCE_GATE.md | True | 3687 | `8bb47b03048914f6` |
-| docs/STRUCTURE_CONSENSUS_CALIBRATION.md | True | 3090 | `9131fdfd494ef9de` |
-| docs/STRUCTURE_CONSENSUS_V2.md | True | 6647 | `d58c869c3be776da` |
-| docs/CHROMANOL_GENERATIVE_OPTIMIZER.md | True | 6206 | `12e50777618e4a14` |
-| docs/ROUTE_ENUMERATION_GATE.md | True | 7831 | `9b6c966c9c42d627` |
-| docs/SKIN_CELL_STATE_EVIDENCE_GATE.md | True | 6776 | `2f864ea5290c4f0c` |
-| docs/PHOTOSAFETY_SENSITIZATION_V2.md | True | 4640 | `88d05a6c23e000b1` |
-| docs/QUINONE_SAFETY_GATE.md | True | 15545 | `ba2e4464c866fd08` |
-| docs/DMTL_EXPERIMENT_CARD_FACTORY.md | True | 2834 | `c779c6047b50a689` |
-| docs/SKIN_SPATIAL_ATLAS_GATE.md | True | 7491 | `ebb7fc8c8f250d45` |
-| docs/TARGET_ENGAGEMENT_ASSAY_GATE.md | True | 8581 | `def6f4265450d358` |
-| docs/DERMAL_PBPK_IVPT_GATE.md | True | 8305 | `677d165a99411b36` |
-| docs/METABOLITE_REACTIVE_RISK_GATE.md | True | 7152 | `ea1b5e4bec2cfaae` |
-| docs/GENETIC_CAUSALITY_DIRECTION_GATE.md | True | 5239 | `4f6fc84758936782` |
-| docs/PHARMACOVIGILANCE_SIGNAL_GATE.md | True | 11143 | `0a164a9215dd4c77` |
-| docs/SINGLE_CELL_FM_RELIABILITY_GATE.md | True | 9488 | `25ab995919a43c88` |
-| docs/STRUCTURE_BENCHMARK_DECOY_GATE.md | True | 10724 | `ade5c4b1bea7e52c` |
+| docs/TARGET_EVIDENCE_GATE.md | True | 5051 | `c4b5b4121955e7e4` |
+| docs/SYNTHESIS_RETROSYNTHESIS_GATE.md | True | 3343 | `72b4f34a60ed55f7` |
+| docs/ACTIVE_LEARNING_DOCKING_SURROGATE.md | True | 3417 | `55f9d191744c6ba7` |
+| docs/MULTI_FIDELITY_BO_PLANNER.md | True | 4677 | `ab17d803bc381ab4` |
+| docs/POCKET_EVIDENCE_GATE.md | True | 3687 | `6ad52faff73c39f7` |
+| docs/STRUCTURE_CONSENSUS_CALIBRATION.md | True | 3090 | `c0072553def76893` |
+| docs/STRUCTURE_CONSENSUS_V2.md | True | 6647 | `b056944e4f58db39` |
+| docs/CHROMANOL_GENERATIVE_OPTIMIZER.md | True | 6206 | `6e2a72b2fee9945c` |
+| docs/ROUTE_ENUMERATION_GATE.md | True | 7831 | `e12b93232507d063` |
+| docs/SKIN_CELL_STATE_EVIDENCE_GATE.md | True | 6776 | `a048a54626dd43e0` |
+| docs/PHOTOSAFETY_SENSITIZATION_V2.md | True | 4640 | `29852d4d6ecf12d6` |
+| docs/QUINONE_SAFETY_GATE.md | True | 15545 | `cf8838434bcff6f8` |
+| docs/DMTL_EXPERIMENT_CARD_FACTORY.md | True | 2834 | `430e6a241f07d62d` |
+| docs/SKIN_SPATIAL_ATLAS_GATE.md | True | 7491 | `5d469b8068f6e8d6` |
+| docs/TARGET_ENGAGEMENT_ASSAY_GATE.md | True | 8581 | `9bce734e79377d4c` |
+| docs/DERMAL_PBPK_IVPT_GATE.md | True | 8305 | `a269c987347db827` |
+| docs/METABOLITE_REACTIVE_RISK_GATE.md | True | 7152 | `163159c58f92f70c` |
+| docs/GENETIC_CAUSALITY_DIRECTION_GATE.md | True | 5239 | `6e5647b45c81e725` |
+| docs/PHARMACOVIGILANCE_SIGNAL_GATE.md | True | 11143 | `a4782a8b793f6930` |
+| docs/SINGLE_CELL_FM_RELIABILITY_GATE.md | True | 9488 | `5b21884d36a77029` |
+| docs/STRUCTURE_BENCHMARK_DECOY_GATE.md | True | 10724 | `e64a9a2de5571ed1` |
 | docs/SOTA_GAP_REVIEW_2026-05-01_TRANSLATIONAL_LAYER.md | True | 12523 | `2f4182f0cb21bff7` |
-| docs/TOPICAL_FORMULATION_BO.md | True | 4679 | `0f2eadce2c6fd993` |
-| docs/FREE_ENERGY_VALIDATION_PLAN.md | True | 5499 | `4c3cd67defb4d6b9` |
-| docs/DERMAL_REGULATORY_SAFETY_GATE.md | True | 3983 | `a92e1f5723a52f43` |
-| docs/PERTURBATION_BIOLOGY_GATE.md | True | 3743 | `19787c8d913dd233` |
-| docs/HYDRATION_KINETICS_GATE.md | True | 4503 | `abfea67f3d9327ad` |
-| docs/ULTRA_LARGE_SCREENING_ROADMAP.md | True | 7165 | `3801b3549ffe7a15` |
-| docs/MODEL_VALIDATION_UNCERTAINTY_GATE.md | True | 5459 | `da1221ccf752a90b` |
-| docs/PHENOMICS_SIGNATURE_GATE.md | True | 8513 | `3c1fe53b33ad644c` |
-| docs/DEVELOPABILITY_CMC_GATE.md | True | 5703 | `fb0aae0cc1c278dd` |
-| docs/IP_FTO_WATCHLIST.md | True | 7719 | `73d8431bd15ba414` |
-| docs/FAIR_ASSAY_SCHEMA.md | True | 2295 | `fe3195c64184dbb8` |
-| docs/WETLAB_RESULT_INGESTOR.md | True | 1099 | `86cddbf685629d3a` |
-| docs/MODEL_GOVERNANCE_REGISTRY.md | True | 2180 | `df9c2a5b1c72ae9b` |
+| docs/TOPICAL_FORMULATION_BO.md | True | 4679 | `26c60d2a960d7597` |
+| docs/FREE_ENERGY_VALIDATION_PLAN.md | True | 5499 | `932b2b63bfc7ba77` |
+| docs/DERMAL_REGULATORY_SAFETY_GATE.md | True | 3983 | `fed5d7ce2e1ebe73` |
+| docs/PERTURBATION_BIOLOGY_GATE.md | True | 3743 | `24582d5e004fe447` |
+| docs/HYDRATION_KINETICS_GATE.md | True | 4503 | `2310862c41037f8d` |
+| docs/ULTRA_LARGE_SCREENING_ROADMAP.md | True | 7165 | `14f299966dffcda6` |
+| docs/MODEL_VALIDATION_UNCERTAINTY_GATE.md | True | 5459 | `ac3591ce4d63a145` |
+| docs/PHENOMICS_SIGNATURE_GATE.md | True | 8513 | `abb4b5aaf838c533` |
+| docs/DEVELOPABILITY_CMC_GATE.md | True | 5703 | `f54eb52c55c66d4e` |
+| docs/IP_FTO_WATCHLIST.md | True | 7719 | `d916ef187e7b06a9` |
+| docs/FAIR_ASSAY_SCHEMA.md | True | 2295 | `9f16e88c273df3aa` |
+| docs/WETLAB_RESULT_INGESTOR.md | True | 1099 | `a2e522ef061efb9b` |
+| docs/MODEL_GOVERNANCE_REGISTRY.md | True | 2180 | `e168261048775bd4` |
 | docs/RBFE_UPGRADE_READINESS.md | True | 3770 | `8c1bf2f507b002bb` |
-| docs/WETLAB_FEEDBACK_SCHEMA.md | True | 2626 | `ba0a94fab2b4e6d8` |
+| docs/WETLAB_FEEDBACK_SCHEMA.md | True | 2626 | `79ce1caff5bea0b6` |
 | data/fair_assay_metadata_template.csv | True | 395 | `2559cf410a57e4bc` |
-| data/fair_assay_schema.json | True | 7234 | `1222c328e26c64d2` |
+| data/fair_assay_schema.json | True | 7234 | `dff7534f03379c63` |
 | data/wetlab_feedback_results_template.csv | True | 226 | `d1f641fe30776bb2` |
 | data/ip_fto_manual_review_template.csv | True | 135 | `f3c56afbe6863d87` |
 | scripts/codex_curator_loop.sh | True | 17676 | `f6cc1d138da4217d` |

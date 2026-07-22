@@ -1,6 +1,6 @@
 # Multi-fidelity BO Planner
 
-- timestamp: `2026-05-06T12:46:10+09:00`
+- timestamp: `2026-05-06T15:23:50+09:00`
 - plan_rows: `112`
 - purpose: 다음 action을 무작정 GPU/CPU로 고르지 않고 cost 대비 정보가 큰 fidelity로 선택한다.
 

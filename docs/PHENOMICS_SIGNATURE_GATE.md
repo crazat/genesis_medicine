@@ -1,6 +1,6 @@
 # Phenomics Signature Gate
 
-- timestamp: `2026-05-06T12:46:34+09:00`
+- timestamp: `2026-05-06T15:24:11+09:00`
 - rows: `752`
 - gate_counts: `{'priority_cell_painting': 278, 'phenomics_with_safety_counterscreen': 57, 'reference_signature_lookup': 417, 'hold_safety_first': 0}`
 - purpose: docking/MD 후보를 Cell Painting, high-content imaging, disease-cell phenotype 후속으로 연결한다.

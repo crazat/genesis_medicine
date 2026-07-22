@@ -1,3 +1,24 @@
+% # ⛔ CONTAMINATED — DO NOT SUBMIT OR DEPOSIT (2026-07-16)
+%
+% **Every compound name and IC50 value below is fabricated.** This manuscript's ligand panel comes from
+% `data/chembl_mmp1_calibration.csv`, whose annotations a primary-source audit refuted on 2026-07-16: all seven
+% of its named entries are a **different molecule** than the drug they name (e.g. the entry labelled prinomastat
+% is C23H30N2O5S; real prinomastat is C18H21N3O5S2, PubChem CID 466151), and **14 of its 15 structures are
+% unknown to PubChem's ~119 M compounds** — they are not published chemistry. The file has no generating script
+% and no retrieval record. See `preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md`; reproduce with
+% `scripts/round27_paperA/verify_panel_identity_pubchem.py`.
+%
+% **What this means for this draft.** Any statement here about compound identity, potency, structure–activity
+% or repositioning is void. Computational results *on those structures* remain valid as reproducibility
+% measurements — whether a computation repeats on a fixed input does not depend on what the input is called —
+% but they cannot be attributed to the named drugs and cannot be transferred to the real ones.
+%
+% **Before this draft goes anywhere** it needs the same decision paper_A took: either restate it as a pure
+% methodology paper that claims no identity or potency (see `23_paper_A_v6_mmp1_5nnp_xtb/manuscript_v0.3_reproducibility.md`,
+% which survived this finding by design), or re-run on the real panel now available at
+% `data/mmp1_panel_pubchem.csv` (121 compounds, IC50 0.78 nM–98 µM, every row carrying its PubChem CID, assay
+% AID and retrieval timestamp). That choice is the author's.
+
 \documentclass[11pt,a4paper]{article}
 
 % --- packages ---
@@ -40,6 +61,30 @@ a replicate-pair analysis on MMP-1}
 
 \begin{document}
 \maketitle
+
+\section*{Note on ligand-panel provenance and the accuracy axis (added 2026-07-18)}
+
+The ligand panel used in this draft is drawn from a calibration file
+(\texttt{data/chembl\_mmp1\_calibration.csv}) whose annotations a primary-source audit refuted on
+2026-07-16. A structure-first lookup against PubChem found that every one of the seven entries naming a
+specific drug is a different molecule than the drug it names, and that fourteen of the fifteen structures
+are unknown to PubChem entirely; the file carries no generating script and no retrieval record. The
+molecular structures themselves parse and sanitise under RDKit and carry zinc-binding chemotypes, and it
+is only those structures that this work uses. Every compound name, potency value and literature
+attribution in the panel file is therefore unverified and is not relied upon.
+
+This has a consequence specific to this draft. Its accuracy axis --- the comparison of computed ABFE free
+energies against an experimental affinity ($\dGexp = RT \ln \mathrm{IC}_{50}$), and every claim derived
+from it (systematic bias from experiment, sign-flips, potency-class stratification, and the
+recovery-of-experiment statements in the abstract and Results) --- rests on the fabricated potencies and
+is withdrawn pending either removal or re-derivation on a recorded, real panel
+(\texttt{data/mmp1\_panel\_pubchem.csv}, 121 compounds with per-row PubChem CID, assay AID and retrieval
+timestamp). The reproducibility content (replicate dispersion, the ReplicaExchangeSampler deadlock, the
+NaN-warmup fix, and the natural-product cross-method section) is a statement about whether a computation
+repeats on a fixed input and is unaffected. The decision to restate this work as a
+reproducibility-and-limitations paper that claims no accuracy, or to re-run the accuracy axis on the real
+panel, is the author's and has not been made; until then this draft is not for submission or deposit.
+Scope and correction map: \texttt{preprints/\_metadata/FABRICATED\_PANEL\_SCOPE\_2026\_07\_16.md}.
 
 \begin{abstract}
 Absolute binding free energy (ABFE) calculations on zinc metalloenzymes
@@ -265,13 +310,16 @@ in the Langevin integrator, and (iii) random number streams in MBAR's
 self-consistent iteration. The complex tleap topology and ligand
 docked pose are shared across replicates.
 
-Experimental MMP-1 binding affinities were extracted from ChEMBL with
-manual cross-reference to the original literature; the experimental
-binding free energy at $T = \SI{310}{\kelvin}$ assumes
-$K_i \approx \mathrm{IC}_{50}$ for these substrate-competitive
-inhibitors,
-$\dGexp = RT \ln \mathrm{IC}_{50,\text{M}}$ where
-$RT = \SI{0.616}{\kcalmol}$.
+The experimental binding free energies used for the accuracy comparisons in
+this draft were taken from the calibration panel file
+(\texttt{data/chembl\_mmp1\_calibration.csv}) as
+$\dGexp = RT \ln \mathrm{IC}_{50,\text{M}}$ at $T = \SI{310}{\kelvin}$
+($RT = \SI{0.616}{\kcalmol}$), assuming $K_i \approx \mathrm{IC}_{50}$. A
+primary-source audit (2026-07-16) subsequently established that this file's
+potency values are fabricated and do not correspond to real compounds (see the
+provenance note at the head of this document); the $\dGexp$ values are therefore
+not verified experimental references, and every accuracy comparison against them
+is withdrawn pending re-derivation on a recorded, real panel.
 
 \subsection{Cross-method ranking validation}
 

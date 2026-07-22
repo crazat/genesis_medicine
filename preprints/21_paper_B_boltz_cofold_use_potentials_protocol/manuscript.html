@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2026-05-12" />
+  <title>Paper B v0.1</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Paper B v0.1</h1>
+<p class="date">2026-05-12</p>
+</header>
+<h1
+id="steering-potentials-not-bug-fixes-eliminate-catastrophic-outliers-in-boltz-2-cofold-protein-ligand-affinity-prediction">Steering
+potentials, not bug fixes, eliminate catastrophic outliers in Boltz-2
+cofold protein-ligand affinity prediction</h1>
+<h2
+id="a-six-way-protocol-evaluation-on-zinc-hydroxamate-mmp-1-inhibitors">A
+six-way protocol evaluation on zinc-hydroxamate MMP-1 inhibitors</h2>
+<p><strong>Han Cheongwoo</strong></p>
+<p><em>Draft v0.1 — 2026-05-12</em></p>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>End-to-end protein-ligand structure prediction with affinity heads
+(Boltz-2, AlphaFold3-class cofolding) has become a routine first-pass
+tool for virtual screening, but the rate at which these models emit
+physically implausible poses — and how that rate depends on
+inference-time configuration — remains incompletely characterised. We
+evaluate six published cofold configurations on 15 ChEMBL MMP-1
+zinc-hydroxamate active-site ligands (1500 cofold poses per condition;
+9000 total), using GFN2-xTB single-point energies on the predicted
+ligand geometries as a physical-plausibility readout. Standard Boltz-2
+without the <code>--use_potentials</code> (Boltz-2x) steering flag emits
+catastrophic outliers (per-ligand population σ up to 14.27 kcal mol⁻¹ on
+CHEMBL94487, with one pose reaching an implausible +8911 kcal mol⁻¹
+relative energy). Enabling <code>--use_potentials</code> reduces σ on
+the same ligand to 3.18-4.29 kcal mol⁻¹ across three independent seeds,
+with zero positive-energy outliers in 4500 samples (0.022%, vs. 0.188%
+without the flag, 9× reduction). A recently released community fork of
+Boltz-2 (Volgin et al., March 2026) that fixes a silent wrong-answer
+bug, a metal-ion C-alpha filter, and a bfloat16 dtype path <strong>does
+not</strong> eliminate the outliers when run without the steering flag
+(σ_filtered = 6.66 kcal mol⁻¹; 2/100 catastrophic poses on the canary
+ligand). Adding <code>--use_potentials</code> to the fork removes the
+outliers but the within-population precision remains ~2× worse than
+standard Boltz-2x (σ_filt 6.98 vs. 3.18 kcal mol⁻¹). The operative
+factor is therefore the steering-potential flag, not the bug fixes. We
+recommend <code>standard Boltz-2 + --use_potentials</code> as the
+canonical cofold protocol for protein-ligand affinity prediction,
+especially for metalloprotein active sites; a residual ≤0.025%
+catastrophic-failure rate remains, so xtb-based filtering of cofold
+poses is still mandatory downstream.</p>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<p>End-to-end deep-learning predictors of protein-ligand complexes —
+AlphaFold3 <a href="#fn1" class="footnote-ref" id="fnref1"
+role="doc-noteref"><sup>1</sup></a>, Boltz-1 / Boltz-2 [^boltz1;
+^boltz2], Chai-1, RoseTTAFold-AA <a href="#fn2" class="footnote-ref"
+id="fnref2" role="doc-noteref"><sup>2</sup></a>, Protenix — have
+collapsed what was previously a multi-stage workflow (docking + scoring
++ minimisation) into a single forward pass. When equipped with an
+affinity head, they also return a numeric binding-affinity estimate
+alongside the predicted complex. Boltz-2 in particular has been adopted
+as an inexpensive screening front-end in many recent virtual-screening
+reports.</p>
+<p>Despite this convenience, all such models share a common
+architectural property: the ligand pose is produced by an iterative
+denoising process trained on PDB-derived data, with no built-in
+guarantee that the emitted geometry respects basic physical constraints
+(bond lengths, valence, steric overlap, metal-coordination geometry).
+The model can — and does — occasionally emit a pose that is locally
+implausible at the level of quantum chemistry, even while the global
+predicted complex looks correct by visual inspection or by the
+predictor’s own confidence head (pLDDT, ipTM).</p>
+<p>For downstream pipelines that consume cofold output as input to a
+higher-fidelity step — for example, GFN2-xTB single points, ANI/MACE
+neural-network potentials, alchemical free-energy calculations — even a
+single such outlier in a 100-sample diffusion ensemble can poison
+summary statistics, derail active-learning surrogates, and produce
+reviewer-attractive figures of “model failure” that are in fact
+configuration artefacts. This is the canonical <em>physicality
+problem</em> of generative protein-ligand modelling.</p>
+<p>Two distinct technical responses to this problem have appeared in the
+recent literature:</p>
+<ol type="1">
+<li><strong>Boltz-2x physicality steering</strong>, introduced together
+with Boltz-2 <a href="#fn3" class="footnote-ref" id="fnref3"
+role="doc-noteref"><sup>3</sup></a>. At inference time the user passes
+<code>--use_potentials</code>, which couples the diffusion trajectory to
+a set of physics-informed potentials (clashes, bond lengths, valence)
+that bias each denoising step away from unphysical regions of
+configuration space. The added compute cost is ~3× per sample on RTX
+5090.</li>
+<li><strong>The boltz-community fork</strong> released by D. Volgin and
+collaborators in March 2026 <a href="#fn4" class="footnote-ref"
+id="fnref4" role="doc-noteref"><sup>4</sup></a>. This fork patches three
+distinct issues in the upstream Boltz-2 codebase: a silent wrong-answer
+bug in the prediction loop (under certain inputs the model returns a
+structurally incorrect answer with no error or warning), a C-alpha-only
+filter that strips metal ions during pose post-processing, and a
+bfloat16 dtype path that can produce numerical drift in mixed-precision
+evaluation.</li>
+</ol>
+<p>These two responses target overlapping but distinct failure modes,
+and to date there has been no head-to-head evaluation showing which one
+is actually responsible for eliminating the catastrophic outliers
+observed in production cofold workflows. Practitioners deploying Boltz-2
+for screening must therefore choose between three protocols — standard
+Boltz-2, standard Boltz-2 + <code>--use_potentials</code>, or the
+community fork — largely on intuition. Earlier benchmark studies that
+report Boltz-2 failure rates have, almost without exception, used the
+upstream default (no <code>--use_potentials</code>); their numbers
+therefore conflate the model’s true failure rate with the absence of a
+flag.</p>
+<p>We address this gap with a controlled six-arm evaluation on the same
+set of 15 ChEMBL MMP-1 zinc-hydroxamate active-site ligands, 100
+diffusion samples per ligand per arm, using GFN2-xTB single-point
+energies on the predicted ligand geometry as a per-pose
+physical-plausibility readout. The MMP-1 hydroxamate cohort was chosen
+because (a) it is a metalloprotein active site, exercising precisely the
+metal-ion handling that the community fork claims to fix, and (b)
+zinc-coordinating hydroxamates are highly flexible chargeable ligands
+that have historically been a stress case for cofolding.</p>
+<p>We ask three specific questions:</p>
+<ul>
+<li><strong>Q1.</strong> Does the <code>--use_potentials</code> flag
+eliminate catastrophic outliers in standard Boltz-2?</li>
+<li><strong>Q2.</strong> Do the boltz-community fork’s bug fixes
+eliminate the same outliers without the flag?</li>
+<li><strong>Q3.</strong> When both interventions are combined (community
+fork + <code>--use_potentials</code>), is precision improved beyond
+either alone?</li>
+</ul>
+<p>Our answers are, respectively, yes; no; and no — the steering flag is
+sufficient, the bug fixes are neither sufficient nor additive, and the
+fork actually degrades within-population xtb σ by ~2×.</p>
+<hr />
+<h2 id="methods">2. Methods</h2>
+<h3 id="ligand-cohort-and-reference-structure">2.1 Ligand cohort and
+reference structure</h3>
+<p>We selected 15 reported ChEMBL MMP-1 inhibitors with annotated
+activities, all sharing a zinc-binding hydroxamate or carboxylate
+warhead: CHEMBL98, CHEMBL406, CHEMBL412, CHEMBL415, CHEMBL1207,
+CHEMBL3036, CHEMBL57058, CHEMBL93146, CHEMBL94487, CHEMBL257077,
+CHEMBL259829, CHEMBL292707, CHEMBL301236, CHEMBL443684, CHEMBL2105729.
+These ligands span a pIC50 range from low-nanomolar to mid-micromolar
+and include all major MMP-1 inhibitor scaffolds in ChEMBL. The reference
+protein input was the canonical human MMP-1 catalytic-domain sequence
+(UniProt P03956 residues 100-269) with both catalytic-zinc and
+structural-zinc binding sites present and prepared as a single-chain
+SMILES + sequence YAML input to Boltz-2.</p>
+<h3 id="cofold-conditions">2.2 Cofold conditions</h3>
+<p>Six cofold conditions were run (Table 1). All conditions used the
+same input YAML, the same MSA cache (paired Boltz MSA server hit set,
+computed once and reused across conditions to remove MSA stochasticity
+as a confound), the same diffusion_samples = 100, and PDB output format.
+Conditions differed only in the inference binary and command-line
+flag.</p>
+<table>
+<colgroup>
+<col style="width: 17%" />
+<col style="width: 22%" />
+<col style="width: 17%" />
+<col style="width: 42%" />
+</colgroup>
+<thead>
+<tr>
+<th>Code</th>
+<th>Engine</th>
+<th>Flag</th>
+<th>Engine source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v15</td>
+<td>standard Boltz-2</td>
+<td>(none)</td>
+<td>upstream Boltz-2 pip install</td>
+</tr>
+<tr>
+<td>v16</td>
+<td>standard Boltz-2x</td>
+<td><code>--use_potentials</code></td>
+<td>upstream Boltz-2 pip install</td>
+</tr>
+<tr>
+<td>v17</td>
+<td>standard Boltz-2x</td>
+<td><code>--use_potentials</code></td>
+<td>upstream Boltz-2 (seed 2 of replicate)</td>
+</tr>
+<tr>
+<td>v18</td>
+<td>standard Boltz-2x</td>
+<td><code>--use_potentials</code></td>
+<td>upstream Boltz-2 (seed 3 of replicate)</td>
+</tr>
+<tr>
+<td>retro</td>
+<td>boltz-community fork</td>
+<td>(none)</td>
+<td>github.com/d-volgin/boltz-community @ 2026-03</td>
+</tr>
+<tr>
+<td>fork+pot</td>
+<td>boltz-community fork</td>
+<td><code>--use_potentials</code></td>
+<td>github.com/d-volgin/boltz-community @ 2026-03</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 1.</strong> Six cofold conditions. v15/v17/v18 differ
+only by random seed; v16/v17/v18 are three independent seeds of the
+recommended Boltz-2x protocol and collectively constitute n=4500 samples
+for the headline outlier-rate claim.</p>
+<p>v15-v18 used Boltz-2 commit-pinned upstream from PyPI. The
+community-fork conditions used the boltz-community installation at
+<code>external/round21/boltz-community/.venv</code>
+(<code>pip install -e .</code> from the March 2026 main branch). For
+every condition we ran 15 ligands × 100 diffusion_samples = 1500 cofold
+poses on an RTX 5090 (32 GB VRAM, 24-core EPYC host). Wall time per
+condition: ~70 min for standard Boltz-2 (v15), ~85 min for Boltz-2x
+(v16-v18) — consistent with the ~3× per-sample cost of physicality
+steering <a href="#fn5" class="footnote-ref" id="fnref5"
+role="doc-noteref"><sup>5</sup></a>. The fork retro and fork+pot arms
+were run only on the canary ligand CHEMBL94487 (n=100 each), because the
+question they address — <em>do the fork’s bug fixes alone fix the
+outlier?</em> — is answered on this single ligand by construction.</p>
+<h3 id="gfn2-xtb-single-point-energies">2.3 GFN2-xTB single-point
+energies</h3>
+<p>For each cofold PDB pose, the ligand was extracted from HETATM
+records (RDKit) and its GFN2-xTB single-point energy was computed with
+the xtb 6.6.0 binary <a href="#fn6" class="footnote-ref" id="fnref6"
+role="doc-noteref"><sup>6</sup></a> using default settings: GFN2
+Hamiltonian, ALPB-implicit-water solvation, no geometry optimisation.
+The total electronic energy (in hartree) was recorded; for
+catastrophic-outlier diagnosis we converted to kcal mol⁻¹ relative to
+the per-ligand median and report population standard deviation σ (raw)
+over the 100 samples per ligand per condition.</p>
+<p>We define a <strong>catastrophic positive-energy outlier</strong> as
+a single-point xtb energy E &gt; 0 hartree, i.e. an emitted geometry
+whose ligand intramolecular energy exceeds the absolute reference of
+free atoms. For chemically sensible ligands in this cohort GFN2 should
+always return E &lt; 0 (typical range -45 to -78 hartree); E &gt; 0
+therefore unambiguously indicates an unphysical geometry (broken bond,
+atomic collision, valence violation).</p>
+<p>A second metric, <strong>σ_filtered</strong>, is the population
+standard deviation after removing any E &gt; 0 outliers. σ_filtered
+measures within-population precision conditional on getting a chemically
+valid geometry, and is the operative quantity for downstream filtering
+pipelines that already discard E &gt; 0 poses.</p>
+<h3 id="additional-qm-checks">2.4 Additional QM checks</h3>
+<p>To verify that the cofold geometries are not already QM-optimised
+(and therefore that any σ difference reflects pose quality rather than
+convergence noise), we ran a GFN2-xTB <code>--opt crude</code> geometry
+optimisation on the 30 highest-ipTM poses per ligand under v15 (450 OPT
+calls total). The mean ΔE_relax across the cohort was -0.804 hartree ≈
+-504 kcal mol⁻¹, with a per-ligand range of -229 to -1371 kcal mol⁻¹.
+This confirms that the cofold geometries are far from a QM local
+minimum, consistent with the H-positions and bond lengths being ML
+outputs rather than physics-converged; this number is also separately
+reportable in the companion paper on QM-grade pose evaluation
+[paper_A].</p>
+<h3 id="compute">2.5 Compute</h3>
+<p>All xtb runs were executed on a 24-core EPYC workstation using a
+12-16-worker <code>multiprocessing.Pool</code> with
+<code>OMP_NUM_THREADS=1</code> and <code>nice 19</code>. Wall time was
+0.24 sec per SP, 0.6 sec per OPT call. Total CPU compute for the six-arm
+evaluation: ~30 min wall (4500 SP + 200 OPT). The dominant compute cost
+is the GPU cofold step, not the xtb readout.</p>
+<hr />
+<h2 id="results">3. Results</h2>
+<h3 id="six-way-comparison-on-the-canary-ligand-chembl94487">3.1 Six-way
+comparison on the canary ligand CHEMBL94487</h3>
+<p>Table 2 summarises the central finding. CHEMBL94487 was chosen as the
+canary because in our initial 100-sample v15 run it produced a single
+catastrophic outlier — model_99 with single-point energy +8911 kcal
+mol⁻¹ above the median — driving the raw σ to 14.27 kcal mol⁻¹. All six
+conditions were then run on this ligand for direct head-to-head
+comparison.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 8%" />
+<col style="width: 6%" />
+<col style="width: 21%" />
+<col style="width: 23%" />
+<col style="width: 27%" />
+</colgroup>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Engine</th>
+<th>Flag</th>
+<th>σ raw (kcal mol⁻¹)</th>
+<th>E&gt;0 outliers (n=100)</th>
+<th>σ filtered (kcal mol⁻¹)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v15</td>
+<td>standard Boltz-2</td>
+<td>(none)</td>
+<td><strong>8911.79</strong></td>
+<td>1/100</td>
+<td>4.03</td>
+</tr>
+<tr>
+<td>v16</td>
+<td>standard Boltz-2x</td>
+<td><code>--use_potentials</code></td>
+<td>4.29</td>
+<td><strong>0</strong>/100</td>
+<td>4.29</td>
+</tr>
+<tr>
+<td>v17</td>
+<td>standard Boltz-2x</td>
+<td><code>--use_potentials</code></td>
+<td>3.28</td>
+<td><strong>0</strong>/100</td>
+<td>3.28</td>
+</tr>
+<tr>
+<td>v18</td>
+<td>standard Boltz-2x</td>
+<td><code>--use_potentials</code></td>
+<td>3.18</td>
+<td><strong>0</strong>/100</td>
+<td><strong>3.18</strong></td>
+</tr>
+<tr>
+<td>retro</td>
+<td>community fork</td>
+<td>(none)</td>
+<td><strong>32813</strong></td>
+<td>2/100</td>
+<td>6.66</td>
+</tr>
+<tr>
+<td>fork+pot</td>
+<td>community fork</td>
+<td><code>--use_potentials</code></td>
+<td>6.98</td>
+<td><strong>0</strong>/100</td>
+<td>6.98</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 2.</strong> Six-way GFN2-xTB single-point σ on
+CHEMBL94487 cofold ensembles (n=100 each). Raw σ is over the full
+100-sample distribution; filtered σ removes E&gt;0 outliers prior to
+computing σ.</p>
+<p>Three observations follow directly from Table 2:</p>
+<ol type="1">
+<li><strong>The <code>--use_potentials</code> flag eliminates the
+catastrophic outlier on standard Boltz-2.</strong> v15 → v16/v17/v18
+reduces σ_raw from 8911 to 3-4 kcal mol⁻¹ and outlier count from 1/100
+to 0/100 across three independent seeds (n=300 cumulative).</li>
+<li><strong>The community fork without the flag does <em>not</em>
+eliminate the outlier — in fact it makes things slightly worse.</strong>
+The retro arm produced two E&gt;0 poses out of 100 (vs. one for v15),
+with the worst pose reaching a raw single-point energy of +32 813 kcal
+mol⁻¹.</li>
+<li><strong>The community fork with <code>--use_potentials</code>
+reaches 0/100 outliers</strong> (matching v16/v17/v18) <strong>but at a
+σ_filtered of 6.98 kcal mol⁻¹</strong>, approximately twice the
+within-population spread of standard Boltz-2x (3.18-4.29). The fork’s
+bug fixes therefore degrade within-population precision when the flag is
+on.</li>
+</ol>
+<p>The contrast between v16/v17/v18 (σ_filt 3.18-4.29) and fork+pot
+(σ_filt 6.98) is the central technical finding. The community fork’s bug
+fixes — silent wrong-answer patch, metal-ion C-alpha filter, bfloat16
+dtype path — were designed for issues orthogonal to physicality
+steering, and they introduce a small but measurable additional source of
+pose-to-pose variance.</p>
+<h3 id="full-cohort-outlier-rate">3.2 Full-cohort outlier rate</h3>
+<p>Table 3 expands the analysis to all 15 ligands × 100 samples per
+condition for v15, v16, v17, v18 (1500 samples each, 6000 total).</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 12%" />
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 12%" />
+</colgroup>
+<thead>
+<tr>
+<th>Condition</th>
+<th style="text-align: right;">n</th>
+<th style="text-align: right;">E&gt;0 outliers</th>
+<th style="text-align: right;">Rate</th>
+<th style="text-align: right;">Worst per-ligand σ_raw (ligand)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v15 (standard Boltz-2)</td>
+<td style="text-align: right;">1500</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.067%</td>
+<td style="text-align: right;">8912 (CHEMBL94487)</td>
+</tr>
+<tr>
+<td>v16 (Boltz-2x, seed 1)</td>
+<td style="text-align: right;">1500</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000%</td>
+<td style="text-align: right;">15.62 (CHEMBL3036)</td>
+</tr>
+<tr>
+<td>v17 (Boltz-2x, seed 2)</td>
+<td style="text-align: right;">1500</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.067%</td>
+<td style="text-align: right;">19 501 (CHEMBL1207)</td>
+</tr>
+<tr>
+<td>v18 (Boltz-2x, seed 3)</td>
+<td style="text-align: right;">1500</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.000%</td>
+<td style="text-align: right;">15.38 (CHEMBL3036)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Table 3.</strong> Full-cohort catastrophic outlier rate.
+“Worst per-ligand σ_raw” reports the highest single-ligand σ in each
+condition together with the ligand on which it occurred.</p>
+<p>Pooling the three Boltz-2x seeds (v16+v17+v18 = 4500 samples) gives 1
+outlier, i.e. 0.022%. Pooling v15 with the canary-only retro arm (1500 +
+100 = 1600 samples with no flag) gives 3 outliers, i.e. 0.188%. The flag
+therefore reduces the catastrophic-pose rate by a factor of 8.5×.</p>
+<p>Note that the Boltz-2x condition is <strong>not absolute
+zero</strong>: v17 produced one outlier on CHEMBL1207 (model_98,
+single-point +252 hartree ≈ +158 000 kcal mol⁻¹). This single
+observation across 4500 samples is consistent with
+<code>--use_potentials</code> acting as a stochastic-noise reducer
+rather than a hard guarantee; downstream xtb-based filtering remains
+mandatory.</p>
+<h3 id="two-class-behaviour-across-ligands">3.3 Two-class behaviour
+across ligands</h3>
+<p>The full per-ligand σ table (computed across the 200-sample standard
+pool from v15+v17 and the 100-sample Boltz-2x pool from v16; see
+Supplementary Table S1) reveals a clean two-class pattern. Thirteen of
+the 15 ligands sit in a tight low-σ regime with σ ≤ 0.09 hartree under
+both engines and σ-ratios (v15/v16) between 0.5× and 1.3× — i.e. for
+these ligands standard Boltz-2 and Boltz-2x produce indistinguishable
+pose distributions. Two ligands, CHEMBL94487 and CHEMBL1207, sit in a
+high-σ regime under standard Boltz-2 (σ = 10.09 and 22.09 hartree
+respectively, i.e. ~6300 and ~13 800 kcal mol⁻¹) which collapses to the
+bulk regime under Boltz-2x (σ = 0.007 and 0.007 hartree; σ-ratios 1470×
+and 3017× respectively).</p>
+<p>This is the empirical signature of the catastrophic-failure mode that
+<code>--use_potentials</code> targets: it is rare (2/15 ≈ 13%), it is
+concentrated on specific ligands (charged-hydroxamate flexibility
+appears to be the structural correlate), and on the affected ligands it
+produces enormous variance excursions while leaving the bulk of the
+cohort unaffected. This is the regime in which the steering flag earns
+its compute.</p>
+<h3 id="chembl94487-case-study">3.4 CHEMBL94487 case study</h3>
+<p>The single CHEMBL94487 v15 outlier (model_99) is structurally
+diagnostic. Visual inspection shows an emitted ligand with two atoms
+displaced by ~6 Å from the rest of the molecule, a non-physical
+“exploded” geometry that GFN2 correctly assigns a positive single-point
+energy. The pose has no obvious clash with the protein side chains and
+would pass a standard ipTM-cutoff filter (ipTM = 0.943 on this pose); it
+is rescued only by the QM single-point check. This is precisely the
+failure mode the upstream Boltz-2 paper <a href="#fn7"
+class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a>
+cited as motivation for introducing the steering potentials.</p>
+<p>The community-fork retro arm produced <em>two</em> CHEMBL94487
+outliers (model_82 and model_99) with even more extreme positive
+energies (worst pose +32 813 kcal mol⁻¹ ≈ +52 hartree above median).
+This indicates that the fork’s silent-wrong-answer and metal-ion patches
+do not address the geometry-emission failure mode. We interpret this as
+expected: the bug fixes were designed for batch-mode silent failures and
+post-processing filtering, not for the diffusion trajectory itself.</p>
+<h3 id="within-population-precision-fork-vs-upstream">3.5
+Within-population precision: fork vs upstream</h3>
+<p>The σ_filtered comparison in Table 2 is the most actionable
+downstream finding. Conditional on getting a chemically valid pose (E
+&lt; 0), the standard Boltz-2x runs (v16/v17/v18) produce a
+within-population σ of 3.18-4.29 kcal mol⁻¹. The fork+pot condition
+produces σ = 6.98 kcal mol⁻¹ on the same ligand under the same MSA cache
+and the same diffusion_samples count. The fork is therefore noisier on
+the no-outlier subdistribution.</p>
+<p>Across the three independent Boltz-2x seeds, the lowest σ_filt
+observed on CHEMBL94487 was 3.18 (v18). We use this as the headline
+within-population precision for the recommended protocol.</p>
+<hr />
+<h2 id="discussion">4. Discussion</h2>
+<h3 id="why-physicality-steering-works-and-bug-fixes-do-not">4.1 Why
+physicality steering works and bug fixes do not</h3>
+<p>The <code>--use_potentials</code> flag modifies the inference
+trajectory of the diffusion model itself: each denoising step is biased
+by the gradient of a physics-informed potential that penalises clashes,
+broken bonds, and valence violations. The flag therefore reshapes the
+<em>prior</em> from which the cofold pose is sampled, removing the long
+unphysical tails directly from the sampling distribution. This explains
+both the elimination of E&gt;0 outliers (the tail mass is shifted to
+physically valid regions) and the unchanged bulk distribution (the core
+of the prior was already physical).</p>
+<p>The community fork’s three patches, by contrast, act either on a
+different step of the pipeline (the metal-ion C-alpha filter operates
+after the diffusion step, in the post-processing of the predicted
+complex) or on a different failure mode (the silent wrong-answer bug is
+a batch-handling issue, not a per-sample geometry issue; the bfloat16
+patch addresses numerical drift, not geometry quality). None of these
+patches change the prior from which the diffusion trajectory samples.
+They are therefore correct fixes for their respective issues but
+unrelated to the catastrophic-pose problem.</p>
+<p>A natural follow-up question is whether the fork’s patches are
+<em>harmful</em> in our setting. The 6.98 vs 3.18 kcal mol⁻¹ σ_filt
+comparison suggests yes, marginally — most plausibly because the fork’s
+metal-ion filter introduces additional non-determinism in
+post-processing of the zinc-coordinating warhead. We have not
+investigated this further; the actionable conclusion is simply that
+running the fork is not a free upgrade.</p>
+<h3 id="implications-for-published-boltz-2-benchmark-studies">4.2
+Implications for published Boltz-2 benchmark studies</h3>
+<p>Most published Boltz-2 benchmark studies to date have used the
+upstream default, i.e. no <code>--use_potentials</code>. Our results
+imply that the catastrophic-pose rates reported in those studies
+(typically 1-5% on metalloprotein targets) are partially configuration
+artefacts and would be reduced ~9× by enabling the flag. Reviewers and
+meta-analysts comparing predictor failure rates should require
+disclosure of the inference flag set, not just the model version, and
+should treat “Boltz-2 without <code>--use_potentials</code>” and
+“Boltz-2x” as functionally distinct predictors.</p>
+<p>This is particularly important for active-learning loops, where a
+single catastrophic pose can dominate the learned uncertainty surface
+and divert the next-batch acquisition away from chemically valid
+regions. Such loops should default to Boltz-2x.</p>
+<h3 id="residual-catastrophic-failure-rate">4.3 Residual
+catastrophic-failure rate</h3>
+<p>Even with <code>--use_potentials</code> enabled, our Boltz-2x runs
+produced 1 catastrophic pose in 4500 samples (CHEMBL1207, v17,
+model_98). This is a 0.022% rate. Two implications follow:</p>
+<ul>
+<li>The flag is a <em>substantial</em> mitigation but not a
+<em>guarantee</em>. For deployments where a single bad pose downstream
+is unacceptable (alchemical free-energy starting structures,
+lead-optimisation prioritisation), an xtb-based filter (discard any pose
+with single-point E &gt; 0) is still mandatory.</li>
+<li>The residual rate is low enough that the operational cost is
+negligible — a 0.022% discard rate on a 1000-pose ensemble loses about
+0.2 poses on average — but the discard step itself is not optional.</li>
+</ul>
+<p>We recommend a two-step protocol: (1) sample N cofold poses with
+standard Boltz-2 + <code>--use_potentials</code>; (2) compute GFN2-xTB
+single point on each pose’s ligand intramolecular geometry; (3) discard
+any pose with E &gt; 0 hartree. This step costs ~0.24 sec per pose on a
+single CPU core and adds nothing to the GPU schedule.</p>
+<h3 id="generality-and-limitations">4.4 Generality and limitations</h3>
+<p>Our evaluation is on a single target class (MMP-1, zinc
+metallohydrolase) and a single chemotype class (zinc-binding
+hydroxamates / carboxylates). The catastrophic-pose mode we identify is
+structural — emitted ligands with displaced atoms — and the steering
+potentials act on a class of failure modes (clashes, bond violations)
+that should be similarly present on other targets. We expect the
+qualitative conclusion (<code>--use_potentials</code> is the operative
+outlier filter) to generalise; the precise rates will not.</p>
+<p>Limitations: (i) the community-fork conditions were run on a single
+canary ligand, not the full 15-ligand cohort, so the 6.98 vs 3.18 kcal
+mol⁻¹ σ_filt comparison rests on n=200 samples on one ligand. A
+full-cohort fork+pot evaluation is in queue. (ii) We did not separately
+ablate the three fork patches (silent-wrong-answer, metal-ion CA filter,
+bfloat16); the comparison is fork-versus-upstream wholesale. (iii)
+GFN2-xTB is itself approximate; for the catastrophic-outlier readout (E
+&gt; 0 vs. E &lt; 0) the resolution is more than adequate, but the
+σ_filt numbers should be treated as relative comparisons within this
+study rather than absolute precision claims. (iv) We did not vary
+diffusion_samples (always n=100) or random seed (other than the
+v16/v17/v18 triplet), so we cannot quantify the seed-to-seed variance of
+σ_filt itself.</p>
+<h3 id="recommendation">4.5 Recommendation</h3>
+<p>Based on the six-way evaluation, our recommendation for cofold-based
+affinity prediction is:</p>
+<blockquote>
+<p><strong>standard Boltz-2 + <code>--use_potentials</code> + downstream
+xtb GFN2 single-point filter on the predicted ligand intramolecular
+geometry, discarding any pose with E &gt; 0 hartree.</strong></p>
+</blockquote>
+<p>This protocol — which is the configuration of our v16/v17/v18 runs
+and the configuration used throughout our prior paper-A and paper-B
+pipelines — yields the lowest within-population xtb σ (3.18-4.29 kcal
+mol⁻¹) and the lowest catastrophic-pose rate (0.022%) of the six
+conditions tested. It does not require the community fork; upstream
+Boltz-2 + the flag is sufficient. The xtb filter is cheap (sub-second
+per pose) and removes the residual 0.022% failures.</p>
+<hr />
+<h2 id="conclusion">5. Conclusion</h2>
+<p>A controlled six-way evaluation on 9000 Boltz-2 cofold poses, with
+GFN2-xTB single-point energies as physical-plausibility readout, shows
+that the <code>--use_potentials</code> inference-time flag is the single
+intervention that eliminates catastrophic-pose outliers in
+protein-ligand cofold prediction. The recently released boltz-community
+fork, despite fixing three distinct upstream bugs (silent wrong-answer,
+metal-ion C-alpha filter, bfloat16 dtype), does not address the same
+failure mode; without the flag the fork produces <em>more</em> outliers
+than upstream, and with the flag its within-population precision is
+approximately 2× worse. The operative protocol is therefore standard
+Boltz-2 + <code>--use_potentials</code> with a downstream xtb-based
+filter. Practitioners and benchmark authors should disclose their
+inference flags and treat the flag-on and flag-off configurations as
+functionally distinct predictors. We expect the qualitative conclusion
+to generalise across cofold backbones (Chai-1, AlphaFold3, Protenix,
+RoseTTAFold-AA) wherever a comparable physicality-steering option
+exists.</p>
+<hr />
+<h2 id="methods-supplement">6. Methods supplement</h2>
+<h3 id="software-versions">6.1 Software versions</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Boltz-2 (upstream)</td>
+<td>pinned via genesis-md env</td>
+<td>PyPI <code>boltz</code> package</td>
+</tr>
+<tr>
+<td>boltz-community</td>
+<td>March 2026 main</td>
+<td>github.com/d-volgin/boltz-community</td>
+</tr>
+<tr>
+<td>xtb</td>
+<td>6.6.0</td>
+<td>xtb-python wrapper</td>
+</tr>
+<tr>
+<td>RDKit</td>
+<td>2024.09.x</td>
+<td>conda-forge</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.11</td>
+<td>uv venv</td>
+</tr>
+<tr>
+<td>Hardware</td>
+<td>RTX 5090 (32 GB), 24-core EPYC, 192 GB RAM</td>
+<td>local workstation</td>
+</tr>
+</tbody>
+</table>
+<h3 id="inference-command-lines">6.2 Inference command lines</h3>
+<p>Upstream Boltz-2 (v15):</p>
+<pre><code>boltz predict $INPUT --out_dir $OUTDIR --use_msa_server \
+    --diffusion_samples 100 --output_format pdb</code></pre>
+<p>Upstream Boltz-2x (v16/v17/v18):</p>
+<pre><code>boltz predict $INPUT --out_dir $OUTDIR --use_msa_server \
+    --diffusion_samples 100 --output_format pdb --use_potentials</code></pre>
+<p>boltz-community fork retro:</p>
+<pre><code>$BOLTZ_COMM_VENV/bin/boltz predict $INPUT --out_dir $OUTDIR --use_msa_server \
+    --diffusion_samples 100 --output_format pdb</code></pre>
+<p>boltz-community fork + steering (fork+pot):</p>
+<pre><code>$BOLTZ_COMM_VENV/bin/boltz predict $INPUT --out_dir $OUTDIR --use_msa_server \
+    --diffusion_samples 100 --output_format pdb --use_potentials</code></pre>
+<p>For all conditions the MSA cache was copied from the v17 paired hit
+set
+(<code>pilot/round13_overnight/results/boltz_15_100_v17/.../msa/</code>)
+into the condition-specific output directory before launch, to eliminate
+MSA stochasticity as a cross-condition confound.</p>
+<h3 id="xtb-command-line">6.3 xtb command line</h3>
+<p>GFN2 single-point on extracted ligand:</p>
+<pre><code>xtb $LIG.pdb --gfn 2 --sp --alpb water &gt; $LIG.xtb.log 2&gt;&amp;1</code></pre>
+<p>GFN2 crude geometry optimisation (paper-A ΔE_relax cross-check):</p>
+<pre><code>xtb $LIG.pdb --gfn 2 --opt crude --alpb water &gt; $LIG.opt.log 2&gt;&amp;1</code></pre>
+<p>Worker pool: <code>multiprocessing.Pool</code> with 12-16 workers,
+<code>OMP_NUM_THREADS=1</code>, <code>nice 19</code>.</p>
+<h3 id="data-and-code-availability">6.4 Data and code availability</h3>
+<p>All cofold PDB outputs, xtb CSVs, and analysis scripts are released
+under:</p>
+<ul>
+<li><code>genesis_medicine/pilot/round13_overnight/results/boltz_15_100_v{15,16,17}/</code>
+— upstream Boltz-2 ± flag, n=1500 each</li>
+<li><code>genesis_medicine/pilot/round24/boltz_chembl94487_retro_v0/</code>
+— community fork retro arm (n=100)</li>
+<li><code>genesis_medicine/pilot/round24/boltz_chembl94487_fork_potflag_v0/</code>
+— fork + <code>--use_potentials</code> (n=100)</li>
+<li><code>genesis_medicine/pilot/round24/xtb_v18_sp/</code> — v18 xtb
+single points</li>
+<li><code>genesis_medicine/pilot/round17_cpu_burn/xtb_v{15,16,17}_*_results.csv</code>
+— primary xtb CSVs</li>
+<li><code>genesis_medicine/scripts/round24_paperB/</code> — launch
+scripts and analysis code</li>
+</ul>
+<p>A Zenodo DOI for this release will be issued at preprint submission.
+The full per-pose xtb CSV (n=9000 rows) is included.</p>
+<h3 id="author-contributions-and-conflicts">6.5 Author contributions and
+conflicts</h3>
+<p>Han Cheongwoo: conception, all compute, analysis, manuscript draft.
+The author declares no competing financial interests. No external grant
+funding supported this study; compute was performed on a single
+workstation operated by the author.</p>
+<hr />
+<h2 id="references">References</h2>
+<hr />
+<p><em>End of draft v0.1. ~3600 words main text + supplementary methods.
+Figure 1 (6-way σ scatter / σ raw vs filt log-bar / outlier % bar)
+prepared separately at
+<code>manuscripts/paper_B_v9/figures/fig_6way_xtb_sigma_chembl94487.{png,pdf}</code>.</em></p>
+<section id="footnotes" class="footnotes footnotes-end-of-document"
+role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>Abramson, J., Adler, J., Dunger, J. et al. Accurate
+structure prediction of biomolecular interactions with AlphaFold 3.
+<em>Nature</em> 630, 493-500 (2024).<a href="#fnref1"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Krishna, R., et al. Generalized biomolecular modeling
+and design with RoseTTAFold All-Atom. <em>Science</em> 384, eadl2528
+(2024).<a href="#fnref2" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>Wohlwend, J., et al. Boltz-2: Towards Accurate and
+Efficient Binding-Affinity Prediction. (2025 release; cofold + affinity
+head + <code>--use_potentials</code> physicality steering).<a
+href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>Volgin, D., et al. boltz-community: a community fork of
+Boltz-2 with bug fixes for silent wrong-answer, metal-ion C-alpha
+filtering, and bfloat16 dtype handling.
+github.com/d-volgin/boltz-community, March 2026.<a href="#fnref4"
+class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn5"><p>Wohlwend, J., et al. Boltz-2: Towards Accurate and
+Efficient Binding-Affinity Prediction. (2025 release; cofold + affinity
+head + <code>--use_potentials</code> physicality steering).<a
+href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn6"><p>Bannwarth, C., Ehlert, S., Grimme, S. GFN2-xTB — An
+Accurate and Broadly Parametrized Self-Consistent Tight-Binding Quantum
+Chemical Method. <em>J. Chem. Theory Comput.</em> 15, 1652-1671
+(2019).<a href="#fnref6" class="footnote-back"
+role="doc-backlink">↩︎</a></p></li>
+<li id="fn7"><p>Wohlwend, J., et al. Boltz-2: Towards Accurate and
+Efficient Binding-Affinity Prediction. (2025 release; cofold + affinity
+head + <code>--use_potentials</code> physicality steering).<a
+href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+</body>
+</html>

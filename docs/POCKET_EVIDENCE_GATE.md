@@ -1,6 +1,6 @@
 # Pocket Evidence Gate
 
-- timestamp: `2026-05-06T12:46:10+09:00`
+- timestamp: `2026-05-06T15:23:50+09:00`
 - targets: `31`
 - priority_counts: `{'high': 12, 'review': 11, 'low': 8}`
 - purpose: 정적 cofold/docking을 target tractability와 pocket evidence에 맞춰 제한한다.

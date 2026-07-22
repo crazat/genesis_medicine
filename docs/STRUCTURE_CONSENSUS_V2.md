@@ -1,6 +1,6 @@
 # Structure Consensus V2
 
-- timestamp: `2026-05-06T12:46:11+09:00`
+- timestamp: `2026-05-06T15:23:50+09:00`
 - rows: `32`
 - claim_counts: `{'claim_ready_in_silico': 0, 'claim_with_caveat': 8, 'needs_cross_model': 5, 'triage_only': 19}`
 - purpose: single-model Boltz claim을 피하고, PoseBusters/MD/pocket/applicability-domain을 합쳐 orthogonal validation priority를 정한다.

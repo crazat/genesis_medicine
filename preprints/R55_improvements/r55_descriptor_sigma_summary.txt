@@ -1,0 +1,16 @@
+R55 #3/#2 structure→σ correlation (n=15 ligands, PoC)
+descriptor         ρ(σ_iptm)    ρ(σ_E)
+RotatableBonds         0.236     0.457
+FractionCSP3          -0.300     0.221
+RingCount              0.104    -0.464
+AromaticRings         -0.300     0.221
+HBA                    0.325     0.554
+HBD                    0.111     0.611
+TPSA                   0.214     0.493
+MolWt                  0.193     0.000
+HeavyAtoms             0.246     0.011
+
+  strongest σ_iptm predictor: HBA (ρ=0.325)
+  strongest σ_E predictor   : HBD (ρ=0.611)
+  NOTE n=15 = proof-of-concept; |ρ|≳0.5 ⇒ flexibility/structure signal worth a
+  full Error-Model regressor on the 140-ligand SAR set / CA 2nd-target extension.

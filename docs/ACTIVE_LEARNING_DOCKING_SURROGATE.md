@@ -1,6 +1,6 @@
 # Active-learning Docking Surrogate
 
-- timestamp: `2026-05-06T12:46:06+09:00`
+- timestamp: `2026-05-06T15:23:46+09:00`
 - training_rows: `32`
 - candidate_rows: `672`
 - leave-one-out MAE: `0.0765`

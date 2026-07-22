@@ -1,6 +1,6 @@
 # Perturbation Biology Gate
 
-- timestamp: `2026-05-06T12:46:32+09:00`
+- timestamp: `2026-05-06T15:24:10+09:00`
 - target_rows: `32`
 - priority_counts: `{'high': 2, 'review': 12, 'low': 18}`
 - purpose: direct binding 후보를 실제 피부 cell phenotype/perturbation evidence와 연결할 수 있는지 평가한다.

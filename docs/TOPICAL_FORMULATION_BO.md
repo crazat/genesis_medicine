@@ -1,6 +1,6 @@
 # Topical Formulation BO
 
-- timestamp: `2026-05-06T12:46:31+09:00`
+- timestamp: `2026-05-06T15:24:09+09:00`
 - lead_rows: `60`
 - plan_csv: `pilot/cpu_meaningful/topical_formulation_bo_plan.csv`
 - experiment_template: `data/topical_formulation_experiment_template.csv`

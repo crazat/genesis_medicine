@@ -1,6 +1,6 @@
 # Model Governance Registry
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - registry_csv: `pilot/cpu_meaningful/ai_model_governance_registry.csv`
 - model_cards: `docs/model_cards`
 - purpose: FDA-style context-of-use, risk, validation, monitoring 관점으로 AI/ML/automation component를 관리한다.

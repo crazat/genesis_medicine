@@ -1,6 +1,6 @@
 # Ultra-large Screening Roadmap
 
-- timestamp: `2026-05-06T12:46:33+09:00`
+- timestamp: `2026-05-06T15:24:10+09:00`
 - rows: `50`
 - purpose: NPASS-scale local screen을 ZINC/Enamine REAL급 ultra-large active-learning campaign으로 확장하기 위한 단계별 큐다.
 

@@ -1,6 +1,6 @@
 # DMTL Experiment Card Factory
 
-- timestamp: `2026-05-06T12:46:28+09:00`
+- timestamp: `2026-05-06T15:24:06+09:00`
 - rows: `16`
 - bucket_counts: `{'single_point_wetlab_card': 10, 'route_or_safety_prerequisite': 2, 'compute_followup_card': 4}`
 - purpose: 계산 결과를 바로 CRO/wet-lab이 읽을 수 있는 design-make-test-learn card로 변환한다.

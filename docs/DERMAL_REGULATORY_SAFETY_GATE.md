@@ -1,6 +1,6 @@
 # Dermal Regulatory Safety Gate
 
-- timestamp: `2026-05-06T12:46:32+09:00`
+- timestamp: `2026-05-06T15:24:10+09:00`
 - rows: `112`
 - gate_counts: `{'green': 32, 'yellow': 80, 'red': 0}`
 - purpose: 외용제 후보를 OECD TG497 skin sensitisation, ICH S10 photosafety, FDA IVRT/IVPT 관점의 in-silico pre-gate로 제한한다.

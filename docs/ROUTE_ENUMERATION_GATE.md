@@ -1,6 +1,6 @@
 # Route Enumeration Gate
 
-- timestamp: `2026-05-06T12:46:11+09:00`
+- timestamp: `2026-05-06T15:23:51+09:00`
 - rows: `1082`
 - gate_counts: `{'route_ready': 362, 'route_review': 378, 'route_hard': 342, 'red': 0}`
 - purpose: SA score를 넘어서 실제 route enumeration이 필요한 후보와 바로 vendor/precursor search로 갈 후보를 분리한다.

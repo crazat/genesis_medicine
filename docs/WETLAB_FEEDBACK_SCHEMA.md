@@ -1,6 +1,6 @@
 # Wet-lab Feedback Schema
 
-- timestamp: `2026-05-06T12:46:31+09:00`
+- timestamp: `2026-05-06T15:24:09+09:00`
 - feedback_template: `data/wetlab_feedback_template.csv`
 - endpoint_priority: `pilot/cpu_meaningful/wetlab_endpoint_priority.csv`
 - purpose: 계산 루프가 wet-lab 결과를 구조적으로 다시 받아 다음 큐잉을 판단하게 만든다.

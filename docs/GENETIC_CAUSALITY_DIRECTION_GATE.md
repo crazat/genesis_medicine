@@ -1,6 +1,6 @@
 # Genetic Causality Direction Gate
 
-- timestamp: `2026-05-06T12:46:30+09:00`
+- timestamp: `2026-05-06T15:24:08+09:00`
 - rows: `31`
 - gate_counts: `{'direction_plausible': 9, 'direction_needs_genetic_or_phenotype_support': 1, 'causality_weak_or_unknown': 21}`
 - purpose: target evidence를 disease association뿐 아니라 desired direction-of-effect, genetic/MR caveat와 연결한다.

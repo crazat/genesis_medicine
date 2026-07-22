@@ -46,6 +46,13 @@ MMP1_SEQ = (
 
 
 def load_calibration_set(csv_path: Path) -> pd.DataFrame:
+    raise RuntimeError(
+        "WITHDRAWN 2026-07-16: data/chembl_mmp1_calibration.csv is a fabricated panel (compound names, "
+        "potency values and attributions refuted by a structure-first PubChem lookup; see "
+        "preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md). This Boltz-2-vs-pIC50 calibration and its "
+        "|rho|~0.72 result are withdrawn and must not be regenerated. For real MMP-1 structures and potency use "
+        "data/mmp1_panel_pubchem.csv (PubChem CID/AID/timestamp)."
+    )
     df = pd.read_csv(csv_path)
     required = {"chembl_id", "smiles", "ic50_nm", "reference"}
     missing = required - set(df.columns)

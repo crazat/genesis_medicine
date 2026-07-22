@@ -1,6 +1,6 @@
 # Developability CMC Gate
 
-- timestamp: `2026-05-06T12:46:34+09:00`
+- timestamp: `2026-05-06T15:24:11+09:00`
 - rows: `112`
 - gate_counts: `{'green': 34, 'yellow': 78, 'red': 0}`
 - purpose: hit/lead 후보를 solubility, stability, excipient compatibility, solid-form risk, scale-up risk 관점으로 조기 제한한다.

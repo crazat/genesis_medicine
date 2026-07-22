@@ -1,5 +1,5 @@
-# cmd: /home/crazat/miniforge3/envs/genesis-md/bin/antechamber -i /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL98/lig.sdf -fi sdf -o /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL98/lig.mol2 -fo mol2 -c bcc -s 2 -rn LIG -pf y -at gaff2
-# rc: 1
+# cmd: /home/crazat/miniforge3/envs/genesis-md/bin/antechamber -i /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL98/complex/lig.sdf -fi sdf -o /home/crazat/genesis_medicine/pilot/abfe_benchmark_chembl/CHEMBL98/complex/lig.mol2 -fo mol2 -c bcc -s 2 -rn LIG -pf y -at gaff2 -nc -1
+# rc: 0
 
 ## stdout
 Info: acdoctor mode is on: check and diagnose problems in the input file.
@@ -18,13 +18,14 @@ Warning: The assigned bond types may be wrong, please :
     significantly increase the computation time).
 
 Running: /home/crazat/miniforge3/envs/genesis-md/bin/atomtype -i ANTECHAMBER_AC.AC0 -o ANTECHAMBER_AC.AC -p gaff2
-Info: Total number of electrons: 151; net charge: 0
-Info: The number of electrons is odd (151).
-      Please check the total charge (-nc flag) and spin multiplicity (-m flag).
+Info: Total number of electrons: 152; net charge: -1
 
 Running: /home/crazat/miniforge3/envs/genesis-md/bin/sqm -O -i sqm.in -o sqm.out
 
+Running: /home/crazat/miniforge3/envs/genesis-md/bin/am1bcc -i ANTECHAMBER_AM1BCC_PRE.AC -o ANTECHAMBER_AM1BCC.AC -f ac -t bcc -p /home/crazat/miniforge3/envs/genesis-md/dat/antechamber/BCCPARM.DAT -s 2 -j 1
+
+Running: /home/crazat/miniforge3/envs/genesis-md/bin/atomtype -f ac -p bcc -o ANTECHAMBER_AM1BCC.AC -i ANTECHAMBER_AM1BCC_PRE.AC
+
+
 
 ## stderr
-/home/crazat/miniforge3/envs/genesis-md/bin/wrapped_progs/antechamber: Fatal Error!
-Cannot properly run "/home/crazat/miniforge3/envs/genesis-md/bin/sqm -O -i sqm.in -o sqm.out".

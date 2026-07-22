@@ -1,0 +1,15 @@
+Conformal reliability layer — coverage validation
+
+=== paper_B sigma_iptm (ligand-level): empirical coverage vs nominal (200 random splits) ===
+  units(>=30 cyc)=15  | nominal -> empirical(mean +/- sd)
+   80% ->  79.88% +/- 2.15%
+   90% ->  89.93% +/- 1.72%
+   95% ->  95.11% +/- 1.19%
+
+=== paper_A sigma_E (cell-level, kcal/mol): empirical coverage vs nominal (200 random splits) ===
+  units(>=30 cyc)=1755  | nominal -> empirical(mean +/- sd)
+   80% ->  79.97% +/- 0.22%
+   90% ->  89.98% +/- 0.16%
+   95% ->  95.01% +/- 0.11%
+
+qhat(paper_B,90%)=1.5203  qhat(paper_A,90%)=1.4959

@@ -1,65 +1,65 @@
-timestamp=2026-05-06T12:48:53+09:00
-uptime= 12:48:53 up 7 days,  2:43,  1 user,  load average: 2.99, 2.93, 2.21
+timestamp=2026-05-06T15:29:28+09:00
+uptime= 15:29:28 up 7 days,  5:33,  1 user,  load average: 0.69, 0.43, 0.28
 
 [gpu]
 utilization.gpu [%], memory.used [MiB]
-1 %, 25234 MiB
-658, [Not Found], [N/A]
+0 %, 2085 MiB
+1204, [Not Found], [N/A]
 
 [cpu]
 procs -----------memory---------- ---swap-- -----io---- -system-- -------cpu-------
  r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st gu
- 0  0   8012 10000960  99164 3882440    0    0  1189  1597 8542   20 62  5 33  0  0  0
- 0  0   8012 10536216  99164 3882484    0    0     0     0 19150 38315  7  1 93  0  0  0
+ 1  0   8012 50790560 200432 5212096    0    0  1187  1572 8441   20 61  4 34  0  0  0
+ 1  0   8012 50713376 200440 5211844    0    0     0    40  461  265  4  0 96  0  0  0
 
 [queue]
 77605 bash /home/crazat/genesis_medicine/scripts/codex_curator_loop.sh
 2512206 bash /home/crazat/genesis_medicine/scripts/auto_queue_cpu_gpu_daemon.sh
 
 [curator]
--rw-r--r-- 1 crazat crazat 352623 May  6 12:47 /home/crazat/genesis_medicine/pilot/codex_curator_context.md
+-rw-r--r-- 1 crazat crazat 354841 May  6 15:24 /home/crazat/genesis_medicine/pilot/codex_curator_context.md
 -rw-r--r-- 1 crazat crazat   5344 May  2 21:31 /home/crazat/genesis_medicine/pilot/codex_curator_decision.md
 -rw-r--r-- 1 crazat crazat    748 May  2 21:32 /home/crazat/genesis_medicine/pilot/codex_curator_last.md
-[2026-05-06T11:43:27+09:00] curator failed rc=127
-2026-05-06T11:43:34+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:45:28+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:47:22+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:49:17+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T11:51:11+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T11:53:05+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-[2026-05-06T11:53:56+09:00] curator failed rc=127
-2026-05-06T11:54:59+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:57:19+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-2026-05-06T11:59:13+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:01:49+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-2026-05-06T12:03:43+09:00 CPU_IDLE_GAP_UNRESOLVED idle=92% active_refines=0 planner=none
-[2026-05-06T12:04:26+09:00] curator failed rc=127
-2026-05-06T12:05:36+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:07:32+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:09:26+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T12:11:39+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-2026-05-06T12:13:39+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-[2026-05-06T12:15:06+09:00] curator failed rc=127
-2026-05-06T12:15:50+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:17:59+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T12:19:53+09:00 CPU_IDLE_GAP_UNRESOLVED idle=94% active_refines=0 planner=none
-2026-05-06T12:22:11+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-2026-05-06T12:24:10+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-[2026-05-06T12:25:40+09:00] curator failed rc=127
-2026-05-06T12:26:03+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T12:27:59+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:29:53+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T12:31:46+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:33:40+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:35:35+09:00 CPU_IDLE_GAP_UNRESOLVED idle=82% active_refines=0 planner=none
-[2026-05-06T12:36:31+09:00] curator failed rc=127
-2026-05-06T12:37:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-2026-05-06T12:39:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=97% active_refines=0 planner=none
-2026-05-06T12:41:53+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-2026-05-06T12:43:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-2026-05-06T12:46:11+09:00 CPU_IDLE_GAP_UNRESOLVED idle=67% active_refines=0 planner=none
-[2026-05-06T12:47:02+09:00] curator failed rc=127
-2026-05-06T12:48:05+09:00 CPU_IDLE_GAP_UNRESOLVED idle=93% active_refines=0 planner=none
+2026-05-06T14:25:49+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:27:45+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:29:38+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:31:32+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:32:24+09:00] curator failed rc=127
+2026-05-06T14:33:26+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:35:22+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:37:15+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:39:09+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:41:03+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:42:51+09:00] curator failed rc=127
+2026-05-06T14:42:59+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:44:52+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:46:46+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:48:42+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:50:36+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:52:29+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+[2026-05-06T14:53:18+09:00] curator failed rc=127
+2026-05-06T14:54:23+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:56:19+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:58:12+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:00:06+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:02:00+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:03:41+09:00] curator failed rc=127
+2026-05-06T15:03:56+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:05:49+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:07:43+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:09:37+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:11:33+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:13:27+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+[2026-05-06T15:14:08+09:00] curator failed rc=127
+2026-05-06T15:15:20+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:17:16+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:19:10+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:21:03+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:22:57+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:24:36+09:00] curator failed rc=127
+2026-05-06T15:24:53+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:26:47+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:28:41+09:00 CPU_IDLE_GAP_UNRESOLVED idle=97% active_refines=0 planner=none
 
 [latest-md]
 2026-05-02 03:24 pilot/md_r17_chromanol_generative_top_green_10ns/summary.json

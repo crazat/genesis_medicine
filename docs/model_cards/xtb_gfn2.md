@@ -1,6 +1,6 @@
 # Model Card: xtb_gfn2
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - component: `xTB GFN2/ALPB refinement`
 - context_of_use: `conformer and quantum descriptor refinement for NPASS candidates`
 - decision_influence: `medium`

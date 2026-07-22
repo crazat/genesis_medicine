@@ -1,6 +1,6 @@
 # DMTL_013 R15_chromanol_Cl_pos9 x tyr
 
-- timestamp: `2026-05-06T12:46:28+09:00`
+- timestamp: `2026-05-06T15:24:06+09:00`
 - candidate_id: `R15_chromanol_Cl_pos9`
 - target: `tyr`
 - smiles: ``

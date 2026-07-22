@@ -2,12 +2,12 @@
 
 **Maintainer**: HanCheongWoo (`crazat7@gmail.com`, ORCID [0009-0004-4805-8815](https://orcid.org/0009-0004-4805-8815))
 
-**Last updated**: 2026-05-04
+**Last updated**: 2026-05-15
 
-**Records**: 17 (all CC-BY 4.0, all in silico)
+**Records**: 20 (all CC-BY 4.0, all in silico)
 
 
-> All 17 records were deposited on Zenodo on 2026-05-04 as the open-access preprint of record after bioRxiv (19/19) and ChemRxiv (7/7) declined the in-silico-only manuscripts as out-of-scope. They are permanent, open, and citable. wet-lab and IRB are pending; planned wet-lab integration → v1.0 → bioRxiv re-attempt is on the 2026-Q4 / 2027-Q1 roadmap.
+> First 17 records were deposited on Zenodo on 2026-05-04 as the open-access preprint of record after bioRxiv (19/19) and ChemRxiv (7/7) declined the in-silico-only manuscripts as out-of-scope. Records #20, #21, #22 were added on 2026-05-15 (paper_A v5h cross-NNP paradox, paper_B v0.1 Boltz-2x cofold protocol, paper_C v0.1 Zn²⁺ metallohydrolase de novo pipeline). All records are permanent, open, and citable. wet-lab and IRB are pending; planned wet-lab integration → v1.0 → bioRxiv re-attempt is on the 2026-Q4 / 2027-Q1 roadmap.
 
 
 ## 1. Quick reference table
@@ -31,6 +31,9 @@
 | 17 | [10.5281/zenodo.20018353](https://doi.org/10.5281/zenodo.20018353) | R16 Topical Chromanol Lead Short Communication: 18-Pair 30 ns Matrix, 60 ns... | v0.3 | BIORXIV/2026/722467 |
 | 18 | [10.5281/zenodo.20018356](https://doi.org/10.5281/zenodo.20018356) | Cost-Aware Multi-Fidelity Bayesian Optimization with Runtime-Gated Cascadin... | v0.1 | BIORXIV/2026/722486 |
 | 43 | [10.5281/zenodo.20018359](https://doi.org/10.5281/zenodo.20018359) | R17 Constrained Generative Chromanol Analog Atlas: Photosafety-Gated Boltz-... | v0.3 | BIORXIV/2026/722468 |
+| 20 | [10.5281/zenodo.20134439](https://doi.org/10.5281/zenodo.20134439) | The OMol25 Paradox: Training-Data Domain Specificity Outweighs Architecture in Neural Network Potential Performance on Zn²⁺ Metalloenzyme Conformer Energies | v5h | direct (no prior journal) |
+| 21 | [10.5281/zenodo.20134442](https://doi.org/10.5281/zenodo.20134442) | Steering potentials, not bug fixes, eliminate catastrophic outliers in Boltz-2 cofold protein-ligand affinity prediction: a six-way protocol evaluation on zinc-hydroxamate MMP-1 inhibitors | v0.1 | direct (no prior journal) |
+| 22 | [10.5281/zenodo.20134447](https://doi.org/10.5281/zenodo.20134447) | End-to-end de novo design of Zn²⁺ metallohydrolase binders: an open-source canonical pipeline anchored by LigandMPNN's metal-coordination recovery | v0.1 | direct (no prior journal) |
 
 ## 2. APA citations
 

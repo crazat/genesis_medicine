@@ -1,6 +1,6 @@
 # Single-Cell FM Reliability Gate
 
-- timestamp: `2026-05-06T12:46:31+09:00`
+- timestamp: `2026-05-06T15:24:08+09:00`
 - rows: `32`
 - gate_counts: `{'fm_supported_with_controls': 2, 'zero_shot_reliability_review': 12, 'fm_not_actionable': 18}`
 - purpose: scGPT/Geneformer/virtual-cell style evidence를 zero-shot limitation과 baseline-control 요구사항으로 제한한다.

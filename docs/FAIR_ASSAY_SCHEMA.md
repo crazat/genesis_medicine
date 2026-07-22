@@ -1,6 +1,6 @@
 # FAIR Assay Schema
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - dictionary_csv: `pilot/cpu_meaningful/fair_assay_dictionary.csv`
 - template_csv: `data/fair_assay_metadata_template.csv`
 - schema_json: `data/fair_assay_schema.json`

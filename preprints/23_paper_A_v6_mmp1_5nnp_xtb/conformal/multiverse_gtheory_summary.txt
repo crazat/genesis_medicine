@@ -1,0 +1,33 @@
+
+=== paper_A multiverse variance decomposition (n=368881 obs) ===
+  [A] within-COMPOUND total variance Vtot = 3340076.29 kcal^2  (sd=1827.59 kcal)
+      NOTE: GFN0/1/2 absolute total energies are on different scales, so the Hamiltonian
+      share below largely reflects that offset (absolute E across Hamiltonians is not comparable).
+  first-order variance share of computed ΔG (within-compound):
+    Hamiltonian (GFN0/1/2) :  96.76 %  (incl. absolute-scale offset)
+    solvation (GBSA/ALPB)  :   0.24 %
+    solvent (23 choices)   :   0.78 %
+    reseed (stochastic)    :   0.03 %   <- the only irreducible noise
+    interactions+higher    :   2.18 %
+  [B] within-(compound x Hamiltonian) total variance = 1371.49 kcal^2 (sd=37.03 kcal)
+      -> isolates the choices that ARE on a common scale once a Hamiltonian is fixed:
+    solvation (GBSA/ALPB)  :   0.37 %
+    solvent (23 choices)   :   1.16 %
+    reseed (stochastic)    :  84.02 %   <- irreducible noise
+    interactions+higher    :  14.45 %
+  => KEY: Hamiltonian (GFN0/1/2) is THE dominant analytical degree of freedom (different
+     absolute-energy methods, not mixable). Once a Hamiltonian is fixed, the residual ΔG
+     variance is dominated by reseed/conformer stochasticity (84%); solvation+solvent
+     add only 1.5% -> σ_E (reseed) IS the per-method reliability floor.
+  specification curve: 117 cells -> multiverse_specification_curve_paperA.csv
+    most reliable cell : GFN0/alpb/nitromethane  mean σ_E=15.291
+    least reliable cell: GFN1/alpb/methanol  mean σ_E=40.274
+
+=== paper_B σ_iptm Generalizability (ligand×reseed, 15 ligands) ===
+  σ²(ligand,signal)=1.393e-03  σ²(reseed,noise)=2.786e-06
+  ICC (single reseed)            = 0.9980
+  G-coefficient (mean of 161 reseeds) = 1.0000
+  D-study: reseeds needed for target G:
+    G>=0.90 -> n_reseed >= 1
+    G>=0.95 -> n_reseed >= 1
+    G>=0.99 -> n_reseed >= 1

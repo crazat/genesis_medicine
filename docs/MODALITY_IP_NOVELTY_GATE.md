@@ -1,6 +1,6 @@
 # Modality and IP/Novelty Gate
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:13+09:00`
 - modality_targets: `31`
 - candidate_rows: `112`
 - purpose: small-molecule docking 일변도에서 벗어나 target별 적합 modality와 local novelty risk를 분리한다.

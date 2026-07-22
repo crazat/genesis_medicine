@@ -1,0 +1,19 @@
+R56 #2 — indapamide oral → dermal concentration estimate (order-of-magnitude)
+  inputs: MW=365.83, logP=2.2, fu_plasma=(0.21, 0.29), plasma Css=(20.0, 130.0) ng/mL
+  plasma Css = 55–355 nM
+  Kp,skin:plasma (Roberts logP-interp) ≈ 5.2
+  → dermal TOTAL ≈ 287–1863 nM
+  → dermal FREE  ≈ 60–540 nM
+  ENGAGEMENT THRESHOLD: to occupy MMP-1 at oral dosing, need Ki ≲ free dermal conc
+     i.e. Ki ≲ ~60–540 nM (sub-µM).
+  INTERPRETATION:
+   • Oral indapamide gives a sub-µM free dermal concentration — enough ONLY if the
+     MMP-1 Ki is sub-µM (typical hydroxamate MMP inhibitors are nM; a sulfamoyl-ZBG
+     diuretic is more likely µM-weak ⇒ oral engagement is borderline/insufficient).
+   • TOPICAL/transdermal (indapamide patch precedent, Ren 2008; or dissolving microneedle)
+     can deposit drug directly in the dermis at 10-100× higher LOCAL concentration while
+     keeping SYSTEMIC exposure far below the IARC HCTZ cumulative-dose carcinogenicity range.
+   • Net: dermal delivery is not a showstopper but ORAL is likely sub-therapeutic for MMP-1;
+     a low-systemic-dose TOPICAL route is the credible path AND the safer one (R56 #C).
+   ⚠ order-of-magnitude only; experimental MMP-1 Ki + a calibrated dermal PBPK/IVPT are the
+     two missing measurements (ties to the wet-lab + RWE plan).

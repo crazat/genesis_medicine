@@ -23,7 +23,8 @@ COMPOUND_LIBS = [
     "data/screen_libraries/alopecia_compounds.csv",
     "data/screen_libraries/acne_compounds.csv",
     "data/screen_libraries/photoaging_compounds.csv",
-    "data/chembl_mmp1_calibration.csv",
+    # data/chembl_mmp1_calibration.csv — WITHDRAWN 2026-07-16 (fabricated panel; it never belonged in the
+    # dermatology compound sweep). See data/chembl_mmp1_calibration.README_WITHDRAWN.md.
 ]
 
 PREPRINTS = [
@@ -46,7 +47,7 @@ rule all:
     input:
         "pilot/round5_application/full_compound_sweep.csv",
         "pilot/calibration/t4l_benzene/result_final_closed_cycle.json",
-        "pilot/calibration/boltz2_mmp1/calibration_stats.json",
+        # "pilot/calibration/boltz2_mmp1/calibration_stats.json" — WITHDRAWN 2026-07-16 (fabricated panel)
         "pilot/posebusters/posebusters_v2_summary.json",
         expand("preprints/{name}/manuscript.pdf", name=PREPRINTS),
 
@@ -76,15 +77,11 @@ rule posebusters_v2:
     shell:
         "python {input.script}"
 
-# ---- Stage 6a: ChEMBL Boltz-2 calibration (GPU) -------------------------
-rule chembl_calibration:
-    input:
-        script="scripts/boltz2_calibration_mmp1.py",
-        csv="data/chembl_mmp1_calibration.csv",
-    output:
-        "pilot/calibration/boltz2_mmp1/calibration_stats.json",
-    shell:
-        "python {input.script}"
+# ---- Stage 6a: ChEMBL Boltz-2 calibration — WITHDRAWN 2026-07-16 --------
+# The chembl_calibration rule (Boltz-2 output vs pIC50, the |rho|~0.72 result) is removed: its input
+# data/chembl_mmp1_calibration.csv is a fabricated panel (names/potency/attributions refuted; see
+# preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md and data/chembl_mmp1_calibration.README_WITHDRAWN.md).
+# It must not be regenerated. A real-panel recalibration would use data/mmp1_panel_pubchem.csv (author decision).
 
 # ---- Stage 6b: T4L99A·benzene calibration (GPU, ~9 h) -------------------
 rule t4l_calibration:

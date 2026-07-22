@@ -1,6 +1,6 @@
 # Paper Factory Queue
 
-- timestamp: `2026-05-06T12:46:57+09:00`
+- timestamp: `2026-05-06T15:24:34+09:00`
 - manuscript_md_count: `20`
 - manuscript_pdf_count: `19`
 - principle: 논문 수를 늘리되, 같은 결과를 과장 반복하지 않는다. 각 paper는 독립 질문, 독립 figure set, 명확한 in silico limitation을 가져야 한다.

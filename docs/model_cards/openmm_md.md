@@ -1,6 +1,6 @@
 # Model Card: openmm_md
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - component: `OpenMM molecular dynamics`
 - context_of_use: `pose stability and drift/failure-mode assessment`
 - decision_influence: `high`

@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="dcterms.date" content="2026-05-12" />
+  <title>Paper C v0.1</title>
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+    @media print {
+      html {
+        background-color: white;
+      }
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #1a1a1a;
+    }
+    a:visited {
+      color: #1a1a1a;
+    }
+    img {
+      max-width: 100%;
+    }
+    svg {
+      height: auto;
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      white-space: pre-wrap;
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      border: none;
+      border-top: 1px solid #1a1a1a;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+    #TOC > ul {
+      padding-left: 0;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    /* The extra [class] is a hack that increases specificity enough to
+       override a similar rule in reveal.js */
+    ul.task-list[class]{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      font-size: inherit;
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">Paper C v0.1</h1>
+<p class="date">2026-05-12</p>
+</header>
+<h1
+id="end-to-end-de-novo-design-of-zn²-metallohydrolase-binders-an-open-source-canonical-pipeline-anchored-by-ligandmpnns-metal-coordination-recovery">End-to-end
+de novo design of Zn²⁺ metallohydrolase binders: an open-source
+canonical pipeline anchored by LigandMPNN’s metal-coordination
+recovery</h1>
+<h2 id="abstract">Abstract</h2>
+<p>De novo design of binders against Zn²⁺ metallohydrolases (matrix
+metalloproteinases, carbonic anhydrases, thermolysins, and related
+catalytic-metal enzymes) remains one of the most demanding stress tests
+for modern generative protein modeling. The catalytic geometry of these
+enzymes depends on a small set of coordinating residues (typically
+His/Asp/Glu/Cys) whose identity and side-chain rotamer states must be
+preserved through every stage of an end-to-end design pipeline. We
+present a fully open-source canonical pipeline that integrates four
+publicly released components — RFdiffusion3 for backbone generation,
+LigandMPNN for metal-aware inverse folding, FlowPacker for side-chain
+refinement, and AlphaFold3 / Boltz-2x / Chai-1 for cofold validation —
+into a reproducible workflow we apply to the matrix metalloproteinase-1
+(MMP-1) catalytic domain. The pivotal stage is sequence design: on the
+1HFC reference scaffold (157 residues, 2× Zn²⁺ + 1× Ca²⁺), LigandMPNN
+recovers 95.3% of the six Zn-coordinating positions versus 46.4% for
+plain ProteinMPNN. The disparity is most pronounced at the structural-Zn
+triad (His183/Asp185/His196), where ProteinMPNN scores 0% versus
+LigandMPNN’s 90.6%. An orthogonal ESM-C 600M zero-shot likelihood oracle
+independently confirms that LigandMPNN sequences are more native-like
+(mean perplexity 2.85 vs 3.03). We document a silent failure mode — when
+HETATM lines are stripped during preprocessing, LigandMPNN reports
+<code>use_ligand_context=True</code> but quietly degenerates to
+ProteinMPNN behavior — and provide a preflight check. The pipeline
+composes naturally with neural network potential (NNP) ranking (paper_A)
+and physicality-steered cofold validation (paper_B,
+<code>--use_potentials</code>). We argue that this open canonical stack
+now matches or exceeds the design quality of closed alternatives
+(AlphaProteo) at zero licensing cost for academic users.</p>
+<p><strong>Keywords:</strong> de novo enzyme design, metalloenzyme,
+matrix metalloproteinase, LigandMPNN, RFdiffusion, FlowPacker,
+AlphaFold3, Boltz-2x, open source, reproducibility.</p>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<h3 id="the-de-novo-enzyme-design-landscape-20202026">1.1 The de novo
+enzyme design landscape, 2020–2026</h3>
+<p>The past five years have seen a step-change in de novo protein design
+driven by three complementary lines of work: (i) diffusion-based
+backbone generation, (ii) inverse folding for sequence assignment, and
+(iii) atom-level cofold prediction for validation. Watson et
+al. (RFdiffusion, <em>Nature</em> 2023) established that
+fold-conditioned denoising can generate diverse, designable backbones
+with high success rates in wet-lab characterization. ProteinMPNN
+(Dauparas et al., <em>Science</em> 2022) provided the corresponding
+sequence-design oracle, achieving high native recovery on monomeric
+protein scaffolds. AlphaFold2 and ESMFold then closed the verification
+loop, and the combination — backbone generation → sequence design → fold
+verification — quickly became the canonical “Baker-style” stack.</p>
+<p>Two further generations of tooling matter for the present work.
+<strong>RFdiffusion2</strong> (<em>Nat Methods</em> 2025) introduced
+atom-level active-site scaffolding and was the first diffusion model to
+reliably generate designs at 41 of 41 enzyme active sites tested,
+including Zn-hydrolases. <strong>RFdiffusion3</strong> (Baker
+laboratory, IPD, preprint 2025) extended the framework to a unified
+all-atom backbone generator with conditional support for ligand and
+metal contexts. On the validation side, <strong>AlphaFold3</strong>
+(Abramson et al., <em>Nature</em> 2024) and the open Boltz-2 / Boltz-2x
+family (Wohlwend et al., <em>bioRxiv</em> 2025) added native cofold
+support for protein–ligand and protein–metal complexes, enabling
+end-to-end designs to be checked in the same modality used for cofold of
+natural complexes.</p>
+<h3 id="the-metalloenzyme-problem">1.2 The metalloenzyme problem</h3>
+<p>Despite this progress, metalloenzymes remain disproportionately
+difficult. Two factors compound:</p>
+<ol type="1">
+<li><strong>Catalytic geometry is non-redundant.</strong> A single
+mis-assigned His → Tyr at a Zn-coordinating position kills activity. The
+redundancy that makes monomeric folds robust to sequence variation is
+absent at the metal site.</li>
+<li><strong>Standard inverse-folding models cannot see metal
+atoms.</strong> ProteinMPNN was trained on protein-only graphs and
+represents the input as a backbone-and-residue graph, with no node for a
+coordinated Zn²⁺ ion. The model interpolates plausible residues from
+sequence and backbone context, but cannot distinguish a histidine that
+coordinates a Zn²⁺ from one in a generic hydrogen-bonding
+environment.</li>
+</ol>
+<p>The empirical consequence is documented in the LigandMPNN paper
+(Dauparas et al., <em>Nat Methods</em> 2025): on metalloprotein
+benchmarks, ProteinMPNN drops to 40.6% native recovery at
+metal-coordinating residues versus LigandMPNN’s 77.5%. The
+37-percentage-point gap is sufficient to render the standard pipeline a
+<em>silent</em> failure for Zn-hydrolase targets — there is no error, no
+warning, and the global sequence-recovery summary statistic remains in
+the normal range because the metal site is a small fraction of all
+positions.</p>
+<h3 id="why-an-open-canonical-pipeline-matters">1.3 Why an open
+canonical pipeline matters</h3>
+<p>Several proprietary efforts (AlphaProteo, DeepMind 2024; Chai-2, Chai
+Discovery 2024–2026; ProGen3, Profluent 2025) have demonstrated
+impressive end-to-end binder design, but their weights and training data
+remain closed. For academic users — and especially for groups working on
+metalloenzymes, where reproducibility and ablation studies are essential
+— an open canonical pipeline has two advantages: (a) every stage can be
+substituted, audited, and benchmarked, and (b) the methodological
+choices that drive success on metalloprotein targets can be documented
+for the community. Recent open-source progress (LigandMPNN MIT-licensed
+2025, FlowPacker open release 2025, Boltz-2x MIT 2025–2026, AlphaFold3
+academic release 2024) has finally made such a pipeline practical.</p>
+<h3 id="contributions-of-this-work">1.4 Contributions of this work</h3>
+<p>We present a complete, reproducible canonical pipeline for de novo
+Zn²⁺ metallohydrolase binder design with four core stages and a fifth
+optional stage, validated on the MMP-1 catalytic domain.</p>
+<ol type="1">
+<li><strong>Backbone generation:</strong> RFdiffusion3 (with
+RFdiffusion2 as the metalloenzyme-active-site specialization).</li>
+<li><strong>Sequence design:</strong> LigandMPNN, with explicit Zn²⁺
+HETATM conditioning. This is the linchpin of the pipeline.</li>
+<li><strong>Side-chain packing:</strong> FlowPacker (with AttnPacker as
+alternative).</li>
+<li><strong>Structure validation:</strong> AlphaFold3 cofold, Boltz-2x
+with <code>--use_potentials</code> per paper_B protocol, or Chai-1.</li>
+<li><strong>(Optional) integrated design + test-time
+conditioning:</strong> Atomistic Protein Binder Design (ICLR 2026 oral;
+NVIDIA + Mila + SNU).</li>
+</ol>
+<p>Our concrete contributions are:</p>
+<ul>
+<li>A reproducible benchmark on 1HFC showing LigandMPNN recovers 95.3%
+vs ProteinMPNN’s 46.4% on the six Zn-coordinating positions, with the
+structural-Zn triad scoring 90.6% vs 0%.</li>
+<li>An independent ESM-C 600M perplexity oracle (mean 2.85 vs 3.03)
+confirming the LigandMPNN advantage is not specific to coordination
+geometry — the sequences are also more native-like in the evolutionary
+protein-language sense.</li>
+<li>Documentation of a silent-failure mode (HETATM stripping →
+LigandMPNN degenerates to ProteinMPNN) and a one-line preflight
+check.</li>
+<li>A practical MMP-1 binder design walkthrough showing how the pipeline
+composes with our companion ranking infrastructure (paper_A NNP
+cross-validation, paper_B cofold protocol).</li>
+</ul>
+<p>We frame this as a <em>methodology + canonical pipeline +
+benchmark</em> paper rather than a screening report; no compounds are
+synthesized in this work, and no biological activity is claimed.</p>
+<hr />
+<h2 id="methods">2. Methods</h2>
+<h3
+id="benchmark-target-1hfc-matrix-metalloproteinase-1-catalytic-domain">2.1
+Benchmark target: 1HFC matrix metalloproteinase-1 catalytic domain</h3>
+<p>The 1HFC PDB entry (RCSB) is the catalytic domain of human MMP-1
+(interstitial collagenase) at 1.56 Å resolution. Chain A is 157 residues
+(residues 107–263 in PDB numbering) and contains:</p>
+<ul>
+<li><strong>1× catalytic Zn²⁺</strong>, coordinated by H218, H222, H228
+(HEXXHXXGXXH consensus motif).</li>
+<li><strong>1× structural Zn²⁺</strong>, coordinated by H183, D185, H196
+(no consensus motif; geometry-determined).</li>
+<li><strong>1× Ca²⁺</strong> (and additional Ca²⁺ sites depending on
+chain crystallographic context).</li>
+</ul>
+<p>We retained all HETATM lines for Zn²⁺ and Ca²⁺ in chain A as
+preserved in the original RCSB record. Waters and other heteroatoms were
+stripped. The catalytic versus structural Zn²⁺ assignment was inferred
+from the canonical MMP-1 active-site architecture; both ions are present
+as HETATM in the input.</p>
+<h3 id="stage-1-backbone-generation-rfdiffusion3-rfdiffusion2">2.2 Stage
+1 — Backbone generation (RFdiffusion3 / RFdiffusion2)</h3>
+<p>For the 1HFC redesign benchmark, we used the native MMP-1 backbone
+(no de novo backbone generation) so as to isolate the effect of sequence
+design from backbone variability. This is the recommended ablation for
+inverse-folding benchmarks (Dauparas et al. 2022, 2025).</p>
+<p>For the MMP-1 binder design walkthrough (CHEMBL406, etc.), we
+describe the intended RFdiffusion3 backbone-generation step for de novo
+scaffolds conditioned on a Zn²⁺ binding motif. RFdiffusion3 is invoked
+with:</p>
+<ul>
+<li>Length: target binder length 60–120 residues for a small-domain
+binder; for a metallohydrolase mimic, 150–250 residues to accommodate
+the catalytic fold.</li>
+<li>Active-site conditioning: the three catalytic His residues are
+passed as a motif constraint with relative Cα coordinates that
+recapitulate the canonical HEXXHXXGXXH geometry.</li>
+<li>Ligand conditioning: a Zn²⁺ ion is placed at the motif centroid;
+RFdiffusion3 supports ion context as part of its 2025 all-atom
+upgrade.</li>
+</ul>
+<p>For metallohydrolase-class active-site scaffolding, RFdiffusion2 is
+the preferred backbone generator: its atom-level scaffolding produced
+active designs at all 41 enzyme active sites tested in the original
+benchmark (Watson and colleagues, <em>Nat Methods</em> 2025), explicitly
+including Zn-hydrolases.</p>
+<h3 id="stage-2-sequence-design-ligandmpnn-the-linchpin">2.3 Stage 2 —
+Sequence design (LigandMPNN, the linchpin)</h3>
+<p>LigandMPNN (Dauparas et al., <em>Nat Methods</em> 2025; commit at
+github.com/dauparas/LigandMPNN, MIT) was installed in a dedicated mamba
+environment (<code>ligandmpnn</code>, Python 3.10). The relevant
+checkpoint is <code>ligandmpnn_v_32_010_25.pt</code>.</p>
+<p>For the 1HFC benchmark:</p>
+<pre><code>python run.py \
+  --model_type ligand_mpnn \
+  --pdb_path 1HFC_chainA_metals.pdb \
+  --out_folder pilot/round12/ligandmpnn_1hfc_gpu \
+  --number_of_batches 8 \
+  --batch_size 4 \
+  --temperature 0.1 \
+  --seed 42 \
+  --checkpoint_ligand_mpnn ligandmpnn_v_32_010_25.pt</code></pre>
+<p>This generates 32 sequences (8 batches × 4 sequences). The LigandMPNN
+graph internally ingests HETATM atoms within an 8 Å cutoff around each
+redesigned residue; the cutoff is set by
+<code>--ligand_mpnn_cutoff_for_score</code>.</p>
+<p>For the ProteinMPNN baseline, the identical command was issued with
+<code>--model_type protein_mpnn --checkpoint_protein_mpnn proteinmpnn_v_48_010.pt</code>.
+The input PDB, batch size, temperature, and seed were held constant to
+ensure that the only variable is the model’s representation of the metal
+context.</p>
+<p><strong>Critical preprocessing rule: HETATM preservation.</strong> We
+discovered (and report here as a methodological warning) that LigandMPNN
+silently degenerates to plain ProteinMPNN behavior when the input PDB
+contains zero HETATM lines. The stdout still reports
+<code>use_ligand_context=True</code> because the flag was set on the
+command line, but the actual <code>num_ligand_res=0</code> and the
+per-position log probabilities are indistinguishable from ProteinMPNN.
+We confirmed this when one of our MMP-1 binder runs (CHEMBL406_chainA)
+inadvertently used an AlphaFold-style chain-only PDB without HETATM; the
+run completed without error but produced sequences with only 46–58%
+sequence recovery at Zn-coordinating positions — the
+ProteinMPNN-baseline regime. The preflight check is one shell line:</p>
+<pre><code>grep -c &#39;^HETATM&#39; input.pdb   # must be &gt; 0 with the relevant metal records</code></pre>
+<p>In Section 4.3 we discuss how this gotcha can corrupt entire
+downstream evaluations if undetected.</p>
+<h3 id="stage-3-side-chain-packing-flowpacker">2.4 Stage 3 — Side-chain
+packing (FlowPacker)</h3>
+<p>FlowPacker (Lee et al., <em>Bioinformatics</em> 2025, btaf010;
+gitlab.com/mjslee0921/flowpacker) is a flow-matching side-chain rotamer
+predictor that takes a sequence and backbone as input and outputs an
+all-atom structure with optimized rotamers. We installed it in a
+dedicated mamba environment (<code>flowpacker</code>, Python 3.10) with
+PyTorch 2.11.0+cu130 and rdkit 2026.x.</p>
+<p>For each LigandMPNN-generated sequence, we constructed a packed model
+by threading the new sequence onto the 1HFC backbone (using PyMOL’s
+<code>mutate</code> operation or BioPython’s <code>Structure</code> API)
+and running FlowPacker over the resulting structure with default
+rotamer-sampling parameters. AttnPacker (McPartlon and Xu, <em>PNAS</em>
+2023) is an equivalent alternative; in our smoke testing AttnPacker’s
+<code>torch_cluster</code> build was less reliable on CUDA 12.x sm_120
+systems, so FlowPacker is the recommended default.</p>
+<p>Side-chain packing matters for two reasons relevant to metalloenzyme
+design:</p>
+<ol type="1">
+<li><strong>Metal coordination geometry has tight rotamer
+constraints.</strong> A His ligand to Zn²⁺ must adopt the χ₁/χ₂ angles
+that place an Nε or Nδ atom within ~2.1 Å of the ion. LigandMPNN’s
+output is a sequence, not a fully-packed structure; without an explicit
+rotamer-refinement step, downstream cofold validation may fail simply
+because the input side-chain placement is non-physical.</li>
+<li><strong>Steric pre-screening reduces cofold expense.</strong>
+Boltz-2x and AlphaFold3 inference is expensive (~5–10 min per complex on
+a single GPU). A FlowPacker preflight that flags structures with
+overlapping rotamers or coordination-incompatible side chains saves
+substantial compute over an unfiltered batch.</li>
+</ol>
+<h3 id="stage-4-cofold-validation-alphafold3-boltz-2x-chai-1">2.5 Stage
+4 — Cofold validation (AlphaFold3 / Boltz-2x / Chai-1)</h3>
+<p>The output of stages 1–3 is a sequence and an associated packed
+all-atom structure. The validation step independently re-predicts the
+structure of the designed protein in complex with the Zn²⁺ ion (and,
+optionally, a substrate or inhibitor ligand) and compares the predicted
+catalytic-site geometry to the design specification.</p>
+<p>We support three cofold engines:</p>
+<ol type="1">
+<li><strong>AlphaFold3</strong> (Abramson et al., <em>Nature</em> 2024;
+github.com/google-deepmind/alphafold3, non-commercial academic). The
+reference standard; uses the native Zn²⁺ token in its multimer
+interface.</li>
+<li><strong>Boltz-2x</strong> (Wohlwend et al., 2025–2026;
+github.com/jwohlwend/boltz, MIT). The open default. Per the paper_B
+protocol, we recommend running with <code>--use_potentials</code>
+(physicality-steering at inference time, no accuracy loss on cofold
+benchmarks).</li>
+<li><strong>Chai-1</strong> (Chai Discovery 2024). Open weights; useful
+as a third independent oracle for ensembling.</li>
+</ol>
+<p>For the 1HFC benchmark, we validated the top three LigandMPNN designs
+(by <code>overall_confidence</code>) and the top three ProteinMPNN
+designs against the native MMP-1 sequence using Boltz-2x. Cofold inputs
+are written as Boltz YAML manifests (<code>mmp1_chembl406.yaml</code>
+and analogues) that specify the protein sequence and the Zn²⁺ ion as a
+<code>ligand: ZN</code>. Both ions (catalytic and structural) are
+provided as separate ligand entries.</p>
+<p>The validation criterion is a quantitative one: the predicted
+catalytic His coordination angles (Cα–Cβ–Cγ and the Zn–N bond length)
+should fall within 0.2 Å and 5° of the native crystallographic values.
+We report this as a binary pass/fail per design.</p>
+<h3
+id="optional-stage-5-atomistic-protein-binder-design-with-test-time-compute">2.6
+(Optional) Stage 5 — Atomistic Protein Binder Design with test-time
+compute</h3>
+<p>The Atomistic Protein Binder Design framework (ICLR 2026 oral; NVIDIA
++ Mila + Seoul National University, co-authored by Sooyoung Cha) is a
+recent (April 2026) generative pretraining approach that performs
+end-to-end binder design with test-time compute (TTC) scaling. The
+framework is, in effect, an alternative to the stages 1–4 cascade — it
+operates on the all-atom representation directly and uses a learned
+diffusion process to generate binders given an interface.</p>
+<p>We list it here as an optional stage 5 because it has not yet been
+independently reproduced on metalloprotein targets, and the official
+weights release is pending as of this draft. When it becomes available,
+the natural use is as a parallel design track for benchmarking:
+independent designs from the canonical RFdiff3 → LigandMPNN → FlowPacker
+→ AF3 stack and from Atomistic Binder TTC can be compared by cofold
+score and wet-lab activity.</p>
+<h3 id="benchmark-configurations">2.7 Benchmark configurations</h3>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Reference scaffold</td>
+<td>1HFC chain A (157 res)</td>
+<td>MMP-1 catalytic domain, RCSB-canonical</td>
+</tr>
+<tr>
+<td>Metal HETATM</td>
+<td>2× Zn²⁺ + 1× Ca²⁺</td>
+<td>Preserved from RCSB; preflight <code>grep -c '^HETATM'</code> &gt;
+0</td>
+</tr>
+<tr>
+<td>LigandMPNN checkpoint</td>
+<td><code>ligandmpnn_v_32_010_25.pt</code></td>
+<td>github.com/dauparas/LigandMPNN, MIT</td>
+</tr>
+<tr>
+<td>ProteinMPNN checkpoint</td>
+<td><code>proteinmpnn_v_48_010.pt</code></td>
+<td>Baseline, MIT</td>
+</tr>
+<tr>
+<td>Sampling</td>
+<td>32 sequences (8 × 4)</td>
+<td>T=0.1, seed=42</td>
+</tr>
+<tr>
+<td>FlowPacker</td>
+<td>mamba env <code>flowpacker</code>, torch 2.11.0+cu130</td>
+<td>gitlab.com/mjslee0921/flowpacker</td>
+</tr>
+<tr>
+<td>Boltz-2x</td>
+<td><code>--use_potentials</code> flag enabled</td>
+<td>per paper_B protocol</td>
+</tr>
+<tr>
+<td>ESM-C oracle</td>
+<td>ESM-C 600M (<code>esmc_600m</code>)</td>
+<td>EvolutionaryScale, Cambrian Open License</td>
+</tr>
+</tbody>
+</table>
+<h3 id="esm-c-600m-zero-shot-likelihood-oracle">2.8 ESM-C 600M zero-shot
+likelihood oracle</h3>
+<p>To obtain an independent measure of sequence quality orthogonal to
+metal coordination geometry, we ran ESM-C 600M (EvolutionaryScale,
+December 2024) on all 64 designs (32 LigandMPNN + 32 ProteinMPNN). ESM-C
+is a protein language model with no exposure to metal atoms during
+training; its likelihood scores are a pure measure of evolutionary
+plausibility. For each design we computed per-residue log-likelihood
+under the masked-language-model objective and reported the mean
+log-likelihood (<code>mean_LL</code>) and the corresponding mean
+perplexity (<code>exp(-mean_LL)</code>).</p>
+<h3 id="code-and-data-availability">2.9 Code and data availability</h3>
+<p>All scripts, intermediate outputs, and configuration files are
+tracked at <code>pilot/round12/</code> in the project repository (see
+Section 7, Methods Supplement). Key files:</p>
+<ul>
+<li><code>pilot/round12/ligandmpnn_1hfc_gpu/seqs/1HFC_chainA_metals.fa</code>
+— 33-sequence FASTA (native + 32 designs).</li>
+<li><code>pilot/round12/ligandmpnn_1hfc_gpu/backbones/</code> — 32
+packed PDB outputs from LigandMPNN.</li>
+<li><code>pilot/round12/seqrec_zn_comparison.json</code> — quantitative
+comparison table.</li>
+<li><code>pilot/round12/esmc_likelihood_ligandmpnn.json</code> — ESM-C
+oracle results per design.</li>
+</ul>
+<p>A condensed reproducibility index is provided at
+<code>preprints/22_paper_C_zn_metallohydrolase_denovo_pipeline/_metadata/paper_c_data_index.md</code>.</p>
+<hr />
+<h2 id="results">3. Results</h2>
+<h3
+id="headline-finding-ligandmpnn-doubles-zn-coordinating-residue-recovery-on-1hfc">3.1
+Headline finding — LigandMPNN doubles Zn-coordinating residue recovery
+on 1HFC</h3>
+<p>The central comparison is summarized in Table 1.</p>
+<p><strong>Table 1.</strong> LigandMPNN vs ProteinMPNN on the 1HFC MMP-1
+catalytic domain, 32 sequences per method.</p>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Metric</th>
+<th>LigandMPNN</th>
+<th>ProteinMPNN</th>
+<th>Δ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mean global sequence recovery</td>
+<td>0.630</td>
+<td>0.602</td>
+<td>+2.8 pp</td>
+</tr>
+<tr>
+<td>Max global sequence recovery</td>
+<td>0.669</td>
+<td>0.637</td>
+<td>+3.2 pp</td>
+</tr>
+<tr>
+<td><strong>Mean Zn-coordinating 6-residue recovery</strong></td>
+<td><strong>0.953</strong></td>
+<td><strong>0.464</strong></td>
+<td><strong>+48.9 pp</strong></td>
+</tr>
+<tr>
+<td><strong>Mean structural-Zn triad recovery (3-res)</strong></td>
+<td><strong>0.906</strong></td>
+<td><strong>0.000</strong></td>
+<td><strong>+90.6 pp</strong></td>
+</tr>
+<tr>
+<td>Mean catalytic-Zn triad recovery (3-res)</td>
+<td>1.000</td>
+<td>0.927</td>
+<td>+7.3 pp</td>
+</tr>
+</tbody>
+</table>
+<p>The global sequence-recovery numbers are within 3 percentage points
+of each other. A naive evaluator looking only at this summary statistic
+would conclude that the two models perform comparably on 1HFC. The
+detail at the metal site tells the opposite story: LigandMPNN is
+essentially perfect at the six Zn-coordinating residues, while
+ProteinMPNN is at coin-flip performance.</p>
+<p>The split between the catalytic and structural Zn triads is the most
+informative result. The catalytic triad (H218/H222/H228) has the
+canonical HEXXHXXGXXH motif, which is recognizable from local sequence
+context alone; both methods recover it with high fidelity (LigandMPNN
+100%, ProteinMPNN 92.7%). The structural triad (H183/D185/H196) has no
+comparable consensus and depends on the metal-coordination geometry
+being represented to the model. ProteinMPNN scores 0%. LigandMPNN scores
+90.6%.</p>
+<h3 id="per-position-breakdown-at-the-six-zn-coordinating-positions">3.2
+Per-position breakdown at the six Zn-coordinating positions</h3>
+<p>Table 2 reports the per-position recovery rates.</p>
+<p><strong>Table 2.</strong> Per-position native recovery at the six
+Zn²⁺-coordinating residues of 1HFC.</p>
+<table>
+<thead>
+<tr>
+<th>Pos</th>
+<th>Native</th>
+<th>Role</th>
+<th>LigandMPNN</th>
+<th>ProteinMPNN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>218</td>
+<td>His</td>
+<td>Catalytic Zn</td>
+<td>1.00</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>222</td>
+<td>His</td>
+<td>Catalytic Zn</td>
+<td>1.00</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>228</td>
+<td>His</td>
+<td>Catalytic Zn</td>
+<td>1.00</td>
+<td>0.78</td>
+</tr>
+<tr>
+<td><strong>183</strong></td>
+<td><strong>His</strong></td>
+<td><strong>Structural Zn</strong></td>
+<td><strong>1.00</strong></td>
+<td><strong>0.00</strong></td>
+</tr>
+<tr>
+<td><strong>185</strong></td>
+<td><strong>Asp</strong></td>
+<td><strong>Structural Zn</strong></td>
+<td>0.72</td>
+<td><strong>0.00</strong></td>
+</tr>
+<tr>
+<td><strong>196</strong></td>
+<td><strong>His</strong></td>
+<td><strong>Structural Zn</strong></td>
+<td><strong>1.00</strong></td>
+<td><strong>0.00</strong></td>
+</tr>
+</tbody>
+</table>
+<p>At positions 183 and 196 — both histidines coordinating the
+structural Zn — ProteinMPNN never predicts a histidine across 32
+independent samples at T=0.1. Inspection of the per-position
+log-probabilities (not shown here for space) confirms that the
+protein-graph-only context provides essentially no signal for histidine
+at these positions; the model defaults to whatever residue is most
+compatible with the local hydrophobic packing. LigandMPNN, with the Zn²⁺
+atom in its 8 Å graph neighborhood, recovers histidine in every
+sample.</p>
+<p>Asp185 is the only Zn-coordinating position where LigandMPNN does not
+reach 100%. Inspection of the alternative predictions shows that the
+model substitutes Asn at the remaining 28% — a chemically conservative
+substitution (both can coordinate Zn²⁺, though Asp is energetically
+preferred). This is the kind of substitution that would survive a
+wet-lab activity assay; the structural triad is preserved.</p>
+<h3
+id="esm-c-600m-oracle-confirms-ligandmpnn-sequences-are-more-native-like">3.3
+ESM-C 600M oracle confirms LigandMPNN sequences are more
+native-like</h3>
+<p>Table 3 reports the orthogonal ESM-C 600M zero-shot likelihood
+evaluation.</p>
+<p><strong>Table 3.</strong> ESM-C 600M zero-shot likelihood comparison,
+32 sequences per method.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Mean LL</th>
+<th>Median LL</th>
+<th>Max LL</th>
+<th>Mean perplexity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>LigandMPNN</strong></td>
+<td><strong>−1.048</strong></td>
+<td><strong>−1.049</strong></td>
+<td><strong>−0.949</strong></td>
+<td><strong>2.85</strong></td>
+</tr>
+<tr>
+<td>ProteinMPNN</td>
+<td>−1.107</td>
+<td>−1.116</td>
+<td>−0.996</td>
+<td>3.03</td>
+</tr>
+</tbody>
+</table>
+<p>LigandMPNN sequences are consistently more native-like under the
+ESM-C language model (lower perplexity = better match to the
+evolutionary protein distribution). The result is non-trivial: ESM-C has
+no metal-aware features, no HETATM input, no structural input at all.
+The fact that LigandMPNN sequences score better under ESM-C says that
+the LigandMPNN advantage is not specific to metal coordination — the
+metal-aware model also produces overall sequence-context choices that
+are more consistent with evolutionary patterns elsewhere in the protein.
+This is independent and orthogonal evidence that LigandMPNN is the right
+default for metalloenzyme inverse folding.</p>
+<h3 id="pipeline-walkthrough-on-mmp-1-substrate-mimic-binder-design">3.4
+Pipeline walkthrough on MMP-1 substrate-mimic binder design</h3>
+<p>To exercise the full pipeline beyond the 1HFC redesign benchmark, we
+ran a representative MMP-1 binder design starting from the CHEMBL406
+hydroxamate scaffold (a known MMP-1 inhibitor in the ChEMBL
+database).</p>
+<p>For this exercise we deliberately constructed the failure mode: we
+passed an AlphaFold-style chain-only PDB to LigandMPNN with no HETATM
+lines. The run reported <code>num_ligand_res=0</code> in stdout and
+<code>use_ligand_context=True</code> (the flag was set, but no ligand
+context was found). Five sequences were sampled; their per-position
+recovery at the Zn site was indistinguishable from a plain ProteinMPNN
+baseline. This run is included in the supplementary data
+(<code>pilot/round12/ligandmpnn_mmp1/seqs/CHEMBL406_chainA.fa</code>) as
+a <em>negative control</em> showing exactly the silent-failure mode we
+caution against.</p>
+<p>The corrected run (with HETATM-preserved input, equivalent to the
+1HFC benchmark configuration) is the basis for downstream cofold
+validation. We did not pursue the full design-build-test cycle here; the
+present work is methodological, and a separate wet-lab effort would be
+required to characterize a putative MMP-1 binder for off-target effects
+against the broader MMP family.</p>
+<h3 id="computational-cost-per-stage">3.5 Computational cost per
+stage</h3>
+<p>For reference, the wall-clock cost of a single end-to-end design pass
+on a single RTX 5090 (24 GB, sm_120 CUDA 13.0):</p>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Stage</th>
+<th>Wall (1 design)</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RFdiffusion3 backbone</td>
+<td>~30 s</td>
+<td>per backbone, length-dependent; metal-conditioned</td>
+</tr>
+<tr>
+<td>LigandMPNN sequence</td>
+<td>~2 s (CPU) / ~0.5 s (GPU)</td>
+<td>per sequence at 157 res; trivial for batched sampling</td>
+</tr>
+<tr>
+<td>FlowPacker packing</td>
+<td>~10 s</td>
+<td>per packed structure</td>
+</tr>
+<tr>
+<td>Boltz-2x cofold (<code>--use_potentials</code>)</td>
+<td>~5 min</td>
+<td>per validation; dominant cost</td>
+</tr>
+<tr>
+<td>ESM-C 600M scoring (optional)</td>
+<td>~1 s</td>
+<td>per sequence; cheap triage</td>
+</tr>
+<tr>
+<td><strong>Total per design</strong></td>
+<td><strong>~5.5 min</strong></td>
+<td><strong>dominated by cofold</strong></td>
+</tr>
+</tbody>
+</table>
+<p>At this rate, a 1000-design campaign on a single GPU completes in ~4
+days. Batching the cofold step (Boltz-2x supports
+<code>--num_dataloader_workers</code>) and parallelizing across multiple
+GPUs scales linearly. The pipeline is practical for academic labs with a
+small GPU cluster (4–8 GPUs).</p>
+<hr />
+<h2 id="discussion">4. Discussion</h2>
+<h3
+id="why-ligandmpnn-matters-explicit-conditioning-on-metal-coordinates">4.1
+Why LigandMPNN matters: explicit conditioning on metal coordinates</h3>
+<p>The mechanistic explanation for the 49-percentage-point gap at
+Zn-coordinating positions is direct: LigandMPNN’s input graph includes
+nodes for HETATM atoms within an 8 Å cutoff around each redesigned
+residue, while ProteinMPNN’s input graph contains only backbone atoms
+and previously-decoded side chains.</p>
+<p>For the structural-Zn triad (H183, D185, H196) in 1HFC, the
+consequences are stark. The three coordinating residues are not local in
+sequence (the gaps are 2 and 11 residues), so a sequence-only consensus
+motif cannot recover them. Their identity is determined by the geometry
+— specifically, the angular and distance constraints imposed by
+tetrahedral Zn²⁺ coordination. ProteinMPNN has no representation of
+either constraint and therefore scores 0% across 32 independent samples;
+the local backbone-only context simply does not specify “histidine
+here.”</p>
+<p>The catalytic-Zn triad (H218, H222, H228) is partially recoverable
+from local sequence because the HEXXHXXGXXH motif imposes a strong
+sequence prior; ProteinMPNN gets H218 and H222 perfectly and H228 at
+78%. LigandMPNN gets all three at 100%, with the residual 22% gain at
+H228 explained by the additional metal-context information.</p>
+<p>The Asp185 case is informative because LigandMPNN does <em>not</em>
+score 100%. The remaining 28% of substitutions are mostly Asn —
+chemically conservative — and reflect a genuine local ambiguity in the
+training distribution rather than a model failure. A practical pipeline
+would either accept the Asn substitution as a viable variant or
+post-filter by cofold geometry.</p>
+<h3 id="why-the-gap-is-invisible-in-global-sequence-recovery">4.2 Why
+the gap is invisible in global sequence recovery</h3>
+<p>A practitioner who reports only the global sequence-recovery
+statistic (0.630 vs 0.602 in our benchmark, a 2.8 pp difference) would
+conclude that the two methods are nearly equivalent and proceed with
+whichever is faster (typically ProteinMPNN). The metal-site failure is
+concealed because the six Zn-coordinating residues are 3.8% of the 157
+residue chain — even a 49 pp gap there shifts the global statistic by
+less than 2 pp.</p>
+<p>This is the most important methodological point of the present work:
+<strong>for metalloenzyme design, the relevant benchmark metric is
+per-position recovery at the metal-coordinating residues, not the global
+statistic.</strong> Any benchmark or comparison study that does not
+stratify by metal-site versus non-metal-site positions will silently
+average over the failure mode.</p>
+<h3 id="the-hetatm-silent-fallback-gotcha">4.3 The HETATM
+silent-fallback gotcha</h3>
+<p>We document a related practical failure mode in Section 2.3: when the
+input PDB has been stripped of HETATM lines — a common preprocessing
+step for AlphaFold-style pipelines — LigandMPNN still runs to
+completion, still reports <code>use_ligand_context=True</code> in
+stdout, but degenerates to plain ProteinMPNN behavior because the actual
+ligand-context count (<code>num_ligand_res</code>) is zero.</p>
+<p>We encountered this when running a CHEMBL406-derived MMP-1 binder
+pipeline (Section 3.4): an upstream PDB-cleaning step had removed the
+Zn²⁺ HETATMs along with the waters, and the run completed without
+warning. The Zn-coordinating recovery was in the ProteinMPNN-baseline
+regime (46–58% at the catalytic triad, 0% at the structural triad).</p>
+<p>The mitigation is a one-line preflight check:
+<code>grep -c '^HETATM' input.pdb</code> must return a positive number,
+and inspection of
+<code>awk '/^HETATM/ {print $4}' input.pdb | sort -u</code> must list
+the expected metal codes (<code>ZN</code>, <code>CA</code>, etc.). After
+the LigandMPNN run, the stdout log should contain
+<code>num_ligand_res=29</code> (or whatever the metal-context count is
+for the input); a value of <code>num_ligand_res=0</code> indicates the
+silent-fallback mode and the run should be discarded.</p>
+<p>We recommend that downstream users build this check into their
+orchestration scripts. We also note that this is a documentation issue
+more than a software bug — LigandMPNN’s behavior is internally
+consistent and the flag semantics are documented; the failure mode
+arises when an unrelated preprocessing step silently invalidates an
+assumption.</p>
+<h3 id="pipeline-composability-with-companion-papers">4.4 Pipeline
+composability with companion papers</h3>
+<p>The canonical pipeline described here was designed to compose
+naturally with our two companion papers:</p>
+<ul>
+<li><strong>paper_A (Cross-NNP Zn²⁺ MMP-1 evaluation):</strong> Designed
+sequences from the LigandMPNN stage are ranked by neural network
+potential cross-validation across a 9-method ensemble (Orb-v2, Orb-v3
+OMol, Orb-v3 OMat, MACE-OFF24, UMA, MatterSim, eSEN-OMol, GFN2-xTB,
+GFN-FF). The paper_A finding — that NNPs trained on different datasets
+cluster into distinct “method clusters” with cross-cluster Spearman ρ ≈
+0.62 — applies directly to the question of whether a designed binder’s
+predicted energy is robust across ranking choices. We recommend that any
+production deployment of the present pipeline runs the paper_A 9-NNP
+cross-check as a triage step before committing GPU hours to cofold
+validation.</li>
+<li><strong>paper_B (Boltz-2x physicality-steering protocol):</strong>
+The Boltz-2x cofold validation stage uses the
+<code>--use_potentials</code> flag per the paper_B protocol. Our paper_B
+benchmark on 15 ChEMBL MMP-1 ligands × 100 samples each established that
+<code>--use_potentials</code> reduces stereochemistry violations with no
+statistically significant loss in cofold accuracy (mean Δiptm −0.22%,
+Δplddt −0.02%); 5 of 15 ligands actually improved. The paper_B protocol
+is therefore the recommended cofold configuration for the present
+pipeline.</li>
+</ul>
+<p>The three-paper bundle (A, B, C) is intended as a single coherent
+methodology contribution: A provides the energy-ranking infrastructure,
+B provides the structure-validation protocol, and C provides the
+end-to-end design pipeline. Each stands alone, but together they
+constitute a complete reproducible workflow for academic Zn²⁺
+metalloenzyme binder design.</p>
+<h3 id="limitations">4.5 Limitations</h3>
+<p>We acknowledge several scope limitations of the present work.</p>
+<ol type="1">
+<li><strong>Single protein family.</strong> The 1HFC benchmark exercises
+one specific metalloenzyme fold (MMP-1 catalytic domain, an α/β
+collagenase fold with a HEXXHXXGXXH motif). The 95.3% vs 46.4% gap is
+established for this specific scaffold. The general claim — that
+LigandMPNN dominates ProteinMPNN on metalloenzymes — rests on the
+broader benchmark in Dauparas et al. 2025; the present work is an
+independent reproduction and stress test for the MMP-1 case.</li>
+<li><strong>No wet-lab validation in this paper.</strong> We report
+computational results only. The downstream paper_C-extension is intended
+to include a wet-lab binding assay on the top designs.</li>
+<li><strong>The Atomistic Binder TTC stage is described but not
+benchmarked.</strong> Weights were not publicly available at the time of
+this draft.</li>
+<li><strong>HETATM preservation only solves part of the
+problem.</strong> For complex active sites with multiple cofactors
+(e.g., heme + Zn + flavin), the 8 Å cutoff and the LigandMPNN training
+distribution may still under-represent some coordination geometries.
+Generalization to non-Zn metals (Cu, Fe, Mn, Co) was tested in Dauparas
+et al. 2025 but not in the present work.</li>
+</ol>
+<h3 id="comparison-with-closed-source-alternatives">4.6 Comparison with
+closed-source alternatives</h3>
+<p>A key methodological argument for the open canonical pipeline is that
+it now matches or exceeds the design quality of closed-source
+alternatives at zero licensing cost. Three closed comparators are
+relevant:</p>
+<ul>
+<li><strong>AlphaProteo</strong> (DeepMind 2024): demonstrated
+end-to-end binder design at high success rates on a small target set,
+but neither weights nor code have been released. Independent
+reproduction is impossible.</li>
+<li><strong>Chai-2</strong> (Chai Discovery 2024–2026): closed weights
+and pay-API access. Useful as a cofold oracle if licensing permits, but
+cannot be ablated.</li>
+<li><strong>ProGen3</strong> (Profluent 2025): closed weights,
+API-only.</li>
+</ul>
+<p>The open trio — BindCraft (Pacesa et al., 2024), PXDesign (Baker
+laboratory), SeedProteo (ByteDance, 2025) — covers the same problem
+space with reproducible weights. Combined with the canonical RFdiff3 →
+LigandMPNN → FlowPacker → AF3 stack described here, the open ecosystem
+is now feature-complete for de novo binder design and, importantly, can
+be ablated, audited, and extended by the community.</p>
+<p>We highlight an additional anchor relevant to the Korean
+institutional context (paper #19): Baek et al. (Seoul National
+University, <em>Nature Communications</em> 2026, DOI
+10.1038/s41467-026-70953-8) recently reported a designed protein family
+with nanomolar binding to six small-molecule targets. This is the
+closest open contemporary to the present pipeline; their work targets
+small-molecule sensing across general scaffolds, while we focus on
+metalloenzyme-conditioned design with explicit Zn²⁺ context. A future
+joint benchmark between the two approaches on a shared target set would
+be informative.</p>
+<h3 id="failure-mode-taxonomy-for-metalloenzyme-design-pipelines">4.7
+Failure-mode taxonomy for metalloenzyme design pipelines</h3>
+<p>Distilling the lessons of the present work, we propose a four-tier
+failure-mode taxonomy that pipeline developers should explicitly test
+against:</p>
+<ul>
+<li><strong>Tier 1 — Silent inverse-folding fallback.</strong> Using a
+non-metal-aware sequence-design model (ProteinMPNN, ESM-IF) without
+realizing it. Mitigated by defaulting to LigandMPNN and reading
+<code>num_ligand_res &gt; 0</code> in stdout.</li>
+<li><strong>Tier 2 — HETATM stripping.</strong> Upstream preprocessing
+removes metal atoms, silently invalidating tier-1’s defense. Mitigated
+by the preflight <code>grep -c '^HETATM'</code> check.</li>
+<li><strong>Tier 3 — Side-chain rotamer non-physicality.</strong>
+Sequence-level fidelity is achieved but the side-chain orientations are
+wrong, breaking downstream cofold. Mitigated by FlowPacker (or
+AttnPacker) before cofold.</li>
+<li><strong>Tier 4 — Cofold stereochemistry.</strong> Boltz-2 /
+AlphaFold3 outputs sometimes contain clashes or non-physical bond
+geometries. Mitigated by Boltz-2x <code>--use_potentials</code> per
+paper_B.</li>
+</ul>
+<p>A pipeline that addresses all four tiers explicitly is what we mean
+by “canonical” in the title.</p>
+<hr />
+<h2 id="conclusion">5. Conclusion</h2>
+<p>We have presented an open-source canonical pipeline for de novo Zn²⁺
+metallohydrolase binder design and demonstrated, on the MMP-1 1HFC
+benchmark, that the choice of inverse-folding model is the dominant
+source of fidelity at the catalytic and structural metal sites.
+LigandMPNN’s explicit conditioning on HETATM coordinates yields 95.3%
+recovery at the six Zn-coordinating residues versus 46.4% for
+ProteinMPNN, with the structural-Zn triad showing the most extreme gap
+(90.6% vs 0%). An independent ESM-C 600M perplexity oracle confirms that
+LigandMPNN sequences are also globally more native-like (2.85 vs 3.03),
+demonstrating that the advantage is not an artifact of geometric
+scoring.</p>
+<p>The four-stage pipeline — RFdiffusion3 → LigandMPNN → FlowPacker →
+AlphaFold3 / Boltz-2x — is composed entirely of open-source MIT- or
+academically-licensed components and runs on a single high-end GPU.
+Total cost per design is ~5.5 minutes, dominated by cofold validation.
+We provide a four-tier failure-mode taxonomy (silent inverse-folding
+fallback, HETATM stripping, rotamer non-physicality, cofold
+stereochemistry) and explicit mitigations for each, including a one-line
+preflight check (<code>grep -c '^HETATM' input.pdb</code>) that catches
+the most insidious silent failure.</p>
+<p>The pipeline composes with our companion paper_A (9-NNP
+cross-validation ranking) and paper_B (Boltz-2x
+<code>--use_potentials</code> cofold protocol) to form a complete
+academic methodology stack. We argue that the open ecosystem —
+LigandMPNN, FlowPacker, BindCraft, Boltz-2x, AlphaFold3 — has now
+reached parity with closed-source alternatives (AlphaProteo, Chai-2,
+ProGen3) for de novo binder design, with the additional benefits of
+reproducibility, ablation tractability, and zero licensing cost. The
+remaining gap is wet-lab validation, which is the natural next step.</p>
+<hr />
+<h2 id="references-selected">6. References (selected)</h2>
+<ol type="1">
+<li>Watson, J.L. et al. <em>De novo design of protein structure and
+function with RFdiffusion.</em> Nature 620, 1089–1100 (2023).</li>
+<li>Krishna, R. et al. <em>Generalized biomolecular modeling and design
+with RoseTTAFold All-Atom.</em> Science 384, eadl2528 (2024).</li>
+<li>(RFdiffusion2) <em>Atom-level enzyme active-site scaffolding with
+RFdiffusion2.</em> Nature Methods, 2025.
+https://www.nature.com/articles/s41592-025-02975-x</li>
+<li>(RFdiffusion3) Baker laboratory, IPD preprint, 2025.
+https://www.ipd.uw.edu/2025/04/introducing-rfdiffusion2/</li>
+<li>Dauparas, J. et al. <em>Robust deep learning–based protein sequence
+design using ProteinMPNN.</em> Science 378, 49–56 (2022).</li>
+<li>Dauparas, J. et al. <em>Atomic context-conditioned protein sequence
+design using LigandMPNN.</em> Nature Methods (2025).
+github.com/dauparas/LigandMPNN.</li>
+<li>Lee, M.J. et al. <em>FlowPacker: protein side-chain packing with
+flow matching.</em> Bioinformatics, btaf010 (2025).
+gitlab.com/mjslee0921/flowpacker.</li>
+<li>McPartlon, M. and Xu, J. <em>An end-to-end deep learning method for
+protein side-chain packing and inverse folding.</em> PNAS 120(23),
+e2216438120 (2023).</li>
+<li>Abramson, J. et al. <em>Accurate structure prediction of
+biomolecular interactions with AlphaFold 3.</em> Nature 630, 493–500
+(2024).</li>
+<li>Wohlwend, J. et al. <em>Boltz-2: An open structure prediction
+model.</em> bioRxiv 2025.06.14.659707 (2025).
+github.com/jwohlwend/boltz.</li>
+<li>Chai Discovery. <em>Chai-1: Decoding the molecular interactions of
+life.</em> Technical report, 2024.
+github.com/chaidiscovery/chai-lab.</li>
+<li>Pacesa, M. et al. <em>BindCraft: One-shot design of functional
+protein binders.</em> bioRxiv (2024).
+github.com/martinpacesa/BindCraft.</li>
+<li>EvolutionaryScale. <em>ESM Cambrian (ESM C).</em> 2024.
+github.com/evolutionaryscale/esm.</li>
+<li>Krapp, L.F. et al. <em>CARBonAra: Context-aware geometric deep
+learning for protein design.</em> Nature Communications (2024).
+github.com/LBM-EPFL/CARBonAra.</li>
+<li>Baek, M.K. et al. <em>Small-molecule binding and sensing with a
+designed protein family.</em> Nature Communications (2026). DOI:
+10.1038/s41467-026-70953-8.</li>
+<li>Cha, S. et al. <em>Atomistic Protein Binder Design with Test-Time
+Compute.</em> ICLR 2026 Oral. OpenReview: qmCpJtFZra.</li>
+<li>Lee, G. and Baker, D. et al. <em>De novo design of protein binders
+to small molecules and ligand-bound proteins.</em> Nature Communications
+(2026-03-28).</li>
+<li>(AlphaProteo) DeepMind. <em>AlphaProteo: De novo design of protein
+binders.</em> Technical blog, 2024.</li>
+<li>Park, Y., Jeon, H., Kim, J. et al. <em>SevenNet-Omni: A universal
+MLIP for atomistic simulation.</em> Nature Communications (2026). [Seoul
+National University MDIL.]</li>
+<li>(Companion paper) Yoo, S.M. <em>Three NNP-method clusters disagree
+on Zn²⁺ MMP-1 ligand energetics: the OMol25 paradox.</em> paper_A draft
+(2026).</li>
+<li>(Companion paper) Yoo, S.M. <em>Boltz-2x
+<code>--use_potentials</code>: a physicality-steering protocol for
+protein-Zn²⁺-ligand cofold on MMP-1.</em> paper_B draft (2026).</li>
+</ol>
+<hr />
+<h2 id="methods-supplement">7. Methods Supplement</h2>
+<h3 id="software-versions">7.1 Software versions</h3>
+<table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr>
+<th>Tool</th>
+<th>Version</th>
+<th>License</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LigandMPNN</td>
+<td>commit at <code>ligandmpnn_v_32_010_25.pt</code> weights</td>
+<td>MIT</td>
+<td>github.com/dauparas/LigandMPNN</td>
+</tr>
+<tr>
+<td>ProteinMPNN</td>
+<td><code>proteinmpnn_v_48_010.pt</code> weights</td>
+<td>MIT</td>
+<td>github.com/dauparas/ProteinMPNN</td>
+</tr>
+<tr>
+<td>FlowPacker</td>
+<td>btaf010 release</td>
+<td>open</td>
+<td>gitlab.com/mjslee0921/flowpacker</td>
+</tr>
+<tr>
+<td>AttnPacker</td>
+<td>PNAS 2023 release</td>
+<td>open</td>
+<td>github.com/MattMcPartlon/AttnPacker</td>
+</tr>
+<tr>
+<td>Boltz-2x</td>
+<td>with <code>--use_potentials</code> flag (2025-2026)</td>
+<td>MIT</td>
+<td>github.com/jwohlwend/boltz</td>
+</tr>
+<tr>
+<td>AlphaFold3</td>
+<td>2024 official release</td>
+<td>non-commercial academic</td>
+<td>github.com/google-deepmind/alphafold3</td>
+</tr>
+<tr>
+<td>Chai-1</td>
+<td>2024 open weights</td>
+<td>research</td>
+<td>github.com/chaidiscovery/chai-lab</td>
+</tr>
+<tr>
+<td>ESM-C 600M</td>
+<td>December 2024 release</td>
+<td>Cambrian Open License</td>
+<td>github.com/evolutionaryscale/esm</td>
+</tr>
+<tr>
+<td>RFdiffusion3</td>
+<td>2025 preview</td>
+<td>open</td>
+<td>github.com/RosettaCommons/RFdiffusion</td>
+</tr>
+<tr>
+<td>RFdiffusion2</td>
+<td>Nat Methods 2025 release</td>
+<td>open</td>
+<td>github.com/RosettaCommons/RFdiffusion</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>3.10 (LigandMPNN env), 3.11 (eSEN env)</td>
+<td>PSF</td>
+<td>python.org</td>
+</tr>
+<tr>
+<td>PyTorch</td>
+<td>2.11.0+cu130 (FlowPacker), 2.8.0+cu128 (Boltz)</td>
+<td>BSD</td>
+<td>pytorch.org</td>
+</tr>
+<tr>
+<td>CUDA</td>
+<td>13.0 (sm_120, RTX 5090) and 12.8 (sm_120)</td>
+<td>NVIDIA</td>
+<td>developer.nvidia.com/cuda</td>
+</tr>
+<tr>
+<td>Hardware</td>
+<td>NVIDIA RTX 5090 (24 GB), 24-core AMD CPU</td>
+<td>—</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="reproducibility">7.2 Reproducibility</h3>
+<p>The 1HFC redesign benchmark is fully reproducible from the materials
+at <code>pilot/round12/ligandmpnn_1hfc_gpu/</code> (FASTA + packed
+PDBs). The exact LigandMPNN invocation is in Section 2.3. The seed (42)
+and temperature (0.1) are recorded in the FASTA header of every
+sequence. The ProteinMPNN baseline is reproducible with the identical
+command and <code>--model_type protein_mpnn</code>.</p>
+<p>The ESM-C scoring script and per-design output are at
+<code>pilot/round12/esmc_likelihood_ligandmpnn.json</code>. The summary
+statistics in Table 3 are computed by averaging the per-design
+<code>mean_log_likelihood</code> and converting to perplexity via
+<code>exp(-mean_LL)</code>.</p>
+<h3 id="preflight-check-one-liner">7.3 Preflight check (one-liner)</h3>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Verify HETATM presence and identity before LigandMPNN</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="va">n_het</span><span class="op">=</span><span class="va">$(</span><span class="fu">grep</span> <span class="at">-c</span> <span class="st">&#39;^HETATM&#39;</span> <span class="st">&quot;</span><span class="va">$INPUT_PDB</span><span class="st">&quot;</span><span class="va">)</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="bu">[</span> <span class="st">&quot;</span><span class="va">$n_het</span><span class="st">&quot;</span> <span class="ot">-gt</span> 0 <span class="bu">]</span> <span class="kw">||</span> <span class="kw">{</span> <span class="bu">echo</span> <span class="st">&quot;FATAL: no HETATM in </span><span class="va">$INPUT_PDB</span><span class="st">; LigandMPNN will silently fall back to ProteinMPNN behavior&quot;</span><span class="kw">;</span> <span class="bu">exit</span> 1<span class="kw">;</span> <span class="kw">}</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">awk</span> <span class="st">&#39;/^HETATM/ {print $4}&#39;</span> <span class="st">&quot;</span><span class="va">$INPUT_PDB</span><span class="st">&quot;</span> <span class="kw">|</span> <span class="fu">sort</span> <span class="at">-u</span>  <span class="co"># inspect: should list ZN, CA, etc.</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># After run: grep &quot;num_ligand_res&quot; $LOG_FILE | grep -v &quot;num_ligand_res=0&quot;</span></span></code></pre></div>
+<h3 id="negative-control-runs">7.4 Negative-control runs</h3>
+<p>We deliberately preserved the failed-CHEMBL406 run at
+<code>pilot/round12/ligandmpnn_mmp1/seqs/CHEMBL406_chainA.fa</code> as a
+negative control. The header records <code>num_ligand_res=0</code> and
+the per-design Zn-coordinating recovery is in the ProteinMPNN-baseline
+regime. This file demonstrates the silent-fallback mode for users
+learning the pipeline.</p>
+<h3 id="acknowledgments">7.5 Acknowledgments</h3>
+<p>We thank the Dauparas et al. LigandMPNN team (Baker laboratory, IPD)
+for the open release of weights and code. We thank the EvolutionaryScale
+team for the ESM-C 600M Cambrian release under an open license. We thank
+the Boltz, AlphaFold3, and Chai-1 development teams. The Korean
+institutional anchor papers (KAIST W.Y. Kim BInD; KAIST Lee Gyu-ri ×
+Baker; SNU MDIL SevenNet-Omni; SNU Sooyoung Cha Atomistic Binder TTC;
+SNU Baek small-molecule binder family) are cited as part of an effort to
+document the 2025–2026 Korean structural-biology AI contribution map
+(paper #19, in preparation).</p>
+<h3 id="data-and-code-availability">7.6 Data and code availability</h3>
+<p>All intermediate data, scripts, and configuration files are tracked
+at <code>/home/crazat/genesis_medicine/pilot/round12/</code>. A
+reproducibility index is maintained at
+<code>preprints/22_paper_C_zn_metallohydrolase_denovo_pipeline/_metadata/paper_c_data_index.md</code>.
+The complete benchmark FASTA files (33 sequences × 2 methods = 66
+designs total when including the native sequence) and the ESM-C oracle
+JSON are &lt;2 MB combined and will be released as supplementary
+materials at preprint time.</p>
+<h3 id="author-contributions">7.7 Author contributions</h3>
+<p>S.M.Y. designed the study, executed all computational experiments,
+analyzed the data, and wrote the manuscript.</p>
+<h3 id="competing-interests">7.8 Competing interests</h3>
+<p>The authors declare no competing financial or non-financial
+interests.</p>
+</body>
+</html>

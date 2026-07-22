@@ -30,16 +30,10 @@ stages:
       - pilot/posebusters/posebusters_results_v2.csv
       - pilot/posebusters/posebusters_v2_summary.json
 
-  chembl_calibration:
-    cmd: python scripts/boltz2_calibration_mmp1.py
-    deps:
-      - scripts/boltz2_calibration_mmp1.py
-      - data/chembl_mmp1_calibration.csv
-    outs:
-      - pilot/calibration/boltz2_mmp1/calibration_predictions.csv
-      - pilot/calibration/boltz2_mmp1/calibration_stats.json
+  # chembl_calibration stage — WITHDRAWN 2026-07-16 (fabricated panel data/chembl_mmp1_calibration.csv;
+  # see data/chembl_mmp1_calibration.README_WITHDRAWN.md). Removed so `dvc repro` cannot regenerate the
+  # withdrawn Boltz-2-vs-pIC50 |rho|~0.72 calibration.
 
 metrics:
-  - pilot/calibration/boltz2_mmp1/calibration_stats.json
   - pilot/posebusters/posebusters_v2_summary.json
   - pilot/calibration/t4l_benzene/result_final_closed_cycle.json

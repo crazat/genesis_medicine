@@ -32,27 +32,43 @@ OUT.mkdir(parents=True, exist_ok=True)
 SHORT = {
     "CHEMBL415":     "Batimastat",
     "CHEMBL443684":  "Marimastat",
+    "CHEMBL412":     "Trocade-like",
     "CHEMBL94487":   "RS-130830",
     "CHEMBL257077":  "prinomastat-l",
+    "CHEMBL3036":    "broad-HX",
+    "CHEMBL57058":   "sulfonamide-HX",
     "CHEMBL301236":  "fluoro-aryl HX",
     "CHEMBL292707":  "Ilomastat",
+    "CHEMBL259829":  "CGS27023A",
+    "CHEMBL93146":   "carboxylate",
+    "CHEMBL98":      "aryl sulfone",
+    "CHEMBL1207":    "biphenyl-HX",
     "CHEMBL2105729": "weak ctrl",
 }
 # scaffold class for color coding
 CLASS = {
     "CHEMBL415":     "hydroxamate",
     "CHEMBL443684":  "hydroxamate",
+    "CHEMBL412":     "hydroxamate",
     "CHEMBL94487":   "hydroxamate",
     "CHEMBL257077":  "hydroxamate",
+    "CHEMBL3036":    "hydroxamate",
+    "CHEMBL57058":   "sulfonamide-HX",
     "CHEMBL301236":  "sulfonamide-HX",
     "CHEMBL292707":  "hydroxamate",
+    "CHEMBL259829":  "non-hydroxamate-sulfonamide",
+    "CHEMBL93146":   "carboxylate",
+    "CHEMBL98":      "non-hydroxamate-sulfone",
+    "CHEMBL1207":    "hydroxamate",
     "CHEMBL2105729": "hydroxamate",
 }
 CLASS_COLOR = {
-    "hydroxamate":     "#1f77b4",
-    "sulfonamide-HX":  "#d62728",
-    "carboxylate":     "#2ca02c",
-    "thiol":           "#ff7f0e",
+    "hydroxamate":                  "#1f77b4",
+    "sulfonamide-HX":               "#d62728",
+    "non-hydroxamate-sulfonamide":  "#9467bd",
+    "non-hydroxamate-sulfone":      "#8c564b",
+    "carboxylate":                  "#2ca02c",
+    "thiol":                        "#ff7f0e",
 }
 
 

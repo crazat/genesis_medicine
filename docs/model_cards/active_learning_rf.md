@@ -1,6 +1,6 @@
 # Model Card: active_learning_rf
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - component: `RandomForest active-learning surrogate`
 - context_of_use: `next cofold/docking candidate acquisition`
 - decision_influence: `medium`

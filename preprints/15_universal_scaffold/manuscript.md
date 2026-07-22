@@ -5,6 +5,10 @@ zenodo_deposit_date: 2026-05-04
 prior_history: bioRxiv BIORXIV/2026/722463 rejected 2026-05-03 (scope mismatch)
 ---
 
+> **Correction (2026-07-21) — misattributed calibration figure.** The limitations section attributed "pearson correlation against ChEMBL ground truth is r = -0.453" to preprint #8. Preprint #8 never reported that figure — its own calibration was the n=15 one since withdrawn for fabricated potency annotations. The -0.453 figure belongs to preprint #18's real 93-compound ChEMBL cohort and was measured on Boltz-2 `affinity_pred_value`; the attribution is corrected. The figure is sound and reproduces; no result changes. Full scope of the underlying finding: `preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md`; citation audit: `preprints/_metadata/DANGLING_CITATION_AUDIT_2026_07_21.md`.
+>
+> <!-- correction-2026-07-21 -->
+
 # A Universal Pterocarpan-Vinyl-Polyphenol Scaffold for Multi-Target Skin Therapeutics: Six-Cycle Bayesian Active Learning Identifies Six Multi-Target Leaders Across 14 Skin-Disease Targets
 
 **HanCheongWoo ¹,²,³**
@@ -594,7 +598,7 @@ Embelin, the parent of our previous lead EMB-3, was identified as a 1,4-benzoqui
 
 ### 4.24 Limitations
 
-This work is **in silico only**. Boltz-2 affinity is a binary classifier proxy for IC₅₀, not a quantitative ΔG; pearson correlation against ChEMBL ground truth is r = -0.453 (preprint #8). 10 ns MD does not sample binding-unbinding events; absolute binding free energy (ABFE) requires 100+ ns alchemical schemes, which we have not yet implemented in production (preprint #8). All affinities are therefore upper-bound estimates of in vivo binding potential, and require Tier 1 CRO validation: HaCaT cytotoxicity, surface-plasmon-resonance (SPR) IC₅₀ measurement, Franz cell skin permeability. A budget of ₩15.6M (KIT, 켐온, or 바이오톡스텍 RFQ) over 6–10 weeks would convert these in silico leaders into wet-lab IC₅₀ values.
+This work is **in silico only**. Boltz-2 affinity is a binary classifier proxy for IC₅₀, not a quantitative ΔG; pearson correlation against ChEMBL ground truth is r = -0.453, measured on Boltz-2 affinity_pred_value over a 93-compound MMP-1 cohort (preprint #18 - earlier versions of this sentence attributed the figure to preprint #8, which never reported it). 10 ns MD does not sample binding-unbinding events; absolute binding free energy (ABFE) requires 100+ ns alchemical schemes, which we have not yet implemented in production (preprint #8). All affinities are therefore upper-bound estimates of in vivo binding potential, and require Tier 1 CRO validation: HaCaT cytotoxicity, surface-plasmon-resonance (SPR) IC₅₀ measurement, Franz cell skin permeability. A budget of ₩15.6M (KIT, 켐온, or 바이오톡스텍 RFQ) over 6–10 weeks would convert these in silico leaders into wet-lab IC₅₀ values.
 
 The MMP-1 zinc-coordination ABFE failed to converge in our previous campaign (Phase E, ZAFF zinc model pending — preprint #8 §3.5). We retract the earlier ABFE -32.90 kcal/mol value reported in v0.1 and rely instead on the affinity-classifier + MD-stability paradigm reported here.
 

@@ -1,6 +1,6 @@
 # Quinone Safety Gate
 
-- timestamp: `2026-05-06T12:46:13+09:00`
+- timestamp: `2026-05-06T15:23:52+09:00`
 - rows: `1006`
 - gate_counts: `{'redesign_before_use': 0, 'quinone_reactivity_review': 133, 'redox_polyphenol_review': 872, 'reactivity_review': 1, 'quinone_reference_review': 0, 'structure_fix': 0}`
 - EMB-3 included: `True`

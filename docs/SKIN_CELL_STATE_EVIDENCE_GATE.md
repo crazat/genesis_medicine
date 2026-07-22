@@ -1,6 +1,6 @@
 # Skin Cell-State Evidence Gate
 
-- timestamp: `2026-05-06T12:46:12+09:00`
+- timestamp: `2026-05-06T15:23:51+09:00`
 - rows: `32`
 - gate_counts: `{'cell_state_anchored': 2, 'phenotype_first': 8, 'target_claim_limited': 22}`
 - purpose: target/cofold evidence를 실제 피부 세포 상태와 disease phenotype endpoint에 연결한다.

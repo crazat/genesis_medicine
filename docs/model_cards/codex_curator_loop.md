@@ -1,6 +1,6 @@
 # Model Card: codex_curator_loop
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - component: `Codex autonomous curator`
 - context_of_use: `compute queueing, paper queueing, and decision documentation`
 - decision_influence: `high`

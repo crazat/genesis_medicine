@@ -5,6 +5,10 @@ zenodo_deposit_date: 2026-05-04
 prior_history: bioRxiv BIORXIV/2026/722485 rejected 2026-05-03 (scope mismatch)
 ---
 
+> **Correction (2026-07-21) — withdrawn calibration removed from the contribution list.** The "unique system contribution" list credited a "ChEMBL rho=0.72 calibration" as part of the single-pipeline integration. That calibration (n=15) was computed against a ligand panel whose potency annotations were established as fabricated (2026-07-16 audit) and has been withdrawn from the source methodology preprint; it is therefore removed from this list. The remaining pipeline components are unaffected. Full scope of the underlying finding: `preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md`; citation audit: `preprints/_metadata/DANGLING_CITATION_AUDIT_2026_07_21.md`.
+>
+> <!-- correction-2026-07-21 -->
+
 # Genesis_Medicine: an open-source autonomous in silico drug-discovery pipeline for Korean traditional medicine — 7-tool active core, 40+ adapter scaffold catalog, cost-aware multi-fidelity Bayesian-optimization scheduler with runtime-gated cascading tiers, and OpenFold3 / AQAffinity calibration integration
 
 **HanCheongWoo ¹,²,³**
@@ -293,7 +297,7 @@ The earlier preprint v0.1 narrative claimed "50+ active tools." Round 5 audit (#
 
 1. **First DL covalent docker integration** (CarsiDock-Cov, Apache-2.0) for natural-product Michael acceptors.
 2. **First Korean cosmetic regulatory adapter** (KCID + KFDA + EU CosIng cross-walk) for in silico → product launch.
-3. **Single-pipeline integration** of Boltz-2 + ChEMBL ρ=0.72 calibration + Chai-1 ensemble + PoseBusters 149-pose validation + ABFE T4L PASS + EMB-3 cycle closed + Round 5+7+8 application data + 7 MR causal evidence + curated DDI + KCID regulatory.
+3. **Single-pipeline integration** of Boltz-2 + Chai-1 ensemble + PoseBusters 149-pose validation + ABFE T4L PASS + EMB-3 cycle closed + Round 5+7+8 application data + 7 MR causal evidence + curated DDI + KCID regulatory.
 4. **Honest negative result**: EMB-3 × MMP-1 ABFE +0.55 quantitatively confirms "MMP-1 minus zinc" caveat → ZAFF release-blocking.
 
 ---

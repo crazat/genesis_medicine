@@ -58,3 +58,63 @@
     estimated_localtime_finish_date: 2026-May-06-05:05:12
     estimated_total_time: '1:43:49.937231'
     ns_per_day: 1775.1703732623532
+- iteration: 200
+  percent_complete: 25.0
+  mbar_analysis:
+    free_energy_in_kT: 178.6588344273411
+    standard_error_in_kT: 0.70250548891393
+    number_of_uncorrelated_samples: 182.43731689453125
+    n_equilibrium_iterations: 5
+    statistical_inefficiency: 1.0798228979110718
+  timing_data:
+    iteration_seconds: 8.803416013717651
+    average_seconds_per_iteration: 10.226113351745223
+    estimated_time_remaining: '1:42:25.894124'
+    estimated_localtime_finish_date: 2026-May-07-01:22:35
+    estimated_total_time: '2:16:20.890681'
+    ns_per_day: 1351.8332453884593
+- iteration: 400
+  percent_complete: 50.0
+  mbar_analysis:
+    free_energy_in_kT: 179.3465228494836
+    standard_error_in_kT: 0.7044833802699371
+    number_of_uncorrelated_samples: 362.4608154296875
+    n_equilibrium_iterations: 5
+    statistical_inefficiency: 1.0952907800674438
+  timing_data:
+    iteration_seconds: 9.264953374862671
+    average_seconds_per_iteration: 10.439097155305676
+    estimated_time_remaining: '1:09:46.077959'
+    estimated_localtime_finish_date: 2026-May-07-01:25:26
+    estimated_total_time: '2:19:11.277724'
+    ns_per_day: 1324.252451561287
+- iteration: 600
+  percent_complete: 75.0
+  mbar_analysis:
+    free_energy_in_kT: 179.80216891253554
+    standard_error_in_kT: 0.7051306368741552
+    number_of_uncorrelated_samples: 572.3716430664062
+    n_equilibrium_iterations: 7
+    statistical_inefficiency: 1.039534330368042
+  timing_data:
+    iteration_seconds: 9.054128885269165
+    average_seconds_per_iteration: 10.563771046461765
+    estimated_time_remaining: '0:35:23.317980'
+    estimated_localtime_finish_date: 2026-May-07-01:27:05
+    estimated_total_time: '2:20:51.016837'
+    ns_per_day: 1308.6235908747963
+- iteration: 800
+  percent_complete: 100.0
+  mbar_analysis:
+    free_energy_in_kT: 180.12173627145444
+    standard_error_in_kT: 0.7054700848148284
+    number_of_uncorrelated_samples: 786.7919311523438
+    n_equilibrium_iterations: 9
+    statistical_inefficiency: 1.0078903436660767
+  timing_data:
+    iteration_seconds: 11.503796815872192
+    average_seconds_per_iteration: 10.581863767065304
+    estimated_time_remaining: '0:00:10.581864'
+    estimated_localtime_finish_date: 2026-May-07-01:27:20
+    estimated_total_time: '2:21:05.491014'
+    ns_per_day: 1306.386124817202

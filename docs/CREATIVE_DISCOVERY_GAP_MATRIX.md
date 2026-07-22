@@ -1,6 +1,6 @@
 # Creative Discovery Gap Matrix
 
-- timestamp: `2026-05-06T12:46:36+09:00`
+- timestamp: `2026-05-06T15:24:15+09:00`
 - matrix_csv: `pilot/cpu_meaningful/creative_discovery_gap_matrix.csv`
 - queue_policy_json: `pilot/creative_discovery_queue_policy.json`
 - active-learning pending short-cofold pairs: `160`

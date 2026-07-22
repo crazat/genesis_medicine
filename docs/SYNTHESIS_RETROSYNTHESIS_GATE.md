@@ -1,6 +1,6 @@
 # Synthesis and Retrosynthesis Gate
 
-- timestamp: `2026-05-06T12:46:04+09:00`
+- timestamp: `2026-05-06T15:23:45+09:00`
 - candidate_rows: `112`
 - gate_counts: `{'green': 73, 'yellow': 36, 'red': 3}`
 - CASP availability: `{'aizynthfinder_python': False, 'aizynthcli': False, 'askcos_cli': False}`

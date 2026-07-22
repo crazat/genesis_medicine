@@ -1,0 +1,288 @@
+{
+  "timestamp": "20260517_005830",
+  "date_from": "2026-03-01",
+  "queries": {
+    "MMP-1 AND (Boltz OR cofold)": {
+      "pmids": [],
+      "titles": []
+    },
+    "MMP-1 AND (neural network potential OR NNP)": {
+      "total_pmids": 5,
+      "top5_titles": [
+        {
+          "pmid": "40172075",
+          "title": "The Impact of Atlas Parcellation on Functional Connectivity Analysis Across Six Psychiatric Disorders.",
+          "pubdate": "2025 Apr 1",
+          "authors": [
+            "Wu X",
+            "Liang C",
+            "Bustillo J"
+          ]
+        },
+        {
+          "pmid": "39512263",
+          "title": "Optimization of Smoking Classification by Applying Neural Network with Variable Importance Using Cytokine Biomarkers.",
+          "pubdate": "2023 Dec",
+          "authors": [
+            "Saharan SS",
+            "Nagar P",
+            "Creasy KT"
+          ]
+        },
+        {
+          "pmid": "36415630",
+          "title": "Artificial Neural Network Modeling of Nanostructured Lipid Carriers Containing 5-O-Caffeoylquinic Acid-Rich Cratoxylum formosum Leaf Extract for Skin Application.",
+          "pubdate": "2022 Aug",
+          "authors": [
+            "Navabhatra A",
+            "Brantner A",
+            "Yingngam B"
+          ]
+        },
+        {
+          "pmid": "35992346",
+          "title": "Intra-articular MMP-1 in the spinal facet joint induces sustained pain and neuronal dysregulation in the DRG and spinal cord, and alters ligament kinematics under tensile loading.",
+          "pubdate": "2022",
+          "authors": [
+            "Ita ME",
+            "Singh S",
+            "Troche HR"
+          ]
+        },
+        {
+          "pmid": "17590339",
+          "title": "QSAR modeling of matrix metalloproteinase inhibition by N-hydroxy-alpha-phenylsulfonylacetamide derivatives.",
+          "pubdate": "2007 Sep 15",
+          "authors": [
+            "Fern\u00e1ndez M",
+            "Caballero J"
+          ]
+        }
+      ]
+    },
+    "Vorinostat AND MMP-1": {
+      "total_pmids": 3,
+      "top5_titles": [
+        {
+          "pmid": "40158057",
+          "title": "Vorinostat attenuates UVB-induced skin senescence by modulating NF-\u03baB and mTOR signaling pathways.",
+          "pubdate": "2025 Mar 29",
+          "authors": [
+            "Dai Q",
+            "Wang Z",
+            "Wang X"
+          ]
+        },
+        {
+          "pmid": "23856614",
+          "title": "Vorinostat, a HDAC inhibitor, showed anti-osteoarthritic activities through inhibition of iNOS and MMP expression, p38 and ERK phosphorylation and blocking NF-\u03baB nuclear translocation.",
+          "pubdate": "2013 Oct",
+          "authors": [
+            "Zhong HM",
+            "Ding QH",
+            "Chen WP"
+          ]
+        },
+        {
+          "pmid": "19224893",
+          "title": "Suberoylanilide hydroxamic acid: a potential epigenetic therapeutic agent for lung fibrosis?",
+          "pubdate": "2009 Jul",
+          "authors": [
+            "Wang Z",
+            "Chen C",
+            "Finger SN"
+          ]
+        }
+      ]
+    },
+    "Indapamide AND MMP": {
+      "total_pmids": 2,
+      "top5_titles": [
+        {
+          "pmid": "24288395",
+          "title": "Effects of combination therapy with olmesartan and azelnidipine on serum osteoprotegerin in patients with hypertension.",
+          "pubdate": "2014 May",
+          "authors": [
+            "Uzui H",
+            "Morishita T",
+            "Nakano A"
+          ]
+        },
+        {
+          "pmid": "18497249",
+          "title": "[Type 2 diabetes. Routine ACE inhibitors?].",
+          "pubdate": "2008 Apr",
+          "authors": [
+            "H\u00f6nl SB"
+          ]
+        }
+      ]
+    },
+    "Indapamide AND skin AND photoaging": {
+      "pmids": [],
+      "titles": []
+    },
+    "Indapamide AND nephroprotection": {
+      "total_pmids": 8,
+      "top5_titles": [
+        {
+          "pmid": "32515706",
+          "title": "[Therapeutic approaches to the Rational Use of trip-le combination therapy with a fixed combination of amlodipine, indapamide and perindopril arginine (TRIPLE COMBINATION) in patients with hypertensio",
+          "pubdate": "2020 Jun 3",
+          "authors": [
+            "Mareev VY",
+            "Minina YV",
+            "Begrambekova YL"
+          ]
+        },
+        {
+          "pmid": "29343817",
+          "title": "Associations between body mass index and the risk of renal events in patients with type 2 diabetes.",
+          "pubdate": "2018 Jan 17",
+          "authors": [
+            "Mohammedi K",
+            "Chalmers J",
+            "Herrington W"
+          ]
+        },
+        {
+          "pmid": "29307229",
+          "title": "Vascular legacy beyond blood pressure control: benefits of perindopril/indapamide combination in hypertensive patients with diabetes.",
+          "pubdate": "2018 Sep",
+          "authors": [
+            "L\u00e9vy BI",
+            "Taddei S"
+          ]
+        },
+        {
+          "pmid": "22304318",
+          "title": "[Nephroprotection diabetes mellitus type 2: lessons from the ADVANCE trial].",
+          "pubdate": "2011",
+          "authors": [
+            "Nedogoda SV"
+          ]
+        },
+        {
+          "pmid": "21678653",
+          "title": "[Correction of aldosterone level as marker of RAAS dysfunction in patients with arterial hypertension degree II-III and chronic kidney diseases].",
+          "pubdate": "2011",
+          "authors": [
+            "Dralova OV",
+            "Maksimov ML",
+            "Derbentseva EA"
+          ]
+        }
+      ]
+    },
+    "sulfonamide diuretic AND MMP": {
+      "total_pmids": 14,
+      "top5_titles": [
+        {
+          "pmid": "39285382",
+          "title": "The first description of mucous membrane pemphigoid induced by enalapril maleate: a case report.",
+          "pubdate": "2024 Sep 16",
+          "authors": [
+            "Xie Y",
+            "Zhang Q",
+            "Ye L"
+          ]
+        },
+        {
+          "pmid": "35969208",
+          "title": "Cyclooxygenase-2 is a critical determinant of angiotensin II-induced vascular remodeling and stiffness in resistance arteries of ouabain-treated rats.",
+          "pubdate": "2022 Nov 1",
+          "authors": [
+            "Fran\u00e7a-Neto A",
+            "Couto GK",
+            "Xavier FE"
+          ]
+        },
+        {
+          "pmid": "28577991",
+          "title": "Inhibition of Na(+)-K(+)-2Cl(-) cotransporter attenuates blood-brain-barrier disruption in a mouse model of traumatic brain injury.",
+          "pubdate": "2017 Dec",
+          "authors": [
+            "Zhang J",
+            "Pu H",
+            "Zhang H"
+          ]
+        },
+        {
+          "pmid": "24405838",
+          "title": "Spironolactone, not furosemide, improved insulin resistance in patients with chronic heart failure.",
+          "pubdate": "2014 Feb 15",
+          "authors": [
+            "Ogino K",
+            "Kinugasa Y",
+            "Kato M"
+          ]
+        },
+        {
+          "pmid": "24288395",
+          "title": "Effects of combination therapy with olmesartan and azelnidipine on serum osteoprotegerin in patients with hypertension.",
+          "pubdate": "2014 May",
+          "authors": [
+            "Uzui H",
+            "Morishita T",
+            "Nakano A"
+          ]
+        }
+      ]
+    },
+    "matrix metalloproteinase AND machine learning AND zinc": {
+      "total_pmids": 9,
+      "top5_titles": [
+        {
+          "pmid": "41604734",
+          "title": "Computational identification of potential MMP-2 inhibitors in cancer using machine learning, molecular docking, and dynamics simulations.",
+          "pubdate": "2026 Jun",
+          "authors": [
+            "Akhtar S",
+            "Ibrahim A",
+            "Abdalla AMA"
+          ]
+        },
+        {
+          "pmid": "41198554",
+          "title": "Identification of Diagnostic Biomarkers Associated With M1 Macrophage in Lung Squamous Cell Carcinoma via Machine Learning.",
+          "pubdate": "2025 Oct 31",
+          "authors": [
+            "Deng H",
+            "Wang Z",
+            "Zhang Q"
+          ]
+        },
+        {
+          "pmid": "41037200",
+          "title": "Computational design of MMP-13 inhibitors using a combined approach of machine learning, docking, and molecular dynamics.",
+          "pubdate": "2026 Apr",
+          "authors": [
+            "Manan A",
+            "Ilyas S",
+            "Kim E"
+          ]
+        },
+        {
+          "pmid": "37504963",
+          "title": "Machine learning and biological evaluation-based identification of a potential MMP-9 inhibitor, effective against ovarian cancer cells SKOV3.",
+          "pubdate": "2024 Aug",
+          "authors": [
+            "Sinha K",
+            "Parwez S",
+            "Mv S"
+          ]
+        },
+        {
+          "pmid": "35928610",
+          "title": "Identification of hub genes and their correlation with immune infiltration in coronary artery disease through bioinformatics and machine learning methods.",
+          "pubdate": "2022 Jul",
+          "authors": [
+            "Huang KK",
+            "Zheng HL",
+            "Li S"
+          ]
+        }
+      ]
+    }
+  }
+}

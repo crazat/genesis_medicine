@@ -1,6 +1,6 @@
 # Dermal PBPK IVPT Gate
 
-- timestamp: `2026-05-06T12:46:29+09:00`
+- timestamp: `2026-05-06T15:24:06+09:00`
 - rows: `1082`
 - gate_counts: `{'ivpt_pbpk_ready': 477, 'formulation_rescue_needed': 587, 'pbpk_low_confidence': 18, 'structure_fix': 0}`
 - purpose: topical lead를 FDA/EMA IVRT/IVPT 및 mechanistic dermal PBPK 입력 표로 연결한다.

@@ -1,6 +1,6 @@
 # Model Card: boltz2_cofold
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - component: `Boltz-2 cofold affinity/confidence`
 - context_of_use: `protein-ligand cofold triage for skin target hypotheses`
 - decision_influence: `high`

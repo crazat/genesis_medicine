@@ -1,13 +1,13 @@
 # Genesis Medicine Live Status
 
-- timestamp: `2026-05-06T12:48:55+09:00`
+- timestamp: `2026-05-06T15:29:29+09:00`
 - note: 채팅창으로 선제 푸시 보고는 불가하므로, 이 파일을 주기 갱신하는 heartbeat로 사용합니다.
 
 ## Compute
 
-- GPU: `2 %, 16559 MiB, 32607 MiB`
-- CPU/load: `12:48:56 up 7 days,  2:43,  1 user,  load average: 2.91, 2.91, 2.21`
-- CPU vmstat sample: `0  0   8012 10531892  99172 3882480    0    0     0    76 20366 48078  0  3 97  0  0  0`
+- GPU: `0 %, 2085 MiB, 32607 MiB`
+- CPU/load: `15:29:30 up 7 days,  5:33,  1 user,  load average: 0.69, 0.43, 0.28`
+- CPU vmstat sample: `1  0   8012 50631648 200440 5211840    0    0     0    36 1114 1463  4  0 96  0  0  0`
 - active xTB refine process count: `0`
 - protected NPASS process count: `0`
 
@@ -315,7 +315,7 @@ D:\            9p    1.9T  691G  1.2T  38% /mnt/d
   },
   "storage_pressure": {
     "status": "ok",
-    "min_free_gb": 450.0,
+    "min_free_gb": 449.9,
     "min_free_gb_required": 80.0,
     "warn_free_gb": 200.0,
     "disks": {
@@ -324,15 +324,15 @@ D:\            9p    1.9T  691G  1.2T  38% /mnt/d
         "exists": true,
         "total_gb": 1770.7,
         "used_gb": 441.4,
-        "free_gb": 1247.1,
+        "free_gb": 1247.0,
         "used_pct": 24.9
       },
       "windows_c": {
         "path": "/mnt/c",
         "exists": true,
         "total_gb": 1906.9,
-        "used_gb": 1456.9,
-        "free_gb": 450.0,
+        "used_gb": 1457.0,
+        "free_gb": 449.9,
         "used_pct": 76.4
       },
       "windows_d": {
@@ -388,7 +388,7 @@ D:\            9p    1.9T  691G  1.2T  38% /mnt/d
 
 ```json
 {
-    "timestamp": "2026-05-06T12:46:36+09:00",
+    "timestamp": "2026-05-06T15:24:15+09:00",
     "matrix_csv": "pilot/cpu_meaningful/creative_discovery_gap_matrix.csv",
     "matrix_doc": "docs/CREATIVE_DISCOVERY_GAP_MATRIX.md",
     "active_learning_short_cofold": {
@@ -513,7 +513,7 @@ D:\            9p    1.9T  691G  1.2T  38% /mnt/d
 
 ```json
 {
-    "timestamp": "2026-05-06T12:46:37+09:00",
+    "timestamp": "2026-05-06T15:24:16+09:00",
     "matrix_csv": "pilot/cpu_meaningful/world_class_gap_closure_matrix.csv",
     "matrix_doc": "docs/WORLD_CLASS_GAP_CLOSURE.md",
     "readiness_counts": {
@@ -637,25 +637,25 @@ D:\            9p    1.9T  691G  1.2T  38% /mnt/d
 ## Recent Curator Actions
 
 ```text
-[2026-05-06T12:36:31+09:00] curator failed rc=127
-2026-05-06T12:37:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-2026-05-06T12:39:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=97% active_refines=0 planner=none
-2026-05-06T12:41:53+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-2026-05-06T12:43:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-2026-05-06T12:46:11+09:00 CPU_IDLE_GAP_UNRESOLVED idle=67% active_refines=0 planner=none
-[2026-05-06T12:47:02+09:00] curator failed rc=127
-2026-05-06T12:48:05+09:00 CPU_IDLE_GAP_UNRESOLVED idle=93% active_refines=0 planner=none
+2026-05-06T15:17:16+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:19:10+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:21:03+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:22:57+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:24:36+09:00] curator failed rc=127
+2026-05-06T15:24:53+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:26:47+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:28:41+09:00 CPU_IDLE_GAP_UNRESOLVED idle=97% active_refines=0 planner=none
 ```
 
 ## Top CPU
 
 ```text
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-crazat   2949978  3.6  0.8 75552380 511980 pts/6 Sl+  May03 164:23 claude --permission-mode bypassPermissions
-crazat   2301360  0.8  0.0  18776 13832 ?        S    12:48   0:00 python3 /home/crazat/genesis_medicine/scripts/write_live_status_report.py
-root           1  0.0  0.0  22236  9108 ?        Ss   May02   2:57 /usr/lib/systemd/systemd --system --deserialize=60
-crazat   1898638  0.0  0.0   4888  3592 ?        Ss   May05   0:23 /bin/bash -c source /home/crazat/.claude/shell-snapshots/snapshot-bash-1777781873206-74i5b2.sh 2>/dev/null || true && shopt -u extglob 2>/dev/null || true && eval 'until nvidia-smi --query-compute-apps=pid --format=csv,noheader 2>/dev/null | grep -q 1897121; do sleep 3; done; echo "CHEMBL257077 (PID 1897121) GPU에 등록됨"; date '"'"'+%H:%M:%S'"'"'' < /dev/null && pwd -P >| /tmp/claude-84f0-cwd
-root     1267412  0.0  0.0  66724 13316 ?        S<s  May03   0:58 /usr/lib/systemd/systemd-journald
+crazat   2338268  0.9  0.0  18776 13840 ?        S    15:29   0:00 python3 /home/crazat/genesis_medicine/scripts/write_live_status_report.py
+root           1  0.0  0.0  22236  9236 ?        Ss   May02   2:57 /usr/lib/systemd/systemd --system --deserialize=60
+root     1267412  0.0  0.0  66724 13320 ?        S<s  May03   0:59 /usr/lib/systemd/systemd-journald
 message+     204  0.0  0.0   9916  5116 ?        Ss   May02   0:32 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
-root     2949302  0.0  0.0   3144  1296 ?        S    May03   0:19 /init
+crazat     77605  0.0  0.0   5148  3508 ?        Ss   May02   0:15 bash /home/crazat/genesis_medicine/scripts/codex_curator_loop.sh
+crazat     77583  0.0  0.0   4884  3204 ?        Ss   May02   0:14 bash /home/crazat/genesis_medicine/scripts/monitor_supervisor.sh
+syslog   1278317  0.0  0.0 222508  5280 ?        Ssl  May03   0:13 /usr/sbin/rsyslogd -n -iNONE
 ```

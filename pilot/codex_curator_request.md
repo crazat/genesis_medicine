@@ -159,7 +159,7 @@
 
 # Codex Curator Context
 
-timestamp: `2026-05-06T12:46:57+09:00`
+timestamp: `2026-05-06T15:24:34+09:00`
 root: `/home/crazat/genesis_medicine`
 interval_sec: `600`
 timeout_sec: `1200`
@@ -168,55 +168,54 @@ timeout_sec: `1200`
 
 ```text
                total        used        free      shared  buff/cache   available
-Mem:            54Gi        41Gi        10Gi        89Mi       3.8Gi        13Gi
+Mem:            54Gi       1.1Gi        53Gi       3.3Mi       960Mi        53Gi
 Swap:           16Gi       7.8Mi        15Gi
- 12:46:57 up 7 days,  2:40,  1 user,  load average: 4.81, 2.95, 2.11
+ 15:24:34 up 7 days,  5:28,  1 user,  load average: 1.89, 0.58, 0.27
 
 procs -----------memory---------- ---swap-- -----io---- -system-- -------cpu-------
  r  b   swpd   free   buff  cache   si   so    bi    bo   in   cs us sy id wa st gu
- 1  0   8012 11197072  98112 3838636    0    0  1189  1597 8542   20 62  5 33  0  0  0
- 0  0   8012 11213120  98112 3838644    0    0     0     0 2201 3426  2  3 96  0  0  0
+ 0  0   8012 56074592  42804 940504    0    0  1180  1572 8444   20 61  4 34  0  0  0
+ 0  0   8012 56074728  42804 940576    0    0     0     0  118   98  0  0 100  0  0  0
 ```
 
 ## GPU
 
 ```text
 utilization.gpu [%], memory.used [MiB], memory.total [MiB]
-2 %, 25187 MiB, 32607 MiB
-658, [Not Found], [N/A]
+1 %, 1666 MiB, 32607 MiB
 ```
 
 ## Top CPU
 
 ```text
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-crazat   2949978  3.6  0.8 75552380 500876 pts/6 Sl+  May03 164:06 claude --permission-mode bypassPermissions
 root           1  0.0  0.0  22236  9108 ?        Ss   May02   2:57 /usr/lib/systemd/systemd --system --deserialize=60
-crazat   1898638  0.0  0.0   4888  3592 ?        Ss   May05   0:23 /bin/bash -c source /home/crazat/.claude/shell-snapshots/snapshot-bash-1777781873206-74i5b2.sh 2>/dev/null || true && shopt -u extglob 2>/dev/null || true && eval 'until nvidia-smi --query-compute-apps=pid --format=csv,noheader 2>/dev/null | grep -q 1897121; do sleep 3; done; echo "CHEMBL257077 (PID 1897121) GPU에 등록됨"; date '"'"'+%H:%M:%S'"'"'' < /dev/null && pwd -P >| /tmp/claude-84f0-cwd
-root     1267412  0.0  0.0  66724 13308 ?        S<s  May03   0:58 /usr/lib/systemd/systemd-journald
+root     1267412  0.0  0.0  66724 13300 ?        S<s  May03   0:59 /usr/lib/systemd/systemd-journald
 message+     204  0.0  0.0   9916  5116 ?        Ss   May02   0:32 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
-root     2949302  0.0  0.0   3144  1296 ?        S    May03   0:19 /init
-crazat     77605  0.0  0.0   5148  3508 ?        Ss   May02   0:14 bash /home/crazat/genesis_medicine/scripts/codex_curator_loop.sh
-syslog   1278317  0.0  0.0 222508  5280 ?        Ssl  May03   0:13 /usr/sbin/rsyslogd -n -iNONE
+crazat     77605  0.0  0.0   5148  3508 ?        Ss   May02   0:15 bash /home/crazat/genesis_medicine/scripts/codex_curator_loop.sh
 crazat     77583  0.0  0.0   4884  3204 ?        Ss   May02   0:14 bash /home/crazat/genesis_medicine/scripts/monitor_supervisor.sh
+syslog   1278317  0.0  0.0 222508  5280 ?        Ssl  May03   0:13 /usr/sbin/rsyslogd -n -iNONE
 root         201  0.0  0.0  17960  5128 ?        S<s  May02   0:13 /usr/lib/systemd/systemd-logind
-root     3275257  0.0  0.0 2199896 9820 ?        Ssl  May03   0:08 /usr/libexec/wsl-pro-service -vv
-crazat   2512206  0.0  0.0   5008  3532 ?        Ss   May03   0:08 bash /home/crazat/genesis_medicine/scripts/auto_queue_cpu_gpu_daemon.sh
+root     3275257  0.0  0.0 2199896 9952 ?        Ssl  May03   0:09 /usr/libexec/wsl-pro-service -vv
+crazat   2512206  0.0  0.0   5008  3532 ?        Ss   May03   0:09 bash /home/crazat/genesis_medicine/scripts/auto_queue_cpu_gpu_daemon.sh
 polkitd  1275756  0.0  0.0 308160  4472 ?        Ssl  May03   0:06 /usr/lib/polkit-1/polkitd --no-debug
 systemd+ 1267492  0.0  0.0  91024  5168 ?        Ssl  May03   0:05 /usr/lib/systemd/systemd-timesyncd
 root     1267600  0.0  0.0  25256  5000 ?        Ss   May03   0:04 /usr/lib/systemd/systemd-udevd
 root           8  0.0  0.0   3208  2128 ?        Sl   May02   0:04 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate
 crazat       398  0.0  0.0  20264  6304 ?        Ss   May02   0:01 /usr/lib/systemd/systemd --user --deserialize=8
 systemd+ 1267686  0.0  0.0  21456  7024 ?        Ss   May03   0:01 /usr/lib/systemd/systemd-resolved
-root     2105534  0.0  0.0  19556  7468 ?        Ss   12:00   0:00 (agetty)
+root         203  0.0  0.0   4236  2516 ?        Ss   May02   0:00 /usr/sbin/cron -f -P
+root           2  0.0  0.0   3120  2112 ?        Sl   May02   0:00 /init
+crazat   2569131  0.0  0.0 100080  8664 pts/4    S+   May03   0:00 /usr/lib/git-core/git-remote-https origin https://github.com/crazat/genesis_medicine.git
+root         280  0.0  0.0 107008 15708 ?        Ssl  May02   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
 ```
 
 ## Protected And Project Processes
 
 ```text
 crazat     77583   77542  0 May02 ?        00:00:14 bash /home/crazat/genesis_medicine/scripts/monitor_supervisor.sh
-crazat     77605   77542  0 May02 ?        00:00:14 bash /home/crazat/genesis_medicine/scripts/codex_curator_loop.sh
-crazat   2512206   77583  0 May03 ?        00:00:08 bash /home/crazat/genesis_medicine/scripts/auto_queue_cpu_gpu_daemon.sh
+crazat     77605   77542  0 May02 ?        00:00:15 bash /home/crazat/genesis_medicine/scripts/codex_curator_loop.sh
+crazat   2512206   77583  0 May03 ?        00:00:09 bash /home/crazat/genesis_medicine/scripts/auto_queue_cpu_gpu_daemon.sh
 ```
 
 ## Triggers
@@ -363,7 +362,7 @@ crazat   2512206   77583  0 May03 ?        00:00:08 bash /home/crazat/genesis_me
     },
     "storage_pressure": {
         "status": "ok",
-        "min_free_gb": 450.0,
+        "min_free_gb": 449.9,
         "min_free_gb_required": 80.0,
         "warn_free_gb": 200.0,
         "disks": {
@@ -372,15 +371,15 @@ crazat   2512206   77583  0 May03 ?        00:00:08 bash /home/crazat/genesis_me
                 "exists": true,
                 "total_gb": 1770.7,
                 "used_gb": 441.4,
-                "free_gb": 1247.1,
+                "free_gb": 1247.0,
                 "used_pct": 24.9
             },
             "windows_c": {
                 "path": "/mnt/c",
                 "exists": true,
                 "total_gb": 1906.9,
-                "used_gb": 1456.9,
-                "free_gb": 450.0,
+                "used_gb": 1457.0,
+                "free_gb": 449.9,
                 "used_pct": 76.4
             },
             "windows_d": {
@@ -1170,7 +1169,7 @@ crazat   2512206   77583  0 May03 ?        00:00:08 bash /home/crazat/genesis_me
 
 ```json
 {
-    "timestamp": "2026-05-06T12:46:04+09:00",
+    "timestamp": "2026-05-06T15:23:44+09:00",
     "target_count": 31,
     "gate_counts": {
         "green": 13,
@@ -1349,7 +1348,7 @@ crazat   2512206   77583  0 May03 ?        00:00:08 bash /home/crazat/genesis_me
 
 ```json
 {
-    "timestamp": "2026-05-06T12:46:06+09:00",
+    "timestamp": "2026-05-06T15:23:46+09:00",
     "training_rows": 32,
     "candidate_rows": 672,
     "targets": [
@@ -1381,7 +1380,7 @@ crazat   2512206   77583  0 May03 ?        00:00:08 bash /home/crazat/genesis_me
 
 ```json
 {
-    "timestamp": "2026-05-06T12:46:35+09:00",
+    "timestamp": "2026-05-06T15:24:12+09:00",
     "status": "no_wetlab_results_yet",
     "source": "data/wetlab_feedback_results.csv",
     "rows": 0
@@ -1392,7 +1391,7 @@ crazat   2512206   77583  0 May03 ?        00:00:08 bash /home/crazat/genesis_me
 
 ```json
 {
-    "timestamp": "2026-05-06T12:46:33+09:00",
+    "timestamp": "2026-05-06T15:24:11+09:00",
     "training_rows": 32,
     "active_rows": 672,
     "training_scaffold_count": 1,
@@ -1410,7 +1409,7 @@ crazat   2512206   77583  0 May03 ?        00:00:08 bash /home/crazat/genesis_me
 
 ```json
 {
-    "timestamp": "2026-05-06T12:46:37+09:00",
+    "timestamp": "2026-05-06T15:24:16+09:00",
     "matrix_csv": "pilot/cpu_meaningful/world_class_gap_closure_matrix.csv",
     "matrix_doc": "docs/WORLD_CLASS_GAP_CLOSURE.md",
     "readiness_counts": {
@@ -1699,7 +1698,7 @@ crazat   2512206   77583  0 May03 ?        00:00:08 bash /home/crazat/genesis_me
 2026-05-06 03:18 281662 pilot/cpu_meaningful/xtb_npass_top9997_hetero10_refine_480conf.csv
 2026-05-06 05:33 281632 pilot/cpu_meaningful/xtb_npass_top9997_hetero10_refine_576conf.csv
 2026-05-06 07:50 18917 pilot/cpu_meaningful/xtb_npass_top9997_hetero10_refine_672conf.csv
-2026-05-06 12:46 3646 pilot/cpu_meaningful/creative_discovery_gap_matrix.csv
+2026-05-06 15:24 3646 pilot/cpu_meaningful/creative_discovery_gap_matrix.csv
 ```
 
 ## CSV Snapshots
@@ -1712,126 +1711,126 @@ crazat   2512206   77583  0 May03 ?        00:00:08 bash /home/crazat/genesis_me
 ### pilot/auto_queue_cpu_gpu_daemon.log tail -120
 
 ```text
-[2026-05-06T11:47:21+09:00] GPU no pending planner task
-[2026-05-06T11:47:22+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
-[2026-05-06T11:47:22+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T11:47:22+09:00] CPU no pending planner task
-[2026-05-06T11:49:16+09:00] GPU busy by project jobs: 1
-[2026-05-06T11:49:17+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=99%
-[2026-05-06T11:49:17+09:00] CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-[2026-05-06T11:49:17+09:00] CPU no pending planner task
-[2026-05-06T11:51:10+09:00] GPU busy by project jobs: 1
-[2026-05-06T11:51:11+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=99%
-[2026-05-06T11:51:11+09:00] CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-[2026-05-06T11:51:11+09:00] CPU no pending planner task
-[2026-05-06T11:53:04+09:00] GPU busy by project jobs: 1
-[2026-05-06T11:53:05+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=96%
-[2026-05-06T11:53:05+09:00] CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-[2026-05-06T11:53:05+09:00] CPU no pending planner task
-[2026-05-06T11:54:58+09:00] GPU busy by project jobs: 1
-[2026-05-06T11:54:59+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
-[2026-05-06T11:54:59+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T11:54:59+09:00] CPU no pending planner task
-[2026-05-06T11:57:12+09:00] GPU busy by project jobs: 1
-[2026-05-06T11:57:19+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=96%
-[2026-05-06T11:57:19+09:00] CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-[2026-05-06T11:57:19+09:00] CPU no pending planner task
-[2026-05-06T11:59:12+09:00] GPU busy by project jobs: 1
-[2026-05-06T11:59:13+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
-[2026-05-06T11:59:13+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T11:59:13+09:00] CPU no pending planner task
-[2026-05-06T12:01:06+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:01:49+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=95%
-[2026-05-06T12:01:49+09:00] CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-[2026-05-06T12:01:49+09:00] CPU no pending planner task
-[2026-05-06T12:03:42+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:03:43+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=92%
-[2026-05-06T12:03:43+09:00] CPU_IDLE_GAP_UNRESOLVED idle=92% active_refines=0 planner=none
-[2026-05-06T12:03:43+09:00] CPU no pending planner task
-[2026-05-06T12:05:35+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:05:36+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
-[2026-05-06T12:05:36+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T12:05:36+09:00] CPU no pending planner task
-[2026-05-06T12:07:31+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:07:32+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
-[2026-05-06T12:07:32+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T12:07:32+09:00] CPU no pending planner task
-[2026-05-06T12:09:24+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:09:26+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=99%
-[2026-05-06T12:09:26+09:00] CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-[2026-05-06T12:09:26+09:00] CPU no pending planner task
-[2026-05-06T12:11:38+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:11:39+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=96%
-[2026-05-06T12:11:39+09:00] CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-[2026-05-06T12:11:39+09:00] CPU no pending planner task
-[2026-05-06T12:13:35+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:13:39+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=95%
-[2026-05-06T12:13:39+09:00] CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-[2026-05-06T12:13:39+09:00] CPU no pending planner task
-[2026-05-06T12:15:48+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:15:50+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
-[2026-05-06T12:15:50+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T12:15:50+09:00] CPU no pending planner task
-[2026-05-06T12:17:56+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:17:59+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=99%
-[2026-05-06T12:17:59+09:00] CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-[2026-05-06T12:17:59+09:00] CPU no pending planner task
-[2026-05-06T12:19:52+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:19:53+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=94%
-[2026-05-06T12:19:53+09:00] CPU_IDLE_GAP_UNRESOLVED idle=94% active_refines=0 planner=none
-[2026-05-06T12:19:53+09:00] CPU no pending planner task
-[2026-05-06T12:21:57+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:22:11+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=96%
-[2026-05-06T12:22:11+09:00] CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-[2026-05-06T12:22:11+09:00] CPU no pending planner task
-[2026-05-06T12:24:05+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:24:10+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=96%
-[2026-05-06T12:24:10+09:00] CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-[2026-05-06T12:24:10+09:00] CPU no pending planner task
-[2026-05-06T12:26:02+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:26:03+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=99%
-[2026-05-06T12:26:03+09:00] CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-[2026-05-06T12:26:03+09:00] CPU no pending planner task
-[2026-05-06T12:27:58+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:27:59+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
-[2026-05-06T12:27:59+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T12:27:59+09:00] CPU no pending planner task
-[2026-05-06T12:29:51+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:29:53+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=99%
-[2026-05-06T12:29:53+09:00] CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-[2026-05-06T12:29:53+09:00] CPU no pending planner task
-[2026-05-06T12:31:45+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:31:46+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
-[2026-05-06T12:31:46+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T12:31:46+09:00] CPU no pending planner task
-[2026-05-06T12:33:39+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:33:40+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
-[2026-05-06T12:33:40+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T12:33:40+09:00] CPU no pending planner task
-[2026-05-06T12:35:34+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:35:35+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=82%
-[2026-05-06T12:35:35+09:00] CPU_IDLE_GAP_UNRESOLVED idle=82% active_refines=0 planner=none
-[2026-05-06T12:35:35+09:00] CPU no pending planner task
-[2026-05-06T12:37:29+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:37:58+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=96%
-[2026-05-06T12:37:58+09:00] CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-[2026-05-06T12:37:58+09:00] CPU no pending planner task
-[2026-05-06T12:39:54+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:39:58+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=97%
-[2026-05-06T12:39:58+09:00] CPU_IDLE_GAP_UNRESOLVED idle=97% active_refines=0 planner=none
-[2026-05-06T12:39:58+09:00] CPU no pending planner task
-[2026-05-06T12:41:51+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:41:53+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=95%
-[2026-05-06T12:41:53+09:00] CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-[2026-05-06T12:41:53+09:00] CPU no pending planner task
-[2026-05-06T12:43:56+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:43:58+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=95%
-[2026-05-06T12:43:58+09:00] CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-[2026-05-06T12:43:58+09:00] CPU no pending planner task
-[2026-05-06T12:46:10+09:00] GPU busy by project jobs: 1
-[2026-05-06T12:46:11+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=67%
-[2026-05-06T12:46:11+09:00] CPU_IDLE_GAP_UNRESOLVED idle=67% active_refines=0 planner=none
-[2026-05-06T12:46:11+09:00] CPU no pending planner task
+[2026-05-06T14:39:08+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T14:39:08+09:00] GPU no pending planner task
+[2026-05-06T14:39:09+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T14:39:09+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:39:09+09:00] CPU no pending planner task
+[2026-05-06T14:41:04+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T14:41:04+09:00] GPU no pending planner task
+[2026-05-06T14:41:03+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T14:41:03+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:41:03+09:00] CPU no pending planner task
+[2026-05-06T14:42:57+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T14:42:57+09:00] GPU no pending planner task
+[2026-05-06T14:42:59+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T14:42:59+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:42:59+09:00] CPU no pending planner task
+[2026-05-06T14:44:51+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T14:44:51+09:00] GPU no pending planner task
+[2026-05-06T14:44:52+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T14:44:52+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:44:52+09:00] CPU no pending planner task
+[2026-05-06T14:46:45+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T14:46:45+09:00] GPU no pending planner task
+[2026-05-06T14:46:46+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T14:46:46+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:46:46+09:00] CPU no pending planner task
+[2026-05-06T14:48:41+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T14:48:41+09:00] GPU no pending planner task
+[2026-05-06T14:48:42+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T14:48:42+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:48:42+09:00] CPU no pending planner task
+[2026-05-06T14:50:34+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T14:50:34+09:00] GPU no pending planner task
+[2026-05-06T14:50:36+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T14:50:36+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:50:36+09:00] CPU no pending planner task
+[2026-05-06T14:52:28+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T14:52:28+09:00] GPU no pending planner task
+[2026-05-06T14:52:29+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=96%
+[2026-05-06T14:52:29+09:00] CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+[2026-05-06T14:52:29+09:00] CPU no pending planner task
+[2026-05-06T14:54:22+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T14:54:22+09:00] GPU no pending planner task
+[2026-05-06T14:54:23+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T14:54:23+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:54:23+09:00] CPU no pending planner task
+[2026-05-06T14:56:18+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T14:56:18+09:00] GPU no pending planner task
+[2026-05-06T14:56:19+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T14:56:19+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:56:19+09:00] CPU no pending planner task
+[2026-05-06T14:58:11+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T14:58:11+09:00] GPU no pending planner task
+[2026-05-06T14:58:12+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T14:58:12+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:58:12+09:00] CPU no pending planner task
+[2026-05-06T15:00:05+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:00:05+09:00] GPU no pending planner task
+[2026-05-06T15:00:06+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T15:00:06+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:00:06+09:00] CPU no pending planner task
+[2026-05-06T15:01:59+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:01:59+09:00] GPU no pending planner task
+[2026-05-06T15:02:00+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T15:02:00+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:02:00+09:00] CPU no pending planner task
+[2026-05-06T15:03:54+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:03:54+09:00] GPU no pending planner task
+[2026-05-06T15:03:56+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T15:03:56+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:03:56+09:00] CPU no pending planner task
+[2026-05-06T15:05:48+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:05:48+09:00] GPU no pending planner task
+[2026-05-06T15:05:49+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T15:05:49+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:05:49+09:00] CPU no pending planner task
+[2026-05-06T15:07:42+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:07:42+09:00] GPU no pending planner task
+[2026-05-06T15:07:43+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T15:07:43+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:07:43+09:00] CPU no pending planner task
+[2026-05-06T15:09:38+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:09:38+09:00] GPU no pending planner task
+[2026-05-06T15:09:37+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T15:09:37+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:09:37+09:00] CPU no pending planner task
+[2026-05-06T15:11:32+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:11:32+09:00] GPU no pending planner task
+[2026-05-06T15:11:33+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T15:11:33+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:11:33+09:00] CPU no pending planner task
+[2026-05-06T15:13:25+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:13:25+09:00] GPU no pending planner task
+[2026-05-06T15:13:27+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=96%
+[2026-05-06T15:13:27+09:00] CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+[2026-05-06T15:13:27+09:00] CPU no pending planner task
+[2026-05-06T15:15:19+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:15:19+09:00] GPU no pending planner task
+[2026-05-06T15:15:20+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T15:15:20+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:15:20+09:00] CPU no pending planner task
+[2026-05-06T15:17:15+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:17:15+09:00] GPU no pending planner task
+[2026-05-06T15:17:16+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T15:17:16+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:17:16+09:00] CPU no pending planner task
+[2026-05-06T15:19:09+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:19:09+09:00] GPU no pending planner task
+[2026-05-06T15:19:10+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T15:19:10+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:19:10+09:00] CPU no pending planner task
+[2026-05-06T15:21:02+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:21:02+09:00] GPU no pending planner task
+[2026-05-06T15:21:03+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T15:21:03+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:21:03+09:00] CPU no pending planner task
+[2026-05-06T15:22:56+09:00] GPU planner: task=none reason=GPU validation queue complete through R16 anchor triad 200 ns and R17 generative top/next/expanded green-target 10/30/60 ns panels
+[2026-05-06T15:22:56+09:00] GPU no pending planner task
+[2026-05-06T15:22:57+09:00] CPU planner: spec=none reason=all configured xTB refinement outputs exist or are running through 384conf idle=100%
+[2026-05-06T15:22:57+09:00] CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:22:57+09:00] CPU no pending planner task
 
 ```
 ### pilot/monitor_supervisor.log tail -80
@@ -1861,86 +1860,86 @@ crazat   2512206   77583  0 May03 ?        00:00:08 bash /home/crazat/genesis_me
 ### pilot/codex_curator_actions.log tail -80
 
 ```text
-2026-05-06T10:34:55+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T10:36:49+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T10:38:43+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T10:40:37+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-[2026-05-06T10:40:49+09:00] curator failed rc=127
-2026-05-06T10:42:33+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T10:44:27+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T10:46:21+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T10:48:15+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T10:50:10+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T10:51:16+09:00] curator failed rc=127
-2026-05-06T10:52:04+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T10:53:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T10:55:54+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T10:57:48+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T10:59:42+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:01:36+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-[2026-05-06T11:01:41+09:00] curator failed rc=127
-2026-05-06T11:03:32+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:05:26+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T11:07:20+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:09:14+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T11:11:10+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T11:12:07+09:00] curator failed rc=127
-2026-05-06T11:13:03+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:14:57+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:16:51+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T11:18:47+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:20:41+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T11:22:33+09:00] curator failed rc=127
-2026-05-06T11:22:35+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:24:29+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:26:25+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:28:19+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:30:12+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:32:08+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T11:33:01+09:00] curator failed rc=127
-2026-05-06T11:34:02+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:35:56+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:37:50+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:39:46+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:41:40+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-[2026-05-06T11:43:27+09:00] curator failed rc=127
-2026-05-06T11:43:34+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:45:28+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:47:22+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:49:17+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T11:51:11+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T11:53:05+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-[2026-05-06T11:53:56+09:00] curator failed rc=127
-2026-05-06T11:54:59+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T11:57:19+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-2026-05-06T11:59:13+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:01:49+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-2026-05-06T12:03:43+09:00 CPU_IDLE_GAP_UNRESOLVED idle=92% active_refines=0 planner=none
-[2026-05-06T12:04:26+09:00] curator failed rc=127
-2026-05-06T12:05:36+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:07:32+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:09:26+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T12:11:39+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-2026-05-06T12:13:39+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-[2026-05-06T12:15:06+09:00] curator failed rc=127
-2026-05-06T12:15:50+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:17:59+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T12:19:53+09:00 CPU_IDLE_GAP_UNRESOLVED idle=94% active_refines=0 planner=none
-2026-05-06T12:22:11+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-2026-05-06T12:24:10+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-[2026-05-06T12:25:40+09:00] curator failed rc=127
-2026-05-06T12:26:03+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T12:27:59+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:29:53+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
-2026-05-06T12:31:46+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:33:40+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
-2026-05-06T12:35:35+09:00 CPU_IDLE_GAP_UNRESOLVED idle=82% active_refines=0 planner=none
-[2026-05-06T12:36:31+09:00] curator failed rc=127
-2026-05-06T12:37:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
-2026-05-06T12:39:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=97% active_refines=0 planner=none
-2026-05-06T12:41:53+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-2026-05-06T12:43:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
-2026-05-06T12:46:11+09:00 CPU_IDLE_GAP_UNRESOLVED idle=67% active_refines=0 planner=none
+2026-05-06T13:13:11+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+2026-05-06T13:15:27+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+2026-05-06T13:17:31+09:00 CPU_IDLE_GAP_UNRESOLVED idle=98% active_refines=0 planner=none
+[2026-05-06T13:18:48+09:00] curator failed rc=127
+2026-05-06T13:19:27+09:00 CPU_IDLE_GAP_UNRESOLVED idle=97% active_refines=0 planner=none
+2026-05-06T13:21:30+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+2026-05-06T13:23:40+09:00 CPU_IDLE_GAP_UNRESOLVED idle=97% active_refines=0 planner=none
+2026-05-06T13:26:05+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+2026-05-06T13:27:59+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+[2026-05-06T13:29:40+09:00] curator failed rc=127
+2026-05-06T13:29:54+09:00 CPU_IDLE_GAP_UNRESOLVED idle=92% active_refines=0 planner=none
+2026-05-06T13:31:47+09:00 CPU_IDLE_GAP_UNRESOLVED idle=90% active_refines=0 planner=none
+2026-05-06T13:33:49+09:00 CPU_IDLE_GAP_UNRESOLVED idle=98% active_refines=0 planner=none
+2026-05-06T13:35:45+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T13:37:46+09:00 CPU_IDLE_GAP_UNRESOLVED idle=92% active_refines=0 planner=none
+2026-05-06T13:39:48+09:00 CPU_IDLE_GAP_UNRESOLVED idle=89% active_refines=0 planner=none
+[2026-05-06T13:40:14+09:00] curator failed rc=127
+2026-05-06T13:41:45+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
+2026-05-06T13:43:40+09:00 CPU_IDLE_GAP_UNRESOLVED idle=93% active_refines=0 planner=none
+2026-05-06T13:45:35+09:00 CPU_IDLE_GAP_UNRESOLVED idle=97% active_refines=0 planner=none
+2026-05-06T13:47:31+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T13:49:24+09:00 CPU_IDLE_GAP_UNRESOLVED idle=78% active_refines=0 planner=none
+[2026-05-06T13:50:43+09:00] curator failed rc=127
+2026-05-06T13:51:18+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
+2026-05-06T13:53:11+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T13:55:07+09:00 CPU_IDLE_GAP_UNRESOLVED idle=79% active_refines=0 planner=none
+2026-05-06T13:57:01+09:00 CPU_IDLE_GAP_UNRESOLVED idle=88% active_refines=0 planner=none
+2026-05-06T13:59:10+09:00 CPU_IDLE_GAP_UNRESOLVED idle=88% active_refines=0 planner=none
+2026-05-06T14:01:04+09:00 CPU_IDLE_GAP_UNRESOLVED idle=95% active_refines=0 planner=none
+[2026-05-06T14:01:08+09:00] curator failed rc=127
+2026-05-06T14:02:58+09:00 CPU_IDLE_GAP_UNRESOLVED idle=99% active_refines=0 planner=none
+2026-05-06T14:04:52+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:06:47+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:08:41+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:10:35+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:11:33+09:00] curator failed rc=127
+2026-05-06T14:12:30+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:14:24+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:16:18+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:18:12+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:20:08+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:22:00+09:00] curator failed rc=127
+2026-05-06T14:22:01+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:23:55+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:25:49+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:27:45+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:29:38+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:31:32+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:32:24+09:00] curator failed rc=127
+2026-05-06T14:33:26+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:35:22+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:37:15+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:39:09+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:41:03+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T14:42:51+09:00] curator failed rc=127
+2026-05-06T14:42:59+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:44:52+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:46:46+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:48:42+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:50:36+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:52:29+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+[2026-05-06T14:53:18+09:00] curator failed rc=127
+2026-05-06T14:54:23+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:56:19+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T14:58:12+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:00:06+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:02:00+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+[2026-05-06T15:03:41+09:00] curator failed rc=127
+2026-05-06T15:03:56+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:05:49+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:07:43+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:09:37+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:11:33+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:13:27+09:00 CPU_IDLE_GAP_UNRESOLVED idle=96% active_refines=0 planner=none
+[2026-05-06T15:14:08+09:00] curator failed rc=127
+2026-05-06T15:15:20+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:17:16+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:19:10+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:21:03+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
+2026-05-06T15:22:57+09:00 CPU_IDLE_GAP_UNRESOLVED idle=100% active_refines=0 planner=none
 
 ```
 ### pilot/md_r16_chromanol_topical_tgfb1_extra_30ns_auto.log tail -120
@@ -2269,7 +2268,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Paper Factory Queue
 
-- timestamp: `2026-05-06T12:46:57+09:00`
+- timestamp: `2026-05-06T15:24:34+09:00`
 - manuscript_md_count: `20`
 - manuscript_pdf_count: `19`
 - principle: 논문 수를 늘리되, 같은 결과를 과장 반복하지 않는다. 각 paper는 독립 질문, 독립 figure set, 명확한 in silico limitation을 가져야 한다.
@@ -2399,7 +2398,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Target Evidence Gate
 
-- timestamp: `2026-05-06T12:46:04+09:00`
+- timestamp: `2026-05-06T15:23:44+09:00`
 - targets: `31`
 - gate_counts: `{'green': 13, 'red': 8, 'yellow': 10}`
 - purpose: 계산 큐를 질병/피부 근거, tractability, modality에 연결해 무의미한 docking 확장을 줄인다.
@@ -2468,7 +2467,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Active-learning Docking Surrogate
 
-- timestamp: `2026-05-06T12:46:06+09:00`
+- timestamp: `2026-05-06T15:23:46+09:00`
 - training_rows: `32`
 - candidate_rows: `672`
 - leave-one-out MAE: `0.0765`
@@ -2516,7 +2515,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Multi-fidelity BO Planner
 
-- timestamp: `2026-05-06T12:46:10+09:00`
+- timestamp: `2026-05-06T15:23:50+09:00`
 - plan_rows: `112`
 - purpose: 다음 action을 무작정 GPU/CPU로 고르지 않고 cost 대비 정보가 큰 fidelity로 선택한다.
 
@@ -2579,7 +2578,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Structure Consensus Calibration
 
-- timestamp: `2026-05-06T12:46:10+09:00`
+- timestamp: `2026-05-06T15:23:50+09:00`
 - rows: `32`
 - class_counts: `{'high_confidence': 6, 'usable_with_caveat': 18, 'review_before_claim': 8}`
 - purpose: Boltz affinity만으로 claim하지 않고 pose sanity와 MD 안정성을 합쳐 confidence를 보정한다.
@@ -2626,7 +2625,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Structure Consensus V2
 
-- timestamp: `2026-05-06T12:46:11+09:00`
+- timestamp: `2026-05-06T15:23:50+09:00`
 - rows: `32`
 - claim_counts: `{'claim_ready_in_silico': 0, 'claim_with_caveat': 8, 'needs_cross_model': 5, 'triage_only': 19}`
 - purpose: single-model Boltz claim을 피하고, PoseBusters/MD/pocket/applicability-domain을 합쳐 orthogonal validation priority를 정한다.
@@ -2679,7 +2678,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Chromanol Generative Optimizer
 
-- timestamp: `2026-05-06T12:46:11+09:00`
+- timestamp: `2026-05-06T15:23:51+09:00`
 - rows: `330`
 - action_counts: `{'Boltz-2_next_when_GPU_free': 240, 'keep_for_route_or_safety_review': 82, 'archive_low_priority': 8}`
 - purpose: R15/R16 chromanol core 주변에서 valid RDKit analog를 만들어 다음 Boltz/route/safety 큐 후보를 넓힌다.
@@ -2736,7 +2735,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Route Enumeration Gate
 
-- timestamp: `2026-05-06T12:46:11+09:00`
+- timestamp: `2026-05-06T15:23:51+09:00`
 - rows: `1082`
 - gate_counts: `{'route_ready': 362, 'route_review': 378, 'route_hard': 342, 'red': 0}`
 - purpose: SA score를 넘어서 실제 route enumeration이 필요한 후보와 바로 vendor/precursor search로 갈 후보를 분리한다.
@@ -2793,7 +2792,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Skin Cell-State Evidence Gate
 
-- timestamp: `2026-05-06T12:46:12+09:00`
+- timestamp: `2026-05-06T15:23:51+09:00`
 - rows: `32`
 - gate_counts: `{'cell_state_anchored': 2, 'phenotype_first': 8, 'target_claim_limited': 22}`
 - purpose: target/cofold evidence를 실제 피부 세포 상태와 disease phenotype endpoint에 연결한다.
@@ -2847,7 +2846,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Photosafety Sensitization V2
 
-- timestamp: `2026-05-06T12:46:12+09:00`
+- timestamp: `2026-05-06T15:23:52+09:00`
 - rows: `1082`
 - gate_counts: `{'green': 366, 'yellow': 716, 'red': 0}`
 - purpose: topical lead claim 전에 OECD TG497 skin sensitization과 ICH S10 photosafety 관점의 assay package를 자동 지정한다.
@@ -2904,7 +2903,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Quinone Safety Gate
 
-- timestamp: `2026-05-06T12:46:13+09:00`
+- timestamp: `2026-05-06T15:23:52+09:00`
 - rows: `1006`
 - gate_counts: `{'redesign_before_use': 0, 'quinone_reactivity_review': 133, 'redox_polyphenol_review': 872, 'reactivity_review': 1, 'quinone_reference_review': 0, 'structure_fix': 0}`
 - EMB-3 included: `True`
@@ -2975,7 +2974,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # DMTL Experiment Card Factory
 
-- timestamp: `2026-05-06T12:46:28+09:00`
+- timestamp: `2026-05-06T15:24:06+09:00`
 - rows: `16`
 - bucket_counts: `{'single_point_wetlab_card': 10, 'route_or_safety_prerequisite': 2, 'compute_followup_card': 4}`
 - purpose: 계산 결과를 바로 CRO/wet-lab이 읽을 수 있는 design-make-test-learn card로 변환한다.
@@ -3013,7 +3012,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Skin Spatial Atlas Gate
 
-- timestamp: `2026-05-06T12:46:28+09:00`
+- timestamp: `2026-05-06T15:24:06+09:00`
 - rows: `32`
 - gate_counts: `{'spatially_anchorable': 2, 'atlas_review': 9, 'spatial_context_missing': 21}`
 - purpose: 피부 target claim을 세포 상태뿐 아니라 anatomic site, niche, reconstructed model로 연결한다.
@@ -3067,7 +3066,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Target Engagement Assay Gate
 
-- timestamp: `2026-05-06T12:46:28+09:00`
+- timestamp: `2026-05-06T15:24:06+09:00`
 - rows: `32`
 - gate_counts: `{'engagement_assay_ready': 1, 'cellular_engagement_preferred': 5, 'deconvolution_first': 13, 'assay_materials_review': 13}`
 - purpose: in-silico binding hypothesis를 CETSA/TPP/SPR/reporter/phenotype assay로 넘길 수 있는지 평가한다.
@@ -3121,7 +3120,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Dermal PBPK IVPT Gate
 
-- timestamp: `2026-05-06T12:46:29+09:00`
+- timestamp: `2026-05-06T15:24:06+09:00`
 - rows: `1082`
 - gate_counts: `{'ivpt_pbpk_ready': 477, 'formulation_rescue_needed': 587, 'pbpk_low_confidence': 18, 'structure_fix': 0}`
 - purpose: topical lead를 FDA/EMA IVRT/IVPT 및 mechanistic dermal PBPK 입력 표로 연결한다.
@@ -3188,7 +3187,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Metabolite Reactive Risk Gate
 
-- timestamp: `2026-05-06T12:46:29+09:00`
+- timestamp: `2026-05-06T15:24:07+09:00`
 - rows: `1082`
 - gate_counts: `{'low_reactive_alert': 720, 'metabolism_caveat': 352, 'reactive_metabolite_review': 10, 'structure_fix': 0}`
 - purpose: BioTransformer/FAME류 대사체 예측 전 단계로 phenol/redox/quinone/aryl-halogen/reactive-metabolite risk를 표시한다.
@@ -3255,7 +3254,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Genetic Causality Direction Gate
 
-- timestamp: `2026-05-06T12:46:30+09:00`
+- timestamp: `2026-05-06T15:24:08+09:00`
 - rows: `31`
 - gate_counts: `{'direction_plausible': 9, 'direction_needs_genetic_or_phenotype_support': 1, 'causality_weak_or_unknown': 21}`
 - purpose: target evidence를 disease association뿐 아니라 desired direction-of-effect, genetic/MR caveat와 연결한다.
@@ -3308,7 +3307,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Pharmacovigilance Signal Gate
 
-- timestamp: `2026-05-06T12:46:30+09:00`
+- timestamp: `2026-05-06T15:24:08+09:00`
 - rows: `442`
 - gate_counts: `{'pv_signal_review': 240, 'pv_class_caveat': 140, 'pv_signal_not_mapped': 62}`
 - purpose: FDA AEMS/FAERS 또는 class analog safety signal을 논문 safety caveat와 systemic/topical path 분리에 연결한다.
@@ -3375,7 +3374,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Single-Cell FM Reliability Gate
 
-- timestamp: `2026-05-06T12:46:31+09:00`
+- timestamp: `2026-05-06T15:24:08+09:00`
 - rows: `32`
 - gate_counts: `{'fm_supported_with_controls': 2, 'zero_shot_reliability_review': 12, 'fm_not_actionable': 18}`
 - purpose: scGPT/Geneformer/virtual-cell style evidence를 zero-shot limitation과 baseline-control 요구사항으로 제한한다.
@@ -3429,7 +3428,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Structure Benchmark Decoy Gate
 
-- timestamp: `2026-05-06T12:46:31+09:00`
+- timestamp: `2026-05-06T15:24:09+09:00`
 - rows: `32`
 - gate_counts: `{'benchmark_decoys_required_before_strong_claim': 0, 'benchmark_ready_as_caveat': 8, 'cross_model_first': 5, 'benchmark_low_priority': 19}`
 - purpose: PoseBench-style claim discipline을 local candidate에 적용해 decoy, negative-control, PLIF, cross-model requirement를 명시한다.
@@ -3483,7 +3482,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Topical Formulation BO
 
-- timestamp: `2026-05-06T12:46:31+09:00`
+- timestamp: `2026-05-06T15:24:09+09:00`
 - lead_rows: `60`
 - plan_csv: `pilot/cpu_meaningful/topical_formulation_bo_plan.csv`
 - experiment_template: `data/topical_formulation_experiment_template.csv`
@@ -3532,7 +3531,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Free-energy Validation Plan
 
-- timestamp: `2026-05-06T12:46:32+09:00`
+- timestamp: `2026-05-06T15:24:09+09:00`
 - rows: `32`
 - existing_rbfe_edge_rows: `15`
 - method_counts: `{'RBFE_network': 5, 'ABFE_scout': 1, 'ABFE_or_CBFE_scout': 6, 'defer': 20}`
@@ -3593,7 +3592,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Dermal Regulatory Safety Gate
 
-- timestamp: `2026-05-06T12:46:32+09:00`
+- timestamp: `2026-05-06T15:24:10+09:00`
 - rows: `112`
 - gate_counts: `{'green': 32, 'yellow': 80, 'red': 0}`
 - purpose: 외용제 후보를 OECD TG497 skin sensitisation, ICH S10 photosafety, FDA IVRT/IVPT 관점의 in-silico pre-gate로 제한한다.
@@ -3645,7 +3644,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Perturbation Biology Gate
 
-- timestamp: `2026-05-06T12:46:32+09:00`
+- timestamp: `2026-05-06T15:24:10+09:00`
 - target_rows: `32`
 - priority_counts: `{'high': 2, 'review': 12, 'low': 18}`
 - purpose: direct binding 후보를 실제 피부 cell phenotype/perturbation evidence와 연결할 수 있는지 평가한다.
@@ -3692,7 +3691,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Hydration and Kinetics Gate
 
-- timestamp: `2026-05-06T12:46:33+09:00`
+- timestamp: `2026-05-06T15:24:10+09:00`
 - rows: `32`
 - counts: `{'hydration_priority': 32, 'residence_proxy': 6}`
 - purpose: RMSD 안정성만으로는 부족한 water displacement/residence-time follow-up 우선순위를 정한다.
@@ -3739,7 +3738,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Ultra-large Screening Roadmap
 
-- timestamp: `2026-05-06T12:46:33+09:00`
+- timestamp: `2026-05-06T15:24:10+09:00`
 - rows: `50`
 - purpose: NPASS-scale local screen을 ZINC/Enamine REAL급 ultra-large active-learning campaign으로 확장하기 위한 단계별 큐다.
 
@@ -3800,7 +3799,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Model Validation and Uncertainty Gate
 
-- timestamp: `2026-05-06T12:46:33+09:00`
+- timestamp: `2026-05-06T15:24:11+09:00`
 - training_rows: `32`
 - active_rows: `672`
 - training_scaffold_count: `1`
@@ -3854,7 +3853,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Phenomics Signature Gate
 
-- timestamp: `2026-05-06T12:46:34+09:00`
+- timestamp: `2026-05-06T15:24:11+09:00`
 - rows: `752`
 - gate_counts: `{'priority_cell_painting': 278, 'phenomics_with_safety_counterscreen': 57, 'reference_signature_lookup': 417, 'hold_safety_first': 0}`
 - purpose: docking/MD 후보를 Cell Painting, high-content imaging, disease-cell phenotype 후속으로 연결한다.
@@ -3912,7 +3911,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Developability CMC Gate
 
-- timestamp: `2026-05-06T12:46:34+09:00`
+- timestamp: `2026-05-06T15:24:11+09:00`
 - rows: `112`
 - gate_counts: `{'green': 34, 'yellow': 78, 'red': 0}`
 - purpose: hit/lead 후보를 solubility, stability, excipient compatibility, solid-form risk, scale-up risk 관점으로 조기 제한한다.
@@ -3969,7 +3968,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # IP FTO Watchlist
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - rows: `752`
 - risk_counts: `{'high_review': 0, 'medium_review': 11, 'baseline_watch': 741}`
 - manual_review_template: `data/ip_fto_manual_review_template.csv`
@@ -4027,7 +4026,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # FAIR Assay Schema
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - dictionary_csv: `pilot/cpu_meaningful/fair_assay_dictionary.csv`
 - template_csv: `data/fair_assay_metadata_template.csv`
 - schema_json: `data/fair_assay_schema.json`
@@ -4074,7 +4073,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Wet-lab Result Ingestor
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - status: `no_wetlab_results_yet`
 - source_file: `data/wetlab_feedback_results.csv`
 - result_template: `data/wetlab_feedback_results_template.csv`
@@ -4101,7 +4100,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Model Governance Registry
 
-- timestamp: `2026-05-06T12:46:35+09:00`
+- timestamp: `2026-05-06T15:24:12+09:00`
 - registry_csv: `pilot/cpu_meaningful/ai_model_governance_registry.csv`
 - model_cards: `docs/model_cards`
 - purpose: FDA-style context-of-use, risk, validation, monitoring 관점으로 AI/ML/automation component를 관리한다.
@@ -4131,7 +4130,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # Creative Discovery Gap Matrix
 
-- timestamp: `2026-05-06T12:46:36+09:00`
+- timestamp: `2026-05-06T15:24:15+09:00`
 - matrix_csv: `pilot/cpu_meaningful/creative_discovery_gap_matrix.csv`
 - queue_policy_json: `pilot/creative_discovery_queue_policy.json`
 - active-learning pending short-cofold pairs: `160`
@@ -4179,7 +4178,7 @@ r16_03_tgfb1__R15_chromanol_Cl_pos9__200ns r16_03_tgfb1 R15_chromanol_Cl_pos9  t
 ```text
 # World-Class Drug Discovery Gap Closure
 
-- timestamp: `2026-05-06T12:46:37+09:00`
+- timestamp: `2026-05-06T15:24:16+09:00`
 - candidate_rows: `2328`
 - matrix_csv: `pilot/cpu_meaningful/world_class_gap_closure_matrix.csv`
 - queue_policy_json: `pilot/auto_queue_decision_policy.json`
