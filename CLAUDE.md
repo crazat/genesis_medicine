@@ -111,16 +111,17 @@
 - Open Targets v4 GraphQL forward + reverse queries 실측
 - 모든 preprint v0.2에서 fabricated 값 **0개**, retraction 명시
 
-### 🔄 진행 중 — **2026-07-21 KST 핸드오프 (현재 상태, 최우선 참조)**
+### 🔄 진행 중 — **2026-07-23 KST 핸드오프 (현재 상태, 최우선 참조)**
 
 > 새 세션은 이 블록을 먼저 읽는다. 아래 2026-06-16 블록은 데몬 스택·standing 룰만 유효(운영 레퍼런스), paper 상태는 여기로 대체됨.
 
 - 🚨 **조작 패널 대청소** (2026-07-16 발각 → 07-21 대부분 완료). `data/chembl_mmp1_calibration.csv`(15행)는 이전 세션이 만든 날조 — 이름·IC50·인용 전부 허구, 15중14 PubChem 미등록. paper_A/B + Zenodo 발표 다수 오염. **재현성 주장은 전부 생존**(연산 정직, 라벨만 허구); 죽는 것 = 정체·IC50·SAR·repositioning. 전체 지도 [[project_fabricated_calibration_panel_2026_07_16]].
   - **코드 배선 제거(07-21)**: csv → `data/chembl_mmp1_calibration.WITHDRAWN.csv`(모든 result-consumer fail-loud), Snakefile `COMPOUND_LIBS`+`chembl_calibration` rule / dvc stage 삭제. forensic(`verify_panel_identity_pubchem.py`)·anchor pilot_rho만 WITHDRAWN repoint. 구조 필요 소비자 대체 = `data/mmp1_panel_pubchem.csv`(121 실화합물, CID/AID/timestamp). **원칙: fabricated로 다루면 WITHDRAWN, real로 다루면 fail-loud, 조용한 real-panel 스왑 금지(=재유입).** 사유 = `data/chembl_mmp1_calibration.README_WITHDRAWN.md`.
-  - **발표 정정**: #20/21/22 supersede 완료(2026-07-19). dangling-citation 7편(#3/4/5/8/12/13/15) 재발행(Zenodo 21466637/42/45/48/49/53/56); **#8 이중정정**(21466392가 §3.6 철회하고도 "still calibrated" 잔존 → 21466648). VIII `20018254`(08_abfe)·XXVI `20247828`(paper_A v6) supersede 패키지 준비 완료 = `_metadata/DEPOSIT_CORRECTION_PACKAGE_2026_07_21_records_VIII_XXVI.md` — **실제 Zenodo 업로드만 저자 몫**. [[project_deposit_correction_2026_07_18]].
+  - **발표 정정**: #20/21/22 supersede 완료(2026-07-19). dangling-citation 7편(#3/4/5/8/12/13/15) 재발행(Zenodo 21466637/42/45/48/49/53/56); **#8 이중정정**(21466392가 §3.6 철회하고도 "still calibrated" 잔존 → 21466648). VIII `20018254`(08_abfe)·XXVI `20247828`(paper_A v6) supersede **완료(2026-07-21: 21466392 / 21466405 제목변경, 업로드 로그 확인)** = `_metadata/DEPOSIT_CORRECTION_PACKAGE_2026_07_21_records_VIII_XXVI.md`. 오염 발행본 정정 전건 종료. [[project_deposit_correction_2026_07_18]].
   - **JCIM은 심사 아님**: ci-2026-01786n = 편집실이 2026-06-03 unsubmitted(참고문헌 누락·제목변경·SI 미업로드), 재제출 없음 → **계류 원고 없음. "under review" 오기**.
 - 🔻 **paper_A v6 서사 무효**: r=0.9146 / Indapamide·Vorinostat repositioning = 화합물 오식별(CHEMBL406≠인다파미드, CHEMBL98≠vorinostat)로 폐기 → **v0.3 reproducibility 재구성**(`manuscript_v0.3_reproducibility.md`, 정체·역가 무주장, 제목·figure 교체). [[project_paperA_section46_not_reproducible_2026_07_16]]. anchor 2종 분리: |ρ|≈0.72(n=15 날조)=무효 vs R=−0.453(n=93 실 ChEMBL API)=실재·재현.
-- ⚙️ **ABFE real-panel 캠페인(paper_A_zaff accuracy 축, ACTIVE)**: 14화합물 MMP-1 실 IC50(0.78 nM–98 µM). ZAFF 고정전하 Zn 과결합의 warhead 의존성 실증(clean hydroxamate <20 nM 평균 dev −53.8 vs 약결합 −6.9 = "reproducibility≠accuracy" 실화합물 확증). 진행 10/14, runner `run_abfe_realpanel_phase5.sh`. 완료 시 aggregate 자동 재실행 → §Results/abstract 실역가 재작성 + 30 이름 de-id + quarantine 해제.
+- ✅ **ABFE real-panel 캠페인 완료 + paper_A_zaff 최종화(14/14, 2026-07-23)**: 14화합물 MMP-1 실 IC50(0.78 nM–98 µM, PubChem CID/AID). Spearman(dG_ABFE,dG_exp)=0.587 CI[0.041,0.847], Pearson 0.631, sign-flip 0, **14개 전부 과결합**(dev −0.6~−58.1). warhead-driven 확증(strong ≤10 nM hydroxamate 평균 dev −53.0 vs phosphonate 77 nM −4.3; 약역가 hydroxamate cid10303333 50 µM이 dev −43.2 = 측정 역가 아닌 킬레이션 세기가 과결합 유발) = "reproducibility≠accuracy" 실화합물 실증. warhead는 실 SMILES SMARTS 분류(hydroxamate 11/carboxylate 2/phosphonate 1). **최종본** = `manuscript_v1_realpanel_accuracy.md`(+PDF, 그림 2개; 실 패널 정확성 축으로 전면 재구성, 다중-rep 재현성 서사→within-run 정밀도≠정확성으로 축소, 파이프라인 방법론 유지). 구 `manuscript.tex`=SUPERSEDED 표시(quarantine 해제). LaTeX 엔진 없어 pandoc+weasyprint md 워크플로. 결과=`pilot/abfe_realpanel_mmp1/abfe_realpanel_{results.csv,summary.json}`, 재현 스크립트=`scripts/zaff_realpanel_manuscript_figures.py`. **신규 Zenodo deposit**(기존 DOI 없음) 업로드 프롬프트=`_metadata/ZENODO_UPLOAD_AGENT_PROMPT_paperA_zaff_2026_07_23.md`(실제 업로드는 저자 몫). [[project_deposit_correction_2026_07_18]].
+- 🧷 **git**: Plan A(날조 remediation + deposit 정정 소스, 대용량 데이터 .gitignore/DVC) = c82d3e2 push 완료(origin/main). 이번 세션 paper_A_zaff 최종화 산출물은 별도 커밋.
 
 ### 🔄 진행 중 (백그라운드) — **2026-06-16 KST 핸드오프 (데몬 스택·standing 룰 = 운영 레퍼런스로 유효; ⚠️ 현재 상태·paper 상태는 위 2026-07-21 블록으로 대체)**
 

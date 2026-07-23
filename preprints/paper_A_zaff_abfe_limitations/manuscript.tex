@@ -1,23 +1,18 @@
-% # ⛔ CONTAMINATED — DO NOT SUBMIT OR DEPOSIT (2026-07-16)
+% # SUPERSEDED (2026-07-23) — replaced by manuscript_v1_realpanel_accuracy.md
 %
-% **Every compound name and IC50 value below is fabricated.** This manuscript's ligand panel comes from
-% `data/chembl_mmp1_calibration.csv`, whose annotations a primary-source audit refuted on 2026-07-16: all seven
-% of its named entries are a **different molecule** than the drug they name (e.g. the entry labelled prinomastat
-% is C23H30N2O5S; real prinomastat is C18H21N3O5S2, PubChem CID 466151), and **14 of its 15 structures are
-% unknown to PubChem's ~119 M compounds** — they are not published chemistry. The file has no generating script
-% and no retrieval record. See `preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md`; reproduce with
-% `scripts/round27_paperA/verify_panel_identity_pubchem.py`.
+% This .tex is the pre-correction draft, retained for history only; it must not be submitted or deposited.
+% Its ligand panel and every IC50 / accuracy claim came from data/chembl_mmp1_calibration.csv, a fabricated
+% file that a primary-source audit refuted on 2026-07-16 (named entries were the wrong molecules; 14 of its
+% 15 structures were unknown to PubChem; the file had no generating script and no retrieval record). See
+% preprints/_metadata/FABRICATED_PANEL_SCOPE_2026_07_16.md and
+% scripts/round27_paperA/verify_panel_identity_pubchem.py.
 %
-% **What this means for this draft.** Any statement here about compound identity, potency, structure–activity
-% or repositioning is void. Computational results *on those structures* remain valid as reproducibility
-% measurements — whether a computation repeats on a fixed input does not depend on what the input is called —
-% but they cannot be attributed to the named drugs and cannot be transferred to the real ones.
-%
-% **Before this draft goes anywhere** it needs the same decision paper_A took: either restate it as a pure
-% methodology paper that claims no identity or potency (see `23_paper_A_v6_mmp1_5nnp_xtb/manuscript_v0.3_reproducibility.md`,
-% which survived this finding by design), or re-run on the real panel now available at
-% `data/mmp1_panel_pubchem.csv` (121 compounds, IC50 0.78 nM–98 µM, every row carrying its PubChem CID, assay
-% AID and retrieval timestamp). That choice is the author's.
+% The accuracy axis has since been re-derived on a real, provenance-tracked panel (14 PubChem MMP-1
+% inhibitors, IC50 0.78 nM to 98 uM, each row carrying its PubChem CID, assay AID and retrieval timestamp;
+% data/mmp1_panel_pubchem.csv, pilot/abfe_realpanel_mmp1/) and rewritten as
+% manuscript_v1_realpanel_accuracy.md (+ .pdf): an accuracy-limitations paper reporting systematic,
+% warhead-driven ZAFF-AMBER over-binding (all 14 compounds over-bind, no sign-flips, Spearman 0.587
+% with 95% CI [0.041, 0.847]). That Markdown version is the current manuscript of record.
 
 \documentclass[11pt,a4paper]{article}
 
