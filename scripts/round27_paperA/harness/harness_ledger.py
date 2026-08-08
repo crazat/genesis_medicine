@@ -113,12 +113,67 @@ def jdump(o, p):
     os.replace(tmp, p)          # atomic: a crash mid-write must never leave a half-parsed registry
 
 
+# DEFECT #4, found 2026-08-08 by the harness's own first CONCLUDED_POSITIVE. A variable that is a
+# deterministic function of other measured columns is an ALIAS, and an alias evades every mask that keys on
+# a literal name. `gate_score = iptm_mean * (1 - min(sigma_iptm/0.10, 1)) * qed`, and phase2_score_sigma.py
+# line 76 defaults `qed` to the constant 0.5 -- which every generated_auto row takes, since qed coverage in
+# that scope is exactly 0.0000. So in that scope gate_score is a two-ingredient restatement, reconstructible
+# from its parents at Spearman +0.999995 (max abs diff 0.00031). The harness reported
+# "Spearman(gate_score, sigma_E_med) = -0.537" as a novel confirmed finding at novelty 1.0, when it is
+# Spearman(sigma_iptm, sigma_E_med) = +0.531 -- already-claimed A4/P1 territory -- wearing another name.
+# Two guards, one for value and one for verdict: novelty is inherited through parentage (here), and a
+# mediation step residualizes the parents out before anything can conclude positive (step_mediation).
+DERIVED_OF = {"gate_score": ("iptm_mean", "sigma_iptm", "qed")}
+
+# The same defect one level deeper, and the reason mediation is not just a parentage check. iptm_mean and
+# sigma_iptm are not derived from each other -- they are the 1st and 2nd moments of the SAME iptm sample,
+# and for a score bounded on [0,1] they are mechanically coupled near the ceiling. Measured here:
+# Spearman(iptm_mean, sigma_E_med) = -0.502 collapses to -0.130 once sigma_iptm is held, i.e. the claim
+# "the MEAN predicts energetic dispersion" is not what the data says; the dispersion-to-dispersion relation
+# is. So a co-moment must be controlled for exactly like a parent when it is not the endpoint itself.
+MOMENT_FAMILY = [("iptm_mean", "sigma_iptm", "kurt_iptm")]
+
+
+def parents_in_scope(var, d):
+    """Parents that are actually usable as controls here: present, and not all-null in this scope.
+    A parent that is constant/absent (qed in generated_auto) must be EXCLUDED, or residualizing on it
+    drops every row and the guard silently degrades into a no-op."""
+    out = []
+    for p in DERIVED_OF.get(var, ()):
+        if p in d.columns and pd.to_numeric(d[p], errors="coerce").notna().sum() >= 100:
+            out.append(p)
+    return out
+
+
+def mediators_for(var, other, d):
+    """Everything that must be held constant before `var` can be credited with a relation of its own:
+    its ingredients (deterministic parentage) plus its co-moments (same underlying sample)."""
+    out = list(parents_in_scope(var, d))
+    for fam in MOMENT_FAMILY:
+        if var in fam:
+            for s in fam:
+                if s != var and s in d.columns and s not in out \
+                        and pd.to_numeric(d[s], errors="coerce").notna().sum() >= 100:
+                    out.append(s)
+    return [c for c in out if c != other and c != var]
+
+
 def novelty_of(obs):
-    pair = frozenset((obs.get("a", ""), obs.get("b", "")))
-    for k, why, mult in COVERED:
-        if k == pair:
-            return mult, why
-    return 1.0, ""
+    a, b = obs.get("a", ""), obs.get("b", "")
+    # expand each side to itself plus its parents: an alias inherits the coverage of what it is made of
+    exp_a = [a] + list(DERIVED_OF.get(a, ()))
+    exp_b = [b] + list(DERIVED_OF.get(b, ()))
+    best = (1.0, "")
+    for x in exp_a:
+        for y in exp_b:
+            if x == y:
+                continue
+            pair = frozenset((x, y))
+            for k, why, mult in COVERED:
+                if k == pair and mult < best[0]:
+                    via = "" if (x == a and y == b) else f" [inherited via {x} x {y}]"
+                    best = (mult, why + via)
+    return best
 
 
 def stability_of(hist):
@@ -452,16 +507,59 @@ def step_quantify_hole(e, df):
             "stat": {"n_cells": len(cells), "cells": cells}}
 
 
+def step_mediation(e, df):
+    """Is the statistic anything more than a relation between the ALIAS's ingredients and the endpoint?
+
+    Guards defect #4. If either side of the pair is a deterministic function of other measured columns,
+    residualize both sides on those parents. What survives is what the derived variable contributes over
+    and above its own ingredients; if that is below the admission floor, the observation is a restatement
+    of a relation among the parents, not a finding about the derived variable."""
+    d = scope_rows(df, e["scope"]).copy()
+    probe = e["probe"]
+    a, b = e.get("a"), e.get("b")
+    ctrl = []
+    for side, other in ((a, b), (b, a)):
+        for p in mediators_for(side, other, d):
+            if p not in (a, b) and p not in ctrl:
+                ctrl.append(p)
+    if not ctrl:
+        return {"ok": True, "verdict": "N/A",
+                "detail": "neither variable is derived from, or a co-moment of, another column"}
+    cols = [e["a"], e["b"]] + ctrl
+    keep = d[cols].apply(pd.to_numeric, errors="coerce").dropna().index
+    if len(keep) < 100:
+        return {"ok": False, "verdict": "INSUFFICIENT", "detail": f"n={len(keep)} after dropping nulls"}
+    g = d.loc[keep].copy()
+    R = g[cols].rank().to_numpy(float)
+    C = np.column_stack([np.ones(len(R)), R[:, 2:]])
+    for j, name in ((0, e["a"]), (1, e["b"])):
+        beta, *_ = np.linalg.lstsq(C, R[:, j], rcond=None)
+        g[name] = R[:, j] - C @ beta
+    full = STAT[probe](d, e)
+    val = STAT[probe](g, e)
+    ok = _survives(probe, val, full)
+    ret = (abs(val) / (abs(full) + 1e-9)) * 100
+    derived = [s for s in (a, b) if mediators_for(s, (b if s == a else a), d)]
+    return {"ok": True, "verdict": "PASS" if ok else "FAIL",
+            "detail": (f"{'+'.join(derived)} is determined by / co-moment with {'+'.join(ctrl)}; the "
+                       f"{probe} statistic falls {full:+.3f} -> {val:+.3f} once those are residualized "
+                       f"out (retains {ret:.0f}%, n={len(keep)})"),
+            "stat": {"full": full, "adjusted": val, "controls": ctrl, "derived": derived,
+                     "retained_pct": ret}}
+
+
 PLANS = {
-    "pair": ["holdout", "permutation", "confound", "era_jackknife"],
-    "hetero": ["holdout", "permutation", "confound"],
-    "drift": ["holdout", "permutation", "confound"],
+    # mediation runs FIRST: an alias restatement must be caught before four steps of budget are spent
+    # confirming it, and before it can ever reach CONCLUDED_POSITIVE.
+    "pair": ["mediation", "holdout", "permutation", "confound", "era_jackknife"],
+    "hetero": ["mediation", "holdout", "permutation", "confound"],
+    "drift": ["mediation", "holdout", "permutation", "confound"],
     "anomaly": ["batch_confound"],
     "hole": ["quantify_hole"],
 }
 STEPS = {"holdout": step_holdout, "permutation": step_permutation, "confound": step_confound,
          "era_jackknife": step_era_jackknife, "batch_confound": step_batch_confound,
-         "quantify_hole": step_quantify_hole}
+         "quantify_hole": step_quantify_hole, "mediation": step_mediation}
 
 
 # --------------------------------------------------------------------- conclusion
@@ -473,8 +571,29 @@ def conclude(e, reg):
     verdicts = [s["verdict"] for s in e["steps"]]
     fails = [s for s in e["steps"] if s["verdict"] == "FAIL"]
     perm, conf = steps.get("permutation"), steps.get("confound")
+    med = steps.get("mediation")
     if "ACTIONABLE" in verdicts:
         state, why = "CONCLUDED_ACTIONABLE", "coverage gap quantified into a finite work order"
+    elif med and med["verdict"] == "FAIL":
+        # NOT refuted and NOT a bound on chemistry: the relation is real, it just is not about this
+        # variable. Its own ingredients already carry it, so it belongs to whatever claim owns them.
+        st_ = med["stat"]
+        head = (f"{'+'.join(st_['derived'])} is determined by / a co-moment with "
+                f"{'+'.join(st_['controls'])}, and the statistic falls {st_['full']:+.3f} -> "
+                f"{st_['adjusted']:+.3f} (retains {st_['retained_pct']:.0f}%) once those are "
+                f"residualized out")
+        # Only call it an alias when the residual is under the admission floor. Above the floor the parents
+        # carry MOST of it but not all, which is a bound on the variable's own contribution -- and stating
+        # it as "adds nothing" would overclaim the negative just as badly as overclaiming the positive.
+        if abs(st_["adjusted"]) < RHO_MIN:
+            state = "CONCLUDED_ALIAS"
+            why = (f"a restatement, not a new relation: {head}, leaving nothing above the admission floor "
+                   f"of {RHO_MIN}. The signal lives in the parents and belongs to whatever claim owns them")
+        else:
+            state = "CONCLUDED_BOUND"
+            why = (f"mostly carried by its own ingredients: {head}. What is specific to "
+                   f"{'+'.join(st_['derived'])} rather than to {'+'.join(st_['controls'])} is bounded at "
+                   f"|{st_['adjusted']:+.3f}|")
     elif perm and perm["verdict"] == "FAIL":
         # the permuted null is not excluded -> there is nothing here to bound beyond chance
         state = "CONCLUDED_REFUTED"
@@ -610,7 +729,10 @@ def main():
             logln(f"COMMIT {e['key']} OV={e['OV']} plan={e['plan']} :: {e['statement'][:100]}")
 
     for e in committed:
-        done = {s["name"] for s in e["steps"]}
+        # setdefault, not e["steps"]: a hand-repaired or partially-written entry missing this key must not
+        # raise here. The exception is invisible under the daemon's redirect and the registry then never
+        # persists, so the harness silently re-commits the same pursuit forever without ever stepping it.
+        done = {s["name"] for s in e.setdefault("steps", [])}
         nxt = next((s for s in e.get("plan", []) if s not in done), None)
         if nxt is None:
             conclude(e, reg)
@@ -621,7 +743,7 @@ def main():
                     pass
             break
         # ---- stopping rules, checked BEFORE spending another step ----
-        if e["spend_s"] >= BUDGET_CAP_S:
+        if e.setdefault("spend_s", 0.0) >= BUDGET_CAP_S:
             e["steps"].append({"name": "budget_stop", "verdict": "FAIL",
                                "detail": f"budget cap {BUDGET_CAP_S/3600:.1f} core-hours reached"})
             conclude(e, reg)
@@ -654,8 +776,9 @@ def main():
         else:
             e["fails"] = 0
             logln(f"STEP {e['key']} {nxt} -> {res['verdict']} ({res['elapsed_s']}s): {res['detail'][:120]}")
-        # FUTILITY: a failed permutation null means there is nothing here; do not spend the rest of the plan
-        if nxt == "permutation" and res.get("verdict") == "FAIL":
+        # FUTILITY: a failed permutation null means there is nothing here; a failed mediation means what is
+        # here belongs to the alias's ingredients. Either way, do not spend the rest of the plan.
+        if nxt in ("permutation", "mediation") and res.get("verdict") == "FAIL":
             conclude(e, reg)
             try:
                 os.remove(PURSUIT)

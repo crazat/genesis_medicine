@@ -137,6 +137,25 @@ A third, smaller one: re-ingesting the same scan extended each key's effect hist
 five times against one scan drove stability from the 0.7 prior to a fully-earned 1.0 — confidence
 manufactured by looping. Ingest is now idempotent per scan timestamp, not per call.
 
+**A mask that keys on a name cannot see an alias** (found the same day, by the harness's own first
+CONCLUDED_POSITIVE — see section 7b). Every guard above matches literal column names, so a variable that is
+a deterministic function of other columns walks straight past all of them. `step_mediation` closes this
+generally: before any pair-family observation can conclude, both sides are residualized on the ingredients
+and co-moments of whichever side has them, and the plan runs it FIRST so an alias is caught before the
+budget is spent. Two declarations drive it, and adding a column means adding it here:
+
+    DERIVED_OF    = {"gate_score": ("iptm_mean", "sigma_iptm", "qed")}   # deterministic parentage
+    MOMENT_FAMILY = [("iptm_mean", "sigma_iptm", "kurt_iptm")]           # moments of one sample
+
+`novelty_of` uses the same parentage: a pair inherits the coverage discount of any (parent, other) pair a
+claim already owns, so an alias can no longer collect full novelty under a different name.
+
+The conclusion splits on the admission floor rather than collapsing to one verdict. Below `RHO_MIN` the
+observation is `CONCLUDED_ALIAS` — real, but belonging to the parents. Above it, most of the effect is
+carried by the ingredients and what remains is written as a numeric bound on the variable's own
+contribution, because "adds nothing" would overclaim the negative exactly as badly as the original
+overclaimed the positive.
+
 ## 7. First live result
 
 The corrected harness immediately did the thing it exists for, unattended. Observation: the
@@ -148,6 +167,40 @@ attributable to chemistry rather than to sampling policy is bounded at 0.000", w
 
 That is the same class of trap a human caught by hand earlier the same day. The mechanism now catches it
 without one.
+
+## 7b. The first CONCLUDED_POSITIVE was wrong, and that is what the promotion gate is for
+
+Hours after deployment the new PROMOTION_PENDING trip fired on its first candidate: "Spearman(gate_score,
+sigma_E_med) = -0.537 [-0.552, -0.522], n=10300", passing all four confirmation steps including the
+allocation control (73% retained) and leave-one-era-out.
+
+It does not survive contact with `phase2_score_sigma.py:76`, `qed = float(m.get("qed", 0.5) or 0.5)`. In
+`generated_auto`, qed coverage is exactly 0.0000, so every row takes the constant and `gate_score` reduces
+to a function of two other columns in the same table — reconstructible from them at Spearman +0.999995,
+max abs difference 0.00031. Held against both parents the statistic goes -0.537 -> +0.064: below the
+admission floor and sign-flipped. What the harness had found was
+`Spearman(sigma_iptm, sigma_E_med) = +0.531`, which is claimed territory (A4/P1) carrying a novelty
+discount the alias had walked around.
+
+The same reading killed the sibling queued behind it. `iptm_mean x sigma_E_med = -0.502` is not derived
+from anything, but mean and standard deviation of one bounded sample are mechanically coupled: holding
+sigma_iptm drops it to -0.130. Hence `MOMENT_FAMILY` alongside `DERIVED_OF` — parentage alone would have
+caught the first and passed the second.
+
+Re-adjudicating the whole pair family under the guard turned 1 POSITIVE and 2 BOUND into 0 POSITIVE, 8
+CONCLUDED_ALIAS and 10 CONCLUDED_BOUND. Nothing in the fixed registry currently clears the bar.
+
+Two things this cost, both worth stating plainly. The harness spent four confirmation steps on a
+restatement, which is exactly the waste `NEVER_ENDPOINT` was supposed to have ended one defect earlier. And
+the promotion gate is load-bearing rather than ceremonial: had CONCLUDED_POSITIVE auto-promoted into
+`paper_claim_ledger.py`, a renamed copy of an existing claim would now be sitting in the ledger inflating
+its own portfolio value. Promotion stays a read-the-note decision.
+
+One robustness bug surfaced while repairing the registry by hand: a pursuit entry missing `steps` or
+`spend_s` raised a KeyError inside the step driver, and because the daemon redirects to /dev/null the
+registry then never persisted and the same pursuit was re-committed every tick without ever stepping.
+Both accesses are `setdefault` now. A daemon that swallows its own stack trace needs its state reads to be
+total.
 
 ## 8. Actuation scope, and how to stop it
 
