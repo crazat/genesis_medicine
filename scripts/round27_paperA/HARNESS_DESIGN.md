@@ -202,6 +202,59 @@ registry then never persisted and the same pursuit was re-committed every tick w
 Both accesses are `setdefault` now. A daemon that swallows its own stack trace needs its state reads to be
 total.
 
+## 7c. The second CONCLUDED_POSITIVE was also wrong, in a different way
+
+Two and a half hours later the trip fired again: "Spearman(iptm_mean, sigma_iptm) = -0.920 [-0.928,
+-0.911], n=1844, scope=library", clean through mediation (retains 100%), holdout, permutation and the
+allocation control (retains 99%).
+
+It is the mean and the standard deviation of one bounded sample. Binned by mean in library scope, median
+sigma_iptm falls monotonically 0.0335 -> 0.0022 as the mean bin goes 0.860 -> 0.976; iptm lives on [0,1]
+and its dispersion has to compress against the ceiling. rho is -0.830 in generated_auto and -0.848 over
+the whole table. The pair is also listed in `COVERED` as claim P1/B2's own definition space.
+
+Three separate things had to be wrong for this to reach a promotion alert, and each is worth its own fix:
+
+**The scanner's mechanical-pair list was incomplete.** `MOMENT_COUPLED` held sigma/kurt and the count
+pairs but not mean/sd, which is the most obvious coupling in the table. Added.
+
+**A step that cannot evaluate its case must not return PASS.** `step_mediation` residualized on
+`kurt_iptm` and reported "retains 100%" — technically true and completely beside the point, because when
+both endpoints are in one moment family the only mediator that matters is the other endpoint. It now
+detects that case and returns a dedicated `CONCLUDED_MECHANICAL`. This is honesty rule 4 again: a detector
+whose precondition is absent has to say so, not emit a clean verdict.
+
+**Promotion was gated on passing, not on being new.** The observation carried `novelty = 0.30` and
+`covered_by = "P1/B2"` — the ledger knew, at commit time, that an existing claim already owned this
+territory, and raised a new-claim alert anyway. A pass on covered ground is corroboration of that claim's
+sufficiency, not a new row: it now concludes `CONCLUDED_CORROBORATION` and does not set PROMOTION_PENDING.
+
+### And the arbiter was reading zero as enthusiasm
+
+Re-adjudicating everything left `V_explore = 0.059` against `V_exploit = 0.000`. A ratio is scale-free, so
+`0.059 / (0.059 + 0)` is 1.0, and the arbiter clamped that to the 0.40 ceiling: a recommendation to spend
+40% of the machine on a hypothesis space whose best remaining item is below the commit floor and therefore
+cannot be pursued at all. When `V_explore < COMMIT_FLOOR` the share is now the insurance minimum, enough to
+keep scanning for something new and no more. Same failure this whole report is about, one layer up —
+a number that looks like conviction but encodes an empty numerator.
+
+### What the explore arm actually found
+
+The pair / hetero / drift family over `phase3_labels.csv` is now swept: 26 concluded, of which 0 positive,
+10 CONCLUDED_ALIAS, 13 CONCLUDED_BOUND, 3 CONCLUDED_MECHANICAL. Four observations remain triaged and all
+four sit below the commit floor.
+
+Stated as a bound, which is how this project reports negatives: in the 12,207-row labelled table there is
+no relation among the reliability columns that is simultaneously (a) above |rho| = 0.15, (b) not owned by
+an existing claim, (c) not an alias or co-moment of its own endpoints, and (d) still standing after the
+allocation control. The two relations that are strong and real -- sigma_iptm x sigma_E_med at +0.531 in
+generated_auto, and mean/sd coupling -- are respectively already-claimed territory and a definitional
+property.
+
+That is a genuine result and it is worth more than a fabricated positive would have been. It also says
+where the explore arm should look next, and it is not this table: new hypothesis space needs new columns
+(molecular descriptors, docking scores, per-pose energies), not more probes over the same seven.
+
 ## 8. Actuation scope, and how to stop it
 
 Narrow, and it follows the R11 precedent approved 2026-06-13: raise the ceiling, never move the floor.

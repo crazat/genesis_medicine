@@ -103,7 +103,13 @@ NEVER_ENDPOINT = set(ALLOC_COLS)
 MOMENT_COUPLED = {frozenset(("sigma_iptm", "kurt_iptm")),
                   frozenset(("n_iptm", "sigma_iptm")),
                   frozenset(("n_iptm", "kurt_iptm")),
-                  frozenset(("n_sigmaE_cells", "sigma_E_med"))}
+                  frozenset(("n_sigmaE_cells", "sigma_E_med")),
+                  # 2026-08-08: the mean and the sd of the SAME bounded sample. Measured in library scope,
+                  # median sigma_iptm falls 0.0335 -> 0.0022 monotonically as the mean bin goes 0.860 ->
+                  # 0.976: iptm lives on [0,1] and its dispersion has to compress against the ceiling.
+                  # rho = -0.920 here and -0.830 in generated_auto, and it is claim P1/B2's own definition
+                  # space. It reached CONCLUDED_POSITIVE once because this line was missing.
+                  frozenset(("iptm_mean", "sigma_iptm"))}
 
 
 def logln(m):

@@ -517,6 +517,18 @@ def step_mediation(e, df):
     d = scope_rows(df, e["scope"]).copy()
     probe = e["probe"]
     a, b = e.get("a"), e.get("b")
+    # When BOTH endpoints sit in one moment family, or one is literally an ingredient of the other, no
+    # third variable can separate them: the mediator that matters IS the other endpoint. Residualizing on
+    # whatever is left over then reports a confident PASS for a question it never asked -- which is how
+    # Spearman(iptm_mean, sigma_iptm) = -0.920 reached CONCLUDED_POSITIVE with "retains 100%" after being
+    # "controlled" for kurt_iptm. A step that cannot evaluate its case must say so, not pass it.
+    same_family = any(a in fam and b in fam for fam in MOMENT_FAMILY)
+    ingredient = b in DERIVED_OF.get(a, ()) or a in DERIVED_OF.get(b, ())
+    if same_family or ingredient:
+        why = ("moments of the same sample" if same_family else "one variable is an ingredient of the other")
+        return {"ok": True, "verdict": "FAIL", "mechanical": True,
+                "detail": (f"{a} and {b} are {why}; the relation is structural, and no third variable can "
+                           f"separate them because the only relevant mediator is the other endpoint")}
     ctrl = []
     for side, other in ((a, b), (b, a)):
         for p in mediators_for(side, other, d):
@@ -574,6 +586,9 @@ def conclude(e, reg):
     med = steps.get("mediation")
     if "ACTIONABLE" in verdicts:
         state, why = "CONCLUDED_ACTIONABLE", "coverage gap quantified into a finite work order"
+    elif med and med.get("mechanical"):
+        state = "CONCLUDED_MECHANICAL"
+        why = med["detail"] + ". This is a property of how the two quantities are defined, not a result"
     elif med and med["verdict"] == "FAIL":
         # NOT refuted and NOT a bound on chemistry: the relation is real, it just is not about this
         # variable. Its own ingredients already carry it, so it belongs to whatever claim owns them.
@@ -614,9 +629,20 @@ def conclude(e, reg):
                    f" of {len(e['steps'])} steps; the effect is not reproducible at the standard this "
                    f"project applies to its own published results")
     elif any(v == "PASS" for v in verdicts):
-        state = "CONCLUDED_POSITIVE"
-        why = (f"passed all {sum(1 for v in verdicts if v == 'PASS')} applicable confirmation steps "
-               f"({', '.join(s['name'] for s in e['steps'] if s['verdict'] == 'PASS')})")
+        passed = (f"passed all {sum(1 for v in verdicts if v == 'PASS')} applicable confirmation steps "
+                  f"({', '.join(s['name'] for s in e['steps'] if s['verdict'] == 'PASS')})")
+        # PROMOTION means "this should become a NEW claim". A relation an existing claim already owns
+        # cannot be one, however cleanly it passes -- it is corroboration, and it belongs to that claim's
+        # sufficiency, not to a new row in the ledger. Waking a human with a new-claim alert for territory
+        # already on the books is how the explore arm turns into a noise generator.
+        if e.get("novelty", 1.0) < 0.9:
+            state = "CONCLUDED_CORROBORATION"
+            why = (f"{passed}, but this is territory an existing claim already owns "
+                   f"({e.get('covered_by') or 'covered'}; novelty {e.get('novelty')}). It corroborates "
+                   f"that claim rather than adding one, so it is not a promotion candidate")
+        else:
+            state = "CONCLUDED_POSITIVE"
+            why = passed
     else:
         state, why = "CONCLUDED_BOUND", "no step returned a usable verdict"
     e["state"] = state
@@ -701,10 +727,16 @@ def main():
     v_explore = max([e["OV"] for e in open_items], default=0.0)
     denom = v_explore + v_exploit
     raw_share = (v_explore / denom) if denom > 0 else EXPLORE_MIN
-    share = float(min(EXPLORE_MAX, max(EXPLORE_MIN, raw_share)))
+    # A ratio is scale-free, so a tiny numerator over a zero denominator reads as maximum enthusiasm:
+    # with V_explore=0.059 and V_exploit=0.000 this returned the 0.40 ceiling, recommending 40% of the
+    # machine for a hypothesis space whose best remaining item is below the commit floor and therefore
+    # cannot be pursued at all. If nothing is committable, the share is the insurance minimum -- enough to
+    # keep scanning for something new, not a budget for work that does not exist.
+    starved = v_explore < COMMIT_FLOOR
+    share = EXPLORE_MIN if starved else float(min(EXPLORE_MAX, max(EXPLORE_MIN, raw_share)))
     jdump({"ts": time.time(), "v_explore": v_explore, "v_exploit": v_exploit,
            "explore_share_raw": round(raw_share, 3), "explore_share": round(share, 3),
-           "clamp": [EXPLORE_MIN, EXPLORE_MAX],
+           "clamp": [EXPLORE_MIN, EXPLORE_MAX], "starved": starved,
            "note": ("explore share is CLAMPED on both sides on purpose: the floor is insurance against the "
                     "2026-07-15 collapse (93% of tiers on a settled claim), the ceiling guarantees the "
                     "exploit floor keeps the majority of the machine.")}, ALLOC)
