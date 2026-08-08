@@ -25,11 +25,24 @@ CHECK_S=${CHECK_S:-45}
 SELF_REFRESH_S=${SELF_REFRESH_S:-21600}   # 6h clean exit to avoid a zombie watcher; cron/LLM relaunch
 START=$SECONDS
 
-# count only top-level daemons: a match whose PPID is ALSO a match is a same-named subshell child
-# (e.g. gpu_vram_watchdog's real_free torch-confirm subshell shows cmdline "bash gpu_vram_watchdog.sh"
-# and lingers ~71s under load -> would inflate the count to 2 and false-trip "OOM backstop GONE" 2026-07-13).
-# A genuine duplicate daemon has ppid=1/325 (not a match) so it is still counted -> real dup still detected.
-pc(){ local n=0 p pp pids; pids=$(pgrep -f "$1" 2>/dev/null); for p in $pids; do tr '\0' ' ' </proc/$p/cmdline 2>/dev/null | grep -q "^$2" || continue; pp=$(ps -o ppid= -p "$p" 2>/dev/null | tr -d ' '); printf '%s\n' $pids | grep -qx "$pp" && continue; n=$((n+1)); done; echo $n; }
+# count only top-level daemons: a match whose PARENT'S CMDLINE ALSO starts with the same exact prefix is a
+# same-named subshell child (e.g. gpu_vram_watchdog's real_free torch-confirm subshell shows cmdline
+# "bash gpu_vram_watchdog.sh" and lingers ~71s under load -> would inflate the count to 2 and false-trip
+# "OOM backstop GONE" 2026-07-13). A genuine duplicate daemon has ppid=1/325 (not a match) so it is still
+# counted -> real dup still detected.
+# 2026-07-28: the parent test used to be "ppid is anywhere in the pgrep -f match set", which is far weaker
+# than the same-named-subshell case it was written for. A launcher whose OWN cmdline merely CONTAINS the
+# daemon name -- e.g. the `bash -c "... setsid bash gpu_roi_supervisor.sh ..."` wrapper an LLM relaunch runs
+# through -- joins the match set, so the real daemon underneath it was discarded as a subshell and the count
+# read 0 while the daemon was alive and dispatching. That false-tripped "queue-rotation stack down" ~90s
+# after a healthy GPU resume. Comparing the parent's cmdline against the same prefix distinguishes the two:
+# a real subshell's cmdline IS the daemon's, a launcher's merely mentions it.
+# cmdline_of: read /proc/<pid>/cmdline without the shell printing "No such file or directory". A `<` redirect
+# fails in the SHELL, so the command's own 2>/dev/null cannot suppress it -- and the pid genuinely disappears
+# mid-loop (pgrep match exits) or has no parent left, so this fires on every healthy heartbeat. cat owns the
+# open, so its stderr is suppressible and a missing file just yields empty output.
+cmdline_of(){ cat "/proc/${1:-0}/cmdline" 2>/dev/null | tr '\0' ' '; }
+pc(){ local n=0 p pp pids; pids=$(pgrep -f "$1" 2>/dev/null); for p in $pids; do cmdline_of "$p" | grep -q "^$2" || continue; pp=$(ps -o ppid= -p "$p" 2>/dev/null | tr -d ' '); cmdline_of "$pp" | grep -q "^$2" && continue; n=$((n+1)); done; echo $n; }
 boltz_n(){ pgrep -f '[b]oltz predict' 2>/dev/null | wc -l; }
 xtb_n(){ local n; n=$(pgrep -fc '[/]bin/xtb ' 2>/dev/null); echo "${n:-0}"; }   # capture: pgrep -fc exits 1 at 0 matches but still prints "0"
 # numeric-validate: transient WSL2 "Failed to initialize NVML: GPU access blocked by the operating system"
@@ -80,8 +93,21 @@ GENLOG=$SD/run_generation_round.log
 gen_running(){ pgrep -f '[r]un_generation_round.sh' >/dev/null 2>&1; }
 gen_last_failed(){ tail -5 "$GENLOG" 2>/dev/null | grep -q "produced no manifest"; }
 starving(){ [ -f "$TS/IDLE_BY_DESIGN" ] && [ "$(boltz_n)" -eq 0 ] && ! gen_running; }
+
+# ---- R15 (2026-08-08): the two daemons nobody was watching, plus the opportunity harness --------------
+# Of the six daemons, only FOUR had a liveness trip. tier_autopilot (queue refill) and
+# sweetspot_ledger_loop (the aggregator chain every ROI layer reads) had none. The second gap was worse
+# than a gap: the EVIDENCE-STALE trip below was gated on sweet_running, so the death of the ledger loop
+# ALSO switched off the detector for the staleness that its death causes -- fail-silent by construction.
+# Every resume note since 2026-07-15 has compensated for this by hand ("verify by mtime, not by
+# liveness"; RESUME_STATE_2026_08_07_FULL_REBOOT step 6). These trips make it mechanical.
+HB=$TS/harness/heartbeat
+PROMO=$TS/harness/PROMOTION_PENDING
+harness_off(){ [ -f "$TS/harness/HARNESS_OFF" ]; }
+hb_age(){ local m; m=$(stat -c %Y "$HB" 2>/dev/null) || { echo 999999; return; }; echo $(( $(date +%s) - m )); }
 c_sup=0; c_vwd=0; c_boltz=0; c_vram=0; c_idle=0; c_xtb=0; c_evi=0; c_mis=0; c_starve=0
-trip(){ echo "WATCHER-WAKE $(TZ=Asia/Seoul date '+%F %T') :: $1"; echo "snapshot: sup=$(pc gpu_roi_supervisor 'bash gpu_roi_supervisor.sh') vwd=$(pc gpu_vram_watchdog 'bash gpu_vram_watchdog.sh') boltz=$(boltz_n) xtb=$(xtb_n) gpu_util=$(gpu_util)% free=$(gpu_free)MiB qE=$(qlen E) qF=$(qlen F)"; exit 0; }
+c_agg=0; c_apl=0; c_hb=0; c_promo=0
+trip(){ echo "WATCHER-WAKE $(TZ=Asia/Seoul date '+%F %T') :: $1"; echo "snapshot: sup=$(pc gpu_roi_supervisor 'bash gpu_roi_supervisor.sh') vwd=$(pc gpu_vram_watchdog 'bash gpu_vram_watchdog.sh') agg=$(pc sweetspot_ledger_loop 'bash sweetspot_ledger_loop.sh') apl=$(pc tier_autopilot 'bash tier_autopilot.sh') hrn=$(pc harness_loop 'bash harness_loop.sh') boltz=$(boltz_n) xtb=$(xtb_n) gpu_util=$(gpu_util)% free=$(gpu_free)MiB qE=$(qlen E) qF=$(qlen F) hb=$(hb_age)s"; exit 0; }
 
 echo "[$(TZ=Asia/Seoul date '+%F %T')] autonomous_watcher START (check ${CHECK_S}s, event-driven; exits-on-anomaly to wake LLM)"
 while true; do
@@ -133,16 +159,36 @@ while true; do
   [ $c_idle  -ge 8 ]  && trip "GPU util 0% sustained (~6min) -> explore idle"
   [ $c_xtb   -ge 10 ] && trip "sigma_E feeder dead (~7.5min) -> exploit floor no longer self-gating new tiers; relaunch floor_sigma_feeder.sh"
 
-  # VALUE trips: the stack can be 100% healthy and still be producing nothing that moves a claim.
-  if sweet_running; then
-    { [ "$(evidence_age_h)" -ge 3 ]; } && c_evi=$((c_evi+1)) || c_evi=0
+  # ---- daemon liveness for the two that had none, + the harness heartbeat (R15) ----
+  agg=$(pc sweetspot_ledger_loop 'bash sweetspot_ledger_loop.sh')
+  apl=$(pc tier_autopilot 'bash tier_autopilot.sh')
+  if [ -f "$TS/GPU_PAUSED" ]; then
+    c_agg=0; c_apl=0; c_hb=0     # a full stop takes these down too; GPU_PAUSED means it was intentional
   else
-    c_evi=0   # loop paused/stopped -> stale evidence is expected, not a fault
+    [ "$agg" = 1 ] && c_agg=0 || c_agg=$((c_agg+1))
+    [ "$apl" = 1 ] && c_apl=0 || c_apl=$((c_apl+1))
+    if harness_off; then c_hb=0
+    else { [ "$(hb_age)" -le 2700 ]; } && c_hb=0 || c_hb=$((c_hb+1)); fi
+  fi
+  [ -f "$PROMO" ] && c_promo=$((c_promo+1)) || c_promo=0
+
+  # VALUE trips: the stack can be 100% healthy and still be producing nothing that moves a claim.
+  # Staleness is only EXPECTED during a full stop (GPU_PAUSED set AND the aggregator loop deliberately
+  # down). Gating on sweet_running alone -- the pre-R15 form -- meant a dead aggregator silenced its own
+  # alarm; now a dead aggregator during a live stack trips both c_agg and c_evi.
+  if [ -f "$TS/GPU_PAUSED" ] && ! sweet_running; then
+    c_evi=0
+  else
+    { [ "$(evidence_age_h)" -ge 3 ]; } && c_evi=$((c_evi+1)) || c_evi=0
   fi
   misallocated && c_mis=$((c_mis+1)) || c_mis=0
   { [ ! -f "$TS/GPU_PAUSED" ] && starving; } && c_starve=$((c_starve+1)) || c_starve=0
   [ $c_evi -ge 4 ]   && trip "EVIDENCE STALE: phase3_labels.csv is $(evidence_age_h)h old while sweetspot_ledger_loop is running -> the aggregator chain (phase2_score_sigma -> phase3_build_labels) is severed; every ROI layer is deciding from a stale snapshot (this is the 35-day failure of 2026-07-15)"
   [ $c_mis -ge 80 ]  && trip "LEDGER MISALLOCATION sustained (~1h): floor_is_low_mv=true -> compute is serving a claim far below the top-MV claim. Re-allocate, or 'touch tier_state/MISALLOC_ACK' to accept it."
+  [ $c_agg -ge 3 ]   && trip "sweetspot_ledger_loop count=$agg (expected 1) -> THE AGGREGATORS ARE DOWN: phase2_score_sigma / phase3_build_labels stop running, so phase3_labels.csv freezes and every ROI layer (phase8, claim ledger, phase10-15, tier_planner, the harness) decides from a stale snapshot. This is the 35-day failure of 2026-07-15. Relaunch from \$SD: bash sweetspot_ledger_loop.sh"
+  [ $c_apl -ge 3 ]   && trip "tier_autopilot count=$apl (expected 1) -> tier_planner.py no longer runs: no queue refill, so both slots drain to idle at the end of their current tiers and nothing rebuilds them. Relaunch from \$SD: bash tier_autopilot.sh"
+  [ $c_hb  -ge 4 ]   && trip "harness heartbeat is $(hb_age)s old (>45min) while HARNESS_OFF is absent -> harness_loop.sh is dead or wedged; the opportunity/explore arm has stopped scanning and any committed pursuit is frozen mid-plan. Relaunch from \$SD: bash harness_loop.sh"
+  [ $c_promo -ge 4 ] && trip "HARNESS FINDING READY FOR PROMOTION :: $(tr '\n' ' ' < "$PROMO" 2>/dev/null | cut -c1-300) -- a committed pursuit passed every confirmation step. Read the finding note under tier_state/harness/findings/, decide whether it becomes a claim in paper_claim_ledger.py, then rm $PROMO."
   [ $c_starve -ge 27 ] && trip "GPU STARVED (~20min): idle-by-design AND boltz=0 AND no generation round running -> the work SOURCE is broken, not merely exhausted. $(gen_last_failed && echo 'last gen round logged \"produced no manifest\" -- check run_generation_round.log' || echo 'no gen round was even triggered -- check tier_planner/trigger_generation_round')"
 
   # Empty queues are EXPECTED under IDLE_BY_DESIGN (planner has no precision-buying work to queue), so

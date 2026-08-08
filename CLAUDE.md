@@ -1279,3 +1279,66 @@ taskset -cp $(pgrep -x xtb|head -1) | sed 's/.*: //'                       # σ_
 3. **v338_v351 (282 CSV)** — GPU 가동 중엔 0-15에서 v212와 공존. v212_v290(마지막 OHESS GBSA cell) 완료 시 v338 단독.
 4. **paper_A v6 제출 결정** = 최고 ROI 레버, **사용자 보류 중** (저널 미정).
 5. **σ_E unified 재consolidation** (v338_v351 + 신규 cohort) + paper_B σ_iptm v327-v360 extension.
+
+---
+
+## 🛠 활성 작업 (세션 종료 시점, **2026-08-08 12:00 KST**) — R15 기회 하네스 가동 + 감시 사각 2종 수리
+
+> 이전 블록(2026-06-01)은 v352 cascade 시절 서술이라 stale. 현재 스택은 아래가 authoritative.
+
+### 데몬 스택 = 7종 (6 → 7, harness_loop 신설)
+
+| 데몬 | 역할 | 죽으면 |
+|---|---|---|
+| `floor_sigma_feeder.sh` | CPU floor, xtb σ_E 그리드 (코어 0-18) | 신규 tier 자가 게이팅 정지 |
+| `gpu_roi_supervisor.sh` | 슬롯 E/F 로테이션, boltz 기동 | GPU 로테이션 정지 |
+| `gpu_vram_watchdog.sh` | OOM 하드 백스톱 | OOM 무방비 |
+| `tier_autopilot.sh` | 600s마다 `tier_planner.py` | 큐 리필 정지 → 슬롯 드레인 |
+| `sweetspot_ledger_loop.sh` | 1500s마다 집계기 + 자문층 | **모든 ROI 층이 stale 스냅샷 판단** |
+| `harness_loop.sh` | **R15 기회 하네스** (스캔 1h / pursuit 1스텝 15min) | 탐색 arm 정지, pursuit 동결 |
+| `autonomous_watcher.sh` | 이상 감지 → LLM 기상 | 무인 감시 소실 (harness-tracked로 기동) |
+
+기동은 전부 `bash <name>.sh` — `./name.sh`나 절대경로면 watcher `pc()` 접두일치가 깨져 sup=0 오탐.
+
+### R15 기회 하네스 (2026-08-08 신설) — 설계 전문 `scripts/round27_paperA/HARNESS_DESIGN.md`
+
+문제: R8-R14는 **고정된 claim 집합 안에서만** 최적화했다. claim 목록이 `paper_claim_ledger.build_claims()`의 하드코딩 리터럴이라 무인 운영 시 신규 가설 생성률이 0이었다. 또 모든 층이 타이머마다 처음부터 재결정해서 "추적 중인 탐구"라는 객체가 없었다.
+
+- `harness/harness_scan.py` — 가설공간 탐색. pair/hetero/drift/anomaly/hole 프로브 → Observation(효과 + 95% CI + n + provenance + recompute 명령)
+- `harness/harness_ledger.py` — 레지스트리 · OV triage · arbiter · 커밋 락 · pursuit 단계실행 · finding 작성
+- 상태 = `tier_state/harness/` (registry.json, allocation.json, harness_state.json, PURSUIT.active, PROMOTION_PENDING, findings/, heartbeat)
+- 한 척도: `OV = impact × headroom × P_real × novelty`, COMMIT_FLOOR = claim ledger의 `VOC_FLOOR 0.12` 재사용. `explore_share = clamp(V_e/(V_e+V_x), 0.10, 0.40)` — 하한은 2026-07-15 붕괴(733중 685 tier가 settled claim) 재발 보험, 상한은 floor 과반 보장. 현재 **권고치**이고 실제 코어 분할 강제는 phase15 소관(별도 승인 건).
+- 탐욕: 동시 커밋 1건, `PURSUIT.active` 락으로 로테이션 선점 불가. 정지규칙 4종 = PRECISION / FUTILITY / BUDGET(4 core-hour) / VOC. **음성도 산출물** — CONCLUDED_BOUND/REFUTED를 수치와 함께 기록. 스텝 3연속 에러 시 ABORT + 락 해제.
+- 확증 계획 = 2026-07-17/18 discrimination이 통과했던 기준(holdout · 순열 null · 배정공변량 잔차화 · era jackknife)을 코드로 고정.
+- 정지 = `touch tier_state/harness/HARNESS_OFF`
+
+**구축 중 잡은 결함 2종 (코드 주석으로 보존)**: ① 스캐너가 자기 스케줄러를 "발견"했다 — `n_iptm`은 `replicate_priority()`가 gate_score로 배정하는 값이라 정책변수는 엔드포인트 금지, 공변량으로만. ② 확증 단계가 통계량이 아니라 변수를 검정해서 drift 관측에 jackknife PASS(=안정, 곧 반증)가 지지로 집계됐다 — 프로브마다 자기 통계량·자기 null 라벨 선언으로 재작성.
+
+**첫 실전 결과 (무인)**: 2건 모두 순열 null 통과 후 배정변수 잔차화에서 붕괴 → CONCLUDED_BOUND.
+- drift `iptm_mean × sigma_E_med`: I² 0.857 → **0.000** (순열 p=0.0025)
+- hetero `iptm_mean × sigma_E_med` 코호트 차: −0.247 → **−0.030** (잔여 12%, 순열 p=0.0010)
+
+### watcher 신규 트립 4종
+
+`sweetspot_ledger_loop`·`tier_autopilot`은 liveness 트립이 **아예 없었고**, EVIDENCE-STALE이 `sweet_running` 게이팅이라 집계기가 죽으면 그 죽음이 만드는 노후의 감지기까지 같이 꺼졌다(fail-silent). 신규 = agg liveness / apl liveness / harness heartbeat>45min / PROMOTION_PENDING. STALE 면제는 "GPU_PAUSED이면서 loop도 내려간 전면정지"에만.
+
+### 현재 상태 (2026-08-08 12:00 측정)
+
+- 원장: **A1 MV 0.6375** 최상위 (B1 0.42, A2 0.155). `best_compute_mv=0.0` → **VOC-STOP**: core-hour 값어치 하는 컴퓨트 없음, 병목은 write-up/제출. `floor_is_low_mv=true`는 `MISALLOC_ACK`로 승인 상태.
+- 생산: labels 12,207행 / cofold 30,184 / slot-E t1004 · slot-F t1003 (둘 다 REPLICATE)
+- 하네스: TRIAGED 28, CONCLUDED_BOUND 2, explore_share 0.40
+
+### 🎯 다음 세션 즉시 확인
+
+```bash
+TZ=Asia/Seoul date '+%F %T'; uptime
+cd ~/genesis_medicine/scripts/round27_paperA && bash roi_report.sh      # 값 먼저, 가동률은 부록
+cat tier_state/harness/harness_state.json | head -20                     # 하네스 상태
+ls tier_state/harness/PROMOTION_PENDING 2>/dev/null && echo "승격 대기 finding 있음"
+for d in floor_sigma_feeder gpu_roi_supervisor gpu_vram_watchdog tier_autopilot sweetspot_ledger_loop harness_loop; do
+  echo "$d $(pgrep -f "bash $d.sh" | wc -l)"; done                       # 전부 1이어야
+```
+
+1. **paper_A v0.3 최종화/제출 결정** = A1 MV 0.637, 병목은 원고. 컴퓨트로는 더 못 올림(VOC-STOP).
+2. **PROMOTION_PENDING 처리** — pursuit이 POSITIVE로 끝나면 watcher가 깨움. finding 노트 읽고 claim ledger 승격 여부 판단 후 플래그 삭제.
+3. `explore_share` 강제 분할(phase15 연동)은 코어를 실제로 움직이므로 사용자 승인 후.
