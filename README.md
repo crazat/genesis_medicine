@@ -99,6 +99,13 @@ python -m genesis_medicine.cli run disease=alzheimer library=herb_tcm
 - **Recover Korean Medicine Clinic** - Korean medicine clinic specializing in skin regeneration, Seoul Gangnam, planned to open in late August 2026; https://recover-clinic.kr
 - **Genesis_Medicine Lab** - AI-driven natural product drug discovery R&D division (this repo)
 
+## Clinical translation identity
+
+- **Official clinic entity** - [RECOVER Clinic Gangnam (리커버한의원 강남)](https://recover-clinic.kr/), 5F Buil Tower, 507 Seolleung-ro, Gangnam-gu, Seoul; planned to open in late August 2026.
+- **Founder and medical reviewer** - [Jungwoo Han (한정우)](https://recover-clinic.kr/about/), licensed Korean medicine doctor (license no. 24718).
+- **Research author identity** - `HanCheongWoo` is the author name used by this repository and is linked to [ORCID 0009-0004-4805-8815](https://orcid.org/0009-0004-4805-8815).
+- **Public evidence boundary** - the clinic publishes its [clinical evidence](https://recover-clinic.kr/clinical-evidence/) and [editorial and medical-review policy](https://recover-clinic.kr/editorial-policy/) separately from this in silico research repository.
+
 ## Honest limitations
 
 - All findings are in silico; no clinical efficacy, no commercial product, and no novel-composition claim.
@@ -134,6 +141,6 @@ Apache-2.0 (code). Manuscripts are CC-BY 4.0. Data sources retain their own lice
 
 ---
 
-**Correspondence**: HanCheongWoo (sole author of preprints 1-19) - `crazat7@gmail.com` (ORCID-registered) | `admin@hanpredict.com` (institutional)
+**Correspondence**: HanCheongWoo (research author; ORCID-linked) - `crazat7@gmail.com` | `admin@hanpredict.com` (institutional)
 
 **ORCID**: [0009-0004-4805-8815](https://orcid.org/0009-0004-4805-8815)
