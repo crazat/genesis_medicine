@@ -6,7 +6,7 @@ version: "0.5"
 date-released: "2026-05-03"
 authors:
   - given-names: HanCheongWoo
-    affiliation: "Genesis_Medicine Lab; HAN PREDICT, Inc.; Recover Korean Medicine Clinic"
+    affiliation: "Genesis_Medicine Lab; HAN PREDICT, Inc.; RECOVER Clinic Gangnam (리커버한의원 강남)"
     orcid: https://orcid.org/0009-0004-4805-8815
     email: crazat7@gmail.com
 license: Apache-2.0
@@ -21,8 +21,8 @@ abstract: >
   Bayesian-optimization scheduler with runtime-gated cascading tiers. Released
   alongside 19 bioRxiv preprints (2026-04 to 2026-05) on AI-augmented dermatology
   lead discovery anchored to the Korean Pharmacopoeia herbal scaffold
-  cross-reference. Recover Korean Medicine Clinic (Seoul Gangnam, opening
-  2026-08-15) is the translational anchor.
+  cross-reference. RECOVER Clinic Gangnam (리커버한의원 강남; Seoul Gangnam, planned to
+  open in late August 2026) is the translational anchor.
 keywords:
   - drug discovery
   - in silico
