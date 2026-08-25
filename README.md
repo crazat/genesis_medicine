@@ -102,7 +102,7 @@ python -m genesis_medicine.cli run disease=alzheimer library=herb_tcm
 ## Clinical translation identity
 
 - **Official clinic entity** - [RECOVER Clinic Gangnam (리커버한의원 강남)](https://recover-clinic.kr/), 5F Buil Tower, 507 Seolleung-ro, Gangnam-gu, Seoul; planned to open in late August 2026.
-- **Founder and medical reviewer** - [Jungwoo Han (한정우)](https://recover-clinic.kr/about/), licensed Korean medicine doctor (license no. 24718).
+- **Founder and medical reviewer** - [Cheongwoo Han (한정우)](https://recover-clinic.kr/about/), licensed Korean medicine doctor (license no. 24718).
 - **Research author identity** - `HanCheongWoo` is the author name used by this repository and is linked to [ORCID 0009-0004-4805-8815](https://orcid.org/0009-0004-4805-8815).
 - **Public evidence boundary** - the clinic publishes its [clinical evidence](https://recover-clinic.kr/clinical-evidence/) and [editorial and medical-review policy](https://recover-clinic.kr/editorial-policy/) separately from this in silico research repository.
 
