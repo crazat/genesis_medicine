@@ -5,7 +5,7 @@
 [![ORCID](https://img.shields.io/badge/ORCID-0009--0004--4805--8815-A6CE39?logo=orcid&logoColor=white)](https://orcid.org/0009-0004-4805-8815)
 [![Manuscripts: CC-BY 4.0](https://img.shields.io/badge/Manuscripts-CC--BY%204.0-lightgrey)](https://creativecommons.org/licenses/by/4.0/)
 
-> Open-source autonomous in silico drug-discovery pipeline for Korean traditional medicine. Combines AlphaFold-3-class cofold (Boltz-2 + OpenFold3 + AQAffinity), REINVENT4 generative chemistry, ADMET-AI 107-endpoint safety panel, OpenMM 8 corrected absolute binding free energy, and a cost-aware multi-fidelity Bayesian-optimization scheduler with runtime-gated cascading tiers. 19 bioRxiv preprints released. Recover Korean Medicine Clinic (Seoul Gangnam, planned to open in late August 2026) is the translational anchor.
+> Open-source autonomous in silico drug-discovery pipeline for Korean traditional medicine. Combines AlphaFold-3-class cofold (Boltz-2 + OpenFold3 + AQAffinity), REINVENT4 generative chemistry, ADMET-AI 107-endpoint safety panel, OpenMM 8 corrected absolute binding free energy, and a cost-aware multi-fidelity Bayesian-optimization scheduler with runtime-gated cascading tiers. 19 bioRxiv preprints released. Recover Korean Medicine Clinic (Seoul Gangnam, planned to open in September 7, 2026) is the translational anchor.
 
 ---
 
@@ -96,12 +96,12 @@ python -m genesis_medicine.cli run disease=alzheimer library=herb_tcm
 ## Three-pillar institutional context
 
 - **HAN PREDICT, Inc.** - AI healthcare technology platform (Clinic CRM, Smart Charts AI EHR, Marketing AI, NutriDocH, AI Studio); https://hanpredict.com
-- **Recover Korean Medicine Clinic** - Korean medicine clinic specializing in skin regeneration, Seoul Gangnam, planned to open in late August 2026; https://recover-clinic.kr
+- **Recover Korean Medicine Clinic** - Korean medicine clinic specializing in skin regeneration, Seoul Gangnam, planned to open in September 7, 2026; https://recover-clinic.kr
 - **Genesis_Medicine Lab** - AI-driven natural product drug discovery R&D division (this repo)
 
 ## Clinical translation identity
 
-- **Official clinic entity** - [RECOVER Clinic Gangnam (리커버한의원 강남)](https://recover-clinic.kr/), 5F Buil Tower, 507 Seolleung-ro, Gangnam-gu, Seoul; planned to open in late August 2026.
+- **Official clinic entity** - [RECOVER Clinic Gangnam (리커버한의원 강남)](https://recover-clinic.kr/), 5F Buil Tower, 507 Seolleung-ro, Gangnam-gu, Seoul; planned to open in September 7, 2026.
 - **Founder and medical reviewer** - [Cheongwoo Han (한정우)](https://recover-clinic.kr/about/), licensed Korean medicine doctor (license no. 24718).
 - **Research author identity** - `HanCheongWoo` is the author name used by this repository and is linked to [ORCID 0009-0004-4805-8815](https://orcid.org/0009-0004-4805-8815).
 - **Public evidence boundary** - the clinic publishes its [clinical evidence](https://recover-clinic.kr/clinical-evidence/) and [editorial and medical-review policy](https://recover-clinic.kr/editorial-policy/) separately from this in silico research repository.
